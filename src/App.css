@@ -1,0 +1,370 @@
+.body {
+  background-color: white;
+  display: flex;
+}
+
+.innerBody {
+  width: 1600px;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  margin: auto;
+}
+
+.main {
+  width: 1300px;
+  position: relative;
+  margin: 10px auto;
+  margin-top: -10px;
+  padding: 80px auto;
+  vertical-align: middle;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+}
+
+button:hover {
+  cursor: pointer;
+  outline: none;
+}
+
+button:active {
+  outline: none;
+}
+
+#back {
+  width: 930px;
+  position: absolute;
+  top: -170px;
+  right: -170px;
+  z-index: 0;
+}
+
+#circle {
+  width: 600px;
+  position: absolute;
+  top: 1160px;
+  right: -450px;
+  z-index: 0;
+}
+
+#shop {
+  width: 400px;
+  position: absolute;
+  top: 1750px;
+  left: -100px;
+  z-index: 0;
+}
+
+#news {
+  width: 400px;
+  position: absolute;
+  top: 2300px;
+  right: -100px;
+  z-index: 0;
+}
+
+#map {
+  width: 400px;
+  position: absolute;
+  top: 2880px;
+  left: 20px;
+  z-index: 0;
+}
+
+@media only screen and (max-width: 1300px){
+  .main {
+    width: 1000px;
+  }
+
+  #circle {
+    top: 1250px;
+    right: -450px;
+  }
+
+  #shop {
+    top: 1850px;
+    left: -150px;
+  }
+
+  #news {
+    top: 2400px;
+    right: -100px;
+  }
+
+  #map {
+    top: 3000px;
+    left: -50px;
+  }
+}
+
+@media only screen and (max-width: 1005px){
+  .main {
+    width: 700px;
+  }
+}
+
+@media only screen and (max-width: 705px){
+  .main {
+    width: 360px;
+  }
+
+  #back {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 705px){
+  #circle, #shop, #map, #news {
+    display: none;
+  }
+}
+
+
+/*******************************HEADER*************************/
+
+.header {
+  display: flex;
+  margin: 0 100px;
+  position: relative;
+}
+
+.header nav {
+  width: 100%;
+  position: relative;
+}
+
+.header .rightSide {
+  font-family: "iran";
+  color: #171a1d;
+  float: right;
+  position: relative;
+  margin-top: 40px;
+  z-index: 1;
+}
+
+.header .rightSide li {
+  margin: 0px 20px 0px 10px;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0px 8px;
+  font-weight: 500;
+}
+
+.header .mainLogo {
+  width: auto;
+  float: right;
+  padding-left: 30px;
+  margin: -10px 0 0 20px;
+}
+
+.header .mainLogo img {
+  margin: -10px 0 0 -50px;
+  width: 80px;
+}
+
+.header .mainLogo a {
+  display: flex;
+}
+
+.header .mainLogo a span {
+  color: rgb(216, 152, 33);
+  margin: 10px 60px 0 0;
+  font-size: 20px;
+}
+
+.header .logoTitle {
+  margin-left: 30px;
+  font-size: 20px;
+}
+
+.header .leftSide {
+  position: relative;
+  margin: 25px 0 0 -40px;
+}
+
+.header .leftSide li {
+  font-size: 14px;
+  display: inline;
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  color: #6e6e6e;
+}
+
+.selectedPage a {
+  color: rgb(216, 152, 33);
+  font-weight: bolder;
+  font-size: 22px;
+}
+
+.header nav ul li a:hover {
+  color: #ff3333;
+}
+
+.header .signInButton {
+  width: 230px;
+  font-family: "iran";
+  background-color: transparent;
+  color: rgb(216, 152, 33);
+  float: left;
+  border: 1px solid black;
+  font-size: 20px;
+  padding: 10px 2px 12px 2px;
+  border-radius: 50px;
+  z-index: 1;
+}
+
+.header .dropdown {
+  display: none !important;
+}
+
+@media only screen and (max-width: 1300px) {
+  header .rightSide li {
+    display: none !important;
+  }
+
+  .header .signInButton {
+    display: none;
+  }
+
+  .header .rightSide {
+    float: left;
+    width: 100%;
+  }
+
+  .header .dropdown {
+    display: initial !important;
+  }
+
+  .header .dropdown:hover {
+    cursor: pointer;
+  }
+
+  .header .dropdown img {
+    width: 80px;
+    margin-top: -20px;
+    color: rgb(51, 51, 51);
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media only screen and (max-width: 705px) {
+  .header {
+    margin: 0 40px;
+  }
+
+  .header .mainLogo a span {
+    display: none;
+  }
+}
+
+
+/************************HIDDEN MENU***************************/
+
+.hiddenMenu {
+  width: 100%;
+  height: 0px;
+  display: flex;
+  margin: 0 auto;
+  position: absolute;
+  background-color: #ffffff;
+  z-index: 5;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+  border-bottom: 1px solid gray;
+  animation: showing 1s forwards;
+}
+
+@keyframes showing {
+  100% {height: 500px;}
+}
+
+.hiddenMenuIsClosing{
+  height: 500px;
+  animation: hiding 1s forwards;
+}
+
+@keyframes hiding {
+  100% {height: 0px;}
+}
+
+.hiddenMenu .closeHiddenMenu {
+  font-size: 45px;
+  flex-grow: 0;
+  margin: 10px;
+  width: auto;
+  height: 45px;
+  color: rgb(216, 152, 33);
+  font-weight: 100;
+}
+
+.hiddenMenu .closeHiddenMenu:hover {
+  cursor: pointer;
+}
+
+.hiddenMenu .signButton {
+  position: relative;
+  margin-top: 50px;
+}
+
+.hiddenMenu .rightSide {
+  font-family: "iran";
+  color: #171a1d;
+  position: relative;
+  margin-top: 40px;
+  z-index: 1;
+  float: right;
+  flex-grow: 1;
+}
+
+.hiddenMenu .rightSide .signIn {
+  width: 180px;
+  font-family: "iran";
+  background-color: rgb(216, 152, 33);
+  color: white;
+  float: right;
+  border: 1px solid #d89821;
+  font-size: 20px;
+  padding: 8px 2px 12px 2px;
+  border-radius: 50px;
+  z-index: 1;
+  margin: 20px -10px;
+}
+
+.hiddenMenu .rightSide .signIn:hover {
+  background-color: white;
+  color: rgb(216, 152, 33);
+  border: 1px solid black;
+  transition: all 0.5s;
+}
+
+.hiddenMenu .rightSide .signIn:not(:hover){
+  background-color: rgb(216, 152, 33);
+  color: white;
+  border: 1px solid rgb(216, 152, 33);
+  transition: all 0.5s;
+}
+
+.hiddenMenu .rightSide li {
+  margin: 0px 20px 0px 10px;
+  font-size: 20px;
+  display: block;
+  padding: 0px 8px;
+  font-weight: 500;
+  text-align: right;
+  line-height: 50px;
+}
+
+.hiddenMenu .rightSide li a {
+  color: #6e6e6e;
+}
+
+.hiddenMenu li a:hover {
+  color: #ff3333;
+  transition: all 0.2s;
+}

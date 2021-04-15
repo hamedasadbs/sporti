@@ -1,0 +1,302 @@
+.news {
+  width: 100%;
+  display: flex;
+  position: relative;
+  margin: auto;
+}
+
+.news > .title {
+  font-size: 35px;
+  font-weight: 500;
+  color: rgb(94, 94, 94);
+  margin: -50px auto;
+  position: absolute;
+  width: 100%;
+  text-align: right;
+  right: 50px;
+  z-index: 1;
+}
+
+.news > .seeMore {
+  font-size: 22px;
+  font-weight: 500;
+  color: rgb(136, 136, 136);
+  margin: auto 100px;
+  position: absolute;
+  top: 550px;
+  left: -80px;
+  width: 100%;
+  text-align: left;
+  font-family: "iran";
+}
+
+.news .horizontalLine {
+  border-top: 2px solid rgb(216, 152, 33);
+  width: 100%;
+  position: absolute;
+  top: 30px;
+  z-index: 1;
+  margin-right: 20px;
+}
+
+.news .rightSide,
+.news .leftSide {
+  width: auto;
+  height: 450px;
+  z-index: 1;
+  position: relative;
+  
+}
+
+.news .rightSide {
+  margin: 50px 140px 50px 0;
+  position: relative;
+}
+
+.news .rightSide .overlay {
+  width: 470px;
+  height: 400px;
+  background-color: white;
+  position: absolute;
+  top: 0;
+  right: -45px;
+  margin-right: 45px;
+  border-radius: 10px;
+  opacity: 0.4;
+}
+
+.news .rightSide img {
+  width: 470px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-left: 50px;
+}
+
+.news .rightSide h4 {
+  font-family: "iran";
+  font-size: 23px;
+  position: absolute;
+  top: 150px;
+  right: 50px;
+}
+
+.news .rightSide p {
+  font-family: "iran";
+  font-size: 14px;
+  position: absolute;
+  top: 210px;
+  right: 50px;
+  z-index: 2;
+  font-weight: 100;
+  width: 430px;
+  text-align: right;
+  color: rgb(65, 65, 65);
+}
+
+.news .rightSide p span {
+  font-size: 17px;
+}
+
+.news .rightSide button {
+  width: 150px;
+  font-family: "iran";
+  background-color: rgb(216, 152, 33);
+  color: white;
+  float: left;
+  border: none;
+  font-size: 15px;
+  position: absolute;
+  top: 340px;
+  right: 50px;
+  padding: 10px;
+  border-radius: 100px;
+}
+
+.news .rightSide button:hover {
+  background-color: white;
+  color: rgb(216, 152, 33);
+  border: 1px solid black;
+  transition: all 0.5s;
+}
+
+.news .rightSide button:not(:hover){
+  background-color: rgb(216, 152, 33);
+  color: white;
+  border: 1px solid rgb(216, 152, 33);
+  transition: all 0.5s;
+}
+
+.news .leftSide {
+  margin: 50px 0px 50px 100px;
+  position: relative;
+}
+
+.news .leftSide img {
+  width: 250px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 0 0 20px 20px;
+}
+
+.news .leftSide .moreNews{
+  width: 250px;
+  height: 190px;
+  position: absolute;
+  text-align: center;
+  top: 200px;
+  left: 280px;
+}
+
+.news .leftSide .moreNews h4 {
+  font-family: "iran";
+  font-size: 20px;
+  position: absolute;
+  top: 0px;
+  right: 60px;
+}
+
+.news .leftSide .moreNews .overlay {
+  width: 250px;
+  height: 190px;
+  background-color: white;
+  position: absolute;
+  top: 10px;
+  right: -10px;
+  border-radius: 10px;
+  opacity: 0.6;
+}
+
+.news .leftSide .moreNews img {
+  width: 250px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.news .leftSide .moreNews button{
+  width: 50px;
+  height: 50px;
+  background-color: rgb(216, 152, 33);
+  color: white;
+  float: left;
+  border: none;
+  font-size: 20px;
+  position: absolute;
+  top: 140px;
+  right: 0px;
+  border-radius: 100px;
+}
+
+.news .leftSide .moreNews button:hover {
+  background-color: white;
+  color: rgb(216, 152, 33);
+  border: 1px solid black;
+  transition: all 0.5s;
+}
+
+.news .leftSide .moreNews button:not(:hover){
+  background-color: rgb(216, 152, 33);
+  color: white;
+  border: 1px solid rgb(216, 152, 33);
+  transition: all 0.5s;
+}
+
+@media only screen and (max-width: 1300px){
+  .news {
+    display: flex;
+    position: relative;
+    margin: 35px auto;
+  }
+
+  .news .leftSide {
+    margin: 50px 0px 50px 100px;
+  }
+
+  .news .leftSide img:nth-child(3), .news .leftSide img:nth-child(2) {
+    display: none;
+  }
+
+  .news .leftSide .moreNews{
+    width: 250px;
+    height: 190px;
+    position: absolute;
+    text-align: center;
+    top: 200px;
+    left: 10px;
+  }
+}
+
+@media only screen and (max-width: 1005px){
+  .news .rightSide {
+    margin: 50px 140px 50px 0px;
+    position: relative;
+  }
+
+  .news .rightSide img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+
+  .news .rightSide .overlay {
+    width: 400px;
+    height: 400px;
+  }
+
+  .news .rightSide h4 {
+    right: 30px;
+  }
+
+  .news .rightSide p {
+    right: 30px;
+    width: 380px;
+  }
+
+  .news .leftSide {
+    margin: 50px 0px 50px 0px;
+  }
+}
+
+@media only screen and (max-width: 705px){
+  .news{
+    margin-top: 100px;
+  }
+
+  .news > .title {
+    font-size: 30px;
+    text-align: center;
+    right: 0px;
+  }
+
+  .news .rightSide {
+    margin: 50px 140px 50px 0px;
+    position: relative;
+  }
+
+  .news .rightSide img {
+    width: 340px;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-left: 10px;
+  }
+
+  .news .rightSide .overlay {
+    width: 340px;
+    height: 380px;
+  }
+
+  .news .leftSide .moreNews, .news .leftSide img{
+    display: none;
+  }
+
+  .news .rightSide button {
+    top: 320px;
+    right: 90px;
+  }
+}

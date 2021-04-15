@@ -1,0 +1,61 @@
+.records {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  font-family: "iran";
+  margin: 50px auto;
+  margin-top: 650px;
+}
+
+.records div {
+  margin: 80px auto;
+  text-align: center;
+  line-height: 50px;
+  width: auto;
+}
+
+.records div img {
+  width: 100px;
+}
+
+.records div h1 {
+  color: rgb(216, 152, 33);
+  font-size: 30px;
+}
+
+.records div span {
+  color: rgb(90, 90, 90);
+  font-size: 50px;
+  font-family: "vazir";
+}
+
+
+@media only screen and (max-width: 1300px){
+  .records {
+    margin-top: 750px;
+  }
+}
+
+@media only screen and (max-width: 1005px){
+  .records {
+    margin-top: 600px;
+  }
+}
+
+@media only screen and (max-width: 705px){
+  .records {
+    margin-top: 650px;
+  }
+
+  .records div img {
+    width: 80px;
+  }
+  
+  .records div h1 {
+    font-size: 20px;
+  }
+
+  .records div span {
+    font-size: 30px;
+  }
+}
