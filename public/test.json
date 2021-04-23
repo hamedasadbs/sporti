@@ -1,0 +1,122 @@
+{
+    "shoppings":[
+        {
+            "id":0,
+            "imageSource":"../src/Assets/Images/s1.jpeg",
+            "title":"عنوان کالا",
+            "star":4,
+            "price":"56,000",
+            "station":"تهران",
+            "city":"تهران",
+            "category":"فلایت",
+            "explanation":"در این قسمت توضیحات مربوط به محصول درج خواهد شد این محصول به لحاظ کیفیت در نوع خود بهترین بازار است"
+        },
+        {
+            "id":1,
+            "imageSource":"../src/Assets/Images/s2.jpeg",
+            "title":"عنوان کالا",
+            "star":5,
+            "price":"22,000",
+            "station":"تهران",
+            "city":"تهران",
+            "category":"فلایت",
+            "explanation":"در این قسمت توضیحات مربوط به محصول درج خواهد شد این محصول به لحاظ کیفیت در نوع خود بهترین بازار است"
+        },
+        {
+            "id":2,
+            "imageSource":"../src/Assets/Images/s3.jpeg",
+            "title":"عنوان کالا",
+            "star":6,
+            "price":"120,000,000",
+            "station":"تهران",
+            "city":"تهران",
+            "category":"فلایت",
+            "explanation":"در این قسمت توضیحات مربوط به محصول درج خواهد شد این محصول به لحاظ کیفیت در نوع خود بهترین بازار است"
+        },
+        {
+            "id":3,
+            "imageSource":"../src/Assets/Images/s1.jpeg",
+            "title":"عنوان کالا",
+            "star":1,
+            "price":"99,000",
+            "station":"تهران",
+            "city":"تهران",
+            "category":"فلایت",
+            "explanation":"در این قسمت توضیحات مربوط به محصول درج خواهد شد این محصول به لحاظ کیفیت در نوع خود بهترین بازار است"
+        },
+        {
+            "id":4,
+            "imageSource":"../src/Assets/Images/s3.jpeg",
+            "title":"عنوان کالا",
+            "star":5,
+            "price":"320,000",
+            "station":"تهران",
+            "city":"تهران",
+            "category":"فلایت",
+            "explanation":"در این قسمت توضیحات مربوط به محصول درج خواهد شد این محصول به لحاظ کیفیت در نوع خود بهترین بازار است"
+        },
+        {
+            "id":5,
+            "imageSource":"../src/Assets/Images/s2.jpeg",
+            "title":"عنوان کالا",
+            "star":2,
+            "price":"28,000",
+            "station":"تهران",
+            "city":"تهران",
+            "category":"فلایت",
+            "explanation":"در این قسمت توضیحات مربوط به محصول درج خواهد شد این محصول به لحاظ کیفیت در نوع خود بهترین بازار است"
+        }
+    ],
+    "matches":[
+        {
+            "id":0,
+            "imageSource":"../Assets/Images/s1.jpeg",
+            "title":"عنوان مسابقه",
+            "text":"یک متن نمونه برای مثال اینجا نوشته میشود"
+        },
+        {
+            "id":1,
+            "imageSource":"../Assets/Images/s2.jpeg",
+            "title":"عنوان مسابقه",
+            "text":"یک متن نمونه برای مثال اینجا نوشته میشود"
+        },
+        {
+            "id":2,
+            "imageSource":"../Assets/Images/s3.jpeg",
+            "title":"عنوان مسابقه",
+            "text":"یک متن نمونه برای مثال اینجا نوشته میشود"
+        },
+        {
+            "id":3,
+            "imageSource":"../Assets/Images/s4.jpeg",
+            "title":"عنوان مسابقه",
+            "text":"یک متن نمونه برای مثال اینجا نوشته میشود"
+        }
+    ],
+    "news":[
+        {
+            "id":0,
+            "imageSource":"../Assets/Images/s1.jpeg",
+            "title":"عنوان مسابقه",
+            "text":"یک متن نمونه برای مثال اینجا نوشته میشود"
+        },
+        {
+            "id":2,
+            "imageSource":"../Assets/Images/s2.jpeg",
+            "title":"عنوان مسابقه",
+            "text":"یک متن نمونه برای مثال اینجا نوشته میشود"
+        },
+        {
+            "id":3,
+            "imageSource":"../Assets/Images/s3.jpeg",
+            "title":"عنوان مسابقه",
+            "text":"یک متن نمونه برای مثال اینجا نوشته میشود"
+        },
+        {
+            "id":4,
+            "imageSource":"../Assets/Images/s4.jpeg",
+            "title":"عنوان مسابقه",
+            "text":"یک متن نمونه برای مثال اینجا نوشته میشود"
+        }
+    ]
+}

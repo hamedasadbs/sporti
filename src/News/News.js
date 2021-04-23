@@ -6,35 +6,27 @@ import ImageSource1 from "../Assets/Images/s1.jpeg";
 import ImageSource2 from "../Assets/Images/s2.jpeg";
 import ImageSource3 from "../Assets/Images/s3.jpeg";
 import ImageSource4 from "../Assets/Images/s4.jpeg";
-
+import axios from "axios";
 import arrowLeft from "../Assets/Images/Icon awesome-angle-left.svg";
 import arrowRight from "../Assets/Images/Icon awesome-angle-right.svg";
 import star from "../Assets/Images/Icon material-star.svg";
 
 class News extends Component{
+    state={
+        news:[]
+    }
+
+    componentDidMount(){
+        axios.get('./test.json')
+        .then(res=>{
+            const news=res.data.news
+            this.setState({news})
+        }).catch(err=>{
+            alert(err)
+        })
+    }
+
     render(){
-        const news=[
-            {
-                imageSource:ImageSource1,
-                title:'عنوان مسابقه',
-                text:'یک متن نمونه برای مثال اینجا نوشته میشود'
-            },
-            {
-                imageSource:ImageSource2,
-                title:'عنوان مسابقه',
-                text:'یک متن نمونه برای مثال اینجا نوشته میشود'
-            },
-            {
-                imageSource:ImageSource3,
-                title:'عنوان مسابقه',
-                text:'یک متن نمونه برای مثال اینجا نوشته میشود'
-            },
-            {
-                imageSource:ImageSource4,
-                title:'عنوان مسابقه',
-                text:'یک متن نمونه برای مثال اینجا نوشته میشود'
-            }
-        ]
 
         return(
             <>

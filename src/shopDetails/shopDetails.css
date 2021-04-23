@@ -1,0 +1,205 @@
+.shopDetails {
+  width: 100%;
+  height: 300%;
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  margin: auto;
+  text-align: center;
+}
+
+.shopDetails .background {
+  width: 100%;
+  position: absolute;
+  height: 400px;
+  background-color: rgb(219, 133, 53);
+}
+
+.shopDetails main {
+  width: 1700px;
+  margin: 50px 100px;
+  height: 500px;
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.shopDetails main .pictures {
+  width: 350px;
+  height: 400px;
+  position: relative;
+  margin: 60px;
+  display: flex;
+  flex-direction: column;
+}
+
+.shopDetails main .pictures .productImage {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.shopDetails main .pictures .slideImages {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+}
+
+.shopDetails main .pictures .slideImages button {
+  background-color: white;
+  border: none;
+}
+
+.shopDetails main .pictures .slideImages button i {
+  color: rgb(219, 133, 53);
+  font-size: 20px;
+}
+
+.shopDetails main .pictures .slideImages .mainImage img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin: 5px;
+}
+
+.shopDetails main .caption {
+  width: 100%;
+  position: relative;
+  margin: 60px 0 60px 60px;
+}
+
+.shopDetails main .caption .head {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.shopDetails main .caption .head .title {
+  font-size: 22px;
+  font-family: "iran";
+  margin: auto;
+  margin-right: 0;
+  position: relative;
+}
+
+.shopDetails main .caption .head .star {
+  font-size: 17px;
+  margin: auto;
+  margin-left: 0;
+  position: relative;
+}
+
+.shopDetails main .caption .head .star i {
+  margin: 0 5px;
+}
+
+.shopDetails main .caption .secondHead {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.shopDetails main .caption .secondHead .station {
+  font-size: 15px;
+  font-family: "iran";
+  margin: auto 30px;
+  margin-right: 0;
+  position: relative;
+  color: rgb(110, 110, 110);
+}
+
+.shopDetails main .caption .secondHead .category {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    margin-right: 0;
+}
+
+.shopDetails main .caption .secondHead .category p {
+    font-size: 15px;
+  font-family: "iran";
+  margin: auto;
+  margin-right: 0;
+  position: relative;
+  color: rgb(110, 110, 110);
+}
+
+.shopDetails main .caption .secondHead .category p span {
+    color: rgb(48, 48, 48);
+}
+
+.shopDetails main .caption .price {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.shopDetails main .caption .price p {
+  font-size: 17px;
+  font-family: "iran";
+  margin: auto;
+  margin-right: 0;
+  position: relative;
+  color: rgb(110, 110, 110);
+}
+
+.shopDetails main .caption .price p span {
+  font-family: "vazir";
+}
+
+.shopDetails main .caption .explanation {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  text-align: right;
+}
+
+.shopDetails main .caption .explanation p {
+  font-size: 17px;
+  font-family: "iran";
+  margin: auto;
+  margin-right: 0;
+  position: relative;
+  color: rgb(110, 110, 110);
+}
+
+.shopDetails main .caption .explanation p span {
+  color: rgb(48, 48, 48);
+}
+
+.shopDetails main .caption .contact {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-top: 50px;
+  text-align: right;
+}
+
+.shopDetails main .caption .contact button {
+  width: 180px;
+  font-family: "iran";
+  background-color: rgb(216, 152, 33);
+  color: white;
+  float: right;
+  border: 1px solid #d89821;
+  font-size: 20px;
+  padding: 8px 2px 12px 2px;
+  border-radius: 10px;
+  z-index: 1;
+}

@@ -8,6 +8,7 @@ import Map from "../src/Map/Map";
 import Footer from "../src/Footer/Footer";
 import Sign from "../src/Sign/Sign";
 import Shopping from "../src/Shopping/Shopping";
+import ShopDetails from "../src/shopDetails/shopDetails";
 import "./App.css";
 
 import Back from "./Assets/Images/background.svg";
@@ -19,6 +20,7 @@ import mainLogo from "./Assets/Images/mainLogo.svg";
 import threeDots from "./Assets/Images/threeDots.png";
 
 import React, { Component } from "react";
+import axios from "axios";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 class App extends Component{
@@ -105,9 +107,9 @@ class App extends Component{
                 </nav>
               </header>
               <Switch>
-                <Route path="/Shopping">
-                  <Shopping />
-                </Route>
+                <Route path="/ShoppingDetails" component={ShopDetails} />
+
+                <Route path="/Shopping" component={Shopping} />
 
                 <Route path="/">
                   <HeadTitle show={this.showSingUp} />

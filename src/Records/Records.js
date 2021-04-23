@@ -6,7 +6,7 @@ import Refs from "../Assets/Images/Refs.svg";
 import Clubs from "../Assets/Images/Clubs.svg";
 import Players from "../Assets/Images/Players.svg";
 
-const Banner=()=>(
+const Records=()=>(
     <>
         <section className="records">
             <div>
@@ -28,4 +28,4 @@ const Banner=()=>(
     </>
 )
 
-export default Banner;
+export default Records;

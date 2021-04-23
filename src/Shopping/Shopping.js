@@ -8,78 +8,48 @@ import ImageSource3 from "../Assets/Images/s3.jpeg";
 import ImageSource4 from "../Assets/Images/s4.jpeg";
 
 import star from "../Assets/Images/Icon material-star.svg";
+import axios from "axios";
+import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 class Shopping extends Component{
     state={
-        priceValue:0
+        priceValue:0,
+        shoppings:[]
     }
+
+    componentDidMount(){
+        axios.get('./test.json')
+        .then(res=>{
+            const shoppings=res.data.shoppings
+            this.setState({shoppings})
+        }).catch(err=>{
+            alert(err)
+        })
+    }
+
     changePriceHandler=(event)=>{
         this.setState({priceValue:event.target.value})
         const demo=document.getElementById('demo')
         demo.innerHTML=event.target.value
     }
     render(){
-        
-        const shoppings=[
-            {
-                id:0,
-                imageSource:ImageSource1,
-                title:'عنوان کالا',
-                star:4,
-                price:'56,000'
-            },
-            {
-                id:1,
-                imageSource:ImageSource3,
-                title:'عنوان کالا',
-                star:5,
-                price:'22,000'
-            },
-            {
-                id:2,
-                imageSource:ImageSource4,
-                title:'عنوان کالا',
-                star:6,
-                price:'120,000,000'
-            },
-            {
-                id:3,
-                imageSource:ImageSource3,
-                title:'عنوان کالا',
-                star:1,
-                price:'99,000'
-            },
-            {
-                id:4,
-                imageSource:ImageSource3,
-                title:'عنوان کالا',
-                star:5,
-                price:'320,000'
-            },
-            {
-                id:5,
-                imageSource:ImageSource3,
-                title:'عنوان کالا',
-                star:2,
-                price:'28,000'
-            },
-        ]
-        let picture=''
         let picLength=0
-        picture=shoppings.map(pic=>{
+        const picture=this.state.shoppings.map(pic=>{
             return(
-                <div key={pic.id} className="picture">
-                    <div className="mainImage">
-                        <img src={pic.imageSource} alt="Cinque Terre" width="533" height="300" />
-                    </div>
-                    <div className="caption">
-                        <div className='star'>
-                            <h2>{pic.title}</h2>
-                            <p><img src={star} />{pic.star}</p>
+                <Link to={`/ShoppingDetails?id=${pic.id}`} key={pic.id}>
+                    <div className="picture">
+                        <div className="mainImage">
+                            <img src={pic.imageSource} alt="Cinque Terre" width="533" height="300" />
                         </div>
-                        <p className='price'>تومان {pic.price}</p>
+                        <div className="caption">
+                            <div className='star'>
+                                <h2>{pic.title}</h2>
+                                <p><img src={star} />{pic.star}</p>
+                            </div>
+                            <p className='price'>تومان {pic.price}</p>
+                        </div>
                     </div>
-                </div>
+                </Link>
             )
         })
         return(
@@ -109,35 +79,35 @@ class Shopping extends Component{
                             </div>
                             <div className='price'>
                                 <label>قیمت (تومان)</label>
-                                <div class="slideContainer">
+                                <div className="slideContainer">
                                     <input onChange={this.changePriceHandler} type="range" min="0" max="120000000" value={this.state.priceValue} />
                                     <p><span id="demo">0</span></p>
                                 </div>
                             </div>
                         </main>
-                        <right className='categories'>
+                        <section className='categories'>
                             <ul>
                                 <li className='disabled'>
                                     <label>دسته بندی</label>
                                 </li>
                                 <li>
-                                <label>فلایت</label>
+                                    <label>فلایت</label>
                                     <img src={ImageSource2} />
                                 </li>
                                 <li>
-                                <label>شفت</label>
+                                    <label>شفت</label>
                                     <img src={ImageSource2} />
                                 </li>
                                 <li>
-                                <label>دارت</label>
+                                    <label>دارت</label>
                                     <img src={ImageSource2} />
                                 </li>
                                 <li>
-                                <label>تخته</label>
+                                    <label>تخته</label>
                                     <img src={ImageSource2} />
                                 </li>
                             </ul>
-                        </right>
+                        </section>
                         <menu className="gallery">
                             {picture}
                         </menu>
