@@ -24,7 +24,7 @@ class HeadTitle extends Component{
                 گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و
                 برای شرایط
                         </p>
-                        <button onClick={this.props.show} className='signUp'>عضویت</button>
+                        <button onClick={this.props.click} className='signUp'>عضویت</button>
                     </div>
                 </article>
             </>

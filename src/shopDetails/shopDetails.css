@@ -9,8 +9,9 @@
 }
 
 .shopDetails .background {
-  width: 100%;
+  width: 150em;
   position: absolute;
+  left: -20%;
   height: 400px;
   background-color: rgb(219, 133, 53);
 }

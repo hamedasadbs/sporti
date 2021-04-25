@@ -22,10 +22,10 @@
   font-weight: 500;
   color: rgb(136, 136, 136);
   margin: auto;
-  position: absolute;
+  position: relative;
   top: -60px;
   left: 140px;
-  width: 100%;
+  width: auto;
   text-align: left;
   font-family: "iran";
   z-index: 1;
@@ -54,7 +54,7 @@
   float: left;
   width: 50px;
   height: 160px;
-  border: none;
+  border: 1px solid gray;
   z-index: 1;
   border-radius: 10px;
 }
@@ -148,11 +148,12 @@
 .picture .buttons {
   width: 100%;
   display: flex;
+  justify-items: center;
 }
 
 .picture .buttons .signUp {
   flex-grow: 1;
-  width: 40px;
+  width: auto;
   font-family: "iran";
   background-color: rgb(216, 152, 33);
   color: white;
@@ -181,7 +182,7 @@
 
 .picture .buttons .details {
   flex-grow: 1;
-  width: 100px;
+  width: auto;
   font-family: "iran";
   background-color: transparent;
   color: rgb(110, 110, 110);

@@ -1,5 +1,3 @@
-import HiddenMenu from "../src/HiddenMenu/HiddenMenu";
-
 import HeadTitle from "../src/HeadTitle/HeadTitle";
 import Records from "../src/Records/Records";
 import Gallery from "../src/Gallery/Gallery";
@@ -17,7 +15,6 @@ import Shop from "./Assets/Images/Icon material-shopping-cart.svg";
 import Newspaper from "./Assets/Images/Icon awesome-newspaper.svg";
 import MapImg from "./Assets/Images/Icon awesome-map-marked-alt.svg";
 import mainLogo from "./Assets/Images/mainLogo.svg";
-import threeDots from "./Assets/Images/threeDots.png";
 
 import React, { Component } from "react";
 import axios from "axios";
@@ -62,6 +59,10 @@ class App extends Component{
     window.addEventListener("resize", this.updateDimensions.bind(this));
   }
 
+  signIn=()=>{
+    
+  }
+
   render(){
     return (
       <div className='body'>
@@ -79,7 +80,7 @@ class App extends Component{
                   <li><Link to='/DartiClub' onClick={this.closeHiddenMenu}>کلوپ دارتی</Link></li>
                   <li><Link to='/Leagues' onClick={this.closeHiddenMenu}>لیگ ها</Link></li>
                   <li>
-                    <button onClick={this.showSingIn} className="signIn">ورود</button>
+                    <button onClick={()=>{this.closeForm(); this.showSingIn(); this.closeHiddenMenu()}} className="signIn">ورود</button>
                   </li>
                 </ul>
               </div>
@@ -93,7 +94,7 @@ class App extends Component{
                         <img src={mainLogo} alt="logo" />
                       </Link>
                     </div>
-                    <li onClick={this.showHiddenMenu} className='dropdown'><img src={threeDots} /></li>
+                    <li onClick={this.showHiddenMenu} className='dropdown'><i className='fa fa-bars'></i></li>
                     <li><Link to='/Shopping'>حراجی</Link></li>
                     <li><Link to='/Clubs'>باشگاه ها</Link></li>
                     <li><Link to='/Judgment'>داوری</Link></li>
@@ -102,7 +103,7 @@ class App extends Component{
                     <li><Link to='/Leagues'>لیگ ها</Link></li>
                   </ul>
                   <ul className='leftSide'>
-                    <li><button onClick={this.showSingIn} className='signInButton'>ورود</button></li>
+                    <li><button onClick={()=>{this.closeForm(); this.showSingIn(); this.signIn()}} className='signInButton'>ورود</button></li>
                   </ul>
                 </nav>
               </header>
@@ -112,7 +113,7 @@ class App extends Component{
                 <Route path="/Shopping" component={Shopping} />
 
                 <Route path="/">
-                  <HeadTitle show={this.showSingUp} />
+                  <HeadTitle click={()=>{this.closeHiddenMenu(); this.closeForm(); window.scrollTo(0,0); this.showSingUp()}} />
                   <img id='back' src={Back} />
                   {this.state.isSignUpShown &&
                     <Sign type='signUp' close={this.closeForm} />

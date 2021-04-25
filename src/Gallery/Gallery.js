@@ -2,11 +2,11 @@ import React, {Component} from "react";
 import "./Gallery.css";
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
-
 import axios from "axios";
 import arrowLeft from "../Assets/Images/Icon awesome-angle-left.svg";
 import arrowRight from "../Assets/Images/Icon awesome-angle-right.svg";
 import star from "../Assets/Images/Icon material-star.svg";
+
 
 class Gallery extends Component{
     state={
