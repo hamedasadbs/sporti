@@ -17,7 +17,7 @@ const CutRate=(props)=>{
 
     const [minSlice,setMinSlice]=useState(0)
     const [maxSlice,setMaxSlice]=useState(3)
-    const [shoppings,setShoppings]=useState(Array)
+    const [shoppings,setShoppings]=useState([])
     const [matches,setMatches]=useState([])
 
     useEffect(()=>{
@@ -25,12 +25,13 @@ const CutRate=(props)=>{
         /*this.setState({
             matches:<Logic req='matches' />
         })*/
+        
         axios.get('./test.json')
         .then(res=>{
-            const matches=res.data.matches
-            const shoppings=res.data.shoppings
-            setMatches({matches})
-            setShoppings({shoppings})
+            const match=res.data.matches
+            const shopping=res.data.shoppings
+            setMatches(match)
+            setShoppings(shopping)
 
         }).catch(err=>{
             alert(err)

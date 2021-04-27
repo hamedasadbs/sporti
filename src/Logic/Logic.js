@@ -8,9 +8,7 @@ const Logic=(props)=>{
     useEffect(() => {
         axios.get('./test.json')
         .then(res=>{
-            setRes({
-                res:props.req=='matches' ? res.data.matches : res.data.shoppings
-            })
+            setRes( props.req=='matches' ? res.data.matches : res.data.shoppings )
             alert(res)
         }).catch(err=>{
             alert(err)

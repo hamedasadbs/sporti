@@ -19,7 +19,7 @@ const News=()=>{
         axios.get('./test.json')
         .then(res=>{
             const news=res.data.news
-            setNews({news})
+            setNews(news)
         }).catch(err=>{
             alert(err)
         })

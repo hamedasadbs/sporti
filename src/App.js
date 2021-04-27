@@ -19,7 +19,7 @@ import Newspaper from "./Assets/Images/Icon awesome-newspaper.svg";
 import MapImg from "./Assets/Images/Icon awesome-map-marked-alt.svg";
 import mainLogo from "./Assets/Images/mainLogo.svg";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 const App=()=>{
@@ -29,24 +29,24 @@ const App=()=>{
   const[isSignInShown,setIsSignInShown]=useState(false)
 
   const showHiddenMenu=()=>{
-    setIsHiddenMenuShown({isHiddenMenuShown:true})
+    setIsHiddenMenuShown(true)
   }
 
   const closeHiddenMenu=()=>{
-    setIsHiddenMenuShown({isHiddenMenuShown:false})
+    setIsHiddenMenuShown(false)
   }
 
   const showSingUp=()=>{
-    setIsSignUpShown({isSignUpShown:true})
+    setIsSignUpShown(true)
   }
 
   const showSingIn=()=>{
-    setIsSignInShown({isSignInShown:true})
+    setIsSignInShown(true)
   }
 
   const closeForm=()=>{
-    setIsSignUpShown({isSignUpShown:false})
-    setIsSignInShown({isSignInShown:false})
+    setIsSignUpShown(false)
+    setIsSignInShown(false)
   }
 
   return (

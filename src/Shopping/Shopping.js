@@ -20,7 +20,7 @@ const Shopping=()=>{
         axios.get('./test.json')
         .then(res=>{
             const shoppings=res.data.shoppings
-            this.setState({shoppings})
+            setShoppings(shoppings)
         }).catch(err=>{
             alert(err)
         })

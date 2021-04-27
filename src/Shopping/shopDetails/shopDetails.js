@@ -28,12 +28,12 @@ const ShopDetails=()=>{
             setShoppings({shoppings})
             shoppings.map(product=>{
                 if(`?id=${product.id}`==window.location.search){
-                    setProductTitle({productTitle:product.title})
-                    setProductPrice({productPrice:product.price})
-                    setProductStation({productStation:product.station})
-                    setProductCity({productCity:product.city})
-                    setProductCategory({productCategory:product.category})
-                    setProductExplanation({productExplanation:product.explanation})
+                    setProductTitle(product.title)
+                    setProductPrice(product.price)
+                    setProductStation(product.station)
+                    setProductCity(product.city)
+                    setProductCategory(product.category)
+                    setProductExplanation(product.explanation)
                 }
             })
         })
@@ -43,7 +43,7 @@ const ShopDetails=()=>{
     })
     
     const changePriceHandler=(event)=>{
-        this.setPriceValue({priceValue:event.target.value})
+        setPriceValue(event.target.value)
         const demo=document.getElementById('demo')
         demo.innerHTML=event.target.value
     }
