@@ -1,14 +1,14 @@
 import React from "react";
-import "./Records.css";
-import '../../node_modules/font-awesome/css/font-awesome.min.css';
+import classes from "./Records.module.css";
+import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
-import Refs from "../Assets/Images/Refs.svg";
-import Clubs from "../Assets/Images/Clubs.svg";
-import Players from "../Assets/Images/Players.svg";
+import Refs from "../../Assets/Images/Refs.svg";
+import Clubs from "../../Assets/Images/Clubs.svg";
+import Players from "../../Assets/Images/Players.svg";
 
 const Records=()=>(
     <>
-        <section className="records">
+        <section className={classes.records}>
             <div>
                 <img src={Players} />
                 <h1>بازیکنان</h1>

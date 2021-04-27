@@ -1,6 +1,6 @@
 .sign{
     width: 500px;
-    height: 170px;
+    height: 230px;
     background-color: white;
     z-index: 1;
     margin: 20px auto;
@@ -36,7 +36,7 @@
     cursor: pointer;
 }
 
-.sign input{
+.sign input#username{
     width: 85%;
     height: 40px;
     margin: 20px auto;
@@ -44,6 +44,20 @@
     border: 1px solid rgb(216, 152, 33);
     position: absolute;
     top: 40px;
+    left: 28px;
+    font-size: 20px;
+    font-family: 'vazir';
+    padding-left: 15px;
+}
+
+.sign input#password{
+    width: 85%;
+    height: 40px;
+    margin: 20px auto;
+    border-radius: 5px;
+    border: 1px solid rgb(216, 152, 33);
+    position: absolute;
+    top: 90px;
     left: 28px;
     font-size: 20px;
     font-family: 'vazir';
@@ -59,7 +73,7 @@
     height: 40px;
     margin: 20px auto;
     position: absolute;
-    top: 100px;
+    top: 150px;
     left: 28px;
 }
 

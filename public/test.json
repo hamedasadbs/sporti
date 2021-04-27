@@ -2,7 +2,7 @@
     "shoppings":[
         {
             "id":0,
-            "imageSource":"../src/Assets/Images/s1.jpeg",
+            "imageSource":"../Assets/Images/s1.jpeg",
             "title":"عنوان کالا",
             "star":4,
             "price":"56,000",
@@ -13,7 +13,7 @@
         },
         {
             "id":1,
-            "imageSource":"../src/Assets/Images/s2.jpeg",
+            "imageSource":"../Assets/Images/s2.jpeg",
             "title":"عنوان کالا",
             "star":5,
             "price":"22,000",
@@ -24,7 +24,7 @@
         },
         {
             "id":2,
-            "imageSource":"../src/Assets/Images/s3.jpeg",
+            "imageSource":"../Assets/Images/s3.jpeg",
             "title":"عنوان کالا",
             "star":6,
             "price":"120,000,000",
@@ -35,7 +35,7 @@
         },
         {
             "id":3,
-            "imageSource":"../src/Assets/Images/s1.jpeg",
+            "imageSource":"../Assets/Images/s1.jpeg",
             "title":"عنوان کالا",
             "star":1,
             "price":"99,000",
@@ -46,7 +46,7 @@
         },
         {
             "id":4,
-            "imageSource":"../src/Assets/Images/s3.jpeg",
+            "imageSource":"../Assets/Images/s3.jpeg",
             "title":"عنوان کالا",
             "star":5,
             "price":"320,000",
@@ -57,7 +57,7 @@
         },
         {
             "id":5,
-            "imageSource":"../src/Assets/Images/s2.jpeg",
+            "imageSource":"../Assets/Images/s2.jpeg",
             "title":"عنوان کالا",
             "star":2,
             "price":"28,000",

@@ -34,7 +34,7 @@ button:active {
   outline: none;
 }
 
-#back {
+.back {
   width: 930px;
   position: absolute;
   top: -170px;
@@ -42,7 +42,7 @@ button:active {
   z-index: 0;
 }
 
-#circle {
+.circle {
   width: 600px;
   position: absolute;
   top: 1160px;
@@ -50,7 +50,7 @@ button:active {
   z-index: 0;
 }
 
-#shop {
+.shop {
   width: 400px;
   position: absolute;
   top: 1750px;
@@ -58,7 +58,7 @@ button:active {
   z-index: 0;
 }
 
-#news {
+.news {
   width: 400px;
   position: absolute;
   top: 2300px;
@@ -66,7 +66,7 @@ button:active {
   z-index: 0;
 }
 
-#map {
+.map {
   width: 400px;
   position: absolute;
   top: 3000px;
@@ -79,22 +79,22 @@ button:active {
     width: 1000px;
   }
 
-  #circle {
+  .circle {
     top: 1250px;
     right: -450px;
   }
 
-  #shop {
+  .shop {
     top: 1850px;
     left: -150px;
   }
 
-  #news {
+  .news {
     top: 2400px;
     right: -100px;
   }
 
-  #map {
+  .map {
     top: 3000px;
     left: -50px;
   }
@@ -111,13 +111,13 @@ button:active {
     width: 360px;
   }
 
-  #back {
-    display: none;
+  .back {
+      display: none;
+    }
   }
-}
 
 @media only screen and (max-width: 705px){
-  #circle, #shop, #map, #news {
+  .circle, .shop, .map, .news {
     display: none;
   }
 }
@@ -257,6 +257,10 @@ button:active {
 @media only screen and (max-width: 705px) {
   .header {
     margin: 0 40px;
+  }
+
+  .header .dropdown i {
+    font-size: 45px;
   }
 
   .header .mainLogo a span {

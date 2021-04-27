@@ -1,13 +1,16 @@
-import HeadTitle from "../src/HeadTitle/HeadTitle";
-import Records from "../src/Records/Records";
-import Gallery from "../src/Gallery/Gallery";
-import News from "../src/News/News";
-import Map from "../src/Map/Map";
-import Footer from "../src/Footer/Footer";
+import HeadTitle from "../src/Layout/HeadTitle/HeadTitle";
+import Records from "../src/Layout/Records/Records";
+import CutRate from "../src/Layout/CutRate/CutRate";
+import News from "../src/Layout/News/News";
+import Map from "../src/Layout/Map/Map";
+import Footer from "../src/Layout/Footer/Footer";
+
+
 import Sign from "../src/Sign/Sign";
 import Shopping from "../src/Shopping/Shopping";
-import ShopDetails from "../src/shopDetails/shopDetails";
-import "./App.css";
+import ShopDetails from "../src/Shopping/shopDetails/shopDetails";
+
+import classes from "./App.module.css";
 
 import Back from "./Assets/Images/background.svg";
 import Circle from "./Assets/Images/Circle.svg";
@@ -16,129 +19,110 @@ import Newspaper from "./Assets/Images/Icon awesome-newspaper.svg";
 import MapImg from "./Assets/Images/Icon awesome-map-marked-alt.svg";
 import mainLogo from "./Assets/Images/mainLogo.svg";
 
-import React, { Component } from "react";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
-class App extends Component{
+const App=()=>{
 
-  state={
-    isHiddenMenuShown:false,
-    isSignUpShown:false,
-    isSignInShown:false
+  const[isHiddenMenuShown,setIsHiddenMenuShown]=useState(false)
+  const[isSignUpShown,setIsSignUpShown]=useState(false)
+  const[isSignInShown,setIsSignInShown]=useState(false)
+
+  const showHiddenMenu=()=>{
+    setIsHiddenMenuShown({isHiddenMenuShown:true})
   }
 
-  showHiddenMenu=()=>{
-    this.setState({ isHiddenMenuShown:true })
+  const closeHiddenMenu=()=>{
+    setIsHiddenMenuShown({isHiddenMenuShown:false})
   }
 
-  closeHiddenMenu=()=>{
-    this.setState({ isHiddenMenuShown:false })
+  const showSingUp=()=>{
+    setIsSignUpShown({isSignUpShown:true})
   }
 
-  showSingUp=()=>{
-    this.setState({ isSignUpShown:true })
+  const showSingIn=()=>{
+    setIsSignInShown({isSignInShown:true})
   }
 
-  showSingIn=()=>{
-    this.setState({ isSignInShown:true })
+  const closeForm=()=>{
+    setIsSignUpShown({isSignUpShown:false})
+    setIsSignInShown({isSignInShown:false})
   }
 
-  closeForm=()=>{
-    this.setState({ isSignUpShown:false, isSignInShown:false })
-  }
-
-  updateDimensions() {
-    if(window.innerWidth > 1300) {
-      this.setState({ isHiddenMenuShown:false })
-    }
-  }
-
-  componentDidMount() {
-    this.updateDimensions();
-    window.addEventListener("resize", this.updateDimensions.bind(this));
-  }
-
-  signIn=()=>{
-    
-  }
-
-  render(){
-    return (
-      <div className='body'>
-        <div className='innerBody'>
-          <div className='main'>
-            <Router>
-            {this.state.isHiddenMenuShown &&
-              <div className="hiddenMenu">
-                <i onClick={this.closeHiddenMenu} className="closeHiddenMenu fa fa-close"></i>
-                <ul className="rightSide">
-                  <li><Link to='/Shopping' onClick={this.closeHiddenMenu}>حراجی</Link></li>
-                  <li><Link to='/Clubs' onClick={this.closeHiddenMenu}>باشگاه ها</Link></li>
-                  <li><Link to='/Judgment' onClick={this.closeHiddenMenu}>داوری</Link></li>
-                  <li><Link to='/Matches' onClick={this.closeHiddenMenu}>مسابقات</Link></li>
-                  <li><Link to='/DartiClub' onClick={this.closeHiddenMenu}>کلوپ دارتی</Link></li>
-                  <li><Link to='/Leagues' onClick={this.closeHiddenMenu}>لیگ ها</Link></li>
-                  <li>
-                    <button onClick={()=>{this.closeForm(); this.showSingIn(); this.closeHiddenMenu()}} className="signIn">ورود</button>
-                  </li>
+  return (
+    <div className={classes.body}>
+      <div className={classes.innerBody}>
+        <div className={classes.main}>
+          <Router>
+          {isHiddenMenuShown &&
+            <div className={classes.hiddenMenu}>
+              <i onClick={closeHiddenMenu} className={classes.closeHiddenMenu+ " fa fa-close"}></i>
+              <ul className={classes.rightSide}>
+                <li><Link to='/Shopping' onClick={closeHiddenMenu}>حراجی</Link></li>
+                <li><Link to='/Clubs' onClick={closeHiddenMenu}>باشگاه ها</Link></li>
+                <li><Link to='/Judgment' onClick={closeHiddenMenu}>داوری</Link></li>
+                <li><Link to='/Matches' onClick={closeHiddenMenu}>مسابقات</Link></li>
+                <li><Link to='/DartiClub' onClick={closeHiddenMenu}>کلوپ دارتی</Link></li>
+                <li><Link to='/Leagues' onClick={closeHiddenMenu}>لیگ ها</Link></li>
+                <li>
+                  <button onClick={()=>{closeForm(); showSingIn(); closeHiddenMenu()}} className={classes.signIn}>ورود</button>
+                </li>
+              </ul>
+            </div>
+          }
+            <header className={classes.header}>
+              <nav>
+                <ul className={classes.rightSide}>
+                  <div className={classes.mainLogo}>
+                    <Link to='/Home'>
+                      <span>ایزی دارت</span>
+                      <img src={mainLogo} alt="logo" />
+                    </Link>
+                  </div>
+                  <li onClick={showHiddenMenu} className={classes.dropdown}><i className='fa fa-bars'></i></li>
+                  <li><Link to='/Shopping'>حراجی</Link></li>
+                  <li><Link to='/Clubs'>باشگاه ها</Link></li>
+                  <li><Link to='/Judgment'>داوری</Link></li>
+                  <li><Link to='/Matches'>مسابقات</Link></li>
+                  <li><Link to='/DartiClub'>کلوپ دارتی</Link></li>
+                  <li><Link to='/Leagues'>لیگ ها</Link></li>
                 </ul>
-              </div>
-            }
-              <header className='header'>
-                <nav>
-                  <ul className='rightSide'>
-                    <div className='mainLogo'>
-                      <Link to='/Home'>
-                        <span>ایزی دارت</span>
-                        <img src={mainLogo} alt="logo" />
-                      </Link>
-                    </div>
-                    <li onClick={this.showHiddenMenu} className='dropdown'><i className='fa fa-bars'></i></li>
-                    <li><Link to='/Shopping'>حراجی</Link></li>
-                    <li><Link to='/Clubs'>باشگاه ها</Link></li>
-                    <li><Link to='/Judgment'>داوری</Link></li>
-                    <li><Link to='/Matches'>مسابقات</Link></li>
-                    <li><Link to='/DartiClub'>کلوپ دارتی</Link></li>
-                    <li><Link to='/Leagues'>لیگ ها</Link></li>
-                  </ul>
-                  <ul className='leftSide'>
-                    <li><button onClick={()=>{this.closeForm(); this.showSingIn(); this.signIn()}} className='signInButton'>ورود</button></li>
-                  </ul>
-                </nav>
-              </header>
-              <Switch>
-                <Route path="/ShoppingDetails" component={ShopDetails} />
+                <ul className={classes.leftSide}>
+                  <li><button onClick={()=>{closeForm(); showSingIn()}} className={classes.signInButton}>ورود</button></li>
+                </ul>
+              </nav>
+            </header>
+            <Switch>
+              <Route path="/ShoppingDetails" component={ShopDetails} />
 
-                <Route path="/Shopping" component={Shopping} />
+              <Route path="/Shopping" component={Shopping} />
 
-                <Route path="/">
-                  <HeadTitle click={()=>{this.closeHiddenMenu(); this.closeForm(); window.scrollTo(0,0); this.showSingUp()}} />
-                  <img id='back' src={Back} />
-                  {this.state.isSignUpShown &&
-                    <Sign type='signUp' close={this.closeForm} />
-                  }
-                  {this.state.isSignInShown &&
-                    <Sign type='signIn' close={this.closeForm} />
-                  }
-                  <Records />
-                  <Gallery title='مسابقات' />
-                  <img id='circle' src={Circle} />
-                  <Gallery title='حراجی' />
-                  <img id='shop' src={Shop} />
-                  <News />
-                  <img id='news' src={Newspaper} />
-                  <Map />
-                  <img id='map' src={MapImg} />
-                </Route>
-              </Switch>
-            </Router>
-          </div>
-          <Footer />
+              <Route path="/">
+                <HeadTitle click={()=>{closeHiddenMenu(); closeForm(); window.scrollTo(0,0); showSingUp()}} />
+                <img className={classes.back} src={Back} />
+                {isSignUpShown &&
+                  <Sign type='signUp' close={closeForm} />
+                }
+                {isSignInShown &&
+                  <Sign type='signIn' close={closeForm} />
+                }
+                <Records />
+                <CutRate title='مسابقات' />
+                <img className={classes.circle} src={Circle} />
+                <CutRate title='حراجی' />
+                <img className={classes.shop} src={Shop} />
+                <News />
+                <img className={classes.news} src={Newspaper} />
+                <Map />
+                <img className={classes.map} src={MapImg} />
+              </Route>
+            </Switch>
+          </Router>
         </div>
+        <Footer />
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 export default App;

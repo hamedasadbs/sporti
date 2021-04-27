@@ -1,0 +1,8 @@
+.horizontalLine {
+    border-top: 2px solid rgb(216, 152, 33);
+    width: 90%;
+    position: absolute;
+    top: -10px;
+    z-index: 1;
+    margin-right: 20px;
+  }

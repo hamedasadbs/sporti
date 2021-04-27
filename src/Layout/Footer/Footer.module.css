@@ -168,6 +168,9 @@
   .footer .leftSide {
     width: 100%;
     margin-top: -250px;
+
+    box-sizing: border-box;
+    padding-right: 20px;
   }
 
   .footer .copyRight {

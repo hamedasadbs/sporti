@@ -1,0 +1,21 @@
+.title{
+    font-size: 35px;
+    font-weight: 500;
+    color: rgb(94, 94, 94);
+    margin: -50px auto;
+    position: absolute;
+    z-index: 2;
+    right: 50px;
+    background-color: white;
+    padding: 10px;
+    padding-left: 20px;
+    width: auto;
+}
+
+@media only screen and (max-width: 705px){
+    .title{
+        font-size: 25px;
+        margin: -40px auto;
+        right: 0px;
+    }
+}
