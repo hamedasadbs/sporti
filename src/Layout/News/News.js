@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import classes from "./News.module.css";
+import classes from "./News.scss";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 import ImageSource1 from "../../Assets/Images/s1.jpeg";
@@ -27,26 +27,26 @@ const News=()=>{
 
     return(
         <>
-            <section className={classes.news}>
+            <section className='news'>
                 <Title title='اخبار' />
                 <HorizontalLine />
-                <h4 className={classes.seeMore}>مشاهده همه</h4>
-                <div className={classes.leftSide}>
+                <h4 className='seeMore'>مشاهده همه</h4>
+                <div className='leftSide'>
                     <img src={ImageSource1} />
                     <img src={ImageSource2} />
                     <img src={ImageSource3} />
-                    <div className={classes.moreNews}>
+                    <div className='moreNews'>
                         <img src={ImageSource4} />
-                        <div className={classes.overlay}></div>
+                        <div className='overlay'></div>
                         <button>
                             <i className='fa fa-arrow-right'></i>
                         </button>
                         <h4>عنوان اخبار</h4>
                     </div>
                 </div>
-                <div className={classes.rightSide}>
+                <div className='rightSide'>
                     <img src={ImageSource1} />
-                    <div className={classes.overlay}></div>
+                    <div className='overlay'></div>
                     <h4>عنوان اخبار</h4>
                     <p><strong>چکیده: </strong>این یک مثال است و برای تمرین نوشته شده استوووووووو</p>
                     <button>

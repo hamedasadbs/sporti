@@ -1,0 +1,134 @@
+$font:'iran';
+$baseColor1:rgb(216, 152, 33);
+
+.headTitle {
+  margin: 0 100px;
+
+  .rightSide,
+  .leftSide {
+    position: relative;
+    width: 50%;
+    margin-top: 60px;
+    font-family: $font;
+    text-align: right;
+    z-index: 1;
+  }
+
+  .rightSide {
+    float: right;
+    height: 430px;
+
+    img {
+      position: absolute;
+      width: 350px;
+      top: 0;
+      right: 100px;
+    }
+  }
+
+  .leftSide {
+    float: left;
+    margin-top: 90px;
+    height: 400px;
+
+    h1 {
+      font-size: 30px;
+    }
+
+    p {
+      font-size: 17px;
+      max-width: 580px;
+      float: right;
+      color: rgb(136, 136, 136);
+    }
+
+    .signUp {
+      width: 220px;
+      font-family: $font;
+      background-color: $baseColor1;
+      color: white;
+      float: left;
+      border: 1px solid $baseColor1;
+      font-size: 15px;
+      padding: 16px 2px;
+      border-radius: 50px;
+      margin-top: 20px;
+    }
+
+    &:hover{
+      background-color: transparent;
+      color: $baseColor1;
+      border: 1px solid black;
+      transition: all 0.5s;
+    }
+
+    &:not(:hover){
+      background-color: $baseColor1;
+      color: white;
+      border: 1px solid $baseColor1;
+      transition: all 0.5s;
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px){
+  .headTitle{
+    .rightSide{
+      img{
+        position: absolute;
+        width: 300px;
+        top: 0;
+        right: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1005px){
+  .headTitle {
+    .rightSide{
+      width: 0%;
+
+      img {
+        display: none;
+      }
+    }
+
+    .leftSide {
+      float: left;
+      height: 400px;
+      position: relative;
+      width: 100%;
+      margin-top: 60px;
+      font-family: $font;
+      text-align: right;
+      z-index: 1;
+    }
+  }
+}
+
+@media only screen and (max-width: 705px){
+  .headTitle {
+    margin: 0 20px;
+
+    .leftSide {
+      text-align: center;
+
+      h1 {
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
+      }
+
+      p {
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .signUp {
+        width: 240px;
+        margin: 20px 0 0 45px;
+      }
+    }
+  }
+}

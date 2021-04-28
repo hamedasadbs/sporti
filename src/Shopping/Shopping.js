@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import classes from "./Shopping.module.css";
+import "./Shopping.scss";
 import '../../node_modules/font-awesome/css/font-awesome.min.css';
 
 import ImageSource1 from "../Assets/Images/s1.jpeg";
@@ -36,16 +36,16 @@ const Shopping=()=>{
     const picture=shoppings.map(pic=>{
         return(
             <Link to={`/ShoppingDetails?id=${pic.id}`} key={pic.id}>
-                <div className={classes.picture}>
-                    <div className={classes.mainImage}>
+                <div className='picture'>
+                    <div className='mainImage'>
                         <img src={pic.imageSource} alt="Cinque Terre" width="533" height="300" />
                     </div>
-                    <div className={classes.caption}>
-                        <div className={classes.star}>
+                    <div className='caption'>
+                        <div className='star'>
                             <h2>{pic.title}</h2>
                             <p><img src={star} />{pic.star}</p>
                         </div>
-                        <p className={classes.price}>تومان {pic.price}</p>
+                        <p className='price'>تومان {pic.price}</p>
                     </div>
                 </div>
             </Link>
@@ -53,21 +53,21 @@ const Shopping=()=>{
     })
     return(
         <>
-            <section className={classes.shop}>
-                <div className={classes.background}></div>
-                <div className={classes.mainShop}>
-                    <main className={classes.filter}>
-                        <div className={classes.searchButton}>
+            <section className='shop'>
+                <div className='background'></div>
+                <div className='mainShop'>
+                    <main className='filter'>
+                        <div className='searchButton'>
                             <button>جستجو</button>
                         </div>
-                        <div className={classes.search}>
+                        <div className='search'>
                             <label>جستجو</label>
-                            <div className={classes.searchInput}>
+                            <div className='searchInput'>
                                 <input type="search" placeholder='جستجو براساس نام' />
                                 <i className='fa fa-search'></i>
                             </div>
                         </div>
-                        <div className={classes.productDegree}>
+                        <div className='productDegree'>
                             <label>درجه محصول</label>
                             <select name="productDegree">
                                 <option value="all states">تمام حالت</option>
@@ -76,17 +76,17 @@ const Shopping=()=>{
                                 <option value="all states">تمام حالت</option>
                             </select>
                         </div>
-                        <div className={classes.price}>
+                        <div className='price'>
                             <label>قیمت (تومان)</label>
-                            <div className={classes.slideContainer}>
+                            <div className='slideContainer'>
                                 <input onChange={changePriceHandler} type="range" min="0" max="120000000" value={priceValue} />
                                 <p><span id="demo">0</span></p>
                             </div>
                         </div>
                     </main>
-                    <section className={classes.categories}>
+                    <section className='categories'>
                         <ul>
-                            <li className={classes.disabled}>
+                            <li className='disabled'>
                                 <label>دسته بندی</label>
                             </li>
                             <li>
@@ -107,7 +107,7 @@ const Shopping=()=>{
                             </li>
                         </ul>
                     </section>
-                    <menu className={classes.gallery}>
+                    <menu className='gallery'>
                         {picture}
                     </menu>
                 </div>

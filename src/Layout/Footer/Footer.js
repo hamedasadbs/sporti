@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Footer.module.css";
+import "./Footer.scss";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 import Twitter from "../../Assets/Images/Icon feather-twitter.svg";
@@ -9,10 +9,10 @@ import Bazar from "../../Assets/Images/Bazaar-logo-and-logotype.svg";
 
 const Footer=()=>(
     <>
-        <footer className={classes.footer}>
-            <h2 className={classes.title}>با ایزی دارت هدف هاتو نشونه بگیر</h2>
-            <div className={classes.rightSide}>
-                <table className={classes.subjects}>
+        <footer className='footer'>
+            <h2 className='title'>با ایزی دارت هدف هاتو نشونه بگیر</h2>
+            <div className='rightSide'>
+                <table className='subjects'>
                     <thead>
                         <tr>
                             <th><strong>عنوان</strong></th>
@@ -44,25 +44,25 @@ const Footer=()=>(
                     </tbody>
                 </table>
             </div>
-            <div className={classes.leftSide}>
-                <label className={classes.notificationLabel} htmlFor='notificationForm'>از اخبار و مسابقات با خبر شو</label>
-                <div className={classes.notificationForm}>
+            <div className='leftSide'>
+                <label className='notificationLabel' htmlFor='notificationForm'>از اخبار و مسابقات با خبر شو</label>
+                <div className='notificationForm'>
                     <button>ارسال</button>
                     <input type='text' placeholder='ایمیل خود را وارد نمایید' />
                 </div>
-                <label className={classes.socialMediasLabel} htmlFor='socialMedias'>شبکه های اجتماعی ایزی دارت</label>
-                <div className={classes.socialMedias}>
+                <label className='socialMediasLabel' htmlFor='socialMedias'>شبکه های اجتماعی ایزی دارت</label>
+                <div className='socialMedias'>
                     <img src={Twitter} />
                     <img src={Telegram} />
                     <img src={Instagram} />
                 </div>
-                <label className={classes.bazarLabel} htmlFor='bazar'>دانلود برنامه ایزی دارت</label>
-                <button className={classes.bazar}>
+                <label className='bazarLabel' htmlFor='bazar'>دانلود برنامه ایزی دارت</label>
+                <button className='bazar'>
                     <img src={Bazar} />
                     <p>دانلود از</p>
                 </button>
             </div>
-            <p className={classes.copyRight}>کلیه حقوق متعلق به ماست</p>
+            <p className='copyRight'>کلیه حقوق متعلق به ماست</p>
         </footer>
     </>
 )

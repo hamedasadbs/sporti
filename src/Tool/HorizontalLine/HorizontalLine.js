@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./HorizontalLine.module.css";
+import "./HorizontalLine.scss";
 
 const HorizontalLine=()=>(
     <>
-        <div className={classes.horizontalLine}></div>
+        <div className='horizontalLine'></div>
     </>
 )
 

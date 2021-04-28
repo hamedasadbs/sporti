@@ -10,7 +10,7 @@ import Sign from "../src/Sign/Sign";
 import Shopping from "../src/Shopping/Shopping";
 import ShopDetails from "../src/Shopping/shopDetails/shopDetails";
 
-import classes from "./App.module.css";
+import "./App.scss";
 
 import Back from "./Assets/Images/background.svg";
 import Circle from "./Assets/Images/Circle.svg";
@@ -50,14 +50,14 @@ const App=()=>{
   }
 
   return (
-    <div className={classes.body}>
-      <div className={classes.innerBody}>
-        <div className={classes.main}>
+    <div className='body'>
+      <div className='innerBody'>
+        <div className='main'>
           <Router>
           {isHiddenMenuShown &&
-            <div className={classes.hiddenMenu}>
-              <i onClick={closeHiddenMenu} className={classes.closeHiddenMenu+ " fa fa-close"}></i>
-              <ul className={classes.rightSide}>
+            <div className='hiddenMenu'>
+              <i onClick={closeHiddenMenu} className="closeHiddenMenu fa fa-close"></i>
+              <ul className='rightSide'>
                 <li><Link to='/Shopping' onClick={closeHiddenMenu}>حراجی</Link></li>
                 <li><Link to='/Clubs' onClick={closeHiddenMenu}>باشگاه ها</Link></li>
                 <li><Link to='/Judgment' onClick={closeHiddenMenu}>داوری</Link></li>
@@ -65,21 +65,21 @@ const App=()=>{
                 <li><Link to='/DartiClub' onClick={closeHiddenMenu}>کلوپ دارتی</Link></li>
                 <li><Link to='/Leagues' onClick={closeHiddenMenu}>لیگ ها</Link></li>
                 <li>
-                  <button onClick={()=>{closeForm(); showSingIn(); closeHiddenMenu()}} className={classes.signIn}>ورود</button>
+                  <button onClick={()=>{closeForm(); showSingIn(); closeHiddenMenu()}} className='signIn'>ورود</button>
                 </li>
               </ul>
             </div>
           }
-            <header className={classes.header}>
+            <header className='header'>
               <nav>
-                <ul className={classes.rightSide}>
-                  <div className={classes.mainLogo}>
+                <ul className='rightSide'>
+                  <div className='mainLogo'>
                     <Link to='/Home'>
                       <span>ایزی دارت</span>
                       <img src={mainLogo} alt="logo" />
                     </Link>
                   </div>
-                  <li onClick={showHiddenMenu} className={classes.dropdown}><i className='fa fa-bars'></i></li>
+                  <li onClick={showHiddenMenu} className='dropdown'><i className='fa fa-bars'></i></li>
                   <li><Link to='/Shopping'>حراجی</Link></li>
                   <li><Link to='/Clubs'>باشگاه ها</Link></li>
                   <li><Link to='/Judgment'>داوری</Link></li>
@@ -87,8 +87,8 @@ const App=()=>{
                   <li><Link to='/DartiClub'>کلوپ دارتی</Link></li>
                   <li><Link to='/Leagues'>لیگ ها</Link></li>
                 </ul>
-                <ul className={classes.leftSide}>
-                  <li><button onClick={()=>{closeForm(); showSingIn()}} className={classes.signInButton}>ورود</button></li>
+                <ul className='leftSide'>
+                  <li><button onClick={()=>{closeForm(); showSingIn()}} className='signInButton'>ورود</button></li>
                 </ul>
               </nav>
             </header>
@@ -99,7 +99,7 @@ const App=()=>{
 
               <Route path="/">
                 <HeadTitle click={()=>{closeHiddenMenu(); closeForm(); window.scrollTo(0,0); showSingUp()}} />
-                <img className={classes.back} src={Back} />
+                <img className='back' src={Back} alt='back' />
                 {isSignUpShown &&
                   <Sign type='signUp' close={closeForm} />
                 }
@@ -108,13 +108,13 @@ const App=()=>{
                 }
                 <Records />
                 <CutRate title='مسابقات' />
-                <img className={classes.circle} src={Circle} />
+                <img className='circle' src={Circle} alt='circle' />
                 <CutRate title='حراجی' />
-                <img className={classes.shop} src={Shop} />
+                <img className='shop' src={Shop} alt='shop' />
                 <News />
-                <img className={classes.news} src={Newspaper} />
+                <img className='news' src={Newspaper} alt='news' />
                 <Map />
-                <img className={classes.map} src={MapImg} />
+                <img className='map' src={MapImg} alt='map' />
               </Route>
             </Switch>
           </Router>

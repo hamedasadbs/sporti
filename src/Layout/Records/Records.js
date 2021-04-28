@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "./Records.module.css";
+import "./Records.scss";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 import Refs from "../../Assets/Images/Refs.svg";
@@ -8,7 +8,7 @@ import Players from "../../Assets/Images/Players.svg";
 
 const Records=()=>(
     <>
-        <section className={classes.records}>
+        <section className='records'>
             <div>
                 <img src={Players} />
                 <h1>بازیکنان</h1>

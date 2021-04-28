@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import classes from "./shopDetails.module.css";
+import "./shopDetails.scss";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 import ImageSource1 from "../../Assets/Images/s1.jpeg";
@@ -51,60 +51,60 @@ const ShopDetails=()=>{
 
     return(
         <>
-            <section className={classes.shopDetails}>
-                <div className={classes.background}></div>
+            <section className='shopDetails'>
+                <div className='background'></div>
                 <main>
-                    <div className={classes.caption}>
-                        <div className={classes.head}>
-                            <div className={classes.star}>
+                    <div className='caption'>
+                        <div className='head'>
+                            <div className='star'>
                                 <i className='fa fa-star'></i>
                                 <i className='fa fa-star'></i>
                                 <i className='fa fa-star'></i>
                                 <i className='fa fa-star'></i>
                                 <i className='fa fa-star'></i>
                             </div>
-                            <div className={classes.title}>{this.state.productTitle}</div>
+                            <div className='title'>{this.state.productTitle}</div>
                         </div>
-                        <div className={classes.secondHead}>
-                            <div className={classes.category}>
+                        <div className='secondHead'>
+                            <div className='category'>
                                 <p>
                                     دسته بندی:
                                     <span> {this.state.productCategory}</span>
                                 </p>
                             </div>
-                            <div className={classes.station}>{this.state.productStation} / {this.state.productCity}</div>
+                            <div className='station'>{this.state.productStation} / {this.state.productCity}</div>
                         </div>
-                        <div className={classes.price}>
+                        <div className='price'>
                             <p>
                                 قیمت:
                                 <span> {this.state.productPrice} </span>
                                 تومان
                             </p>
                         </div>
-                        <div className={classes.explanation}>
+                        <div className='explanation'>
                             <p>
                                 توضیحات کالا:
                                 <span>  {this.state.productExplanation} </span>
                             </p>
                         </div>
-                        <div className={classes.contact}>
+                        <div className='contact'>
                             <button>اطلاعات تماس</button>
                         </div>
                     </div>
 
-                    <div className={classes.pictures}>
-                        <img className={classes.productImage} src={ImageSource1} />
-                        <div className={classes.slideImages}>
+                    <div className='pictures'>
+                        <img className='productImage' src={ImageSource1} />
+                        <div className='slideImages'>
                             <button>
                                 <i className='fa fa-chevron-left'></i>
                             </button>
-                            <div className={classes.mainImage}>
+                            <div className='mainImage'>
                                 <img src={ImageSource1} alt="Cinque Terre" />
                             </div>
-                            <div className={classes.mainImage}>
+                            <div className='mainImage'>
                                 <img src={ImageSource1} alt="Cinque Terre" />
                             </div>
-                            <div className={classes.mainImage}>
+                            <div className='mainImage'>
                                 <img src={ImageSource1} alt="Cinque Terre" />
                             </div>
                             <button>

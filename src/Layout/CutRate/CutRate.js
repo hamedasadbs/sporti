@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import classes from "./CutRate.module.css";
+import "./CutRate.scss";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
-import Logic from "../../Logic/Logic";
+//import Logic from "../../Logic/Logic";
 import axios from "axios";
 import arrowLeft from "../../Assets/Images/Icon awesome-angle-left.svg";
 import arrowRight from "../../Assets/Images/Icon awesome-angle-right.svg";
@@ -58,25 +58,25 @@ const CutRate=(props)=>{
 
     let picture=''
     let picLength=0
-    props.title=='مسابقات' ? picLength=matches.length : picLength=shoppings.length
+    props.title==='مسابقات' ? picLength=matches.length : picLength=shoppings.length
 
-    props.title=='مسابقات'
+    props.title==='مسابقات'
     ?
     picture=matches.slice(minSlice,maxSlice).map(pic=>{
     return(
-        <div key={pic.id} className={classes.picture}>
-            <div className={classes.mainImage}>
+        <div key={pic.id} className='picture'>
+            <div className='mainImage'>
                 <img src={src} alt="Cinque Terre" width="533" height="300" />
             </div>
-            <div className={classes.caption}>
+            <div className='caption'>
                 <h4>{pic.title}</h4>
                 <p>
                 {pic.text}
                 </p>
             </div>
-            <div className={classes.buttons}>
-                <button className={classes.details}>مشاهده جزئیات</button>
-                <button className={classes.signUp}>ثبت نام</button>
+            <div className='buttons'>
+                <button className='details'>مشاهده جزئیات</button>
+                <button className='signUp'>ثبت نام</button>
             </div>
         </div>
     )
@@ -84,41 +84,41 @@ const CutRate=(props)=>{
     :
     picture=shoppings.slice(minSlice,maxSlice).map(pic=>{
         return(
-            <div key={pic.id} className={classes.picture}>
-                <div className={classes.mainImage}>
+            <div key={pic.id} className='picture'>
+                <div className='mainImage'>
                     <img src={src} alt="Cinque Terre" width="533" height="300" />
                 </div>
-                <div className={classes.caption}>
-                    <div className={classes.star}>
+                <div className='caption'>
+                    <div className='star'>
                         <h2>{pic.title}</h2>
-                        <p><img src={star} />{pic.star}</p>
+                        <p><img src={star} alt='star' />{pic.star}</p>
                     </div>
-                    <p className={classes.price}>تومان {pic.price}</p>
+                    <p className='price'>تومان {pic.price}</p>
                 </div>
             </div>
         )
     })
         
-    let arrowLeftActivate=classes.arrowActive
-    let arrowRightActivate=classes.arrowActive
+    let arrowLeftActivate='arrowActive'
+    let arrowRightActivate='arrowActive'
 
     if(minSlice!=0){
-        arrowLeftActivate=classes.arrowNotActive
+        arrowLeftActivate='arrowNotActive'
     }
     if(maxSlice<picLength){
-        arrowRightActivate=classes.arrowNotActive
+        arrowRightActivate='arrowNotActive'
     }
     return(
         <>
-            <section className={classes.cutRate}>
+            <section className='cutRate'>
                 <Title title={props.title} />
                 <HorizontalLine />
                 <main>
-                    <button className={arrowLeftActivate +" "+ classes.arrowLeft} onClick={()=>moveLeft(minSlice)}>
+                    <button className={arrowLeftActivate +" arrowLeft"} onClick={()=>moveLeft(minSlice)}>
                         <img src={arrowLeft} />
                     </button>
                     {picture}
-                    <button className={arrowRightActivate +" "+ classes.arrowRight} onClick={()=>moveRight(maxSlice,picLength)}>
+                    <button className={arrowRightActivate +" arrowRight"} onClick={()=>moveRight(maxSlice,picLength)}>
                         <img src={arrowRight} />
                     </button>
                 </main>

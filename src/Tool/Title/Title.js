@@ -1,9 +1,9 @@
 import React from "react";
-import classes from "./Title.module.css";
+import "./Title.scss";
 
 const Title=(props)=>(
     <>
-        <h3 className={classes.title}>{props.title}</h3>
+        <h3 className='title'>{props.title}</h3>
     </>
 )
 
