@@ -1,3 +1,4 @@
+import Hamed from "../src/Assets/Images/s1.jpeg"
 import Advertising from "../src/Layout/Home/Article/Advertising/Advertising";
 import Products from "../src/Layout/Home/Article/Products/Products";
 import Notice from "../src/Layout/Home/Aside/Notice/Notice";
