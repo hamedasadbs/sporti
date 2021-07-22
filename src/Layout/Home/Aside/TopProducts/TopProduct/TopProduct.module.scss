@@ -1,0 +1,55 @@
+@import '../../../../../GlobalStyles.scss';
+
+.picture {
+    margin: 10px auto;
+    padding: 15px 10px 0px 10px;
+    float: right;
+    width: auto;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 2;
+    background-color: white;
+    border-radius: 5px;
+    @include shadow();
+
+    .mainImage {
+      position: relative;
+      margin: 5px auto;
+      display: flex;
+
+      img {
+        width: 180px;
+        height: 130px;
+        object-fit: cover;
+        border-radius: 5px;
+        margin: 0 auto;
+      }
+    }
+
+    .caption {
+      color: #4d4d4d;
+      text-align: right;
+      font-family: $font;
+      font-size: 12px;
+      font-weight: 100;
+      line-height: 15px;
+      width: 100%;
+
+      h2 {
+        font-family: $numberFont;
+      }
+
+      p {
+        font-family: $font;
+        font-size: 15px;
+      }
+    }
+
+    .details {
+      width: 100%;
+      flex-grow: 1;
+      @include btn(white, black, $baseColor3, white);
+      margin: 15px auto;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }

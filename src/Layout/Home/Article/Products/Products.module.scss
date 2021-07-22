@@ -1,0 +1,9 @@
+@import '../../../../GlobalStyles.scss';
+
+.products{
+    display: flex;
+    width: 960px;
+    flex-wrap: wrap;
+    margin: 20px 0 0 70px;
+    float: left;
+}

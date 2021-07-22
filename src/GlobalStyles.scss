@@ -1,0 +1,120 @@
+$font: "iran";
+$numberFont: "vazir";
+$baseColor1: gold;
+$baseColor2: rgb(105, 105, 105);
+$baseColor3: rgb(248, 62, 62);
+
+$big: 1300px;
+$medium: 1005px;
+$small: 705px;
+$verySmall: 605px;
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+button:hover {
+  &:hover {
+    cursor: pointer;
+    outline: none;
+  }
+
+  &:active {
+    outline: none;
+  }
+}
+
+@mixin btn($backColor, $color, $backColorHovered, $colorHovered) {
+  background-color: $backColor;
+  color: $color;
+  border: 1px $color solid;
+  font-family: $font;
+
+  &:hover {
+    background-color: $backColorHovered;
+    transition: all 0.5s;
+    color:$colorHovered;
+  }
+
+  &:not(:hover) {
+    background-color: $backColor;
+    transition: all 0.5s;
+  }
+}
+
+@mixin closeBtn($size) {
+  font-size: $size;
+  flex-grow: 0;
+  margin: 10px;
+  width: auto;
+  height: 45px;
+  color: darken($baseColor2, 10%);
+  font-weight: lighter;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+@mixin inp() {
+  width: 100%;
+  margin: auto;
+  height: 40px;
+  border: 1px darken($baseColor2,10%) solid;
+  border-radius: 0 5px 5px 0;
+  border-left: none;
+  text-align: right;
+  font-size: 18px;
+  font-family: $font;
+
+  &::placeholder{
+    font-size: 15px;
+  }
+
+  &:focus{
+    outline: none;
+  }
+}
+
+@mixin dropdown {
+  font-size: 60px;
+  margin-top: -20px;
+  color: darken($baseColor2, 10%);
+  position: absolute;
+  top: 15px;
+}
+
+@mixin dropdownRotate($size) {
+  font-size: $size;
+  margin-top: -20px;
+  color: $baseColor2;
+  position: absolute;
+  top: 15px;
+  transition: all 0.1s;
+  transform: rotate(90deg);
+}
+
+@mixin dropdownDiv($width, $height, $top, $right) {
+  position: absolute;
+  display: initial !important;
+  width: $width;
+  height: $height;
+  background-color: rgb(230, 230, 230);
+  right: $right;
+  top: $top;
+  z-index: 2;
+  padding: 10px;
+  border: 1px black solid;
+  text-align: center;
+  font-family: $font;
+  transition: all 0.5s ease-in-out;
+  @include shadow();
+}
+
+@mixin shadow {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}

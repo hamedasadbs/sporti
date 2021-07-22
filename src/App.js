@@ -1,23 +1,20 @@
-import HeadTitle from "../src/Layout/HeadTitle/HeadTitle";
-import Records from "../src/Layout/Records/Records";
-import CutRate from "../src/Layout/CutRate/CutRate";
-import News from "../src/Layout/News/News";
-import Map from "../src/Layout/Map/Map";
+import Advertising from "../src/Layout/Home/Article/Advertising/Advertising";
+import Products from "../src/Layout/Home/Article/Products/Products";
+import Notice from "../src/Layout/Home/Aside/Notice/Notice";
+import TopProducts from "../src/Layout/Home/Aside/TopProducts/TopProducts";
+import LastProducts from "../src/Layout/Home/Main/LastProducts/LastProducts";
+
+import Dropdown from "./Tool/Dropdown/Dropdown";
+
 import Footer from "../src/Layout/Footer/Footer";
 
-
-import Sign from "../src/Sign/Sign";
+import Sign from "../src/Layout/Home/Sign/Sign";
 import Shopping from "../src/Shopping/Shopping";
 import ShopDetails from "../src/Shopping/shopDetails/shopDetails";
 
 import "./App.scss";
 
-import Back from "./Assets/Images/background.svg";
-import Circle from "./Assets/Images/Circle.svg";
-import Shop from "./Assets/Images/Icon material-shopping-cart.svg";
-import Newspaper from "./Assets/Images/Icon awesome-newspaper.svg";
-import MapImg from "./Assets/Images/Icon awesome-map-marked-alt.svg";
-import mainLogo from "./Assets/Images/mainLogo.svg";
+import mainLogo from "./Assets/Images/logofantas.png";
 
 import React, { useState } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
@@ -28,6 +25,13 @@ const App=()=>{
   const[isSignUpShown,setIsSignUpShown]=useState(false)
   const[isSignInShown,setIsSignInShown]=useState(false)
 
+  const[isProductTypeOpen,setIsProductTypeOpen]=useState(false)
+  const[isProductsOpen,setIsProductsOpen]=useState(false)
+  const[isAccountOpen,setIsAccountOpen]=useState(false)
+  const[isBasketOpen,setIsBasketOpen]=useState(false)
+
+  const[dropdownClass,setDropdownClass]=useState('horizontal')
+
   const showHiddenMenu=()=>{
     setIsHiddenMenuShown(true)
   }
@@ -36,17 +40,62 @@ const App=()=>{
     setIsHiddenMenuShown(false)
   }
 
-  const showSingUp=()=>{
-    setIsSignUpShown(true)
+  const disableScroll=()=>{
+    let x=window.scrollX
+    let y=window.scrollY
+    window.onscroll=function(){window.scrollTo(x, y);}
   }
 
   const showSingIn=()=>{
     setIsSignInShown(true)
+    disableScroll()
+  }
+
+  const showSingUp=()=>{
+    setIsSignUpShown(true)
+    disableScroll()
   }
 
   const closeForm=()=>{
     setIsSignUpShown(false)
     setIsSignInShown(false)
+    window.onscroll=function(){}
+  }
+
+  const openProductType=()=>{
+    if(isProductTypeOpen)
+      setIsProductTypeOpen(false)
+    else
+      setIsProductTypeOpen(true)
+  }
+
+  const openProducts=()=>{
+    if(isProductsOpen)
+      setIsProductsOpen(false)
+    else
+      setIsProductsOpen(true)
+  }
+
+  const openAccount=()=>{
+    if(isAccountOpen)
+      setIsAccountOpen(false)
+    else
+      setIsAccountOpen(true)
+  }
+
+  const openBasket=()=>{
+    if(isBasketOpen)
+      setIsBasketOpen(false)
+    else
+      setIsBasketOpen(true)
+  }
+
+  const dropdownHorizontalClass=()=>{
+    setDropdownClass('horizontal')
+  }
+
+  const dropdownVerticalClass=()=>{
+    setDropdownClass('vertical')
   }
 
   return (
@@ -58,63 +107,169 @@ const App=()=>{
             <div className='hiddenMenu'>
               <i onClick={closeHiddenMenu} className="closeHiddenMenu fa fa-close"></i>
               <ul className='rightSide'>
-                <li><Link to='/Shopping' onClick={closeHiddenMenu}>حراجی</Link></li>
-                <li><Link to='/Clubs' onClick={closeHiddenMenu}>باشگاه ها</Link></li>
-                <li><Link to='/Judgment' onClick={closeHiddenMenu}>داوری</Link></li>
-                <li><Link to='/Matches' onClick={closeHiddenMenu}>مسابقات</Link></li>
-                <li><Link to='/DartiClub' onClick={closeHiddenMenu}>کلوپ دارتی</Link></li>
-                <li><Link to='/Leagues' onClick={closeHiddenMenu}>لیگ ها</Link></li>
-                <li>
-                  <button onClick={()=>{closeForm(); showSingIn(); closeHiddenMenu()}} className='signIn'>ورود</button>
+                <li className='account' onClick={openAccount}>
+                  {isAccountOpen
+                    ?
+                    <i className='fa fa-chevron-down'></i>
+                    :
+                    <i className='fa fa-chevron-left'></i>
+                  }
+                  <label> حساب من </label>
+                  <i className='fa fa-user-circle-o'></i>
+                  {isAccountOpen &&
+                    <ul>
+                      <button className='login' onClick={showSingIn}>ورود</button>
+                      <button className='register' onClick={showSingUp}>عضویت</button>
+                    </ul>
+                  }
+                </li>
+                <li className='basket' onClick={openBasket}>
+                  {isBasketOpen
+                    ?
+                    <i className='fa fa-chevron-down'></i>
+                    :
+                    <i className='fa fa-chevron-left'></i>
+                  }
+                  <label> سبد من </label>
+                  <i className='fa fa-shopping-cart basket'>
+                    <div className='carts'>
+                      0
+                    </div>
+                  </i>
+                  {isBasketOpen &&
+                    <ul>
+                      <li>سبد شما خالی است!</li>
+                    </ul>
+                  }
+                </li>
+                <li><Link to='/Shopping' onClick={closeHiddenMenu}>خانه</Link></li>
+                <li className='products' onClick={openProducts}>
+                  <Link to='/Clubs'>
+                    {isProductsOpen
+                      ?
+                      <i className='fa fa-chevron-down'></i>
+                      :
+                      <i className='fa fa-chevron-left'></i>
+                    } محصولات</Link>
+                    {isProductsOpen &&
+                      <ul>
+                        <li>dcvf</li>
+                        <li>uyj</li>
+                        <li>oil</li>
+                      </ul>
+                    }
+                </li>
+                <li className='productType' onClick={openProductType}>
+                  <Link to='/Judgment'>
+                    {isProductTypeOpen
+                      ?
+                      <i className='fa fa-chevron-down'></i>
+                      :
+                      <i className='fa fa-chevron-left'></i>
+                    } نوع محصول</Link>
+                    {isProductTypeOpen &&
+                      <ul>
+                        <li>dcvf</li>
+                        <li>uyj</li>
+                        <li>oil</li>
+                      </ul>
+                    }
+                </li>
+                <li><Link to='/Matches' onClick={closeHiddenMenu}>فانتزیآرت</Link></li>
+                <li><Link to='/Matches' onClick={closeHiddenMenu}>فانتزیبلاگ</Link></li>
+                <li><Link to='/Matches' onClick={closeHiddenMenu}>درباره ما</Link></li>
+                <li><Link to='/Matches' onClick={closeHiddenMenu}>ارتباط با ما</Link></li>
+                <li className='search'>
+                  <button>
+                    <i className='fa fa-search'></i>
+                  </button>
+                  <input spellCheck='false' type='search' placeholder='جست و جوی محصول یا برند' />
                 </li>
               </ul>
             </div>
           }
             <header className='header'>
-              <nav>
+              <nav className='topHeader'>
                 <ul className='rightSide'>
+                  <li onClick={showHiddenMenu} onMouseOver={dropdownVerticalClass} onMouseOut={dropdownHorizontalClass} className={'dropdown '+dropdownClass}>
+                    <i className='fa fa-bars'></i>
+                  </li>
                   <div className='mainLogo'>
                     <Link to='/Home'>
-                      <span>ایزی دارت</span>
                       <img src={mainLogo} alt="logo" />
+                      <span>fantasima</span>
                     </Link>
                   </div>
-                  <li onClick={showHiddenMenu} className='dropdown'><i className='fa fa-bars'></i></li>
-                  <li><Link to='/Shopping'>حراجی</Link></li>
-                  <li><Link to='/Clubs'>باشگاه ها</Link></li>
-                  <li><Link to='/Judgment'>داوری</Link></li>
-                  <li><Link to='/Matches'>مسابقات</Link></li>
-                  <li><Link to='/DartiClub'>کلوپ دارتی</Link></li>
-                  <li><Link to='/Leagues'>لیگ ها</Link></li>
+                </ul>
+                <ul className='middleSide'>
+                  <button className='search'>
+                    <i className='fa fa-search'></i>
+                  </button>
+                  <input spellCheck='false' type='search' placeholder='جست و جوی محصول یا برند' />
                 </ul>
                 <ul className='leftSide'>
-                  <li><button onClick={()=>{closeForm(); showSingIn()}} className='signInButton'>ورود</button></li>
+                  <li className='account'>
+                    <label>حساب من</label>
+                    <i className='fa fa-user-circle-o'></i>
+                    <div className='account'>
+                      <Dropdown type='account' signInClick={()=>{closeForm(); showSingIn();}} signUpClick={()=>{closeForm(); showSingUp();}} />
+                    </div>
+                  </li>
+                  <li className='basket'>
+                    <div className='carts'>
+                      0
+                    </div>
+                    <label>سبد من</label>
+                    <i className='fa fa-shopping-cart'></i>
+                    <div className='basket'>
+                      <Dropdown type='basket' />
+                    </div>
+                  </li>
+                </ul>
+              </nav>
+
+              <nav className='bottomHeader'>
+                <ul className='rightSide'>
+                  <li><Link to='/Shopping'>ارتباط با ما</Link></li>
+                  <li><Link to='/Shopping'>درباره ما</Link></li>
+                  <li><Link to='/Clubs'>فانتزیبلاگ</Link></li>
+                  <li><Link to='/Judgment'>فانتزیآرت</Link></li>
+                  <li className='productType'>
+                    <div className='productType'>
+                      <Dropdown type='productType' />
+                    </div>
+                    <Link to='/Matches'><i className='fa fa-chevron-down'></i> نوع محصول</Link>
+                  </li>
+                  <li className='products'>
+                    <Link to='/DartiClub'><i className='fa fa-chevron-down'></i> محصولات</Link>
+                    <div className='products'>
+                      <Dropdown type='products' />
+                    </div>
+                  </li>
+                  <li className='home'><Link to='/Leagues'>خانه</Link></li>
                 </ul>
               </nav>
             </header>
             <Switch>
               <Route path="/ShoppingDetails" component={ShopDetails} />
 
-              <Route path="/Shopping" component={Shopping} />
+              <Route path="/Shopping">
+                <Shopping />
+              </Route>
 
               <Route path="/">
-                <HeadTitle click={()=>{closeHiddenMenu(); closeForm(); window.scrollTo(0,0); showSingUp()}} />
-                <img className='back' src={Back} alt='back' />
+                <Advertising click={()=>{closeHiddenMenu(); closeForm(); window.scrollTo(0,0); showSingUp()}} />
+                <Products />
+                <Notice />
+                <TopProducts />
                 {isSignUpShown &&
                   <Sign type='signUp' close={closeForm} />
                 }
                 {isSignInShown &&
                   <Sign type='signIn' close={closeForm} />
                 }
-                <Records />
-                <CutRate title='مسابقات' />
-                <img className='circle' src={Circle} alt='circle' />
-                <CutRate title='حراجی' />
-                <img className='shop' src={Shop} alt='shop' />
-                <News />
-                <img className='news' src={Newspaper} alt='news' />
-                <Map />
-                <img className='map' src={MapImg} alt='map' />
+                <LastProducts title='آخرین کتاب ها' />
+                
               </Route>
             </Switch>
           </Router>

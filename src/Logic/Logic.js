@@ -13,7 +13,7 @@ const Logic=(props)=>{
         }).catch(err=>{
             alert(err)
         })
-    })
+    },[])
 
     return(
         <>

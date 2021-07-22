@@ -1,0 +1,18 @@
+@import '../../../../GlobalStyles.scss';
+
+.notice{
+    width: 200px;
+    height: 180px;
+    background-color: lightgray;
+    float: right;
+    margin-right: 70px;
+    margin-top: -454px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: $font;
+    font-size: 14px;
+    padding: 15px;
+    padding-top: 5px;
+    border: 1px solid $baseColor2;
+}

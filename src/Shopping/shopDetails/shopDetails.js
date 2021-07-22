@@ -1,14 +1,9 @@
 import React, {useState, useEffect} from "react";
-import "./shopDetails.scss";
+import classes from "./shopDetails.module.scss";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 import ImageSource1 from "../../Assets/Images/s1.jpeg";
-import ImageSource2 from "../../Assets/Images/s2.jpeg";
-import ImageSource3 from "../../Assets/Images/s3.jpeg";
-import ImageSource4 from "../../Assets/Images/s4.jpeg";
 import axios from "axios";
-
-import star from "../../Assets/Images/Icon material-star.svg";
 
 const ShopDetails=()=>{
 
@@ -25,7 +20,7 @@ const ShopDetails=()=>{
         axios.get('./test.json')
         .then(res=>{
             const shoppings=res.data.shoppings
-            setShoppings({shoppings})
+            setShoppings(shoppings)
             shoppings.map(product=>{
                 if(`?id=${product.id}`==window.location.search){
                     setProductTitle(product.title)
@@ -39,7 +34,7 @@ const ShopDetails=()=>{
         })
         .catch(err=>{
             alert(err)
-        })
+        },[])
     })
     
     const changePriceHandler=(event)=>{
@@ -51,60 +46,60 @@ const ShopDetails=()=>{
 
     return(
         <>
-            <section className='shopDetails'>
-                <div className='background'></div>
+            <section className={classes.shopDetails}>
+                <div className={classes.background}></div>
                 <main>
-                    <div className='caption'>
-                        <div className='head'>
-                            <div className='star'>
+                    <div className={classes.caption}>
+                        <div className={classes.head}>
+                            <div className={classes.star}>
                                 <i className='fa fa-star'></i>
                                 <i className='fa fa-star'></i>
                                 <i className='fa fa-star'></i>
                                 <i className='fa fa-star'></i>
                                 <i className='fa fa-star'></i>
                             </div>
-                            <div className='title'>{this.state.productTitle}</div>
+                            <div className={classes.title}>{productTitle}</div>
                         </div>
-                        <div className='secondHead'>
-                            <div className='category'>
+                        <div className={classes.secondHead}>
+                            <div className={classes.category}>
                                 <p>
                                     دسته بندی:
-                                    <span> {this.state.productCategory}</span>
+                                    <span> {productCategory}</span>
                                 </p>
                             </div>
-                            <div className='station'>{this.state.productStation} / {this.state.productCity}</div>
+                            <div className={classes.station}>{productStation} / {productCity}</div>
                         </div>
-                        <div className='price'>
+                        <div className={classes.price}>
                             <p>
                                 قیمت:
-                                <span> {this.state.productPrice} </span>
+                                <span> {productPrice} </span>
                                 تومان
                             </p>
                         </div>
-                        <div className='explanation'>
+                        <div className={classes.explanation}>
                             <p>
                                 توضیحات کالا:
-                                <span>  {this.state.productExplanation} </span>
+                                <span>  {productExplanation} </span>
                             </p>
                         </div>
-                        <div className='contact'>
+                        <div className={classes.contact}>
                             <button>اطلاعات تماس</button>
                         </div>
                     </div>
 
-                    <div className='pictures'>
-                        <img className='productImage' src={ImageSource1} />
-                        <div className='slideImages'>
+                    <div className={classes.pictures}>
+                        <img className={classes.productImage} src={ImageSource1} />
+                        <div className={classes.slideImages}>
                             <button>
                                 <i className='fa fa-chevron-left'></i>
                             </button>
-                            <div className='mainImage'>
+                            <div className={classes.mainImage}>
                                 <img src={ImageSource1} alt="Cinque Terre" />
                             </div>
-                            <div className='mainImage'>
+                            <div className={classes.mainImage}>
                                 <img src={ImageSource1} alt="Cinque Terre" />
                             </div>
-                            <div className='mainImage'>
+                            <div className={classes.mainImage}>
                                 <img src={ImageSource1} alt="Cinque Terre" />
                             </div>
                             <button>

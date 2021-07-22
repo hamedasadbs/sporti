@@ -1,0 +1,209 @@
+@import '../../GlobalStyles.scss';
+
+.footer {
+  width: 100%;
+  height: auto;
+  background-color: whitesmoke;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    text-align: right;
+    margin: 25px 60px;
+    padding-bottom: 30px;
+    font-family: $font;
+    font-size: 20px;
+    font-weight: 100;
+    color: $baseColor2;
+    border-bottom: 1px $baseColor2 solid;
+    width: 90%;
+  }
+
+  main{
+    display: flex;
+    flex-direction: row;
+
+    .rightSide {
+      width: 60%;
+      height: 100%;
+      position: relative;
+  
+      .subjects {
+        width: 600px;
+        font-family: $font;
+        font-size: 14px;
+        float: right;
+        margin-right: 150px;
+        text-align: right;
+        color: $baseColor2;
+        font-weight: 100;
+        line-height: 30px;
+
+        tbody{
+          tr{
+            td{
+              a{
+                &:hover{
+                  cursor: pointer;
+                  color:$baseColor3;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .leftSide {
+      width: 40%;
+      height: 100%;
+      position: relative;
+  
+      label {
+        text-align: right;
+        font-size: 17px;
+        font-family: $font;
+        color: $baseColor2;
+        width: 100%;
+        float: right;
+        position: relative;
+        margin: 15px 0;
+      }
+  
+      .notificationForm {
+        text-align: right;
+        font-size: 17px;
+        font-family: $font;
+        color: $baseColor2;
+        width: 100%;
+        float: right;
+        position: relative;
+        margin: 15px 0;
+      }
+  
+      .socialMedias {
+        float: right;
+    
+        i {
+          font-size: 40px;
+          margin: 0 10px;
+          color: darken($baseColor2,20%);
+
+          &:hover{
+            cursor: pointer;
+            transition: all 0.2s;
+          }
+
+          &:not(:hover){
+            color: darken($baseColor2,20%);
+            transition: all 0.2s;
+          }
+        }
+
+        .facebook{
+          &:hover{
+            color: rgb(55, 55, 248);
+          }
+        }
+
+        .telegram{
+          &:hover{
+            color: rgb(55, 161, 248);
+          }
+        }
+
+        .instagram{
+          &:hover{
+            background: linear-gradient(to bottom left,purple,red,yellow);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+
+        .google{
+          &:hover{
+            color: rgb(216, 27, 27);
+          }
+        }
+
+        .whatsapp{
+          &:hover{
+            color: rgb(0, 172, 23);
+          }
+        }
+      }
+    }
+  }
+  
+
+  .copyRight {
+    text-align: center;
+    font-family: $font;
+    font-size: 17px;
+    font-weight: 100;
+    color: $baseColor2;
+    border-top: 1px $baseColor2 solid;
+    width: 100%;
+    top: 500px;
+  }
+}
+
+
+@media only screen and (max-width: $big){
+  .footer{
+    .rightSide{
+      .subjects{
+        width: 400px;
+        margin-right: 100px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium){
+  .footer {
+    height: 600px;
+
+    .rightSide{
+      .subjects{
+        width: 100%;
+        margin-right: 0px;
+        text-align: center;
+      }
+    }
+
+    .leftSide {
+      width: 100%;
+      margin-top: -250px;
+      box-sizing: border-box;
+      padding-right: 20px;
+    }
+
+    .copyRight {
+      top: 1000px;
+    }
+  }
+}
+
+@media only screen and (max-width: $small){
+  .footer {
+    margin-top: 50px;
+
+    .rightSide{
+      width: 100%;
+    }
+
+    .footerTitle {
+      text-align: center;
+      margin: 25px auto;
+      padding-bottom: 30px;
+      font-family: $font;
+      font-size: 20px;
+      font-weight: 100;
+      color: $baseColor2;
+      border-bottom: 1px $baseColor2 solid;
+      width: 100%;
+    }
+  }
+}

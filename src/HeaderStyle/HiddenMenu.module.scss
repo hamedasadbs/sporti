@@ -1,0 +1,238 @@
+.hiddenMenu{
+    display: none;
+  }
+  
+  @media only screen and (max-width: $big) {
+    .hiddenMenu {
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
+      position: absolute;
+      background-color: #ffffff;
+      z-index: 5;
+      box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+      border-bottom: 1px solid $baseColor2;
+      display: initial;
+  
+      .closeHiddenMenu {
+        @include closeBtn(45px)
+      }
+  
+      .rightSide {
+        font-family: $font;
+        color: $baseColor2;
+        position: relative;
+        margin-top: 40px;
+        z-index: 1;
+        float: right;
+        flex-grow: 1;
+  
+        li {
+          margin: 0px 20px 0px auto;
+          width:fit-content;
+          font-size: 20px;
+          display: block;
+          padding: 0px 8px;
+          font-weight: 500;
+          text-align: right;
+          line-height: 50px;
+  
+          div{
+            display: none;
+          }
+  
+          a {
+            color: $baseColor2;
+  
+            &:hover {
+              color: $baseColor3;
+              transition: all 0.2s;
+            }
+          }
+        }
+  
+        li.account,
+        li.basket{
+          display: none;
+        }
+  
+        li.search{
+          position: relative;
+          margin: 20px 20px 20px auto;
+          width: 300px;
+          display: flex;
+          
+          input{
+            width: 100%;
+            margin: auto;
+            height: 40px;
+            border: 1px darken($baseColor2,10%) solid;
+            border-radius: 0 5px 5px 0;
+            border-left: none;
+            text-align: right;
+            font-size: 18px;
+            font-family: $font;
+  
+            &::placeholder{
+              font-size: 15px;
+            }
+  
+            &:focus{
+              outline: none;
+            }
+          }
+  
+          button{
+            width: 40px;
+            background-color: white;
+            border-radius: 5px 0 0 5px;
+            border: 1px darken($baseColor2,10%) solid;
+            border-right: none;
+  
+            &:hover{
+              background-color: lightgray;
+              border-radius: 5px;
+              transition: all 0.1s;
+            }
+  
+            &:not(:hover){
+              background-color: white;
+              border-radius: 5px 0 0 5px;
+              transition: all 1s;
+            }
+          }
+        }
+  
+        .signIn {
+          width: 180px;
+          float: right;
+          font-size: 20px;
+          padding: 8px 2px 12px 2px;
+          margin: 20px -10px;
+        }
+      }
+    }
+  }
+  
+  @media only screen and (max-width: $medium) {
+    .hiddenMenu{
+      .rightSide{
+        li.products,
+        li.productType{
+          &:hover{
+            div{
+              @include dropdownDiv(450px,auto,45px,200px);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  @media only screen and (max-width: $small) {
+    .hiddenMenu{
+      .rightSide{
+        margin-top: 60px;
+        margin-left: -50px;
+  
+        li{
+          cursor: pointer;
+          label{
+            cursor: pointer;
+          }
+        }
+  
+        li.account{
+          display: block;
+  
+          &:hover{
+            cursor: pointer;
+            color: $baseColor3;
+          }
+  
+          button{
+            width: 100%;
+            height: 40px;
+            font-family: $font;
+            font-size: 18px;
+            color: darken($baseColor2, 10%);
+            margin: 5px auto;
+            border-radius: 2px;
+          }
+  
+          button.login{
+            background-color: darken($baseColor2, 30%);
+            color: whitesmoke;
+            border: 1px whitesmoke solid;
+  
+            &:hover{
+              background-color: lighten(darken($baseColor2, 30%), 5%);
+              transition: all 0.5s;
+            }
+          }
+  
+          button.register{
+            background-color: white;
+            color: darken($baseColor2, 20%);
+            border: 1px darken($baseColor2, 20%) solid;
+  
+            &:hover{
+              background-color: darken(white, 5%);
+              transition: all 0.5s;
+            }
+          }
+        }
+  
+        li.basket{
+          display: block;
+          margin-top: 10px;
+  
+          i.basket{
+            margin-right: -20px;
+            .carts{
+              display: initial;
+              background-color: $baseColor3;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 5px;
+              padding-bottom: 5px;
+              border-radius: 50px;
+              z-index: 3;
+              position: relative;
+              top: -22px;
+              right: 20px;
+              text-align: center;
+              color: white;
+              font-size: 15px;
+            }
+          }
+  
+          &:hover{
+            color: $baseColor3;
+  
+            ul{
+              display: block;
+  
+              li{
+                color: $baseColor2;
+              }
+            }
+          }
+        }
+  
+        li.search{
+          width: 100%;
+          margin-left: -30px;
+        }
+  
+        li.products,
+        li.productType{
+          &:hover{
+            div{
+              @include dropdownDiv(250px,auto,45px,200px);
+            }
+          }
+        }
+      }
+    }
+  }

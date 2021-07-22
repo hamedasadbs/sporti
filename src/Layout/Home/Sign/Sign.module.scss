@@ -1,0 +1,131 @@
+@import '../../../GlobalStyles.scss';
+
+.sign {
+  width: 500px;
+  background-color: white;
+  z-index: 5;
+  margin: 20px auto;
+  position: absolute;
+  top: 140px;
+  left: 425px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 0px 50px 1000px rgba(0,0,0,0.6);
+
+  .title{
+    width: 100%;
+    padding: 10px;
+    background-color: darken($baseColor2, 35%);
+    color: whitesmoke;
+    text-align: center;
+    font-family: $font;
+
+    .closeHiddenMenu {
+      @include closeBtn(45px);
+      position: absolute;
+      left: 0;
+      top: -10px;
+      color: whitesmoke;
+    }
+  }
+
+  main{
+    display: flex;
+    flex-direction: column;
+    margin: 5px auto;
+
+    div{
+      i{
+        font-size: 50px;
+        position: absolute;
+        z-index: 2;
+        right: 40px;
+        background-color: lightgray;
+        border: 1px ridge black;
+        padding: 5px
+      }
+
+      input{
+        @include inp();
+        width: 400px;
+        margin: 10px auto;
+        border-left: 1px solid black;
+        margin-right: 20px;
+        border-radius: 5px;
+        text-align: left;
+      }
+    }
+
+    div.name{
+      i{
+        top: 53px;
+      }
+    }
+
+    div.signInUser{
+      i{
+        top: 53px;
+      }
+    }
+
+    div.signUpUser{
+      i{
+        top: 113px;
+      }
+    }
+
+    div.email{
+      i{
+        top: 173px;
+      }
+    }
+
+    div.signInPass{
+      i{
+        top: 113px;
+      }
+    }
+
+    div.signUpPass{
+      i{
+        top: 233px;
+      }
+    }
+
+    button{
+      @include btn(white,darken($baseColor2,30%),$baseColor3,white);
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      @include shadow();
+    }
+
+    .rememberMe{
+      text-align: right;
+      float: right;
+      font-family: $font;
+      color: darken($baseColor2,30%);
+      width: fit-content;
+      display: inline;
+
+      input{
+        width: 20px;
+      }
+    }
+
+    a{
+      text-align: right;
+      font-family: $font;
+      color: rgb(14, 107, 107);
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+
+      &:hover{
+        color: $baseColor3;
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+@import '../../../../GlobalStyles.scss';
+
+.topProducts{
+    display: flex;
+    flex-direction: column;
+    margin: -250px 70px 80px 0px;
+    float: right;
+
+    .title{
+        width: 100%;
+        background-color: darken($baseColor2, 35%);
+        color: lightgray;
+        padding: 7px;
+        text-align: center;
+        font-family: $font;
+    }
+}

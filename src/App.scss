@@ -1,28 +1,8 @@
-$font:'iran';
-$baseColor1:$baseColor1;
-$baseColor2:rgb(105, 105, 105);
-
-a {
-  text-decoration: none;
-
-  &:hover {
-    text-decoration: none;
-  }
-}
-
-button:hover {
-  &:hover {
-    cursor: pointer;
-    outline: none;
-  }
-
-  &:active {
-    outline: none;
-  }
-}
+@import './GlobalStyles.scss';
+@import './HeaderStyle/Header.module.scss';
+@import './HeaderStyle/HiddenMenu.module.scss';
 
 .body {
-  background-color: white;
   display: flex;
 
   .innerBody {
@@ -33,49 +13,25 @@ button:hover {
     margin: auto;
 
     .main {
-      width: 1300px;
+      width: 1350px;
       position: relative;
       margin: 10px auto;
       margin-top: -10px;
       padding: 80px auto;
       vertical-align: middle;
 
-      .back {
-        width: 930px;
-        position: absolute;
-        top: -170px;
-        right: -170px;
-        z-index: 0;
-      }
-
-      .circle {
-        width: 600px;
-        position: absolute;
-        top: 1160px;
-        right: -450px;
-        z-index: 0;
-      }
-
-      .shop {
+      .newsLogo {
         width: 400px;
         position: absolute;
-        top: 1750px;
-        left: -100px;
-        z-index: 0;
-      }
-
-      .news {
-        width: 400px;
-        position: absolute;
-        top: 2300px;
+        top: 2400px;
         right: -100px;
         z-index: 0;
       }
 
-      .map {
+      .mapLogo {
         width: 400px;
         position: absolute;
-        top: 3000px;
+        top: 3100px;
         left: 20px;
         z-index: 0;
       }
@@ -83,309 +39,42 @@ button:hover {
   }
 }
 
-@media only screen and (max-width: 1300px) {
-  .main {
-    width: 1000px;
-
-    .circle {
-      top: 1250px;
-      right: -450px;
-    }
-
-    .shop {
-      top: 1850px;
-      left: -150px;
-    }
-
-    .news {
-      top: 2400px;
-      right: -100px;
-    }
-
-    .map {
-      top: 3000px;
-      left: -50px;
-    }
-  }
-}
-
-@media only screen and (max-width: 1005px) {
-  .main {
-    width: 700px;
-  }
-}
-
-@media only screen and (max-width: 705px) {
-  .main {
-    width: 360px;
-
-    .back {
-      display: none;
-    }
-  }
-}
-
-@media only screen and (max-width: 705px) {
-  .main {
-    .circle,
-    .shop,
-    .map,
-    .news {
-      display: none;
-    }
-  }
-}
-
-/*******************************HEADER*************************/
-
-.header {
-  display: flex;
-  margin: 0 100px;
-  position: relative;
-
-  nav {
-    width: 100%;
-    position: relative;
-
-    ul {
-      li {
-        a {
-          text-decoration: none;
-          color: $baseColor2;
-
-          &:hover {
-            color: #ff3333;
-          }
-        }
-      }
-    }
-
-    .rightSide {
-      font-family: $font;
-      color: #171a1d;
-      float: right;
-      position: relative;
-      margin-top: 40px;
-      z-index: 1;
-
-      li {
-        margin: 0px 20px 0px 10px;
-        font-size: 14px;
-        display: inline-block;
-        padding: 0px 8px;
-        font-weight: 500;
-
-        .dropdown {
-          display: none !important;
-        }
-      }
-
-      .mainLogo {
-        width: auto;
-        float: right;
-        padding-left: 30px;
-        margin: -10px 0 0 20px;
-
-        a {
-          display: flex;
-
-          img {
-            margin: -10px 0 0 -50px;
-            width: 80px;
-          }
-
-          span {
-            color: $baseColor1;
-            margin: 10px 60px 0 0;
-            font-size: 20px;
-          }
-        }
-      }
-    }
-
-    .leftSide {
-      position: relative;
-      margin: 25px 0 0 -40px;
-
-      li {
-        font-size: 14px;
-        display: inline;
-
-        .signInButton {
-          width: 230px;
-          font-family: $font;
-          background-color: transparent;
-          color: $baseColor1;
-          float: left;
-          border: 1px solid black;
-          font-size: 20px;
-          padding: 10px 2px 12px 2px;
-          border-radius: 50px;
-          z-index: 1;
-        }
+@media only screen and (max-width: $big) {
+  .body{
+    .innerBody{
+      .main {
+        width: 1000px;
       }
     }
   }
 }
 
-.selectedPage a {
-  color: $baseColor1;
-  font-weight: bolder;
-  font-size: 22px;
-}
-
-@media only screen and (max-width: 1300px) {
-  header {
-    .rightSide {
-      float: left;
-      width: 100%;
-
-      li {
-        display: none !important;
-      }
-    }
-
-    .leftSide {
-      li {
-        .signInButton {
-          display: none;
-        }
-
-        .dropdown {
-          display: initial !important;
-
-          &:hover {
-            cursor: pointer;
-          }
-
-          i {
-            font-size: 60px;
-            margin-top: -20px;
-            color: $baseColor2;
-            position: absolute;
-            top: 15px;
-            left: 0;
-          }
-        }
+@media only screen and (max-width: $medium) {
+  .body{
+    .innerBody{
+      .main {
+        width: 700px;
       }
     }
   }
 }
 
-@media only screen and (max-width: 705px) {
-  .header {
-    margin: 0 40px;
-
-    .mainLogo {
-      a {
-        span {
-          display: none;
-        }
-      }
-    }
-
-    .dropdown {
-      i {
-        font-size: 45px;
+@media only screen and (max-width: $small) {
+  .body{
+    .innerBody{
+      .main {
+        width: 500px;
       }
     }
   }
 }
 
-/************************HIDDEN MENU***************************/
-
-.hiddenMenu {
-  width: 100%;
-  height: 0px;
-  display: flex;
-  margin: 0 auto;
-  position: absolute;
-  background-color: #ffffff;
-  z-index: 5;
-  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
-  border-bottom: 1px solid $baseColor2;
-  animation: showing 1s forwards;
-
-  .closeHiddenMenu {
-    font-size: 45px;
-    flex-grow: 0;
-    margin: 10px;
-    width: auto;
-    height: 45px;
-    color: $baseColor1;
-    font-weight: 100;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .rightSide {
-    font-family: $font;
-    color: #171a1d;
-    position: relative;
-    margin-top: 40px;
-    z-index: 1;
-    float: right;
-    flex-grow: 1;
-
-    li {
-      margin: 0px 20px 0px 10px;
-      font-size: 20px;
-      display: block;
-      padding: 0px 8px;
-      font-weight: 500;
-      text-align: right;
-      line-height: 50px;
-
-      a {
-        color: $baseColor2;
-
-        &:hover {
-          color: #ff3333;
-          transition: all 0.2s;
-        }
+@media only screen and (max-width: $verySmall) {
+  .body{
+    .innerBody{
+      .main {
+        width: 280px;
       }
     }
-
-    .signIn {
-      width: 180px;
-      font-family: $font;
-      background-color: $baseColor1;
-      color: white;
-      float: right;
-      border: 1px solid $baseColor1;
-      font-size: 20px;
-      padding: 8px 2px 12px 2px;
-      border-radius: 50px;
-      z-index: 1;
-      margin: 20px -10px;
-
-      &:hover {
-        background-color: white;
-        color: $baseColor1;
-        border: 1px solid black;
-        transition: all 0.5s;
-      }
-
-      &:not(:hover) {
-        background-color: $baseColor1;
-        color: white;
-        border: 1px solid $baseColor1;
-        transition: all 0.5s;
-      }
-    }
-  }
-}
-
-@keyframes showing {
-  100% {
-    height: 500px;
-  }
-}
-
-@keyframes hiding {
-  100% {
-    height: 0px;
   }
 }
