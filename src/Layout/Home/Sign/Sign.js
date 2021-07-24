@@ -34,11 +34,11 @@ const Sign=(props)=>{
         </span>
         <main>
             <div className={classes.signInUser}>
-                <input />
+                <input type='text' placeholder='نام کاربری' />
                 <FontAwesomeIcon icon={faUser} className={classes.i} />
             </div>
             <div className={classes.signInPass}>
-                <input />
+                <input type='text' placeholder='رمز عبور' />
                 <FontAwesomeIcon icon={faKey} className={classes.i} />
             </div><br />
             <button>ورود</button>
@@ -57,19 +57,19 @@ const Sign=(props)=>{
         </span>
         <main>
             <div className={classes.name}>
-                <input />
+                <input type='text' placeholder='نام و نام خانوادگی' />
                 <FontAwesomeIcon icon={faUser} className={classes.i} />
             </div>
             <div className={classes.signUpUser}>
-                <input />
+                <input type='text' placeholder='نام کاربری' />
                 <FontAwesomeIcon icon={faUser} className={classes.i} />
             </div>
             <div className={classes.email}>
-                <input />
+                <input type='text' placeholder='ایمیل' />
                 <FontAwesomeIcon icon={faEnvelope} className={classes.i} />
             </div>
             <div className={classes.signUpPass}>
-                <input />
+                <input type='text' placeholder='رمز عبور' />
                 <FontAwesomeIcon icon={faKey} className={classes.i} />
             </div>
             <h5 className={classes.rememberMe}>

@@ -115,9 +115,7 @@
 
         .instagram{
           &:hover{
-            background: linear-gradient(to bottom left,purple,red,yellow);
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: rgb(255, 0, 85);
           }
         }
 

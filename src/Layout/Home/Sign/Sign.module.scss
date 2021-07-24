@@ -54,6 +54,10 @@
         margin-right: 20px;
         border-radius: 5px;
         text-align: left;
+
+        &::placeholder{
+          text-align: center;
+        }
       }
     }
 
@@ -78,21 +82,21 @@
     div.email{
       .i{
         top: 177px;
-        right: 36px;
+        right: 37px;
       }
     }
 
     div.signInPass{
       .i{
         top: 117px;
-        right: 36px;
+        right: 37px;
       }
     }
 
     div.signUpPass{
       .i{
         top: 237px;
-        right: 36px;
+        right: 37px;
       }
     }
 
