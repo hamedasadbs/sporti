@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from "react";
 import classes from "./shopDetails.module.scss";
-import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 import ImageSource1 from "../../Assets/Images/s1.jpeg";
 import axios from "axios";

@@ -1,6 +1,5 @@
 import React from "react";
 import classes from "./TopProducts.module.scss";
-import "../../../../../node_modules/font-awesome/css/font-awesome.min.css";
 
 import TopProduct from "./TopProduct/TopProduct"
 

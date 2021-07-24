@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from "react";
 import classes from "./Sign.module.scss";
-import '../../../../node_modules/font-awesome/css/font-awesome.min.css';
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faKey,faUser,faEnvelope, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 const Sign=(props)=>{
     const [username, setUsername]=useState('')
@@ -28,17 +29,17 @@ const Sign=(props)=>{
     ?
     <>
         <span className={classes.title}>
-            <i onClick={props.close} className={`${classes.closeHiddenMenu} fa fa-close`}></i>
+            <FontAwesomeIcon onClick={props.close} icon={faWindowClose} className={classes.closeHiddenMenu} />
             ورود به حساب کاربری
         </span>
         <main>
             <div className={classes.signInUser}>
                 <input />
-                <i className='fa fa-user-circle'></i>
+                <FontAwesomeIcon icon={faUser} className={classes.i} />
             </div>
             <div className={classes.signInPass}>
                 <input />
-                <i className='fa fa-key'></i>
+                <FontAwesomeIcon icon={faKey} className={classes.i} />
             </div><br />
             <button>ورود</button>
             <h5 className={classes.rememberMe}>
@@ -51,25 +52,25 @@ const Sign=(props)=>{
     :
     <>
         <span className={classes.title}>
-            <i onClick={props.close} className={`${classes.closeHiddenMenu} fa fa-close`}></i>
+            <FontAwesomeIcon onClick={props.close} icon={faWindowClose} className={classes.closeHiddenMenu} />
             ایجاد حساب کاربری
         </span>
         <main>
             <div className={classes.name}>
                 <input />
-                <i className='fa fa-user-circle'></i>
+                <FontAwesomeIcon icon={faUser} className={classes.i} />
             </div>
             <div className={classes.signUpUser}>
                 <input />
-                <i className='fa fa-user-circle'></i>
+                <FontAwesomeIcon icon={faUser} className={classes.i} />
             </div>
             <div className={classes.email}>
                 <input />
-                <i className='fa fa-envelope'></i>
+                <FontAwesomeIcon icon={faEnvelope} className={classes.i} />
             </div>
             <div className={classes.signUpPass}>
                 <input />
-                <i className='fa fa-key'></i>
+                <FontAwesomeIcon icon={faKey} className={classes.i} />
             </div>
             <h5 className={classes.rememberMe}>
                 <input type='checkbox' />من ربات نیستم

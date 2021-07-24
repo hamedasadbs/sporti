@@ -25,7 +25,7 @@
       @include closeBtn(45px);
       position: absolute;
       left: 0;
-      top: -10px;
+      top: -8px;
       color: whitesmoke;
     }
   }
@@ -36,14 +36,14 @@
     margin: 5px auto;
 
     div{
-      i{
+      .i{
         font-size: 50px;
         position: absolute;
         z-index: 2;
         right: 40px;
         background-color: lightgray;
         border: 1px ridge black;
-        padding: 5px
+        padding: 5px;
       }
 
       input{
@@ -58,38 +58,41 @@
     }
 
     div.name{
-      i{
-        top: 53px;
+      .i{
+        top: 57px;
       }
     }
 
     div.signInUser{
-      i{
-        top: 53px;
+      .i{
+        top: 57px;
       }
     }
 
     div.signUpUser{
-      i{
-        top: 113px;
+      .i{
+        top: 117px;
       }
     }
 
     div.email{
-      i{
-        top: 173px;
+      .i{
+        top: 177px;
+        right: 36px;
       }
     }
 
     div.signInPass{
-      i{
-        top: 113px;
+      .i{
+        top: 117px;
+        right: 36px;
       }
     }
 
     div.signUpPass{
-      i{
-        top: 233px;
+      .i{
+        top: 237px;
+        right: 36px;
       }
     }
 

@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Footer.module.scss";
-import "../../../node_modules/font-awesome/css/font-awesome.min.css";
+
+import { faFacebook,faInstagram,faTelegram,faWhatsapp,faGooglePlus } from "@fortawesome/free-brands-svg-icons"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Footer=()=>(
     <>
@@ -11,11 +13,11 @@ const Footer=()=>(
                     <label>شماره تماس : ۰۲۱۸۸۵۴۸۹۵۵ (ساعت ۱۲- ۱۷ شنبه تا چهارشنبه)</label>
                     <label>فانتزیما در شبکه های اجتماعی</label>
                     <div className={classes.socialMedias}>
-                        <i className={`fa fa-facebook-square ${classes.facebook}`}></i>
-                        <i className={`fa fa-instagram ${classes.instagram}`}></i>
-                        <i className={`fa fa-telegram ${classes.telegram}`}></i>
-                        <i className={`fa fa-google-plus ${classes.google}`}></i>
-                        <i className={`fa fa-whatsapp ${classes.whatsapp}`}></i>
+                        <FontAwesomeIcon icon={faFacebook} className={classes.i+" "+classes.facebook} />
+                        <FontAwesomeIcon icon={faInstagram} className={classes.i+" "+classes.instagram} />
+                        <FontAwesomeIcon icon={faTelegram} className={classes.i+" "+classes.telegram} />
+                        <FontAwesomeIcon icon={faGooglePlus} className={classes.i+" "+classes.google} />
+                        <FontAwesomeIcon icon={faWhatsapp} className={classes.i+" "+classes.whatsapp} />
                     </div>
                 </div>
                 <div className={classes.rightSide}>

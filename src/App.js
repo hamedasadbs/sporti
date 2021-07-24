@@ -16,6 +16,9 @@ import "./App.scss";
 
 import mainLogo from "./Assets/Images/logofantas.png";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWindowClose, faChevronDown, faChevronLeft, faUserCircle, faShoppingBasket, faSearch, faBars } from '@fortawesome/free-solid-svg-icons'
+
 import React, { useState } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
@@ -105,17 +108,17 @@ const App=()=>{
           <Router>
           {isHiddenMenuShown &&
             <div className='hiddenMenu'>
-              <i onClick={closeHiddenMenu} className="closeHiddenMenu fa fa-close"></i>
+              <FontAwesomeIcon onClick={closeHiddenMenu} icon={faWindowClose} className="closeHiddenMenu" />
               <ul className='rightSide'>
                 <li className='account' onClick={openAccount}>
                   {isAccountOpen
                     ?
-                    <i className='fa fa-chevron-down'></i>
+                    <FontAwesomeIcon icon={faChevronDown} />
                     :
-                    <i className='fa fa-chevron-left'></i>
+                    <FontAwesomeIcon icon={faChevronLeft} />
                   }
                   <label> حساب من </label>
-                  <i className='fa fa-user-circle-o'></i>
+                  <FontAwesomeIcon icon={faUserCircle} className='account' />
                   {isAccountOpen &&
                     <ul>
                       <button className='login' onClick={showSingIn}>ورود</button>
@@ -126,16 +129,16 @@ const App=()=>{
                 <li className='basket' onClick={openBasket}>
                   {isBasketOpen
                     ?
-                    <i className='fa fa-chevron-down'></i>
+                    <FontAwesomeIcon icon={faChevronDown} />
                     :
-                    <i className='fa fa-chevron-left'></i>
+                    <FontAwesomeIcon icon={faChevronLeft} />
                   }
                   <label> سبد من </label>
-                  <i className='fa fa-shopping-cart basket'>
+                  <FontAwesomeIcon icon={faShoppingBasket} className='basket'>
                     <div className='carts'>
                       0
                     </div>
-                  </i>
+                  </FontAwesomeIcon>
                   {isBasketOpen &&
                     <ul>
                       <li>سبد شما خالی است!</li>
@@ -147,9 +150,9 @@ const App=()=>{
                   <Link to='/Clubs'>
                     {isProductsOpen
                       ?
-                      <i className='fa fa-chevron-down'></i>
+                      <FontAwesomeIcon icon={faChevronDown} />
                       :
-                      <i className='fa fa-chevron-left'></i>
+                      <FontAwesomeIcon icon={faChevronLeft} />
                     } محصولات</Link>
                     {isProductsOpen &&
                       <ul>
@@ -163,9 +166,9 @@ const App=()=>{
                   <Link to='/Judgment'>
                     {isProductTypeOpen
                       ?
-                      <i className='fa fa-chevron-down'></i>
+                      <FontAwesomeIcon icon={faChevronDown} />
                       :
-                      <i className='fa fa-chevron-left'></i>
+                      <FontAwesomeIcon icon={faChevronLeft} />
                     } نوع محصول</Link>
                     {isProductTypeOpen &&
                       <ul>
@@ -181,7 +184,7 @@ const App=()=>{
                 <li><Link to='/Matches' onClick={closeHiddenMenu}>ارتباط با ما</Link></li>
                 <li className='search'>
                   <button>
-                    <i className='fa fa-search'></i>
+                    <FontAwesomeIcon icon={faSearch} />
                   </button>
                   <input spellCheck='false' type='search' placeholder='جست و جوی محصول یا برند' />
                 </li>
@@ -192,7 +195,7 @@ const App=()=>{
               <nav className='topHeader'>
                 <ul className='rightSide'>
                   <li onClick={showHiddenMenu} onMouseOver={dropdownVerticalClass} onMouseOut={dropdownHorizontalClass} className={'dropdown '+dropdownClass}>
-                    <i className='fa fa-bars'></i>
+                    <FontAwesomeIcon className='i' icon={faBars} />
                   </li>
                   <div className='mainLogo'>
                     <Link to='/Home'>
@@ -203,14 +206,14 @@ const App=()=>{
                 </ul>
                 <ul className='middleSide'>
                   <button className='search'>
-                    <i className='fa fa-search'></i>
+                    <FontAwesomeIcon icon={faSearch} />
                   </button>
                   <input spellCheck='false' type='search' placeholder='جست و جوی محصول یا برند' />
                 </ul>
                 <ul className='leftSide'>
                   <li className='account'>
                     <label>حساب من</label>
-                    <i className='fa fa-user-circle-o'></i>
+                    <FontAwesomeIcon icon={faUserCircle} className='i' />
                     <div className='account'>
                       <Dropdown type='account' signInClick={()=>{closeForm(); showSingIn();}} signUpClick={()=>{closeForm(); showSingUp();}} />
                     </div>
@@ -220,7 +223,7 @@ const App=()=>{
                       0
                     </div>
                     <label>سبد من</label>
-                    <i className='fa fa-shopping-cart'></i>
+                    <FontAwesomeIcon icon={faShoppingBasket} className='i' />
                     <div className='basket'>
                       <Dropdown type='basket' />
                     </div>
@@ -238,10 +241,10 @@ const App=()=>{
                     <div className='productType'>
                       <Dropdown type='productType' />
                     </div>
-                    <Link to='/Matches'><i className='fa fa-chevron-down'></i> نوع محصول</Link>
+                    <Link to='/Matches'><FontAwesomeIcon icon={faChevronDown} /> نوع محصول</Link>
                   </li>
                   <li className='products'>
-                    <Link to='/DartiClub'><i className='fa fa-chevron-down'></i> محصولات</Link>
+                    <Link to='/DartiClub'><FontAwesomeIcon icon={faChevronDown} /> محصولات</Link>
                     <div className='products'>
                       <Dropdown type='products' />
                     </div>

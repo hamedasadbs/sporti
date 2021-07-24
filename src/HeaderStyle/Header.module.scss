@@ -117,7 +117,7 @@
             border-bottom: none;
           }
   
-          i{
+          .i{
             font-size: 25px;
             margin-left: 10px;
           }
@@ -129,7 +129,7 @@
           &:hover{
             background-color: rgb(230, 230, 230);
   
-            i{
+            .i{
               cursor: pointer;
               transition: all 0.3s;
             }
@@ -182,7 +182,7 @@
             z-index: 3;
             position: absolute;
             top: -2px;
-            left: 90px;
+            left: 100px;
             text-align: center;
             color: white;
           }
@@ -303,7 +303,7 @@
               cursor: pointer;
             }
     
-            i {
+            .i {
               @include dropdown;
               &:hover {
                 @include dropdownRotate(60px);
