@@ -7,7 +7,7 @@
   flex-direction: column;
   margin-bottom: 100px;
 
-  .title{
+  .title {
     width: 100%;
     background-color: darken($baseColor2, 35%);
     color: lightgray;
@@ -16,7 +16,7 @@
     font-family: $font;
   }
 
-  main{
+  main {
     display: flex;
     margin: 0 auto;
     flex-direction: row;
@@ -24,24 +24,23 @@
     width: 95%;
     z-index: 1;
 
-    .demo{
+    .demo {
       width: 100%;
 
-      .item{
+      .item {
         margin-bottom: 20px;
 
-        ul{
+        ul {
           list-style: none outside none;
           margin: auto;
         }
 
-        .contentSlider{
+        .contentSlider {
           h3 {
             margin: 0;
             padding: 70px 0;
           }
         }
-        
       }
     }
 
@@ -102,6 +101,9 @@
   }
 }
 
+@media only screen and (max-width: $big) {
+}
+
 @media only screen and (max-width: $small) {
   .lastProduct {
     main {
@@ -118,11 +120,3 @@
     }
   }
 }
-
-
-
-
-
-
-
-

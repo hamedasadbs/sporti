@@ -1,4 +1,4 @@
-@import '../../GlobalStyles.scss';
+@import "../../GlobalStyles.scss";
 
 .shopDetails {
   width: 100%;
@@ -61,7 +61,7 @@
         }
 
         .mainImage {
-          img{
+          img {
             width: 70px;
             height: 70px;
             object-fit: cover;
@@ -205,26 +205,26 @@
   }
 }
 
-@media only screen and (max-width: $small){
-  .shopDetails{
+@media only screen and (max-width: $small) {
+  .shopDetails {
     .background {
       left: -50%;
     }
 
-    main{
+    main {
       width: 100%;
       flex-direction: column;
       padding: 20px;
 
-      .pictures{
+      .pictures {
         width: 250px;
         height: 300px;
         margin: 30px auto;
 
-        .slideImages{
+        .slideImages {
           margin-left: -6px;
-          .mainImage{
-            img{
+          .mainImage {
+            img {
               margin: auto;
             }
           }

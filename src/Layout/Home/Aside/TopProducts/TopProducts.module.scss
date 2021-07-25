@@ -1,17 +1,42 @@
-@import '../../../../GlobalStyles.scss';
+@import "../../../../GlobalStyles.scss";
 
-.topProducts{
-    display: flex;
-    flex-direction: column;
-    margin: -250px 70px 80px 0px;
-    float: right;
+.topProducts {
+  display: flex;
+  flex-direction: column;
+  margin: -250px 75px 80px 0px;
+  float: right;
 
-    .title{
-        width: 100%;
-        background-color: darken($baseColor2, 35%);
-        color: lightgray;
-        padding: 7px;
-        text-align: center;
-        font-family: $font;
+  .title {
+    width: 100%;
+    background-color: darken($baseColor2, 35%);
+    color: lightgray;
+    padding: 7px;
+    text-align: center;
+    font-family: $font;
+  }
+}
+
+@media only screen and (max-width: $big) {
+  .topProducts {
+    flex-direction: row;
+    margin: 20px auto;
+
+    .title {
+      display: none;
     }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .topProducts {
+    margin: 20px auto;
+    margin-right: 5px;
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .topProducts {
+    margin: 20px auto;
+    margin-right: -20px;
+  }
 }

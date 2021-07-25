@@ -1,6 +1,6 @@
-@import './GlobalStyles.scss';
-@import './HeaderStyle/Header.module.scss';
-@import './HeaderStyle/HiddenMenu.module.scss';
+@import "./GlobalStyles.scss";
+@import "./HeaderStyle/Header.module.scss";
+@import "./HeaderStyle/HiddenMenu.module.scss";
 
 .body {
   display: flex;
@@ -40,8 +40,8 @@
 }
 
 @media only screen and (max-width: $big) {
-  .body{
-    .innerBody{
+  .body {
+    .innerBody {
       .main {
         width: 1000px;
       }
@@ -50,8 +50,8 @@
 }
 
 @media only screen and (max-width: $medium) {
-  .body{
-    .innerBody{
+  .body {
+    .innerBody {
       .main {
         width: 700px;
       }
@@ -60,8 +60,8 @@
 }
 
 @media only screen and (max-width: $small) {
-  .body{
-    .innerBody{
+  .body {
+    .innerBody {
       .main {
         width: 500px;
       }
@@ -70,8 +70,8 @@
 }
 
 @media only screen and (max-width: $verySmall) {
-  .body{
-    .innerBody{
+  .body {
+    .innerBody {
       .main {
         width: 280px;
       }

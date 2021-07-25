@@ -37,7 +37,7 @@ button:hover {
   &:hover {
     background-color: $backColorHovered;
     transition: all 0.5s;
-    color:$colorHovered;
+    color: $colorHovered;
   }
 
   &:not(:hover) {
@@ -64,18 +64,18 @@ button:hover {
   width: 100%;
   margin: auto;
   height: 40px;
-  border: 1px darken($baseColor2,10%) solid;
+  border: 1px darken($baseColor2, 10%) solid;
   border-radius: 0 5px 5px 0;
   border-left: none;
   text-align: right;
   font-size: 18px;
   font-family: $font;
 
-  &::placeholder{
+  &::placeholder {
     font-size: 15px;
   }
 
-  &:focus{
+  &:focus {
     outline: none;
   }
 }
@@ -116,5 +116,5 @@ button:hover {
 }
 
 @mixin shadow {
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }

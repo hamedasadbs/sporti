@@ -1,387 +1,379 @@
 .header {
-    margin: 0 100px;
+  margin: 0 100px;
+  position: relative;
+
+  nav {
+    width: 100%;
     position: relative;
-  
-    nav {
-      width: 100%;
+    display: flex;
+
+    ul {
+      li {
+        &:hover {
+          cursor: pointer;
+          a {
+            color: $baseColor3;
+          }
+        }
+        a {
+          color: $baseColor2;
+        }
+      }
+    }
+  }
+
+  .topHeader {
+    border-bottom: 1px $baseColor2 solid;
+    .rightSide {
+      font-family: $font;
+      color: #171a1d;
+      margin: auto;
+      z-index: 1;
+      margin-left: 0;
+      margin-top: 15px;
+
+      li {
+        margin: 0px 20px 0px 10px;
+        font-size: 14px;
+        display: inline-block;
+        padding: 0px 8px;
+        font-weight: 500;
+      }
+
+      li.dropdown {
+        display: none;
+      }
+
+      .mainLogo {
+        width: auto;
+        float: right;
+        padding-left: 30px;
+        margin: auto;
+
+        a {
+          display: flex;
+
+          img {
+            margin: 0px 0 0 -50px;
+            width: 110px;
+          }
+
+          span {
+            color: darken($baseColor2, 10%);
+            margin: auto 15px;
+            font-size: 23px;
+          }
+        }
+      }
+    }
+
+    .middleSide {
       position: relative;
+      margin: auto;
+      width: 300px;
       display: flex;
-  
-      ul {
-        li {
-          &:hover{
-            cursor: pointer;
-            a{
-              color: $baseColor3;
-            }
-          }
-          a {
-            color: $baseColor2;
-          }
-        }
+
+      input {
+        @include inp;
       }
-    }
-  
-    .topHeader{
-      border-bottom: 1px $baseColor2 solid;
-      .rightSide {
-        font-family: $font;
-        color: #171a1d;
-        float: right;
-        position: relative;
-        margin-top: 15px;
-        z-index: 1;
-        margin-left: 0;
-        
-        li {
-          margin: 0px 20px 0px 10px;
-          font-size: 14px;
-          display: inline-block;
-          padding: 0px 8px;
-          font-weight: 500;
+
+      button {
+        @include btn(white, black, lightgray, black);
+        width: 40px;
+        border-radius: 5px 0 0 5px;
+        border-right: none;
+
+        &:hover {
+          border-radius: 5px;
+          transition: all 0.5s;
         }
-  
-        li.dropdown {
-          display: none;
-        }
-  
-        .mainLogo {
-          width: auto;
-          float: right;
-          padding-left: 30px;
-          margin: auto;
-  
-          a {
-            display: flex;
-  
-            img {
-              margin: 0px 0 0 -50px;
-              width: 110px;
-            }
-  
-            span {
-              color: darken($baseColor2,10%);
-              margin: auto 15px;
-              font-size: 23px;
-            }
-          }
-        }
-      }
-  
-      .middleSide {
-        position: relative;
-        margin: auto;
-        width: 300px;
-        display: flex;
-        margin-right: 0;
-  
-        input{
-          @include inp;
-        }
-  
-        button{
-          @include btn(white,black,lightgray,black);
-          width: 40px;
+
+        &:not(:hover) {
+          background-color: white;
           border-radius: 5px 0 0 5px;
-          border-right: none;
-  
-          &:hover{
-            border-radius: 5px;
-            transition: all 0.5s;
-          }
-  
-          &:not(:hover){
-            background-color: white;
-            border-radius: 5px 0 0 5px;
-            transition: all 1s;
-          }
-        }
-      }
-  
-      .leftSide {
-        position: relative;
-        margin-top: auto;
-        display: flex;
-        margin-right: 0;
-  
-        li {
-          font-size: 18px;
-          display: inline;
-          margin: 10px;
-          padding: 20px;
-          position: relative;
-  
-          label{
-            font-family: $font;
-            color: darken($baseColor2,20%);
-            border-bottom: none;
-          }
-  
-          .i{
-            font-size: 25px;
-            margin-left: 10px;
-          }
-  
-          div:not(.carts){
-            display: none;
-          }
-  
-          &:hover{
-            background-color: rgb(230, 230, 230);
-  
-            .i{
-              cursor: pointer;
-              transition: all 0.3s;
-            }
-  
-            label{
-              cursor: pointer;
-            }
-          }
-  
-          &:not(:hover){
-            i{
-              color: black;
-              transition: all 1s;
-            }
-          }
-        }
-  
-        li.account{
-          &:hover{
-            div.account{
-              @include dropdownDiv(300px,140px,70px,0px);
-  
-              button{
-                width: 100%;
-                height: 50px;
-                font-family: $font;
-                font-size: 18px;
-                color: darken($baseColor2, 10%);
-                margin: 5px auto;
-                border-radius: 2px;
-              }
-  
-              button.login{
-                @include btn(darken($baseColor2, 30%),whitesmoke,lighten(darken($baseColor2, 30%), 5%),whitesmoke);
-              }
-  
-              button.register{
-                @include btn(white,darken($baseColor2, 20%),darken(white, 5%),darken($baseColor2, 20%));
-              }
-            }
-          }
-        }
-  
-        li.basket{
-          .carts{
-            background-color: $baseColor3;
-            width: 25px;
-            height: 25px;
-            border-radius: 50px;
-            z-index: 3;
-            position: absolute;
-            top: -2px;
-            left: 100px;
-            text-align: center;
-            color: white;
-          }
-  
-          &:hover{
-            div.basket{
-              @include dropdownDiv(300px,150px,70px,0px);
-  
-              span{
-                margin: 0;
-                position: relative;
-                top: 40%;
-                right: 0;
-              }
-            }
-          }
+          transition: all 1s;
         }
       }
     }
-  
-    .bottomHeader{
+
+    .leftSide {
+      position: relative;
+      margin-top: auto;
       display: flex;
-  
-      .rightSide {
-        font-family: $font;
-        float: right;
+      margin-right: 0;
+
+      li {
+        font-size: 18px;
+        display: inline;
+        margin: 10px;
+        padding: 20px;
         position: relative;
-        margin: auto;
-        z-index: 1;
-        margin-left: 0;
-        width: 100%;
-        display: flex;
-        border-bottom: 1px $baseColor2 solid;
-  
-        li {
-          margin: auto;
-          font-size: 14px;
-          display: inline-block;
-          padding: 0px 8px;
-          font-weight: 500;
-          padding: 10px 20px;
-          border-radius: 2px;
-          
-          div{
-            display: none;
+
+        label {
+          font-family: $font;
+          color: darken($baseColor2, 20%);
+          border-bottom: none;
+        }
+
+        .i {
+          font-size: 25px;
+          margin-left: 10px;
+        }
+
+        div:not(.carts) {
+          display: none;
+        }
+
+        &:hover {
+          background-color: rgb(230, 230, 230);
+
+          .i {
+            cursor: pointer;
+            transition: all 0.3s;
           }
-  
-          &:hover{
-            background-color: lightgrey;
-            transition: all 0.5s;
+
+          label {
+            cursor: pointer;
           }
-  
-          &:not(:hover){
-            background-color: transparent;
+        }
+
+        &:not(:hover) {
+          i {
+            color: black;
             transition: all 1s;
           }
         }
-  
-        li.products{
-          &:hover{
-            div.products{
-              @include dropdownDiv(100%,auto,45px,0px);
+      }
+
+      li.account {
+        &:hover {
+          div.account {
+            @include dropdownDiv(300px, 140px, 70px, 0px);
+
+            button {
+              width: 100%;
+              height: 50px;
+              font-family: $font;
+              font-size: 18px;
+              color: darken($baseColor2, 10%);
+              margin: 5px auto;
+              border-radius: 2px;
+            }
+
+            button.login {
+              @include btn(
+                darken($baseColor2, 30%),
+                whitesmoke,
+                lighten(darken($baseColor2, 30%), 5%),
+                whitesmoke
+              );
+            }
+
+            button.register {
+              @include btn(
+                white,
+                darken($baseColor2, 20%),
+                darken(white, 5%),
+                darken($baseColor2, 20%)
+              );
             }
           }
         }
-  
-        li.productType{
-          &:hover{
-            div.productType{
-              @include dropdownDiv(100%,auto,45px,0px);
-            }
-          }
+      }
+
+      li.basket {
+        .carts {
+          background-color: $baseColor3;
+          width: 25px;
+          height: 25px;
+          border-radius: 50px;
+          z-index: 3;
+          position: absolute;
+          top: -2px;
+          left: 100px;
+          text-align: center;
+          color: white;
         }
-  
-        li.home{
-          background-color: $baseColor1;
-        }
-  
-        li.dropdown {
-          display: none;
-        }
-  
-        .mainLogo {
-          width: auto;
-          float: right;
-          padding-left: 30px;
-          margin: 0px 0 0 20px;
-  
-          a {
-            display: flex;
-  
-            img {
-              margin: 0px 0 0 -50px;
-              width: 110px;
-            }
-  
+
+        &:hover {
+          div.basket {
+            @include dropdownDiv(300px, 150px, 70px, 0px);
+
             span {
-              color: darken($baseColor2,10%);
-              margin: 35px 0 0 20px;
-              font-size: 23px;
+              margin: 0;
+              position: relative;
+              top: 40%;
+              right: 0;
             }
           }
         }
       }
     }
   }
-  
-  @media only screen and (max-width: $big) {
-    header {
-      .topHeader{
-        margin-top: 10px;
-  
-        .rightSide{
-          li.dropdown {
-            display: initial !important;
-    
-            &:hover {
-              cursor: pointer;
-            }
-    
-            .i {
-              @include dropdown;
-              &:hover {
-                @include dropdownRotate(60px);
-              }
-            }
-          }
-  
-          .horizontal{
-            transition: all 0.1s;
-            transform: rotate(90deg);
-          }
-  
-          .vertical{
-            transition: all 0.1s;
-            transform: rotate(0deg);
-          }
-  
-          .mainLogo{
-            display: none !important;
+
+  .bottomHeader {
+    display: flex;
+
+    .rightSide {
+      font-family: $font;
+      float: right;
+      position: relative;
+      margin: auto;
+      z-index: 1;
+      margin-left: 0;
+      width: 100%;
+      display: flex;
+      border-bottom: 1px $baseColor2 solid;
+
+      li {
+        margin: auto;
+        font-size: 14px;
+        display: inline-block;
+        padding: 0px 8px;
+        font-weight: 500;
+        padding: 10px 20px;
+        border-radius: 2px;
+
+        div {
+          display: none;
+        }
+
+        &:hover {
+          background-color: lightgrey;
+          transition: all 0.5s;
+        }
+
+        &:not(:hover) {
+          background-color: transparent;
+          transition: all 1s;
+        }
+      }
+
+      li.products {
+        &:hover {
+          div.products {
+            @include dropdownDiv(100%, auto, 45px, 0px);
           }
         }
-  
-        .middleSide{
+      }
+
+      li.productType {
+        &:hover {
+          div.productType {
+            @include dropdownDiv(100%, auto, 45px, 0px);
+          }
+        }
+      }
+
+      li.home {
+        background-color: $baseColor1;
+      }
+
+      .mainLogo {
+        width: auto;
+        float: right;
+        padding-left: 30px;
+        margin: 0px 0 0 20px;
+
+        a {
+          display: flex;
+
+          img {
+            margin: 0px 0 0 -50px;
+            width: 110px;
+          }
+
+          span {
+            color: darken($baseColor2, 10%);
+            margin: 35px 0 0 20px;
+            font-size: 23px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $big) {
+  header {
+    .topHeader {
+      margin-top: 10px;
+
+      .rightSide {
+        li.dropdown {
+          display: initial !important;
+
+          &:hover {
+            cursor: pointer;
+          }
+
+          .i {
+            @include dropdown;
+            margin-top: 0px;
+          }
+        }
+
+        .mainLogo {
           display: none !important;
         }
       }
-      .bottomHeader{
-        .rightSide {
-          display: none !important;
+
+      .middleSide {
+        display: none !important;
+      }
+    }
+    .bottomHeader {
+      .rightSide {
+        display: none !important;
+      }
+
+      .leftSide {
+        li {
+          .signInButton {
+            display: none;
+          }
         }
-    
-        .leftSide {
-          li {
-            .signInButton {
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .header {
+    margin: 0 20px;
+
+    .topHeader {
+      .rightSide {
+        .mainLogo {
+          a {
+            span {
               display: none;
             }
           }
         }
-      }
-    }
-  }
-  
-  @media only screen and (max-width: $medium) {
-    .header {
-      margin: 0 20px;
-  
-      .topHeader{
-        .rightSide{
-          .mainLogo {
-            a {
-              span {
-                display: none;
-              }
-            }
-          }
-      
-          li.dropdown {
-            i {
-              margin-left: -50px;
-            }
+
+        li.dropdown {
+          .i {
+            margin-left: -20px;
           }
         }
       }
     }
   }
-  
-  @media only screen and (max-width: $small) {
-    .header {
-      margin: 0 20px;
-  
-      .topHeader{
-        border: none;
-  
-        .leftSide{
-          li{
-            display: none;
-          }
+}
+
+@media only screen and (max-width: $small) {
+  .header {
+    margin: 0 20px;
+
+    .topHeader {
+      border: none;
+
+      .leftSide {
+        li {
+          display: none;
         }
       }
     }
   }
+}

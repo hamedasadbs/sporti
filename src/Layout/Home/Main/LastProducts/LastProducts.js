@@ -15,7 +15,7 @@ const LastProduct = (props) => {
     $("#content-slider").lightSlider({
       loop: false,
       keyPress: true,
-      item: 4
+      item: 4,
     });
     $("#image-gallery").lightSlider({
       gallery: true,

@@ -1,4 +1,4 @@
-@import '../../../GlobalStyles.scss';
+@import "../../../GlobalStyles.scss";
 
 .sign {
   width: 500px;
@@ -11,9 +11,9 @@
   border-radius: 5px;
   display: flex;
   flex-direction: column;
-  box-shadow: 0px 0px 50px 1000px rgba(0,0,0,0.6);
+  box-shadow: 0px 0px 50px 1000px rgba(0, 0, 0, 0.6);
 
-  .title{
+  .title {
     width: 100%;
     padding: 10px;
     background-color: darken($baseColor2, 35%);
@@ -30,13 +30,13 @@
     }
   }
 
-  main{
+  main {
     display: flex;
     flex-direction: column;
     margin: 5px auto;
 
-    div{
-      .i{
+    div {
+      .i {
         font-size: 50px;
         position: absolute;
         z-index: 2;
@@ -46,7 +46,7 @@
         padding: 5px;
       }
 
-      input{
+      input {
         @include inp();
         width: 400px;
         margin: 10px auto;
@@ -55,53 +55,53 @@
         border-radius: 5px;
         text-align: left;
 
-        &::placeholder{
+        &::placeholder {
           text-align: center;
         }
       }
     }
 
-    div.name{
-      .i{
+    div.name {
+      .i {
         top: 57px;
       }
     }
 
-    div.signInUser{
-      .i{
+    div.signInUser {
+      .i {
         top: 57px;
       }
     }
 
-    div.signUpUser{
-      .i{
+    div.signUpUser {
+      .i {
         top: 117px;
       }
     }
 
-    div.email{
-      .i{
+    div.email {
+      .i {
         top: 177px;
         right: 37px;
       }
     }
 
-    div.signInPass{
-      .i{
+    div.signInPass {
+      .i {
         top: 117px;
         right: 37px;
       }
     }
 
-    div.signUpPass{
-      .i{
+    div.signUpPass {
+      .i {
         top: 237px;
         right: 37px;
       }
     }
 
-    button{
-      @include btn(white,darken($baseColor2,30%),$baseColor3,white);
+    button {
+      @include btn(white, darken($baseColor2, 30%), $baseColor3, white);
       padding: 10px;
       border-radius: 5px;
       font-size: 15px;
@@ -110,28 +110,69 @@
       @include shadow();
     }
 
-    .rememberMe{
+    .rememberMe {
       text-align: right;
       float: right;
       font-family: $font;
-      color: darken($baseColor2,30%);
+      color: darken($baseColor2, 30%);
       width: fit-content;
       display: inline;
 
-      input{
+      input {
         width: 20px;
       }
     }
 
-    a{
+    a {
       text-align: right;
       font-family: $font;
       color: rgb(14, 107, 107);
       padding-bottom: 5px;
       margin-bottom: 10px;
 
-      &:hover{
+      &:hover {
         color: $baseColor3;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $big) {
+  .sign {
+    left: 225px;
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .sign {
+    left: 100px;
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .sign {
+    left: 0px;
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .sign {
+    width: 450px;
+    left: -85px;
+
+    main {
+      div {
+        input {
+          width: 100%;
+        }
+
+        .i {
+          display: none;
+        }
+      }
+
+      a {
+        text-align: center;
       }
     }
   }

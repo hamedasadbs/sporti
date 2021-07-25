@@ -1,4 +1,4 @@
-@import '../../GlobalStyles.scss';
+@import "../../GlobalStyles.scss";
 
 .footer {
   width: 100%;
@@ -20,33 +20,33 @@
     width: 90%;
   }
 
-  main{
+  main {
     display: flex;
     flex-direction: row;
 
     .rightSide {
       width: 60%;
-      height: 100%;
       position: relative;
-  
+
       .subjects {
         width: 600px;
         font-family: $font;
         font-size: 14px;
         float: right;
-        margin-right: 150px;
+        margin-right: 100px;
         text-align: right;
         color: $baseColor2;
         font-weight: 100;
         line-height: 30px;
 
-        tbody{
-          tr{
-            td{
-              a{
-                &:hover{
+        tbody {
+          float: right;
+          tr {
+            td {
+              a {
+                &:hover {
                   cursor: pointer;
-                  color:$baseColor3;
+                  color: $baseColor3;
                 }
               }
             }
@@ -54,12 +54,11 @@
         }
       }
     }
-  
+
     .leftSide {
       width: 40%;
-      height: 100%;
       position: relative;
-  
+
       label {
         text-align: right;
         font-size: 17px;
@@ -70,7 +69,7 @@
         position: relative;
         margin: 15px 0;
       }
-  
+
       .notificationForm {
         text-align: right;
         font-size: 17px;
@@ -81,59 +80,58 @@
         position: relative;
         margin: 15px 0;
       }
-  
+
       .socialMedias {
         float: right;
-    
+
         .i {
           font-size: 40px;
           margin: 0 10px;
-          color: darken($baseColor2,20%);
+          color: darken($baseColor2, 20%);
 
-          &:hover{
+          &:hover {
             cursor: pointer;
             transition: all 0.2s;
           }
 
-          &:not(:hover){
-            color: darken($baseColor2,20%);
+          &:not(:hover) {
+            color: darken($baseColor2, 20%);
             transition: all 0.2s;
           }
         }
 
-        .facebook{
-          &:hover{
+        .facebook {
+          &:hover {
             color: rgb(55, 55, 248);
           }
         }
 
-        .telegram{
-          &:hover{
+        .telegram {
+          &:hover {
             color: rgb(55, 161, 248);
           }
         }
 
-        .instagram{
-          &:hover{
+        .instagram {
+          &:hover {
             color: rgb(255, 0, 85);
           }
         }
 
-        .google{
-          &:hover{
+        .google {
+          &:hover {
             color: rgb(216, 27, 27);
           }
         }
 
-        .whatsapp{
-          &:hover{
+        .whatsapp {
+          &:hover {
             color: rgb(0, 172, 23);
           }
         }
       }
     }
   }
-  
 
   .copyRight {
     text-align: center;
@@ -147,61 +145,40 @@
   }
 }
 
+@media only screen and (max-width: $medium) {
+  .footer {
+    main {
+      .rightSide {
+        width: 50%;
+      }
 
-@media only screen and (max-width: $big){
-  .footer{
-    .rightSide{
-      .subjects{
-        width: 400px;
-        margin-right: 100px;
+      .leftSide {
+        width: 50%;
+        padding-left: 50px;
       }
     }
   }
 }
 
-@media only screen and (max-width: $medium){
+@media only screen and (max-width: $small) {
   .footer {
-    height: 600px;
+    .title {
+      font-size: 15px;
+    }
+    main {
+      .rightSide {
+        width: 40%;
 
-    .rightSide{
-      .subjects{
-        width: 100%;
-        margin-right: 0px;
-        text-align: center;
+        .subjects {
+          margin-right: 30px;
+          width: 100%;
+        }
       }
-    }
 
-    .leftSide {
-      width: 100%;
-      margin-top: -250px;
-      box-sizing: border-box;
-      padding-right: 20px;
-    }
-
-    .copyRight {
-      top: 1000px;
-    }
-  }
-}
-
-@media only screen and (max-width: $small){
-  .footer {
-    margin-top: 50px;
-
-    .rightSide{
-      width: 100%;
-    }
-
-    .footerTitle {
-      text-align: center;
-      margin: 25px auto;
-      padding-bottom: 30px;
-      font-family: $font;
-      font-size: 20px;
-      font-weight: 100;
-      color: $baseColor2;
-      border-bottom: 1px $baseColor2 solid;
-      width: 100%;
+      .leftSide {
+        padding-left: 0px;
+        width: 60%;
+      }
     }
   }
 }
