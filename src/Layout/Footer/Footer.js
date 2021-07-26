@@ -19,7 +19,7 @@ const Footer = () => (
       </h2>
       <main>
         <div className={classes.leftSide}>
-          <label>شماره تماس : ۰۲۱۸۸۵۴۸۹۵۵ (ساعت ۱۲- ۱۷ شنبه تا چهارشنبه)</label>
+          <label>شماره تماس : ۰۲۱۸۸۵۴۸۹۵۵ (ساعت ۱۲-۱۷ شنبه تا چهارشنبه)</label>
           <label>فانتزیما در شبکه های اجتماعی</label>
           <div className={classes.socialMedias}>
             <FontAwesomeIcon

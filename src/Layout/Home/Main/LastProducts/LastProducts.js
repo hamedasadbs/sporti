@@ -10,26 +10,35 @@ import $ from "jquery";
 
 const LastProduct = (props) => {
   const [matches, setMatches] = useState([]);
+  const [items, setItems] = useState(4);
 
   $(document).ready(function () {
     $("#content-slider").lightSlider({
-      loop: false,
-      keyPress: true,
-      item: 4,
+      item: items,
     });
     $("#image-gallery").lightSlider({
-      gallery: true,
-      item: 3,
-      thumbItem: 10,
-      slideMargin: 0,
-      speed: 400,
-      auto: false,
-      loop: true,
       onSliderLoad: function () {
         $("#image-gallery").removeClass("cS-hidden");
       },
     });
   });
+  
+  const normal = window.matchMedia("(max-width: 1800px) and (min-width: 1300px)")
+  const big = window.matchMedia("(max-width: 1300px) and (min-width: 1005px)")
+  const medium = window.matchMedia("(max-width: 1005px) and (min-width: 705px)")
+  const small = window.matchMedia("(max-width: 705px) and (min-width: 605px)")
+
+  const checkScreenSize=()=>{
+    if(normal.matches)
+      setItems(4)
+    if(big.matches)
+      setItems(3)
+    if(medium.matches)
+      setItems(2)
+    if(small.matches)
+      setItems(1)
+  }
+  
 
   useEffect(() => {
     axios
@@ -41,6 +50,8 @@ const LastProduct = (props) => {
       .catch((err) => {
         alert(err);
       });
+
+      checkScreenSize();
   }, []);
 
   let picture = null;

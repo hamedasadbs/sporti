@@ -321,7 +321,7 @@ const App = () => {
                 <TopProducts />
                 {isSignUpShown && <Sign type="signUp" close={closeForm} />}
                 {isSignInShown && <Sign type="signIn" close={closeForm} />}
-                <LastProducts title="آخرین کتاب ها" />
+                <LastProducts title="آخرین محصولات" />
               </Route>
             </Switch>
           </Router>

@@ -10,14 +10,15 @@
 
   .title {
     text-align: right;
-    margin: 25px 60px;
+    margin: 25px auto;
     padding-bottom: 30px;
+    padding-right: 20px;
     font-family: $font;
     font-size: 20px;
     font-weight: 100;
     color: $baseColor2;
     border-bottom: 1px $baseColor2 solid;
-    width: 90%;
+    width: 100%;
   }
 
   main {
@@ -178,6 +179,22 @@
       .leftSide {
         padding-left: 0px;
         width: 60%;
+      }
+    }
+  }
+}
+
+
+@media only screen and (max-width: $verySmall) {
+  .footer {
+    main {
+      flex-direction: column;
+      margin-right: 20px;
+
+      .rightSide,
+      .leftSide {
+        width: 100%;
+        margin-bottom: 40px;
       }
     }
   }

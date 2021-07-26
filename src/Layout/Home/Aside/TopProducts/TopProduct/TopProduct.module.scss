@@ -90,3 +90,14 @@
     }
   }
 }
+
+@media only screen and (max-width: $verySmall) {
+  .picture {
+    .mainImage {
+      img {
+        width: 120px;
+        height: 85px;
+      }
+    }
+  }
+}

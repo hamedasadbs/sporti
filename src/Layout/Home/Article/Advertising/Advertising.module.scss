@@ -105,3 +105,18 @@
     }
   }
 }
+
+@media only screen and (max-width: $verySmall) {
+  .slideshowContainer {
+    width: 500px;
+    margin-top: 50px;
+    margin-left: -110px;
+
+    .mySlides {
+      img {
+        width: 500px;
+        height: 282px;
+      }
+    }
+  }
+}

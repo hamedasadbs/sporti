@@ -68,8 +68,8 @@
     }
 
     .middleSide {
-      position: relative;
       margin: auto;
+      margin-top: 50px;
       width: 300px;
       display: flex;
 
@@ -98,7 +98,7 @@
 
     .leftSide {
       position: relative;
-      margin-top: auto;
+      margin-top: 20px;
       display: flex;
       margin-right: 0;
 
@@ -309,7 +309,7 @@
 
           .i {
             @include dropdown;
-            margin-top: 0px;
+            margin-top: 20px;
           }
         }
 
@@ -372,6 +372,28 @@
       .leftSide {
         li {
           display: none;
+        }
+      }
+
+      .rightSide{
+        li.dropdown{
+          .i{
+            margin-top: 0px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .header {
+    .topHeader {
+      .rightSide {
+        li.dropdown {
+          .i {
+            margin-left: -150px;
+          }
         }
       }
     }
