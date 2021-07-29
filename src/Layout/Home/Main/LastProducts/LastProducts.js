@@ -11,6 +11,20 @@ import $ from "jquery";
 const LastProduct = (props) => {
   const [matches, setMatches] = useState([]);
   const [items, setItems] = useState(4);
+  const url='http://localhost/fantasima/index.php'
+  const [productsData, setProductsData] = useState([]);
+
+  useEffect(() => {
+
+    axios({
+      url:url,
+      method:'push',
+      data:2
+    })
+    .then(res => setProductsData(res.data));
+
+    checkScreenSize();
+  },[]);
 
   $(document).ready(function () {
     $("#content-slider").lightSlider({
@@ -38,25 +52,10 @@ const LastProduct = (props) => {
     if(small.matches)
       setItems(1)
   }
-  
-
-  useEffect(() => {
-    axios
-      .get("./test.json")
-      .then((res) => {
-        const match = res.data.matches;
-        setMatches(match);
-      })
-      .catch((err) => {
-        alert(err);
-      });
-
-      checkScreenSize();
-  }, []);
 
   let picture = null;
 
-  picture = matches.map((pic) => {
+  picture = productsData.map((pic) => {
     return (
       <li>
         <div key={pic.id} className={classes.picture}>
@@ -65,7 +64,7 @@ const LastProduct = (props) => {
           </div>
           <div className={classes.caption}>
             <h2>{pic.price} تومان</h2>
-            <p>{pic.text}</p>
+            <p>{pic.name}</p>
           </div>
           <button className={classes.details}>مشاهده جزئیات</button>
         </div>

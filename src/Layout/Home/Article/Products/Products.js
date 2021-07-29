@@ -5,14 +5,19 @@ import classes from "./Products.module.scss";
 import Product from "./Product/Product";
 
 const Products = () => {
+  const url='http://localhost/fantasima/index.php'
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost/fantasima/index.php'/*,{
-      data: {name:'hamed'}
-    }*/)
+
+    axios({
+      url:url,
+      method:'push',
+      data:1
+    })
     .then(res => setProductsData(res.data));
-  }, []);
+
+  },[]);
 
   return (
     <>
