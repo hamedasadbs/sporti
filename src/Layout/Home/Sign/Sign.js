@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Sign.module.scss";
-import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faKey,
@@ -10,33 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sign = (props) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
 
-  const changeUserHandler = (e) => {
-    setUsername(e.target.value);
-  };
-
-  const changePassHandler = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const signIn = () => {
-    axios
-      .get(
-        "http://176.9.197.36:7011/api/User/login?userName=" +
-          username +
-          "&password=" +
-          password +
-          "clientID=panel"
-      )
-      .then((res) => {
-        alert(res.data);
-      })
-      .catch((err) => {
-        alert(err);
-      }, []);
-  };
   const main =
     props.type == "signIn" ? (
       <>
@@ -71,7 +44,8 @@ const Sign = (props) => {
           </a>
         </main>
       </>
-    ) : (
+    ) :
+    (
       <>
         <span className={classes.title}>
           <FontAwesomeIcon
@@ -105,7 +79,7 @@ const Sign = (props) => {
           <button>ثبت</button>
         </main>
       </>
-    );
+    )
 
   return (
     <>

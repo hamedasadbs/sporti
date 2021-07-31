@@ -9,18 +9,17 @@ import axios from "axios";
 import $ from "jquery";
 
 const LastProduct = (props) => {
-  const [matches, setMatches] = useState([]);
   const [items, setItems] = useState(4);
   const url='http://localhost/fantasima/index.php'
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
-
-    axios({
-      url:url,
-      method:'push',
-      data:2
-    })
+    
+    axios.post(url,JSON.stringify({
+      method:'select',
+      table:'products',
+      type:'normal'
+    }))
     .then(res => setProductsData(res.data));
 
     checkScreenSize();
@@ -60,7 +59,7 @@ const LastProduct = (props) => {
       <li>
         <div key={pic.id} className={classes.picture}>
           <div className={classes.mainImage}>
-            <img src={src} alt="Cinque Terre" width="533" height="300" />
+            <img src={`data:image/jpg;charset=utf8;base64,${pic.image}`} alt="Cinque Terre" width="533" height="300" />
           </div>
           <div className={classes.caption}>
             <h2>{pic.price} تومان</h2>

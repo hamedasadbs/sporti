@@ -10,11 +10,10 @@ const Products = () => {
 
   useEffect(() => {
 
-    axios({
-      url:url,
-      method:'push',
-      data:1
-    })
+    axios.post(url,JSON.stringify({
+      method:'select',
+      table:'category'
+    }))
     .then(res => setProductsData(res.data));
 
   },[]);

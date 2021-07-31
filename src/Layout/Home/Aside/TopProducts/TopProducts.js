@@ -1,20 +1,28 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import classes from "./TopProducts.module.scss";
 
+import axios from "axios";
 import TopProduct from "./TopProduct/TopProduct";
 
 const TopProducts = () => {
-  const labels = [
-    { id: 1, price: 200000, text: "فانتزیبوک" },
-    { id: 2, price: 250000, text: "اکشن فیگور" },
-    { id: 3, price: 250000, text: "جاکلیدی" },
-  ];
+  const [topProducts, setTopProducts] = useState([]);
+  const url='http://localhost/fantasima/index.php'
+
+  useEffect(() => {
+    
+    axios.post(url,JSON.stringify({
+      method:'select',
+      table:'products',
+      type:'conditional'
+    }))
+    .then(res => setTopProducts(res.data));
+  },[]);
 
   return (
     <>
       <div className={classes.topProducts}>
         <span className={classes.title}>محصولات ویژه</span>
-        {labels.map((lab) => {
+        {topProducts.map((lab) => {
           return <TopProduct label={lab.text} price={lab.price} />;
         })}
       </div>
