@@ -1,25 +1,73 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const Dropdown = (props) => {
-  const [dd, setDd] = useState(null);
+  const url = "http://localhost/fantasima/index.php";
+  const [productsData, setProductsData] = useState([]);
+  const [productTypeData, setProductTypeData] = useState([]);
 
   useEffect(() => {
-    if (props.type == "basket") setDd(<span>سبد شما خالی است</span>);
-    else if (props.type == "account")
-      setDd(
-        <>
-          <button className="login" onClick={props.signInClick}>
-            ورود
-          </button>
-          <button className="register" onClick={props.signUpClick}>
-            عضویت
-          </button>
-        </>
-      );
-    else if (props.type == "products") setDd("products");
-    else if (props.type == "productType") setDd("product type");
+    axios
+      .post(
+        url,
+        JSON.stringify({
+          method: "select",
+          table: "product_list",
+          type: "normal",
+        })
+      )
+      .then((res) => setProductsData(res.data));
+
+    axios
+      .post(
+        url,
+        JSON.stringify({
+          method: "select",
+          table: "category",
+          type: "normal",
+        })
+      )
+      .then((res) => setProductTypeData(res.data));
   }, []);
-  return <>{dd}</>;
+
+  const dropdown =
+    props.type == "basket" ? (
+      <span>سبد شما خالی است</span>
+    ) : props.type == "account" ? (
+      <>
+        <button className="login" onClick={props.signInClick}>
+          ورود
+        </button>
+        <button className="register" onClick={props.signUpClick}>
+          عضویت
+        </button>
+      </>
+    ) : props.type == "products" ? (
+      <>
+        <ul>
+          {productsData.map((res) => {
+            return (
+              <li>
+                {res.farsi_label}
+                <ul>
+                  {res.english_label}
+                </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    ) : props.type == "productType" ? (
+      <>
+        <ul>
+          {productTypeData.map((res) => {
+            return <li>{res.label}</li>;
+          })}
+        </ul>
+      </>
+    ) : null;
+
+  return <>{dropdown}</>;
 };
 
 export default Dropdown;

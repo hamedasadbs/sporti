@@ -12,7 +12,8 @@ const Products = () => {
 
     axios.post(url,JSON.stringify({
       method:'select',
-      table:'category'
+      table:'category',
+      type:'normal'
     }))
     .then(res => setProductsData(res.data));
 

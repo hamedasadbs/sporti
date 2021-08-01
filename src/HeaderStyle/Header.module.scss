@@ -253,6 +253,32 @@
         &:hover {
           div.products {
             @include dropdownDiv(100%, auto, 45px, 0px);
+
+            ul{
+              width: 100%;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              padding-right: 40px;
+
+              li{
+                border-radius: 5px;
+                font-size: 10px;
+                line-height: 15px;
+                text-align: right;
+                width: 200px;
+                margin: 5px auto;
+
+                &:hover{
+                  background-color: white;
+                }
+
+                ul{
+                  text-align: left;
+                  color: $baseColor2;
+                }
+              }
+            }
           }
         }
       }
@@ -261,6 +287,28 @@
         &:hover {
           div.productType {
             @include dropdownDiv(100%, auto, 45px, 0px);
+
+            ul{
+              width: 100%;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: center;
+              padding-right: 40px;
+
+              li{
+                border-radius: 5px;
+                font-size: 10px;
+                line-height: 15px;
+                text-align: center;
+                width: 150px;
+                margin: 5px auto;
+
+                &:hover{
+                  cursor: pointer;
+                  background-color: white;
+                }
+              }
+            }
           }
         }
       }

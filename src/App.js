@@ -27,10 +27,14 @@ import {
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
+  const url = "http://localhost/fantasima/index.php";
+  const [productsData, setProductsData] = useState([]);
+  const [productTypeData, setProductTypeData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [isSignUpShown, setIsSignUpShown] = useState(false);
   const [isSignInShown, setIsSignInShown] = useState(false);
@@ -42,10 +46,12 @@ const App = () => {
 
   const showHiddenMenu = () => {
     setIsHiddenMenuShown(true);
+    window.scrollTo(0, 0);
   };
 
   const closeHiddenMenu = () => {
     setIsHiddenMenuShown(false);
+    window.onscroll = function () {};
   };
 
   const disableScroll = () => {
@@ -58,11 +64,13 @@ const App = () => {
 
   const showSingIn = () => {
     setIsSignInShown(true);
+    window.scrollTo(0, 0);
     disableScroll();
   };
 
   const showSingUp = () => {
     setIsSignUpShown(true);
+    window.scrollTo(0, 0);
     disableScroll();
   };
 
@@ -91,6 +99,30 @@ const App = () => {
     if (isBasketOpen) setIsBasketOpen(false);
     else setIsBasketOpen(true);
   };
+
+  useEffect(() => {
+    axios
+      .post(
+        url,
+        JSON.stringify({
+          method: "select",
+          table: "product_list",
+          type: "normal",
+        })
+      )
+      .then((res) => setProductsData(res.data));
+
+    axios
+      .post(
+        url,
+        JSON.stringify({
+          method: "select",
+          table: "category",
+          type: "normal",
+        })
+      )
+      .then((res) => setProductTypeData(res.data));
+  }, []);
 
   return (
     <div className="body">
@@ -141,12 +173,12 @@ const App = () => {
                     )}
                   </li>
                   <li>
-                    <Link to="/Shopping" onClick={closeHiddenMenu}>
+                    <Link to="/#" onClick={closeHiddenMenu}>
                       خانه
                     </Link>
                   </li>
                   <li className="products" onClick={openProducts}>
-                    <Link to="/Clubs">
+                    <Link to="/#">
                       {isProductsOpen ? (
                         <FontAwesomeIcon icon={faChevronDown} />
                       ) : (
@@ -156,14 +188,16 @@ const App = () => {
                     </Link>
                     {isProductsOpen && (
                       <ul>
-                        <li>dcvf</li>
-                        <li>uyj</li>
-                        <li>oil</li>
+                        {productsData.map((res) => {
+                          return (
+                            <li>{res.farsi_label} -</li>
+                          );
+                        })}
                       </ul>
                     )}
                   </li>
                   <li className="productType" onClick={openProductType}>
-                    <Link to="/Judgment">
+                    <Link to="/#">
                       {isProductTypeOpen ? (
                         <FontAwesomeIcon icon={faChevronDown} />
                       ) : (
@@ -173,29 +207,29 @@ const App = () => {
                     </Link>
                     {isProductTypeOpen && (
                       <ul>
-                        <li>dcvf</li>
-                        <li>uyj</li>
-                        <li>oil</li>
+                        {productTypeData.map((res) => {
+                          return <li>{res.label} -</li>;
+                        })}
                       </ul>
                     )}
                   </li>
                   <li>
-                    <Link to="/Matches" onClick={closeHiddenMenu}>
+                    <Link to="/fantesiart" onClick={closeHiddenMenu}>
                       فانتزیآرت
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Matches" onClick={closeHiddenMenu}>
+                    <Link to="/fantesiblog" onClick={closeHiddenMenu}>
                       فانتزیبلاگ
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Matches" onClick={closeHiddenMenu}>
+                    <Link to="/about" onClick={closeHiddenMenu}>
                       درباره ما
                     </Link>
                   </li>
                   <li>
-                    <Link to="/Matches" onClick={closeHiddenMenu}>
+                    <Link to="/contact" onClick={closeHiddenMenu}>
                       ارتباط با ما
                     </Link>
                   </li>
@@ -267,27 +301,27 @@ const App = () => {
               <nav className="bottomHeader">
                 <ul className="rightSide">
                   <li>
-                    <Link to="/Shopping">ارتباط با ما</Link>
+                    <Link to="/contact">ارتباط با ما</Link>
                   </li>
                   <li>
-                    <Link to="/Shopping">درباره ما</Link>
+                    <Link to="/about">درباره ما</Link>
                   </li>
                   <li>
-                    <Link to="/Clubs">فانتزیبلاگ</Link>
+                    <Link to="/fantesiblog">فانتزیبلاگ</Link>
                   </li>
                   <li>
-                    <Link to="/Judgment">فانتزیآرت</Link>
+                    <Link to="/fantesiart">فانتزیآرت</Link>
                   </li>
                   <li className="productType">
                     <div className="productType">
                       <Dropdown type="productType" />
                     </div>
-                    <Link to="/Matches">
+                    <Link to="/#">
                       <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
                     </Link>
                   </li>
                   <li className="products">
-                    <Link to="/DartiClub">
+                    <Link to="/#">
                       <FontAwesomeIcon icon={faChevronDown} /> محصولات
                     </Link>
                     <div className="products">
@@ -295,7 +329,7 @@ const App = () => {
                     </div>
                   </li>
                   <li className="home">
-                    <Link to="/Leagues">خانه</Link>
+                    <Link to="/#">خانه</Link>
                   </li>
                 </ul>
               </nav>

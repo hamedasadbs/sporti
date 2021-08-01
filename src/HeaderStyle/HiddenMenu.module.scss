@@ -13,6 +13,7 @@
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
     border-bottom: 1px solid $baseColor2;
     display: initial;
+    box-shadow: 0px 0px 50px 3000px rgba(0, 0, 0, 0.6);
 
     .closeHiddenMenu {
       @include closeBtn(45px);
@@ -99,6 +100,35 @@
             background-color: white;
             border-radius: 5px 0 0 5px;
             transition: all 1s;
+          }
+        }
+      }
+
+      li.products,
+      li.productType {
+        ul{
+          width: 300px;
+          height: 300px;
+          overflow-y: scroll;
+
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: lighten($baseColor2,25%); 
+            border-radius: 10px;
+          }
+          
+          &::-webkit-scrollbar-thumb:hover {
+            background: $baseColor2;
+          }
+
+          li{
+            &:hover{
+              cursor: pointer;
+              color: $baseColor3;
+            }
           }
         }
       }
