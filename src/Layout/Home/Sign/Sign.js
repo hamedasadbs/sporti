@@ -9,7 +9,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sign = (props) => {
-
   const main =
     props.type == "signIn" ? (
       <>
@@ -44,8 +43,7 @@ const Sign = (props) => {
           </a>
         </main>
       </>
-    ) :
-    (
+    ) : (
       <>
         <span className={classes.title}>
           <FontAwesomeIcon
@@ -79,7 +77,7 @@ const Sign = (props) => {
           <button>ثبت</button>
         </main>
       </>
-    )
+    );
 
   return (
     <>

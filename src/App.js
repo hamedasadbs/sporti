@@ -1,6 +1,6 @@
 import Advertising from "../src/Layout/Home/Article/Advertising/Advertising";
 import Products from "../src/Layout/Home/Article/Products/Products";
-import Notice from "../src/Layout/Home/Aside/Notice/Notice";
+import Bulletin from "../src/Layout/Home/Aside/Bulletin/Bulletin";
 import TopProducts from "../src/Layout/Home/Aside/TopProducts/TopProducts";
 import LastProducts from "../src/Layout/Home/Main/LastProducts/LastProducts";
 
@@ -9,8 +9,8 @@ import Dropdown from "./Tool/Dropdown/Dropdown";
 import Footer from "../src/Layout/Footer/Footer";
 
 import Sign from "../src/Layout/Home/Sign/Sign";
-import Shopping from "../src/Shopping/Shopping";
-import ShopDetails from "../src/Shopping/shopDetails/shopDetails";
+import Gallery from "../src/Layout/Gallery/Gallery";
+import Notice from "../src/Layout/Notice/Notice";
 
 import "./App.scss";
 
@@ -189,9 +189,7 @@ const App = () => {
                     {isProductsOpen && (
                       <ul>
                         {productsData.map((res) => {
-                          return (
-                            <li>{res.farsi_label} -</li>
-                          );
+                          return <li>{res.farsi_label} -</li>;
                         })}
                       </ul>
                     )}
@@ -253,7 +251,7 @@ const App = () => {
                     <FontAwesomeIcon className="i" icon={faBars} />
                   </li>
                   <div className="mainLogo">
-                    <Link to="/Home">
+                    <Link to="/about">
                       <img src={mainLogo} alt="logo" />
                       <span>fantasima</span>
                     </Link>
@@ -307,10 +305,10 @@ const App = () => {
                     <Link to="/about">درباره ما</Link>
                   </li>
                   <li>
-                    <Link to="/fantesiblog">فانتزیبلاگ</Link>
+                    <Link to="/fantasiblog">فانتزیبلاگ</Link>
                   </li>
                   <li>
-                    <Link to="/fantesiart">فانتزیآرت</Link>
+                    <Link to="/fantasiart">فانتزیآرت</Link>
                   </li>
                   <li className="productType">
                     <div className="productType">
@@ -335,10 +333,28 @@ const App = () => {
               </nav>
             </header>
             <Switch>
-              <Route path="/ShoppingDetails" component={ShopDetails} />
+              <Route path="/fantasiart">
+                <Gallery title="fantasiart" />
+              </Route>
 
-              <Route path="/Shopping">
-                <Shopping />
+              {productTypeData.map((res) => {
+                return (
+                  <Route path={`/category/${res.name}`}>
+                    <Gallery title={res.label} />
+                  </Route>
+                );
+              })}
+
+              <Route path="/fantasiblog">
+                <Notice title="fantasiblog" />
+              </Route>
+
+              <Route path="/about">
+                <Notice title="about" />
+              </Route>
+
+              <Route path="/contact">
+                <Notice title="contact" />
               </Route>
 
               <Route path="/">
@@ -351,7 +367,7 @@ const App = () => {
                   }}
                 />
                 <Products />
-                <Notice />
+                <Bulletin />
                 <TopProducts />
                 {isSignUpShown && <Sign type="signUp" close={closeForm} />}
                 {isSignInShown && <Sign type="signIn" close={closeForm} />}

@@ -10,20 +10,23 @@ import $ from "jquery";
 
 const LastProduct = (props) => {
   const [items, setItems] = useState(4);
-  const url='http://localhost/fantasima/index.php'
+  const url = "http://localhost/fantasima/index.php";
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
-    
-    axios.post(url,JSON.stringify({
-      method:'select',
-      table:'products',
-      type:'normal'
-    }))
-    .then(res => setProductsData(res.data));
+    axios
+      .post(
+        url,
+        JSON.stringify({
+          method: "select",
+          table: "products",
+          type: "normal",
+        })
+      )
+      .then((res) => setProductsData(res.data));
 
     checkScreenSize();
-  },[]);
+  }, []);
 
   $(document).ready(function () {
     $("#content-slider").lightSlider({
@@ -35,22 +38,22 @@ const LastProduct = (props) => {
       },
     });
   });
-  
-  const normal = window.matchMedia("(max-width: 1800px) and (min-width: 1300px)")
-  const big = window.matchMedia("(max-width: 1300px) and (min-width: 1005px)")
-  const medium = window.matchMedia("(max-width: 1005px) and (min-width: 705px)")
-  const small = window.matchMedia("(max-width: 705px) and (min-width: 605px)")
 
-  const checkScreenSize=()=>{
-    if(normal.matches)
-      setItems(4)
-    if(big.matches)
-      setItems(3)
-    if(medium.matches)
-      setItems(2)
-    if(small.matches)
-      setItems(1)
-  }
+  const normal = window.matchMedia(
+    "(max-width: 1800px) and (min-width: 1300px)"
+  );
+  const big = window.matchMedia("(max-width: 1300px) and (min-width: 1005px)");
+  const medium = window.matchMedia(
+    "(max-width: 1005px) and (min-width: 705px)"
+  );
+  const small = window.matchMedia("(max-width: 705px) and (min-width: 605px)");
+
+  const checkScreenSize = () => {
+    if (normal.matches) setItems(4);
+    if (big.matches) setItems(3);
+    if (medium.matches) setItems(2);
+    if (small.matches) setItems(1);
+  };
 
   let picture = null;
 
@@ -59,7 +62,12 @@ const LastProduct = (props) => {
       <li>
         <div key={pic.id} className={classes.picture}>
           <div className={classes.mainImage}>
-            <img src={`data:image/jpg;charset=utf8;base64,${pic.image}`} alt="Cinque Terre" width="533" height="300" />
+            <img
+              src={`data:image/jpg;charset=utf8;base64,${pic.image}`}
+              alt="Cinque Terre"
+              width="533"
+              height="300"
+            />
           </div>
           <div className={classes.caption}>
             <h2>{pic.price} تومان</h2>

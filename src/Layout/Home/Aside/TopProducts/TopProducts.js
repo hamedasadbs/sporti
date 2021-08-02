@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import classes from "./TopProducts.module.scss";
 
 import axios from "axios";
@@ -6,17 +6,20 @@ import TopProduct from "./TopProduct/TopProduct";
 
 const TopProducts = () => {
   const [topProducts, setTopProducts] = useState([]);
-  const url='http://localhost/fantasima/index.php'
+  const url = "http://localhost/fantasima/index.php";
 
   useEffect(() => {
-    
-    axios.post(url,JSON.stringify({
-      method:'select',
-      table:'products',
-      type:'conditional'
-    }))
-    .then(res => setTopProducts(res.data));
-  },[]);
+    axios
+      .post(
+        url,
+        JSON.stringify({
+          method: "select",
+          table: "products",
+          type: "conditional",
+        })
+      )
+      .then((res) => setTopProducts(res.data));
+  }, []);
 
   return (
     <>

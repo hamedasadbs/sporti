@@ -1,14 +1,14 @@
 import React from "react";
-import classes from "./Notice.module.scss";
+import classes from "./Bulletin.module.scss";
 import src from "../../../../Assets/Images/free-delivery.png";
 
-const Notice = (props) => (
+const Bulletin = (props) => (
   <>
-    <div className={classes.notice}>
+    <div className={classes.bulletin}>
       <img alt={src} src={src} />
       ارسال و بسته بندی رایگان سفارشات برای خریدهای بالاتر از ۳۰۰ هزار تومان
     </div>
   </>
 );
 
-export default Notice;
+export default Bulletin;

@@ -106,7 +106,7 @@
 
       li.products,
       li.productType {
-        ul{
+        ul {
           width: 300px;
           height: 300px;
           overflow-y: scroll;
@@ -116,16 +116,16 @@
           }
 
           &::-webkit-scrollbar-thumb {
-            background: lighten($baseColor2,25%); 
+            background: lighten($baseColor2, 25%);
             border-radius: 10px;
           }
-          
+
           &::-webkit-scrollbar-thumb:hover {
             background: $baseColor2;
           }
 
-          li{
-            &:hover{
+          li {
+            &:hover {
               cursor: pointer;
               color: $baseColor3;
             }

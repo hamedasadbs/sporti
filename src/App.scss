@@ -7,16 +7,16 @@
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-}
- 
-::-webkit-scrollbar-thumb {
-  background: lighten($baseColor3,25%); 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb {
+  background: lighten($baseColor3, 25%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:active {
   background: $baseColor3;
 }
 

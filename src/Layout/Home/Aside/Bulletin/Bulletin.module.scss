@@ -1,6 +1,6 @@
 @import "../../../../GlobalStyles.scss";
 
-.notice {
+.bulletin {
   width: 200px;
   height: 180px;
   background-color: lightgray;
@@ -18,7 +18,7 @@
 }
 
 @media only screen and (max-width: $big) {
-  .notice {
+  .bulletin {
     display: none;
   }
 }

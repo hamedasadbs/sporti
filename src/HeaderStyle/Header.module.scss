@@ -254,14 +254,14 @@
           div.products {
             @include dropdownDiv(100%, auto, 45px, 0px);
 
-            ul{
+            ul {
               width: 100%;
               display: flex;
               flex-wrap: wrap;
               justify-content: center;
               padding-right: 40px;
 
-              li{
+              li {
                 border-radius: 5px;
                 font-size: 10px;
                 line-height: 15px;
@@ -269,11 +269,11 @@
                 width: 200px;
                 margin: 5px auto;
 
-                &:hover{
+                &:hover {
                   background-color: white;
                 }
 
-                ul{
+                ul {
                   text-align: left;
                   color: $baseColor2;
                 }
@@ -288,14 +288,14 @@
           div.productType {
             @include dropdownDiv(100%, auto, 45px, 0px);
 
-            ul{
+            ul {
               width: 100%;
               display: flex;
               flex-wrap: wrap;
               justify-content: center;
               padding-right: 40px;
 
-              li{
+              li {
                 border-radius: 5px;
                 font-size: 10px;
                 line-height: 15px;
@@ -303,7 +303,7 @@
                 width: 150px;
                 margin: 5px auto;
 
-                &:hover{
+                &:hover {
                   cursor: pointer;
                   background-color: white;
                 }
@@ -424,9 +424,9 @@
         }
       }
 
-      .rightSide{
-        li.dropdown{
-          .i{
+      .rightSide {
+        li.dropdown {
+          .i {
             margin-top: 0px;
           }
         }

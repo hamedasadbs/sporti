@@ -49,9 +49,7 @@ const Dropdown = (props) => {
             return (
               <li>
                 {res.farsi_label}
-                <ul>
-                  {res.english_label}
-                </ul>
+                <ul>{res.english_label}</ul>
               </li>
             );
           })}
