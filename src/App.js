@@ -44,15 +44,17 @@ const App = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
 
+  const [page, setPage] = useState('home');
+
   const showHiddenMenu = () => {
     setIsHiddenMenuShown(true);
     window.scrollTo(0, 0);
-  };
+  }
 
   const closeHiddenMenu = () => {
     setIsHiddenMenuShown(false);
     window.onscroll = function () {};
-  };
+  }
 
   const disableScroll = () => {
     let x = window.scrollX;
@@ -60,45 +62,49 @@ const App = () => {
     window.onscroll = function () {
       window.scrollTo(x, y);
     };
-  };
+  }
 
   const showSingIn = () => {
     setIsSignInShown(true);
     window.scrollTo(0, 0);
     disableScroll();
-  };
+  }
 
   const showSingUp = () => {
     setIsSignUpShown(true);
     window.scrollTo(0, 0);
     disableScroll();
-  };
+  }
 
   const closeForm = () => {
     setIsSignUpShown(false);
     setIsSignInShown(false);
     window.onscroll = function () {};
-  };
+  }
 
   const openProductType = () => {
     if (isProductTypeOpen) setIsProductTypeOpen(false);
     else setIsProductTypeOpen(true);
-  };
+  }
 
   const openProducts = () => {
     if (isProductsOpen) setIsProductsOpen(false);
     else setIsProductsOpen(true);
-  };
+  }
 
   const openAccount = () => {
     if (isAccountOpen) setIsAccountOpen(false);
     else setIsAccountOpen(true);
-  };
+  }
 
   const openBasket = () => {
     if (isBasketOpen) setIsBasketOpen(false);
     else setIsBasketOpen(true);
-  };
+  }
+
+  const pageHandler=(pageName)=>{
+    setPage(pageName)
+  }
 
   useEffect(() => {
     axios
@@ -212,12 +218,12 @@ const App = () => {
                     )}
                   </li>
                   <li>
-                    <Link to="/fantesiart" onClick={closeHiddenMenu}>
+                    <Link to="/fantasiart" onClick={closeHiddenMenu}>
                       فانتزیآرت
                     </Link>
                   </li>
                   <li>
-                    <Link to="/fantesiblog" onClick={closeHiddenMenu}>
+                    <Link to="/fantasiblog" onClick={closeHiddenMenu}>
                       فانتزیبلاگ
                     </Link>
                   </li>
@@ -298,17 +304,17 @@ const App = () => {
 
               <nav className="bottomHeader">
                 <ul className="rightSide">
-                  <li>
-                    <Link to="/contact">ارتباط با ما</Link>
+                  <li {...page=='contact' ? {className: 'activeNav'} : {}}>
+                    <Link onClick={()=>{pageHandler('contact')}} to="/contact">ارتباط با ما</Link>
                   </li>
-                  <li>
-                    <Link to="/about">درباره ما</Link>
+                  <li {...page=='about' ? {className: 'activeNav'} : {}}>
+                    <Link onClick={()=>{pageHandler('about')}} to="/about">درباره ما</Link>
                   </li>
-                  <li>
-                    <Link to="/fantasiblog">فانتزیبلاگ</Link>
+                  <li {...page=='fantasiblog' ? {className: 'activeNav'} : {}}>
+                    <Link onClick={()=>{pageHandler('fantasiblog')}} to="/fantasiblog">فانتزیبلاگ</Link>
                   </li>
-                  <li>
-                    <Link to="/fantasiart">فانتزیآرت</Link>
+                  <li {...page=='fantasiart' ? {className: 'activeNav'} : {}}>
+                    <Link onClick={()=>{pageHandler('fantasiart')}} to="/fantasiart">فانتزیآرت</Link>
                   </li>
                   <li className="productType">
                     <div className="productType">
@@ -326,8 +332,8 @@ const App = () => {
                       <Dropdown type="products" />
                     </div>
                   </li>
-                  <li className="home">
-                    <Link to="/#">خانه</Link>
+                  <li {...page=='home' ? {className: 'activeNav'} : {}}>
+                    <Link onClick={()=>{pageHandler('home')}} to="/#">خانه</Link>
                   </li>
                 </ul>
               </nav>
