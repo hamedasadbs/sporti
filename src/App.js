@@ -1,7 +1,7 @@
 import Advertising from "../src/Layout/Home/Article/Advertising/Advertising";
-import Products from "../src/Layout/Home/Article/Products/Products";
+import Categories from "../src/Layout/Home/Article/Categories/Categories";
 import Bulletin from "../src/Layout/Home/Aside/Bulletin/Bulletin";
-import TopProducts from "../src/Layout/Home/Aside/TopProducts/TopProducts";
+import Products from "../src/Layout/Home/Aside/Products/Products";
 import LastProducts from "../src/Layout/Home/Main/LastProducts/LastProducts";
 
 import Dropdown from "./Tool/Dropdown/Dropdown";
@@ -112,8 +112,7 @@ const App = () => {
         url,
         JSON.stringify({
           method: "select",
-          table: "product_list",
-          type: "normal",
+          table: "product_list"
         })
       )
       .then((res) => setProductsData(res.data));
@@ -123,8 +122,7 @@ const App = () => {
         url,
         JSON.stringify({
           method: "select",
-          table: "category",
-          type: "normal",
+          table: "category"
         })
       )
       .then((res) => setProductTypeData(res.data));
@@ -218,11 +216,6 @@ const App = () => {
                     )}
                   </li>
                   <li>
-                    <Link to="/fantasiart" onClick={closeHiddenMenu}>
-                      فانتزیآرت
-                    </Link>
-                  </li>
-                  <li>
                     <Link to="/fantasiblog" onClick={closeHiddenMenu}>
                       فانتزیبلاگ
                     </Link>
@@ -313,9 +306,6 @@ const App = () => {
                   <li {...page=='fantasiblog' ? {className: 'activeNav'} : {}}>
                     <Link onClick={()=>{pageHandler('fantasiblog')}} to="/fantasiblog">فانتزیبلاگ</Link>
                   </li>
-                  <li {...page=='fantasiart' ? {className: 'activeNav'} : {}}>
-                    <Link onClick={()=>{pageHandler('fantasiart')}} to="/fantasiart">فانتزیآرت</Link>
-                  </li>
                   <li className="productType">
                     <div className="productType">
                       <Dropdown type="productType" />
@@ -339,14 +329,10 @@ const App = () => {
               </nav>
             </header>
             <Switch>
-              <Route path="/fantasiart">
-                <Gallery title="fantasiart" />
-              </Route>
-
               {productTypeData.map((res) => {
                 return (
                   <Route path={`/category/${res.name}`}>
-                    <Gallery title={res.label} />
+                    <Gallery name={res.name} label={res.label} />
                   </Route>
                 );
               })}
@@ -372,9 +358,9 @@ const App = () => {
                     showSingUp();
                   }}
                 />
-                <Products />
+                <Categories />
                 <Bulletin />
-                <TopProducts />
+                <Products type='topProducts' />
                 {isSignUpShown && <Sign type="signUp" close={closeForm} />}
                 {isSignInShown && <Sign type="signIn" close={closeForm} />}
                 <LastProducts title="آخرین محصولات" />

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import classes from "./Products.module.scss";
+import classes from "./Categories.module.scss";
 
-import Product from "./Product/Product";
+import Category from "./Category/Category";
 
-const Products = () => {
+const Categories = (props) => {
   const url = "http://localhost/fantasima/index.php";
   const [productsData, setProductsData] = useState([]);
 
@@ -23,10 +23,10 @@ const Products = () => {
 
   return (
     <>
-      <div className={classes.products}>
+      <div className={classes.categories}>
         {productsData.map((res) => {
           return (
-            <Product label={res.label} type={res.has_details} name={res.name} />
+            <Category label={res.label} type={res.has_details} name={res.name} />
           );
         })}
       </div>
@@ -34,4 +34,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Categories;

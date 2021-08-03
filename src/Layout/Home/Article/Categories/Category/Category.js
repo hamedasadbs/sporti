@@ -1,6 +1,6 @@
 import React from "react";
-import classes from "./Product.module.scss";
-import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import classes from "./Category.module.scss";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 
 const Product = (props) => {
   let moreDetails = "";
@@ -9,7 +9,7 @@ const Product = (props) => {
   return (
     <>
       <Link to={`/category/${props.name}`}>
-        <div className={classes.product}>
+        <div className={classes.category}>
           <div className={classes.label}>{props.label + " " + moreDetails}</div>
           {props.type == 1 && (
             <div className={classes.moreDetails}>

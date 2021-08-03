@@ -20,7 +20,8 @@ const LastProduct = (props) => {
         JSON.stringify({
           method: "select",
           table: "products",
-          type: "normal",
+          orderBy:'id',
+          orderByType:'DESC'
         })
       )
       .then((res) => setProductsData(res.data));
@@ -63,7 +64,7 @@ const LastProduct = (props) => {
         <div key={pic.id} className={classes.picture}>
           <div className={classes.mainImage}>
             <img
-              src={`data:image/jpg;charset=utf8;base64,${pic.image}`}
+              src={src}
               alt="Cinque Terre"
               width="533"
               height="300"

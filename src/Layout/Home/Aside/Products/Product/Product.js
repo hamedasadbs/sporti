@@ -1,8 +1,8 @@
 import React from "react";
-import classes from "./TopProduct.module.scss";
+import classes from "./Product.module.scss";
 
 import src from "../../../../../Assets/Images/11.jpg";
-const TopProduct = (props) => (
+const Product = (props) => (
   <>
     <div className={classes.picture}>
       <div className={classes.mainImage}>
@@ -12,9 +12,9 @@ const TopProduct = (props) => (
         <h2>{props.price} تومان</h2>
         <p>{props.label}</p>
       </div>
-      <button className={classes.details}>مشاهده جزئیات</button>
+      <button className={classes.details}>{props.btn}</button>
     </div>
   </>
 );
 
-export default TopProduct;
+export default Product;
