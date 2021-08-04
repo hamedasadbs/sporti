@@ -18,8 +18,8 @@ const Products = (props) => {
             method: "select",
             table: "products",
             orderBy: "population",
-            orderByType: 'DESC',
-            limit: 3
+            orderByType: "DESC",
+            limit: 3,
           })
         )
         .then((res) => setTopProducts(res.data));
@@ -31,8 +31,8 @@ const Products = (props) => {
             method: "select",
             table: "products",
             condition: props.name,
-            orderBy:'id',
-            orderByType:'DESC'
+            orderBy: "id",
+            orderByType: "DESC",
           })
         )
         .then((res) => setGallery(res.data));

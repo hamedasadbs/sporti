@@ -44,67 +44,68 @@ const App = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
 
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState(window.location.href);
 
   const showHiddenMenu = () => {
     setIsHiddenMenuShown(true);
     window.scrollTo(0, 0);
-  }
+  };
 
   const closeHiddenMenu = () => {
     setIsHiddenMenuShown(false);
     window.onscroll = function () {};
-  }
+  };
 
   const disableScroll = () => {
+    alert(window.location.href);
     let x = window.scrollX;
     let y = window.scrollY;
     window.onscroll = function () {
       window.scrollTo(x, y);
     };
-  }
+  };
 
   const showSingIn = () => {
     setIsSignInShown(true);
     window.scrollTo(0, 0);
     disableScroll();
-  }
+  };
 
   const showSingUp = () => {
     setIsSignUpShown(true);
     window.scrollTo(0, 0);
     disableScroll();
-  }
+  };
 
   const closeForm = () => {
     setIsSignUpShown(false);
     setIsSignInShown(false);
     window.onscroll = function () {};
-  }
+  };
 
   const openProductType = () => {
     if (isProductTypeOpen) setIsProductTypeOpen(false);
     else setIsProductTypeOpen(true);
-  }
+  };
 
   const openProducts = () => {
     if (isProductsOpen) setIsProductsOpen(false);
     else setIsProductsOpen(true);
-  }
+  };
 
   const openAccount = () => {
     if (isAccountOpen) setIsAccountOpen(false);
     else setIsAccountOpen(true);
-  }
+  };
 
   const openBasket = () => {
     if (isBasketOpen) setIsBasketOpen(false);
     else setIsBasketOpen(true);
-  }
+  };
 
-  const pageHandler=(pageName)=>{
-    setPage(pageName)
-  }
+  const pageHandler = (pageName) => {
+    setPage(pageName);
+  };
 
   useEffect(() => {
     axios
@@ -112,7 +113,7 @@ const App = () => {
         url,
         JSON.stringify({
           method: "select",
-          table: "product_list"
+          table: "product_list",
         })
       )
       .then((res) => setProductsData(res.data));
@@ -122,7 +123,7 @@ const App = () => {
         url,
         JSON.stringify({
           method: "select",
-          table: "category"
+          table: "category",
         })
       )
       .then((res) => setProductTypeData(res.data));
@@ -176,7 +177,11 @@ const App = () => {
                       </ul>
                     )}
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      pageHandler("http://localhost:3000/");
+                    }}
+                  >
                     <Link to="/#" onClick={closeHiddenMenu}>
                       خانه
                     </Link>
@@ -199,7 +204,7 @@ const App = () => {
                     )}
                   </li>
                   <li className="productType" onClick={openProductType}>
-                    <Link to="/#">
+                    <Link>
                       {isProductTypeOpen ? (
                         <FontAwesomeIcon icon={faChevronDown} />
                       ) : (
@@ -215,17 +220,29 @@ const App = () => {
                       </ul>
                     )}
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      pageHandler("http://localhost:3000/fantasiblog");
+                    }}
+                  >
                     <Link to="/fantasiblog" onClick={closeHiddenMenu}>
                       فانتزیبلاگ
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      pageHandler("http://localhost:3000/about");
+                    }}
+                  >
                     <Link to="/about" onClick={closeHiddenMenu}>
                       درباره ما
                     </Link>
                   </li>
-                  <li>
+                  <li
+                    onClick={() => {
+                      pageHandler("http://localhost:3000/contact");
+                    }}
+                  >
                     <Link to="/contact" onClick={closeHiddenMenu}>
                       ارتباط با ما
                     </Link>
@@ -297,44 +314,96 @@ const App = () => {
 
               <nav className="bottomHeader">
                 <ul className="rightSide">
-                  <li {...page=='contact' ? {className: 'activeNav'} : {}}>
-                    <Link onClick={()=>{pageHandler('contact')}} to="/contact">ارتباط با ما</Link>
+                  <li
+                    {...(page == "http://localhost:3000/contact"
+                      ? { className: "activeNav" }
+                      : {})}
+                  >
+                    <Link
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/contact");
+                      }}
+                      to="/contact"
+                    >
+                      ارتباط با ما
+                    </Link>
                   </li>
-                  <li {...page=='about' ? {className: 'activeNav'} : {}}>
-                    <Link onClick={()=>{pageHandler('about')}} to="/about">درباره ما</Link>
+                  <li
+                    {...(page == "http://localhost:3000/about"
+                      ? { className: "activeNav" }
+                      : {})}
+                  >
+                    <Link
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/about");
+                      }}
+                      to="/about"
+                    >
+                      درباره ما
+                    </Link>
                   </li>
-                  <li {...page=='fantasiblog' ? {className: 'activeNav'} : {}}>
-                    <Link onClick={()=>{pageHandler('fantasiblog')}} to="/fantasiblog">فانتزیبلاگ</Link>
+                  <li
+                    {...(page == "http://localhost:3000/fantasiblog"
+                      ? { className: "activeNav" }
+                      : {})}
+                  >
+                    <Link
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/fantasiblog");
+                      }}
+                      to="/fantasiblog"
+                    >
+                      فانتزیبلاگ
+                    </Link>
                   </li>
                   <li className="productType">
                     <div className="productType">
                       <Dropdown type="productType" />
                     </div>
-                    <Link to="/#">
+                    <a>
                       <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
-                    </Link>
+                    </a>
                   </li>
                   <li className="products">
-                    <Link to="/#">
+                    <a>
                       <FontAwesomeIcon icon={faChevronDown} /> محصولات
-                    </Link>
+                    </a>
                     <div className="products">
                       <Dropdown type="products" />
                     </div>
                   </li>
-                  <li {...page=='home' ? {className: 'activeNav'} : {}}>
-                    <Link onClick={()=>{pageHandler('home')}} to="/#">خانه</Link>
+                  <li
+                    {...(page == "http://localhost:3000/"
+                      ? { className: "activeNav" }
+                      : {})}
+                  >
+                    <Link
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/");
+                      }}
+                      to="/#"
+                    >
+                      خانه
+                    </Link>
                   </li>
                 </ul>
               </nav>
             </header>
             <Switch>
               {productTypeData.map((res) => {
-                return (
-                  <Route path={`/category/${res.name}`}>
-                    <Gallery name={res.name} label={res.label} />
-                  </Route>
-                );
+                if (res.has_details == 0) {
+                  return (
+                    <Route path={`/category/${res.name}`}>
+                      <Gallery name={res.name} label={res.label} />
+                    </Route>
+                  );
+                } else {
+                  return (
+                    <Route path={`/advanced-search/${res.name}`}>
+                      <Gallery name={res.name} label={res.label} />
+                    </Route>
+                  );
+                }
               })}
 
               <Route path="/fantasiblog">
@@ -360,7 +429,7 @@ const App = () => {
                 />
                 <Categories />
                 <Bulletin />
-                <Products type='topProducts' />
+                <Products type="topProducts" />
                 {isSignUpShown && <Sign type="signUp" close={closeForm} />}
                 {isSignInShown && <Sign type="signIn" close={closeForm} />}
                 <LastProducts title="آخرین محصولات" />

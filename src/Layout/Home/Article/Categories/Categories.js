@@ -15,7 +15,8 @@ const Categories = (props) => {
         JSON.stringify({
           method: "select",
           table: "category",
-          type: "normal",
+          orderBy: "has_details",
+          orderByType: "DESC",
         })
       )
       .then((res) => setProductsData(res.data));
@@ -26,7 +27,11 @@ const Categories = (props) => {
       <div className={classes.categories}>
         {productsData.map((res) => {
           return (
-            <Category label={res.label} type={res.has_details} name={res.name} />
+            <Category
+              label={res.label}
+              type={res.has_details}
+              name={res.name}
+            />
           );
         })}
       </div>

@@ -6,7 +6,7 @@ const Gallery = (props) => (
   <>
     <div className={classes.gallery}>
       <article>
-        <Products type='gallery' label={props.label} name={props.name} />
+        <Products type="gallery" label={props.label} name={props.name} />
       </article>
       <aside></aside>
     </div>
