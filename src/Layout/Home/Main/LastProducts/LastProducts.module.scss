@@ -9,12 +9,7 @@
   margin-top: 50px;
 
   .title {
-    width: 100%;
-    background-color: darken($baseColor2, 35%);
-    color: lightgray;
-    padding: 10px;
-    text-align: center;
-    font-family: $font;
+    @include title();
   }
 
   main {

@@ -1,3 +1,105 @@
-.gallery {
+@import "../../GlobalStyles.scss";
+
+.galleries {
   width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin: 30px 0px 80px 80px;
+    float: left;
+    background-color: lighten($baseColor2, 50%);
+    width: 920px;
+
+    .title {
+      @include title();
+    }
+
+    main {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 0px;
+    }
+
+    .offset {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      background-color: darken($baseColor2, 35%);
+
+      li {
+        background-color: lightgray;
+        width: 50px;
+        margin: 10px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 20px;
+        font-family: $font;
+        transition: all 0.5s;
+
+        &:hover {
+          cursor: pointer;
+          background-color: lighten($baseColor1, 20%);
+        }
+      }
+
+      li.hoveredOffset {
+        background-color: aqua;
+      }
+    }
+  }
+
+  .filter {
+    width: 250px;
+    margin-left: 30px;
+    margin-top: 28px;
+    float: right;
+
+    table {
+      width: 100%;
+      font-family: $font;
+      background-color: white;
+
+      thead {
+        @include title();
+
+        tr {
+          td {
+            padding: 7px;
+            border-radius: 10px 10px 0 0;
+          }
+        }
+      }
+
+      tbody.type {
+        background-color: lighten($baseColor2, 50%);
+        text-align: right;
+
+        tr {
+          td {
+            padding: 5px;
+          }
+        }
+      }
+
+      tbody.price {
+        text-align: right;
+        background-color: lighten($baseColor2, 50%);
+
+        tr {
+          td {
+            padding: 5px;
+          }
+        }
+      }
+    }
+
+    table.type {
+      margin-top: 30px;
+    }
+  }
 }

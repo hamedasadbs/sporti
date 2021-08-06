@@ -7,12 +7,7 @@
   float: right;
 
   .title {
-    width: 100%;
-    background-color: darken($baseColor2, 35%);
-    color: lightgray;
-    padding: 7px;
-    text-align: center;
-    font-family: $font;
+    @include title();
   }
 }
 
@@ -45,58 +40,5 @@
   .topProducts {
     margin: 20px auto;
     margin-right: -85px;
-  }
-}
-///////////////////////////////////////////////////////////
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  margin: 30px 0px 80px 80px;
-  float: left;
-  background-color: lighten($baseColor2, 50%);
-  width: 960px;
-
-  .title {
-    width: 100%;
-    background-color: darken($baseColor2, 35%);
-    color: lightgray;
-    padding: 7px;
-    text-align: center;
-    font-family: $font;
-  }
-
-  main{
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 20px;
-  }
-
-  .offset {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    background-color: darken($baseColor2, 35%);
-
-    li {
-      background-color: lightgray;
-      width: 50px;
-      margin: 10px;
-      text-align: center;
-      line-height: 40px;
-      font-size: 20px;
-      font-family: $font;
-      transition: all 0.5s;
-
-      &:hover {
-        cursor: pointer;
-        background-color: lighten($baseColor1, 20%);
-      }
-    }
-
-    li.hoveredOffset {
-      background-color: aqua;
-    }
   }
 }

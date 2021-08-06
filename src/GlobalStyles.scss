@@ -118,3 +118,13 @@ button:hover {
 @mixin shadow {
   box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 }
+
+@mixin title {
+  width: 100%;
+  background-color: darken($baseColor2, 35%);
+  color: lightgray;
+  padding: 10px;
+  text-align: center;
+  font-family: $font;
+  border-radius: 10px 10px 0 0;
+}

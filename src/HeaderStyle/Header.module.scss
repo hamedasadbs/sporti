@@ -231,21 +231,36 @@
         display: inline-block;
         padding: 0px 8px;
         font-weight: 500;
-        padding: 10px 20px;
         border-radius: 2px;
+      }
 
-        div {
-          display: none;
+      .link {
+        span {
+          font-size: 14px;
+          display: inline-block;
+          padding: 0px 8px;
+          font-weight: 500;
+          padding: 10px 20px;
+          border-radius: 2px;
+          color: $baseColor2;
+
+          div {
+            display: none;
+          }
+
+          &:hover {
+            background-color: lightgrey;
+            transition: all 0.5s;
+          }
+
+          &:not(:hover) {
+            background-color: transparent;
+            transition: all 1s;
+          }
         }
 
-        &:hover {
-          background-color: lightgrey;
-          transition: all 0.5s;
-        }
-
-        &:not(:hover) {
-          background-color: transparent;
-          transition: all 1s;
+        span.activeNav {
+          background-color: $baseColor1;
         }
       }
 

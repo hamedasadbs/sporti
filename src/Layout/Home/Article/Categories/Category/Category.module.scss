@@ -12,20 +12,19 @@
     cursor: pointer;
     .label {
       margin-top: 0px;
-      color: rgba(0, 0, 0, 0.9);
-      opacity: 0.3;
+      color: $baseColor2;
+      opacity: 0.5;
     }
   }
 
   .label {
-    background-color: $baseColor2;
-    opacity: 0.6;
-    border-radius: 3px;
+    background-color: darken($baseColor2, 20%);
+    border-radius: 0px 0px 50px 50px;
     text-align: center;
     font-family: $font;
-    color: darken($baseColor2, 30%);
+    color: whitesmoke;
     margin: 20px auto;
-    margin-top: 20px;
+    margin-top: 0px;
     font-weight: 800;
     padding: 10px;
     transition: all 1s;

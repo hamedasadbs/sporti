@@ -314,76 +314,96 @@ const App = () => {
 
               <nav className="bottomHeader">
                 <ul className="rightSide">
-                  <li
-                    {...(page == "http://localhost:3000/contact"
-                      ? { className: "activeNav" }
-                      : {})}
-                  >
+                  <li>
                     <Link
+                      className="link"
                       onClick={() => {
                         pageHandler("http://localhost:3000/contact");
                       }}
                       to="/contact"
                     >
-                      ارتباط با ما
+                      <span
+                        {...(page == "http://localhost:3000/contact"
+                          ? { className: "activeNav" }
+                          : {})}
+                      >
+                        ارتباط با ما
+                      </span>
                     </Link>
                   </li>
-                  <li
-                    {...(page == "http://localhost:3000/about"
-                      ? { className: "activeNav" }
-                      : {})}
-                  >
+                  <li>
                     <Link
+                      className="link"
                       onClick={() => {
                         pageHandler("http://localhost:3000/about");
                       }}
                       to="/about"
                     >
-                      درباره ما
+                      <span
+                        {...(page == "http://localhost:3000/about"
+                          ? { className: "activeNav" }
+                          : {})}
+                      >
+                        درباره ما
+                      </span>
                     </Link>
                   </li>
-                  <li
-                    {...(page == "http://localhost:3000/fantasiblog"
-                      ? { className: "activeNav" }
-                      : {})}
-                  >
+                  <li>
                     <Link
+                      className="link"
                       onClick={() => {
                         pageHandler("http://localhost:3000/fantasiblog");
                       }}
                       to="/fantasiblog"
                     >
-                      فانتزیبلاگ
+                      <span
+                        {...(page == "http://localhost:3000/fantasiblog"
+                          ? { className: "activeNav" }
+                          : {})}
+                      >
+                        فانتزیبلاگ
+                      </span>
                     </Link>
                   </li>
-                  <li className="productType">
-                    <div className="productType">
-                      <Dropdown type="productType" />
-                    </div>
-                    <a>
-                      <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
-                    </a>
+                  <li>
+                    <Link className="link">
+                      <span className="productType">
+                        <div className="productType">
+                          <Dropdown type="productType" />
+                        </div>
+                        <a>
+                          <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
+                        </a>
+                      </span>
+                    </Link>
                   </li>
-                  <li className="products">
-                    <a>
-                      <FontAwesomeIcon icon={faChevronDown} /> محصولات
-                    </a>
-                    <div className="products">
-                      <Dropdown type="products" />
-                    </div>
+                  <li>
+                    <Link className="link">
+                      <span className="products">
+                        <a>
+                          <FontAwesomeIcon icon={faChevronDown} /> محصولات
+                        </a>
+                        <div className="products">
+                          <Dropdown type="products" />
+                        </div>
+                      </span>
+                    </Link>
                   </li>
-                  <li
-                    {...(page == "http://localhost:3000/"
-                      ? { className: "activeNav" }
-                      : {})}
-                  >
+                  <li>
                     <Link
+                      className="link"
                       onClick={() => {
                         pageHandler("http://localhost:3000/");
                       }}
                       to="/#"
                     >
-                      خانه
+                      <span
+                        {...(page == "http://localhost:3000/"
+                          ? { className: "activeNav" }
+                          : {})}
+                      >
+                        خانه
+                      </span>
                     </Link>
                   </li>
                 </ul>
@@ -429,7 +449,7 @@ const App = () => {
                 />
                 <Categories />
                 <Bulletin />
-                <Products type="topProducts" />
+                <Products />
                 {isSignUpShown && <Sign type="signUp" close={closeForm} />}
                 {isSignInShown && <Sign type="signIn" close={closeForm} />}
                 <LastProducts title="آخرین محصولات" />
