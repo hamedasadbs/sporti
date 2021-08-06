@@ -18,9 +18,9 @@
   }
 
   .label {
-    background-color: $baseColor3;
-    border: 1px solid black;
-    border-radius: 5px;
+    background-color: $baseColor2;
+    opacity: 0.6;
+    border-radius: 3px;
     text-align: center;
     font-family: $font;
     color: darken($baseColor2, 30%);
