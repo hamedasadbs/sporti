@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./Product.module.scss";
 
-import src from "../../../../../Assets/Images/11.jpg";
+import src from "../../../../../Assets/Images/allSports.png";
 const Product = (props) => (
   <>
     <div className={classes.picture}>

@@ -14,7 +14,7 @@ import Notice from "../src/Layout/Notice/Notice";
 
 import "./App.scss";
 
-import mainLogo from "./Assets/Images/logofantas.png";
+import mainLogo from "./Assets/Images/blueSnakeLogo.png";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -113,6 +113,7 @@ const App = () => {
         url,
         JSON.stringify({
           method: "select",
+          selected: "*",
           table: "product_list",
         })
       )
@@ -269,7 +270,7 @@ const App = () => {
                   <div className="mainLogo">
                     <Link to="/about">
                       <img src={mainLogo} alt="logo" />
-                      <span>fantasima</span>
+                      <span>BlueSnake</span>
                     </Link>
                   </div>
                 </ul>
@@ -327,7 +328,7 @@ const App = () => {
                           ? { className: "activeNav" }
                           : {})}
                       >
-                        ارتباط با ما
+                        <a>ارتباط با ما</a>
                       </span>
                     </Link>
                   </li>
@@ -344,7 +345,7 @@ const App = () => {
                           ? { className: "activeNav" }
                           : {})}
                       >
-                        درباره ما
+                        <a>درباره ما</a>
                       </span>
                     </Link>
                   </li>
@@ -352,16 +353,16 @@ const App = () => {
                     <Link
                       className="link"
                       onClick={() => {
-                        pageHandler("http://localhost:3000/fantasiblog");
+                        pageHandler("http://localhost:3000/blog-news");
                       }}
                       to="/fantasiblog"
                     >
                       <span
-                        {...(page == "http://localhost:3000/fantasiblog"
+                        {...(page == "http://localhost:3000/blog-news"
                           ? { className: "activeNav" }
                           : {})}
                       >
-                        فانتزیبلاگ
+                        <a>بلاگ و اخبار</a>
                       </span>
                     </Link>
                   </li>
@@ -402,7 +403,7 @@ const App = () => {
                           ? { className: "activeNav" }
                           : {})}
                       >
-                        خانه
+                        <a>خانه</a>
                       </span>
                     </Link>
                   </li>
@@ -426,8 +427,8 @@ const App = () => {
                 }
               })}
 
-              <Route path="/fantasiblog">
-                <Notice title="fantasiblog" />
+              <Route path="/blog-news">
+                <Notice title="blog-news" />
               </Route>
 
               <Route path="/about">

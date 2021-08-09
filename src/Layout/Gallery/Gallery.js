@@ -13,12 +13,15 @@ import {
 const Gallery = (props) => {
   const [totalGallery, setTotalGallery] = useState([]);
   const [gallery, setGallery] = useState([]);
-  const [categoryFilter, setCategoryFilter] = useState([]);
   let [minPrice, setMinPrice] = useState(0);
   let [maxPrice, setMaxPrice] = useState(500000);
   let [page, setPage] = useState(1);
   const url = "http://localhost/fantasima/index.php";
   const numberOfItemsToShow = 10;
+
+  const [typeFilter, setTypeFilter] = useState([]);
+  const [kindFilter, setKindFilter] = useState([]);
+  const [brandFilter, setBrandFilter] = useState([]);
 
   const updateRequest = () => {
     let offset = (page - 1) * numberOfItemsToShow;
@@ -53,10 +56,33 @@ const Gallery = (props) => {
         url,
         JSON.stringify({
           method: "select",
-          table: "category",
+          selected: "type",
+          table: "products",
         })
       )
-      .then((res) => setCategoryFilter(res.data));
+      .then((res) => setTypeFilter(res.data));
+
+    axios
+      .post(
+        url,
+        JSON.stringify({
+          method: "select",
+          selected: "kind",
+          table: "products",
+        })
+      )
+      .then((res) => setKindFilter(res.data));
+
+    axios
+      .post(
+        url,
+        JSON.stringify({
+          method: "select",
+          selected: "brand",
+          table: "products",
+        })
+      )
+      .then((res) => setBrandFilter(res.data));
   };
 
   const numberOfOffsets = totalGallery.length / numberOfItemsToShow;
@@ -197,11 +223,11 @@ const Gallery = (props) => {
               </tr>
             </thead>
             <tbody>
-              {categoryFilter.map((filter) => {
+              {typeFilter.map((filter) => {
                 return (
                   <tr>
                     <td>
-                      {filter.label}
+                      {filter.type}
                       <input type="checkbox" />
                     </td>
                   </tr>
@@ -216,24 +242,16 @@ const Gallery = (props) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  فلزی
-                  <input type="checkbox" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  پلاستیکی
-                  <input type="checkbox" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  سفالی
-                  <input type="checkbox" />
-                </td>
-              </tr>
+              {kindFilter.map((filter) => {
+                return (
+                  <tr>
+                    <td>
+                      {filter.kind}
+                      <input type="checkbox" />
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
           <table className={classes.brand}>
@@ -243,24 +261,16 @@ const Gallery = (props) => {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
-                  آدیداس
-                  <input type="checkbox" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  نایکی
-                  <input type="checkbox" />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  پوما
-                  <input type="checkbox" />
-                </td>
-              </tr>
+              {brandFilter.map((filter) => {
+                return (
+                  <tr>
+                    <td>
+                      {filter.brand}
+                      <input type="checkbox" />
+                    </td>
+                  </tr>
+                );
+              })}
               <tr className={classes.operation}>
                 <td>
                   <button

@@ -12,6 +12,7 @@ const Dropdown = (props) => {
         url,
         JSON.stringify({
           method: "select",
+          selected: "*",
           table: "product_list",
           type: "normal",
         })
@@ -23,6 +24,7 @@ const Dropdown = (props) => {
         url,
         JSON.stringify({
           method: "select",
+          selected: "*",
           table: "category",
           type: "normal",
         })

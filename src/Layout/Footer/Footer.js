@@ -14,13 +14,12 @@ const Footer = () => (
   <>
     <footer className={classes.footer}>
       <h2 className={classes.title}>
-        فانتزیما، اولین فروشگاه جامع اینترنتی ادبیات ، بازی های کامپیوتری و
-        سینمای فانتزی در ایران
+        بزرگترین فروشگاه اینترنتی محصولات ورزشی در ایران ,BlueSnake
       </h2>
       <main>
         <div className={classes.leftSide}>
-          <label>شماره تماس : ۰۲۱۸۸۵۴۸۹۵۵ (ساعت ۱۲-۱۷ شنبه تا چهارشنبه)</label>
-          <label>فانتزیما در شبکه های اجتماعی</label>
+          <label>شماره تماس : 09338599015 (ساعت ۱۲-۱۷ شنبه تا چهارشنبه)</label>
+          <label>در شبکه های اجتماعی ,BlueSnake</label>
           <div className={classes.socialMedias}>
             <FontAwesomeIcon
               icon={faFacebook}
@@ -76,7 +75,7 @@ const Footer = () => (
           </table>
         </div>
       </main>
-      <p className={classes.copyRight}>.کلیه حقوق متعلق به فانتزیما است</p>
+      <p className={classes.copyRight}>.کلیه حقوق متعلق به من است</p>
     </footer>
   </>
 );
