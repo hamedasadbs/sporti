@@ -12,7 +12,13 @@ const Product = (props) => (
         <h2>{props.price} تومان</h2>
         <p>{props.label}</p>
       </div>
-      <button className={classes.details}>{props.btn}</button>
+      <button
+        {...(props.btn == "ناموجود"
+          ? { className: classes.detailsInactive }
+          : { className: classes.detailsActive })}
+      >
+        {props.btn}
+      </button>
     </div>
   </>
 );

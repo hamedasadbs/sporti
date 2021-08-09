@@ -14,6 +14,8 @@ const Gallery = (props) => {
   const [totalGallery, setTotalGallery] = useState([]);
   const [gallery, setGallery] = useState([]);
   const [categoryFilter, setCategoryFilter] = useState([]);
+  let [minPrice, setMinPrice] = useState(0);
+  let [maxPrice, setMaxPrice] = useState(500000);
   let [page, setPage] = useState(1);
   const url = "http://localhost/fantasima/index.php";
   const numberOfItemsToShow = 10;
@@ -59,8 +61,10 @@ const Gallery = (props) => {
 
   const numberOfOffsets = totalGallery.length / numberOfItemsToShow;
   useEffect(() => {
+    window.scrollTo(0, 0);
     updateRequest();
   }, []);
+
   const offsetCrescent = () => {
     if (page < parseInt(numberOfOffsets)) {
       page += 1;
@@ -96,6 +100,14 @@ const Gallery = (props) => {
     updateRequest();
   };
 
+  const showMinRange = (e) => {
+    setMinPrice(parseInt(e.target.value));
+  };
+
+  const showMaxRange = (e) => {
+    setMaxPrice(parseInt(e.target.value));
+  };
+
   const numbers = [];
   for (let i = 0; i < numberOfOffsets; i++) {
     numbers.push(
@@ -113,40 +125,67 @@ const Gallery = (props) => {
         <div className={classes.gallery}>
           <span className={classes.title}>{props.label}</span>
           <main>
-            {gallery.map((gal) => {
-              return (
-                <Product
-                  btn="افزودن به سبد خرید"
-                  label={gal.name}
-                  price={gal.price}
-                />
-              );
-            })}
+            {gallery.length > 0 ? (
+              gallery.map((gal) => {
+                return gal.price <= maxPrice && gal.price >= minPrice ? (
+                  gal.existence == 1 ? (
+                    <Product
+                      btn="افزودن به سبد خرید"
+                      label={gal.name}
+                      price={gal.price}
+                    />
+                  ) : (
+                    <Product btn="ناموجود" label={gal.name} price={gal.price} />
+                  )
+                ) : null;
+              })
+            ) : (
+              <span className={classes.nothingToShow}>!موردی یافت نشد</span>
+            )}
           </main>
-          <ul className={classes.offset}>
-            <li onClick={offsetDecrescent}>
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </li>
-            <li onClick={offsetFirst}>اول</li>
-            {numbers}
-            <li onClick={offsetLast}>آخر</li>
-            <li onClick={offsetCrescent}>
-              <FontAwesomeIcon icon={faChevronRight} />
-            </li>
-          </ul>
+          {gallery.length > 0 && (
+            <ul className={classes.offset}>
+              <li onClick={offsetDecrescent}>
+                <FontAwesomeIcon icon={faChevronLeft} />
+              </li>
+              <li onClick={offsetFirst}>اول</li>
+              {numbers}
+              <li onClick={offsetLast}>آخر</li>
+              <li onClick={offsetCrescent}>
+                <FontAwesomeIcon icon={faChevronRight} />
+              </li>
+            </ul>
+          )}
         </div>
         <aside className={classes.filter}>
-          <table>
+          <table className={classes.price}>
             <thead>
               <tr>
-                <td>فیلتر قیمت</td>
+                <td>قیمت (تومان)</td>
               </tr>
             </thead>
             <tbody className={classes.price}>
               <tr>
                 <td>
-                  555
-                  <input type="checkbox" />
+                  <span>{minPrice + " - " + maxPrice}</span>
+                  <div className={classes.priceBar}>
+                    <input
+                      onChange={showMinRange}
+                      type="range"
+                      min="0"
+                      max="500000"
+                      value={minPrice}
+                      step="10000"
+                    />
+                    <input
+                      onChange={showMaxRange}
+                      type="range"
+                      min="0"
+                      max="500000"
+                      value={maxPrice}
+                      step="10000"
+                    />
+                  </div>
                 </td>
               </tr>
             </tbody>
@@ -154,10 +193,10 @@ const Gallery = (props) => {
           <table className={classes.type}>
             <thead>
               <tr>
-                <td>فیلتر نوع کالا</td>
+                <td>نوع کالا</td>
               </tr>
             </thead>
-            <tbody className={classes.type}>
+            <tbody>
               {categoryFilter.map((filter) => {
                 return (
                   <tr>
@@ -168,6 +207,71 @@ const Gallery = (props) => {
                   </tr>
                 );
               })}
+            </tbody>
+          </table>
+          <table className={classes.kind}>
+            <thead>
+              <tr>
+                <td>جنس کالا</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  فلزی
+                  <input type="checkbox" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  پلاستیکی
+                  <input type="checkbox" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  سفالی
+                  <input type="checkbox" />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table className={classes.brand}>
+            <thead>
+              <tr>
+                <td>برند کالا</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  آدیداس
+                  <input type="checkbox" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  نایکی
+                  <input type="checkbox" />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  پوما
+                  <input type="checkbox" />
+                </td>
+              </tr>
+              <tr className={classes.operation}>
+                <td>
+                  <button
+                    onClick={() => {
+                      alert(typeof maxPrice);
+                    }}
+                  >
+                    اعمال فیلتر
+                  </button>
+                </td>
+              </tr>
             </tbody>
           </table>
         </aside>

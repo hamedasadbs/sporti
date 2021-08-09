@@ -4,15 +4,16 @@
   width: 100%;
   display: flex;
   flex-direction: row;
+  margin-bottom: 100px;
 
   .gallery {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
-    margin: 30px 0px 80px 80px;
+    margin: 30px 0px 0px 80px;
     float: left;
     background-color: lighten($baseColor2, 50%);
     width: 920px;
+    height: 0;
 
     .title {
       @include title();
@@ -22,6 +23,15 @@
       display: flex;
       flex-wrap: wrap;
       margin-left: 0px;
+
+      .nothingToShow {
+        width: 100%;
+        height: 100px;
+        font-family: $font;
+        text-align: center;
+        padding-top: 40px;
+        font-weight: bolder;
+      }
     }
 
     .offset {
@@ -64,6 +74,19 @@
       font-family: $font;
       background-color: white;
 
+      tr.operation {
+        td {
+          button {
+            width: 100%;
+            flex-grow: 1;
+            @include btn(white, black, $baseColor3, white);
+            margin: 15px auto;
+            padding: 10px;
+            border-radius: 5px;
+          }
+        }
+      }
+
       thead {
         @include title();
 
@@ -75,13 +98,19 @@
         }
       }
 
-      tbody.type {
+      tbody:not(.price) {
         background-color: lighten($baseColor2, 50%);
         text-align: right;
 
         tr {
           td {
             padding: 5px;
+          }
+        }
+
+        tr.operation {
+          td {
+            background-color: white;
           }
         }
       }
@@ -93,12 +122,52 @@
         tr {
           td {
             padding: 5px;
+            display: flex;
+            flex-direction: column;
+
+            span {
+              width: 100%;
+              text-align: center;
+              font-family: $numberFont;
+            }
+
+            .priceBar {
+              width: 100%;
+              display: flex;
+              flex-direction: row;
+
+              input {
+                width: 50%;
+                -webkit-appearance: none;
+                height: 10px;
+                background: rgb(241, 241, 241);
+                box-shadow: inset 0 0 5px grey;
+                border-radius: 10px;
+                outline: none;
+                -webkit-transition: 0.2s;
+                transition: opacity 0.2s;
+
+                &::-webkit-slider-thumb {
+                  -webkit-appearance: none;
+                  appearance: none;
+                  width: 15px;
+                  height: 15px;
+                  border-radius: 10px;
+                  background: lighten($baseColor3, 25%);
+                  cursor: pointer;
+
+                  &:active {
+                    background: $baseColor3;
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
 
-    table.type {
+    table:not(.price) {
       margin-top: 30px;
     }
   }
