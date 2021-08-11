@@ -33,7 +33,12 @@ const Products = () => {
         <span className={classes.title}>محصولات ویژه</span>
         {topProducts.map((lab) => {
           return (
-            <Product btn="مشاهده جزئیات" label={lab.name} price={lab.price} />
+            <Product
+              btn="مشاهده جزئیات"
+              label={lab.name}
+              price={lab.price}
+              image={lab.image}
+            />
           );
         })}
       </div>

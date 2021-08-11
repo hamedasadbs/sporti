@@ -31,6 +31,7 @@ const Categories = (props) => {
               label={res.label}
               type={res.has_details}
               name={res.name}
+              image={res.image}
             />
           );
         })}

@@ -159,9 +159,15 @@ const Gallery = (props) => {
                       btn="افزودن به سبد خرید"
                       label={gal.name}
                       price={gal.price}
+                      image={gal.image}
                     />
                   ) : (
-                    <Product btn="ناموجود" label={gal.name} price={gal.price} />
+                    <Product
+                      btn="ناموجود"
+                      label={gal.name}
+                      price={gal.price}
+                      image={gal.image}
+                    />
                   )
                 ) : null;
               })
