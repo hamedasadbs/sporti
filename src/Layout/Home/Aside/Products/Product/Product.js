@@ -7,7 +7,7 @@ const Product = (props) => {
       <div className={classes.picture}>
         <div className={classes.mainImage}>
           <img
-            src={`/${props.image}`}
+            src={`/Images/Product/${props.image}`}
             alt={"image/" + props.image}
             width="533"
             height="300"

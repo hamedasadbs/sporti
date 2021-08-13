@@ -14,18 +14,19 @@
       margin-top: 0px;
       color: $baseColor2;
       opacity: 0.5;
+      border-radius: 0px 0px 50px 50px;
     }
   }
 
   .label {
     background-color: darken($baseColor2, 20%);
     opacity: 0.8;
-    border-radius: 0px 0px 50px 50px;
+    border-radius: 3px;
     text-align: center;
     font-family: $font;
     color: whitesmoke;
     margin: 20px auto;
-    margin-top: 0px;
+    margin-top: 80px;
     font-weight: 800;
     padding: 10px;
     transition: all 1s;
@@ -37,5 +38,39 @@
   img {
     width: 220px;
     height: 220px;
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .category {
+    width: 200px;
+    height: 200px;
+
+    .label {
+      width: 200px;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .category {
+    width: 150px;
+    height: 150px;
+    margin: 5px;
+
+    .label {
+      width: 150px;
+      font-size: 12px;
+    }
+
+    img {
+      width: 150px;
+      height: 150px;
+    }
   }
 }

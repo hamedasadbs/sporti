@@ -9,7 +9,7 @@ const Category = (props) => {
     props.type == 0 ? (
       <Link to={`/category/${props.name}`}>
         <div className={classes.category}>
-          <img src={`/${props.image}`} alt={props.image} />
+          <img src={`/Images/Category/${props.image}`} alt={props.image} />
           <div className={classes.label}>{props.label}</div>
         </div>
       </Link>

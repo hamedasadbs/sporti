@@ -269,7 +269,7 @@ const App = () => {
                   </li>
                   <div className="mainLogo">
                     <Link to="/about">
-                      <img src={mainLogo} alt="logo" />
+                      <img src="/blueSnake-logo.png" alt="blueSnake" />
                       <span>BlueSnake</span>
                     </Link>
                   </div>
@@ -355,7 +355,7 @@ const App = () => {
                       onClick={() => {
                         pageHandler("http://localhost:3000/blog-news");
                       }}
-                      to="/fantasiblog"
+                      to="/blog-news"
                     >
                       <span
                         {...(page == "http://localhost:3000/blog-news"

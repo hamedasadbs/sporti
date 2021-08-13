@@ -45,22 +45,24 @@
       }
 
       .mainLogo {
-        width: auto;
+        width: 80px;
         float: right;
-        padding-left: 30px;
+        padding-left: 20px;
         margin: auto;
+        margin-top: 10px;
 
         a {
           display: flex;
 
           img {
+            width: 100px;
             margin: 0px 0 0 -50px;
-            width: 110px;
           }
 
           span {
             color: darken($baseColor2, 30%);
             margin: auto 15px;
+            margin-left: -15px;
             font-size: 23px;
           }
         }

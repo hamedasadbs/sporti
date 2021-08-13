@@ -40,15 +40,18 @@ const Advertising = () => {
     <>
       <div className={classes.slideshowContainer}>
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img alt={s1} src={s1} style={{ width: "100%" }} />
+          <img src="/Images/Poster/swimming-poster.jpg" alt="swimming" />
         </div>
 
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img alt={s2} src={s2} style={{ width: "100%" }} />
+          <img
+            src="/Images/Poster/track-and-field-poster.jpg"
+            alt="track-and-field"
+          />
         </div>
 
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img alt={s3} src={s3} style={{ width: "100%" }} />
+          <img src="/Images/Poster/dart-poster.jpg" alt="dart" />
         </div>
 
         <a className={classes.prev} onClick={() => plusSlides(-1)}>
@@ -57,6 +60,7 @@ const Advertising = () => {
         <a className={classes.next} onClick={() => plusSlides(1)}>
           &#10095;
         </a>
+        <div className={classes.dark}></div>
       </div>
     </>
   );

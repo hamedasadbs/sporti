@@ -63,7 +63,12 @@ const LastProduct = (props) => {
       <li>
         <div key={pic.id} className={classes.picture}>
           <div className={classes.mainImage}>
-            <img src={src} alt="Cinque Terre" width="533" height="300" />
+            <img
+              src={`/Images/Product/${pic.image}`}
+              alt={pic.name}
+              width="533"
+              height="300"
+            />
           </div>
           <div className={classes.caption}>
             <h2>{pic.price} تومان</h2>

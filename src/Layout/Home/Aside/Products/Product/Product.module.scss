@@ -9,6 +9,7 @@
   z-index: 2;
   background-color: white;
   border-radius: 5px;
+  text-align: right;
   @include shadow();
 
   .mainImage {
@@ -31,7 +32,7 @@
     font-family: $font;
     font-size: 12px;
     font-weight: 100;
-    line-height: 15px;
+    line-height: 20px;
     width: 100%;
 
     h2 {
@@ -41,12 +42,12 @@
     p {
       font-family: $font;
       font-size: 15px;
+      max-width: 200px;
     }
   }
 
   .detailsActive {
     width: 100%;
-    flex-grow: 1;
     @include btn(white, black, $baseColor3, white);
     margin: 15px auto;
     padding: 10px;
@@ -71,6 +72,12 @@
       img {
         width: 280px;
         height: 200px;
+      }
+    }
+
+    .caption {
+      p {
+        max-width: 100%;
       }
     }
   }
@@ -106,6 +113,21 @@
       img {
         width: 120px;
         height: 85px;
+      }
+    }
+
+    .detailsActive,
+    .detailsInactive {
+      font-size: 12px;
+      padding: 5px;
+    }
+
+    .caption {
+      h2 {
+        font-size: 15px;
+      }
+      p {
+        font-size: 12px;
       }
     }
   }
