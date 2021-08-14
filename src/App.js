@@ -14,8 +14,6 @@ import Notice from "../src/Layout/Notice/Notice";
 
 import "./App.scss";
 
-import mainLogo from "./Assets/Images/blueSnakeLogo.png";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faWindowClose,
@@ -216,18 +214,31 @@ const App = () => {
                     {isProductTypeOpen && (
                       <ul>
                         {productTypeData.map((res) => {
-                          return <li>{res.label} -</li>;
+                          return (
+                            <li
+                              onClick={() => {
+                                window.location.href = res.name;
+                              }}
+                            >
+                              <Link
+                                onClick={closeHiddenMenu}
+                                to={`/category/${res.name}`}
+                              >
+                                {res.label} -
+                              </Link>
+                            </li>
+                          );
                         })}
                       </ul>
                     )}
                   </li>
                   <li
                     onClick={() => {
-                      pageHandler("http://localhost:3000/fantasiblog");
+                      pageHandler("http://localhost:3000/blog-news");
                     }}
                   >
-                    <Link to="/fantasiblog" onClick={closeHiddenMenu}>
-                      فانتزیبلاگ
+                    <Link to="/blog-news" onClick={closeHiddenMenu}>
+                      بلاگ و اخبار
                     </Link>
                   </li>
                   <li

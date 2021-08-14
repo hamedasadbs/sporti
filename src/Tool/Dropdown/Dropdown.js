@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 const Dropdown = (props) => {
   const url = "http://localhost/fantasima/index.php";
@@ -12,9 +13,7 @@ const Dropdown = (props) => {
         url,
         JSON.stringify({
           method: "select",
-          selected: "*",
           table: "product_list",
-          type: "normal",
         })
       )
       .then((res) => setProductsData(res.data));
@@ -24,9 +23,7 @@ const Dropdown = (props) => {
         url,
         JSON.stringify({
           method: "select",
-          selected: "*",
           table: "category",
-          type: "normal",
         })
       )
       .then((res) => setProductTypeData(res.data));
@@ -61,7 +58,15 @@ const Dropdown = (props) => {
       <>
         <ul>
           {productTypeData.map((res) => {
-            return <li>{res.label}</li>;
+            return (
+              <li
+                onClick={() => {
+                  window.location.href = res.name;
+                }}
+              >
+                <Link to={`/category/${res.name}`}>{res.label}</Link>
+              </li>
+            );
           })}
         </ul>
       </>

@@ -3,8 +3,6 @@ import classes from "./LastProducts.module.scss";
 import "./js/lightslider";
 import "./css/lightslider.css";
 
-import src from "../../../../Assets/Images/s1.jpeg";
-
 import axios from "axios";
 import $ from "jquery";
 

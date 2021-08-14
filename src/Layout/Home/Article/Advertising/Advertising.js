@@ -2,10 +2,6 @@ import React from "react";
 import classes from "./Advertising.module.scss";
 import { useEffect } from "react/cjs/react.development";
 
-import s1 from "../../../../Assets/Images/s1.jpeg";
-import s2 from "../../../../Assets/Images/s2.jpeg";
-import s3 from "../../../../Assets/Images/s3.jpeg";
-
 const Advertising = () => {
   var slideIndex = 1;
   useEffect(() => {
@@ -52,6 +48,14 @@ const Advertising = () => {
 
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
           <img src="/Images/Poster/dart-poster.jpg" alt="dart" />
+        </div>
+
+        <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
+          <img src="/Images/Poster/football-poster.jpg" alt="dart" />
+        </div>
+
+        <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
+          <img src="/Images/Poster/billiard-poster.jpg" alt="dart" />
         </div>
 
         <a className={classes.prev} onClick={() => plusSlides(-1)}>
