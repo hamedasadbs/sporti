@@ -21,7 +21,7 @@
   .label {
     background-color: darken($baseColor2, 20%);
     opacity: 0.8;
-    border-radius: 3px;
+    border-radius: 50px;
     text-align: center;
     font-family: $font;
     color: whitesmoke;
@@ -36,8 +36,9 @@
   }
 
   img {
-    width: 220px;
-    height: 220px;
+    width: 150px;
+    height: 150px;
+    margin: auto;
   }
 }
 
@@ -48,11 +49,6 @@
 
     .label {
       width: 200px;
-    }
-
-    img {
-      width: 200px;
-      height: 200px;
     }
   }
 }

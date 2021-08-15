@@ -280,8 +280,7 @@ const App = () => {
                   </li>
                   <div className="mainLogo">
                     <Link to="/about">
-                      <img src="/blueSnake-logo.png" alt="blueSnake" />
-                      <span>BlueSnake</span>
+                      <img src="/blueSnake-label.png" alt="blueSnake" />
                     </Link>
                   </div>
                 </ul>

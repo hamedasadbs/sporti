@@ -15,7 +15,6 @@ const Categories = (props) => {
         JSON.stringify({
           method: "select",
           table: "category",
-          orderBy: "has_details",
           orderByType: "DESC",
         })
       )
@@ -29,7 +28,6 @@ const Categories = (props) => {
           return (
             <Category
               label={res.label}
-              type={res.has_details}
               name={res.name}
               image={res.image}
             />
