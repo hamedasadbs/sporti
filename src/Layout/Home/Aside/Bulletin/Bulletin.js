@@ -1,11 +1,10 @@
 import React from "react";
 import classes from "./Bulletin.module.scss";
-import src from "../../../../Assets/Images/free-delivery.png";
 
-const Bulletin = (props) => (
+const Bulletin = () => (
   <>
     <div className={classes.bulletin}>
-      <img alt={src} src={src} />
+      <img src="/free-delivery.png" alt="free-delivery" />
       ارسال و بسته بندی رایگان سفارشات برای خریدهای بالاتر از ۳۰۰ هزار تومان
     </div>
   </>

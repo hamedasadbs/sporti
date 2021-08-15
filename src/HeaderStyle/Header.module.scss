@@ -312,10 +312,20 @@
                 text-align: center;
                 width: 150px;
                 margin: 5px auto;
+                padding: 10px;
+                color: $baseColor1;
+
+                .link {
+                  color: $baseColor2;
+                }
 
                 &:hover {
                   cursor: pointer;
                   background-color: white;
+
+                  .link {
+                    color: $baseColor3;
+                  }
                 }
               }
             }

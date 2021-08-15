@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Link, BrowserRouter as Router } from "react-router-dom";
 
 const Dropdown = (props) => {
   const url = "http://localhost/fantasima/index.php";
@@ -30,9 +30,9 @@ const Dropdown = (props) => {
   }, []);
 
   const dropdown =
-    props.type == "basket" ? (
+    props.type === "basket" ? (
       <span>سبد شما خالی است</span>
-    ) : props.type == "account" ? (
+    ) : props.type === "account" ? (
       <>
         <button className="login" onClick={props.signInClick}>
           ورود
@@ -41,7 +41,7 @@ const Dropdown = (props) => {
           عضویت
         </button>
       </>
-    ) : props.type == "products" ? (
+    ) : props.type === "products" ? (
       <>
         <ul>
           {productsData.map((res) => {
@@ -54,7 +54,7 @@ const Dropdown = (props) => {
           })}
         </ul>
       </>
-    ) : props.type == "productType" ? (
+    ) : props.type === "productType" ? (
       <>
         <ul>
           {productTypeData.map((res) => {
@@ -64,7 +64,9 @@ const Dropdown = (props) => {
                   window.location.href = res.name;
                 }}
               >
-                <Link to={`/category/${res.name}`}>{res.label}</Link>
+                <Link className="link" to={`/category/${res.name}`}>
+                  {res.label}
+                </Link>
               </li>
             );
           })}

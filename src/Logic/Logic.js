@@ -8,7 +8,7 @@ const Logic = (props) => {
     axios
       .get("./test.json")
       .then((res) => {
-        setRes(props.req == "matches" ? res.data.matches : res.data.shoppings);
+        setRes(props.req === "matches" ? res.data.matches : res.data.shoppings);
         alert(res);
       })
       .catch((err) => {

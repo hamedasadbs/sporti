@@ -154,7 +154,7 @@ const Gallery = (props) => {
             {gallery.length > 0 ? (
               gallery.map((gal) => {
                 return gal.price <= maxPrice && gal.price >= minPrice ? (
-                  gal.existence == 1 ? (
+                  gal.existence === 1 ? (
                     <Product
                       btn="افزودن به سبد خرید"
                       label={gal.name}

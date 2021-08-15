@@ -4,7 +4,7 @@ import classes from "./Categories.module.scss";
 
 import Category from "./Category/Category";
 
-const Categories = (props) => {
+const Categories = () => {
   const url = "http://localhost/fantasima/index.php";
   const [productsData, setProductsData] = useState([]);
 
@@ -26,11 +26,7 @@ const Categories = (props) => {
       <div className={classes.categories}>
         {productsData.map((res) => {
           return (
-            <Category
-              label={res.label}
-              name={res.name}
-              image={res.image}
-            />
+            <Category label={res.label} name={res.name} image={res.image} />
           );
         })}
       </div>

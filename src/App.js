@@ -278,8 +278,13 @@ const App = () => {
                   <li onClick={showHiddenMenu} className="dropdown ">
                     <FontAwesomeIcon className="i" icon={faBars} />
                   </li>
-                  <div className="mainLogo">
-                    <Link to="/about">
+                  <div
+                    className="mainLogo"
+                    onClick={() => {
+                      pageHandler("http://localhost:3000/");
+                    }}
+                  >
+                    <Link to="/#">
                       <img src="/blueSnake-label.png" alt="blueSnake" />
                     </Link>
                   </div>
@@ -334,7 +339,7 @@ const App = () => {
                       to="/contact"
                     >
                       <span
-                        {...(page == "http://localhost:3000/contact"
+                        {...(page === "http://localhost:3000/contact"
                           ? { className: "activeNav" }
                           : {})}
                       >
@@ -351,7 +356,7 @@ const App = () => {
                       to="/about"
                     >
                       <span
-                        {...(page == "http://localhost:3000/about"
+                        {...(page === "http://localhost:3000/about"
                           ? { className: "activeNav" }
                           : {})}
                       >
@@ -368,7 +373,7 @@ const App = () => {
                       to="/blog-news"
                     >
                       <span
-                        {...(page == "http://localhost:3000/blog-news"
+                        {...(page === "http://localhost:3000/blog-news"
                           ? { className: "activeNav" }
                           : {})}
                       >
@@ -409,7 +414,7 @@ const App = () => {
                       to="/#"
                     >
                       <span
-                        {...(page == "http://localhost:3000/"
+                        {...(page === "http://localhost:3000/"
                           ? { className: "activeNav" }
                           : {})}
                       >
@@ -422,19 +427,11 @@ const App = () => {
             </header>
             <Switch>
               {productTypeData.map((res) => {
-                if (res.has_details == 0) {
-                  return (
-                    <Route path={`/category/${res.name}`}>
-                      <Gallery name={res.name} label={res.label} />
-                    </Route>
-                  );
-                } else {
-                  return (
-                    <Route path={`/advanced-search/${res.name}`}>
-                      <Gallery name={res.name} label={res.label} />
-                    </Route>
-                  );
-                }
+                return (
+                  <Route path={`/category/${res.name}`}>
+                    <Gallery name={res.name} label={res.label} />
+                  </Route>
+                );
               })}
 
               <Route path="/blog-news">
@@ -463,7 +460,7 @@ const App = () => {
                 <Products />
                 {isSignUpShown && <Sign type="signUp" close={closeForm} />}
                 {isSignInShown && <Sign type="signIn" close={closeForm} />}
-                <LastProducts title="آخرین محصولات" />
+                <LastProducts />
               </Route>
             </Switch>
           </Router>

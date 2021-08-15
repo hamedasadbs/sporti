@@ -18,7 +18,7 @@ const Product = (props) => {
           <p>{props.label}</p>
         </div>
         <button
-          {...(props.btn == "ناموجود"
+          {...(props.btn === "ناموجود"
             ? { className: classes.detailsInactive }
             : { className: classes.detailsActive })}
         >

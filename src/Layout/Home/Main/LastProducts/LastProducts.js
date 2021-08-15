@@ -6,7 +6,7 @@ import "./css/lightslider.css";
 import axios from "axios";
 import $ from "jquery";
 
-const LastProduct = (props) => {
+const LastProduct = () => {
   const [items, setItems] = useState(4);
   const url = "http://localhost/fantasima/index.php";
   const [productsData, setProductsData] = useState([]);
@@ -54,9 +54,7 @@ const LastProduct = (props) => {
     if (small.matches) setItems(1);
   };
 
-  let picture = null;
-
-  picture = productsData.map((pic) => {
+  let picture = productsData.map((pic) => {
     return (
       <li>
         <div key={pic.id} className={classes.picture}>
@@ -81,7 +79,7 @@ const LastProduct = (props) => {
   return (
     <>
       <section className={classes.lastProduct}>
-        <span className={classes.title}>{props.title}</span>
+        <span className={classes.title}>جدیدترین محصولات</span>
         <main>
           <div className={classes.demo}>
             <div className={classes.item}>
