@@ -14,8 +14,8 @@ const Product = (props) => {
           />
         </div>
         <div className={classes.caption}>
-          <h2>{props.price} تومان</h2>
           <p>{props.label}</p>
+          <h2>{props.price} تومان</h2>
         </div>
         <button
           {...(props.btn === "ناموجود"

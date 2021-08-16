@@ -6,8 +6,10 @@ const Notice = (props) => (
     <table className={classes.table}>
       <tbody>
         <tr>
-          Notice
-          <span>{props.title}</span>
+          <td>
+            <label>Notice</label>
+            <span>{props.title}</span>
+          </td>
         </tr>
       </tbody>
     </table>

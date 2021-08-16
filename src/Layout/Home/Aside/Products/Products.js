@@ -38,6 +38,7 @@ const Products = () => {
               label={lab.name}
               price={lab.price}
               image={lab.image}
+              key={lab.name}
             />
           );
         })}

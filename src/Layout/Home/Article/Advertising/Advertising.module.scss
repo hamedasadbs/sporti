@@ -15,7 +15,8 @@
 
     img {
       width: 940px;
-      height: 553px;
+      height: 470px;
+      object-fit: cover;
     }
 
     h2 {
@@ -58,18 +59,9 @@
     }
   }
 
-  /* Position the "next button" to the right */
   .next {
     right: 0;
     border-radius: 3px 0 0 3px;
-  }
-
-  .dark {
-    width: 100%;
-    height: 553px;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    top: 0;
   }
 }
 
@@ -94,10 +86,6 @@
 @media only screen and (max-width: $big) {
   .slideshowContainer {
     margin-left: 30px;
-
-    .dark {
-      height: 552px;
-    }
   }
 }
 
@@ -109,7 +97,7 @@
     .mySlides {
       img {
         width: 650px;
-        height: 367px;
+        height: 325px;
       }
 
       h2 {
@@ -119,51 +107,43 @@
         border-radius: 0;
       }
     }
-
-    .dark {
-      height: 367px;
-    }
   }
 }
 
 @media only screen and (max-width: $small) {
   .slideshowContainer {
-    width: 500px;
-    margin-top: 50px;
-    margin-left: 0px;
+    width: 400px;
+    margin: 50px auto;
+    background-color: brown;
 
     .mySlides {
       img {
-        width: 500px;
-        height: 294px;
+        width: 100%;
+        height: 200px;
       }
 
       h2 {
-        width: 500px;
+        width: 400px;
       }
-    }
-
-    .dark {
-      height: 294px;
     }
   }
 }
 
 @media only screen and (max-width: $verySmall) {
   .slideshowContainer {
-    width: 500px;
+    width: 300px;
     margin-top: 50px;
-    margin-left: -110px;
+    margin-left: 0px;
 
     .mySlides {
       img {
-        width: 500px;
-        height: 282px;
+        width: 260px;
+        height: 250px;
       }
-    }
 
-    .dark {
-      height: 282px;
+      h2 {
+        width: 500px;
+      }
     }
   }
 }

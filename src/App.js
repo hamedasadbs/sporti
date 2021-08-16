@@ -131,8 +131,8 @@ const App = () => {
   return (
     <div className="body">
       <div className="innerBody">
-        <div className="main">
-          <Router>
+        <Router>
+          <div className="main">
             {isHiddenMenuShown && (
               <div className="hiddenMenu">
                 <FontAwesomeIcon
@@ -216,6 +216,7 @@ const App = () => {
                         {productTypeData.map((res) => {
                           return (
                             <li
+                              key={res.name}
                               onClick={() => {
                                 window.location.href = res.name;
                               }}
@@ -343,7 +344,7 @@ const App = () => {
                           ? { className: "activeNav" }
                           : {})}
                       >
-                        <a>ارتباط با ما</a>
+                        ارتباط با ما
                       </span>
                     </Link>
                   </li>
@@ -360,7 +361,7 @@ const App = () => {
                           ? { className: "activeNav" }
                           : {})}
                       >
-                        <a>درباره ما</a>
+                        درباره ما
                       </span>
                     </Link>
                   </li>
@@ -377,7 +378,7 @@ const App = () => {
                           ? { className: "activeNav" }
                           : {})}
                       >
-                        <a>بلاگ و اخبار</a>
+                        بلاگ و اخبار
                       </span>
                     </Link>
                   </li>
@@ -387,18 +388,14 @@ const App = () => {
                         <div className="productType">
                           <Dropdown type="productType" />
                         </div>
-                        <a>
-                          <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
-                        </a>
+                        <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
                       </span>
                     </Link>
                   </li>
                   <li>
                     <Link className="link">
                       <span className="products">
-                        <a>
-                          <FontAwesomeIcon icon={faChevronDown} /> محصولات
-                        </a>
+                        <FontAwesomeIcon icon={faChevronDown} /> محصولات
                         <div className="products">
                           <Dropdown type="products" />
                         </div>
@@ -418,7 +415,7 @@ const App = () => {
                           ? { className: "activeNav" }
                           : {})}
                       >
-                        <a>خانه</a>
+                        خانه
                       </span>
                     </Link>
                   </li>
@@ -428,11 +425,27 @@ const App = () => {
             <Switch>
               {productTypeData.map((res) => {
                 return (
-                  <Route path={`/category/${res.name}`}>
+                  <Route path={`/category/${res.name}`} key={res.name}>
                     <Gallery name={res.name} label={res.label} />
                   </Route>
                 );
               })}
+
+              <Route path="/request-form">
+                <Notice title="request-form" />
+              </Route>
+
+              <Route path="/privacy">
+                <Notice title="privacy" />
+              </Route>
+
+              <Route path="/guarantee">
+                <Notice title="guarantee" />
+              </Route>
+
+              <Route path="/faq">
+                <Notice title="faq" />
+              </Route>
 
               <Route path="/blog-news">
                 <Notice title="blog-news" />
@@ -463,9 +476,9 @@ const App = () => {
                 <LastProducts />
               </Route>
             </Switch>
-          </Router>
-        </div>
-        <Footer />
+          </div>
+          <Footer />
+        </Router>
       </div>
     </div>
   );

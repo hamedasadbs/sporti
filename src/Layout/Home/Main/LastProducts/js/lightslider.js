@@ -69,7 +69,6 @@ import jQuery from "jquery";
     }
     var $children = $el.children(),
       windowW = $(window).width(),
-      breakpoint = null,
       resposiveObj = null,
       length = 0,
       w = 0,
@@ -97,7 +96,6 @@ import jQuery from "jquery";
         if (windowW < settings.responsive[0].breakpoint) {
           for (var i = 0; i < settings.responsive.length; i++) {
             if (windowW < settings.responsive[i].breakpoint) {
-              breakpoint = settings.responsive[i].breakpoint;
               resposiveObj = settings.responsive[i];
             }
           }

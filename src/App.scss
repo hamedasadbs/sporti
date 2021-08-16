@@ -12,12 +12,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: lighten($baseColor3, 25%);
+  background: $baseColor2;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: $baseColor3;
+  background: lighten($baseColor2, 25%);
 }
 
 .body {
@@ -29,6 +29,8 @@
     overflow: hidden;
     vertical-align: middle;
     margin: auto;
+    display: flex;
+    flex-direction: column;
 
     .main {
       width: 1350px;
@@ -37,6 +39,8 @@
       margin-top: -10px;
       padding: 80px auto;
       vertical-align: middle;
+      display: flex;
+      flex-direction: column;
 
       .newsLogo {
         width: 400px;

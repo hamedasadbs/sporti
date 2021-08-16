@@ -36,11 +36,13 @@
 
     h2 {
       font-family: $numberFont;
+      font-weight: lighter;
     }
 
     p {
       font-family: $font;
       font-size: 15px;
+      font-weight: bold;
       max-width: 200px;
     }
   }

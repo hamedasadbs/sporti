@@ -3,8 +3,9 @@
 .topProducts {
   display: flex;
   flex-direction: column;
-  margin: -350px 52px 180px 0px;
-  float: right;
+  position: absolute;
+  top: 400px;
+  right: 70px;
 
   .title {
     @include title();
@@ -14,7 +15,8 @@
 @media only screen and (max-width: $big) {
   .topProducts {
     flex-direction: row;
-    margin: 20px auto;
+    top: 1650px;
+    left: 0px;
 
     .title {
       display: none;
@@ -24,15 +26,14 @@
 
 @media only screen and (max-width: $medium) {
   .topProducts {
-    margin: 20px auto;
-    margin-right: 5px;
+    left: 5px;
   }
 }
 
 @media only screen and (max-width: $small) {
   .topProducts {
-    margin: 20px auto;
-    margin-right: -20px;
+    top: 1950px;
+    left: -20px;
   }
 }
 

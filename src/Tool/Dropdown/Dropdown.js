@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, BrowserRouter as Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Dropdown = (props) => {
   const url = "http://localhost/fantasima/index.php";
@@ -46,7 +46,7 @@ const Dropdown = (props) => {
         <ul>
           {productsData.map((res) => {
             return (
-              <li>
+              <li key={res.english_label}>
                 {res.farsi_label}
                 <ul>{res.english_label}</ul>
               </li>
@@ -60,6 +60,7 @@ const Dropdown = (props) => {
           {productTypeData.map((res) => {
             return (
               <li
+                key={res.name}
                 onClick={() => {
                   window.location.href = res.name;
                 }}

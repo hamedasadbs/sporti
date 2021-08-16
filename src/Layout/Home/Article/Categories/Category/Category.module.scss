@@ -5,11 +5,23 @@
   height: 220px;
   margin: 10px;
   display: flex;
-  background-image: -webkit-radial-gradient(circle, rgb(255, 237, 134), gold);
+  background-image: -webkit-radial-gradient(
+    circle,
+    lighten($baseColor4, 20%),
+    lighten($baseColor4, 20%),
+    $baseColor4
+  );
   @include shadow();
 
   &:hover {
     cursor: pointer;
+    background-image: -webkit-radial-gradient(
+      circle,
+      lighten($baseColor3, 20%),
+      lighten($baseColor4, 20%),
+      $baseColor4
+    );
+    transition: all 0.5s;
     .label {
       margin-top: 0px;
       color: $baseColor2;
@@ -18,15 +30,18 @@
     }
   }
 
+  &:not(:hover) {
+    transition: all 0.5s;
+  }
+
   .label {
-    background-color: darken($baseColor2, 20%);
     opacity: 0.8;
-    border-radius: 50px;
+    border-radius: 0px;
     text-align: center;
     font-family: $font;
-    color: whitesmoke;
+    color: black;
     margin: 20px auto;
-    margin-top: 80px;
+    margin-top: 0;
     font-weight: 800;
     padding: 10px;
     transition: all 1s;
@@ -39,6 +54,7 @@
     width: 150px;
     height: 150px;
     margin: auto;
+    margin-top: 50px;
   }
 }
 
@@ -49,6 +65,12 @@
 
     .label {
       width: 200px;
+    }
+
+    img {
+      width: 120px;
+      height: 120px;
+      margin-top: 60px;
     }
   }
 }
@@ -65,8 +87,9 @@
     }
 
     img {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      height: 100px;
+      margin-top: 40px;
     }
   }
 }

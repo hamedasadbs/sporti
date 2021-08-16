@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./Footer.module.scss";
 
+import { Link } from "react-router-dom";
+
 import {
   faFacebook,
   faInstagram,
@@ -21,26 +23,44 @@ const Footer = () => (
           <label>شماره تماس : 09338599015 (ساعت ۱۲-۱۷ شنبه تا چهارشنبه)</label>
           <label>در شبکه های اجتماعی ,BlueSnake</label>
           <div className={classes.socialMedias}>
-            <FontAwesomeIcon
-              icon={faFacebook}
-              className={classes.i + " " + classes.facebook}
-            />
-            <FontAwesomeIcon
-              icon={faInstagram}
-              className={classes.i + " " + classes.instagram}
-            />
-            <FontAwesomeIcon
-              icon={faTelegram}
-              className={classes.i + " " + classes.telegram}
-            />
-            <FontAwesomeIcon
-              icon={faGooglePlus}
-              className={classes.i + " " + classes.google}
-            />
-            <FontAwesomeIcon
-              icon={faWhatsapp}
-              className={classes.i + " " + classes.whatsapp}
-            />
+            <a rel="noreferrer" href="/" target="_blank">
+              <FontAwesomeIcon
+                icon={faFacebook}
+                className={classes.i + " " + classes.facebook}
+              />
+            </a>
+            <a
+              rel="noreferrer"
+              href="https://www.instagram.com/hamedasad_bs/"
+              target="_blank"
+            >
+              <FontAwesomeIcon
+                icon={faInstagram}
+                className={classes.i + " " + classes.instagram}
+              />
+            </a>
+            <a
+              rel="noreferrer"
+              href="https://telegram.me/hamedasad_bs"
+              target="_blank"
+            >
+              <FontAwesomeIcon
+                icon={faTelegram}
+                className={classes.i + " " + classes.telegram}
+              />
+            </a>
+            <a rel="noreferrer" href="/" target="_blank">
+              <FontAwesomeIcon
+                icon={faGooglePlus}
+                className={classes.i + " " + classes.google}
+              />
+            </a>
+            <a rel="noreferrer" href="/" target="_blank">
+              <FontAwesomeIcon
+                icon={faWhatsapp}
+                className={classes.i + " " + classes.whatsapp}
+              />
+            </a>
           </div>
         </div>
         <div className={classes.rightSide}>
@@ -48,27 +68,37 @@ const Footer = () => (
             <tbody>
               <tr>
                 <td>
-                  <a href='/#'>فرآیند خرید</a>
+                  <Link className={classes.link} to="/#">
+                    فرآیند خرید
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <a href='/#'>پرسش های متداول</a>
+                  <Link className={classes.link} to="/faq">
+                    پرسش های متداول
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <a href='/#'>شرایط بازگرداندن کالا</a>
+                  <Link className={classes.link} to="/guarantee">
+                    شرایط بازگرداندن کالا
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <a href='/#'>حریم خصوصی</a>
+                  <Link className={classes.link} to="/privacy">
+                    حریم خصوصی
+                  </Link>
                 </td>
               </tr>
               <tr>
                 <td>
-                  <a href='/#'>فرم پیشنهاد محصول</a>
+                  <Link className={classes.link} to="/request-form">
+                    فرم پیشنهاد محصول
+                  </Link>
                 </td>
               </tr>
             </tbody>

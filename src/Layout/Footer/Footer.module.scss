@@ -44,7 +44,8 @@
           float: right;
           tr {
             td {
-              a {
+              .link {
+                color: $baseColor2;
                 &:hover {
                   cursor: pointer;
                   color: $baseColor3;

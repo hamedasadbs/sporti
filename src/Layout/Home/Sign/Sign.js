@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import classes from "./Sign.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,7 +10,7 @@ import {
 
 const Sign = (props) => {
   const main =
-    props.type == "signIn" ? (
+    props.type === "signIn" ? (
       <>
         <span className={classes.title}>
           <FontAwesomeIcon

@@ -70,24 +70,17 @@
 
       input {
         @include inp;
+        border: 0;
+        background-color: rgb(247, 247, 247);
+        border-bottom: 1px solid $baseColor2;
+        border-radius: 0;
       }
 
       button {
-        @include btn(white, black, lightgray, black);
+        @include btn(rgb(247, 247, 247), black, lightgray, black);
         width: 40px;
-        border-radius: 5px 0 0 5px;
-        border-right: none;
-
-        &:hover {
-          border-radius: 5px;
-          transition: all 0.5s;
-        }
-
-        &:not(:hover) {
-          background-color: white;
-          border-radius: 5px 0 0 5px;
-          transition: all 1s;
-        }
+        border: none;
+        border-bottom: 1px solid $baseColor2;
       }
     }
 
@@ -227,114 +220,111 @@
         padding: 0px 8px;
         font-weight: 500;
         border-radius: 2px;
-      }
 
-      .link {
-        span {
-          font-size: 14px;
-          display: inline-block;
-          padding: 0px 8px;
-          font-weight: 500;
-          padding: 10px 20px;
-          border-radius: 2px;
-          color: $baseColor2;
+        .link {
+          span {
+            font-size: 14px;
+            display: inline-block;
+            padding: 0px 8px;
+            font-weight: 500;
+            padding: 10px 20px;
+            border-radius: 2px;
+            color: $baseColor2;
 
-          div {
-            display: none;
+            div {
+              display: none;
+            }
+
+            &:hover {
+              background-color: lightgrey;
+              color: $baseColor3;
+              transition: all 0.5s;
+            }
+
+            &:not(:hover) {
+              background-color: transparent;
+              transition: all 1s;
+            }
           }
 
-          &:hover {
-            background-color: lightgrey;
-            transition: all 0.5s;
+          span.activeNav {
+            background-color: $baseColor4;
           }
 
-          &:not(:hover) {
-            background-color: transparent;
-            transition: all 1s;
-          }
-        }
-
-        span.activeNav {
-          background-color: $baseColor1;
-        }
-      }
-
-      span.products {
-        &:hover {
-          div.products {
-            @include dropdownDiv(100%, auto, 45px, 0px);
-
-            ul {
-              width: 100%;
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              padding-right: 40px;
-
-              li {
-                border-radius: 5px;
-                font-size: 10px;
-                line-height: 15px;
-                text-align: right;
-                width: 200px;
-                margin: 5px auto;
-
-                &:hover {
-                  background-color: white;
-                }
+          span.products {
+            &:hover {
+              div.products {
+                @include dropdownDiv(100%, auto, 45px, 0px);
 
                 ul {
-                  text-align: left;
-                  color: $baseColor2;
+                  width: 100%;
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  padding-right: 40px;
+
+                  li {
+                    border-radius: 5px;
+                    font-size: 10px;
+                    line-height: 15px;
+                    text-align: right;
+                    width: 200px;
+                    margin: 5px auto;
+
+                    &:hover {
+                      background-color: white;
+                    }
+
+                    ul {
+                      text-align: left;
+                      color: $baseColor2;
+                    }
+                  }
                 }
               }
             }
           }
-        }
-      }
 
-      span.productType {
-        &:hover {
-          div.productType {
-            @include dropdownDiv(100%, auto, 45px, 0px);
+          span.productType {
+            &:hover {
+              div.productType {
+                @include dropdownDiv(100%, auto, 45px, 0px);
 
-            ul {
-              width: 100%;
-              display: flex;
-              flex-wrap: wrap;
-              justify-content: center;
-              padding-right: 40px;
+                ul {
+                  width: 100%;
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: center;
+                  padding-right: 40px;
 
-              li {
-                border-radius: 5px;
-                font-size: 10px;
-                line-height: 15px;
-                text-align: center;
-                width: 150px;
-                margin: 5px auto;
-                padding: 10px;
-                color: $baseColor1;
+                  li {
+                    border-radius: 5px;
+                    font-size: 10px;
+                    line-height: 15px;
+                    text-align: center;
+                    width: 150px;
+                    margin: 5px auto;
+                    padding: 10px;
+                    color: $baseColor1;
 
-                .link {
-                  color: $baseColor2;
-                }
+                    .link {
+                      color: $baseColor2;
+                    }
 
-                &:hover {
-                  cursor: pointer;
-                  background-color: white;
+                    &:hover {
+                      cursor: pointer;
+                      background-color: white;
 
-                  .link {
-                    color: $baseColor3;
+                      .link {
+                        color: $baseColor3;
+                      }
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
-
-      li.activeNav {
-        background-color: $baseColor1;
       }
 
       .mainLogo {
@@ -461,7 +451,8 @@
       .rightSide {
         li.dropdown {
           .i {
-            margin-left: -150px;
+            margin-left: -50px;
+            font-size: 50px;
           }
         }
       }

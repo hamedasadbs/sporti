@@ -62,7 +62,6 @@ const Advertising = () => {
           <img src="/Images/Poster/billiard-poster.jpg" alt="dart" />
           <h2>روی محصول خود کلیک کن تا برای همیشه مشتری ما باشی</h2>
         </div>
-        <div className={classes.dark}></div>
       </div>
     </>
   );

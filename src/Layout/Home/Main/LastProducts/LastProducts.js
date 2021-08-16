@@ -56,8 +56,8 @@ const LastProduct = () => {
 
   let picture = productsData.map((pic) => {
     return (
-      <li>
-        <div key={pic.id} className={classes.picture}>
+      <li key={pic.id}>
+        <div className={classes.picture}>
           <div className={classes.mainImage}>
             <img
               src={`/Images/Product/${pic.image}`}
@@ -67,8 +67,8 @@ const LastProduct = () => {
             />
           </div>
           <div className={classes.caption}>
-            <h2>{pic.price} تومان</h2>
             <p>{pic.name}</p>
+            <h2>{pic.price} تومان</h2>
           </div>
           <button className={classes.details}>مشاهده جزئیات</button>
         </div>

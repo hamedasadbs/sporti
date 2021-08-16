@@ -4,9 +4,6 @@
   width: 200px;
   height: 180px;
   background-color: lightgray;
-  float: right;
-  margin-right: 80px;
-  margin-top: -558px;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -15,6 +12,9 @@
   padding: 15px;
   padding-top: 5px;
   border: 1px solid $baseColor2;
+  position: absolute;
+  top: 195px;
+  right: 100px;
 }
 
 @media only screen and (max-width: $big) {

@@ -77,11 +77,14 @@
 
         h2 {
           font-family: $numberFont;
+          font-weight: lighter;
         }
 
         p {
           font-family: $font;
           font-size: 15px;
+          margin-top: 30px;
+          font-weight: bold;
         }
       }
 
@@ -98,10 +101,14 @@
 }
 
 @media only screen and (max-width: $big) {
+  .lastProduct {
+    margin-top: 500px;
+  }
 }
 
 @media only screen and (max-width: $small) {
   .lastProduct {
+    margin-top: 400px;
     main {
       .arrowLeft,
       .arrowRight {

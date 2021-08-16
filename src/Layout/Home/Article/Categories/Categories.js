@@ -26,7 +26,12 @@ const Categories = () => {
       <div className={classes.categories}>
         {productsData.map((res) => {
           return (
-            <Category label={res.label} name={res.name} image={res.image} />
+            <Category
+              label={res.label}
+              name={res.name}
+              image={res.image}
+              key={res.name}
+            />
           );
         })}
       </div>
