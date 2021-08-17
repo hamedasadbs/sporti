@@ -16,12 +16,12 @@ const Footer = () => (
   <>
     <footer className={classes.footer}>
       <h2 className={classes.title}>
-        بزرگترین فروشگاه اینترنتی محصولات ورزشی در ایران ,BlueSnake
+        بلو-اسنیک بزرگترین فروشگاه اینترنتی محصولات ورزشی در ایران
       </h2>
       <main>
         <div className={classes.leftSide}>
           <label>شماره تماس : 09338599015 (ساعت ۱۲-۱۷ شنبه تا چهارشنبه)</label>
-          <label>در شبکه های اجتماعی ,BlueSnake</label>
+          <label>بلو-اسنیک در شبکه های اجتماعی</label>
           <div className={classes.socialMedias}>
             <a rel="noreferrer" href="/" target="_blank">
               <FontAwesomeIcon
@@ -105,7 +105,7 @@ const Footer = () => (
           </table>
         </div>
       </main>
-      <p className={classes.copyRight}>.کلیه حقوق متعلق به من است</p>
+      <p className={classes.copyRight}>.کلیه حقوق متعلق به گروه بلو-اسنیک است</p>
     </footer>
   </>
 );
