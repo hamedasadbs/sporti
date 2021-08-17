@@ -17,9 +17,9 @@ const Notice = (props) => {
       )
       .then((res) => setAboutText(res.data));
   }, []);
-  return (
-    <>
-      <table className={classes.table}>
+  let notice =
+    props.title === "about" ? (
+      <table className={classes.about}>
         <tbody>
           <tr>
             <td>
@@ -30,8 +30,47 @@ const Notice = (props) => {
           </tr>
         </tbody>
       </table>
-    </>
-  );
+    ) : props.title === "contact" ? (
+      <div className={classes.contact}>
+        <article className={classes.contactAddress}>
+          <p>
+            تلفن تماس: <span>02100000000</span>
+          </p>
+          <p>
+            پاسخگویی تلفنی از شنبه تا چهارشنبه روزهای غیر تعطیل، <span>12</span>{" "}
+            صبح تا <span>5</span> بعد از ظهر
+          </p>
+          <p>
+            آدرس: استان مثال - شهرستان مثال - شهرک مثال - خیابان مثال - کوچه
+            مثال - پلاک مثال
+          </p>
+        </article>
+        <main className={classes.sendMassage}>
+          <div>
+            <input style={{textAlign:'right'}} />
+            <label>:نام</label>
+          </div>
+          <div>
+            <input style={{textAlign:'left'}} />
+            <label>:ایمیل</label>
+          </div>
+          <div>
+            <input style={{textAlign:'left'}} />
+            <label>:(اختیاری) شماره تماس</label>
+          </div>
+          <div>
+            <textarea style={{textAlign:'right'}} cols='50' rows='5'></textarea>
+            <label>:پیام</label>
+          </div>
+          <div>
+            <input style={{textAlign:'center'}} />
+            <div>96328</div>
+            <label>:کد امنیتی</label>
+          </div>
+        </main>
+      </div>
+    ) : null;
+  return <>{notice}</>;
 };
 
 export default Notice;

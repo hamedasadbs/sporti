@@ -70,10 +70,7 @@
 
       input {
         @include inp;
-        border: 0;
         background-color: rgb(247, 247, 247);
-        border-bottom: 1px solid $baseColor2;
-        border-radius: 0;
       }
 
       button {

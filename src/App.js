@@ -55,7 +55,6 @@ const App = () => {
   };
 
   const disableScroll = () => {
-    alert(window.location.href);
     let x = window.scrollX;
     let y = window.scrollY;
     window.onscroll = function () {
@@ -422,6 +421,8 @@ const App = () => {
                 </ul>
               </nav>
             </header>
+            {isSignUpShown && <Sign type="signUp" close={closeForm} />}
+            {isSignInShown && <Sign type="signIn" close={closeForm} />}
             <Switch>
               {productTypeData.map((res) => {
                 return (
@@ -471,8 +472,6 @@ const App = () => {
                 <Categories />
                 <Bulletin />
                 <Products />
-                {isSignUpShown && <Sign type="signUp" close={closeForm} />}
-                {isSignInShown && <Sign type="signIn" close={closeForm} />}
                 <LastProducts />
               </Route>
             </Switch>

@@ -24,7 +24,7 @@
     .closeHiddenMenu {
       @include closeBtn(45px);
       position: absolute;
-      left: 0;
+      left: -5px;
       top: -8px;
       color: whitesmoke;
     }
@@ -42,17 +42,16 @@
         z-index: 2;
         right: 40px;
         background-color: lightgray;
-        border: 1px ridge black;
-        padding: 5px;
+        border: 1px solid darken($baseColor2,20%);
+        border-radius: 50px;
+        padding: 10px;
       }
 
       input {
         @include inp();
         width: 400px;
         margin: 10px auto;
-        border-left: 1px solid black;
         margin-right: 20px;
-        border-radius: 5px;
         text-align: left;
 
         &::placeholder {
@@ -63,39 +62,39 @@
 
     div.name {
       .i {
-        top: 57px;
+        top: 53px;
       }
     }
 
     div.signInUser {
       .i {
-        top: 57px;
+        top: 53px;
       }
     }
 
     div.signUpUser {
       .i {
-        top: 117px;
+        top: 113px;
       }
     }
 
     div.email {
       .i {
-        top: 177px;
+        top: 173px;
         right: 37px;
       }
     }
 
     div.signInPass {
       .i {
-        top: 117px;
+        top: 113px;
         right: 37px;
       }
     }
 
     div.signUpPass {
       .i {
-        top: 237px;
+        top: 233px;
         right: 37px;
       }
     }
