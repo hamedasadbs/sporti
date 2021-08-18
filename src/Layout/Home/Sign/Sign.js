@@ -6,46 +6,53 @@ import {
   faKey,
   faUser,
   faEnvelope,
-  faWindowClose,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sign = (props) => {
   const url = "http://localhost/fantasima/index.php";
-  const [name, setName] = useState([]);
-  const [username, setUsername] = useState([]);
-  const [email, setEmail] = useState([]);
-  const [password, setPassword] = useState([]);
+  const [name, setName] = useState(null);
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+  const [password, setPassword] = useState(null);
 
-  const nameHandler=(e)=>{
-    setName(e.target.value)
-  }
+  const nameHandler = (e) => {
+    setName(e.target.value);
+  };
 
-  const usernameHandler=(e)=>{
-    setUsername(e.target.value)
-  }
+  const usernameHandler = (e) => {
+    setUsername(e.target.value);
+  };
 
-  const emailHandler=(e)=>{
-    setEmail(e.target.value)
-  }
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  };
 
-  const passwordHandler=(e)=>{
-    setPassword(e.target.value)
-  }
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  };
 
-  const createAccount=()=>{
-    axios
-      .post(
-        url,
-        JSON.stringify({
-          method: "insert",
-          table: "account",
-          name:'jkjkjj',
-          username:username,
-          email:email,
-          password:password
-        })
-      )
-  }
+  const createAccount = () => {
+    if (name != null && username != null && email != null && password != null) {
+      axios
+        .post(
+          url,
+          JSON.stringify({
+            method: "insert",
+            table: "account",
+            name: name,
+            username: username,
+            email: email,
+            password: password,
+          })
+        )
+        .then((res) => {
+          alert(res.data);
+        });
+    } else {
+      alert("لطفا تمام اطلاعات خود را تکمیل کرده سپس ثبت کنید");
+    }
+  };
 
   const main =
     props.type === "signIn" ? (
@@ -53,18 +60,18 @@ const Sign = (props) => {
         <span className={classes.title}>
           <FontAwesomeIcon
             onClick={props.close}
-            icon={faWindowClose}
+            icon={faTimes}
             className={classes.closeHiddenMenu}
           />
           ورود به حساب کاربری
         </span>
         <main>
           <div className={classes.signInUser}>
-            <input type="text" placeholder="نام کاربری" />
+            <input placeholder="نام کاربری" />
             <FontAwesomeIcon icon={faUser} className={classes.i} />
           </div>
           <div className={classes.signInPass}>
-            <input type="text" placeholder="رمز عبور" />
+            <input type="password" placeholder="رمز عبور" />
             <FontAwesomeIcon icon={faKey} className={classes.i} />
           </div>
           <br />
@@ -86,7 +93,7 @@ const Sign = (props) => {
         <span className={classes.title}>
           <FontAwesomeIcon
             onClick={props.close}
-            icon={faWindowClose}
+            icon={faTimes}
             className={classes.closeHiddenMenu}
           />
           ایجاد حساب کاربری
@@ -101,11 +108,15 @@ const Sign = (props) => {
             <FontAwesomeIcon icon={faUser} className={classes.i} />
           </div>
           <div className={classes.email}>
-            <input onChange={emailHandler} placeholder="ایمیل" />
+            <input type="email" onChange={emailHandler} placeholder="ایمیل" />
             <FontAwesomeIcon icon={faEnvelope} className={classes.i} />
           </div>
           <div className={classes.signUpPass}>
-            <input onChange={passwordHandler} placeholder="رمز عبور" />
+            <input
+              type="password"
+              onChange={passwordHandler}
+              placeholder="رمز عبور"
+            />
             <FontAwesomeIcon icon={faKey} className={classes.i} />
           </div>
           <h5 className={classes.rememberMe}>

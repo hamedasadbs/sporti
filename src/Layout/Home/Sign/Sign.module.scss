@@ -42,7 +42,7 @@
         z-index: 2;
         right: 40px;
         background-color: lightgray;
-        border: 1px solid darken($baseColor2,20%);
+        border: 1px solid darken($baseColor2, 20%);
         border-radius: 50px;
         padding: 10px;
       }
@@ -52,7 +52,7 @@
         width: 400px;
         margin: 10px auto;
         margin-right: 20px;
-        text-align: left;
+        text-align: center;
 
         &::placeholder {
           text-align: center;

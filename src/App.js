@@ -16,7 +16,7 @@ import "./App.scss";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faWindowClose,
+  faTimes,
   faChevronDown,
   faChevronLeft,
   faUserCircle,
@@ -136,7 +136,7 @@ const App = () => {
               <div className="hiddenMenu">
                 <FontAwesomeIcon
                   onClick={closeHiddenMenu}
-                  icon={faWindowClose}
+                  icon={faTimes}
                   className="closeHiddenMenu"
                 />
                 <ul className="rightSide">
@@ -150,10 +150,22 @@ const App = () => {
                     <FontAwesomeIcon icon={faUserCircle} className="account" />
                     {isAccountOpen && (
                       <ul>
-                        <button className="login" onClick={showSingIn}>
+                        <button
+                          className="login"
+                          onClick={() => {
+                            closeForm();
+                            showSingIn();
+                          }}
+                        >
                           ورود
                         </button>
-                        <button className="register" onClick={showSingUp}>
+                        <button
+                          className="register"
+                          onClick={() => {
+                            closeForm();
+                            showSingUp();
+                          }}
+                        >
                           عضویت
                         </button>
                       </ul>
