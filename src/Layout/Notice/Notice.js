@@ -45,6 +45,7 @@ const Notice = (props) => {
             مثال - پلاک مثال
           </p>
         </article>
+        <br />
         <main className={classes.sendMassage}>
           <div>
             <input style={{textAlign:'right'}} />

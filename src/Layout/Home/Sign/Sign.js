@@ -25,30 +25,58 @@ const Sign = (props) => {
   };
 
   const emailHandler = (e) => {
+    document.getElementById("password").style.backgroundColor = "white";
     setEmail(e.target.value);
   };
 
   const passwordHandler = (e) => {
+    document.getElementById("password").style.backgroundColor = "white";
     setPassword(e.target.value);
+  };
+
+  const validatePassword = (pass) => {
+    if (pass.length > 5) {
+      return true;
+    } else {
+      alert("رمز وارد شده باید بیش از 5 کاراکتر داشته باشد");
+      document.getElementById("password").style.backgroundColor =
+        "rgb(250, 134, 134)";
+      return false;
+    }
+  };
+
+  const validateEmail = (mail) => {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+      return true;
+    } else {
+      alert("ایمیل وارد شده معتبر نیست");
+      document.getElementById("email").style.backgroundColor =
+        "rgb(250, 134, 134)";
+      return false;
+    }
   };
 
   const createAccount = () => {
     if (name != null && username != null && email != null && password != null) {
-      axios
-        .post(
-          url,
-          JSON.stringify({
-            method: "insert",
-            table: "account",
-            name: name,
-            username: username,
-            email: email,
-            password: password,
-          })
-        )
-        .then((res) => {
-          alert(res.data);
-        });
+      if (document.getElementById("notRobot").checked) {
+        if (validateEmail(email) && validatePassword(password)) {
+          axios
+            .post(
+              url,
+              JSON.stringify({
+                method: "insert",
+                table: "account",
+                name: name,
+                username: username,
+                email: email,
+                password: password,
+              })
+            )
+            .then((res) => {
+              alert(res.data);
+            });
+        }
+      } else alert("لطفا تیک من ربات نیستم را بزنید");
     } else {
       alert("لطفا تمام اطلاعات خود را تکمیل کرده سپس ثبت کنید");
     }
@@ -108,7 +136,12 @@ const Sign = (props) => {
             <FontAwesomeIcon icon={faUser} className={classes.i} />
           </div>
           <div className={classes.email}>
-            <input type="email" onChange={emailHandler} placeholder="ایمیل" />
+            <input
+              type="email"
+              onChange={emailHandler}
+              placeholder="ایمیل"
+              id="email"
+            />
             <FontAwesomeIcon icon={faEnvelope} className={classes.i} />
           </div>
           <div className={classes.signUpPass}>
@@ -116,11 +149,12 @@ const Sign = (props) => {
               type="password"
               onChange={passwordHandler}
               placeholder="رمز عبور"
+              id="password"
             />
             <FontAwesomeIcon icon={faKey} className={classes.i} />
           </div>
           <h5 className={classes.rememberMe}>
-            <input type="checkbox" />
+            <input id="notRobot" type="checkbox" />
             من ربات نیستم
           </h5>
           <button onClick={createAccount}>ثبت</button>
