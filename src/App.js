@@ -8,7 +8,7 @@ import Dropdown from "./Tool/Dropdown/Dropdown";
 
 import Footer from "../src/Layout/Footer/Footer";
 
-import Sign from "../src/Layout/Home/Sign/Sign";
+import Sign from "../src/Layout/Sign/Sign";
 import Gallery from "../src/Layout/Gallery/Gallery";
 import Notice from "../src/Layout/Notice/Notice";
 

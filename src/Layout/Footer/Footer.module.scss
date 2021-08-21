@@ -3,7 +3,7 @@
 .footer {
   width: 100%;
   height: auto;
-  background-color: rgb(233, 233, 233);
+  background-color: $footerBackColor;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -16,8 +16,8 @@
     font-family: $font;
     font-size: 20px;
     font-weight: 100;
-    color: $baseColor2;
-    border-bottom: 1px $baseColor2 solid;
+    color: darken($linkColor, 20%);
+    border-bottom: 1px darken($linkColor, 20%) solid;
     width: 100%;
   }
 
@@ -36,7 +36,6 @@
         float: right;
         margin-right: 100px;
         text-align: right;
-        color: $baseColor2;
         font-weight: 100;
         line-height: 30px;
 
@@ -45,10 +44,10 @@
           tr {
             td {
               .link {
-                color: $baseColor2;
+                color: $linkColor;
                 &:hover {
                   cursor: pointer;
-                  color: $baseColor3;
+                  color: $hoverColor;
                 }
               }
             }
@@ -65,7 +64,7 @@
         text-align: right;
         font-size: 17px;
         font-family: $font;
-        color: $baseColor2;
+        color: darken($linkColor, 20%);
         width: 100%;
         float: right;
         position: relative;
@@ -76,7 +75,7 @@
         text-align: right;
         font-size: 17px;
         font-family: $font;
-        color: $baseColor2;
+        color: darken($linkColor, 20%);
         width: 100%;
         float: right;
         position: relative;
@@ -89,7 +88,7 @@
         .i {
           font-size: 40px;
           margin: 0 10px;
-          color: darken($baseColor2, 20%);
+          color: darken($linkColor, 20%);
 
           &:hover {
             cursor: pointer;
@@ -97,7 +96,7 @@
           }
 
           &:not(:hover) {
-            color: darken($baseColor2, 20%);
+            color: darken($linkColor, 20%);
             transition: all 0.2s;
           }
         }
@@ -140,8 +139,8 @@
     font-family: $font;
     font-size: 17px;
     font-weight: 100;
-    color: $baseColor2;
-    border-top: 1px $baseColor2 solid;
+    color: darken($linkColor, 20%);
+    border-top: 1px darken($linkColor, 20%) solid;
     width: 100%;
     top: 500px;
   }

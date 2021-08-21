@@ -1,4 +1,4 @@
-@import "../../../GlobalStyles.scss";
+@import "../../GlobalStyles.scss";
 
 .sign {
   width: 500px;
@@ -17,7 +17,7 @@
     width: 100%;
     padding: 10px;
     background-color: darken($baseColor2, 35%);
-    color: whitesmoke;
+    color: silver;
     text-align: center;
     font-family: $font;
 
@@ -26,7 +26,7 @@
       position: absolute;
       left: -5px;
       top: -8px;
-      color: whitesmoke;
+      color: silver;
     }
   }
 

@@ -5,6 +5,16 @@ $baseColor2: rgb(105, 105, 105);
 $baseColor3: rgb(248, 62, 62);
 $baseColor4: gold;
 
+$thumbBackColor: rgb(105, 105, 105);
+$thumbHoverBackColor: lighten(rgb(105, 105, 105), 25%);
+$mainColor: gold;
+$superDarkColor: rgb(10, 10, 10);
+$superLightColor: white;
+$pageBackColor: whitesmoke;
+$footerBackColor: rgb(224, 224, 224);
+$linkColor: gray;
+$hoverColor: rgb(248, 62, 62);
+
 $big: 1300px;
 $medium: 1005px;
 $small: 705px;
@@ -66,7 +76,7 @@ button:hover {
   margin: auto;
   height: 40px;
   border: 0;
-  border-bottom: 1px solid $baseColor2;
+  border-bottom: 1px solid $linkColor;
   border-radius: 0;
   text-align: right;
   font-size: 18px;
@@ -123,7 +133,7 @@ button:hover {
 @mixin title {
   width: 100%;
   background-color: darken($baseColor2, 35%);
-  color: lightgray;
+  color: silver;
   padding: 10px;
   text-align: center;
   font-family: $font;

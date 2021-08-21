@@ -8,7 +8,7 @@
     height: auto;
     margin: 0 auto;
     position: absolute;
-    background-color: #ffffff;
+    background-color: $superLightColor;
     z-index: 5;
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
     border-bottom: 1px solid $baseColor2;
@@ -21,7 +21,7 @@
 
     .rightSide {
       font-family: $font;
-      color: $baseColor2;
+      color: $linkColor;
       position: relative;
       margin-top: 40px;
       z-index: 1;
@@ -43,10 +43,10 @@
         }
 
         a {
-          color: $baseColor2;
+          color: $linkColor;
 
           &:hover {
-            color: $baseColor3;
+            color: $hoverColor;
             transition: all 0.2s;
           }
         }
@@ -64,15 +64,7 @@
         display: flex;
 
         input {
-          width: 100%;
-          margin: auto;
-          height: 40px;
-          border: 1px darken($baseColor2, 10%) solid;
-          border-radius: 0 5px 5px 0;
-          border-left: none;
-          text-align: right;
-          font-size: 18px;
-          font-family: $font;
+          @include inp();
 
           &::placeholder {
             font-size: 15px;
@@ -84,23 +76,15 @@
         }
 
         button {
+          @include btn(
+            $pageBackColor,
+            $superDarkColor,
+            darken($pageBackColor, 10%),
+            $superDarkColor
+          );
           width: 40px;
-          background-color: white;
-          border-radius: 5px 0 0 5px;
-          border: 1px darken($baseColor2, 10%) solid;
-          border-right: none;
-
-          &:hover {
-            background-color: lightgray;
-            border-radius: 5px;
-            transition: all 0.1s;
-          }
-
-          &:not(:hover) {
-            background-color: white;
-            border-radius: 5px 0 0 5px;
-            transition: all 1s;
-          }
+          border: none;
+          border-bottom: 1px solid $linkColor;
         }
       }
 
@@ -115,13 +99,18 @@
             width: 10px;
           }
 
-          &::-webkit-scrollbar-thumb {
-            background: lighten($baseColor2, 25%);
+          &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px $thumbBackColor;
             border-radius: 10px;
           }
 
-          &::-webkit-scrollbar-thumb:hover {
-            background: $baseColor2;
+          &::-webkit-scrollbar-thumb {
+            background: $thumbBackColor;
+            border-radius: 10px;
+          }
+
+          &::-webkit-scrollbar-thumb:active {
+            background: $thumbHoverBackColor;
           }
 
           li {
@@ -177,7 +166,7 @@
 
         &:hover {
           cursor: pointer;
-          color: $baseColor3;
+          color: $hoverColor;
         }
 
         button {
@@ -185,31 +174,26 @@
           height: 40px;
           font-family: $font;
           font-size: 18px;
-          color: darken($baseColor2, 10%);
           margin: 5px auto;
           border-radius: 2px;
         }
 
         button.login {
-          background-color: darken($baseColor2, 30%);
-          color: whitesmoke;
-          border: 1px whitesmoke solid;
-
-          &:hover {
-            background-color: lighten(darken($baseColor2, 30%), 5%);
-            transition: all 0.5s;
-          }
+          @include btn(
+            $superDarkColor,
+            $superLightColor,
+            lighten($superDarkColor, 10%),
+            $superLightColor
+          );
         }
 
         button.register {
-          background-color: white;
-          color: darken($baseColor2, 20%);
-          border: 1px darken($baseColor2, 20%) solid;
-
-          &:hover {
-            background-color: darken(white, 5%);
-            transition: all 0.5s;
-          }
+          @include btn(
+            $superLightColor,
+            $superDarkColor,
+            darken($superLightColor, 10%),
+            $superDarkColor
+          );
         }
       }
 
@@ -221,7 +205,7 @@
           margin-right: -20px;
           .carts {
             display: initial;
-            background-color: $baseColor3;
+            background-color: $hoverColor;
             padding-left: 8px;
             padding-right: 8px;
             padding-top: 5px;
@@ -232,19 +216,19 @@
             top: -22px;
             right: 20px;
             text-align: center;
-            color: white;
+            color: $superLightColor;
             font-size: 15px;
           }
         }
 
         &:hover {
-          color: $baseColor3;
+          color: $hoverColor;
 
           ul {
             display: block;
 
             li {
-              color: $baseColor2;
+              color: $linkColor;
             }
           }
         }

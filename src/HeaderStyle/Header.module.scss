@@ -12,21 +12,20 @@
         &:hover {
           cursor: pointer;
           a {
-            color: $baseColor3;
+            color: $hoverColor;
           }
         }
         a {
-          color: $baseColor2;
+          color: $linkColor;
         }
       }
     }
   }
 
   .topHeader {
-    border-bottom: 1px $baseColor2 solid;
     .rightSide {
       font-family: $font;
-      color: #171a1d;
+      color: $superDarkColor;
       margin: auto;
       z-index: 1;
       margin-left: 0;
@@ -70,14 +69,19 @@
 
       input {
         @include inp;
-        background-color: rgb(247, 247, 247);
+        background-color: $pageBackColor;
       }
 
       button {
-        @include btn(rgb(247, 247, 247), black, lightgray, black);
+        @include btn(
+          $pageBackColor,
+          $superDarkColor,
+          darken($pageBackColor, 10%),
+          $superDarkColor
+        );
         width: 40px;
         border: none;
-        border-bottom: 1px solid $baseColor2;
+        border-bottom: 1px solid $linkColor;
       }
     }
 
@@ -96,7 +100,7 @@
 
         label {
           font-family: $font;
-          color: darken($baseColor2, 20%);
+          color: $superDarkColor;
           border-bottom: none;
         }
 
@@ -110,7 +114,7 @@
         }
 
         &:hover {
-          background-color: rgb(230, 230, 230);
+          background-color: darken($pageBackColor, 10%);
 
           .i {
             cursor: pointer;
@@ -124,7 +128,7 @@
 
         &:not(:hover) {
           i {
-            color: black;
+            color: $superDarkColor;
             transition: all 1s;
           }
         }
@@ -140,26 +144,26 @@
               height: 50px;
               font-family: $font;
               font-size: 18px;
-              color: darken($baseColor2, 10%);
+              color: darken($pageBackColor, 20%);
               margin: 5px auto;
               border-radius: 2px;
             }
 
             button.login {
               @include btn(
-                darken($baseColor2, 30%),
-                whitesmoke,
-                lighten(darken($baseColor2, 30%), 5%),
-                whitesmoke
+                $superDarkColor,
+                $superLightColor,
+                lighten($superDarkColor, 10%),
+                $superLightColor
               );
             }
 
             button.register {
               @include btn(
-                white,
-                darken($baseColor2, 20%),
-                darken(white, 5%),
-                darken($baseColor2, 20%)
+                $superLightColor,
+                $superDarkColor,
+                darken($superLightColor, 10%),
+                $superDarkColor
               );
             }
           }
@@ -168,7 +172,7 @@
 
       li.basket {
         .carts {
-          background-color: $baseColor3;
+          background-color: $hoverColor;
           width: 25px;
           height: 25px;
           border-radius: 50px;
@@ -177,7 +181,7 @@
           top: -2px;
           left: 100px;
           text-align: center;
-          color: white;
+          color: $superLightColor;
         }
 
         &:hover {
@@ -208,7 +212,7 @@
       margin-left: 0;
       width: 100%;
       display: flex;
-      border-bottom: 1px $baseColor2 solid;
+      border-bottom: 1px $linkColor solid;
 
       li {
         margin: auto;
@@ -226,15 +230,15 @@
             font-weight: 500;
             padding: 10px 20px;
             border-radius: 2px;
-            color: $baseColor2;
+            color: $linkColor;
 
             div {
               display: none;
             }
 
             &:hover {
-              background-color: lightgrey;
-              color: $baseColor3;
+              background-color: darken($pageBackColor, 20%);
+              color: $hoverColor;
               transition: all 0.5s;
             }
 
@@ -245,7 +249,8 @@
           }
 
           span.activeNav {
-            background-color: $baseColor4;
+            background-color: $mainColor;
+            color: $superDarkColor;
           }
 
           span.products {
@@ -269,12 +274,12 @@
                     margin: 5px auto;
 
                     &:hover {
-                      background-color: white;
+                      background-color: $superLightColor;
                     }
 
                     ul {
                       text-align: left;
-                      color: $baseColor2;
+                      color: $superDarkColor;
                     }
                   }
                 }
@@ -302,18 +307,17 @@
                     width: 150px;
                     margin: 5px auto;
                     padding: 10px;
-                    color: $baseColor1;
 
                     .link {
-                      color: $baseColor2;
+                      color: $linkColor;
                     }
 
                     &:hover {
                       cursor: pointer;
-                      background-color: white;
+                      background-color: $superLightColor;
 
                       .link {
-                        color: $baseColor3;
+                        color: $hoverColor;
                       }
                     }
                   }
@@ -336,12 +340,6 @@
           img {
             margin: 0px 0 0 -50px;
             width: 110px;
-          }
-
-          span {
-            color: darken($baseColor2, 10%);
-            margin: 35px 0 0 20px;
-            font-size: 23px;
           }
         }
       }
