@@ -11,7 +11,6 @@
     flex-direction: column;
     margin: 30px 0px 0px 80px;
     float: left;
-    background-color: lighten($baseColor2, 50%);
     width: 920px;
     height: 0;
 
@@ -39,10 +38,10 @@
       display: flex;
       justify-content: center;
       list-style: none;
-      background-color: darken($baseColor2, 35%);
+      background-color: $superDarkColor;
 
       li {
-        background-color: lightgray;
+        background-color: lighten($linkColor, 20%);
         width: 50px;
         margin: 10px;
         text-align: center;
@@ -53,12 +52,12 @@
 
         &:hover {
           cursor: pointer;
-          background-color: lighten($baseColor1, 20%);
+          background-color: lighten($linkColor, 40%);
         }
       }
 
       li.hoveredOffset {
-        background-color: aqua;
+        background-color: $mainColor;
       }
     }
   }
@@ -72,14 +71,19 @@
     table {
       width: 100%;
       font-family: $font;
-      background-color: white;
+      background-color: $superLightColor;
 
       tr.operation {
         td {
           button {
             width: 100%;
             flex-grow: 1;
-            @include btn(white, black, $baseColor3, white);
+            @include btn(
+              $superLightColor,
+              $superDarkColor,
+              $hoverColor,
+              $superLightColor
+            );
             margin: 15px auto;
             padding: 10px;
             border-radius: 5px;
@@ -99,7 +103,7 @@
       }
 
       tbody:not(.price) {
-        background-color: lighten($baseColor2, 50%);
+        background-color: lighten($linkColor, 40%);
         text-align: right;
 
         tr {
@@ -110,14 +114,14 @@
 
         tr.operation {
           td {
-            background-color: white;
+            background-color: $superLightColor;
           }
         }
       }
 
       tbody.price {
         text-align: right;
-        background-color: lighten($baseColor2, 50%);
+        background-color: lighten($linkColor, 40%);
 
         tr {
           td {
@@ -140,8 +144,8 @@
                 width: 50%;
                 -webkit-appearance: none;
                 height: 10px;
-                background: rgb(241, 241, 241);
-                box-shadow: inset 0 0 5px grey;
+                background: lighten($linkColor, 50%);
+                box-shadow: inset 0 0 5px $thumbBackColor;
                 border-radius: 10px;
                 outline: none;
                 -webkit-transition: 0.2s;
@@ -153,11 +157,11 @@
                   width: 15px;
                   height: 15px;
                   border-radius: 10px;
-                  background: lighten($baseColor3, 25%);
+                  background: $thumbBackColor;
                   cursor: pointer;
 
                   &:active {
-                    background: $baseColor3;
+                    background: $hoverColor;
                   }
                 }
               }

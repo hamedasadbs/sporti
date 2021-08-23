@@ -84,50 +84,51 @@
 
       .socialMedias {
         float: right;
-
-        .i {
-          font-size: 40px;
-          margin: 0 10px;
-          color: darken($linkColor, 20%);
-
-          &:hover {
-            cursor: pointer;
-            transition: all 0.2s;
-          }
-
-          &:not(:hover) {
+        a {
+          .i {
+            font-size: 40px;
+            margin: 0 10px;
             color: darken($linkColor, 20%);
-            transition: all 0.2s;
-          }
-        }
 
-        .facebook {
-          &:hover {
-            color: rgb(55, 55, 248);
-          }
-        }
+            &:hover {
+              cursor: pointer;
+              transition: all 0.5s;
+            }
 
-        .telegram {
-          &:hover {
-            color: rgb(55, 161, 248);
+            &:not(:hover) {
+              color: darken($linkColor, 20%);
+              transition: all 0.2s;
+            }
           }
-        }
 
-        .instagram {
-          &:hover {
-            color: rgb(255, 0, 85);
+          .facebook {
+            &:hover {
+              color: rgb(55, 55, 248);
+            }
           }
-        }
 
-        .google {
-          &:hover {
-            color: rgb(216, 27, 27);
+          .telegram {
+            &:hover {
+              color: rgb(55, 161, 248);
+            }
           }
-        }
 
-        .whatsapp {
-          &:hover {
-            color: rgb(0, 172, 23);
+          .instagram {
+            &:hover {
+              color: rgb(255, 0, 85);
+            }
+          }
+
+          .google {
+            &:hover {
+              color: rgb(216, 27, 27);
+            }
+          }
+
+          .whatsapp {
+            &:hover {
+              color: rgb(0, 172, 23);
+            }
           }
         }
       }

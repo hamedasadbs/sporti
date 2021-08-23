@@ -7,9 +7,9 @@
   display: flex;
   background-image: -webkit-radial-gradient(
     circle,
-    lighten($baseColor4, 20%),
-    lighten($baseColor4, 20%),
-    $baseColor4
+    lighten($mainColor, 20%),
+    lighten($mainColor, 20%),
+    $mainColor
   );
   @include shadow();
 
@@ -17,14 +17,14 @@
     cursor: pointer;
     background-image: -webkit-radial-gradient(
       circle,
-      lighten($baseColor3, 20%),
-      lighten($baseColor4, 20%),
-      $baseColor4
+      lighten($hoverColor, 20%),
+      lighten($mainColor, 20%),
+      $mainColor
     );
     transition: all 0.5s;
     .label {
       margin-top: 0px;
-      color: $baseColor2;
+      color: darken($superDarkColor, 20);
       opacity: 0.5;
       border-radius: 0px 0px 50px 50px;
     }
@@ -39,7 +39,7 @@
     border-radius: 0px;
     text-align: center;
     font-family: $font;
-    color: black;
+    color: $superDarkColor;
     margin: 20px auto;
     margin-top: 0;
     font-weight: 800;

@@ -3,7 +3,7 @@
 .bulletin {
   width: 200px;
   height: 180px;
-  background-color: silver;
+  background-color: $footerBackColor;
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -11,7 +11,7 @@
   font-size: 14px;
   padding: 15px;
   padding-top: 5px;
-  border: 1px solid $baseColor2;
+  border: 1px solid $linkColor;
   position: absolute;
   top: 195px;
   right: 95px;

@@ -89,7 +89,7 @@ const Sign = (props) => {
           <FontAwesomeIcon
             onClick={props.close}
             icon={faTimes}
-            className={classes.closeHiddenMenu}
+            className={classes.closeSign}
           />
           ورود به حساب کاربری
         </span>

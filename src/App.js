@@ -287,7 +287,7 @@ const App = () => {
             <header className="header">
               <nav className="topHeader">
                 <ul className="rightSide">
-                  <li onClick={showHiddenMenu} className="dropdown ">
+                  <li onClick={showHiddenMenu} className="dropdown">
                     <FontAwesomeIcon className="i" icon={faBars} />
                   </li>
                   <div

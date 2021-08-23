@@ -6,7 +6,7 @@
   float: right;
   width: auto;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  background-color: white;
+  background-color: $superLightColor;
   border-radius: 5px;
   text-align: right;
   @include shadow();
@@ -26,7 +26,7 @@
   }
 
   .caption {
-    color: #4d4d4d;
+    color: darken($linkColor, 30%);
     text-align: right;
     font-family: $font;
     font-size: 12px;
@@ -49,7 +49,12 @@
 
   .detailsActive {
     width: 100%;
-    @include btn(white, black, $baseColor3, white);
+    @include btn(
+      $superLightColor,
+      $superDarkColor,
+      $hoverColor,
+      $superLightColor
+    );
     margin: 15px auto;
     padding: 10px;
     border-radius: 5px;
@@ -58,7 +63,12 @@
   .detailsInactive {
     width: 100%;
     flex-grow: 1;
-    @include btn(white, black, lighten($baseColor2, 40%), black);
+    @include btn(
+      $superLightColor,
+      $superDarkColor,
+      $footerBackColor,
+      $superLightColor
+    );
     margin: 15px auto;
     padding: 10px;
     border-radius: 5px;

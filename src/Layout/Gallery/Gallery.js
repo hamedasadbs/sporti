@@ -139,7 +139,7 @@ const Gallery = (props) => {
     numbers.push(
       <li
         onClick={offsetNumber}
-        {...(page === i + 1 && { style: { backgroundColor: "gold" } })}
+        {...(page === i + 1 && { className: classes.hoveredOffset })}
       >
         {i + 1}
       </li>
