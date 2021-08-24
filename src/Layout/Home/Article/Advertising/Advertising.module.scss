@@ -107,16 +107,18 @@
   .slideshowContainer {
     width: 300px;
     margin-top: 50px;
-    margin-left: 0px;
+    margin-left: 10px;
 
     .mySlides {
       img {
         width: 260px;
-        height: 250px;
+        height: 150px;
       }
 
       h2 {
-        width: 500px;
+        width: 260px;
+        font-size: 15px;
+        margin-right: 40px;
       }
     }
   }

@@ -187,14 +187,44 @@
 
 @media only screen and (max-width: $verySmall) {
   .footer {
+    .title {
+      text-align: center;
+      padding-right: 0px;
+    }
     main {
       flex-direction: column;
-      margin-right: 20px;
 
       .rightSide,
       .leftSide {
         width: 100%;
+        margin: 0 auto;
         margin-bottom: 40px;
+
+        .subjects {
+          margin: 0px auto;
+          text-align: center;
+
+          tbody {
+            float: none;
+          }
+        }
+
+        label {
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        .socialMedias {
+          width: 100%;
+          float: none;
+          margin: 0px auto;
+          margin-top: 100px;
+          display: flex;
+
+          a {
+            margin: 0 auto;
+          }
+        }
       }
     }
   }

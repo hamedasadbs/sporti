@@ -155,6 +155,7 @@ const App = () => {
                           onClick={() => {
                             closeForm();
                             showSingIn();
+                            closeHiddenMenu();
                           }}
                         >
                           ورود
@@ -164,6 +165,7 @@ const App = () => {
                           onClick={() => {
                             closeForm();
                             showSingUp();
+                            closeHiddenMenu();
                           }}
                         >
                           عضویت

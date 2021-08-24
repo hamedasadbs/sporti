@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import classes from "./Sign.module.scss";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -122,7 +122,7 @@ const Sign = (props) => {
           <FontAwesomeIcon
             onClick={props.close}
             icon={faTimes}
-            className={classes.closeHiddenMenu}
+            className={classes.closeSign}
           />
           ایجاد حساب کاربری
         </span>

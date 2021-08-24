@@ -28,7 +28,7 @@
   main {
     display: flex;
     flex-direction: column;
-    margin: 5px auto;
+    margin: 20px auto;
 
     div {
       .i {
@@ -57,39 +57,39 @@
 
     div.name {
       .i {
-        top: 53px;
+        top: 68px;
       }
     }
 
     div.signInUser {
       .i {
-        top: 53px;
+        top: 68px;
       }
     }
 
     div.signUpUser {
       .i {
-        top: 113px;
+        top: 128px;
       }
     }
 
     div.email {
       .i {
-        top: 173px;
+        top: 188px;
         right: 37px;
       }
     }
 
     div.signInPass {
       .i {
-        top: 113px;
+        top: 128px;
         right: 37px;
       }
     }
 
     div.signUpPass {
       .i {
-        top: 233px;
+        top: 248px;
         right: 37px;
       }
     }
@@ -130,7 +130,7 @@
       margin-bottom: 10px;
 
       &:hover {
-        color: $baseColor3;
+        color: $hoverColor;
       }
     }
   }
@@ -156,8 +156,7 @@
 
 @media only screen and (max-width: $verySmall) {
   .sign {
-    width: 450px;
-    left: -85px;
+    width: 100%;
 
     main {
       div {

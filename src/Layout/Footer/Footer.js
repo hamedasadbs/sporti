@@ -105,7 +105,7 @@ const Footer = () => (
           </table>
         </div>
       </main>
-      <p className={classes.copyRight}>.کلیه حقوق متعلق به گروه بلو-اسنیک است</p>
+      <p className={classes.copyRight}>کلیه حقوق متعلق به گروه بلو-اسنیک است</p>
     </footer>
   </>
 );

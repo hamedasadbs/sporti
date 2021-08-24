@@ -138,6 +138,7 @@ const Gallery = (props) => {
   for (let i = 0; i < numberOfOffsets; i++) {
     numbers.push(
       <li
+        key={i}
         onClick={offsetNumber}
         {...(page === i + 1 && { className: classes.hoveredOffset })}
       >
@@ -160,6 +161,7 @@ const Gallery = (props) => {
                       label={gal.name}
                       price={gal.price}
                       image={gal.image}
+                      key={gal.name}
                     />
                   ) : (
                     <Product
@@ -167,6 +169,7 @@ const Gallery = (props) => {
                       label={gal.name}
                       price={gal.price}
                       image={gal.image}
+                      key={gal.name}
                     />
                   )
                 ) : null;
@@ -189,7 +192,7 @@ const Gallery = (props) => {
             </ul>
           )}
         </div>
-        <aside className={classes.filter}>
+        <div className={classes.filter}>
           <table className={classes.price}>
             <thead>
               <tr>
@@ -231,7 +234,7 @@ const Gallery = (props) => {
             <tbody>
               {typeFilter.map((filter) => {
                 return (
-                  <tr>
+                  <tr key={filter.type}>
                     <td>
                       {filter.type}
                       <input type="checkbox" />
@@ -250,7 +253,7 @@ const Gallery = (props) => {
             <tbody>
               {kindFilter.map((filter) => {
                 return (
-                  <tr>
+                  <tr key={filter.kind}>
                     <td>
                       {filter.kind}
                       <input type="checkbox" />
@@ -269,7 +272,7 @@ const Gallery = (props) => {
             <tbody>
               {brandFilter.map((filter) => {
                 return (
-                  <tr>
+                  <tr key={filter.brand}>
                     <td>
                       {filter.brand}
                       <input type="checkbox" />
@@ -290,7 +293,7 @@ const Gallery = (props) => {
               </tr>
             </tbody>
           </table>
-        </aside>
+        </div>
       </div>
     </>
   );

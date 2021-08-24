@@ -1,9 +1,5 @@
 $font: "iran";
 $numberFont: "vazir";
-$baseColor1: rgb(141, 218, 253);
-$baseColor2: rgb(105, 105, 105);
-$baseColor3: rgb(248, 62, 62);
-$baseColor4: gold;
 
 $thumbBackColor: rgb(105, 105, 105);
 $mainColor: gold;
@@ -17,7 +13,7 @@ $hoverColor: rgb(248, 62, 62);
 $big: 1300px;
 $medium: 1005px;
 $small: 705px;
-$verySmall: 405px;
+$verySmall: 415px;
 
 a {
   text-decoration: none;
@@ -86,7 +82,7 @@ button:hover {
   text-align: right;
   font-size: 18px;
   font-family: $font;
-  background-color: $pageBackColor;
+  background-color: transparent;
 
   &::placeholder {
     font-size: 15px;
