@@ -15,9 +15,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Footer = () => (
   <>
     <footer className={classes.footer}>
-      <h2 className={classes.title}>
+      <h1 className={classes.title}>
         بلو-اسنیک بزرگترین فروشگاه اینترنتی محصولات ورزشی در ایران
-      </h2>
+      </h1>
       <main>
         <div className={classes.leftSide}>
           <label>شماره تماس : 09338599015 (ساعت ۱۲-۱۷ شنبه تا چهارشنبه)</label>

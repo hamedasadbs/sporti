@@ -24,11 +24,42 @@
   }
 }
 
+@media only screen and (max-width: $small) {
+  .about {
+    margin-top: 80px;
+    tbody {
+      tr {
+        td {
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .about {
+    tbody {
+      tr {
+        td {
+          p {
+            font-size: 13px;
+            padding-left: 5px;
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
 /////////////////////////////////////////////////////////@include
 
 .contact {
   background-color: $footerBackColor;
-  width: 100%;
+  width: auto;
 
   .contactAddress {
     display: flex;
@@ -48,7 +79,6 @@
   .sendMassage {
     display: flex;
     flex-direction: column;
-    float: left;
     width: 100%;
     padding-right: 80px;
     padding-left: 50px;
@@ -69,13 +99,19 @@
         border-radius: 5px;
         margin-right: 20px;
         width: 300px;
+
+        &::placeholder {
+          color: transparent;
+          text-align: center;
+        }
       }
 
-      div {
+      .captcha {
         width: 100px;
         background-color: $linkColor;
         display: flex;
         padding: 10px;
+        text-align: center;
       }
 
       textarea {
@@ -85,13 +121,82 @@
         margin-right: 20px;
         width: 100%;
         text-align: right;
+        font-family: $font;
+        font-size: 15px;
 
         &::placeholder {
-          font-size: 15px;
+          color: transparent;
         }
 
         &:focus {
           outline: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .contact {
+    margin-top: 80px;
+    .contactAddress {
+      p {
+        text-align: center;
+      }
+    }
+
+    .sendMassage {
+      padding-right: 0px;
+      padding-left: 0;
+
+      div {
+        margin: 5px;
+
+        input {
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .contact {
+    .contactAddress {
+      p {
+        font-size: 12px;
+      }
+    }
+
+    .sendMassage {
+      padding-right: 0px;
+      padding-left: 0;
+
+      div {
+        flex-direction: column;
+
+        label {
+          display: none;
+        }
+
+        input {
+          width: auto;
+
+          &::placeholder {
+            color: $linkColor;
+          }
+        }
+
+        textarea {
+          &::placeholder {
+            color: $linkColor;
+            font-size: 15px;
+            font-family: $font;
+          }
+        }
+
+        .captcha {
+          margin: 10px auto;
         }
       }
     }

@@ -48,24 +48,32 @@ const Notice = (props) => {
         <br />
         <main className={classes.sendMassage}>
           <div>
-            <input style={{textAlign:'right'}} />
+            <input placeholder="نام" style={{ textAlign: "right" }} />
             <label>:نام</label>
           </div>
           <div>
-            <input style={{textAlign:'left'}} />
+            <input placeholder="ایمیل" style={{ textAlign: "left" }} />
             <label>:ایمیل</label>
           </div>
           <div>
-            <input style={{textAlign:'left'}} />
+            <input
+              placeholder="شماره تماس (اختیاری)"
+              style={{ textAlign: "left" }}
+            />
             <label>:(اختیاری) شماره تماس</label>
           </div>
           <div>
-            <textarea style={{textAlign:'right'}} cols='50' rows='5'></textarea>
+            <textarea
+              placeholder="پیام"
+              style={{ textAlign: "right" }}
+              cols="50"
+              rows="5"
+            ></textarea>
             <label>:پیام</label>
           </div>
           <div>
-            <input style={{textAlign:'center'}} />
-            <div>96328</div>
+            <input placeholder="کد امنیتی" style={{ textAlign: "center" }} />
+            <div className={classes.captcha}>96328</div>
             <label>:کد امنیتی</label>
           </div>
         </main>

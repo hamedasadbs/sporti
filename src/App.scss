@@ -22,6 +22,9 @@
 
 .body {
   display: flex;
+  background-image: url("./Assets/Images/simple.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
   .innerBody {
     width: 1600px;

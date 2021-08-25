@@ -148,9 +148,9 @@ const Gallery = (props) => {
   }
   return (
     <>
-      <div className={classes.galleries}>
+      <article className={classes.galleries}>
         <div className={classes.gallery}>
-          <span className={classes.title}>{props.label}</span>
+          <h1 className={classes.title}>{props.label}</h1>
           <main>
             {gallery.length > 0 ? (
               gallery.map((gal) => {
@@ -294,7 +294,7 @@ const Gallery = (props) => {
             </tbody>
           </table>
         </div>
-      </div>
+      </article>
     </>
   );
 };

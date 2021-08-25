@@ -23,7 +23,7 @@ const Categories = () => {
 
   return (
     <>
-      <div className={classes.categories}>
+      <article className={classes.categories}>
         {productsData.map((res) => {
           return (
             <Category
@@ -34,7 +34,7 @@ const Categories = () => {
             />
           );
         })}
-      </div>
+      </article>
     </>
   );
 };

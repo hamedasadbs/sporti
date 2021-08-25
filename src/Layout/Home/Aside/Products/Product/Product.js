@@ -4,7 +4,7 @@ import classes from "./Product.module.scss";
 const Product = (props) => {
   return (
     <>
-      <div className={classes.picture}>
+      <aside className={classes.picture}>
         <div className={classes.mainImage}>
           <img
             src={`/Images/Product/${props.image}`}
@@ -24,7 +24,7 @@ const Product = (props) => {
         >
           {props.btn}
         </button>
-      </div>
+      </aside>
     </>
   );
 };

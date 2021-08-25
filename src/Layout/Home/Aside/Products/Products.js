@@ -29,7 +29,7 @@ const Products = () => {
 
   return (
     <>
-      <div className={classes.topProducts}>
+      <aside className={classes.topProducts}>
         <span className={classes.title}>محصولات ویژه</span>
         {topProducts.map((lab) => {
           return (
@@ -42,7 +42,7 @@ const Products = () => {
             />
           );
         })}
-      </div>
+      </aside>
     </>
   );
 };

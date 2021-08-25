@@ -77,7 +77,7 @@
 
         button {
           @include btn(
-            $pageBackColor,
+            transparent,
             $superDarkColor,
             darken($pageBackColor, 10%),
             $superDarkColor

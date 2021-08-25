@@ -51,7 +51,7 @@ const App = () => {
 
   const closeHiddenMenu = () => {
     setIsHiddenMenuShown(false);
-    window.onscroll = function () {};
+    //window.onscroll = function () {};
   };
 
   const disableScroll = () => {
