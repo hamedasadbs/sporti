@@ -20,6 +20,10 @@
   background: $hoverColor;
 }
 
+.disable {
+  pointer-events: none;
+}
+
 .body {
   display: flex;
   background-image: url("./Assets/Images/simple.jpg");

@@ -13,9 +13,7 @@ const Categories = () => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "category",
-          orderByType: "DESC",
+          method: "category",
         })
       )
       .then((res) => setProductsData(res.data));

@@ -13,11 +13,7 @@ const Products = () => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "products",
-          orderBy: "population",
-          orderByType: "DESC",
-          limit: 3,
+          method: "popularProducts",
         })
       )
       .then((res) => setTopProducts(res.data));

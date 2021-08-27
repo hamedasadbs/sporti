@@ -12,8 +12,7 @@ const Dropdown = (props) => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "product_list",
+          method: "products",
         })
       )
       .then((res) => setProductsData(res.data));
@@ -22,8 +21,7 @@ const Dropdown = (props) => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "category",
+          method: "productType",
         })
       )
       .then((res) => setProductTypeData(res.data));

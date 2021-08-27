@@ -16,10 +16,7 @@ const LastProduct = () => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "products",
-          orderBy: "id",
-          orderByType: "DESC",
+          method: "lastProducts",
         })
       )
       .then((res) => setProductsData(res.data));

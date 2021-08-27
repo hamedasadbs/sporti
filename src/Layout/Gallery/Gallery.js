@@ -29,8 +29,7 @@ const Gallery = (props) => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "products",
+          method: "gallery",
           condition: props.name,
         })
       )
@@ -40,8 +39,7 @@ const Gallery = (props) => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "products",
+          method: "gallery",
           condition: props.name,
           orderBy: "id",
           orderByType: "DESC",
@@ -55,9 +53,8 @@ const Gallery = (props) => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
+          method: "gallery",
           selected: "type",
-          table: "products",
         })
       )
       .then((res) => setTypeFilter(res.data));
@@ -66,9 +63,8 @@ const Gallery = (props) => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
+          method: "gallery",
           selected: "kind",
-          table: "products",
         })
       )
       .then((res) => setKindFilter(res.data));
@@ -77,9 +73,8 @@ const Gallery = (props) => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
+          method: "gallery",
           selected: "brand",
-          table: "products",
         })
       )
       .then((res) => setBrandFilter(res.data));

@@ -51,7 +51,6 @@ const App = () => {
 
   const closeHiddenMenu = () => {
     setIsHiddenMenuShown(false);
-    //window.onscroll = function () {};
   };
 
   const disableScroll = () => {
@@ -62,19 +61,34 @@ const App = () => {
     };
   };
 
+  const disableAll = (disable) => {
+    const tagsArray = ["li", "button", "input", "a"];
+
+    for (let t = 0; t < tagsArray.length; t++) {
+      const tagsDom = document.querySelectorAll(tagsArray[t]);
+      for (let i = 0; i < tagsDom.length; i++) {
+        if (disable) tagsDom[i].classList.add("disable");
+        else tagsDom[i].classList.remove("disable");
+      }
+    }
+  };
+
   const showSingIn = () => {
+    disableAll(true);
     setIsSignInShown(true);
     window.scrollTo(0, 0);
     disableScroll();
   };
 
   const showSingUp = () => {
+    disableAll(true);
     setIsSignUpShown(true);
     window.scrollTo(0, 0);
     disableScroll();
   };
 
   const closeForm = () => {
+    disableAll(false);
     setIsSignUpShown(false);
     setIsSignInShown(false);
     window.onscroll = function () {};
@@ -109,9 +123,7 @@ const App = () => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          selected: "*",
-          table: "product_list",
+          method: "products",
         })
       )
       .then((res) => setProductsData(res.data));
@@ -120,8 +132,7 @@ const App = () => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "category",
+          method: "productType",
         })
       )
       .then((res) => setProductTypeData(res.data));
@@ -435,8 +446,8 @@ const App = () => {
                 </ul>
               </nav>
             </header>
-            {isSignUpShown && <Sign type="signUp" close={closeForm} />}
-            {isSignInShown && <Sign type="signIn" close={closeForm} />}
+            {isSignUpShown && <Sign type="signup" close={closeForm} />}
+            {isSignInShown && <Sign type="login" close={closeForm} />}
             <Switch>
               {productTypeData.map((res) => {
                 return (

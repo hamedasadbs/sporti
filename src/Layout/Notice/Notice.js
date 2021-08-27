@@ -11,8 +11,7 @@ const Notice = (props) => {
       .post(
         url,
         JSON.stringify({
-          method: "select",
-          table: "documents",
+          method: "about",
         })
       )
       .then((res) => setAboutText(res.data));

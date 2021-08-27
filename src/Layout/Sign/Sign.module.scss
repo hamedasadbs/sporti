@@ -60,13 +60,13 @@
       }
     }
 
-    div.signInUser {
+    div.loginUser {
       .i {
         top: 68px;
       }
     }
 
-    div.signUpUser {
+    div.signupUser {
       .i {
         top: 128px;
       }
@@ -79,14 +79,14 @@
       }
     }
 
-    div.signInPass {
+    div.loginPass {
       .i {
         top: 128px;
         right: 37px;
       }
     }
 
-    div.signUpPass {
+    div.signupPass {
       .i {
         top: 248px;
         right: 37px;
@@ -105,7 +105,6 @@
       font-size: 15px;
       font-weight: 700;
       margin-bottom: 20px;
-      @include shadow();
     }
 
     .rememberMe {

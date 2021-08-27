@@ -12,16 +12,22 @@ import {
 const Sign = (props) => {
   const url = "http://localhost/fantasima/index.php";
   const [name, setName] = useState(null);
-  const [username, setUsername] = useState(null);
+  const [signupUsername, setSignupUsername] = useState(null);
+  const [loginUsername, setLoginUsername] = useState(null);
   const [email, setEmail] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [signupPassword, setSignupPassword] = useState(null);
+  const [loginPassword, setLoginPassword] = useState(null);
 
   const nameHandler = (e) => {
     setName(e.target.value);
   };
 
-  const usernameHandler = (e) => {
-    setUsername(e.target.value);
+  const signupUsernameHandler = (e) => {
+    setSignupUsername(e.target.value);
+  };
+
+  const loginUsernameHandler = (e) => {
+    setLoginUsername(e.target.value);
   };
 
   const emailHandler = (e) => {
@@ -29,9 +35,13 @@ const Sign = (props) => {
     setEmail(e.target.value);
   };
 
-  const passwordHandler = (e) => {
+  const signupPasswordHandler = (e) => {
     document.getElementById("password").style.backgroundColor = "white";
-    setPassword(e.target.value);
+    setSignupPassword(e.target.value);
+  };
+
+  const loginPasswordHandler = (e) => {
+    setLoginPassword(e.target.value);
   };
 
   const validatePassword = (pass) => {
@@ -57,19 +67,23 @@ const Sign = (props) => {
   };
 
   const createAccount = () => {
-    if (name != null && username != null && email != null && password != null) {
+    if (
+      name != null &&
+      signupUsername != null &&
+      email != null &&
+      signupPassword != null
+    ) {
       if (document.getElementById("notRobot").checked) {
-        if (validateEmail(email) && validatePassword(password)) {
+        if (validateEmail(email) && validatePassword(signupPassword)) {
           axios
             .post(
               url,
               JSON.stringify({
-                method: "insert",
-                table: "account",
+                method: "signup",
                 name: name,
-                username: username,
+                username: signupUsername,
                 email: email,
-                password: password,
+                password: signupPassword,
               })
             )
             .then((res) => {
@@ -82,8 +96,27 @@ const Sign = (props) => {
     }
   };
 
+  const enterToAccount = () => {
+    if (loginUsername != null && loginPassword != null) {
+      axios
+        .post(
+          url,
+          JSON.stringify({
+            method: "login",
+            username: loginUsername,
+            password: loginPassword,
+          })
+        )
+        .then((res) => {
+          alert(res.data[0].password);
+        });
+    } else {
+      alert("لطفا تمام اطلاعات خود را تکمیل کرده سپس ثبت کنید");
+    }
+  };
+
   const main =
-    props.type === "signIn" ? (
+    props.type === "login" ? (
       <>
         <span className={classes.title}>
           <FontAwesomeIcon
@@ -94,16 +127,20 @@ const Sign = (props) => {
           ورود به حساب کاربری
         </span>
         <main>
-          <div className={classes.signInUser}>
-            <input placeholder="نام کاربری" />
+          <div className={classes.loginUser}>
+            <input onChange={loginUsernameHandler} placeholder="نام کاربری" />
             <FontAwesomeIcon icon={faUser} className={classes.i} />
           </div>
-          <div className={classes.signInPass}>
-            <input type="password" placeholder="رمز عبور" />
+          <div className={classes.loginPass}>
+            <input
+              onChange={loginPasswordHandler}
+              type="password"
+              placeholder="رمز عبور"
+            />
             <FontAwesomeIcon icon={faKey} className={classes.i} />
           </div>
           <br />
-          <button>ورود</button>
+          <button onClick={enterToAccount}>ورود</button>
           <h5 className={classes.rememberMe}>
             <input type="checkbox" />
             مرا به خاطر بسپار
@@ -131,8 +168,8 @@ const Sign = (props) => {
             <input onChange={nameHandler} placeholder="نام و نام خانوادگی" />
             <FontAwesomeIcon icon={faUser} className={classes.i} />
           </div>
-          <div className={classes.signUpUser}>
-            <input onChange={usernameHandler} placeholder="نام کاربری" />
+          <div className={classes.signupUser}>
+            <input onChange={signupUsernameHandler} placeholder="نام کاربری" />
             <FontAwesomeIcon icon={faUser} className={classes.i} />
           </div>
           <div className={classes.email}>
@@ -144,10 +181,10 @@ const Sign = (props) => {
             />
             <FontAwesomeIcon icon={faEnvelope} className={classes.i} />
           </div>
-          <div className={classes.signUpPass}>
+          <div className={classes.signupPass}>
             <input
               type="password"
-              onChange={passwordHandler}
+              onChange={signupPasswordHandler}
               placeholder="رمز عبور"
               id="password"
             />
