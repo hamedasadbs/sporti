@@ -1,20 +1,15 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import classes from "./Notice.module.scss";
 
 const Notice = (props) => {
-  const [aboutText, setAboutText] = useState([]);
-  const url = "http://localhost/fantasima/index.php";
+  const [aboutText, setAboutText] = useState(null);
 
   useEffect(() => {
-    axios
-      .post(
-        url,
-        JSON.stringify({
-          method: "about",
-        })
-      )
-      .then((res) => setAboutText(res.data));
+    fetch("/about.txt")
+      .then((r) => r.text())
+      .then((text) => {
+        setAboutText(text);
+      });
   }, []);
   let notice =
     props.title === "about" ? (
@@ -22,9 +17,7 @@ const Notice = (props) => {
         <tbody>
           <tr>
             <td>
-              {aboutText.map((res) => {
-                return <p>{res.text}</p>;
-              })}
+              <p>{aboutText}</p>
             </td>
           </tr>
         </tbody>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./Sign.module.scss";
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -108,7 +108,14 @@ const Sign = (props) => {
           })
         )
         .then((res) => {
-          alert(res.data[0].password);
+          if (res.data[0] == null)
+            alert("نام کاربری یا رمز عبور شما اشتباه است");
+          else {
+            alert(`شما با نام ${res.data[0].name} وارد حساب کاربری خود شدید`);
+            props.online(true);
+            props.accountName(res.data[0].name);
+            props.close(true);
+          }
         });
     } else {
       alert("لطفا تمام اطلاعات خود را تکمیل کرده سپس ثبت کنید");
@@ -128,7 +135,10 @@ const Sign = (props) => {
         </span>
         <main>
           <div className={classes.loginUser}>
-            <input onChange={loginUsernameHandler} placeholder="نام کاربری" />
+            <input
+              onChange={loginUsernameHandler}
+              placeholder="نام کاربری یا ایمیل"
+            />
             <FontAwesomeIcon icon={faUser} className={classes.i} />
           </div>
           <div className={classes.loginPass}>

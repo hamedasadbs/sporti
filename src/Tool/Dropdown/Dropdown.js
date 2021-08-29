@@ -71,6 +71,12 @@ const Dropdown = (props) => {
           })}
         </ul>
       </>
+    ) : props.type === "online" ? (
+      <>
+        <button className="logout" onClick={props.logoutClick}>
+          خروج
+        </button>
+      </>
     ) : null;
 
   return <>{dropdown}</>;

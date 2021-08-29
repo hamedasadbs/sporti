@@ -148,7 +148,8 @@
               border-radius: 2px;
             }
 
-            button.login {
+            button.login,
+            button.logout {
               @include btn(
                 $superDarkColor,
                 $superLightColor,

@@ -44,6 +44,27 @@ const App = () => {
 
   const [page, setPage] = useState(window.location.href);
 
+  const setCookie = (cName, cValue, minutes) => {
+    let d = new Date();
+    d.setTime(d.getTime() + minutes * 60 * 1000);
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cName + "=" + cValue + "; " + expires;
+  };
+
+  const getCookie = (cName) => {
+    const nameString = cName + "=";
+
+    const value = document.cookie.split("; ").filter((item) => {
+      return item.includes(nameString);
+    });
+
+    if (value.length) {
+      return value[0].substring(nameString.length, value[0].length);
+    } else {
+      return "";
+    }
+  };
+
   const showHiddenMenu = () => {
     setIsHiddenMenuShown(true);
     window.scrollTo(0, 0);
@@ -137,6 +158,19 @@ const App = () => {
       )
       .then((res) => setProductTypeData(res.data));
   }, []);
+
+  const onlineHandler = (isOnline) => {
+    setCookie("isOnline", isOnline, 1);
+  };
+
+  const accountNameHandler = (name) => {
+    setCookie("accountName", name, 1);
+  };
+
+  const logoutHandler = () => {
+    setCookie("isOnline", "", -1);
+    setCookie("accountName", "", -1);
+  };
 
   return (
     <div className="body">
@@ -326,20 +360,34 @@ const App = () => {
                 </ul>
                 <ul className="leftSide">
                   <li className="account">
-                    <label>حساب من</label>
+                    {getCookie("isOnline") == false ? (
+                      <label>حساب من</label>
+                    ) : (
+                      <label>{getCookie("accountName")}</label>
+                    )}
                     <FontAwesomeIcon icon={faUserCircle} className="i" />
                     <div className="account">
-                      <Dropdown
-                        type="account"
-                        signInClick={() => {
-                          closeForm();
-                          showSingIn();
-                        }}
-                        signUpClick={() => {
-                          closeForm();
-                          showSingUp();
-                        }}
-                      />
+                      {getCookie("isOnline") == false ? (
+                        <Dropdown
+                          type="account"
+                          signInClick={() => {
+                            closeForm();
+                            showSingIn();
+                          }}
+                          signUpClick={() => {
+                            closeForm();
+                            showSingUp();
+                          }}
+                        />
+                      ) : (
+                        <Dropdown
+                          type="online"
+                          logoutClick={() => {
+                            logoutHandler();
+                            window.location.href = window.location.href;
+                          }}
+                        />
+                      )}
                     </div>
                   </li>
                   <li className="basket">
@@ -447,7 +495,14 @@ const App = () => {
               </nav>
             </header>
             {isSignUpShown && <Sign type="signup" close={closeForm} />}
-            {isSignInShown && <Sign type="login" close={closeForm} />}
+            {isSignInShown && (
+              <Sign
+                online={onlineHandler}
+                accountName={accountNameHandler}
+                type="login"
+                close={closeForm}
+              />
+            )}
             <Switch>
               {productTypeData.map((res) => {
                 return (
