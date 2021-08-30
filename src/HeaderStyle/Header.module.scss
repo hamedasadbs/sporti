@@ -136,7 +136,7 @@
       li.account {
         &:hover {
           div.account {
-            @include dropdownDiv(300px, 140px, 70px, 0px);
+            @include dropdownDiv(300px, auto, 70px, 0px);
 
             button {
               width: 100%;
@@ -186,7 +186,7 @@
 
         &:hover {
           div.basket {
-            @include dropdownDiv(300px, 150px, 70px, 0px);
+            @include dropdownDiv(300px, auto, 70px, 0px);
 
             span {
               margin: 0;

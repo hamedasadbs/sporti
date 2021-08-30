@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import classes from "./Notice.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUndo } from "@fortawesome/free-solid-svg-icons";
 
 const Notice = (props) => {
   const [aboutText, setAboutText] = useState(null);
+  let [isCaptchaTrue, setIsCaptchaTrue] = useState(false);
 
   useEffect(() => {
     fetch("/about.txt")
@@ -11,6 +14,49 @@ const Notice = (props) => {
         setAboutText(text);
       });
   }, []);
+
+  const symbol = ["+", "-", "*"];
+  let symbolIndex = Math.floor(Math.random() * symbol.length);
+  let firstNum = Math.floor(Math.random() * 50);
+  let secondNum = Math.floor(Math.random() * 50);
+
+  const sendMassage = () => {
+    if (symbol[symbolIndex] == "+") {
+      if (
+        firstNum + secondNum ==
+        document.getElementById("captchaAnswer").value
+      ) {
+        setIsCaptchaTrue(true);
+        isCaptchaTrue = true;
+      }
+    } else if (symbol[symbolIndex] == "-") {
+      if (
+        firstNum - secondNum ==
+        document.getElementById("captchaAnswer").value
+      ) {
+        setIsCaptchaTrue(true);
+        isCaptchaTrue = true;
+      }
+    } else if (symbol[symbolIndex] == "*") {
+      if (
+        firstNum * secondNum ==
+        document.getElementById("captchaAnswer").value
+      ) {
+        setIsCaptchaTrue(true);
+        isCaptchaTrue = true;
+      }
+    } else if (symbol[symbolIndex] == "/") {
+      if (
+        firstNum / secondNum ==
+        document.getElementById("captchaAnswer").value
+      ) {
+        setIsCaptchaTrue(true);
+        isCaptchaTrue = true;
+      }
+    }
+    alert(isCaptchaTrue);
+  };
+
   let notice =
     props.title === "about" ? (
       <table className={classes.about}>
@@ -40,17 +86,29 @@ const Notice = (props) => {
         <br />
         <main className={classes.sendMassage}>
           <div>
-            <input placeholder="نام" style={{ textAlign: "right" }} />
+            <input
+              placeholder="نام"
+              style={{ textAlign: "right" }}
+              maxLength="20"
+              size="30"
+            />
             <label>:نام</label>
           </div>
           <div>
-            <input placeholder="ایمیل" style={{ textAlign: "left" }} />
+            <input
+              placeholder="ایمیل"
+              style={{ textAlign: "left" }}
+              maxLength="20"
+              size="30"
+            />
             <label>:ایمیل</label>
           </div>
           <div>
             <input
               placeholder="شماره تماس (اختیاری)"
               style={{ textAlign: "left" }}
+              maxLength="12"
+              size="20"
             />
             <label>:(اختیاری) شماره تماس</label>
           </div>
@@ -64,9 +122,34 @@ const Notice = (props) => {
             <label>:پیام</label>
           </div>
           <div>
-            <input placeholder="کد امنیتی" style={{ textAlign: "center" }} />
-            <div className={classes.captcha}>96328</div>
+            <div>
+              <button
+                onClick={() => {
+                  window.location.href = window.location.href;
+                }}
+                className={classes.refresh}
+              >
+                <FontAwesomeIcon className={classes.i} icon={faUndo} />
+              </button>
+            </div>
+            <div className={classes.captcha}>
+              <span>
+                {firstNum + " " + symbol[symbolIndex] + " " + secondNum + " ="}
+              </span>
+            </div>
+            <input
+              id="captchaAnswer"
+              placeholder="کد امنیتی"
+              style={{ textAlign: "center" }}
+              maxLength="5"
+              size="10"
+            />
             <label>:کد امنیتی</label>
+          </div>
+          <div>
+            <button className={classes.send} onClick={sendMassage}>
+              ارسال پیام
+            </button>
           </div>
         </main>
       </div>

@@ -98,7 +98,7 @@
         @include inp();
         background-color: white;
         margin-right: 20px;
-        width: 300px;
+        width: auto;
 
         &::placeholder {
           color: transparent;
@@ -107,11 +107,14 @@
       }
 
       .captcha {
-        width: 100px;
-        background-color: $linkColor;
-        display: flex;
+        background-color: darken($footerBackColor, 10%);
         padding: 10px;
         text-align: center;
+        margin-left: 500px;
+
+        span {
+          margin: auto;
+        }
       }
 
       textarea {
@@ -130,6 +133,35 @@
 
         &:focus {
           outline: none;
+        }
+      }
+
+      .send {
+        @include btn(white, black, $hoverColor, white);
+        margin: 15px auto;
+        padding: 10px;
+        border-radius: 5px;
+        width: 300px;
+      }
+
+      .refresh {
+        @include btn(white, black, $hoverColor, white);
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 5px;
+        width: auto;
+        margin-right: -500px;
+
+        &:hover {
+          .i {
+            animation: rotateRefresh 1s infinite;
+          }
+        }
+      }
+
+      @keyframes rotateRefresh {
+        100% {
+          transform: rotate(-360deg);
         }
       }
     }
