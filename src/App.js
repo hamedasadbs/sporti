@@ -494,7 +494,14 @@ const App = () => {
                 </ul>
               </nav>
             </header>
-            {isSignUpShown && <Sign type="signup" close={closeForm} />}
+            {isSignUpShown && (
+              <Sign
+                type="signup"
+                close={closeForm}
+                online={onlineHandler}
+                accountName={accountNameHandler}
+              />
+            )}
             {isSignInShown && (
               <Sign
                 online={onlineHandler}

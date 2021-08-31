@@ -200,10 +200,12 @@
     flex-direction: column;
     .gallery {
       width: auto;
+      margin-top: 1000px;
     }
 
     .filter {
       width: auto;
+      margin-top: -1000px;
     }
   }
 }

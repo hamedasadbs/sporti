@@ -136,7 +136,7 @@
       li.account {
         &:hover {
           div.account {
-            @include dropdownDiv(300px, auto, 70px, 0px);
+            @include dropdownDiv(300px, 70px, 0px);
 
             button {
               width: 100%;
@@ -186,7 +186,7 @@
 
         &:hover {
           div.basket {
-            @include dropdownDiv(300px, auto, 70px, 0px);
+            @include dropdownDiv(300px, 70px, 0px);
 
             span {
               margin: 0;
@@ -229,7 +229,7 @@
             padding: 0px 8px;
             font-weight: 500;
             padding: 10px 20px;
-            border-radius: 2px;
+            border-radius: 2px 2px 0 0;
             color: $linkColor;
 
             div {
@@ -256,7 +256,7 @@
           span.products {
             &:hover {
               div.products {
-                @include dropdownDiv(100%, auto, 45px, 0px);
+                @include dropdownDiv(100%, 45px, 0px);
 
                 ul {
                   width: 100%;
@@ -290,7 +290,7 @@
           span.productType {
             &:hover {
               div.productType {
-                @include dropdownDiv(100%, auto, 45px, 0px);
+                @include dropdownDiv(100%, 45px, 0px);
 
                 ul {
                   width: 100%;

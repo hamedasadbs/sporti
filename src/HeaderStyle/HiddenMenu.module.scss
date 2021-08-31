@@ -140,7 +140,7 @@
       li.productType {
         &:hover {
           div {
-            @include dropdownDiv(450px, auto, 45px, 200px);
+            @include dropdownDiv(450px, 45px, 200px);
           }
         }
       }
@@ -243,7 +243,7 @@
       li.productType {
         &:hover {
           div {
-            @include dropdownDiv(250px, auto, 45px, 200px);
+            @include dropdownDiv(250px, 45px, 200px);
           }
         }
       }

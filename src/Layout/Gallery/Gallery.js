@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./Gallery.module.scss";
 
 import axios from "axios";
-import Product from "../Home/Aside/Products/Product/Product";
+import Product from "./Product/Product";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

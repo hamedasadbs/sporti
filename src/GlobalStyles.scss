@@ -101,12 +101,11 @@ button:hover {
   top: 15px;
 }
 
-@mixin dropdownDiv($width, $height, $top, $right) {
+@mixin dropdownDiv($width, $top, $right) {
   position: absolute;
   display: initial !important;
   width: $width;
-  height: $height;
-  background-color: $superLightColor;
+  background-color: darken($superLightColor, 10%);
   right: $right;
   top: $top;
   z-index: 10;

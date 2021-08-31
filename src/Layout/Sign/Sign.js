@@ -13,10 +13,10 @@ const Sign = (props) => {
   const url = "http://localhost/fantasima/index.php";
   const [name, setName] = useState(null);
   const [signupUsername, setSignupUsername] = useState(null);
-  const [loginUsername, setLoginUsername] = useState(null);
+  let [loginUsername, setLoginUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [signupPassword, setSignupPassword] = useState(null);
-  const [loginPassword, setLoginPassword] = useState(null);
+  let [loginPassword, setLoginPassword] = useState(null);
 
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -88,6 +88,12 @@ const Sign = (props) => {
             )
             .then((res) => {
               alert(res.data);
+              setLoginUsername(signupUsername);
+              loginUsername = signupUsername;
+              setLoginPassword(signupPassword);
+              loginPassword = signupPassword;
+              enterToAccount();
+              //window.location.href=window.location.href
             });
         }
       } else alert("لطفا تیک من ربات نیستم را بزنید");
@@ -111,9 +117,11 @@ const Sign = (props) => {
           if (res.data[0] == null)
             alert("نام کاربری یا رمز عبور شما اشتباه است");
           else {
-            alert(`شما با نام ${res.data[0].name} وارد حساب کاربری خود شدید`);
+            alert(
+              `شما با نام ${res.data[0].username} وارد حساب کاربری خود شدید`
+            );
             props.online(true);
-            props.accountName(res.data[0].name);
+            props.accountName(res.data[0].username);
             props.close(true);
           }
         });
