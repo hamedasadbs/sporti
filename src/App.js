@@ -1,7 +1,7 @@
 import Advertising from "../src/Layout/Home/Article/Advertising/Advertising";
 import Categories from "../src/Layout/Home/Article/Categories/Categories";
 import Bulletin from "../src/Layout/Home/Aside/Bulletin/Bulletin";
-import Products from "../src/Layout/Home/Aside/Products/Products";
+import TopProducts from "../src/Layout/Home/Aside/TopProducts/TopProducts";
 import LastProducts from "../src/Layout/Home/Main/LastProducts/LastProducts";
 
 import Dropdown from "./Tool/Dropdown/Dropdown";
@@ -30,7 +30,9 @@ import React, { useState, useEffect } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
-  const url = "http://localhost/fantasima/index.php";
+  const productsURL = "http://localhost/bsShop/products.php";
+  const productTypeURL = "http://localhost/bsShop/productType.php";
+
   const [productsData, setProductsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
@@ -140,23 +142,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    axios
-      .post(
-        url,
-        JSON.stringify({
-          method: "products",
-        })
-      )
-      .then((res) => setProductsData(res.data));
+    axios.post(productsURL).then((res) => setProductsData(res.data));
 
-    axios
-      .post(
-        url,
-        JSON.stringify({
-          method: "productType",
-        })
-      )
-      .then((res) => setProductTypeData(res.data));
+    axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
   }, []);
 
   const onlineHandler = (isOnline) => {
@@ -558,7 +546,7 @@ const App = () => {
                 />
                 <Categories />
                 <Bulletin />
-                <Products />
+                <TopProducts />
                 <LastProducts />
               </Route>
             </Switch>

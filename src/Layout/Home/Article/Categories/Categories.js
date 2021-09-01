@@ -5,18 +5,11 @@ import classes from "./Categories.module.scss";
 import Category from "./Category/Category";
 
 const Categories = () => {
-  const url = "http://localhost/fantasima/index.php";
+  const url = "http://localhost/bsShop/category.php";
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
-    axios
-      .post(
-        url,
-        JSON.stringify({
-          method: "category",
-        })
-      )
-      .then((res) => setProductsData(res.data));
+    axios.post(url).then((res) => setProductsData(res.data));
   }, []);
 
   return (

@@ -3,28 +3,16 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 const Dropdown = (props) => {
-  const url = "http://localhost/fantasima/index.php";
+  const productsURL = "http://localhost/bsShop/products.php";
+  const productTypeURL = "http://localhost/bsShop/productType.php";
+
   const [productsData, setProductsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
 
   useEffect(() => {
-    axios
-      .post(
-        url,
-        JSON.stringify({
-          method: "products",
-        })
-      )
-      .then((res) => setProductsData(res.data));
+    axios.post(productsURL).then((res) => setProductsData(res.data));
 
-    axios
-      .post(
-        url,
-        JSON.stringify({
-          method: "productType",
-        })
-      )
-      .then((res) => setProductTypeData(res.data));
+    axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
   }, []);
 
   const dropdown =

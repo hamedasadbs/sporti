@@ -8,18 +8,11 @@ import $ from "jquery";
 
 const LastProduct = () => {
   const [items, setItems] = useState(4);
-  const url = "http://localhost/fantasima/index.php";
+  const url = "http://localhost/bsShop/lastProducts.php";
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
-    axios
-      .post(
-        url,
-        JSON.stringify({
-          method: "lastProducts",
-        })
-      )
-      .then((res) => setProductsData(res.data));
+    axios.post(url).then((res) => setProductsData(res.data));
 
     checkScreenSize();
   }, []);
@@ -67,7 +60,11 @@ const LastProduct = () => {
             <p>{pic.name}</p>
             <h2>{pic.price} تومان</h2>
           </div>
-          <button className={classes.details}>مشاهده جزئیات</button>
+          {pic.existence === "1" ? (
+            <button className={classes.details}>مشاهده جزئیات</button>
+          ) : (
+            <button className={classes.notActive}>ناموجود</button>
+          )}
         </div>
       </li>
     );

@@ -10,16 +10,24 @@
   .title {
     @include title();
   }
+
+  main {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: $big) {
   .topProducts {
-    flex-direction: row;
     top: 1650px;
     left: 0px;
 
     .title {
-      display: none;
+      width: 1000px;
+    }
+
+    main {
+      flex-direction: row;
     }
   }
 }
@@ -27,6 +35,10 @@
 @media only screen and (max-width: $medium) {
   .topProducts {
     left: 5px;
+
+    .title {
+      width: 690px;
+    }
   }
 }
 
@@ -34,12 +46,20 @@
   .topProducts {
     top: 1950px;
     left: 10px;
+
+    .title {
+      width: 480px;
+    }
   }
 }
 
 @media only screen and (max-width: $verySmall) {
   .topProducts {
     top: 1500px;
-    left: -10px;
+    left: -85px;
+
+    .title {
+      width: 450px;
+    }
   }
 }

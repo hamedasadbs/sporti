@@ -17,13 +17,14 @@ const Product = (props) => {
           <p>{props.label}</p>
           <h2>{props.price} تومان</h2>
         </div>
-        <button
-          {...(props.btn === "ناموجود"
-            ? { className: classes.detailsInactive }
-            : { className: classes.detailsActive })}
-        >
-          {props.btn}
-        </button>
+        {props.exi === false ? (
+          <button className={classes.notExistBtn}>ناموجود</button>
+        ) : (
+          <div className={classes.existBtn}>
+            <button className={classes.addToCart}>افزودن به سبد</button>
+            <button className={classes.moreDetails}>مشاهده جزئیات</button>
+          </div>
+        )}
       </aside>
     </>
   );

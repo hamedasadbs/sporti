@@ -1,7 +1,7 @@
 import React from "react";
-import classes from "./Product.module.scss";
+import classes from "./TopProduct.module.scss";
 
-const Product = (props) => {
+const TopProduct = (props) => {
   return (
     <>
       <aside className={classes.picture}>
@@ -17,16 +17,10 @@ const Product = (props) => {
           <p>{props.label}</p>
           <h2>{props.price} تومان</h2>
         </div>
-        <button
-          {...(props.btn === "ناموجود"
-            ? { className: classes.detailsInactive }
-            : { className: classes.detailsActive })}
-        >
-          {props.btn}
-        </button>
+        <button className={classes.details}>مشاهده جزئیات</button>
       </aside>
     </>
   );
 };
 
-export default Product;
+export default TopProduct;

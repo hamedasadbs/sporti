@@ -4,7 +4,7 @@
   margin: 15px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 15px 10px 0px 10px;
   float: right;
   width: 275px;
@@ -51,27 +51,27 @@
     }
   }
 
-  .detailsActive {
-    width: 100%;
-    @include btn(
-      $superLightColor,
-      $superDarkColor,
-      $hoverColor,
-      $superLightColor
-    );
-    margin: 15px auto;
-    padding: 10px;
-    border-radius: 5px;
+  .existBtn {
+    margin-bottom: 15px;
+    button {
+      width: 100%;
+      margin: 5px auto;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .addToCart {
+      @include addToCart();
+    }
+
+    .moreDetails {
+      @include moreDetails();
+    }
   }
 
-  .detailsInactive {
+  .notExistBtn {
     width: 100%;
-    @include btn(
-      $superLightColor,
-      $superDarkColor,
-      $footerBackColor,
-      $superLightColor
-    );
+    @include notActive();
     margin: 15px auto;
     padding: 10px;
     border-radius: 5px;

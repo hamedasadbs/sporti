@@ -21,33 +21,33 @@ const Notice = (props) => {
   let secondNum = Math.floor(Math.random() * 50);
 
   const sendMassage = () => {
-    if (symbol[symbolIndex] == "+") {
+    if (symbol[symbolIndex] === "+") {
       if (
-        firstNum + secondNum ==
+        firstNum + secondNum ===
         document.getElementById("captchaAnswer").value
       ) {
         setIsCaptchaTrue(true);
         isCaptchaTrue = true;
       }
-    } else if (symbol[symbolIndex] == "-") {
+    } else if (symbol[symbolIndex] === "-") {
       if (
-        firstNum - secondNum ==
+        firstNum - secondNum ===
         document.getElementById("captchaAnswer").value
       ) {
         setIsCaptchaTrue(true);
         isCaptchaTrue = true;
       }
-    } else if (symbol[symbolIndex] == "*") {
+    } else if (symbol[symbolIndex] === "*") {
       if (
-        firstNum * secondNum ==
+        firstNum * secondNum ===
         document.getElementById("captchaAnswer").value
       ) {
         setIsCaptchaTrue(true);
         isCaptchaTrue = true;
       }
-    } else if (symbol[symbolIndex] == "/") {
+    } else if (symbol[symbolIndex] === "/") {
       if (
-        firstNum / secondNum ==
+        firstNum / secondNum ===
         document.getElementById("captchaAnswer").value
       ) {
         setIsCaptchaTrue(true);

@@ -10,7 +10,9 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sign = (props) => {
-  const url = "http://localhost/fantasima/index.php";
+  const loginURL = "http://localhost/bsShop/login.php";
+  const signupURL = "http://localhost/bsShop/signup.php";
+
   const [name, setName] = useState(null);
   const [signupUsername, setSignupUsername] = useState(null);
   let [loginUsername, setLoginUsername] = useState(null);
@@ -77,9 +79,8 @@ const Sign = (props) => {
         if (validateEmail(email) && validatePassword(signupPassword)) {
           axios
             .post(
-              url,
+              signupURL,
               JSON.stringify({
-                method: "signup",
                 name: name,
                 username: signupUsername,
                 email: email,
@@ -93,7 +94,6 @@ const Sign = (props) => {
               setLoginPassword(signupPassword);
               loginPassword = signupPassword;
               enterToAccount();
-              //window.location.href=window.location.href
             });
         }
       } else alert("لطفا تیک من ربات نیستم را بزنید");
@@ -106,9 +106,8 @@ const Sign = (props) => {
     if (loginUsername != null && loginPassword != null) {
       axios
         .post(
-          url,
+          loginURL,
           JSON.stringify({
-            method: "login",
             username: loginUsername,
             password: loginPassword,
           })

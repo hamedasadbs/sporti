@@ -16,7 +16,7 @@ const Gallery = (props) => {
   let [minPrice, setMinPrice] = useState(0);
   let [maxPrice, setMaxPrice] = useState(500000);
   let [page, setPage] = useState(1);
-  const url = "http://localhost/fantasima/index.php";
+  const url = "http://localhost/bsShop/gallery.php";
   const numberOfItemsToShow = 10;
 
   const [typeFilter, setTypeFilter] = useState([]);
@@ -150,9 +150,9 @@ const Gallery = (props) => {
             {gallery.length > 0 ? (
               gallery.map((gal) => {
                 return gal.price <= maxPrice && gal.price >= minPrice ? (
-                  gal.existence === 1 ? (
+                  gal.existence === "1" ? (
                     <Product
-                      btn="افزودن به سبد خرید"
+                      exi={true}
                       label={gal.name}
                       price={gal.price}
                       image={gal.image}
@@ -160,7 +160,7 @@ const Gallery = (props) => {
                     />
                   ) : (
                     <Product
-                      btn="ناموجود"
+                      exi={false}
                       label={gal.name}
                       price={gal.price}
                       image={gal.image}

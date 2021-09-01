@@ -47,28 +47,9 @@
     }
   }
 
-  .detailsActive {
+  .details {
     width: 100%;
-    @include btn(
-      $superLightColor,
-      $superDarkColor,
-      $hoverColor,
-      $superLightColor
-    );
-    margin: 15px auto;
-    padding: 10px;
-    border-radius: 5px;
-  }
-
-  .detailsInactive {
-    width: 100%;
-    flex-grow: 1;
-    @include btn(
-      $superLightColor,
-      $superDarkColor,
-      $footerBackColor,
-      $superLightColor
-    );
+    @include moreDetails();
     margin: 15px auto;
     padding: 10px;
     border-radius: 5px;
