@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./Product.module.scss";
+import { Link } from "react-router-dom";
 
 const Product = (props) => {
   return (
@@ -22,7 +23,11 @@ const Product = (props) => {
         ) : (
           <div className={classes.existBtn}>
             <button className={classes.addToCart}>افزودن به سبد</button>
-            <button className={classes.moreDetails}>مشاهده جزئیات</button>
+            <button className={classes.moreDetails}>
+              <Link to={`/category/${props.url}/${props.label}`}>
+                مشاهده جزئیات
+              </Link>
+            </button>
           </div>
         )}
       </aside>

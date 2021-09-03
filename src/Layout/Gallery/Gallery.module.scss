@@ -11,7 +11,6 @@
     flex-direction: column;
     margin: 22px 0px 0px 80px;
     width: 920px;
-    height: 0;
 
     .title {
       @include title();
@@ -72,28 +71,24 @@
     display: flex;
     flex-direction: column;
 
+    button {
+      width: 100%;
+      flex-grow: 1;
+      @include btn(
+        $superLightColor,
+        $superDarkColor,
+        $hoverColor,
+        $superLightColor
+      );
+      margin: 15px auto;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
     table {
       width: 100%;
       font-family: $font;
       background-color: transparent;
-
-      tr.operation {
-        td {
-          button {
-            width: 100%;
-            flex-grow: 1;
-            @include btn(
-              $superLightColor,
-              $superDarkColor,
-              $hoverColor,
-              $superLightColor
-            );
-            margin: 15px auto;
-            padding: 10px;
-            border-radius: 5px;
-          }
-        }
-      }
 
       thead {
         @include title();
@@ -113,12 +108,6 @@
         tr {
           td {
             padding: 5px;
-          }
-        }
-
-        tr.operation {
-          td {
-            background-color: $superLightColor;
           }
         }
       }
@@ -186,6 +175,7 @@
     .gallery,
     .filter {
       margin: 10px;
+      font-size: 13px;
     }
 
     .gallery {
@@ -200,12 +190,20 @@
     flex-direction: column;
     .gallery {
       width: auto;
-      margin-top: 1000px;
     }
 
     .filter {
       width: auto;
-      margin-top: -1000px;
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .galleries {
+    .gallery {
+      main {
+        margin-left: 10px;
+      }
     }
   }
 }

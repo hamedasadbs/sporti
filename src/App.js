@@ -30,17 +30,14 @@ import React, { useState, useEffect } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
-  const productsURL = "http://localhost/bsShop/products.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
 
-  const [productsData, setProductsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [isSignUpShown, setIsSignUpShown] = useState(false);
   const [isSignInShown, setIsSignInShown] = useState(false);
 
   const [isProductTypeOpen, setIsProductTypeOpen] = useState(false);
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
 
@@ -122,11 +119,6 @@ const App = () => {
     else setIsProductTypeOpen(true);
   };
 
-  const openProducts = () => {
-    if (isProductsOpen) setIsProductsOpen(false);
-    else setIsProductsOpen(true);
-  };
-
   const openAccount = () => {
     if (isAccountOpen) setIsAccountOpen(false);
     else setIsAccountOpen(true);
@@ -142,7 +134,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    axios.post(productsURL).then((res) => setProductsData(res.data));
+    //axios.post(productsURL).then((res) => setProductsData(res.data));
 
     axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
   }, []);
@@ -230,23 +222,6 @@ const App = () => {
                     <Link to="/#" onClick={closeHiddenMenu}>
                       خانه
                     </Link>
-                  </li>
-                  <li className="products" onClick={openProducts}>
-                    <Link to="/#">
-                      {isProductsOpen ? (
-                        <FontAwesomeIcon icon={faChevronDown} />
-                      ) : (
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                      )}{" "}
-                      محصولات
-                    </Link>
-                    {isProductsOpen && (
-                      <ul>
-                        {productsData.map((res) => {
-                          return <li>{res.farsi_label} -</li>;
-                        })}
-                      </ul>
-                    )}
                   </li>
                   <li className="productType" onClick={openProductType}>
                     <Link>
