@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const Category = (props) => (
   <>
-    <Link to={`/category/${props.name}`}>
+    <Link to={`/category/${props.enTitle}`}>
       <div className={classes.category}>
-        <img src={`/Images/Category/${props.image}`} alt={props.image} />
-        <div className={classes.label}>{props.label}</div>
+        <img src={`/Images/Category/${props.image}`} alt={props.enTitle} />
+        <div className={classes.label}>{props.faTitle}</div>
       </div>
     </Link>
   </>

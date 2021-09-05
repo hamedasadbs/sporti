@@ -6,31 +6,134 @@
   flex-direction: column;
 
   .title {
-    background-color: turquoise;
+    @include title();
     font-family: $font;
-    font-size: 25px;
+    font-size: 20px;
     text-align: center;
     margin-top: 50px;
   }
 
   article {
     display: flex;
+    margin-top: -15px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: $footerBackColor;
 
     .images {
-      background-color: violet;
+      display: flex;
+      flex-direction: column;
       height: 500px;
       width: 50%;
+
+      .primary {
+        display: flex;
+        img {
+          width: 300px;
+          margin: 50px auto;
+          border: 1px solid $superDarkColor;
+          border-radius: 3px;
+          background-color: whitesmoke;
+        }
+      }
+
+      .secondary {
+        display: flex;
+        margin: auto;
+        img {
+          width: 50px;
+          height: 50px;
+          margin: 0 3px;
+          transition: all 0.5s;
+          border: 1px solid $superDarkColor;
+          background-color: whitesmoke;
+
+          &:hover {
+            cursor: pointer;
+            width: 55px;
+            height: 55px;
+          }
+        }
+      }
     }
 
-    .options {
-      background-color: yellow;
+    .extraInfos {
+      display: flex;
+      flex-direction: column;
       height: 500px;
       width: 50%;
-    }
-  }
 
-  .extraInfos {
-    height: 400px;
-    background-color: yellowgreen;
+      .tabs {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          background-color: $footerBackColor;
+          color: $superDarkColor;
+          border: 1px $superDarkColor solid;
+          font-family: $font;
+          padding: 5px;
+          padding-left: 15px;
+          padding-right: 15px;
+          z-index: 6;
+
+          &:nth-child(1) {
+            border-right: none;
+            border-radius: 20px 0 0 0;
+          }
+          &:nth-child(3) {
+            border-left: none;
+            border-radius: 0 20px 0 0;
+          }
+        }
+
+        .activeTab {
+          background-color: $superLightColor;
+          border-bottom: none;
+        }
+      }
+
+      .description {
+        @include dropdownDiv(100%, -1px, 0);
+        height: 500px;
+        position: relative;
+        font-size: 13px;
+        text-align: right;
+        background-color: $superLightColor;
+      }
+
+      .features {
+        @include dropdownDiv(100%, -1px, 0);
+        height: 500px;
+        position: relative;
+        font-size: 13px;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        background-color: $superLightColor;
+      }
+
+      .comments {
+        @include dropdownDiv(100%, -1px, 0);
+        height: 500px;
+        position: relative;
+        font-size: 13px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        background-color: $superLightColor;
+      }
+
+      .displayNone {
+        display: none;
+      }
+
+      .addToCart {
+        @include addToCart();
+        padding: 10px;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+    }
   }
 }

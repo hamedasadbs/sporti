@@ -15,7 +15,7 @@ const Product = (props) => {
           />
         </div>
         <div className={classes.caption}>
-          <p>{props.label}</p>
+          <p>{props.faTitle}</p>
           <h2>{props.price} تومان</h2>
         </div>
         {props.exi === false ? (
@@ -23,11 +23,12 @@ const Product = (props) => {
         ) : (
           <div className={classes.existBtn}>
             <button className={classes.addToCart}>افزودن به سبد</button>
-            <button className={classes.moreDetails}>
-              <Link to={`/category/${props.url}/${props.label}`}>
-                مشاهده جزئیات
-              </Link>
-            </button>
+            <Link
+              className={classes.link}
+              to={`/category/${props.categoryName}/${props.faTitle}`}
+            >
+              <button className={classes.moreDetails}>مشاهده جزئیات</button>
+            </Link>
           </div>
         )}
       </aside>

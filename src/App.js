@@ -134,8 +134,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    //axios.post(productsURL).then((res) => setProductsData(res.data));
-
     axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
   }, []);
 
@@ -237,16 +235,16 @@ const App = () => {
                         {productTypeData.map((res) => {
                           return (
                             <li
-                              key={res.name}
+                              key={res.id}
                               onClick={() => {
-                                window.location.href = res.name;
+                                window.location.href = res.en_title;
                               }}
                             >
                               <Link
                                 onClick={closeHiddenMenu}
-                                to={`/category/${res.name}`}
+                                to={`/category/${res.en_title}`}
                               >
-                                {res.label} -
+                                {res.fa_title} -
                               </Link>
                             </li>
                           );
@@ -428,16 +426,6 @@ const App = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link className="link">
-                      <span className="products">
-                        <FontAwesomeIcon icon={faChevronDown} /> محصولات
-                        <div className="products">
-                          <Dropdown type="products" />
-                        </div>
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
                     <Link
                       className="link"
                       onClick={() => {
@@ -476,8 +464,11 @@ const App = () => {
             <Switch>
               {productTypeData.map((res) => {
                 return (
-                  <Route path={`/category/${res.name}`} key={res.name}>
-                    <Gallery name={res.name} label={res.label} />
+                  <Route path={`/category/${res.en_title}`} key={res.id}>
+                    <Gallery
+                      categoryName={res.en_title}
+                      faTitle={res.fa_title}
+                    />
                   </Route>
                 );
               })}

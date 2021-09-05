@@ -8,12 +8,8 @@ const TopProducts = () => {
   const [topProducts, setTopProducts] = useState([]);
   const url = "http://localhost/bsShop/popularProducts.php";
 
-  const updateRequest = () => {
-    axios.post(url).then((res) => setTopProducts(res.data));
-  };
-
   useEffect(() => {
-    updateRequest();
+    axios.post(url).then((res) => setTopProducts(res.data));
   }, []);
 
   return (
@@ -24,10 +20,11 @@ const TopProducts = () => {
           {topProducts.map((lab) => {
             return (
               <TopProduct
-                label={lab.name}
+                faTitle={lab.fa_title}
                 price={lab.price}
                 image={lab.image}
-                key={lab.name}
+                categoryName={lab.category}
+                key={lab.id}
               />
             );
           })}

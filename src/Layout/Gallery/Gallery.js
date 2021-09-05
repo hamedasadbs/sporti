@@ -5,7 +5,7 @@ import axios from "axios";
 import Product from "./Product/Product";
 import Details from "../Details/Details";
 
-import { Link, Switch, Route } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -35,7 +35,7 @@ const Gallery = (props) => {
         url,
         JSON.stringify({
           method: "gallery",
-          condition: props.name,
+          condition: props.categoryName,
         })
       )
       .then((res) => setTotalGallery(res.data));
@@ -45,7 +45,7 @@ const Gallery = (props) => {
         url,
         JSON.stringify({
           method: "gallery",
-          condition: props.name,
+          condition: props.categoryName,
           orderBy: "id",
           orderByType: "DESC",
           limit: numberOfItemsToShow,
@@ -153,17 +153,25 @@ const Gallery = (props) => {
         {productsData.map((res) => {
           return (
             <Route
-              path={`/category/${res.category}/${res.name}`}
+              path={`/category/${res.category}/${res.fa_title}`}
               key={res.name}
             >
-              <Details title={res.name} />
+              <Details
+                faTitle={res.fa_title}
+                image={res.image}
+                price={res.price}
+                desc={res.description}
+                type={res.type}
+                kind={res.kind}
+                size={res.size}
+              />
             </Route>
           );
         })}
-        <Route path={`/category/${props.name}`}>
+        <Route path={`/category/${props.categoryName}`}>
           <article className={classes.galleries}>
             <div className={classes.gallery}>
-              <h1 className={classes.title}>{props.label}</h1>
+              <h1 className={classes.title}>{props.faTitle}</h1>
               <main>
                 {gallery.length > 0 ? (
                   gallery.map((gal) => {
@@ -171,19 +179,19 @@ const Gallery = (props) => {
                       gal.existence === "1" ? (
                         <Product
                           exi={true}
-                          label={gal.name}
+                          faTitle={gal.fa_title}
                           price={gal.price}
                           image={gal.image}
-                          key={gal.name}
-                          url={props.name}
+                          key={gal.id}
+                          categoryName={props.categoryName}
                         />
                       ) : (
                         <Product
                           exi={false}
-                          label={gal.name}
+                          faTitle={gal.fa_title}
                           price={gal.price}
                           image={gal.image}
-                          key={gal.name}
+                          key={gal.id}
                         />
                       )
                     ) : null;

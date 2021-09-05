@@ -1,5 +1,6 @@
 import React from "react";
 import classes from "./TopProduct.module.scss";
+import { Link } from "react-router-dom";
 
 const TopProduct = (props) => {
   return (
@@ -14,10 +15,15 @@ const TopProduct = (props) => {
           />
         </div>
         <div className={classes.caption}>
-          <p>{props.label}</p>
+          <p>{props.faTitle}</p>
           <h2>{props.price} تومان</h2>
         </div>
-        <button className={classes.details}>مشاهده جزئیات</button>
+        <Link
+          className={classes.link}
+          to={`/category/${props.categoryName}/${props.faTitle}`}
+        >
+          <button className={classes.details}>مشاهده جزئیات</button>
+        </Link>
       </aside>
     </>
   );

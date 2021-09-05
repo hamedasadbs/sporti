@@ -18,10 +18,10 @@ const Categories = () => {
         {productsData.map((res) => {
           return (
             <Category
-              label={res.label}
-              name={res.name}
+              faTitle={res.fa_title}
+              enTitle={res.en_title}
               image={res.image}
-              key={res.name}
+              key={res.id}
             />
           );
         })}
