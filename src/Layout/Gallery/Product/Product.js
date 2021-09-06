@@ -19,9 +19,17 @@ const Product = (props) => {
           <h2>{props.price} تومان</h2>
         </div>
         {props.exi === false ? (
-          <button className={classes.notExistBtn}>ناموجود</button>
+          <div className={classes.btn}>
+            <button className={classes.notActive}>ناموجود</button>
+            <Link
+              className={classes.link}
+              to={`/category/${props.categoryName}/${props.faTitle}`}
+            >
+              <button className={classes.moreDetails}>مشاهده جزئیات</button>
+            </Link>
+          </div>
         ) : (
-          <div className={classes.existBtn}>
+          <div className={classes.btn}>
             <button className={classes.addToCart}>افزودن به سبد</button>
             <Link
               className={classes.link}

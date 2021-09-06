@@ -259,6 +259,7 @@
             &:hover {
               div.products {
                 @include dropdownDiv(100%, 45px, 0px);
+                z-index: 15;
 
                 ul {
                   width: 100%;

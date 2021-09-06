@@ -164,6 +164,7 @@ const Gallery = (props) => {
                 type={res.type}
                 kind={res.kind}
                 size={res.size}
+                exi={res.existence}
               />
             </Route>
           );
@@ -192,6 +193,7 @@ const Gallery = (props) => {
                           price={gal.price}
                           image={gal.image}
                           key={gal.id}
+                          categoryName={props.categoryName}
                         />
                       )
                     ) : null;

@@ -78,7 +78,11 @@ const Details = (props) => {
               type="comments"
               desc={props.desc}
             />
-            <button className={classes.addToCart}>افزودن به سبد</button>
+            {props.exi === "1" ? (
+              <button className={classes.addToCart}>افزودن به سبد</button>
+            ) : (
+              <button className={classes.notActive}>ناموجود</button>
+            )}
           </div>
           <div className={classes.images}>
             <div className={classes.primary}>

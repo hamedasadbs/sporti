@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import classes from "./LastProducts.module.scss";
+import { Link } from "react-router-dom";
 import "./js/lightslider";
 import "./css/lightslider.css";
 
@@ -60,11 +61,12 @@ const LastProduct = () => {
             <p>{pic.name}</p>
             <h2>{pic.price} تومان</h2>
           </div>
-          {pic.existence === "1" ? (
+          <Link
+            className={classes.link}
+            to={`/category/${pic.category}/${pic.fa_title}`}
+          >
             <button className={classes.details}>مشاهده جزئیات</button>
-          ) : (
-            <button className={classes.notActive}>ناموجود</button>
-          )}
+          </Link>
         </div>
       </li>
     );
