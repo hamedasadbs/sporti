@@ -3,7 +3,7 @@ $numberFont: "vazir";
 
 $thumbBackColor: rgb(105, 105, 105);
 $mainColor: gold;
-$baseColor: rgb(47, 182, 99);
+$baseColor: rgb(64, 123, 190);
 $superDarkColor: rgb(10, 10, 10);
 $superLightColor: white;
 $pageBackColor: whitesmoke;
@@ -36,7 +36,12 @@ button:hover {
 }
 
 @mixin notActive {
-  @include btn($superLightColor, $superDarkColor, $linkColor, $superLightColor);
+  @include btn(
+    $superLightColor,
+    $superDarkColor,
+    $footerBackColor,
+    $superDarkColor
+  );
 }
 
 @mixin addToCart {

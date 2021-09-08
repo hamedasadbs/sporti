@@ -305,7 +305,11 @@ const App = () => {
                     }}
                   >
                     <Link to="/#">
-                      <img src="/blueSnake-label.png" alt="blueSnake" />
+                      <img
+                        data-toggle="tooltip"
+                        src="/sporti-label.png"
+                        alt="sporti.com"
+                      />
                     </Link>
                   </div>
                 </ul>
