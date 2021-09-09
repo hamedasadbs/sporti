@@ -5,11 +5,17 @@ import { Link } from "react-router-dom";
 import detailsStyle from "../../Layout/Details/Details.module.scss";
 
 const Dropdown = (props) => {
+  const sportsURL = "http://localhost/bsShop/sports.php";
+  const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
 
+  const [sportsData, setSportsData] = useState([]);
+  const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
 
   useEffect(() => {
+    axios.post(sportsURL).then((res) => setSportsData(res.data));
+    axios.post(brandsURL).then((res) => setBrandsData(res.data));
     axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
   }, []);
 
@@ -25,6 +31,44 @@ const Dropdown = (props) => {
           عضویت
         </button>
       </>
+    ) : props.type === "sports" ? (
+      <>
+        <ul>
+          {sportsData.map((res) => {
+            return (
+              <li
+                key={res.id}
+                onClick={() => {
+                  window.location.href = res.en_title;
+                }}
+              >
+                <Link className="link" to={`/category/${res.en_title}`}>
+                  {res.fa_title}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </>
+    ) : props.type === "brands" ? (
+      <>
+        <ul>
+          {brandsData.map((res) => {
+            return (
+              <li
+                key={res.id}
+                onClick={() => {
+                  window.location.href = res.en_title;
+                }}
+              >
+                <Link className="link" to={`/category/${res.en_title}`}>
+                  {res.brand}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </>
     ) : props.type === "productType" ? (
       <>
         <ul>
@@ -37,7 +81,7 @@ const Dropdown = (props) => {
                 }}
               >
                 <Link className="link" to={`/category/${res.en_title}`}>
-                  {res.fa_title}
+                  {res.type}
                 </Link>
               </li>
             );

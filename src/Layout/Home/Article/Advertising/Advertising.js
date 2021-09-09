@@ -36,31 +36,34 @@ const Advertising = () => {
     <>
       <article className={classes.slideshowContainer}>
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img src="/Images/Poster/swimming-poster.jpg" alt="swimming" />
-          <h1>ارائه بهترین محصولات ورزشی</h1>
+          <img src="/Images/Poster/swimming-poster.jpg" alt="poster1" />
+          <h1 className={classes.poster1}>ارائه بهترین محصولات ورزشی</h1>
         </div>
 
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img
-            src="/Images/Poster/track-and-field-poster.jpg"
-            alt="track-and-field"
-          />
-          <h1>با نازلترین قیمت ها</h1>
+          <img src="/Images/Poster/track-and-field-poster.jpg" alt="poster2" />
+          <h1 className={classes.poster2}>با نازلترین قیمت ها</h1>
         </div>
 
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img src="/Images/Poster/dart-poster.jpg" alt="dart" />
-          <h1>همکاران ما 24 ساعته برای خدمت رسانی آماده اند</h1>
+          <img src="/Images/Poster/dart-poster.jpg" alt="poster3" />
+          <h1 className={classes.poster3}>
+            همکاران ما 24 ساعته برای خدمت رسانی آماده اند
+          </h1>
         </div>
 
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img src="/Images/Poster/football-poster.jpg" alt="dart" />
-          <h1>ارسال رایگان محصولات در کمترین زمان ممکن</h1>
+          <img src="/Images/Poster/football-poster.jpg" alt="poster4" />
+          <h1 className={classes.poster4}>
+            ارسال رایگان محصولات در کمترین زمان ممکن
+          </h1>
         </div>
 
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img src="/Images/Poster/billiard-poster.jpg" alt="dart" />
-          <h1>روی محصول خود کلیک کن تا برای همیشه مشتری ما باشی</h1>
+          <img src="/Images/Poster/billiard-poster.jpg" alt="poster5" />
+          <h1 className={classes.poster5}>
+            روی محصول خود کلیک کن تا برای همیشه مشتری ما باشی
+          </h1>
         </div>
       </article>
     </>

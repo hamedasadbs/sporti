@@ -5,7 +5,7 @@
 }
 
 .slideshowContainer {
-  width: 940px;
+  width: 1200px;
   position: relative;
   margin: 20px 0 0 80px;
   float: left;
@@ -14,21 +14,53 @@
     display: none;
 
     img {
-      width: 940px;
-      height: 470px;
+      width: 100%;
+      height: 500px;
       object-fit: cover;
     }
 
     h1 {
       position: absolute;
-      background-color: $superDarkColor;
       opacity: 0.8;
       color: $pageBackColor;
-      top: 0;
-      right: 0;
       font-family: $font;
       padding: 15px;
-      border-radius: 5px 0 0 5px;
+      width: fit-content;
+    }
+
+    h1.poster1 {
+      top: 0;
+      right: 430px;
+      color: $superDarkColor;
+      border-bottom: 4px solid $superDarkColor;
+    }
+
+    h1.poster2 {
+      top: 320px;
+      right: 130px;
+      color: $superLightColor;
+      border-bottom: 4px solid $superLightColor;
+    }
+
+    h1.poster3 {
+      top: 0px;
+      left: 10px;
+      color: $superDarkColor;
+      border-bottom: 4px solid $superDarkColor;
+    }
+
+    h1.poster4 {
+      top: 0px;
+      left: 10px;
+      color: $superLightColor;
+      border-bottom: 4px solid $superLightColor;
+    }
+
+    h1.poster5 {
+      top: 0;
+      right: 430px;
+      color: $superDarkColor;
+      border-bottom: 4px solid $superDarkColor;
     }
   }
 
@@ -60,26 +92,44 @@
 
 @media only screen and (max-width: $big) {
   .slideshowContainer {
-    margin-left: 30px;
+    width: 1000px;
+    margin-left: 0px;
+
+    .mySlides {
+      img {
+        height: 416px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      h1.poster1 {
+        right: 330px;
+      }
+    }
   }
 }
 
 @media only screen and (max-width: $medium) {
   .slideshowContainer {
-    width: 650px;
-    margin-left: 25px;
+    width: 700px;
 
     .mySlides {
       img {
-        width: 650px;
-        height: 325px;
+        height: 291px;
       }
 
       h1 {
-        text-align: center;
-        font-size: 17px;
-        width: 650px;
-        border-radius: 0;
+        font-size: 18px;
+      }
+
+      h1.poster1 {
+        right: 220px;
+      }
+
+      h1.poster2 {
+        top: 220px;
       }
     }
   }
@@ -87,17 +137,30 @@
 
 @media only screen and (max-width: $small) {
   .slideshowContainer {
-    width: 400px;
+    width: 500px;
     margin: 50px auto;
 
     .mySlides {
       img {
-        width: 100%;
-        height: 200px;
+        height: 208px;
       }
 
       h1 {
-        width: 400px;
+        font-size: 15px;
+      }
+
+      h1.poster1,
+      h1.poster2,
+      h1.poster3,
+      h1.poster4,
+      h1.poster5 {
+        top: 0;
+        left: 0;
+        text-align: center;
+        width: 500px;
+        border-bottom: 0;
+        background-color: rgba(#000000, 0.9);
+        color: $superLightColor;
       }
     }
   }
@@ -105,20 +168,25 @@
 
 @media only screen and (max-width: $verySmall) {
   .slideshowContainer {
-    width: 300px;
-    margin-top: 50px;
-    margin-left: 10px;
+    width: 400px;
+    margin: 50px auto;
+    margin-left: -60px;
 
     .mySlides {
       img {
-        width: 260px;
-        height: 150px;
+        height: 166px;
       }
 
       h1 {
-        width: 260px;
-        font-size: 15px;
-        margin-right: 40px;
+        font-size: 13px;
+      }
+
+      h1.poster1,
+      h1.poster2,
+      h1.poster3,
+      h1.poster4,
+      h1.poster5 {
+        width: 400px;
       }
     }
   }

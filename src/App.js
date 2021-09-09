@@ -1,7 +1,5 @@
 import Advertising from "../src/Layout/Home/Article/Advertising/Advertising";
 import Categories from "../src/Layout/Home/Article/Categories/Categories";
-import Bulletin from "../src/Layout/Home/Aside/Bulletin/Bulletin";
-import TopProducts from "../src/Layout/Home/Aside/TopProducts/TopProducts";
 import LastProducts from "../src/Layout/Home/Main/LastProducts/LastProducts";
 
 import Dropdown from "./Tool/Dropdown/Dropdown";
@@ -30,14 +28,14 @@ import React, { useState, useEffect } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
-  const productTypeURL = "http://localhost/bsShop/productType.php";
+  const sportsURL = "http://localhost/bsShop/sports.php";
 
-  const [productTypeData, setProductTypeData] = useState([]);
+  const [sportsData, setSportsData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [isSignUpShown, setIsSignUpShown] = useState(false);
   const [isSignInShown, setIsSignInShown] = useState(false);
 
-  const [isProductTypeOpen, setIsProductTypeOpen] = useState(false);
+  const [isSportsOpen, setIsSportsOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
 
@@ -114,9 +112,9 @@ const App = () => {
     window.onscroll = function () {};
   };
 
-  const openProductType = () => {
-    if (isProductTypeOpen) setIsProductTypeOpen(false);
-    else setIsProductTypeOpen(true);
+  const openSports = () => {
+    if (isSportsOpen) setIsSportsOpen(false);
+    else setIsSportsOpen(true);
   };
 
   const openAccount = () => {
@@ -134,7 +132,7 @@ const App = () => {
   };
 
   useEffect(() => {
-    axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
+    axios.post(sportsURL).then((res) => setSportsData(res.data));
   }, []);
 
   const onlineHandler = (isOnline) => {
@@ -221,18 +219,18 @@ const App = () => {
                       خانه
                     </Link>
                   </li>
-                  <li className="productType" onClick={openProductType}>
+                  <li className="sports" onClick={openSports}>
                     <Link>
-                      {isProductTypeOpen ? (
+                      {isSportsOpen ? (
                         <FontAwesomeIcon icon={faChevronDown} />
                       ) : (
                         <FontAwesomeIcon icon={faChevronLeft} />
                       )}{" "}
-                      نوع محصول
+                      ورزش ها
                     </Link>
-                    {isProductTypeOpen && (
+                    {isSportsOpen && (
                       <ul>
-                        {productTypeData.map((res) => {
+                        {sportsData.map((res) => {
                           return (
                             <li
                               key={res.id}
@@ -430,6 +428,26 @@ const App = () => {
                     </Link>
                   </li>
                   <li>
+                    <Link className="link">
+                      <span className="brands">
+                        <div className="brands">
+                          <Dropdown type="brands" />
+                        </div>
+                        <FontAwesomeIcon icon={faChevronDown} /> برند ها
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="link">
+                      <span className="sports">
+                        <div className="sports">
+                          <Dropdown type="sports" />
+                        </div>
+                        <FontAwesomeIcon icon={faChevronDown} /> ورزش ها
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
                     <Link
                       className="link"
                       onClick={() => {
@@ -466,7 +484,7 @@ const App = () => {
               />
             )}
             <Switch>
-              {productTypeData.map((res) => {
+              {sportsData.map((res) => {
                 return (
                   <Route path={`/category/${res.en_title}`} key={res.id}>
                     <Gallery
@@ -515,8 +533,6 @@ const App = () => {
                   }}
                 />
                 <Categories />
-                <Bulletin />
-                <TopProducts />
                 <LastProducts />
               </Route>
             </Switch>

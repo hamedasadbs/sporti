@@ -2,35 +2,34 @@
 
 .categories {
   display: flex;
-  width: 960px;
+  width: 1200px;
   flex-wrap: wrap;
-  margin: 10px 0 0 70px;
+  margin: 10px 0 0 80px;
   float: left;
 }
 
 @media only screen and (max-width: $big) {
   .categories {
-    margin-left: 20px;
+    margin-left: -10px;
   }
 }
 
 @media only screen and (max-width: $medium) {
   .categories {
-    width: 800px;
-    margin-left: 20px;
+    width: 700px;
+    margin-left: 0px;
   }
 }
 
 @media only screen and (max-width: $small) {
   .categories {
-    width: 600px;
-    margin-left: 30px;
+    width: 500px;
   }
 }
 
 @media only screen and (max-width: $verySmall) {
   .categories {
     width: 400px;
-    margin-left: -20px;
+    margin-left: -60px;
   }
 }

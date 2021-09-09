@@ -256,43 +256,12 @@
             color: $superDarkColor;
           }
 
-          span.products {
-            &:hover {
-              div.products {
-                @include dropdownDiv(100%, 45px, 0px);
-                z-index: 15;
-
-                ul {
-                  width: 100%;
-                  display: flex;
-                  flex-wrap: wrap;
-                  justify-content: center;
-                  padding-right: 40px;
-
-                  li {
-                    border-radius: 5px;
-                    font-size: 10px;
-                    line-height: 15px;
-                    text-align: right;
-                    width: 200px;
-                    margin: 5px auto;
-
-                    &:hover {
-                      background-color: $superLightColor;
-                    }
-
-                    ul {
-                      text-align: left;
-                      color: $superDarkColor;
-                    }
-                  }
-                }
-              }
-            }
-          }
-
+          span.sports,
+          span.brands,
           span.productType {
             &:hover {
+              div.sports,
+              div.brands,
               div.productType {
                 @include dropdownDiv(100%, 45px, 0px);
 
@@ -450,7 +419,7 @@
       .rightSide {
         li.dropdown {
           .i {
-            margin-left: -50px;
+            margin-left: -70px;
             font-size: 50px;
           }
         }
