@@ -38,7 +38,12 @@
       flex-wrap: wrap;
       justify-content: center;
       list-style: none;
-      background-color: $superDarkColor;
+      background-image: linear-gradient(
+        to right,
+        rgb(75, 75, 75),
+        rgb(20, 20, 20),
+        rgb(75, 75, 75)
+      );
       padding-right: 30px;
 
       li {
@@ -74,12 +79,7 @@
     button {
       width: 100%;
       flex-grow: 1;
-      @include btn(
-        $superLightColor,
-        $superDarkColor,
-        $hoverColor,
-        $superLightColor
-      );
+      font-family: $font;
       margin: 15px auto;
       padding: 10px;
       border-radius: 5px;

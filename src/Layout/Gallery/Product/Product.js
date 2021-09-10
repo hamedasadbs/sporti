@@ -1,6 +1,7 @@
 import React from "react";
 import classes from "./Product.module.scss";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 
 const Product = (props) => {
   return (
@@ -20,22 +21,30 @@ const Product = (props) => {
         </div>
         {props.exi === false ? (
           <div className={classes.btn}>
-            <button className={classes.notActive}>ناموجود</button>
+            <Button variant="outlined" disabled>
+              ناموجود
+            </Button>
             <Link
               className={classes.link}
               to={`/category/${props.categoryName}/${props.faTitle}`}
             >
-              <button className={classes.moreDetails}>مشاهده جزئیات</button>
+              <Button variant="contained" color="primary">
+                مشاهده جزئیات
+              </Button>
             </Link>
           </div>
         ) : (
           <div className={classes.btn}>
-            <button className={classes.addToCart}>افزودن به سبد</button>
+            <Button variant="contained" color="secondary">
+              افزودن به سبد
+            </Button>
             <Link
               className={classes.link}
               to={`/category/${props.categoryName}/${props.faTitle}`}
             >
-              <button className={classes.moreDetails}>مشاهده جزئیات</button>
+              <Button variant="contained" color="primary">
+                مشاهده جزئیات
+              </Button>
             </Link>
           </div>
         )}

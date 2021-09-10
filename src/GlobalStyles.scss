@@ -35,28 +35,6 @@ button:hover {
   }
 }
 
-@mixin notActive {
-  @include btn(
-    $superLightColor,
-    $superDarkColor,
-    $footerBackColor,
-    $superDarkColor
-  );
-}
-
-@mixin addToCart {
-  @include btn(
-    $superLightColor,
-    $superDarkColor,
-    $hoverColor,
-    $superLightColor
-  );
-}
-
-@mixin moreDetails {
-  @include btn($superLightColor, $superDarkColor, $baseColor, $superLightColor);
-}
-
 @mixin btn($backColor, $color, $backColorHovered, $colorHovered) {
   background-color: $backColor;
   color: $color;
@@ -146,7 +124,12 @@ button:hover {
 
 @mixin title {
   width: 100%;
-  background-color: $superDarkColor;
+  background-image: linear-gradient(
+    to right,
+    rgb(75, 75, 75),
+    rgb(20, 20, 20),
+    rgb(75, 75, 75)
+  );
   color: $pageBackColor;
   padding: 10px;
   text-align: center;

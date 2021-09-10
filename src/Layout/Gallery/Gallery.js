@@ -6,7 +6,8 @@ import Product from "./Product/Product";
 import Details from "../Details/Details";
 
 import { Switch, Route } from "react-router-dom";
-
+import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
@@ -261,7 +262,7 @@ const Gallery = (props) => {
                       <tr key={filter.type}>
                         <td>
                           {filter.type}
-                          <input type="checkbox" />
+                          <Checkbox color="secondary" />
                         </td>
                       </tr>
                     );
@@ -280,7 +281,7 @@ const Gallery = (props) => {
                       <tr key={filter.kind}>
                         <td>
                           {filter.kind}
-                          <input type="checkbox" />
+                          <Checkbox color="secondary" />
                         </td>
                       </tr>
                     );
@@ -299,20 +300,16 @@ const Gallery = (props) => {
                       <tr key={filter.brand}>
                         <td>
                           {filter.brand}
-                          <input type="checkbox" />
+                          <Checkbox color="secondary" />
                         </td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
-              <button
-                onClick={() => {
-                  alert(typeof maxPrice);
-                }}
-              >
+              <Button variant="outlined" color="primary">
                 اعمال فیلتر
-              </button>
+              </Button>
             </div>
           </article>
         </Route>

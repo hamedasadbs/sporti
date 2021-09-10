@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+import Button from "@material-ui/core/Button";
 import detailsStyle from "../../Layout/Details/Details.module.scss";
 
 const Dropdown = (props) => {
@@ -24,12 +24,22 @@ const Dropdown = (props) => {
       <span>سبد شما خالی است</span>
     ) : props.type === "account" ? (
       <>
-        <button className="login" onClick={props.signInClick}>
+        <Button
+          style={{ backgroundColor: "#3363FF" }}
+          onClick={props.signInClick}
+          variant="contained"
+          color="secondary"
+        >
           ورود
-        </button>
-        <button className="register" onClick={props.signUpClick}>
+        </Button>
+        <Button
+          style={{ border: "1px solid #3363FF", color: "#3363FF" }}
+          onClick={props.signUpClick}
+          variant="outlined"
+          color="secondary"
+        >
           عضویت
-        </button>
+        </Button>
       </>
     ) : props.type === "sports" ? (
       <>

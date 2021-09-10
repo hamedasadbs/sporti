@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import classes from "./LastProducts.module.scss";
 import { Link } from "react-router-dom";
+import Button from "@material-ui/core/Button";
 import "./js/lightslider";
 import "./css/lightslider.css";
 
@@ -58,14 +59,16 @@ const LastProduct = () => {
             />
           </div>
           <div className={classes.caption}>
-            <p>{pic.name}</p>
+            <p>{pic.fa_title}</p>
             <h2>{pic.price} تومان</h2>
           </div>
           <Link
             className={classes.link}
             to={`/category/${pic.category}/${pic.fa_title}`}
           >
-            <button className={classes.details}>مشاهده جزئیات</button>
+            <Button variant="contained" color="primary">
+              مشاهده جزئیات
+            </Button>
           </Link>
         </div>
       </li>

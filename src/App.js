@@ -26,6 +26,8 @@ import {
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from "./Redux/Store";
 
 const App = () => {
   const sportsURL = "http://localhost/bsShop/sports.php";
@@ -149,136 +151,177 @@ const App = () => {
   };
 
   return (
-    <div className="body">
-      <div className="innerBody">
-        <Router>
-          <div className="main">
-            {isHiddenMenuShown && (
-              <div className="hiddenMenu">
-                <FontAwesomeIcon
-                  onClick={closeHiddenMenu}
-                  icon={faTimes}
-                  className="closeHiddenMenu"
-                />
-                <ul className="rightSide">
-                  <li className="account" onClick={openAccount}>
-                    {isAccountOpen ? (
-                      <FontAwesomeIcon icon={faChevronDown} />
-                    ) : (
-                      <FontAwesomeIcon icon={faChevronLeft} />
-                    )}
-                    <label> حساب من </label>
-                    <FontAwesomeIcon icon={faUserCircle} className="account" />
-                    {isAccountOpen && (
-                      <ul>
-                        <button
-                          className="login"
-                          onClick={() => {
-                            closeForm();
-                            showSingIn();
-                            closeHiddenMenu();
-                          }}
-                        >
-                          ورود
-                        </button>
-                        <button
-                          className="register"
-                          onClick={() => {
-                            closeForm();
-                            showSingUp();
-                            closeHiddenMenu();
-                          }}
-                        >
-                          عضویت
-                        </button>
-                      </ul>
-                    )}
-                  </li>
-                  <li className="basket" onClick={openBasket}>
-                    {isBasketOpen ? (
-                      <FontAwesomeIcon icon={faChevronDown} />
-                    ) : (
-                      <FontAwesomeIcon icon={faChevronLeft} />
-                    )}
-                    <label> سبد من </label>
-                    <FontAwesomeIcon icon={faShoppingBasket} className="basket">
-                      <div className="carts">0</div>
-                    </FontAwesomeIcon>
-                    {isBasketOpen && (
-                      <ul>
-                        <li>سبد شما خالی است!</li>
-                      </ul>
-                    )}
-                  </li>
-                  <li
-                    onClick={() => {
-                      pageHandler("http://localhost:3000/");
-                    }}
-                  >
-                    <Link to="/#" onClick={closeHiddenMenu}>
-                      خانه
-                    </Link>
-                  </li>
-                  <li className="sports" onClick={openSports}>
-                    <Link>
-                      {isSportsOpen ? (
+    <Provider store={store}>
+      <div className="body">
+        <div className="innerBody">
+          <Router>
+            <div className="main">
+              {isHiddenMenuShown && (
+                <div className="hiddenMenu">
+                  <FontAwesomeIcon
+                    onClick={closeHiddenMenu}
+                    icon={faTimes}
+                    className="closeHiddenMenu"
+                  />
+                  <ul className="rightSide">
+                    <li className="account" onClick={openAccount}>
+                      {isAccountOpen ? (
                         <FontAwesomeIcon icon={faChevronDown} />
                       ) : (
                         <FontAwesomeIcon icon={faChevronLeft} />
-                      )}{" "}
-                      ورزش ها
-                    </Link>
-                    {isSportsOpen && (
-                      <ul>
-                        {sportsData.map((res) => {
-                          return (
-                            <li
-                              key={res.id}
-                              onClick={() => {
-                                window.location.href = res.en_title;
-                              }}
-                            >
-                              <Link
-                                onClick={closeHiddenMenu}
-                                to={`/category/${res.en_title}`}
+                      )}
+                      <label> حساب من </label>
+                      <FontAwesomeIcon
+                        icon={faUserCircle}
+                        className="account"
+                      />
+                      {isAccountOpen && (
+                        <ul>
+                          <button
+                            className="login"
+                            onClick={() => {
+                              closeForm();
+                              showSingIn();
+                              closeHiddenMenu();
+                            }}
+                          >
+                            ورود
+                          </button>
+                          <button
+                            className="register"
+                            onClick={() => {
+                              closeForm();
+                              showSingUp();
+                              closeHiddenMenu();
+                            }}
+                          >
+                            عضویت
+                          </button>
+                        </ul>
+                      )}
+                    </li>
+                    <li className="basket" onClick={openBasket}>
+                      {isBasketOpen ? (
+                        <FontAwesomeIcon icon={faChevronDown} />
+                      ) : (
+                        <FontAwesomeIcon icon={faChevronLeft} />
+                      )}
+                      <label> سبد من </label>
+                      <FontAwesomeIcon
+                        icon={faShoppingBasket}
+                        className="basket"
+                      >
+                        <div className="carts">0</div>
+                      </FontAwesomeIcon>
+                      {isBasketOpen && (
+                        <ul>
+                          <li>سبد شما خالی است!</li>
+                        </ul>
+                      )}
+                    </li>
+                    <li
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/");
+                      }}
+                    >
+                      <Link to="/#" onClick={closeHiddenMenu}>
+                        خانه
+                      </Link>
+                    </li>
+                    <li className="sports" onClick={openSports}>
+                      <Link>
+                        {isSportsOpen ? (
+                          <FontAwesomeIcon icon={faChevronDown} />
+                        ) : (
+                          <FontAwesomeIcon icon={faChevronLeft} />
+                        )}{" "}
+                        ورزش ها
+                      </Link>
+                      {isSportsOpen && (
+                        <ul>
+                          {sportsData.map((res) => {
+                            return (
+                              <li
+                                key={res.id}
+                                onClick={() => {
+                                  window.location.href = res.en_title;
+                                }}
                               >
-                                {res.fa_title} -
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    )}
-                  </li>
-                  <li
-                    onClick={() => {
-                      pageHandler("http://localhost:3000/blog-news");
-                    }}
-                  >
-                    <Link to="/blog-news" onClick={closeHiddenMenu}>
-                      بلاگ و اخبار
-                    </Link>
-                  </li>
-                  <li
-                    onClick={() => {
-                      pageHandler("http://localhost:3000/about");
-                    }}
-                  >
-                    <Link to="/about" onClick={closeHiddenMenu}>
-                      درباره ما
-                    </Link>
-                  </li>
-                  <li
-                    onClick={() => {
-                      pageHandler("http://localhost:3000/contact");
-                    }}
-                  >
-                    <Link to="/contact" onClick={closeHiddenMenu}>
-                      ارتباط با ما
-                    </Link>
-                  </li>
-                  <li className="search">
-                    <button>
+                                <Link
+                                  onClick={closeHiddenMenu}
+                                  to={`/category/${res.en_title}`}
+                                >
+                                  {res.fa_title} -
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                    <li
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/blog-news");
+                      }}
+                    >
+                      <Link to="/blog-news" onClick={closeHiddenMenu}>
+                        بلاگ و اخبار
+                      </Link>
+                    </li>
+                    <li
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/about");
+                      }}
+                    >
+                      <Link to="/about" onClick={closeHiddenMenu}>
+                        درباره ما
+                      </Link>
+                    </li>
+                    <li
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/contact");
+                      }}
+                    >
+                      <Link to="/contact" onClick={closeHiddenMenu}>
+                        ارتباط با ما
+                      </Link>
+                    </li>
+                    <li className="search">
+                      <button>
+                        <FontAwesomeIcon icon={faSearch} />
+                      </button>
+                      <input
+                        spellCheck="false"
+                        type="search"
+                        placeholder="جست و جوی محصول یا برند"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              )}
+              <header className="header">
+                <nav className="topHeader">
+                  <ul className="rightSide">
+                    <li onClick={showHiddenMenu} className="dropdown">
+                      <FontAwesomeIcon className="i" icon={faBars} />
+                    </li>
+                    <div
+                      className="mainLogo"
+                      onClick={() => {
+                        pageHandler("http://localhost:3000/");
+                      }}
+                    >
+                      <Link to="/#">
+                        <img
+                          data-toggle="tooltip"
+                          src="/sporti-label.png"
+                          alt="sporti.com"
+                        />
+                      </Link>
+                    </div>
+                  </ul>
+                  <ul className="middleSide">
+                    <button className="search">
                       <FontAwesomeIcon icon={faSearch} />
                     </button>
                     <input
@@ -286,261 +329,228 @@ const App = () => {
                       type="search"
                       placeholder="جست و جوی محصول یا برند"
                     />
-                  </li>
-                </ul>
-              </div>
-            )}
-            <header className="header">
-              <nav className="topHeader">
-                <ul className="rightSide">
-                  <li onClick={showHiddenMenu} className="dropdown">
-                    <FontAwesomeIcon className="i" icon={faBars} />
-                  </li>
-                  <div
-                    className="mainLogo"
-                    onClick={() => {
-                      pageHandler("http://localhost:3000/");
-                    }}
-                  >
-                    <Link to="/#">
-                      <img
-                        data-toggle="tooltip"
-                        src="/sporti-label.png"
-                        alt="sporti.com"
-                      />
-                    </Link>
-                  </div>
-                </ul>
-                <ul className="middleSide">
-                  <button className="search">
-                    <FontAwesomeIcon icon={faSearch} />
-                  </button>
-                  <input
-                    spellCheck="false"
-                    type="search"
-                    placeholder="جست و جوی محصول یا برند"
-                  />
-                </ul>
-                <ul className="leftSide">
-                  <li className="account">
-                    {getCookie("isOnline") == false ? (
-                      <label>حساب من</label>
-                    ) : (
-                      <label>{getCookie("accountName")}</label>
-                    )}
-                    <FontAwesomeIcon icon={faUserCircle} className="i" />
-                    <div className="account">
+                  </ul>
+                  <ul className="leftSide">
+                    <li className="account">
                       {getCookie("isOnline") == false ? (
-                        <Dropdown
-                          type="account"
-                          signInClick={() => {
-                            closeForm();
-                            showSingIn();
-                          }}
-                          signUpClick={() => {
-                            closeForm();
-                            showSingUp();
-                          }}
-                        />
+                        <label>حساب من</label>
                       ) : (
-                        <Dropdown
-                          type="online"
-                          logoutClick={() => {
-                            logoutHandler();
-                            window.location.href = window.location.href;
-                          }}
-                        />
+                        <label>{getCookie("accountName")}</label>
                       )}
-                    </div>
-                  </li>
-                  <li className="basket">
-                    <div className="carts">0</div>
-                    <label>سبد من</label>
-                    <FontAwesomeIcon icon={faShoppingBasket} className="i" />
-                    <div className="basket">
-                      <Dropdown type="basket" />
-                    </div>
-                  </li>
-                </ul>
-              </nav>
+                      <FontAwesomeIcon icon={faUserCircle} className="i" />
+                      <div className="account">
+                        {getCookie("isOnline") == false ? (
+                          <Dropdown
+                            type="account"
+                            signInClick={() => {
+                              closeForm();
+                              showSingIn();
+                            }}
+                            signUpClick={() => {
+                              closeForm();
+                              showSingUp();
+                            }}
+                          />
+                        ) : (
+                          <Dropdown
+                            type="online"
+                            logoutClick={() => {
+                              logoutHandler();
+                              window.location.href = window.location.href;
+                            }}
+                          />
+                        )}
+                      </div>
+                    </li>
+                    <li className="basket">
+                      <div className="carts">0</div>
+                      <label>سبد من</label>
+                      <FontAwesomeIcon icon={faShoppingBasket} className="i" />
+                      <div className="basket">
+                        <Dropdown type="basket" />
+                      </div>
+                    </li>
+                  </ul>
+                </nav>
 
-              <nav className="bottomHeader">
-                <ul className="rightSide">
-                  <li>
-                    <Link
-                      className="link"
-                      onClick={() => {
-                        pageHandler("http://localhost:3000/contact");
-                      }}
-                      to="/contact"
-                    >
-                      <span
-                        {...(page === "http://localhost:3000/contact"
-                          ? { className: "activeNav" }
-                          : {})}
+                <nav className="bottomHeader">
+                  <ul className="rightSide">
+                    <li>
+                      <Link
+                        className="link"
+                        onClick={() => {
+                          pageHandler("http://localhost:3000/contact");
+                        }}
+                        to="/contact"
                       >
-                        ارتباط با ما
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="link"
-                      onClick={() => {
-                        pageHandler("http://localhost:3000/about");
-                      }}
-                      to="/about"
-                    >
-                      <span
-                        {...(page === "http://localhost:3000/about"
-                          ? { className: "activeNav" }
-                          : {})}
+                        <span
+                          {...(page === "http://localhost:3000/contact"
+                            ? { className: "activeNav" }
+                            : {})}
+                        >
+                          ارتباط با ما
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="link"
+                        onClick={() => {
+                          pageHandler("http://localhost:3000/about");
+                        }}
+                        to="/about"
                       >
-                        درباره ما
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="link"
-                      onClick={() => {
-                        pageHandler("http://localhost:3000/blog-news");
-                      }}
-                      to="/blog-news"
-                    >
-                      <span
-                        {...(page === "http://localhost:3000/blog-news"
-                          ? { className: "activeNav" }
-                          : {})}
+                        <span
+                          {...(page === "http://localhost:3000/about"
+                            ? { className: "activeNav" }
+                            : {})}
+                        >
+                          درباره ما
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="link"
+                        onClick={() => {
+                          pageHandler("http://localhost:3000/blog-news");
+                        }}
+                        to="/blog-news"
                       >
-                        بلاگ و اخبار
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="link">
-                      <span className="productType">
-                        <div className="productType">
-                          <Dropdown type="productType" />
-                        </div>
-                        <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="link">
-                      <span className="brands">
-                        <div className="brands">
-                          <Dropdown type="brands" />
-                        </div>
-                        <FontAwesomeIcon icon={faChevronDown} /> برند ها
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="link">
-                      <span className="sports">
-                        <div className="sports">
-                          <Dropdown type="sports" />
-                        </div>
-                        <FontAwesomeIcon icon={faChevronDown} /> ورزش ها
-                      </span>
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      className="link"
-                      onClick={() => {
-                        pageHandler("http://localhost:3000/");
-                      }}
-                      to="/#"
-                    >
-                      <span
-                        {...(page === "http://localhost:3000/"
-                          ? { className: "activeNav" }
-                          : {})}
+                        <span
+                          {...(page === "http://localhost:3000/blog-news"
+                            ? { className: "activeNav" }
+                            : {})}
+                        >
+                          بلاگ و اخبار
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="link">
+                        <span className="productType">
+                          <div className="productType">
+                            <Dropdown type="productType" />
+                          </div>
+                          <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="link">
+                        <span className="brands">
+                          <div className="brands">
+                            <Dropdown type="brands" />
+                          </div>
+                          <FontAwesomeIcon icon={faChevronDown} /> برند ها
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link className="link">
+                        <span className="sports">
+                          <div className="sports">
+                            <Dropdown type="sports" />
+                          </div>
+                          <FontAwesomeIcon icon={faChevronDown} /> ورزش ها
+                        </span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link
+                        className="link"
+                        onClick={() => {
+                          pageHandler("http://localhost:3000/");
+                        }}
+                        to="/#"
                       >
-                        خانه
-                      </span>
-                    </Link>
-                  </li>
-                </ul>
-              </nav>
-            </header>
-            {isSignUpShown && (
-              <Sign
-                type="signup"
-                close={closeForm}
-                online={onlineHandler}
-                accountName={accountNameHandler}
-              />
-            )}
-            {isSignInShown && (
-              <Sign
-                online={onlineHandler}
-                accountName={accountNameHandler}
-                type="login"
-                close={closeForm}
-              />
-            )}
-            <Switch>
-              {sportsData.map((res) => {
-                return (
-                  <Route path={`/category/${res.en_title}`} key={res.id}>
-                    <Gallery
-                      categoryName={res.en_title}
-                      faTitle={res.fa_title}
-                    />
-                  </Route>
-                );
-              })}
-
-              <Route path="/request-form">
-                <Notice title="request-form" />
-              </Route>
-
-              <Route path="/privacy">
-                <Notice title="privacy" />
-              </Route>
-
-              <Route path="/guarantee">
-                <Notice title="guarantee" />
-              </Route>
-
-              <Route path="/faq">
-                <Notice title="faq" />
-              </Route>
-
-              <Route path="/blog-news">
-                <Notice title="blog-news" />
-              </Route>
-
-              <Route path="/about">
-                <Notice title="about" />
-              </Route>
-
-              <Route path="/contact">
-                <Notice title="contact" />
-              </Route>
-
-              <Route path="/">
-                <Advertising
-                  click={() => {
-                    closeHiddenMenu();
-                    closeForm();
-                    window.scrollTo(0, 0);
-                    showSingUp();
-                  }}
+                        <span
+                          {...(page === "http://localhost:3000/"
+                            ? { className: "activeNav" }
+                            : {})}
+                        >
+                          خانه
+                        </span>
+                      </Link>
+                    </li>
+                  </ul>
+                </nav>
+              </header>
+              {isSignUpShown && (
+                <Sign
+                  type="signup"
+                  close={closeForm}
+                  online={onlineHandler}
+                  accountName={accountNameHandler}
                 />
-                <Categories />
-                <LastProducts />
-              </Route>
-            </Switch>
-          </div>
-          <Footer />
-        </Router>
+              )}
+              {isSignInShown && (
+                <Sign
+                  online={onlineHandler}
+                  accountName={accountNameHandler}
+                  type="login"
+                  close={closeForm}
+                />
+              )}
+              <Switch>
+                {sportsData.map((res) => {
+                  return (
+                    <Route path={`/category/${res.en_title}`} key={res.id}>
+                      <Gallery
+                        categoryName={res.en_title}
+                        faTitle={res.fa_title}
+                      />
+                    </Route>
+                  );
+                })}
+
+                <Route path="/request-form">
+                  <Notice title="request-form" />
+                </Route>
+
+                <Route path="/privacy">
+                  <Notice title="privacy" />
+                </Route>
+
+                <Route path="/guarantee">
+                  <Notice title="guarantee" />
+                </Route>
+
+                <Route path="/faq">
+                  <Notice title="faq" />
+                </Route>
+
+                <Route path="/blog-news">
+                  <Notice title="blog-news" />
+                </Route>
+
+                <Route path="/about">
+                  <Notice title="about" />
+                </Route>
+
+                <Route path="/contact">
+                  <Notice title="contact" />
+                </Route>
+
+                <Route path="/">
+                  <Advertising
+                    click={() => {
+                      closeHiddenMenu();
+                      closeForm();
+                      window.scrollTo(0, 0);
+                      showSingUp();
+                    }}
+                  />
+                  <Categories />
+                  <LastProducts />
+                </Route>
+              </Switch>
+            </div>
+            <Footer />
+          </Router>
+        </div>
       </div>
-    </div>
+    </Provider>
   );
 };
 

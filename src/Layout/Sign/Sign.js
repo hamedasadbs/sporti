@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import classes from "./Sign.module.scss";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faKey,
@@ -9,9 +11,14 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
+import { showLogin } from "../../Redux/Sign/SignActions";
+
 const Sign = (props) => {
   const loginURL = "http://localhost/bsShop/login.php";
   const signupURL = "http://localhost/bsShop/signup.php";
+
+  const isShowing = useSelector((state) => state.isShowing);
+  const dispatch = useDispatch();
 
   const [name, setName] = useState(null);
   const [signupUsername, setSignupUsername] = useState(null);
@@ -157,7 +164,9 @@ const Sign = (props) => {
             <FontAwesomeIcon icon={faKey} className={classes.i} />
           </div>
           <br />
-          <button onClick={enterToAccount}>ورود</button>
+          <Button onClick={enterToAccount} variant="contained" color="primary">
+            ورود
+          </Button>
           <h5 className={classes.rememberMe}>
             <input type="checkbox" />
             مرا به خاطر بسپار
@@ -169,6 +178,17 @@ const Sign = (props) => {
             رمز عبور را فراموش کرده ام
           </a>
         </main>
+        <button onClick={() => alert(isShowing)} id="show">
+          show
+        </button>
+        <button
+          onClick={() => {
+            dispatch(showLogin());
+          }}
+          id="change"
+        >
+          change
+        </button>
       </>
     ) : (
       <>
@@ -211,7 +231,9 @@ const Sign = (props) => {
             <input id="notRobot" type="checkbox" />
             من ربات نیستم
           </h5>
-          <button onClick={createAccount}>ثبت</button>
+          <Button onClick={createAccount} variant="contained" color="primary">
+            ثبت
+          </Button>
         </main>
       </>
     );

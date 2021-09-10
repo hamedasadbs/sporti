@@ -146,28 +146,8 @@
               height: 50px;
               font-family: $font;
               font-size: 18px;
-              color: darken($pageBackColor, 20%);
               margin: 5px auto;
               border-radius: 2px;
-            }
-
-            button.login,
-            button.logout {
-              @include btn(
-                $superDarkColor,
-                $superLightColor,
-                lighten($superDarkColor, 10%),
-                $superLightColor
-              );
-            }
-
-            button.register {
-              @include btn(
-                $superLightColor,
-                $superDarkColor,
-                darken($superLightColor, 10%),
-                $superDarkColor
-              );
             }
           }
         }

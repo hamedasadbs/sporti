@@ -88,10 +88,10 @@
         }
       }
 
-      .details {
+      button {
         width: 100%;
         flex-grow: 1;
-        @include moreDetails();
+        font-family: $font;
         margin: 20px auto;
         padding: 10px;
         border-radius: 5px;

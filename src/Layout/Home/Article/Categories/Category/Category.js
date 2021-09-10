@@ -7,7 +7,9 @@ const Category = (props) => (
     <Link to={`/category/${props.enTitle}`}>
       <div className={classes.category}>
         <img src={`/Images/Category/${props.image}`} alt={props.enTitle} />
-        <div className={classes.label}>{props.faTitle}</div>
+        <div className={classes.label}>
+          <h1>{props.faTitle}</h1>
+        </div>
       </div>
     </Link>
   </>

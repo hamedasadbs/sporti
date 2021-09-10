@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./Details.module.scss";
 import Dropdown from "../../Tool/Dropdown/Dropdown";
 import axios from "axios";
-
+import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faChevronRight,
@@ -79,9 +79,13 @@ const Details = (props) => {
               desc={props.desc}
             />
             {props.exi === "1" ? (
-              <button className={classes.addToCart}>افزودن به سبد</button>
+              <Button variant="contained" color="primary">
+                افزودن به سبد
+              </Button>
             ) : (
-              <button className={classes.notActive}>ناموجود</button>
+              <Button variant="outlined" disabled>
+                ناموجود
+              </Button>
             )}
           </div>
           <div className={classes.images}>
