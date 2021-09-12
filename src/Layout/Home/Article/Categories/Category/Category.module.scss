@@ -5,12 +5,10 @@
   height: 380px;
   margin: 10px;
   display: flex;
-  background-image: -webkit-radial-gradient(
-    circle,
-    lighten($mainColor, 20%),
-    lighten($mainColor, 20%),
-    $mainColor
-  );
+  background-image: -webkit-radial-gradient(circle,
+      lighten($mainColor, 20%),
+      lighten($mainColor, 20%),
+      $mainColor);
   @include shadow();
 
   &:hover {
@@ -66,7 +64,8 @@
 
     .label {
       width: 320px;
-      margin: 272px auto;
+      height: 320px;
+      margin: 0 auto;
     }
 
     img {
@@ -82,7 +81,8 @@
 
     .label {
       width: 330px;
-      margin: 282px auto;
+      height: 330px;
+      margin: 0 auto;
     }
 
     img {
@@ -98,7 +98,8 @@
 
     .label {
       width: 230px;
-      margin: 182px auto;
+      height: 230px;
+      margin: 0 auto;
     }
 
     img {
@@ -114,8 +115,9 @@
 
     .label {
       width: 380px;
-      font-size: 12px;
-      margin: 339px auto;
+      height: 380px;
+      font-size: 13px;
+      margin: 0 auto;
     }
 
     img {

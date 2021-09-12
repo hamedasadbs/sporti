@@ -11,13 +11,12 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { showLogin } from "../../Redux/Sign/SignActions";
+import { setCookie } from "../../Redux/Cookie/CookieActions";
 
 const Sign = (props) => {
   const loginURL = "http://localhost/bsShop/login.php";
   const signupURL = "http://localhost/bsShop/signup.php";
 
-  const isShowing = useSelector((state) => state.isShowing);
   const dispatch = useDispatch();
 
   const [name, setName] = useState(null);
@@ -127,6 +126,7 @@ const Sign = (props) => {
               `شما با نام ${res.data[0].username} وارد حساب کاربری خود شدید`
             );
             props.online(true);
+            dispatch(setCookie());
             props.accountName(res.data[0].username);
             props.close(true);
           }
@@ -178,17 +178,6 @@ const Sign = (props) => {
             رمز عبور را فراموش کرده ام
           </a>
         </main>
-        <button onClick={() => alert(isShowing)} id="show">
-          show
-        </button>
-        <button
-          onClick={() => {
-            dispatch(showLogin());
-          }}
-          id="change"
-        >
-          change
-        </button>
       </>
     ) : (
       <>

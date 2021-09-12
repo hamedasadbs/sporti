@@ -36,7 +36,7 @@ const Advertising = () => {
     <>
       <article className={classes.slideshowContainer}>
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img src="/Images/Poster/swimming-poster.jpg" alt="poster1" />
+          <img src="/Images/Poster/jogging-poster.jpg" alt="poster1" />
           <h1 className={classes.poster1}>ارائه بهترین محصولات ورزشی</h1>
         </div>
 
@@ -60,7 +60,7 @@ const Advertising = () => {
         </div>
 
         <div className={"mySlides " + classes.mySlides + " " + classes.fade}>
-          <img src="/Images/Poster/billiard-poster.jpg" alt="poster5" />
+          <img src="/Images/Poster/tennis-poster.jpg" alt="poster5" />
           <h1 className={classes.poster5}>
             روی محصول خود کلیک کن تا برای همیشه مشتری ما باشی
           </h1>

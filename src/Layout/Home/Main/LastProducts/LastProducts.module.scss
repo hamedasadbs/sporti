@@ -96,15 +96,6 @@
         padding: 10px;
         border-radius: 5px;
       }
-
-      .notActive {
-        width: 100%;
-        flex-grow: 1;
-        @include notActive();
-        margin: 20px auto;
-        padding: 10px;
-        border-radius: 5px;
-      }
     }
   }
 }
@@ -118,6 +109,7 @@
 @media only screen and (max-width: $small) {
   .lastProduct {
     main {
+
       .arrowLeft,
       .arrowRight {
         padding: 15px 25px 10px 20px;

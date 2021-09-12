@@ -31,13 +31,20 @@ import { store } from "./Redux/Store";
 
 const App = () => {
   const sportsURL = "http://localhost/bsShop/sports.php";
+  const brandsURL = "http://localhost/bsShop/brands.php";
+  const productTypeURL = "http://localhost/bsShop/productType.php";
 
   const [sportsData, setSportsData] = useState([]);
+  const [brandsData, setBrandsData] = useState([]);
+  const [productTypeData, setProductTypeData] = useState([]);
+
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [isSignUpShown, setIsSignUpShown] = useState(false);
   const [isSignInShown, setIsSignInShown] = useState(false);
 
   const [isSportsOpen, setIsSportsOpen] = useState(false);
+  const [isBrandsOpen, setIsBrandsOpen] = useState(false);
+  const [isProductTypeOpen, setIsProductTypeOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
 
@@ -118,6 +125,14 @@ const App = () => {
     if (isSportsOpen) setIsSportsOpen(false);
     else setIsSportsOpen(true);
   };
+  const openBrands = () => {
+    if (isBrandsOpen) setIsBrandsOpen(false);
+    else setIsBrandsOpen(true);
+  };
+  const openProductType = () => {
+    if (isProductTypeOpen) setIsProductTypeOpen(false);
+    else setIsProductTypeOpen(true);
+  };
 
   const openAccount = () => {
     if (isAccountOpen) setIsAccountOpen(false);
@@ -135,6 +150,8 @@ const App = () => {
 
   useEffect(() => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
+    axios.post(brandsURL).then((res) => setBrandsData(res.data));
+    axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
   }, []);
 
   const onlineHandler = (isOnline) => {
@@ -244,14 +261,76 @@ const App = () => {
                               <li
                                 key={res.id}
                                 onClick={() => {
-                                  window.location.href = res.en_title;
+                                  window.location.href = res.category;
                                 }}
                               >
                                 <Link
                                   onClick={closeHiddenMenu}
-                                  to={`/category/${res.en_title}`}
+                                  to={`/${res.category}`}
                                 >
-                                  {res.fa_title} -
+                                  {res.fa_category} -
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                    <li className="brands" onClick={openBrands}>
+                      <Link>
+                        {isBrandsOpen ? (
+                          <FontAwesomeIcon icon={faChevronDown} />
+                        ) : (
+                          <FontAwesomeIcon icon={faChevronLeft} />
+                        )}{" "}
+                        برند ها
+                      </Link>
+                      {isBrandsOpen && (
+                        <ul>
+                          {brandsData.map((res) => {
+                            return (
+                              <li
+                                key={res.id}
+                                onClick={() => {
+                                  window.location.href = res.brand;
+                                }}
+                              >
+                                <Link
+                                  onClick={closeHiddenMenu}
+                                  to={`/${res.brand}`}
+                                >
+                                  {res.brand} -
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      )}
+                    </li>
+                    <li className="productType" onClick={openProductType}>
+                      <Link>
+                        {isProductTypeOpen ? (
+                          <FontAwesomeIcon icon={faChevronDown} />
+                        ) : (
+                          <FontAwesomeIcon icon={faChevronLeft} />
+                        )}{" "}
+                        نوع محصول
+                      </Link>
+                      {isProductTypeOpen && (
+                        <ul>
+                          {productTypeData.map((res) => {
+                            return (
+                              <li
+                                key={res.id}
+                                onClick={() => {
+                                  window.location.href = res.type;
+                                }}
+                              >
+                                <Link
+                                  onClick={closeHiddenMenu}
+                                  to={`/${res.type}`}
+                                >
+                                  {res.fa_type} -
                                 </Link>
                               </li>
                             );
@@ -367,7 +446,10 @@ const App = () => {
                       <label>سبد من</label>
                       <FontAwesomeIcon icon={faShoppingBasket} className="i" />
                       <div className="basket">
-                        <Dropdown type="basket" />
+                        <Dropdown
+                          type="basket"
+                          isOnline={getCookie("isOnline")}
+                        />
                       </div>
                     </li>
                   </ul>
@@ -495,11 +577,27 @@ const App = () => {
               <Switch>
                 {sportsData.map((res) => {
                   return (
-                    <Route path={`/category/${res.en_title}`} key={res.id}>
+                    <Route path={`/${res.category}`} key={res.id}>
                       <Gallery
-                        categoryName={res.en_title}
-                        faTitle={res.fa_title}
+                        categoryName={res.category}
+                        faTitle={res.fa_category}
                       />
+                    </Route>
+                  );
+                })}
+
+                {brandsData.map((res) => {
+                  return (
+                    <Route path={`/${res.brand}`} key={res.id}>
+                      <Gallery categoryName={res.brand} faTitle={res.brand} />
+                    </Route>
+                  );
+                })}
+
+                {productTypeData.map((res) => {
+                  return (
+                    <Route path={`/${res.type}`} key={res.id}>
+                      <Gallery categoryName={res.type} faTitle={res.fa_type} />
                     </Route>
                   );
                 })}

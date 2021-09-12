@@ -79,7 +79,7 @@ const Details = (props) => {
               desc={props.desc}
             />
             {props.exi === "1" ? (
-              <Button variant="contained" color="primary">
+              <Button variant="contained" color="secondary">
                 افزودن به سبد
               </Button>
             ) : (

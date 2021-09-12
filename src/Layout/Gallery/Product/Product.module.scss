@@ -53,29 +53,13 @@
 
   .btn {
     margin-bottom: 15px;
+
     button {
       width: 100%;
       margin: 5px auto;
       padding: 10px;
       border-radius: 5px;
       font-family: $font;
-    }
-
-    .addToCart {
-      @include addToCart();
-      border-radius: 10px 10px 0 0;
-      margin-bottom: -6px;
-    }
-
-    .moreDetails {
-      @include moreDetails();
-      border-radius: 0 0 10px 10px;
-    }
-
-    .notActive {
-      @include notActive();
-      border-radius: 10px 10px 0 0;
-      margin-bottom: -6px;
     }
   }
 }
@@ -119,6 +103,7 @@
       h2 {
         font-size: 15px;
       }
+
       p {
         font-size: 12px;
       }

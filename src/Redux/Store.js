@@ -1,4 +1,4 @@
 import { createStore } from "redux";
-import signReducer from "./Sign/SignReducers";
+import loginReducer from "./Cookie/CookieReducers";
 
-export const store = createStore(signReducer);
+export const store = createStore(loginReducer);

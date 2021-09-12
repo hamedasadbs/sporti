@@ -153,10 +153,7 @@ const Gallery = (props) => {
       <Switch>
         {productsData.map((res) => {
           return (
-            <Route
-              path={`/category/${res.category}/${res.fa_title}`}
-              key={res.name}
-            >
+            <Route path={`/${res.category}/${res.fa_title}`} key={res.name}>
               <Details
                 faTitle={res.fa_title}
                 image={res.image}
@@ -170,7 +167,39 @@ const Gallery = (props) => {
             </Route>
           );
         })}
-        <Route path={`/category/${props.categoryName}`}>
+        {productsData.map((res) => {
+          return (
+            <Route path={`/${res.brand}/${res.fa_title}`} key={res.name}>
+              <Details
+                faTitle={res.fa_title}
+                image={res.image}
+                price={res.price}
+                desc={res.description}
+                type={res.type}
+                kind={res.kind}
+                size={res.size}
+                exi={res.existence}
+              />
+            </Route>
+          );
+        })}
+        {productsData.map((res) => {
+          return (
+            <Route path={`/${res.type}/${res.fa_title}`} key={res.name}>
+              <Details
+                faTitle={res.fa_title}
+                image={res.image}
+                price={res.price}
+                desc={res.description}
+                type={res.type}
+                kind={res.kind}
+                size={res.size}
+                exi={res.existence}
+              />
+            </Route>
+          );
+        })}
+        <Route path={`/${props.categoryName}`}>
           <article className={classes.galleries}>
             <div className={classes.gallery}>
               <h1 className={classes.title}>{props.faTitle}</h1>

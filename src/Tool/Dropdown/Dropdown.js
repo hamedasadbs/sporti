@@ -21,7 +21,11 @@ const Dropdown = (props) => {
 
   const dropdown =
     props.type === "basket" ? (
-      <span>سبد شما خالی است</span>
+      props.isOnline == false ? (
+        <span>لطفا وارد حساب کاربری خود شوید</span>
+      ) : (
+        <span>سبد شما خالی است</span>
+      )
     ) : props.type === "account" ? (
       <>
         <Button
@@ -49,11 +53,11 @@ const Dropdown = (props) => {
               <li
                 key={res.id}
                 onClick={() => {
-                  window.location.href = res.en_title;
+                  window.location.href = res.category;
                 }}
               >
-                <Link className="link" to={`/category/${res.en_title}`}>
-                  {res.fa_title}
+                <Link className="link" to={`/${res.category}`}>
+                  {res.fa_category}
                 </Link>
               </li>
             );
@@ -68,10 +72,10 @@ const Dropdown = (props) => {
               <li
                 key={res.id}
                 onClick={() => {
-                  window.location.href = res.en_title;
+                  window.location.href = res.brand;
                 }}
               >
-                <Link className="link" to={`/category/${res.en_title}`}>
+                <Link className="link" to={`/${res.brand}`}>
                   {res.brand}
                 </Link>
               </li>
@@ -87,10 +91,10 @@ const Dropdown = (props) => {
               <li
                 key={res.id}
                 onClick={() => {
-                  window.location.href = res.en_title;
+                  window.location.href = res.type;
                 }}
               >
-                <Link className="link" to={`/category/${res.en_title}`}>
+                <Link className="link" to={`/${res.type}`}>
                   {res.type}
                 </Link>
               </li>
