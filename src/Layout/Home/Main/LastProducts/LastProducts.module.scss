@@ -1,124 +1,143 @@
 @import "../../../../GlobalStyles.scss";
 
-.lastProduct {
-  width: 100%;
-  z-index: 0;
+.lastProducts {
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px;
-  margin-top: 50px;
+  width: 100%;
+  background-color: $superLightColor;
+  margin: 100px auto;
 
   .title {
     @include title();
+    font-size: 15px;
   }
 
-  main {
+  .imageList {
     display: flex;
-    margin: 0 auto;
-    flex-direction: row;
-    position: relative;
-    width: 95%;
-    z-index: 1;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    overflow: scroll;
+    overflow-y: hidden;
 
-    .demo {
-      width: 100%;
-
-      .item {
-        margin-bottom: 20px;
-
-        ul {
-          list-style: none outside none;
-          margin: auto;
-        }
-
-        .contentSlider {
-          h3 {
-            margin: 0;
-            padding: 70px 0;
-          }
-        }
-      }
-    }
-
-    .picture {
-      margin: 20px auto;
-      margin-right: 10px;
-      padding: 15px 10px 0px 10px;
-      float: right;
-      width: auto;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      z-index: 2;
-      background-color: $superLightColor;
-      border-radius: 5px;
+    .image {
+      display: flex;
+      flex-direction: column;
+      margin: 30px 10px;
+      width: 300px;
       @include shadow();
 
-      .mainImage {
-        position: relative;
-        margin: 5px auto;
-        display: flex;
-
-        img {
-          width: 280px;
-          height: 200px;
-          object-fit: contain;
-          border-radius: 5px;
-          margin: 0 auto;
-        }
+      img {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+        margin: auto;
+        padding: 20px;
       }
 
       .caption {
-        color: darken($linkColor, 30%);
-        text-align: right;
-        font-family: $font;
-        font-size: 12px;
-        font-weight: 100;
-        line-height: 15px;
-        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border-radius: 3px;
 
-        h2 {
-          font-family: $numberFont;
-          font-weight: lighter;
+        .productName {
+          font-size: 17px;
+          text-align: right;
+          padding-right: 20px;
+          width: 100%;
+          font-family: $font;
+          margin: 10px auto;
+          color: $footerBackColor;
         }
 
-        p {
-          font-family: $font;
-          font-size: 15px;
-          margin-top: 30px;
-          font-weight: bold;
+        .productPrice {
+          font-size: 16px;
+          font-family: $numberFont;
+          text-align: left;
+          padding-left: 20px;
+          margin-top: 0px;
+          margin: 5px auto;
+          width: 100%;
+          color: $footerBackColor;
         }
       }
 
       button {
-        width: 100%;
-        flex-grow: 1;
         font-family: $font;
-        margin: 20px auto;
+        margin-top: 10px;
         padding: 10px;
-        border-radius: 5px;
       }
     }
   }
 }
 
-@media only screen and (max-width: $big) {
-  .lastProduct {
-    margin-top: 130px;
+@media only screen and (max-width: $medium) {
+  .lastProducts {
+    .imageList {
+      .image {
+        width: 200px;
+
+        img {
+          width: 200px;
+          height: 200px;
+        }
+
+        .caption {
+          .productName {
+            font-size: 15px;
+          }
+
+          .productPrice {
+            font-size: 14px;
+          }
+        }
+      }
+    }
   }
 }
 
 @media only screen and (max-width: $small) {
-  .lastProduct {
-    main {
+  .lastProducts {
+    .imageList {
+      .image {
+        width: 150px;
 
-      .arrowLeft,
-      .arrowRight {
-        padding: 15px 25px 10px 20px;
-        float: left;
-        width: 50px;
-        height: 160px;
-        border: none;
-        z-index: 1;
-        border-radius: 10px;
+        img {
+          width: 150px;
+          height: 150px;
+        }
+
+        .caption {
+          .productName {
+            font-size: 14px;
+            padding-right: 0;
+            text-align: center;
+          }
+
+          .productPrice {
+            font-size: 13px;
+            padding-left: 0;
+            text-align: center;
+          }
+        }
+
+        button {
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .lastProducts {
+    .imageList {
+      .image {
+        width: 250px;
+
+        img {
+          width: 250px;
+          height: 250px;
+        }
       }
     }
   }

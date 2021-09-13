@@ -1,96 +1,36 @@
-import React, { useState, useEffect } from "react";
-import classes from "./LastProducts.module.scss";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
-import "./js/lightslider";
-import "./css/lightslider.css";
-
 import axios from "axios";
-import $ from "jquery";
 
-const LastProduct = () => {
-  const [items, setItems] = useState(4);
+import classes from "./LastProducts.module.scss";
+
+export default function SingleLineImageList() {
   const url = "http://localhost/bsShop/lastProducts.php";
   const [productsData, setProductsData] = useState([]);
 
   useEffect(() => {
     axios.post(url).then((res) => setProductsData(res.data));
-
-    checkScreenSize();
   }, []);
-
-  $(document).ready(function () {
-    $("#content-slider").lightSlider({
-      item: items,
-    });
-    $("#image-gallery").lightSlider({
-      onSliderLoad: function () {
-        $("#image-gallery").removeClass("cS-hidden");
-      },
-    });
-  });
-
-  const normal = window.matchMedia(
-    "(max-width: 1800px) and (min-width: 1300px)"
-  );
-  const big = window.matchMedia("(max-width: 1300px) and (min-width: 1005px)");
-  const medium = window.matchMedia(
-    "(max-width: 1005px) and (min-width: 705px)"
-  );
-  const small = window.matchMedia("(max-width: 705px) and (min-width: 605px)");
-
-  const checkScreenSize = () => {
-    if (normal.matches) setItems(4);
-    if (big.matches) setItems(3);
-    if (medium.matches) setItems(2);
-    if (small.matches) setItems(1);
-  };
-
-  let picture = productsData.map((pic) => {
-    return (
-      <li key={pic.id}>
-        <div className={classes.picture}>
-          <div className={classes.mainImage}>
-            <img
-              src={`/Images/Product/${pic.image}`}
-              alt={pic.name}
-              width="533"
-              height="300"
-            />
-          </div>
-          <div className={classes.caption}>
-            <p>{pic.fa_title}</p>
-            <h2>{pic.price} تومان</h2>
-          </div>
-          <Link
-            className={classes.link}
-            to={`/category/${pic.category}/${pic.fa_title}`}
-          >
-            <Button variant="contained" color="primary">
-              مشاهده جزئیات
-            </Button>
-          </Link>
-        </div>
-      </li>
-    );
-  });
 
   return (
     <>
-      <section className={classes.lastProduct}>
-        <span className={classes.title}>جدیدترین محصولات</span>
-        <main>
-          <div className={classes.demo}>
-            <div className={classes.item}>
-              <ul id="content-slider" className={classes.contentSlider}>
-                {picture}
-              </ul>
+      <article className={classes.lastProducts}>
+        <h1 className={classes.title}>آخرین محصولات</h1>
+        <main className={classes.imageList}>
+          {productsData.map((item) => (
+            <div className={classes.image} key={item.image}>
+              <img src={`/Images/Product/${item.image}`} alt={item.fa_title} />
+              <div className={classes.caption}>
+                <h3 className={classes.productName}>{item.fa_title}</h3>
+                <h4 className={classes.productPrice}>{item.price} تومان</h4>
+              </div>
+              <Button variant="contained" color="primary">
+                مشاهده جزئیات
+              </Button>
             </div>
-          </div>
+          ))}
         </main>
-      </section>
+      </article>
     </>
   );
-};
-
-export default LastProduct;
+}
