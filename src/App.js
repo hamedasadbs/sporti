@@ -577,7 +577,7 @@ const App = () => {
               <Switch>
                 {sportsData.map((res) => {
                   return (
-                    <Route path={`/${res.category}`} key={res.id}>
+                    <Route path={`/sport/${res.category}`} key={res.id}>
                       <Gallery
                         categoryName={res.category}
                         faTitle={res.fa_category}
@@ -588,7 +588,7 @@ const App = () => {
 
                 {brandsData.map((res) => {
                   return (
-                    <Route path={`/${res.brand}`} key={res.id}>
+                    <Route path={`/brand/${res.brand}`} key={res.id}>
                       <Gallery categoryName={res.brand} faTitle={res.brand} />
                     </Route>
                   );
@@ -596,7 +596,7 @@ const App = () => {
 
                 {productTypeData.map((res) => {
                   return (
-                    <Route path={`/${res.type}`} key={res.id}>
+                    <Route path={`/type/${res.type}`} key={res.id}>
                       <Gallery categoryName={res.type} faTitle={res.fa_type} />
                     </Route>
                   );

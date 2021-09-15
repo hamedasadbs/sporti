@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const Logic = (props) => {
-  const [res, setRes] = useState(null);
-
-  useEffect(() => {
-    axios
-      .get("./test.json")
-      .then((res) => {
-        setRes(props.req === "matches" ? res.data.matches : res.data.shoppings);
-        alert(res);
+export const Logic = () => {
+  const myData = ["hamed", "saeid"];
+  axios
+    .post(
+      "http://localhost/bsShop/gallery.php",
+      JSON.stringify({
+        method: "gallery",
+        selected: "brand",
       })
-      .catch((err) => {
-        alert(err);
-      });
-  }, []);
-
-  return <>{res}</>;
+    )
+    .then((res) => myData.push(res.data));
+  return myData;
 };
-
-export default Logic;

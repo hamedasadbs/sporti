@@ -56,7 +56,7 @@ const Dropdown = (props) => {
                   window.location.href = res.category;
                 }}
               >
-                <Link className="link" to={`/${res.category}`}>
+                <Link className="link" to={`/sport/${res.category}`}>
                   {res.fa_category}
                 </Link>
               </li>
@@ -75,7 +75,7 @@ const Dropdown = (props) => {
                   window.location.href = res.brand;
                 }}
               >
-                <Link className="link" to={`/${res.brand}`}>
+                <Link className="link" to={`/brand/${res.brand}`}>
                   {res.brand}
                 </Link>
               </li>
@@ -94,7 +94,7 @@ const Dropdown = (props) => {
                   window.location.href = res.type;
                 }}
               >
-                <Link className="link" to={`/${res.type}`}>
+                <Link className="link" to={`/type/${res.type}`}>
                   {res.type}
                 </Link>
               </li>
