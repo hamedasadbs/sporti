@@ -26,7 +26,7 @@ const Product = (props) => {
             </Button>
             <Link
               className={classes.link}
-              to={`/${props.categoryName}/${props.faTitle}`}
+              to={`/category/${props.categoryName}/${props.faTitle}`}
             >
               <Button variant="contained" color="primary">
                 مشاهده جزئیات
@@ -40,7 +40,7 @@ const Product = (props) => {
             </Button>
             <Link
               className={classes.link}
-              to={`/${props.categoryName}/${props.faTitle}`}
+              to={`/category/${props.categoryName}/${props.faTitle}`}
             >
               <Button variant="contained" color="primary">
                 مشاهده جزئیات

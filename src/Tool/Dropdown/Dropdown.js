@@ -53,12 +53,10 @@ const Dropdown = (props) => {
               <li
                 key={res.id}
                 onClick={() => {
-                  window.location.href = res.category;
+                  window.location.href = "/category/" + res.category;
                 }}
               >
-                <Link className="link" to={`/sport/${res.category}`}>
-                  {res.fa_category}
-                </Link>
+                {res.fa_category}
               </li>
             );
           })}
@@ -72,12 +70,10 @@ const Dropdown = (props) => {
               <li
                 key={res.id}
                 onClick={() => {
-                  window.location.href = res.brand;
+                  window.location.href = "/category/" + res.brand;
                 }}
               >
-                <Link className="link" to={`/brand/${res.brand}`}>
-                  {res.brand}
-                </Link>
+                {res.brand}
               </li>
             );
           })}
@@ -91,12 +87,10 @@ const Dropdown = (props) => {
               <li
                 key={res.id}
                 onClick={() => {
-                  window.location.href = res.type;
+                  window.location.href = "/category/" + res.type;
                 }}
               >
-                <Link className="link" to={`/type/${res.type}`}>
-                  {res.type}
-                </Link>
+                {res.type}
               </li>
             );
           })}
