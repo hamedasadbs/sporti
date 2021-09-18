@@ -1,13 +1,14 @@
+/*INNER-COMPONENTS*/
 import React, { useEffect, useState } from "react";
-import classes from "./Gallery.module.scss";
-
 import axios from "axios";
-import Product from "./Product/Product";
-import Details from "../Details/Details";
-
-import { Logic } from "../../Logic/Logic";
-
 import { Switch, Route } from "react-router-dom";
+/*CSS*/
+import classes from "./Gallery.module.scss";
+/*CHILD-COMPONENTS*/
+import {Product} from "./Product/Product";
+import {Details} from "../Details/Details";
+import { Logic } from "../../Logic/Logic";
+/*ASSETS*/
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,26 +17,26 @@ import {
   faChevronLeft,
 } from "@fortawesome/free-solid-svg-icons";
 
-const Gallery = (props) => {
+export const Gallery = (props) => {
+  /*STATES*/
   const [totalGallery, setTotalGallery] = useState([]);
   const [gallery, setGallery] = useState([]);
   let [minPrice, setMinPrice] = useState(0);
   let [maxPrice, setMaxPrice] = useState(500000);
   const [productsData, setProductsData] = useState([]);
   let [page, setPage] = useState(1);
+  const [typeFilter, setTypeFilter] = useState([]);
+  const [kindFilter, setKindFilter] = useState([]);
+  const [brandFilter, setBrandFilter] = useState([]);
+  const [type, setType] = useState(["کفش"]);
+  /*VARIABLES*/
   const url = "http://localhost/bsShop/gallery.php";
   const filterURL = "http://localhost/bsShop/filter.php";
   const productsURL = "http://localhost/bsShop/products.php";
   const numberOfItemsToShow = 10;
-
-  const [typeFilter, setTypeFilter] = useState([]);
-  const [kindFilter, setKindFilter] = useState([]);
-  const [brandFilter, setBrandFilter] = useState([]);
-
-  const [type, setType] = useState(["کفش"]);
-
   let newType = type.toString();
-
+  const numberOfOffsets = totalGallery.length / numberOfItemsToShow;
+  /*FUNCTIONS*/
   const updateRequest = () => {
     let offset = (page - 1) * numberOfItemsToShow;
     axios
@@ -95,7 +96,6 @@ const Gallery = (props) => {
     //alert(Logic())
   };
 
-  const numberOfOffsets = totalGallery.length / numberOfItemsToShow;
   useEffect(() => {
     axios.post(productsURL).then((res) => setProductsData(res.data));
     window.scrollTo(0, 0);
@@ -145,6 +145,14 @@ const Gallery = (props) => {
     setMaxPrice(parseInt(e.target.value));
   };
 
+  const filterHandler = (e) => {
+    if (e.target.checked) {
+      setType((prevArray) => [...prevArray, e.target.value]);
+    } else {
+      setType(type.filter((i) => i !== e.target.value));
+    }
+  };
+  /*FREE-CODE*/
   const numbers = [];
   for (let i = 0; i < numberOfOffsets; i++) {
     numbers.push(
@@ -158,20 +166,13 @@ const Gallery = (props) => {
     );
   }
 
-  const filterHandler = (e) => {
-    if (e.target.checked) {
-      setType((prevArray) => [...prevArray, e.target.value]);
-    } else {
-      setType(type.filter((i) => i !== e.target.value));
-    }
-  };
   return (
     <>
       <Switch>
         {productsData.map((res) => {
           return (
             <Route
-              path={`/sport/${res.category}/${res.fa_title}`}
+              path={`/category/${res.category}/${res.fa_title}`}
               key={res.name}
             >
               <Details
@@ -189,7 +190,7 @@ const Gallery = (props) => {
         })}
         {productsData.map((res) => {
           return (
-            <Route path={`/brand/${res.brand}/${res.fa_title}`} key={res.name}>
+            <Route path={`/category/${res.brand}/${res.fa_title}`} key={res.name}>
               <Details
                 faTitle={res.fa_title}
                 image={res.image}
@@ -205,7 +206,7 @@ const Gallery = (props) => {
         })}
         {productsData.map((res) => {
           return (
-            <Route path={`/type/${res.type}/${res.fa_title}`} key={res.name}>
+            <Route path={`/category/${res.type}/${res.fa_title}`} key={res.name}>
               <Details
                 faTitle={res.fa_title}
                 image={res.image}
@@ -374,5 +375,3 @@ const Gallery = (props) => {
     </>
   );
 };
-
-export default Gallery;

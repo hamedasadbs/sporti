@@ -74,12 +74,10 @@
         }
 
         button {
-          @include btn(
-            transparent,
+          @include btn(transparent,
             $superDarkColor,
             darken($pageBackColor, 10%),
-            $superDarkColor
-          );
+            $superDarkColor);
           width: 40px;
           border: none;
           border-bottom: 1px solid $linkColor;
@@ -134,6 +132,7 @@
 @media only screen and (max-width: $medium) {
   .hiddenMenu {
     .rightSide {
+
       li.products,
       li.productType {
         &:hover {
@@ -151,6 +150,7 @@
     .rightSide {
       li {
         cursor: pointer;
+
         label {
           cursor: pointer;
         }
@@ -174,21 +174,17 @@
         }
 
         button.login {
-          @include btn(
-            $superDarkColor,
+          @include btn($superDarkColor,
             $superLightColor,
             lighten($superDarkColor, 10%),
-            $superLightColor
-          );
+            $superLightColor);
         }
 
         button.register {
-          @include btn(
-            $superLightColor,
+          @include btn($superLightColor,
             $superDarkColor,
             darken($superLightColor, 10%),
-            $superDarkColor
-          );
+            $superDarkColor);
         }
       }
 
@@ -198,6 +194,7 @@
 
         i.basket {
           margin-right: -20px;
+
           .carts {
             display: initial;
             background-color: $hoverColor;

@@ -1,7 +1,12 @@
+/*INNER-COMPONENTS*/
 import React, { useState } from "react";
-import classes from "./Sign.module.scss";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
+/*CSS*/
+import classes from "./Sign.module.scss";
+/*CHILD-COMPONENTS*/
+import { setCookie } from "../../Redux/Cookie/CookieActions";
+/*ASSETS*/
 import Button from "@material-ui/core/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,21 +16,19 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 
-import { setCookie } from "../../Redux/Cookie/CookieActions";
-
-const Sign = (props) => {
-  const loginURL = "http://localhost/bsShop/login.php";
-  const signupURL = "http://localhost/bsShop/signup.php";
-
-  const dispatch = useDispatch();
-
+export const Sign = (props) => {
+  /*STATES*/
   const [name, setName] = useState(null);
   const [signupUsername, setSignupUsername] = useState(null);
   let [loginUsername, setLoginUsername] = useState(null);
   const [email, setEmail] = useState(null);
   const [signupPassword, setSignupPassword] = useState(null);
   let [loginPassword, setLoginPassword] = useState(null);
-
+  /*VARIABLES*/
+  const loginURL = "http://localhost/bsShop/login.php";
+  const signupURL = "http://localhost/bsShop/signup.php";
+  const dispatch = useDispatch();
+  /*FUNCTIONS*/
   const nameHandler = (e) => {
     setName(e.target.value);
   };
@@ -136,102 +139,113 @@ const Sign = (props) => {
     }
   };
 
-  const main =
-    props.type === "login" ? (
-      <>
-        <span className={classes.title}>
-          <FontAwesomeIcon
-            onClick={props.close}
-            icon={faTimes}
-            className={classes.closeSign}
-          />
-          ورود به حساب کاربری
-        </span>
-        <main>
-          <div className={classes.loginUser}>
-            <input
-              onChange={loginUsernameHandler}
-              placeholder="نام کاربری یا ایمیل"
-            />
-            <FontAwesomeIcon icon={faUser} className={classes.i} />
-          </div>
-          <div className={classes.loginPass}>
-            <input
-              onChange={loginPasswordHandler}
-              type="password"
-              placeholder="رمز عبور"
-            />
-            <FontAwesomeIcon icon={faKey} className={classes.i} />
-          </div>
-          <br />
-          <Button onClick={enterToAccount} variant="contained" color="primary">
-            ورود
-          </Button>
-          <h5 className={classes.rememberMe}>
-            <input type="checkbox" />
-            مرا به خاطر بسپار
-          </h5>
-          <a href="/" className={classes.reUser}>
-            نام کاربری را فراموش کرده ام
-          </a>
-          <a href="/" className={classes.rePass}>
-            رمز عبور را فراموش کرده ام
-          </a>
-        </main>
-      </>
-    ) : (
-      <>
-        <span className={classes.title}>
-          <FontAwesomeIcon
-            onClick={props.close}
-            icon={faTimes}
-            className={classes.closeSign}
-          />
-          ایجاد حساب کاربری
-        </span>
-        <main>
-          <div className={classes.name}>
-            <input onChange={nameHandler} placeholder="نام و نام خانوادگی" />
-            <FontAwesomeIcon icon={faUser} className={classes.i} />
-          </div>
-          <div className={classes.signupUser}>
-            <input onChange={signupUsernameHandler} placeholder="نام کاربری" />
-            <FontAwesomeIcon icon={faUser} className={classes.i} />
-          </div>
-          <div className={classes.email}>
-            <input
-              type="email"
-              onChange={emailHandler}
-              placeholder="ایمیل"
-              id="email"
-            />
-            <FontAwesomeIcon icon={faEnvelope} className={classes.i} />
-          </div>
-          <div className={classes.signupPass}>
-            <input
-              type="password"
-              onChange={signupPasswordHandler}
-              placeholder="رمز عبور"
-              id="password"
-            />
-            <FontAwesomeIcon icon={faKey} className={classes.i} />
-          </div>
-          <h5 className={classes.rememberMe}>
-            <input id="notRobot" type="checkbox" />
-            من ربات نیستم
-          </h5>
-          <Button onClick={createAccount} variant="contained" color="primary">
-            ثبت
-          </Button>
-        </main>
-      </>
-    );
-
   return (
     <>
-      <article className={classes.sign}>{main}</article>
+      <article className={classes.sign}>
+        {props.type === "login" ? (
+          <>
+            <span className={classes.title}>
+              <FontAwesomeIcon
+                onClick={props.close}
+                icon={faTimes}
+                className={classes.closeSign}
+              />
+              ورود به حساب کاربری
+            </span>
+            <main>
+              <div className={classes.loginUser}>
+                <input
+                  onChange={loginUsernameHandler}
+                  placeholder="نام کاربری یا ایمیل"
+                />
+                <FontAwesomeIcon icon={faUser} className={classes.i} />
+              </div>
+              <div className={classes.loginPass}>
+                <input
+                  onChange={loginPasswordHandler}
+                  type="password"
+                  placeholder="رمز عبور"
+                />
+                <FontAwesomeIcon icon={faKey} className={classes.i} />
+              </div>
+              <br />
+              <Button
+                onClick={enterToAccount}
+                variant="contained"
+                color="primary"
+              >
+                ورود
+              </Button>
+              <h5 className={classes.rememberMe}>
+                <input type="checkbox" />
+                مرا به خاطر بسپار
+              </h5>
+              <a href="/" className={classes.reUser}>
+                نام کاربری را فراموش کرده ام
+              </a>
+              <a href="/" className={classes.rePass}>
+                رمز عبور را فراموش کرده ام
+              </a>
+            </main>
+          </>
+        ) : (
+          <>
+            <span className={classes.title}>
+              <FontAwesomeIcon
+                onClick={props.close}
+                icon={faTimes}
+                className={classes.closeSign}
+              />
+              ایجاد حساب کاربری
+            </span>
+            <main>
+              <div className={classes.name}>
+                <input
+                  onChange={nameHandler}
+                  placeholder="نام و نام خانوادگی"
+                />
+                <FontAwesomeIcon icon={faUser} className={classes.i} />
+              </div>
+              <div className={classes.signupUser}>
+                <input
+                  onChange={signupUsernameHandler}
+                  placeholder="نام کاربری"
+                />
+                <FontAwesomeIcon icon={faUser} className={classes.i} />
+              </div>
+              <div className={classes.email}>
+                <input
+                  type="email"
+                  onChange={emailHandler}
+                  placeholder="ایمیل"
+                  id="email"
+                />
+                <FontAwesomeIcon icon={faEnvelope} className={classes.i} />
+              </div>
+              <div className={classes.signupPass}>
+                <input
+                  type="password"
+                  onChange={signupPasswordHandler}
+                  placeholder="رمز عبور"
+                  id="password"
+                />
+                <FontAwesomeIcon icon={faKey} className={classes.i} />
+              </div>
+              <h5 className={classes.rememberMe}>
+                <input id="notRobot" type="checkbox" />
+                من ربات نیستم
+              </h5>
+              <Button
+                onClick={createAccount}
+                variant="contained"
+                color="primary"
+              >
+                ثبت
+              </Button>
+            </main>
+          </>
+        )}
+      </article>
     </>
   );
 };
-
-export default Sign;

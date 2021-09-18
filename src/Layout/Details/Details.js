@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import classes from "./Details.module.scss";
-import Dropdown from "../../Tool/Dropdown/Dropdown";
-import axios from "axios";
+/*INNER-COMPONENTS*/
+import React, { useState } from "react";
+/*CSS*/
+import style from "./Details.module.scss";
+/*CHILD-COMPONENTS*/
+import { Dropdown } from "../../Tool/Dropdown/Dropdown";
+/*ASSETS*/
 import Button from "@material-ui/core/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronRight,
-  faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
 
-const Details = (props) => {
+export const Details = (props) => {
+  /*STATES*/
   const [isDescDisplay, setIsDescDisplay] = useState(false);
   const [isFeaturesDisplay, setIsFeaturesDisplay] = useState(true);
   const [isCommentsDisplay, setIsCommentsDisplay] = useState(false);
+  /*FUNCTIONS*/
   const descriptionHandler = () => {
     setIsFeaturesDisplay(false);
     setIsCommentsDisplay(false);
@@ -30,15 +30,15 @@ const Details = (props) => {
   };
   return (
     <>
-      <div className={classes.details}>
-        <h1 className={classes.title}>{props.faTitle}</h1>
+      <div className={style.details}>
+        <h1 className={style.title}>{props.faTitle}</h1>
         <article>
-          <div className={classes.extraInfos}>
-            <div className={classes.tabs}>
+          <div className={style.extraInfos}>
+            <div className={style.tabs}>
               <button
                 onClick={commentsHandler}
                 {...(isCommentsDisplay === true && {
-                  className: classes.activeTab,
+                  className: style.activeTab,
                 })}
               >
                 نظرات
@@ -46,7 +46,7 @@ const Details = (props) => {
               <button
                 onClick={descriptionHandler}
                 {...(isDescDisplay === true && {
-                  className: classes.activeTab,
+                  className: style.activeTab,
                 })}
               >
                 توضیحات
@@ -54,7 +54,7 @@ const Details = (props) => {
               <button
                 onClick={featuresHandler}
                 {...(isFeaturesDisplay === true && {
-                  className: classes.activeTab,
+                  className: style.activeTab,
                 })}
               >
                 مشخصات
@@ -88,11 +88,11 @@ const Details = (props) => {
               </Button>
             )}
           </div>
-          <div className={classes.images}>
-            <div className={classes.primary}>
+          <div className={style.images}>
+            <div className={style.primary}>
               <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
             </div>
-            <div className={classes.secondary}>
+            <div className={style.secondary}>
               <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
               <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
               <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
@@ -104,5 +104,3 @@ const Details = (props) => {
     </>
   );
 };
-
-export default Details;

@@ -1,8 +1,10 @@
+/*INNER-COMPONENTS*/
 import React from "react";
-import classes from "./Category.module.scss";
 import { Link } from "react-router-dom";
+/*CSS*/
+import classes from "./Category.module.scss";
 
-const Category = (props) => (
+export const Category = (props) => (
   <>
     <Link to={`/category/${props.enTitle}`}>
       <div className={classes.category}>
@@ -14,5 +16,3 @@ const Category = (props) => (
     </Link>
   </>
 );
-
-export default Category;

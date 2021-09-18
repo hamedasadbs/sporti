@@ -1,13 +1,17 @@
+/*INNER-COMPONENTS*/
 import React, { useEffect, useState } from "react";
-import Button from "@material-ui/core/Button";
 import axios from "axios";
-
+/*CSS*/
 import classes from "./LastProducts.module.scss";
+/*ASSETS*/
+import Button from "@material-ui/core/Button";
 
-export default function SingleLineImageList() {
-  const url = "http://localhost/bsShop/lastProducts.php";
+export const LastProducts = () => {
+  /*STATES*/
   const [productsData, setProductsData] = useState([]);
-
+  /*VARIABLES*/
+  const url = "http://localhost/bsShop/lastProducts.php";
+  /*FUNCTIONS*/
   useEffect(() => {
     axios.post(url).then((res) => setProductsData(res.data));
   }, []);
@@ -33,4 +37,4 @@ export default function SingleLineImageList() {
       </article>
     </>
   );
-}
+};

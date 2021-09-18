@@ -41,10 +41,12 @@
 
         tbody {
           float: right;
+
           tr {
             td {
               .link {
                 color: lighten($linkColor, 20%);
+
                 &:hover {
                   cursor: pointer;
                   color: $hoverColor;
@@ -84,6 +86,7 @@
 
       .socialMedias {
         float: right;
+
         a {
           .i {
             font-size: 40px;
@@ -167,6 +170,7 @@
     .title {
       font-size: 15px;
     }
+
     main {
       .rightSide {
         width: 40%;
@@ -191,6 +195,7 @@
       text-align: center;
       padding-right: 0px;
     }
+
     main {
       flex-direction: column;
 

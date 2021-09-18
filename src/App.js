@@ -1,17 +1,20 @@
-import Advertising from "../src/Layout/Home/Article/Advertising/Advertising";
-import Categories from "../src/Layout/Home/Article/Categories/Categories";
-import LastProducts from "../src/Layout/Home/Main/LastProducts/LastProducts";
-
-import Dropdown from "./Tool/Dropdown/Dropdown";
-
-import Footer from "../src/Layout/Footer/Footer";
-
-import Sign from "../src/Layout/Sign/Sign";
-import Gallery from "../src/Layout/Gallery/Gallery";
-import Notice from "../src/Layout/Notice/Notice";
-
+/*INNER-COMPONENTS*/
+import React, { useState, useEffect } from "react";
+import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import axios from "axios";
+/*CSS*/
 import "./App.scss";
-
+/*CHILD-COMPONENTS*/
+import { Advertising } from "../src/Layout/Home/Article/Advertising/Advertising";
+import { Categories } from "../src/Layout/Home/Article/Categories/Categories";
+import { LastProducts } from "../src/Layout/Home/Main/LastProducts/LastProducts";
+import { Dropdown } from "./Tool/Dropdown/Dropdown";
+import { Footer } from "../src/Layout/Footer/Footer";
+import { Sign } from "../src/Layout/Sign/Sign";
+import { Gallery } from "../src/Layout/Gallery/Gallery";
+import { Notice } from "../src/Layout/Notice/Notice";
+/*ASSETS*/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faTimes,
@@ -22,34 +25,27 @@ import {
   faSearch,
   faBars,
 } from "@fortawesome/free-solid-svg-icons";
-
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
 import { store } from "./Redux/Store";
 
-const App = () => {
-  const sportsURL = "http://localhost/bsShop/sports.php";
-  const brandsURL = "http://localhost/bsShop/brands.php";
-  const productTypeURL = "http://localhost/bsShop/productType.php";
-
+export const App = () => {
+  /*STATES*/
   const [sportsData, setSportsData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
-
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [isSignUpShown, setIsSignUpShown] = useState(false);
   const [isSignInShown, setIsSignInShown] = useState(false);
-
   const [isSportsOpen, setIsSportsOpen] = useState(false);
   const [isBrandsOpen, setIsBrandsOpen] = useState(false);
   const [isProductTypeOpen, setIsProductTypeOpen] = useState(false);
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
-
   const [page, setPage] = useState(window.location.href);
-
+  /*VARIABLES*/
+  const sportsURL = "http://localhost/bsShop/sports.php";
+  const brandsURL = "http://localhost/bsShop/brands.php";
+  const productTypeURL = "http://localhost/bsShop/productType.php";
+  /*FUNCTIONS*/
   const setCookie = (cName, cValue, minutes) => {
     let d = new Date();
     d.setTime(d.getTime() + minutes * 60 * 1000);
@@ -125,10 +121,12 @@ const App = () => {
     if (isSportsOpen) setIsSportsOpen(false);
     else setIsSportsOpen(true);
   };
+
   const openBrands = () => {
     if (isBrandsOpen) setIsBrandsOpen(false);
     else setIsBrandsOpen(true);
   };
+
   const openProductType = () => {
     if (isProductTypeOpen) setIsProductTypeOpen(false);
     else setIsProductTypeOpen(true);
@@ -651,5 +649,3 @@ const App = () => {
     </Provider>
   );
 };
-
-export default App;

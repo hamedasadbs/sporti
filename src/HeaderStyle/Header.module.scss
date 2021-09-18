@@ -13,10 +13,12 @@
       li {
         &:hover {
           cursor: pointer;
+
           a {
             color: $hoverColor;
           }
         }
+
         a {
           color: $linkColor;
         }
@@ -75,12 +77,10 @@
       }
 
       button {
-        @include btn(
-          transparent,
+        @include btn(transparent,
           $superDarkColor,
           darken($pageBackColor, 10%),
-          $superDarkColor
-        );
+          $superDarkColor);
         width: 40px;
         border: none;
         border-bottom: 1px solid $linkColor;
@@ -240,6 +240,7 @@
           span.brands,
           span.productType {
             &:hover {
+
               div.sports,
               div.brands,
               div.productType {
@@ -260,18 +261,12 @@
                     width: 150px;
                     margin: 5px auto;
                     padding: 10px;
-
-                    .link {
-                      color: $linkColor;
-                    }
+                    color: $linkColor;
 
                     &:hover {
                       cursor: pointer;
                       background-color: $superLightColor;
-
-                      .link {
-                        color: $hoverColor;
-                      }
+                      color: $hoverColor;
                     }
                   }
                 }
@@ -329,6 +324,7 @@
         display: none !important;
       }
     }
+
     .bottomHeader {
       .rightSide {
         display: none !important;
@@ -388,6 +384,18 @@
             margin-top: 0px;
           }
         }
+
+        .mainLogo {
+          display: initial !important;
+          margin: -15px 0 0 230px;
+
+          a{
+            img{
+              width: 150px;
+              height: 70px;
+            }
+          }
+        }
       }
     }
   }
@@ -402,6 +410,10 @@
             margin-left: -70px;
             font-size: 50px;
           }
+        }
+
+        .mainLogo {
+          margin: -45px 0 0 110px;
         }
       }
     }

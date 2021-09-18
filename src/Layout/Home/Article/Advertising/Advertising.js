@@ -1,10 +1,12 @@
-import React from "react";
+/*INNER-COMPONENTS*/
+import React, { useEffect } from "react";
+/*CSS*/
 import classes from "./Advertising.module.scss";
-import { useEffect } from "react/cjs/react.development";
 
-const Advertising = () => {
+export const Advertising = () => {
+  /*VARIABLES*/
   let slideIndex = 0;
-
+  /*FUNCTIONS*/
   useEffect(() => {
     showSlides(slideIndex);
   }, []);
@@ -69,5 +71,3 @@ const Advertising = () => {
     </>
   );
 };
-
-export default Advertising;

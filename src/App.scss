@@ -48,22 +48,6 @@
       vertical-align: middle;
       display: flex;
       flex-direction: column;
-
-      .newsLogo {
-        width: 400px;
-        position: absolute;
-        top: 2400px;
-        right: -100px;
-        z-index: 0;
-      }
-
-      .mapLogo {
-        width: 400px;
-        position: absolute;
-        top: 3100px;
-        left: 20px;
-        z-index: 0;
-      }
     }
   }
 }

@@ -1,8 +1,9 @@
+/*INNER-COMPONENTS*/
 import React from "react";
-import classes from "./Footer.module.scss";
-
 import { Link } from "react-router-dom";
-
+/*CSS*/
+import classes from "./Footer.module.scss";
+/*ASSETS*/
 import {
   faFacebook,
   faInstagram,
@@ -12,7 +13,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Footer = () => (
+export const Footer = () => (
   <>
     <footer className={classes.footer}>
       <h1 className={classes.title}>
@@ -109,5 +110,3 @@ const Footer = () => (
     </footer>
   </>
 );
-
-export default Footer;

@@ -1,13 +1,17 @@
+/*INNER-COMPONENTS*/
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+/*CSS*/
 import classes from "./Categories.module.scss";
+/*CHILD-COMPONENTS*/
+import { Category } from "./Category/Category";
 
-import Category from "./Category/Category";
-
-const Categories = () => {
-  const url = "http://localhost/bsShop/category.php";
+export const Categories = () => {
+  /*STATES*/
   const [productsData, setProductsData] = useState([]);
-
+  /*VARIABLES*/
+  const url = "http://localhost/bsShop/category.php";
+  /*FUNCTIONS*/
   useEffect(() => {
     axios.post(url).then((res) => setProductsData(res.data));
   }, []);
@@ -29,5 +33,3 @@ const Categories = () => {
     </>
   );
 };
-
-export default Categories;
