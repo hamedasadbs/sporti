@@ -137,9 +137,17 @@
       }
 
       li.account {
+        display: flex;
+        flex-direction: column;
+
+        label,
+        .i {
+          margin: 0 auto;
+        }
+
         &:hover {
           div.account {
-            @include dropdownDiv(300px, 70px, 0px);
+            @include dropdownDiv(300px, 80px, 0px);
 
             button {
               width: 100%;
@@ -154,22 +162,30 @@
       }
 
       li.basket {
+        display: flex;
+        flex-direction: column;
+
         .carts {
           background-color: $hoverColor;
-          width: 25px;
-          height: 25px;
+          width: auto;
+          padding: 3px 10px;
           border-radius: 50px;
           z-index: 3;
           position: absolute;
-          top: -2px;
-          left: 100px;
           text-align: center;
           color: $superLightColor;
+          margin-top: -30px;
+          margin-left: 15px;
+        }
+
+        label,
+        .i {
+          margin: 0 auto;
         }
 
         &:hover {
           div.basket {
-            @include dropdownDiv(300px, 70px, 0px);
+            @include dropdownDiv(300px, 80px, 0px);
 
             span {
               margin: 0;
@@ -389,8 +405,8 @@
           display: initial !important;
           margin: -15px 0 0 230px;
 
-          a{
-            img{
+          a {
+            img {
               width: 150px;
               height: 70px;
             }

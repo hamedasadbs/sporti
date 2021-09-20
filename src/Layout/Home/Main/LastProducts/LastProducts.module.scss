@@ -27,6 +27,39 @@
       @include shadow();
       border-radius: 0 0 5px 5px;
 
+      .icons {
+        display: flex;
+
+        .liked {
+          font-size: 30px;
+          margin: 15px 0 0 15px;
+          color: lightgray;
+          transition: all 0.5s;
+
+          &:hover {
+            cursor: pointer;
+            color: lighten(red, 40%);
+          }
+        }
+
+        .stars {
+          display: flex;
+          float: right;
+          width: fit-content;
+          height: fit-content;
+          margin: 20px 0 0 145px;
+
+          .star {
+            color: gray;
+          }
+
+          .lightStar {
+            color: gold;
+          }
+        }
+      }
+
+
       img {
         width: 300px;
         height: 300px;

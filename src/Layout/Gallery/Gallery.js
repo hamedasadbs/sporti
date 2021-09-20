@@ -5,8 +5,8 @@ import { Switch, Route } from "react-router-dom";
 /*CSS*/
 import classes from "./Gallery.module.scss";
 /*CHILD-COMPONENTS*/
-import {Product} from "./Product/Product";
-import {Details} from "../Details/Details";
+import { Product } from "./Product/Product";
+import { Details } from "../Details/Details";
 import { Logic } from "../../Logic/Logic";
 /*ASSETS*/
 import Button from "@material-ui/core/Button";
@@ -31,7 +31,6 @@ export const Gallery = (props) => {
   const [type, setType] = useState(["کفش"]);
   /*VARIABLES*/
   const url = "http://localhost/bsShop/gallery.php";
-  const filterURL = "http://localhost/bsShop/filter.php";
   const productsURL = "http://localhost/bsShop/products.php";
   const numberOfItemsToShow = 10;
   let newType = type.toString();
@@ -59,7 +58,6 @@ export const Gallery = (props) => {
           orderByType: "DESC",
           limit: numberOfItemsToShow,
           offset: offset,
-          type: newType,
         })
       )
       .then((res) => setGallery(res.data));
@@ -190,7 +188,10 @@ export const Gallery = (props) => {
         })}
         {productsData.map((res) => {
           return (
-            <Route path={`/category/${res.brand}/${res.fa_title}`} key={res.name}>
+            <Route
+              path={`/category/${res.brand}/${res.fa_title}`}
+              key={res.name}
+            >
               <Details
                 faTitle={res.fa_title}
                 image={res.image}
@@ -206,7 +207,10 @@ export const Gallery = (props) => {
         })}
         {productsData.map((res) => {
           return (
-            <Route path={`/category/${res.type}/${res.fa_title}`} key={res.name}>
+            <Route
+              path={`/category/${res.type}/${res.fa_title}`}
+              key={res.name}
+            >
               <Details
                 faTitle={res.fa_title}
                 image={res.image}
@@ -235,7 +239,10 @@ export const Gallery = (props) => {
                           price={gal.price}
                           image={gal.image}
                           key={gal.id}
+                          id={gal.id}
                           categoryName={props.categoryName}
+                          isOnline={props.getCookie("isOnline")}
+                          accountName={props.getCookie("accountName")}
                         />
                       ) : (
                         <Product

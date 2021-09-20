@@ -1,7 +1,7 @@
 /*INNER-COMPONENTS*/
 import React, { useState, useEffect } from "react";
 import { Link, Switch, Route, BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import axios from "axios";
 /*CSS*/
 import "./App.scss";
@@ -41,10 +41,12 @@ export const App = () => {
   const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
   const [page, setPage] = useState(window.location.href);
+  const [cart, setCart] = useState([]);
   /*VARIABLES*/
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
+  const cartURL = "http://localhost/bsShop/cart.php";
   /*FUNCTIONS*/
   const setCookie = (cName, cValue, minutes) => {
     let d = new Date();
@@ -150,19 +152,30 @@ export const App = () => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
     axios.post(brandsURL).then((res) => setBrandsData(res.data));
     axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
+    if (getCookie("isOnline")) {
+      axios
+        .post(
+          cartURL,
+          JSON.stringify({
+            method: "checkTheCart",
+            username: getCookie("accountName"),
+          })
+        )
+        .then((res) => setCart(res.data));
+    }
   }, []);
 
   const onlineHandler = (isOnline) => {
-    setCookie("isOnline", isOnline, 1);
+    setCookie("isOnline", isOnline, 10);
   };
 
   const accountNameHandler = (name) => {
-    setCookie("accountName", name, 1);
+    setCookie("accountName", name, 10);
   };
 
   const logoutHandler = () => {
-    setCookie("isOnline", "", -1);
-    setCookie("accountName", "", -1);
+    setCookie("isOnline", "", -10);
+    setCookie("accountName", "", -10);
   };
 
   return (
@@ -409,12 +422,12 @@ export const App = () => {
                   </ul>
                   <ul className="leftSide">
                     <li className="account">
+                      <FontAwesomeIcon icon={faUserCircle} className="i" />
                       {getCookie("isOnline") == false ? (
                         <label>حساب من</label>
                       ) : (
                         <label>{getCookie("accountName")}</label>
                       )}
-                      <FontAwesomeIcon icon={faUserCircle} className="i" />
                       <div className="account">
                         {getCookie("isOnline") == false ? (
                           <Dropdown
@@ -440,9 +453,9 @@ export const App = () => {
                       </div>
                     </li>
                     <li className="basket">
-                      <div className="carts">0</div>
-                      <label>سبد من</label>
+                      <div className="carts">{cart.length}</div>
                       <FontAwesomeIcon icon={faShoppingBasket} className="i" />
+                      <label>سبد من</label>
                       <div className="basket">
                         <Dropdown
                           type="basket"
@@ -579,6 +592,7 @@ export const App = () => {
                       <Gallery
                         categoryName={res.category}
                         faTitle={res.fa_category}
+                        getCookie={getCookie}
                       />
                     </Route>
                   );
