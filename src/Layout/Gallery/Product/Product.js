@@ -1,5 +1,5 @@
 /*INNER-COMPONENTS*/
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 /*CSS*/
@@ -8,8 +8,11 @@ import classes from "./Product.module.scss";
 import Button from "@material-ui/core/Button";
 
 export const Product = (props) => {
+  /*STATES*/
+  const [cart, setCart] = useState([]);
   /*VARIABLES*/
   const url = "http://localhost/bsShop/cart.php";
+  const cartURL = "http://localhost/bsShop/cart.php";
   /*FUNCTIONS*/
   const addToCart = () => {
     if (props.isOnline) {
@@ -24,6 +27,28 @@ export const Product = (props) => {
         )
         .then((res) => alert(res.data));
     } else alert("ابتدا وارد حساب خود شوید");
+  };
+
+  useEffect(() => {
+    axios
+      .post(
+        cartURL,
+        JSON.stringify({
+          method: "checkTheCart",
+          username: props.accountName,
+        })
+      )
+      .then((res) => setCart(res.data));
+  }, []);
+
+  const isInCart = () => {
+    let isInCart = false;
+    cart.map((res) => {
+      if (res.product_id === props.id) {
+        isInCart = true;
+      }
+    });
+    return isInCart;
   };
 
   return (
@@ -57,9 +82,15 @@ export const Product = (props) => {
           </div>
         ) : (
           <div className={classes.btn}>
-            <Button onClick={addToCart} variant="contained" color="secondary">
-              افزودن به سبد
-            </Button>
+            {isInCart() ? (
+              <Button variant="outlined" disabled>
+                موجود در سبد
+              </Button>
+            ) : (
+              <Button onClick={addToCart} variant="contained" color="secondary">
+                افزودن به سبد
+              </Button>
+            )}
             <Link
               className={classes.link}
               to={`/category/${props.categoryName}/${props.faTitle}`}

@@ -166,16 +166,16 @@ export const App = () => {
   }, []);
 
   const onlineHandler = (isOnline) => {
-    setCookie("isOnline", isOnline, 10);
+    setCookie("isOnline", isOnline, 100);
   };
 
   const accountNameHandler = (name) => {
-    setCookie("accountName", name, 10);
+    setCookie("accountName", name, 100);
   };
 
   const logoutHandler = () => {
-    setCookie("isOnline", "", -10);
-    setCookie("accountName", "", -10);
+    setCookie("isOnline", "", -100);
+    setCookie("accountName", "", -100);
   };
 
   return (
