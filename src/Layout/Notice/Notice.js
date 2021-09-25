@@ -5,6 +5,7 @@ import classes from "./Notice.module.scss";
 /*ASSETS*/
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUndo } from "@fortawesome/free-solid-svg-icons";
+import { Undo } from "@material-ui/icons";
 
 export const Notice = (props) => {
   /*STATES*/
@@ -134,7 +135,7 @@ export const Notice = (props) => {
                   }}
                   className={classes.refresh}
                 >
-                  <FontAwesomeIcon className={classes.i} icon={faUndo} />
+                  <Undo className={classes.i} />
                 </button>
               </div>
               <div className={classes.captcha}>

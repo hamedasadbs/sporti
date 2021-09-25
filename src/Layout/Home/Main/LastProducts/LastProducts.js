@@ -5,8 +5,7 @@ import axios from "axios";
 import classes from "./LastProducts.module.scss";
 /*ASSETS*/
 import Button from "@material-ui/core/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
+import { Star, Favorite } from "@material-ui/icons";
 
 export const LastProducts = () => {
   /*STATES*/
@@ -26,16 +25,13 @@ export const LastProducts = () => {
           {productsData.map((item) => (
             <div className={classes.image} key={item.image}>
               <span className={classes.icons}>
-                <FontAwesomeIcon className={classes.liked} icon={faHeart} />
+                <Favorite className={classes.liked} />
                 <div className={classes.stars}>
                   {[...Array(5 - parseInt(item.population))].map((x) => (
-                    <FontAwesomeIcon className={classes.star} icon={faStar} />
+                    <Star className={classes.star} />
                   ))}
                   {[...Array(parseInt(item.population))].map((x) => (
-                    <FontAwesomeIcon
-                      className={classes.lightStar}
-                      icon={faStar}
-                    />
+                    <Star className={classes.lightStar} />
                   ))}
                 </div>
               </span>

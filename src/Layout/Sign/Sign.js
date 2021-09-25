@@ -8,13 +8,13 @@ import classes from "./Sign.module.scss";
 import { setCookie } from "../../Redux/Cookie/CookieActions";
 /*ASSETS*/
 import Button from "@material-ui/core/Button";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faKey,
-  faUser,
-  faEnvelope,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
+  Lock,
+  Mail,
+  Cancel,
+  AccountCircle,
+  PersonAdd,
+} from "@material-ui/icons";
 
 export const Sign = (props) => {
   /*STATES*/
@@ -145,11 +145,7 @@ export const Sign = (props) => {
         {props.type === "login" ? (
           <>
             <span className={classes.title}>
-              <FontAwesomeIcon
-                onClick={props.close}
-                icon={faTimes}
-                className={classes.closeSign}
-              />
+              <Cancel onClick={props.close} className={classes.closeSign} />
               ورود به حساب کاربری
             </span>
             <main>
@@ -158,7 +154,7 @@ export const Sign = (props) => {
                   onChange={loginUsernameHandler}
                   placeholder="نام کاربری یا ایمیل"
                 />
-                <FontAwesomeIcon icon={faUser} className={classes.i} />
+                <AccountCircle className={classes.i} />
               </div>
               <div className={classes.loginPass}>
                 <input
@@ -166,7 +162,7 @@ export const Sign = (props) => {
                   type="password"
                   placeholder="رمز عبور"
                 />
-                <FontAwesomeIcon icon={faKey} className={classes.i} />
+                <Lock className={classes.i} />
               </div>
               <br />
               <Button
@@ -191,11 +187,7 @@ export const Sign = (props) => {
         ) : (
           <>
             <span className={classes.title}>
-              <FontAwesomeIcon
-                onClick={props.close}
-                icon={faTimes}
-                className={classes.closeSign}
-              />
+              <Cancel onClick={props.close} className={classes.closeSign} />
               ایجاد حساب کاربری
             </span>
             <main>
@@ -204,14 +196,14 @@ export const Sign = (props) => {
                   onChange={nameHandler}
                   placeholder="نام و نام خانوادگی"
                 />
-                <FontAwesomeIcon icon={faUser} className={classes.i} />
+                <PersonAdd className={classes.i} />
               </div>
               <div className={classes.signupUser}>
                 <input
                   onChange={signupUsernameHandler}
                   placeholder="نام کاربری"
                 />
-                <FontAwesomeIcon icon={faUser} className={classes.i} />
+                <AccountCircle className={classes.i} />
               </div>
               <div className={classes.email}>
                 <input
@@ -220,7 +212,7 @@ export const Sign = (props) => {
                   placeholder="ایمیل"
                   id="email"
                 />
-                <FontAwesomeIcon icon={faEnvelope} className={classes.i} />
+                <Mail className={classes.i} />
               </div>
               <div className={classes.signupPass}>
                 <input
@@ -229,7 +221,7 @@ export const Sign = (props) => {
                   placeholder="رمز عبور"
                   id="password"
                 />
-                <FontAwesomeIcon icon={faKey} className={classes.i} />
+                <Lock className={classes.i} />
               </div>
               <h5 className={classes.rememberMe}>
                 <input id="notRobot" type="checkbox" />

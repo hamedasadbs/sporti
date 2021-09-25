@@ -15,16 +15,16 @@ import { Sign } from "../src/Layout/Sign/Sign";
 import { Gallery } from "../src/Layout/Gallery/Gallery";
 import { Notice } from "../src/Layout/Notice/Notice";
 /*ASSETS*/
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faTimes,
-  faChevronDown,
-  faChevronLeft,
-  faUserCircle,
-  faShoppingBasket,
-  faSearch,
-  faBars,
-} from "@fortawesome/free-solid-svg-icons";
+  Cancel,
+  ArrowDownward,
+  ArrowDropDown,
+  ArrowLeft,
+  Person,
+  ShoppingBasket,
+  Search,
+  HorizontalSplit,
+} from "@material-ui/icons";
 import { store } from "./Redux/Store";
 
 export const App = () => {
@@ -148,20 +148,24 @@ export const App = () => {
     setPage(pageName);
   };
 
+  const checkTheCart = () => {
+    axios
+      .post(
+        cartURL,
+        JSON.stringify({
+          method: "checkTheCart",
+          username: getCookie("accountName"),
+        })
+      )
+      .then((res) => setCart(res.data));
+  };
+
   useEffect(() => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
     axios.post(brandsURL).then((res) => setBrandsData(res.data));
     axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
     if (getCookie("isOnline")) {
-      axios
-        .post(
-          cartURL,
-          JSON.stringify({
-            method: "checkTheCart",
-            username: getCookie("accountName"),
-          })
-        )
-        .then((res) => setCart(res.data));
+      checkTheCart();
     }
   }, []);
 
@@ -186,23 +190,15 @@ export const App = () => {
             <div className="main">
               {isHiddenMenuShown && (
                 <div className="hiddenMenu">
-                  <FontAwesomeIcon
+                  <Cancel
                     onClick={closeHiddenMenu}
-                    icon={faTimes}
                     className="closeHiddenMenu"
                   />
                   <ul className="rightSide">
                     <li className="account" onClick={openAccount}>
-                      {isAccountOpen ? (
-                        <FontAwesomeIcon icon={faChevronDown} />
-                      ) : (
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                      )}
+                      {isAccountOpen ? <ArrowDropDown /> : <ArrowLeft />}
                       <label> حساب من </label>
-                      <FontAwesomeIcon
-                        icon={faUserCircle}
-                        className="account"
-                      />
+                      <Person className="account" />
                       {isAccountOpen && (
                         <ul>
                           <button
@@ -229,18 +225,11 @@ export const App = () => {
                       )}
                     </li>
                     <li className="basket" onClick={openBasket}>
-                      {isBasketOpen ? (
-                        <FontAwesomeIcon icon={faChevronDown} />
-                      ) : (
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                      )}
+                      {isBasketOpen ? <ArrowDropDown /> : <ArrowLeft />}
                       <label> سبد من </label>
-                      <FontAwesomeIcon
-                        icon={faShoppingBasket}
-                        className="basket"
-                      >
+                      <ShoppingBasket className="basket">
                         <div className="carts">0</div>
-                      </FontAwesomeIcon>
+                      </ShoppingBasket>
                       {isBasketOpen && (
                         <ul>
                           <li>سبد شما خالی است!</li>
@@ -258,12 +247,8 @@ export const App = () => {
                     </li>
                     <li className="sports" onClick={openSports}>
                       <Link>
-                        {isSportsOpen ? (
-                          <FontAwesomeIcon icon={faChevronDown} />
-                        ) : (
-                          <FontAwesomeIcon icon={faChevronLeft} />
-                        )}{" "}
-                        ورزش ها
+                        {isSportsOpen ? <ArrowDropDown /> : <ArrowLeft />} ورزش
+                        ها
                       </Link>
                       {isSportsOpen && (
                         <ul>
@@ -289,12 +274,8 @@ export const App = () => {
                     </li>
                     <li className="brands" onClick={openBrands}>
                       <Link>
-                        {isBrandsOpen ? (
-                          <FontAwesomeIcon icon={faChevronDown} />
-                        ) : (
-                          <FontAwesomeIcon icon={faChevronLeft} />
-                        )}{" "}
-                        برند ها
+                        {isBrandsOpen ? <ArrowDropDown /> : <ArrowLeft />} برند
+                        ها
                       </Link>
                       {isBrandsOpen && (
                         <ul>
@@ -320,11 +301,7 @@ export const App = () => {
                     </li>
                     <li className="productType" onClick={openProductType}>
                       <Link>
-                        {isProductTypeOpen ? (
-                          <FontAwesomeIcon icon={faChevronDown} />
-                        ) : (
-                          <FontAwesomeIcon icon={faChevronLeft} />
-                        )}{" "}
+                        {isProductTypeOpen ? <ArrowDropDown /> : <ArrowLeft />}{" "}
                         نوع محصول
                       </Link>
                       {isProductTypeOpen && (
@@ -378,7 +355,7 @@ export const App = () => {
                     </li>
                     <li className="search">
                       <button>
-                        <FontAwesomeIcon icon={faSearch} />
+                        <Search />
                       </button>
                       <input
                         spellCheck="false"
@@ -393,7 +370,7 @@ export const App = () => {
                 <nav className="topHeader">
                   <ul className="rightSide">
                     <li onClick={showHiddenMenu} className="dropdown">
-                      <FontAwesomeIcon className="i" icon={faBars} />
+                      <HorizontalSplit className="i" />
                     </li>
                     <div
                       className="mainLogo"
@@ -412,7 +389,7 @@ export const App = () => {
                   </ul>
                   <ul className="middleSide">
                     <button className="search">
-                      <FontAwesomeIcon icon={faSearch} />
+                      <Search />
                     </button>
                     <input
                       spellCheck="false"
@@ -422,7 +399,7 @@ export const App = () => {
                   </ul>
                   <ul className="leftSide">
                     <li className="account">
-                      <FontAwesomeIcon icon={faUserCircle} className="i" />
+                      <Person className="i" />
                       {getCookie("isOnline") == false ? (
                         <label>حساب من</label>
                       ) : (
@@ -454,12 +431,13 @@ export const App = () => {
                     </li>
                     <li className="basket">
                       <div className="carts">{cart.length}</div>
-                      <FontAwesomeIcon icon={faShoppingBasket} className="i" />
+                      <ShoppingBasket className="i" />
                       <label>سبد من</label>
                       <div className="basket">
                         <Dropdown
                           type="basket"
                           isOnline={getCookie("isOnline")}
+                          cart={cart}
                         />
                       </div>
                     </li>
@@ -525,7 +503,7 @@ export const App = () => {
                           <div className="productType">
                             <Dropdown type="productType" />
                           </div>
-                          <FontAwesomeIcon icon={faChevronDown} /> نوع محصول
+                          <ArrowDropDown /> نوع محصول
                         </span>
                       </Link>
                     </li>
@@ -535,7 +513,7 @@ export const App = () => {
                           <div className="brands">
                             <Dropdown type="brands" />
                           </div>
-                          <FontAwesomeIcon icon={faChevronDown} /> برند ها
+                          <ArrowDropDown /> برند ها
                         </span>
                       </Link>
                     </li>
@@ -545,7 +523,7 @@ export const App = () => {
                           <div className="sports">
                             <Dropdown type="sports" />
                           </div>
-                          <FontAwesomeIcon icon={faChevronDown} /> ورزش ها
+                          <ArrowDropDown /> ورزش ها
                         </span>
                       </Link>
                     </li>
@@ -593,6 +571,7 @@ export const App = () => {
                         categoryName={res.category}
                         faTitle={res.fa_category}
                         getCookie={getCookie}
+                        checkTheCart={checkTheCart}
                       />
                     </Route>
                   );
@@ -601,7 +580,12 @@ export const App = () => {
                 {brandsData.map((res) => {
                   return (
                     <Route path={`/category/${res.brand}`} key={res.id}>
-                      <Gallery categoryName={res.brand} faTitle={res.brand} />
+                      <Gallery
+                        categoryName={res.brand}
+                        faTitle={res.brand}
+                        getCookie={getCookie}
+                        checkTheCart={checkTheCart}
+                      />
                     </Route>
                   );
                 })}
@@ -609,7 +593,12 @@ export const App = () => {
                 {productTypeData.map((res) => {
                   return (
                     <Route path={`/category/${res.type}`} key={res.id}>
-                      <Gallery categoryName={res.type} faTitle={res.fa_type} />
+                      <Gallery
+                        categoryName={res.type}
+                        faTitle={res.fa_type}
+                        getCookie={getCookie}
+                        checkTheCart={checkTheCart}
+                      />
                     </Route>
                   );
                 })}

@@ -4,14 +4,7 @@ import { Link } from "react-router-dom";
 /*CSS*/
 import classes from "./Footer.module.scss";
 /*ASSETS*/
-import {
-  faFacebook,
-  faInstagram,
-  faTelegram,
-  faWhatsapp,
-  faGooglePlus,
-} from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Facebook, Instagram, Telegram, WhatsApp } from "@material-ui/icons";
 
 export const Footer = () => (
   <>
@@ -25,42 +18,24 @@ export const Footer = () => (
           <label>بلو-اسنیک در شبکه های اجتماعی</label>
           <div className={classes.socialMedias}>
             <a rel="noreferrer" href="/" target="_blank">
-              <FontAwesomeIcon
-                icon={faFacebook}
-                className={classes.i + " " + classes.facebook}
-              />
+              <Facebook className={classes.i + " " + classes.facebook} />
             </a>
             <a
               rel="noreferrer"
               href="https://www.instagram.com/hamedasad_bs/"
               target="_blank"
             >
-              <FontAwesomeIcon
-                icon={faInstagram}
-                className={classes.i + " " + classes.instagram}
-              />
+              <Instagram className={classes.i + " " + classes.instagram} />
             </a>
             <a
               rel="noreferrer"
               href="https://telegram.me/hamedasad_bs"
               target="_blank"
             >
-              <FontAwesomeIcon
-                icon={faTelegram}
-                className={classes.i + " " + classes.telegram}
-              />
+              <Telegram className={classes.i + " " + classes.telegram} />
             </a>
             <a rel="noreferrer" href="/" target="_blank">
-              <FontAwesomeIcon
-                icon={faGooglePlus}
-                className={classes.i + " " + classes.google}
-              />
-            </a>
-            <a rel="noreferrer" href="/" target="_blank">
-              <FontAwesomeIcon
-                icon={faWhatsapp}
-                className={classes.i + " " + classes.whatsapp}
-              />
+              <WhatsApp className={classes.i + " " + classes.whatsapp} />
             </a>
           </div>
         </div>

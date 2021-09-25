@@ -107,7 +107,7 @@
         }
 
         .i {
-          font-size: 25px;
+          font-size: 40px;
           margin-left: 10px;
         }
 
@@ -147,7 +147,7 @@
 
         &:hover {
           div.account {
-            @include dropdownDiv(300px, 80px, 0px);
+            @include dropdownDiv(300px, 90px, 0px);
 
             button {
               width: 100%;
@@ -185,13 +185,52 @@
 
         &:hover {
           div.basket {
-            @include dropdownDiv(300px, 80px, 0px);
+            @include dropdownDiv(300px, 90px, 0px);
 
             span {
               margin: 0;
               position: relative;
               top: 40%;
               right: 0;
+
+              ul {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                li {
+                  display: flex;
+                  background-color: $superLightColor;
+                  width: 295px;
+                  margin-left: -49px;
+
+                  &:hover{
+                    cursor: auto;
+                  }
+
+                  aside{
+                    display: flex;
+                    flex-direction: column;
+                    padding: auto;
+                    h1 {
+                      font-size: 15px;
+                      margin: auto;
+                      width: 150px;
+                      height: fit-content;
+                    }
+                  }
+
+                  img {
+                    width: 100px;
+                    height: 100px;
+                    object-fit: contain;
+                  }
+                }
+              }
+
+              button {
+                font-family: $font;
+              }
             }
           }
         }

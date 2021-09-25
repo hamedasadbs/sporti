@@ -5,6 +5,7 @@ import axios from "axios";
 import detailsStyle from "../../Layout/Details/Details.module.scss";
 /*ASSETS*/
 import Button from "@material-ui/core/Button";
+import { Delete } from "@material-ui/icons";
 
 export const Dropdown = (props) => {
   /*STATES*/
@@ -15,6 +16,7 @@ export const Dropdown = (props) => {
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
+  const cart = props.cart;
   /*FUNCTIONS*/
   useEffect(() => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
@@ -27,8 +29,44 @@ export const Dropdown = (props) => {
       {props.type === "basket" ? (
         props.isOnline == false ? (
           <span>لطفا وارد حساب کاربری خود شوید</span>
-        ) : (
+        ) : cart.length == 0 ? (
           <span>سبد شما خالی است</span>
+        ) : (
+          <span>
+            <ul>
+              {cart.map((res) => {
+                return (
+                  <li>
+                    <img
+                      src={`/Images/Product/${res.image}`}
+                      alt={res.fa_title}
+                    />
+                    <aside>
+                      <h1>{res.fa_title}</h1>
+                      <Delete style={{ color: "red", margin: "auto" }} />
+                      <h1>
+                        <input
+                          value="1"
+                          size="2"
+                          maxLength="2"
+                          style={{ textAlign: "center" }}
+                        />{" "}
+                        :تعداد{" "}
+                      </h1>
+                    </aside>
+                  </li>
+                );
+              })}
+            </ul>
+            <Button
+              style={{ backgroundColor: "#3363FF" }}
+              onClick={props.signInClick}
+              variant="contained"
+              color="secondary"
+            >
+              تکمیل خرید
+            </Button>
+          </span>
         )
       ) : props.type === "account" ? (
         <>

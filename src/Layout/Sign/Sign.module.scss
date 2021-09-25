@@ -19,7 +19,7 @@
       @include closeBtn(45px);
       position: absolute;
       left: -5px;
-      top: -8px;
+      top: -10px;
       color: $pageBackColor;
     }
   }
@@ -56,39 +56,39 @@
 
     div.name {
       .i {
-        top: 68px;
+        top: 66px;
       }
     }
 
     div.loginUser {
       .i {
-        top: 68px;
+        top: 66px;
       }
     }
 
     div.signupUser {
       .i {
-        top: 128px;
+        top: 126px;
       }
     }
 
     div.email {
       .i {
-        top: 188px;
+        top: 186px;
         right: 37px;
       }
     }
 
     div.loginPass {
       .i {
-        top: 128px;
+        top: 126px;
         right: 37px;
       }
     }
 
     div.signupPass {
       .i {
-        top: 248px;
+        top: 246px;
         right: 37px;
       }
     }

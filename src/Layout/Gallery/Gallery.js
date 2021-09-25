@@ -11,11 +11,7 @@ import { Logic } from "../../Logic/Logic";
 /*ASSETS*/
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronRight,
-  faChevronLeft,
-} from "@fortawesome/free-solid-svg-icons";
+import { ChevronRightTwoTone, ChevronLeftTwoTone } from "@material-ui/icons";
 
 export const Gallery = (props) => {
   /*STATES*/
@@ -243,6 +239,7 @@ export const Gallery = (props) => {
                           categoryName={props.categoryName}
                           isOnline={props.getCookie("isOnline")}
                           accountName={props.getCookie("accountName")}
+                          checkTheCart={props.checkTheCart}
                         />
                       ) : (
                         <Product
@@ -263,13 +260,13 @@ export const Gallery = (props) => {
               {gallery.length > 0 && (
                 <ul className={classes.offset}>
                   <li onClick={offsetDecrescent}>
-                    <FontAwesomeIcon icon={faChevronLeft} />
+                    <ChevronLeftTwoTone />
                   </li>
                   <li onClick={offsetFirst}>اول</li>
                   {numbers}
                   <li onClick={offsetLast}>آخر</li>
                   <li onClick={offsetCrescent}>
-                    <FontAwesomeIcon icon={faChevronRight} />
+                    <ChevronRightTwoTone />
                   </li>
                 </ul>
               )}

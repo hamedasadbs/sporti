@@ -25,11 +25,15 @@ export const Product = (props) => {
             productId: props.id,
           })
         )
-        .then((res) => alert(res.data));
+        .then((res) => alert(res.data))
+        .then(() => {
+          checkTheCart();
+          props.checkTheCart();
+        });
     } else alert("ابتدا وارد حساب خود شوید");
   };
 
-  useEffect(() => {
+  const checkTheCart = () => {
     axios
       .post(
         cartURL,
@@ -39,6 +43,10 @@ export const Product = (props) => {
         })
       )
       .then((res) => setCart(res.data));
+  };
+
+  useEffect(() => {
+    checkTheCart();
   }, []);
 
   const isInCart = () => {
