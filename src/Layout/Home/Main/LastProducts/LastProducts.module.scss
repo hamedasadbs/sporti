@@ -96,10 +96,16 @@
       }
 
       button {
+        background-color: $btnColor2;
+        color: $superLightColor;
+        transition: all 0.5s;
         font-family: $font;
-        margin-top: 10px;
         padding: 10px;
         border-radius: 0 0 5px 5px;
+
+        &:hover {
+          background-color: darken($btnColor2, 10%);
+        }
       }
     }
   }
@@ -123,6 +129,12 @@
 
           .productPrice {
             font-size: 14px;
+          }
+        }
+
+        .icons {
+          .stars {
+            margin: 16px 0 0 20px;
           }
         }
       }
@@ -158,6 +170,18 @@
         button {
           padding: 5px;
         }
+
+        .icons {
+          flex-direction: column;
+
+          .stars {
+            margin: auto;
+          }
+
+          .liked {
+            margin: 10px auto;
+          }
+        }
       }
     }
   }
@@ -172,6 +196,18 @@
         img {
           width: 250px;
           height: 250px;
+        }
+
+        .icons {
+          flex-direction: row;
+
+          .stars {
+            margin: auto;
+          }
+
+          .liked {
+            margin: 10px auto;
+          }
         }
       }
     }

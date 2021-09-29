@@ -1,0 +1,95 @@
+@import "../../GlobalStyles.scss";
+
+button {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.login,
+.logout,
+.conformShop {
+    background-image: -webkit-linear-gradient(top, lighten($btnColor1, 5%), $btnColor1, lighten($btnColor1, 5%));
+    color: $superLightColor;
+    transition: all 0.5s;
+    padding: 10px;
+    width: 100%;
+}
+
+.signup {
+    background-color: transparent;
+    color: $btnColor1;
+}
+
+.cart {
+    margin: 0;
+    position: relative;
+
+    table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        tr {
+            display: flex;
+            background-color: $superLightColor;
+            width: 100%;
+            margin: 5px auto;
+            padding: 20px 0;
+
+            &:hover {
+                cursor: auto;
+            }
+
+            aside {
+                display: flex;
+                flex-direction: column;
+                padding: auto;
+
+                h1 {
+                    font-size: 15px;
+                    margin: 10px auto;
+                    width: 150px;
+                    height: fit-content;
+                }
+
+                .delete {
+                    width: fit-content;
+                    height: fit-content;
+                    margin: auto;
+
+                    .fillDelete {
+                        color: $hoverColor;
+                    }
+
+                    .outlineDelete {
+                        color: $hoverColor;
+                        display: none;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        .fillDelete {
+                            display: none;
+                        }
+
+                        .outlineDelete {
+                            display: initial;
+                        }
+                    }
+                }
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    button {
+        font-family: $font;
+    }
+}

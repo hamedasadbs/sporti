@@ -3,13 +3,15 @@ $numberFont: "vazir";
 
 $thumbBackColor: rgb(105, 105, 105);
 $mainColor: gold;
-$baseColor: rgb(64, 123, 190);
 $superDarkColor: rgb(10, 10, 10);
 $superLightColor: white;
 $pageBackColor: whitesmoke;
 $footerBackColor: rgb(37, 37, 37);
 $linkColor: gray;
-$hoverColor: rgb(248, 62, 62);
+$hoverColor: rgb(252, 36, 36);
+
+$btnColor1:rgb(252, 78, 34);
+$btnColor2:rgb(34, 85, 252);
 
 $big: 1300px;
 $medium: 1005px;
@@ -124,12 +126,10 @@ button:hover {
 
 @mixin title {
   width: 100%;
-  background-image: linear-gradient(
-    to right,
-    rgb(75, 75, 75),
-    rgb(20, 20, 20),
-    rgb(75, 75, 75)
-  );
+  background-image: linear-gradient(to right,
+      rgb(75, 75, 75),
+      rgb(20, 20, 20),
+      rgb(75, 75, 75));
   color: $pageBackColor;
   padding: 10px;
   text-align: center;

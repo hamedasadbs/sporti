@@ -3,9 +3,9 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 /*CSS*/
 import detailsStyle from "../../Layout/Details/Details.module.scss";
+import classes from "./Dropdown.module.scss";
 /*ASSETS*/
-import Button from "@material-ui/core/Button";
-import { Delete } from "@material-ui/icons";
+import { Delete, DeleteOutline } from "@material-ui/icons";
 
 export const Dropdown = (props) => {
   /*STATES*/
@@ -32,18 +32,21 @@ export const Dropdown = (props) => {
         ) : cart.length == 0 ? (
           <span>سبد شما خالی است</span>
         ) : (
-          <span>
-            <ul>
+          <span className={classes.cart}>
+            <table>
               {cart.map((res) => {
                 return (
-                  <li>
+                  <tr>
                     <img
                       src={`/Images/Product/${res.image}`}
                       alt={res.fa_title}
                     />
                     <aside>
+                      <article className={classes.delete}>
+                        <Delete className={classes.fillDelete} />
+                        <DeleteOutline className={classes.outlineDelete} />
+                      </article>
                       <h1>{res.fa_title}</h1>
-                      <Delete style={{ color: "red", margin: "auto" }} />
                       <h1>
                         <input
                           value="1"
@@ -54,38 +57,23 @@ export const Dropdown = (props) => {
                         :تعداد{" "}
                       </h1>
                     </aside>
-                  </li>
+                  </tr>
                 );
               })}
-            </ul>
-            <Button
-              style={{ backgroundColor: "#3363FF" }}
-              onClick={props.signInClick}
-              variant="contained"
-              color="secondary"
-            >
+            </table>
+            <button onClick={props.signInClick} className={classes.conformShop}>
               تکمیل خرید
-            </Button>
+            </button>
           </span>
         )
       ) : props.type === "account" ? (
         <>
-          <Button
-            style={{ backgroundColor: "#3363FF" }}
-            onClick={props.signInClick}
-            variant="contained"
-            color="secondary"
-          >
+          <button onClick={props.signInClick} className={classes.login}>
             ورود
-          </Button>
-          <Button
-            style={{ border: "1px solid #3363FF", color: "#3363FF" }}
-            onClick={props.signUpClick}
-            variant="outlined"
-            color="secondary"
-          >
+          </button>
+          <button onClick={props.signUpClick} className={classes.signup}>
             عضویت
-          </Button>
+          </button>
         </>
       ) : props.type === "sports" ? (
         <>
@@ -140,7 +128,7 @@ export const Dropdown = (props) => {
         </>
       ) : props.type === "online" ? (
         <>
-          <button className="logout" onClick={props.logoutClick}>
+          <button className={classes.logout} onClick={props.logoutClick}>
             خروج
           </button>
         </>

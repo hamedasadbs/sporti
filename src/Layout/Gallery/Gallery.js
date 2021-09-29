@@ -319,7 +319,7 @@ export const Gallery = (props) => {
                           <Checkbox
                             onChange={filterHandler}
                             value={filter.fa_type}
-                            color="secondary"
+                            color="primary"
                           />
                         </td>
                       </tr>

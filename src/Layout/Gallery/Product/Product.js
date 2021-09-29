@@ -4,8 +4,6 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 /*CSS*/
 import classes from "./Product.module.scss";
-/*ASSETS*/
-import Button from "@material-ui/core/Button";
 
 export const Product = (props) => {
   /*STATES*/
@@ -76,36 +74,32 @@ export const Product = (props) => {
         </div>
         {props.exi === false ? (
           <div className={classes.btn}>
-            <Button variant="outlined" disabled>
+            <button className={classes.disabled} disabled>
               ناموجود
-            </Button>
+            </button>
             <Link
               className={classes.link}
               to={`/category/${props.categoryName}/${props.faTitle}`}
             >
-              <Button variant="contained" color="primary">
-                مشاهده جزئیات
-              </Button>
+              <button className={classes.showDetails}>مشاهده جزئیات</button>
             </Link>
           </div>
         ) : (
           <div className={classes.btn}>
             {isInCart() ? (
-              <Button variant="outlined" disabled>
+              <button className={classes.disabled} disabled>
                 موجود در سبد
-              </Button>
+              </button>
             ) : (
-              <Button onClick={addToCart} variant="contained" color="secondary">
+              <button onClick={addToCart} className={classes.addToCart}>
                 افزودن به سبد
-              </Button>
+              </button>
             )}
             <Link
               className={classes.link}
               to={`/category/${props.categoryName}/${props.faTitle}`}
             >
-              <Button variant="contained" color="primary">
-                مشاهده جزئیات
-              </Button>
+              <button className={classes.showDetails}>مشاهده جزئیات</button>
             </Link>
           </div>
         )}

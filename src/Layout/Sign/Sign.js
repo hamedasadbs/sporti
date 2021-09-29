@@ -7,7 +7,7 @@ import classes from "./Sign.module.scss";
 /*CHILD-COMPONENTS*/
 import { setCookie } from "../../Redux/Cookie/CookieActions";
 /*ASSETS*/
-import Button from "@material-ui/core/Button";
+import Checkbox from "@material-ui/core/Checkbox";
 import {
   Lock,
   Mail,
@@ -165,15 +165,11 @@ export const Sign = (props) => {
                 <Lock className={classes.i} />
               </div>
               <br />
-              <Button
-                onClick={enterToAccount}
-                variant="contained"
-                color="primary"
-              >
+              <button onClick={enterToAccount} className={classes.login}>
                 ورود
-              </Button>
+              </button>
               <h5 className={classes.rememberMe}>
-                <input type="checkbox" />
+                <Checkbox color="primary" />
                 مرا به خاطر بسپار
               </h5>
               <a href="/" className={classes.reUser}>
@@ -227,13 +223,9 @@ export const Sign = (props) => {
                 <input id="notRobot" type="checkbox" />
                 من ربات نیستم
               </h5>
-              <Button
-                onClick={createAccount}
-                variant="contained"
-                color="primary"
-              >
+              <button onClick={createAccount} className={classes.signup}>
                 ثبت
-              </Button>
+              </button>
             </main>
           </>
         )}

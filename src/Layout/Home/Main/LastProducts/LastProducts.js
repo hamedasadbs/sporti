@@ -4,7 +4,6 @@ import axios from "axios";
 /*CSS*/
 import classes from "./LastProducts.module.scss";
 /*ASSETS*/
-import Button from "@material-ui/core/Button";
 import { Star, Favorite } from "@material-ui/icons";
 
 export const LastProducts = () => {
@@ -40,9 +39,7 @@ export const LastProducts = () => {
                 <h3 className={classes.productName}>{item.fa_title}</h3>
                 <h4 className={classes.productPrice}>{item.price} تومان</h4>
               </div>
-              <Button variant="contained" color="primary">
-                مشاهده جزئیات
-              </Button>
+              <button>مشاهده جزئیات</button>
             </div>
           ))}
         </main>

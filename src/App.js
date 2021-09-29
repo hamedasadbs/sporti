@@ -17,7 +17,6 @@ import { Notice } from "../src/Layout/Notice/Notice";
 /*ASSETS*/
 import {
   Cancel,
-  ArrowDownward,
   ArrowDropDown,
   ArrowLeft,
   Person,
@@ -503,7 +502,7 @@ export const App = () => {
                           <div className="productType">
                             <Dropdown type="productType" />
                           </div>
-                          <ArrowDropDown /> نوع محصول
+                          نوع محصول
                         </span>
                       </Link>
                     </li>
@@ -513,7 +512,7 @@ export const App = () => {
                           <div className="brands">
                             <Dropdown type="brands" />
                           </div>
-                          <ArrowDropDown /> برند ها
+                          برند ها
                         </span>
                       </Link>
                     </li>
@@ -523,7 +522,7 @@ export const App = () => {
                           <div className="sports">
                             <Dropdown type="sports" />
                           </div>
-                          <ArrowDropDown /> ورزش ها
+                          ورزش ها
                         </span>
                       </Link>
                     </li>
