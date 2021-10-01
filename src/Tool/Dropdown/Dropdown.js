@@ -29,37 +29,35 @@ export const Dropdown = (props) => {
       {props.type === "basket" ? (
         props.isOnline == false ? (
           <span>لطفا وارد حساب کاربری خود شوید</span>
-        ) : cart.length == 0 ? (
+        ) : cart.length === 0 ? (
           <span>سبد شما خالی است</span>
         ) : (
           <span className={classes.cart}>
             <table>
-              {cart.map((res) => {
-                return (
-                  <tr>
-                    <img
-                      src={`/Images/Product/${res.image}`}
-                      alt={res.fa_title}
-                    />
-                    <aside>
-                      <article className={classes.delete}>
-                        <Delete className={classes.fillDelete} />
-                        <DeleteOutline className={classes.outlineDelete} />
-                      </article>
-                      <h1>{res.fa_title}</h1>
-                      <h1>
-                        <input
-                          value="1"
-                          size="2"
-                          maxLength="2"
-                          style={{ textAlign: "center" }}
-                        />{" "}
-                        :تعداد{" "}
-                      </h1>
-                    </aside>
-                  </tr>
-                );
-              })}
+              {cart.map((res) => (
+                <tr key={res.id}>
+                  <img
+                    src={`/Images/Product/${res.image}`}
+                    alt={res.fa_title}
+                  />
+                  <aside>
+                    <article className={classes.delete}>
+                      <Delete className={classes.fillDelete} />
+                      <DeleteOutline className={classes.outlineDelete} />
+                    </article>
+                    <h1>{res.fa_title}</h1>
+                    <h1>
+                      <input
+                        value="1"
+                        size="2"
+                        maxLength="2"
+                        style={{ textAlign: "center" }}
+                      />{" "}
+                      :تعداد{" "}
+                    </h1>
+                  </aside>
+                </tr>
+              ))}
             </table>
             <button onClick={props.signInClick} className={classes.conformShop}>
               تکمیل خرید
@@ -78,52 +76,46 @@ export const Dropdown = (props) => {
       ) : props.type === "sports" ? (
         <>
           <ul>
-            {sportsData.map((res) => {
-              return (
-                <li
-                  key={res.id}
-                  onClick={() => {
-                    window.location.href = "/category/" + res.category;
-                  }}
-                >
-                  {res.fa_category}
-                </li>
-              );
-            })}
+            {sportsData.map((res) => (
+              <li
+                key={res.id}
+                onClick={() => {
+                  window.location.href = "/category/" + res.category;
+                }}
+              >
+                {res.fa_category}
+              </li>
+            ))}
           </ul>
         </>
       ) : props.type === "brands" ? (
         <>
           <ul>
-            {brandsData.map((res) => {
-              return (
-                <li
-                  key={res.id}
-                  onClick={() => {
-                    window.location.href = "/category/" + res.brand;
-                  }}
-                >
-                  {res.brand}
-                </li>
-              );
-            })}
+            {brandsData.map((res) => (
+              <li
+                key={res.id}
+                onClick={() => {
+                  window.location.href = "/category/" + res.brand;
+                }}
+              >
+                {res.brand}
+              </li>
+            ))}
           </ul>
         </>
       ) : props.type === "productType" ? (
         <>
           <ul>
-            {productTypeData.map((res) => {
-              return (
-                <li
-                  key={res.id}
-                  onClick={() => {
-                    window.location.href = "/category/" + res.type;
-                  }}
-                >
-                  {res.type}
-                </li>
-              );
-            })}
+            {productTypeData.map((res) => (
+              <li
+                key={res.id}
+                onClick={() => {
+                  window.location.href = "/category/" + res.type;
+                }}
+              >
+                {res.type}
+              </li>
+            ))}
           </ul>
         </>
       ) : props.type === "online" ? (

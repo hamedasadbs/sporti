@@ -3,8 +3,6 @@ import React, { useState, useEffect } from "react";
 /*CSS*/
 import classes from "./Notice.module.scss";
 /*ASSETS*/
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUndo } from "@fortawesome/free-solid-svg-icons";
 import { Undo } from "@material-ui/icons";
 
 export const Notice = (props) => {

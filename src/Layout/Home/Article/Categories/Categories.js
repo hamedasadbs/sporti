@@ -19,16 +19,14 @@ export const Categories = () => {
   return (
     <>
       <article className={classes.categories}>
-        {productsData.map((res) => {
-          return (
-            <Category
-              faTitle={res.fa_title}
-              enTitle={res.en_title}
-              image={res.image}
-              key={res.id}
-            />
-          );
-        })}
+        {productsData.map((res) => (
+          <Category
+            faTitle={res.fa_title}
+            enTitle={res.en_title}
+            image={res.image}
+            key={res.id}
+          />
+        ))}
       </article>
     </>
   );

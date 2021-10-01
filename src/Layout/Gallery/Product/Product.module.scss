@@ -71,16 +71,21 @@
       border-radius: 0 0 5px 5px;
 
       &:hover {
-        background-color: darken($btnColor2, 10%);
+        background-color: darken($btnColor2, 5%);
       }
     }
 
     .addToCart {
-      background-image: -webkit-linear-gradient(top, lighten($btnColor1, 5%), $btnColor1, lighten($btnColor1, 5%));
+      background-color: $btnColor1;
       color: $superLightColor;
       transition: all 0.5s;
       padding: 10px;
       width: 100%;
+      border-radius: 5px 5px 0 0;
+
+      &:hover {
+        background-color: darken($btnColor1, 5%);
+      }
     }
 
     .disabled {
@@ -89,6 +94,7 @@
       transition: all 0.5s;
       padding: 10px;
       width: 100%;
+      border-radius: 5px 5px 0 0;
 
       &:hover {
         cursor: auto;

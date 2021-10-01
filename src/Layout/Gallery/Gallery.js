@@ -9,7 +9,6 @@ import { Product } from "./Product/Product";
 import { Details } from "../Details/Details";
 import { Logic } from "../../Logic/Logic";
 /*ASSETS*/
-import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 import { ChevronRightTwoTone, ChevronLeftTwoTone } from "@material-ui/icons";
 
@@ -29,7 +28,6 @@ export const Gallery = (props) => {
   const url = "http://localhost/bsShop/gallery.php";
   const productsURL = "http://localhost/bsShop/products.php";
   const numberOfItemsToShow = 10;
-  let newType = type.toString();
   const numberOfOffsets = totalGallery.length / numberOfItemsToShow;
   /*FUNCTIONS*/
   const updateRequest = () => {
@@ -163,63 +161,51 @@ export const Gallery = (props) => {
   return (
     <>
       <Switch>
-        {productsData.map((res) => {
-          return (
-            <Route
-              path={`/category/${res.category}/${res.fa_title}`}
-              key={res.name}
-            >
-              <Details
-                faTitle={res.fa_title}
-                image={res.image}
-                price={res.price}
-                desc={res.description}
-                type={res.type}
-                kind={res.kind}
-                size={res.size}
-                exi={res.existence}
-              />
-            </Route>
-          );
-        })}
-        {productsData.map((res) => {
-          return (
-            <Route
-              path={`/category/${res.brand}/${res.fa_title}`}
-              key={res.name}
-            >
-              <Details
-                faTitle={res.fa_title}
-                image={res.image}
-                price={res.price}
-                desc={res.description}
-                type={res.type}
-                kind={res.kind}
-                size={res.size}
-                exi={res.existence}
-              />
-            </Route>
-          );
-        })}
-        {productsData.map((res) => {
-          return (
-            <Route
-              path={`/category/${res.type}/${res.fa_title}`}
-              key={res.name}
-            >
-              <Details
-                faTitle={res.fa_title}
-                image={res.image}
-                price={res.price}
-                desc={res.description}
-                type={res.type}
-                kind={res.kind}
-                size={res.size}
-                exi={res.existence}
-              />
-            </Route>
-          );
-        })}
+        {productsData.map((res) => (
+          <Route
+            path={`/category/${res.category}/${res.fa_title}`}
+            key={res.name}
+          >
+            <Details
+              faTitle={res.fa_title}
+              image={res.image}
+              price={res.price}
+              desc={res.description}
+              type={res.type}
+              kind={res.kind}
+              size={res.size}
+              exi={res.existence}
+            />
+          </Route>
+        ))}
+        {productsData.map((res) => (
+          <Route path={`/category/${res.brand}/${res.fa_title}`} key={res.name}>
+            <Details
+              faTitle={res.fa_title}
+              image={res.image}
+              price={res.price}
+              desc={res.description}
+              type={res.type}
+              kind={res.kind}
+              size={res.size}
+              exi={res.existence}
+            />
+          </Route>
+        ))}
+        {productsData.map((res) => (
+          <Route path={`/category/${res.type}/${res.fa_title}`} key={res.name}>
+            <Details
+              faTitle={res.fa_title}
+              image={res.image}
+              price={res.price}
+              desc={res.description}
+              type={res.type}
+              kind={res.kind}
+              size={res.size}
+              exi={res.existence}
+            />
+          </Route>
+        ))}
         <Route path={`/category/${props.categoryName}`}>
           <article className={classes.galleries}>
             <div className={classes.gallery}>
@@ -311,20 +297,18 @@ export const Gallery = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {typeFilter.map((filter) => {
-                    return (
-                      <tr key={filter.fa_type}>
-                        <td>
-                          {filter.fa_type}
-                          <Checkbox
-                            onChange={filterHandler}
-                            value={filter.fa_type}
-                            color="primary"
-                          />
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {typeFilter.map((filter) => (
+                    <tr key={filter.fa_type}>
+                      <td>
+                        {filter.fa_type}
+                        <Checkbox
+                          onChange={filterHandler}
+                          value={filter.fa_type}
+                          color="primary"
+                        />
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <table className={classes.kind}>
@@ -334,16 +318,14 @@ export const Gallery = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {kindFilter.map((filter) => {
-                    return (
-                      <tr key={filter.kind}>
-                        <td>
-                          {filter.kind}
-                          <Checkbox color="secondary" />
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {kindFilter.map((filter) => (
+                    <tr key={filter.kind}>
+                      <td>
+                        {filter.kind}
+                        <Checkbox color="secondary" />
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
               <table className={classes.brand}>
@@ -353,25 +335,17 @@ export const Gallery = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {brandFilter.map((filter) => {
-                    return (
-                      <tr key={filter.brand}>
-                        <td>
-                          {filter.brand}
-                          <Checkbox color="secondary" />
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {brandFilter.map((filter) => (
+                    <tr key={filter.brand}>
+                      <td>
+                        {filter.brand}
+                        <Checkbox color="secondary" />
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
-              <Button
-                onClick={updateRequest}
-                variant="outlined"
-                color="primary"
-              >
-                اعمال فیلتر
-              </Button>
+              <button onClick={updateRequest}>اعمال فیلتر</button>
             </div>
           </article>
         </Route>

@@ -145,10 +145,18 @@
       }
 
       button {
+        background-color: $btnColor1;
+        color: $superLightColor;
         font-family: $font;
+        transition: all 0.5s;
         padding: 10px;
-        margin-top: 20px;
-        border-radius: 0 0 5px 5px;
+        width: 100%;
+        border-radius: 5px;
+        margin-top: 10px;
+
+        &:hover {
+          background-color: darken($btnColor1, 5%);
+        }
       }
     }
   }

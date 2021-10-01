@@ -38,12 +38,10 @@
       flex-wrap: wrap;
       justify-content: center;
       list-style: none;
-      background-image: linear-gradient(
-        to right,
-        rgb(75, 75, 75),
-        rgb(20, 20, 20),
-        rgb(75, 75, 75)
-      );
+      background-image: linear-gradient(to right,
+          rgb(75, 75, 75),
+          rgb(20, 20, 20),
+          rgb(75, 75, 75));
       padding-right: 30px;
 
       li {
@@ -83,6 +81,9 @@
       margin: 15px auto;
       padding: 10px;
       border-radius: 5px;
+      background-color: transparent;
+      color: $btnColor2;
+      border: 1px solid $btnColor2;
     }
 
     table {
@@ -172,6 +173,7 @@
 
 @media only screen and (max-width: $big) {
   .galleries {
+
     .gallery,
     .filter {
       margin: 10px;
@@ -179,7 +181,15 @@
     }
 
     .gallery {
-      margin-top: 2px;
+      margin: 2px 0px 0px 0px;
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .galleries {
+    .gallery {
+      margin: 2px 0px 0px 10px;
     }
   }
 }
@@ -188,6 +198,7 @@
   .galleries {
     margin-top: 80px;
     flex-direction: column;
+
     .gallery {
       width: auto;
     }

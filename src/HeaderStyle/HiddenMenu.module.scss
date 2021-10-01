@@ -81,6 +81,7 @@
           width: 40px;
           border: none;
           border-bottom: 1px solid $linkColor;
+          border-radius: 0;
         }
       }
 
@@ -116,14 +117,6 @@
             }
           }
         }
-      }
-
-      .signIn {
-        width: 180px;
-        float: right;
-        font-size: 20px;
-        padding: 8px 2px 12px 2px;
-        margin: 20px -10px;
       }
     }
   }
@@ -192,23 +185,8 @@
         display: block;
         margin-top: 10px;
 
-        i.basket {
-          margin-right: -20px;
-
-          .carts {
-            display: initial;
-            background-color: $hoverColor;
-            padding-left: 8px;
-            padding-right: 8px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            border-radius: 50px;
-            z-index: 3;
-            position: relative;
-            top: -22px;
-            right: 20px;
-            text-align: center;
-            color: $superLightColor;
+        ul {
+          li {
             font-size: 15px;
           }
         }

@@ -196,42 +196,59 @@ export const App = () => {
                   <ul className="rightSide">
                     <li className="account" onClick={openAccount}>
                       {isAccountOpen ? <ArrowDropDown /> : <ArrowLeft />}
-                      <label> حساب من </label>
+                      <label>حساب من </label>
                       <Person className="account" />
                       {isAccountOpen && (
                         <ul>
-                          <button
-                            className="login"
-                            onClick={() => {
-                              closeForm();
-                              showSingIn();
-                              closeHiddenMenu();
-                            }}
-                          >
-                            ورود
-                          </button>
-                          <button
-                            className="register"
-                            onClick={() => {
-                              closeForm();
-                              showSingUp();
-                              closeHiddenMenu();
-                            }}
-                          >
-                            عضویت
-                          </button>
+                          {getCookie("isOnline") == false ? (
+                            <>
+                              <button
+                                className="login"
+                                onClick={() => {
+                                  closeForm();
+                                  showSingIn();
+                                  closeHiddenMenu();
+                                }}
+                              >
+                                ورود
+                              </button>
+                              <button
+                                className="register"
+                                onClick={() => {
+                                  closeForm();
+                                  showSingUp();
+                                  closeHiddenMenu();
+                                }}
+                              >
+                                عضویت
+                              </button>
+                            </>
+                          ) : (
+                            <button
+                              className="login"
+                              onClick={() => {
+                                logoutHandler();
+                                closeHiddenMenu();
+                              }}
+                            >
+                              خروج
+                            </button>
+                          )}
                         </ul>
                       )}
                     </li>
                     <li className="basket" onClick={openBasket}>
                       {isBasketOpen ? <ArrowDropDown /> : <ArrowLeft />}
-                      <label> سبد من </label>
-                      <ShoppingBasket className="basket">
-                        <div className="carts">0</div>
-                      </ShoppingBasket>
+                      <label>سبد من </label>
                       {isBasketOpen && (
                         <ul>
-                          <li>سبد شما خالی است!</li>
+                          {getCookie("isOnline") == false ? (
+                            <li>لطفا وارد حساب کاربری خود شوید</li>
+                          ) : cart.length === 0 ? (
+                            <li>سبد شما خالی است</li>
+                          ) : (
+                            cart.map((res) => <li>{res.fa_title}</li>)
+                          )}
                         </ul>
                       )}
                     </li>
@@ -246,82 +263,76 @@ export const App = () => {
                     </li>
                     <li className="sports" onClick={openSports}>
                       <Link>
-                        {isSportsOpen ? <ArrowDropDown /> : <ArrowLeft />} ورزش
+                        {isSportsOpen ? <ArrowDropDown /> : <ArrowLeft />}ورزش
                         ها
                       </Link>
                       {isSportsOpen && (
                         <ul>
-                          {sportsData.map((res) => {
-                            return (
-                              <li
-                                key={res.id}
-                                onClick={() => {
-                                  window.location.href = res.category;
-                                }}
+                          {sportsData.map((res) => (
+                            <li
+                              key={res.id}
+                              onClick={() => {
+                                window.location.href = res.category;
+                              }}
+                            >
+                              <Link
+                                onClick={closeHiddenMenu}
+                                to={`/${res.category}`}
                               >
-                                <Link
-                                  onClick={closeHiddenMenu}
-                                  to={`/${res.category}`}
-                                >
-                                  {res.fa_category} -
-                                </Link>
-                              </li>
-                            );
-                          })}
+                                {res.fa_category} -
+                              </Link>
+                            </li>
+                          ))}
                         </ul>
                       )}
                     </li>
                     <li className="brands" onClick={openBrands}>
                       <Link>
-                        {isBrandsOpen ? <ArrowDropDown /> : <ArrowLeft />} برند
+                        {isBrandsOpen ? <ArrowDropDown /> : <ArrowLeft />}برند
                         ها
                       </Link>
                       {isBrandsOpen && (
                         <ul>
-                          {brandsData.map((res) => {
-                            return (
-                              <li
-                                key={res.id}
-                                onClick={() => {
-                                  window.location.href = res.brand;
-                                }}
+                          {brandsData.map((res) => (
+                            <li
+                              key={res.id}
+                              onClick={() => {
+                                window.location.href = res.brand;
+                              }}
+                            >
+                              <Link
+                                onClick={closeHiddenMenu}
+                                to={`/${res.brand}`}
                               >
-                                <Link
-                                  onClick={closeHiddenMenu}
-                                  to={`/${res.brand}`}
-                                >
-                                  {res.brand} -
-                                </Link>
-                              </li>
-                            );
-                          })}
+                                {res.brand} -
+                              </Link>
+                            </li>
+                          ))}
                         </ul>
                       )}
                     </li>
                     <li className="productType" onClick={openProductType}>
                       <Link>
-                        {isProductTypeOpen ? <ArrowDropDown /> : <ArrowLeft />}{" "}
+                        {isProductTypeOpen ? <ArrowDropDown /> : <ArrowLeft />}
                         نوع محصول
                       </Link>
                       {isProductTypeOpen && (
                         <ul>
-                          {productTypeData.map((res) => {
-                            return (
-                              <li
-                                key={res.id}
-                                onClick={() => {
-                                  window.location.href = res.type;
-                                }}
+                          {productTypeData.map((res) => (
+                            <li
+                              key={res.id}
+                              onClick={() => {
+                                window.location.href = res.type;
+                              }}
+                            >
+                              <Link
+                                onClick={closeHiddenMenu}
+                                to={`/${res.type}`}
                               >
-                                <Link
-                                  onClick={closeHiddenMenu}
-                                  to={`/${res.type}`}
-                                >
-                                  {res.fa_type} -
-                                </Link>
-                              </li>
-                            );
-                          })}
+                                {res.fa_type} -
+                              </Link>
+                            </li>
+                          ))}
                         </ul>
                       )}
                     </li>
@@ -563,44 +574,38 @@ export const App = () => {
                 />
               )}
               <Switch>
-                {sportsData.map((res) => {
-                  return (
-                    <Route path={`/category/${res.category}`} key={res.id}>
-                      <Gallery
-                        categoryName={res.category}
-                        faTitle={res.fa_category}
-                        getCookie={getCookie}
-                        checkTheCart={checkTheCart}
-                      />
-                    </Route>
-                  );
-                })}
+                {sportsData.map((res) => (
+                  <Route path={`/category/${res.category}`} key={res.id}>
+                    <Gallery
+                      categoryName={res.category}
+                      faTitle={res.fa_category}
+                      getCookie={getCookie}
+                      checkTheCart={checkTheCart}
+                    />
+                  </Route>
+                ))}
 
-                {brandsData.map((res) => {
-                  return (
-                    <Route path={`/category/${res.brand}`} key={res.id}>
-                      <Gallery
-                        categoryName={res.brand}
-                        faTitle={res.brand}
-                        getCookie={getCookie}
-                        checkTheCart={checkTheCart}
-                      />
-                    </Route>
-                  );
-                })}
+                {brandsData.map((res) => (
+                  <Route path={`/category/${res.brand}`} key={res.id}>
+                    <Gallery
+                      categoryName={res.brand}
+                      faTitle={res.brand}
+                      getCookie={getCookie}
+                      checkTheCart={checkTheCart}
+                    />
+                  </Route>
+                ))}
 
-                {productTypeData.map((res) => {
-                  return (
-                    <Route path={`/category/${res.type}`} key={res.id}>
-                      <Gallery
-                        categoryName={res.type}
-                        faTitle={res.fa_type}
-                        getCookie={getCookie}
-                        checkTheCart={checkTheCart}
-                      />
-                    </Route>
-                  );
-                })}
+                {productTypeData.map((res) => (
+                  <Route path={`/category/${res.type}`} key={res.id}>
+                    <Gallery
+                      categoryName={res.type}
+                      faTitle={res.fa_type}
+                      getCookie={getCookie}
+                      checkTheCart={checkTheCart}
+                    />
+                  </Route>
+                ))}
 
                 <Route path="/request-form">
                   <Notice title="request-form" />

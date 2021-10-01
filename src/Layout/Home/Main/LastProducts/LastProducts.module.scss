@@ -95,16 +95,19 @@
         }
       }
 
-      button {
-        background-color: $btnColor2;
-        color: $superLightColor;
-        transition: all 0.5s;
-        font-family: $font;
-        padding: 10px;
-        border-radius: 0 0 5px 5px;
+      .link {
+        button {
+          background-color: $btnColor2;
+          color: $superLightColor;
+          transition: all 0.5s;
+          font-family: $font;
+          padding: 10px;
+          border-radius: 0 0 5px 5px;
+          width: 100%;
 
-        &:hover {
-          background-color: darken($btnColor2, 10%);
+          &:hover {
+            background-color: darken($btnColor2, 5%);
+          }
         }
       }
     }

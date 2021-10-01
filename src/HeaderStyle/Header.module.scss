@@ -84,6 +84,7 @@
         width: 40px;
         border: none;
         border-bottom: 1px solid $linkColor;
+        border-radius: 0;
       }
     }
 
@@ -309,6 +310,18 @@
     .topHeader {
       margin-top: 10px;
 
+      .middleSide {
+        display: none !important;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .header {
+    margin: 0 20px;
+
+    .topHeader {
       .rightSide {
         li.dropdown {
           display: initial !important;
@@ -319,7 +332,7 @@
 
           .i {
             @include dropdown;
-            margin-top: 20px;
+            margin-top: 30px;
             margin-left: -30px;
           }
         }
@@ -327,10 +340,6 @@
         .mainLogo {
           display: none !important;
         }
-      }
-
-      .middleSide {
-        display: none !important;
       }
     }
 
@@ -350,30 +359,6 @@
   }
 }
 
-@media only screen and (max-width: $medium) {
-  .header {
-    margin: 0 20px;
-
-    .topHeader {
-      .rightSide {
-        .mainLogo {
-          a {
-            span {
-              display: none;
-            }
-          }
-        }
-
-        li.dropdown {
-          .i {
-            margin-left: -20px;
-          }
-        }
-      }
-    }
-  }
-}
-
 @media only screen and (max-width: $small) {
   .header {
     margin: 0 20px;
@@ -382,9 +367,7 @@
       border: none;
 
       .leftSide {
-        li {
-          display: none;
-        }
+        display: none;
       }
 
       .rightSide {
