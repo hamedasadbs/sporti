@@ -1,6 +1,7 @@
 /*INNER-COMPONENTS*/
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 /*CSS*/
 import detailsStyle from "../../Layout/Details/Details.module.scss";
 import classes from "./Dropdown.module.scss";
@@ -16,7 +17,9 @@ export const Dropdown = (props) => {
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
+  const cartDeleteURL = "http://localhost/bsShop/cartDelete.php";
   const cart = props.cart;
+  const isOnline = useSelector((state) => state.isOnline);
   /*FUNCTIONS*/
   useEffect(() => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
@@ -24,10 +27,22 @@ export const Dropdown = (props) => {
     axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
   }, []);
 
+  const deleteCartHandler = (username, productId) => {
+    axios
+      .post(
+        cartDeleteURL,
+        JSON.stringify({
+          productId,
+          username,
+        })
+      )
+      .then(props.updateCart());
+  };
+
   return (
     <>
       {props.type === "basket" ? (
-        props.isOnline == false ? (
+        isOnline == false ? (
           <span>لطفا وارد حساب کاربری خود شوید</span>
         ) : cart.length === 0 ? (
           <span>سبد شما خالی است</span>
@@ -41,7 +56,12 @@ export const Dropdown = (props) => {
                     alt={res.fa_title}
                   />
                   <aside>
-                    <article className={classes.delete}>
+                    <article
+                      onClick={() =>
+                        deleteCartHandler(res.username, res.product_id)
+                      }
+                      className={classes.delete}
+                    >
                       <Delete className={classes.fillDelete} />
                       <DeleteOutline className={classes.outlineDelete} />
                     </article>
@@ -60,7 +80,7 @@ export const Dropdown = (props) => {
               ))}
             </table>
             <button onClick={props.signInClick} className={classes.conformShop}>
-              تکمیل خرید
+              تکمیل فرآیند خرید
             </button>
           </span>
         )

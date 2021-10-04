@@ -223,9 +223,8 @@ export const Gallery = (props) => {
                           key={gal.id}
                           id={gal.id}
                           categoryName={props.categoryName}
-                          isOnline={props.getCookie("isOnline")}
-                          accountName={props.getCookie("accountName")}
                           checkTheCart={props.checkTheCart}
+                          cart={props.cart}
                         />
                       ) : (
                         <Product

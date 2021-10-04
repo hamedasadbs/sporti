@@ -1,11 +1,9 @@
 /*INNER-COMPONENTS*/
 import React, { useState } from "react";
 /*CSS*/
-import style from "./Details.module.scss";
+import classes from "./Details.module.scss";
 /*CHILD-COMPONENTS*/
 import { Dropdown } from "../../Tool/Dropdown/Dropdown";
-/*ASSETS*/
-import Button from "@material-ui/core/Button";
 
 export const Details = (props) => {
   /*STATES*/
@@ -30,15 +28,15 @@ export const Details = (props) => {
   };
   return (
     <>
-      <div className={style.details}>
-        <h1 className={style.title}>{props.faTitle}</h1>
+      <div className={classes.details}>
+        <h1 className={classes.title}>{props.faTitle}</h1>
         <article>
-          <div className={style.extraInfos}>
-            <div className={style.tabs}>
+          <div className={classes.extraInfos}>
+            <div className={classes.tabs}>
               <button
                 onClick={commentsHandler}
                 {...(isCommentsDisplay === true && {
-                  className: style.activeTab,
+                  className: classes.activeTab,
                 })}
               >
                 نظرات
@@ -46,7 +44,7 @@ export const Details = (props) => {
               <button
                 onClick={descriptionHandler}
                 {...(isDescDisplay === true && {
-                  className: style.activeTab,
+                  className: classes.activeTab,
                 })}
               >
                 توضیحات
@@ -54,7 +52,7 @@ export const Details = (props) => {
               <button
                 onClick={featuresHandler}
                 {...(isFeaturesDisplay === true && {
-                  className: style.activeTab,
+                  className: classes.activeTab,
                 })}
               >
                 مشخصات
@@ -79,20 +77,18 @@ export const Details = (props) => {
               desc={props.desc}
             />
             {props.exi === "1" ? (
-              <Button variant="contained" color="secondary">
-                افزودن به سبد
-              </Button>
+              <button className={classes.addToCart}>افزودن به سبد</button>
             ) : (
-              <Button variant="outlined" disabled>
+              <button className={classes.disabled} disabled>
                 ناموجود
-              </Button>
+              </button>
             )}
           </div>
-          <div className={style.images}>
-            <div className={style.primary}>
+          <div className={classes.images}>
+            <div className={classes.primary}>
               <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
             </div>
-            <div className={style.secondary}>
+            <div className={classes.secondary}>
               <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
               <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
               <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />

@@ -1,11 +1,11 @@
 /*INNER-COMPONENTS*/
 import React, { useState } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 /*CSS*/
 import classes from "./Sign.module.scss";
 /*CHILD-COMPONENTS*/
-import { setCookie } from "../../Redux/Cookie/CookieActions";
+
 /*ASSETS*/
 import Checkbox from "@material-ui/core/Checkbox";
 import {
@@ -15,6 +15,7 @@ import {
   AccountCircle,
   PersonAdd,
 } from "@material-ui/icons";
+import allActions from "../../Redux/AllActions";
 
 export const Sign = (props) => {
   /*STATES*/
@@ -111,6 +112,13 @@ export const Sign = (props) => {
     }
   };
 
+  const setCookie = (cName, cValue, minutes) => {
+    let d = new Date();
+    d.setTime(d.getTime() + minutes * 60 * 1000);
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cName + "=" + cValue + "; " + expires;
+  };
+
   const enterToAccount = () => {
     if (loginUsername != null && loginPassword != null) {
       axios
@@ -128,10 +136,11 @@ export const Sign = (props) => {
             alert(
               `شما با نام ${res.data[0].username} وارد حساب کاربری خود شدید`
             );
-            props.online(true);
-            dispatch(setCookie());
-            props.accountName(res.data[0].username);
+            setCookie("isOnline", true, 100);
+            setCookie("accountName", res.data[0].username, 100);
+            dispatch(allActions.cookieActions.setOnline());
             props.close(true);
+            window.location.href = window.location.href;
           }
         });
     } else {

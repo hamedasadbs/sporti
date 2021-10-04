@@ -2,50 +2,33 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 /*CSS*/
 import classes from "./Product.module.scss";
 
 export const Product = (props) => {
-  /*STATES*/
-  const [cart, setCart] = useState([]);
   /*VARIABLES*/
   const url = "http://localhost/bsShop/cart.php";
-  const cartURL = "http://localhost/bsShop/cart.php";
+  const isOnline = useSelector((state) => state.isOnline);
+  const accountName = useSelector((state) => state.accountName);
+  const cart = props.cart;
   /*FUNCTIONS*/
   const addToCart = () => {
-    if (props.isOnline) {
+    if (isOnline) {
       axios
         .post(
           url,
           JSON.stringify({
             method: "addToCart",
-            username: props.accountName,
+            username: accountName,
             productId: props.id,
           })
         )
-        .then((res) => alert(res.data))
         .then(() => {
-          checkTheCart();
           props.checkTheCart();
         });
     } else alert("ابتدا وارد حساب خود شوید");
   };
-
-  const checkTheCart = () => {
-    axios
-      .post(
-        cartURL,
-        JSON.stringify({
-          method: "checkTheCart",
-          username: props.accountName,
-        })
-      )
-      .then((res) => setCart(res.data));
-  };
-
-  useEffect(() => {
-    checkTheCart();
-  }, []);
 
   const isInCart = () => {
     let isInCart = false;
