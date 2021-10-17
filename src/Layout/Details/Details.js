@@ -76,7 +76,7 @@ export const Details = (props) => {
               type="comments"
               desc={props.desc}
             />
-            {props.exi === "1" ? (
+            {props.exi != 0 ? (
               <button className={classes.addToCart}>افزودن به سبد</button>
             ) : (
               <button className={classes.disabled} disabled>

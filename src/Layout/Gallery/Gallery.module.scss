@@ -178,10 +178,11 @@
     .filter {
       margin: 10px;
       font-size: 13px;
+      margin-top: 40px;
     }
 
     .gallery {
-      margin: 2px 0px 0px 0px;
+      margin: 30px 0px 0px 0px;
     }
   }
 }
@@ -189,7 +190,7 @@
 @media only screen and (max-width: $medium) {
   .galleries {
     .gallery {
-      margin: 2px 0px 0px 10px;
+      margin: 30px 0px 0px 10px;
     }
   }
 }
@@ -201,6 +202,7 @@
 
     .gallery {
       width: auto;
+      margin-top: 0;
     }
 
     .filter {

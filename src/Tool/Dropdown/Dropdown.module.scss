@@ -84,6 +84,60 @@ button {
                         }
                     }
                 }
+
+                .add {
+                    width: fit-content;
+                    height: fit-content;
+                    margin: auto;
+
+                    .fillAdd {
+                        color: $hoverColor;
+                    }
+
+                    .outlineAdd {
+                        color: $hoverColor;
+                        display: none;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        .fillAdd {
+                            display: none;
+                        }
+
+                        .outlineAdd {
+                            display: initial;
+                        }
+                    }
+                }
+
+                .minus {
+                    width: fit-content;
+                    height: fit-content;
+                    margin: auto;
+
+                    .fillMinus {
+                        color: $hoverColor;
+                    }
+
+                    .outlineMinus {
+                        color: $hoverColor;
+                        display: none;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        .fillMinus {
+                            display: none;
+                        }
+
+                        .outlineMinus {
+                            display: initial;
+                        }
+                    }
+                }
             }
 
             img {

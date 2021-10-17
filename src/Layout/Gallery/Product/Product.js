@@ -54,8 +54,11 @@ export const Product = (props) => {
         <div className={classes.caption}>
           <p>{props.faTitle}</p>
           <h2>{props.price} تومان</h2>
+          {props.exi < 5 && props.exi > 0 && (
+            <h3>تنها {props.exi} عدد در انبار باقی مانده است</h3>
+          )}
         </div>
-        {props.exi === false ? (
+        {props.exi == 0 ? (
           <div className={classes.btn}>
             <button className={classes.disabled} disabled>
               ناموجود
@@ -70,8 +73,8 @@ export const Product = (props) => {
         ) : (
           <div className={classes.btn}>
             {isInCart() ? (
-              <button className={classes.disabled} disabled>
-                موجود در سبد
+              <button onClick={addToCart} className={classes.addToCart}>
+                موجود در سبد (افزودن)
               </button>
             ) : (
               <button onClick={addToCart} className={classes.addToCart}>

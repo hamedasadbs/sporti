@@ -214,9 +214,9 @@ export const Gallery = (props) => {
                 {gallery.length > 0 ? (
                   gallery.map((gal) => {
                     return gal.price <= maxPrice && gal.price >= minPrice ? (
-                      gal.existence === "1" ? (
+                      gal.existence !== 0 ? (
                         <Product
-                          exi={true}
+                          exi={gal.existence}
                           faTitle={gal.fa_title}
                           price={gal.price}
                           image={gal.image}
@@ -228,7 +228,7 @@ export const Gallery = (props) => {
                         />
                       ) : (
                         <Product
-                          exi={false}
+                          exi={gal.existence}
                           faTitle={gal.fa_title}
                           price={gal.price}
                           image={gal.image}

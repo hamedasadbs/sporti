@@ -6,7 +6,14 @@ import { useSelector } from "react-redux";
 import detailsStyle from "../../Layout/Details/Details.module.scss";
 import classes from "./Dropdown.module.scss";
 /*ASSETS*/
-import { Delete, DeleteOutline } from "@material-ui/icons";
+import {
+  Delete,
+  DeleteOutline,
+  AddCircle,
+  AddCircleOutline,
+  RemoveCircle,
+  RemoveCircleOutline,
+} from "@material-ui/icons";
 
 export const Dropdown = (props) => {
   /*STATES*/
@@ -17,7 +24,7 @@ export const Dropdown = (props) => {
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
-  const cartDeleteURL = "http://localhost/bsShop/cartDelete.php";
+  const cartDeleteURL = "http://localhost/bsShop/cart.php";
   const cart = props.cart;
   const isOnline = useSelector((state) => state.isOnline);
   /*FUNCTIONS*/
@@ -32,11 +39,14 @@ export const Dropdown = (props) => {
       .post(
         cartDeleteURL,
         JSON.stringify({
+          method: "deleteCart",
           productId,
           username,
         })
       )
-      .then(props.updateCart());
+      .then(() => {
+        props.checkTheCart();
+      });
   };
 
   return (
@@ -56,23 +66,38 @@ export const Dropdown = (props) => {
                     alt={res.fa_title}
                   />
                   <aside>
-                    <article
-                      onClick={() =>
-                        deleteCartHandler(res.username, res.product_id)
-                      }
-                      className={classes.delete}
-                    >
-                      <Delete className={classes.fillDelete} />
-                      <DeleteOutline className={classes.outlineDelete} />
+                    <article>
+                      <span
+                        onClick={() =>
+                          deleteCartHandler(res.username, res.product_id)
+                        }
+                        className={classes.minus}
+                      >
+                        <RemoveCircle className={classes.fillMinus} />
+                        <RemoveCircleOutline className={classes.outlineMinus} />
+                      </span>
+                      <span
+                        onClick={() =>
+                          deleteCartHandler(res.username, res.product_id)
+                        }
+                        className={classes.delete}
+                      >
+                        <Delete className={classes.fillDelete} />
+                        <DeleteOutline className={classes.outlineDelete} />
+                      </span>
+                      <span
+                        onClick={() =>
+                          deleteCartHandler(res.username, res.product_id)
+                        }
+                        className={classes.add}
+                      >
+                        <AddCircle className={classes.fillAdd} />
+                        <AddCircleOutline className={classes.outlineAdd} />
+                      </span>
                     </article>
                     <h1>{res.fa_title}</h1>
                     <h1>
-                      <input
-                        value="1"
-                        size="2"
-                        maxLength="2"
-                        style={{ textAlign: "center" }}
-                      />{" "}
+                      {` ${res.number} `}
                       :تعداد{" "}
                     </h1>
                   </aside>
@@ -133,7 +158,7 @@ export const Dropdown = (props) => {
                   window.location.href = "/category/" + res.type;
                 }}
               >
-                {res.type}
+                {res.fa_type}
               </li>
             ))}
           </ul>

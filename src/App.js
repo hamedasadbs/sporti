@@ -439,7 +439,7 @@ export const App = () => {
                     <div className="basket">
                       <Dropdown
                         type="basket"
-                        updateCart={checkTheCart}
+                        checkTheCart={checkTheCart}
                         cart={cart}
                       />
                     </div>

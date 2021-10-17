@@ -35,7 +35,7 @@
     text-align: right;
     font-family: $font;
     font-weight: 100;
-    line-height: 20px;
+    line-height: 10px;
     width: 100%;
 
     h2 {
@@ -44,10 +44,18 @@
       font-size: 17px;
     }
 
+    h3 {
+      font-family: $numberFont;
+      font-weight: lighter;
+      font-size: 13px;
+      color: red;
+    }
+
     p {
       font-family: $font;
       font-size: 15px;
       font-weight: bold;
+      line-height: 25px;
     }
   }
 
