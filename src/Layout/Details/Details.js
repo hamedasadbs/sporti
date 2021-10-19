@@ -1,5 +1,7 @@
 /*INNER-COMPONENTS*/
 import React, { useState } from "react";
+import axios from "axios";
+import { useSelector } from "react-redux";
 /*CSS*/
 import classes from "./Details.module.scss";
 /*CHILD-COMPONENTS*/
@@ -10,6 +12,12 @@ export const Details = (props) => {
   const [isDescDisplay, setIsDescDisplay] = useState(false);
   const [isFeaturesDisplay, setIsFeaturesDisplay] = useState(true);
   const [isCommentsDisplay, setIsCommentsDisplay] = useState(false);
+  const [number, setNumber] = useState(props.exi);
+  /*VARIABLES*/
+  const url = "http://localhost/bsShop/cart.php";
+  const isOnline = useSelector((state) => state.isOnline);
+  const accountName = useSelector((state) => state.accountName);
+  const cart = props.cart;
   /*FUNCTIONS*/
   const descriptionHandler = () => {
     setIsFeaturesDisplay(false);
@@ -26,6 +34,35 @@ export const Details = (props) => {
     setIsFeaturesDisplay(false);
     setIsCommentsDisplay(true);
   };
+
+  const addToCart = () => {
+    if (isOnline) {
+      axios
+        .post(
+          url,
+          JSON.stringify({
+            method: "addToCart",
+            username: accountName,
+            productId: props.id,
+          })
+        )
+        .then(() => {
+          props.checkTheCart();
+          setNumber((state) => state - 1);
+        });
+    } else alert("ابتدا وارد حساب خود شوید");
+  };
+
+  const isInCart = () => {
+    let isInCart = false;
+    cart.map((res) => {
+      if (res.product_id === props.id) {
+        isInCart = true;
+      }
+    });
+    return isInCart;
+  };
+
   return (
     <>
       <div className={classes.details}>
@@ -76,8 +113,16 @@ export const Details = (props) => {
               type="comments"
               desc={props.desc}
             />
-            {props.exi != 0 ? (
-              <button className={classes.addToCart}>افزودن به سبد</button>
+            {number > 0 ? (
+              isInCart() ? (
+                <button onClick={addToCart} className={classes.addToCart}>
+                  موجود در سبد (افزودن)
+                </button>
+              ) : (
+                <button onClick={addToCart} className={classes.addToCart}>
+                  افزودن به سبد
+                </button>
+              )
             ) : (
               <button className={classes.disabled} disabled>
                 ناموجود

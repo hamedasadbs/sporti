@@ -1,5 +1,5 @@
 /*INNER-COMPONENTS*/
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -12,6 +12,7 @@ export const Product = (props) => {
   const isOnline = useSelector((state) => state.isOnline);
   const accountName = useSelector((state) => state.accountName);
   const cart = props.cart;
+  const [number, setNumber] = useState(props.exi);
   /*FUNCTIONS*/
   const addToCart = () => {
     if (isOnline) {
@@ -26,6 +27,7 @@ export const Product = (props) => {
         )
         .then(() => {
           props.checkTheCart();
+          setNumber((state) => state - 1);
         });
     } else alert("ابتدا وارد حساب خود شوید");
   };
@@ -54,11 +56,11 @@ export const Product = (props) => {
         <div className={classes.caption}>
           <p>{props.faTitle}</p>
           <h2>{props.price} تومان</h2>
-          {props.exi < 5 && props.exi > 0 && (
-            <h3>تنها {props.exi} عدد در انبار باقی مانده است</h3>
+          {number <= 5 && number > 0 && (
+            <h3>تنها {number} عدد در انبار باقی مانده است</h3>
           )}
         </div>
-        {props.exi == 0 ? (
+        {number <= 0 ? (
           <div className={classes.btn}>
             <button className={classes.disabled} disabled>
               ناموجود

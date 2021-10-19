@@ -181,6 +181,7 @@ export const App = () => {
   const logoutHandler = () => {
     setCookie("isOnline", "", -100);
     setCookie("accountName", "", -100);
+    window.location.href = window.location.href;
   };
 
   return (
@@ -426,7 +427,6 @@ export const App = () => {
                           type="online"
                           logoutClick={() => {
                             logoutHandler();
-                            window.location.href = window.location.href;
                           }}
                         />
                       )}

@@ -123,8 +123,8 @@ export const Gallery = (props) => {
     updateRequest();
   };
 
-  const offsetNumber = (event) => {
-    page = parseInt(event.target.innerText);
+  const offsetNumber = (e) => {
+    page = parseInt(e.target.innerText);
     setPage(page);
     updateRequest();
   };
@@ -175,6 +175,10 @@ export const Gallery = (props) => {
               kind={res.kind}
               size={res.size}
               exi={res.existence}
+              checkTheCart={props.checkTheCart}
+              key={res.id}
+              id={res.id}
+              cart={props.cart}
             />
           </Route>
         ))}
@@ -189,6 +193,10 @@ export const Gallery = (props) => {
               kind={res.kind}
               size={res.size}
               exi={res.existence}
+              checkTheCart={props.checkTheCart}
+              key={res.id}
+              id={res.id}
+              cart={props.cart}
             />
           </Route>
         ))}
@@ -203,6 +211,10 @@ export const Gallery = (props) => {
               kind={res.kind}
               size={res.size}
               exi={res.existence}
+              checkTheCart={props.checkTheCart}
+              key={res.id}
+              id={res.id}
+              cart={props.cart}
             />
           </Route>
         ))}
@@ -212,27 +224,27 @@ export const Gallery = (props) => {
               <h1 className={classes.title}>{props.faTitle}</h1>
               <main>
                 {gallery.length > 0 ? (
-                  gallery.map((gal) => {
-                    return gal.price <= maxPrice && gal.price >= minPrice ? (
-                      gal.existence !== 0 ? (
+                  gallery.map((res) => {
+                    return res.price <= maxPrice && res.price >= minPrice ? (
+                      res.existence !== 0 ? (
                         <Product
-                          exi={gal.existence}
-                          faTitle={gal.fa_title}
-                          price={gal.price}
-                          image={gal.image}
-                          key={gal.id}
-                          id={gal.id}
+                          exi={res.existence}
+                          faTitle={res.fa_title}
+                          price={res.price}
+                          image={res.image}
+                          key={res.id}
+                          id={res.id}
                           categoryName={props.categoryName}
                           checkTheCart={props.checkTheCart}
                           cart={props.cart}
                         />
                       ) : (
                         <Product
-                          exi={gal.existence}
-                          faTitle={gal.fa_title}
-                          price={gal.price}
-                          image={gal.image}
-                          key={gal.id}
+                          exi={res.existence}
+                          faTitle={res.fa_title}
+                          price={res.price}
+                          image={res.image}
+                          key={res.id}
                           categoryName={props.categoryName}
                         />
                       )
@@ -296,13 +308,13 @@ export const Gallery = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {typeFilter.map((filter) => (
-                    <tr key={filter.fa_type}>
+                  {typeFilter.map((res) => (
+                    <tr key={res.fa_type}>
                       <td>
-                        {filter.fa_type}
+                        {res.fa_type}
                         <Checkbox
                           onChange={filterHandler}
-                          value={filter.fa_type}
+                          value={res.fa_type}
                           color="primary"
                         />
                       </td>
@@ -317,10 +329,10 @@ export const Gallery = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {kindFilter.map((filter) => (
-                    <tr key={filter.kind}>
+                  {kindFilter.map((res) => (
+                    <tr key={res.kind}>
                       <td>
-                        {filter.kind}
+                        {res.kind}
                         <Checkbox color="secondary" />
                       </td>
                     </tr>
@@ -334,10 +346,10 @@ export const Gallery = (props) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {brandFilter.map((filter) => (
-                    <tr key={filter.brand}>
+                  {brandFilter.map((res) => (
+                    <tr key={res.brand}>
                       <td>
-                        {filter.brand}
+                        {res.brand}
                         <Checkbox color="secondary" />
                       </td>
                     </tr>
