@@ -33,12 +33,24 @@
         .liked {
           font-size: 30px;
           margin: 15px 0 0 15px;
+          color: red;
+          transition: all 0.5s;
+
+          &:hover {
+            cursor: pointer;
+            color: lighten(red, 10%);
+          }
+        }
+
+        .notLiked {
+          font-size: 30px;
+          margin: 15px 0 0 15px;
           color: lightgray;
           transition: all 0.5s;
 
           &:hover {
             cursor: pointer;
-            color: lighten(red, 40%);
+            color: lighten(red, 30%);
           }
         }
 
