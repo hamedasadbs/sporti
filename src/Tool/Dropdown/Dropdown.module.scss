@@ -9,7 +9,8 @@ button {
 .login,
 .logout,
 .conformShop {
-    background-color: $btnColor1;
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
     color: $superLightColor;
     transition: all 0.5s;
     padding: 10px;
@@ -22,8 +23,8 @@ button {
 
 .signup {
     background-color: transparent;
-    color: $btnColor1;
-    border: 1px solid $btnColor1;
+    color: #21D4FD;
+    border: 1px solid #21D4FD;
 }
 
 .cart {

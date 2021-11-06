@@ -20,6 +20,7 @@ import allActions from "../../Redux/AllActions";
 export const Sign = (props) => {
   /*STATES*/
   const [name, setName] = useState(null);
+  const [sign, setSign] = useState("login");
   const [signupUsername, setSignupUsername] = useState(null);
   let [loginUsername, setLoginUsername] = useState(null);
   const [email, setEmail] = useState(null);
@@ -148,14 +149,37 @@ export const Sign = (props) => {
     }
   };
 
+  const changeToSignup = () => {
+    setSign("signup");
+  };
+
+  const changeToLogin = () => {
+    setSign("login");
+  };
+
   return (
     <>
       <article className={classes.sign}>
-        {props.type === "login" ? (
+        {sign === "login" ? (
           <>
             <span className={classes.title}>
+              <h1
+                {...(sign === "signup" && {
+                  className: classes.activeTab,
+                })}
+                onClick={changeToSignup}
+              >
+                ثبت حساب کاربری جدید
+              </h1>
               <Cancel onClick={props.close} className={classes.closeSign} />
-              ورود به حساب کاربری
+              <h1
+                {...(sign === "login" && {
+                  className: classes.activeTab,
+                })}
+                onClick={changeToLogin}
+              >
+                ورود به حساب کاربری
+              </h1>
             </span>
             <main>
               <div className={classes.loginUser}>
@@ -192,8 +216,23 @@ export const Sign = (props) => {
         ) : (
           <>
             <span className={classes.title}>
+              <h1
+                {...(sign === "signup" && {
+                  className: classes.activeTab,
+                })}
+                onClick={changeToSignup}
+              >
+                ثبت حساب کاربری جدید
+              </h1>
               <Cancel onClick={props.close} className={classes.closeSign} />
-              ایجاد حساب کاربری
+              <h1
+                {...(sign === "login" && {
+                  className: classes.activeTab,
+                })}
+                onClick={changeToLogin}
+              >
+                ورود به حساب کاربری
+              </h1>
             </span>
             <main>
               <div className={classes.name}>

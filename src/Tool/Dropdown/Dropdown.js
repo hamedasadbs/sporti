@@ -109,15 +109,6 @@ export const Dropdown = (props) => {
             </button>
           </span>
         )
-      ) : props.type === "account" ? (
-        <>
-          <button onClick={props.signInClick} className={classes.login}>
-            ورود
-          </button>
-          <button onClick={props.signUpClick} className={classes.signup}>
-            عضویت
-          </button>
-        </>
       ) : props.type === "sports" ? (
         <>
           <ul>

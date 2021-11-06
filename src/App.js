@@ -32,12 +32,10 @@ export const App = () => {
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
-  const [isSignUpShown, setIsSignUpShown] = useState(false);
-  const [isSignInShown, setIsSignInShown] = useState(false);
+  const [isSignShown, setIsSignShown] = useState(false);
   const [isSportsOpen, setIsSportsOpen] = useState(false);
   const [isBrandsOpen, setIsBrandsOpen] = useState(false);
   const [isProductTypeOpen, setIsProductTypeOpen] = useState(false);
-  const [isAccountOpen, setIsAccountOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
   const [cart, setCart] = useState([]);
   /*VARIABLES*/
@@ -98,24 +96,20 @@ export const App = () => {
     }
   };
 
-  const showSingIn = () => {
-    disableAll(true);
-    setIsSignInShown(true);
-    window.scrollTo(0, 0);
-    disableScroll();
-  };
-
-  const showSingUp = () => {
-    disableAll(true);
-    setIsSignUpShown(true);
-    window.scrollTo(0, 0);
-    disableScroll();
+  const showSign = () => {
+    if (getCookie("isOnline") == false) {
+      disableAll(true);
+      setIsSignShown(true);
+      window.scrollTo(0, 0);
+      disableScroll();
+    } else {
+      logoutHandler();
+    }
   };
 
   const closeForm = () => {
     disableAll(false);
-    setIsSignUpShown(false);
-    setIsSignInShown(false);
+    setIsSignShown(false);
     window.onscroll = function () {};
   };
 
@@ -132,11 +126,6 @@ export const App = () => {
   const openProductType = () => {
     if (isProductTypeOpen) setIsProductTypeOpen(false);
     else setIsProductTypeOpen(true);
-  };
-
-  const openAccount = () => {
-    if (isAccountOpen) setIsAccountOpen(false);
-    else setIsAccountOpen(true);
   };
 
   const openBasket = () => {
@@ -179,9 +168,11 @@ export const App = () => {
   }, []);
 
   const logoutHandler = () => {
-    setCookie("isOnline", "", -100);
-    setCookie("accountName", "", -100);
-    window.location.href = window.location.href;
+    if (window.confirm("آیا میخواهید از این حساب خارج شوید؟")) {
+      setCookie("isOnline", "", -100);
+      setCookie("accountName", "", -100);
+      window.location.href = window.location.href;
+    }
   };
 
   return (
@@ -193,48 +184,16 @@ export const App = () => {
               <div className="hiddenMenu">
                 <Cancel onClick={closeHiddenMenu} className="closeHiddenMenu" />
                 <ul className="rightSide">
-                  <li className="account" onClick={openAccount}>
-                    {isAccountOpen ? <ArrowDropDown /> : <ArrowLeft />}
-                    <label>حساب من </label>
-                    <Person className="account" />
-                    {isAccountOpen && (
-                      <ul>
-                        {getCookie("isOnline") == false ? (
-                          <>
-                            <button
-                              className="login"
-                              onClick={() => {
-                                closeForm();
-                                showSingIn();
-                                closeHiddenMenu();
-                              }}
-                            >
-                              ورود
-                            </button>
-                            <button
-                              className="register"
-                              onClick={() => {
-                                closeForm();
-                                showSingUp();
-                                closeHiddenMenu();
-                              }}
-                            >
-                              عضویت
-                            </button>
-                          </>
-                        ) : (
-                          <button
-                            className="login"
-                            onClick={() => {
-                              logoutHandler();
-                              closeHiddenMenu();
-                            }}
-                          >
-                            خروج
-                          </button>
-                        )}
-                      </ul>
-                    )}
+                  <li className="account">
+                    <label
+                      onClick={() => {
+                        closeForm();
+                        showSign();
+                        closeHiddenMenu();
+                      }}
+                    >
+                      حساب من{" "}
+                    </label>
                   </li>
                   <li className="basket" onClick={openBasket}>
                     {isBasketOpen ? <ArrowDropDown /> : <ArrowLeft />}
@@ -402,35 +361,13 @@ export const App = () => {
                   />
                 </ul>
                 <ul className="leftSide">
-                  <li className="account">
+                  <li className="account" onClick={showSign}>
                     <Person className="i" />
                     {getCookie("isOnline") == false ? (
                       <label>حساب من</label>
                     ) : (
                       <label>{getCookie("accountName")}</label>
                     )}
-                    <div className="account">
-                      {getCookie("isOnline") == false ? (
-                        <Dropdown
-                          type="account"
-                          signInClick={() => {
-                            closeForm();
-                            showSingIn();
-                          }}
-                          signUpClick={() => {
-                            closeForm();
-                            showSingUp();
-                          }}
-                        />
-                      ) : (
-                        <Dropdown
-                          type="online"
-                          logoutClick={() => {
-                            logoutHandler();
-                          }}
-                        />
-                      )}
-                    </div>
                   </li>
                   <li className="basket">
                     <div className="carts">{cart.length}</div>
@@ -550,8 +487,7 @@ export const App = () => {
                 </ul>
               </nav>
             </header>
-            {isSignUpShown && <Sign type="signup" close={closeForm} />}
-            {isSignInShown && <Sign type="login" close={closeForm} />}
+            {isSignShown && <Sign close={closeForm} />}
             <Switch>
               {sportsData.map((res) => (
                 <Route path={`/category/${res.category}`} key={res.id}>
@@ -615,14 +551,7 @@ export const App = () => {
               </Route>
 
               <Route path="/">
-                <Advertising
-                  click={() => {
-                    closeHiddenMenu();
-                    closeForm();
-                    window.scrollTo(0, 0);
-                    showSingUp();
-                  }}
-                />
+                <Advertising />
                 <Categories />
                 <LastProducts />
               </Route>
