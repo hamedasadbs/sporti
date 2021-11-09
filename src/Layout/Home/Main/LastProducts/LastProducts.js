@@ -15,8 +15,8 @@ export const LastProducts = (props) => {
   /*VARIABLES*/
   const url = "http://localhost/bsShop/lastProducts.php";
   const likedURL = "http://localhost/bsShop/liked.php";
-  const isOnline = useSelector((state) => state.isOnline);
-  const accountName = useSelector((state) => state.accountName);
+  const isOnline = useSelector((state) => state.cookieReducer.isOnline);
+  const accountName = useSelector((state) => state.cookieReducer.accountName);
   /*FUNCTIONS*/
   useEffect(() => {
     axios.post(url).then((res) => setProductsData(res.data));

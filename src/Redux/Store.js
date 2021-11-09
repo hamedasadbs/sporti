@@ -1,4 +1,4 @@
 import { createStore } from "redux";
-import cookieReducer from "./Cookie/CookieReducers";
+import combineReducer from "./CombineReducer";
 
-export const store = createStore(cookieReducer);
+export const store = createStore(combineReducer);

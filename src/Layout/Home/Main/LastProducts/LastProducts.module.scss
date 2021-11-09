@@ -117,9 +117,10 @@
           padding: 10px;
           border-radius: 0 0 5px 5px;
           width: 100%;
+          opacity: 0.9;
 
           &:hover {
-            background-color: darken($btnColor2, 5%);
+            opacity: 1;
           }
         }
       }

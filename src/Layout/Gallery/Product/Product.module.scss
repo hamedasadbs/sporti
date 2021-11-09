@@ -78,9 +78,10 @@
       font-family: $font;
       padding: 10px;
       border-radius: 0 0 5px 5px;
+      opacity: 0.9;
 
       &:hover {
-        background-color: darken($btnColor2, 5%);
+        opacity: 1;
       }
     }
 
@@ -92,9 +93,10 @@
       padding: 10px;
       width: 100%;
       border-radius: 5px 5px 0 0;
+      opacity: 0.9;
 
       &:hover {
-        background-color: darken($btnColor1, 5%);
+        opacity: 1;
       }
     }
 
@@ -107,7 +109,7 @@
       border-radius: 5px 5px 0 0;
 
       &:hover {
-        cursor: auto;
+        cursor: not-allowed;
       }
     }
   }

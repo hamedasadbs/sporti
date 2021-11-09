@@ -153,9 +153,10 @@
         width: 100%;
         border-radius: 5px 5px 0 0;
         margin-top: 10px;
+        opacity: 0.9;
 
         &:hover {
-          background-color: darken($btnColor1, 5%);
+          opacity: 1;
         }
       }
 
@@ -170,7 +171,7 @@
         margin-top: 10px;
 
         &:hover {
-          cursor: auto;
+          cursor: not-allowed;
         }
       }
     }

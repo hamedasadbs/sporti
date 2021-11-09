@@ -44,7 +44,7 @@ export const App = () => {
   const productTypeURL = "http://localhost/bsShop/productType.php";
   const cartURL = "http://localhost/bsShop/cart.php";
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.page);
+  const page = useSelector((state) => state.pageReducer.page);
   /*FUNCTIONS*/
   const setCookie = (cName, cValue, minutes) => {
     let d = new Date();
@@ -229,7 +229,8 @@ export const App = () => {
                           <li
                             key={res.id}
                             onClick={() => {
-                              window.location.href = res.category;
+                              window.location.href =
+                                "/category/" + res.category;
                             }}
                           >
                             <Link
@@ -253,7 +254,7 @@ export const App = () => {
                           <li
                             key={res.id}
                             onClick={() => {
-                              window.location.href = res.brand;
+                              window.location.href = "/category/" + res.brand;
                             }}
                           >
                             <Link
@@ -278,7 +279,7 @@ export const App = () => {
                           <li
                             key={res.id}
                             onClick={() => {
-                              window.location.href = res.type;
+                              window.location.href = "/category/" + res.type;
                             }}
                           >
                             <Link onClick={closeHiddenMenu} to={`/${res.type}`}>
