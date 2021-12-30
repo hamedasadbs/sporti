@@ -25,7 +25,7 @@
       margin: 30px 10px;
       width: 300px;
       @include shadow();
-      border-radius: 0 0 5px 5px;
+      border-radius: 0 0 50px 50px;
 
       .icons {
         display: flex;
@@ -117,10 +117,9 @@
           padding: 10px;
           border-radius: 0 0 5px 5px;
           width: 100%;
-          opacity: 0.9;
 
           &:hover {
-            opacity: 1;
+            border-radius: 0 0 50px 50px;
           }
         }
       }
@@ -207,6 +206,11 @@
 @media only screen and (max-width: $verySmall) {
   .lastProducts {
     .imageList {
+      flex-direction: column;
+      overflow: scroll;
+      overflow-x: hidden;
+      max-height: 460px;
+
       .image {
         width: 250px;
 

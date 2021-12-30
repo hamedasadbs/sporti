@@ -198,19 +198,16 @@ export const Sign = (props) => {
                 <Lock className={classes.i} />
               </div>
               <br />
-              <button onClick={enterToAccount} className={classes.login}>
-                ورود
-              </button>
               <h5 className={classes.rememberMe}>
                 <Checkbox color="primary" />
                 مرا به خاطر بسپار
               </h5>
               <a href="/" className={classes.reUser}>
-                نام کاربری را فراموش کرده ام
+                نام کاربری یا رمز عبور را فراموش کرده ام
               </a>
-              <a href="/" className={classes.rePass}>
-                رمز عبور را فراموش کرده ام
-              </a>
+              <button onClick={enterToAccount} className={classes.login}>
+                ورود
+              </button>
             </main>
           </>
         ) : (
@@ -267,7 +264,7 @@ export const Sign = (props) => {
                 />
                 <Lock className={classes.i} />
               </div>
-              <h5 className={classes.rememberMe}>
+              <h5 className={classes.notRobot}>
                 <input id="notRobot" type="checkbox" />
                 من ربات نیستم
               </h5>

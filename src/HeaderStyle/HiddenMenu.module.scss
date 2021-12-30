@@ -222,7 +222,8 @@
 
 @media only screen and (max-width: $verySmall) {
   .hiddenMenu {
-    width: 100%;
+    width: 400px;
+    margin-left: -60px;
 
     .rightSide {
       float: none;
@@ -233,6 +234,7 @@
 
       li.search {
         width: auto;
+        margin: 10px auto;
 
         input {
           &::placeholder {

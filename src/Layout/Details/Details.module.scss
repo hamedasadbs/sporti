@@ -81,12 +81,12 @@
           border-radius: 0;
 
           &:nth-child(1) {
-            border-right: none;
+            border-right: 1px transparent solid;
             border-radius: 20px 0 0 0;
           }
 
           &:nth-child(3) {
-            border-left: none;
+            border-left: 1px transparent solid;
             border-radius: 0 20px 0 0;
           }
 
@@ -97,7 +97,7 @@
 
         .activeTab {
           background-color: $superLightColor;
-          border-bottom: none;
+          border-bottom: 1px transparent solid;
 
           &:hover {
             background-color: $superLightColor;

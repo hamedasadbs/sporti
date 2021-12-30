@@ -61,28 +61,15 @@
 
   .btn {
     margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
 
     button {
-      width: 100%;
+      width: 70%;
       margin: 5px auto;
       padding: 10px;
-      border-radius: 5px;
+      border-radius: 50px;
       font-family: $font;
-    }
-
-    .showDetails {
-      background-color: #0093E9;
-      background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
-      color: $superLightColor;
-      transition: all 0.5s;
-      font-family: $font;
-      padding: 10px;
-      border-radius: 0 0 5px 5px;
-      opacity: 0.9;
-
-      &:hover {
-        opacity: 1;
-      }
     }
 
     .addToCart {
@@ -91,25 +78,38 @@
       color: $superLightColor;
       transition: all 0.5s;
       padding: 10px;
-      width: 100%;
-      border-radius: 5px 5px 0 0;
-      opacity: 0.9;
 
       &:hover {
-        opacity: 1;
+        width: 100%;
+        border-radius: 5px;
       }
     }
 
     .disabled {
-      background-color: rgb(230, 230, 230);
       color: rgb(173, 173, 173);
       transition: all 0.5s;
       padding: 10px;
       width: 100%;
-      border-radius: 5px 5px 0 0;
 
       &:hover {
         cursor: not-allowed;
+      }
+    }
+
+    .link {
+      display: flex;
+
+      .showDetails {
+        background-color: #0093E9;
+        background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+        color: $superLightColor;
+        transition: all 0.5s;
+        padding: 10px;
+
+        &:hover {
+          width: 100%;
+          border-radius: 5px;
+        }
       }
     }
   }
