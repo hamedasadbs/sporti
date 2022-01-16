@@ -1,7 +1,7 @@
 /*CSS*/
 import style from "./slideNav.module.scss";
 
-export const SlideNav = () => {
+export const SlideNav = (props) => {
   const navHandler = (e) => {
     const nav = document.getElementById(e.target.id);
     const otherId = `:not([id^='${e.target.id}'])`;
@@ -10,6 +10,7 @@ export const SlideNav = () => {
       others[i].classList.remove(style.activeNav);
     }
     nav.classList.add(style.activeNav);
+    props.dashboard(e.target.id);
   };
 
   return (

@@ -13,10 +13,14 @@ import { Dashboard } from "./Dashboard/dashboard";
 import style from "./app.module.scss";
 
 export const App = () => {
+  const [dashboard, setDashboard] = useState("bus");
+  const dashboardHandler = (d) => {
+    setDashboard(d);
+  };
   return (
     <div className={style.app}>
-      <Dashboard />
-      <SlideNav />
+      <Dashboard dashboard={dashboard} />
+      <SlideNav dashboard={dashboardHandler} />
     </div>
   );
 };

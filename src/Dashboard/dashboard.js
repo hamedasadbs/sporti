@@ -1,7 +1,8 @@
 /*CSS*/
 import style from "./dashboard.module.scss";
+import { Bar } from "react-chartjs-2";
 
-export const Dashboard = () => {
+export const Dashboard = (props) => {
   const navHandler = (e) => {
     const nav = document.getElementById(e.target.id);
     const otherId = `:not([id^='${e.target.id}'])`;
@@ -21,25 +22,35 @@ export const Dashboard = () => {
             <i className="fa fa-search"></i>
           </button>
         </div>
-        <h1>BUS</h1>
+        <h1>{props.dashboard}</h1>
       </header>
       <nav className={style.setDate}>
-        <button id="hour" onClick={navHandler} className={style.activeNav}>
-          از یک ساعت پیش
-        </button>
-        <button id="day" onClick={navHandler}>
-          از یک روز پیش
-        </button>
-        <button id="month" onClick={navHandler}>
-          از یک ماه پیش
+        <button id="custom" onClick={navHandler}>
+          فیلتر بازه زمانی به صورت دستی
         </button>
         <button id="year" onClick={navHandler}>
           از یک سال پیش
         </button>
-        <button id="custom" onClick={navHandler}>
-          فیلتر بازه زمانی به صورت دستی
+        <button id="month" onClick={navHandler}>
+          از یک ماه پیش
+        </button>
+        <button id="day" onClick={navHandler}>
+          از یک روز پیش
+        </button>
+        <button id="hour" onClick={navHandler} className={style.activeNav}>
+          از یک ساعت پیش
         </button>
       </nav>
+      <div>
+        <Bar
+          height={400}
+          width={600}
+          data={{
+            labels: ["red", "blue", "green"],
+            datasets: [0],
+          }}
+        />
+      </div>
     </article>
   );
 };
