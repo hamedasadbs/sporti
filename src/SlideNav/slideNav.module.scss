@@ -1,0 +1,49 @@
+.slideNav {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background-image: url(../Images/workspace-g548dadc7f_1280.png);
+    background-repeat: no-repeat;
+    background-position-y: -20px;
+    background-position-x: -900px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+    h1 {
+        margin: 20px auto;
+        color: lightgray;
+        border-bottom: 1px solid lightgray;
+        padding-bottom: 10px;
+        font-family: myFont;
+        font-size: 28px;
+        width: 100%;
+        text-align: center;
+    }
+
+    button {
+        width: 100%;
+        display: flex;
+        margin: 10px auto;
+        background-color: transparent;
+        border-radius: 5px;
+        padding: 15px 15px;
+        font-size: 25px;
+        border: none;
+        font-family: myFont;
+        font-weight: bold;
+        color: whitesmoke;
+        justify-content: flex-end;
+
+        i {
+            margin-left: 10px;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .activeNav {
+        background-color: rgba(26, 135, 168, 0.8);
+    }
+}
