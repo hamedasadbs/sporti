@@ -1,0 +1,132 @@
+@import '../../../index.module.scss';
+
+.qas {
+    width: auto;
+    background-color: $mainGray;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 0;
+
+    h1 {
+        margin: 40px auto;
+        font-size: 23px;
+        font-family: specialFont;
+        color: $title;
+        border-bottom: 1px solid lightgray;
+        padding-bottom: 15px;
+    }
+
+    .qa {
+        background-color: white;
+        border-radius: 5px;
+        display: flex;
+        width: 700px;
+        margin: auto;
+        margin-top: 20px;
+        padding: 10px 30px;
+        box-shadow:
+            0 1px 1px hsl(0deg 0% 0% / 0.075),
+            0 2px 2px hsl(0deg 0% 0% / 0.075),
+            0 4px 4px hsl(0deg 0% 0% / 0.075),
+            0 8px 8px hsl(0deg 0% 0% / 0.075),
+            0 16px 16px hsl(0deg 0% 0% / 0.075);
+
+        section {
+            h1 {
+                color: $header;
+                margin: initial;
+                font-size: 25px;
+                font-family: myFont;
+                text-align: right;
+                border-bottom: initial;
+            }
+
+            p {
+                text-align: right;
+                font-family: myFont;
+                color: $paragraph;
+                font-size: 23px;
+            }
+        }
+
+        i {
+            font-size: 60px;
+            color: $mainPurple;
+            margin: auto;
+            margin-left: 30px;
+        }
+
+        .i1{
+            display: none;
+        }
+    }
+
+    a {
+        .scrollUpActive {
+            display: initial;
+            position: fixed;
+            top: 550px;
+            left: 50px;
+            font-size: 100px;
+            color: $active;
+        }
+
+        .scrollUpNotActive {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .qas {
+        .qa {
+            width: 400px;
+
+            section {
+                h1 {
+                    font-size: 22px;
+                }
+
+                p {
+                    font-size: 20px;
+                }
+            }
+
+            i {
+                font-size: 40px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .qas {
+        background-color: aqua;
+        .qa {
+            width: 200px;
+
+            section {
+                h1 {
+                    font-size: 20px;
+                }
+
+                p {
+                    font-size: 18px;
+                }
+            }
+
+            i {
+                font-size: 30px;
+            }
+
+            .i1{
+                display: initial;
+                margin: 5px;
+            }
+
+            .i2{
+                display: none;
+            }
+        }
+    }
+}

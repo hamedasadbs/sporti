@@ -1,0 +1,167 @@
+@import '../../../index.module.scss';
+
+.bigRestaurant {
+    width: 42%;
+
+    img {
+        width: 95%;
+    }
+}
+
+.restaurant {
+    width: 27%;
+
+    img {
+        width: 91%;
+    }
+}
+
+.bigRestaurant,
+.restaurant {
+    height: 420px;
+    background-color: white;
+    margin: 10px 5px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: all 0.5s;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+        cursor: pointer;
+    }
+
+    img {
+        height: 250px;
+        border-radius: 20px;
+        margin: 10px auto;
+        object-fit: cover;
+    }
+
+    h1 {
+        margin: 0 auto;
+        font-size: 25px;
+        font-family: specialFont;
+        color: $header;
+        font-weight: bold;
+    }
+
+    .stars {
+        margin: 5px auto;
+        display: flex;
+
+        .starOn {
+            color: gold;
+            margin: 3px 1px;
+        }
+
+        .starOff {
+            color: lightgrey;
+            margin: 3px 1px;
+        }
+
+        .point {
+            width: 20px;
+            height: 20px;
+            background-color: $mainPurple;
+            color: white;
+            text-align: center;
+            margin: auto;
+            margin-left: 5px;
+            padding: 0 3px;
+            padding-bottom: 4px;
+            border-radius: 5px;
+        }
+    }
+
+    h2 {
+        margin: 0 auto;
+        font-size: 15px;
+        font-family: specialFont;
+        color: $link;
+        font-weight: bold;
+    }
+
+    .info {
+        margin: 10px auto;
+        display: flex;
+
+        .firstInfo {
+            background-color: $mainOrange;
+        }
+
+        .secondInfo {
+            background-color: $mainGreen;
+        }
+
+        .firstInfo,
+        .secondInfo {
+            text-align: center;
+            padding: 5px 40px;
+            font-size: 17px;
+            font-family: myFont;
+            font-weight: bold;
+            color: white;
+            border-radius: 50px;
+            margin: 0 2px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .bigRestaurant {
+        width: 65%;
+
+        img {
+            width: 95%;
+        }
+    }
+
+    .restaurant {
+        width: 32%;
+
+        img {
+            width: 91%;
+        }
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .bigRestaurant {
+        width: 99%;
+
+        img {
+            width: 95%;
+        }
+    }
+
+    .restaurant {
+        width: 48%;
+        margin: 5px auto;
+
+        img {
+            width: 91%;
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .bigRestaurant {
+        .info {
+            flex-direction: column;
+
+            .secondInfo {
+                margin-top: 5px;
+            }
+        }
+    }
+
+    .restaurant {
+        width: 97%;
+
+        .info {
+            flex-direction: column;
+        }
+    }
+}

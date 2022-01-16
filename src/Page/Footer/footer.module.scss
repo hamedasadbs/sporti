@@ -1,0 +1,105 @@
+@import '../../index.module.scss';
+
+.footer {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+
+    .icons,
+    .shortcuts {
+        width: auto;
+        display: flex;
+        justify-content: center;
+        margin: auto;
+        margin-top: 20px;
+
+        i {
+            font-size: 30px;
+            color: gray;
+            margin: 20px;
+            transition: all 0.3s;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .facebook {
+            &:hover {
+                color: $facebook;
+            }
+        }
+
+        .twitter {
+            &:hover {
+                color: $twitter;
+            }
+        }
+
+        .linkedin {
+            &:hover {
+                color: $linkedin;
+            }
+        }
+
+        .pinterest {
+            &:hover {
+                color: $pinterest;
+            }
+        }
+
+        .instagram {
+            &:hover {
+                background: -webkit-gradient(linear, left bottom, right top, from($instagram1), to($instagram2));
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+        }
+
+        h1 {
+            font-family: myFont;
+            font-size: 25px;
+            color: $link;
+            margin: 0px 40px 20px 40px;
+            transition: all 0.3s;
+
+            &:hover {
+                color: $mainOrange;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 820px) {
+    .footer {
+        .shortcuts {
+            h1 {
+                font-size: 20px;
+                margin: 0px 20px 20px 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 520px) {
+    .footer {
+        .shortcuts {
+            h1 {
+                font-size: 15px;
+                margin: 0px 20px 20px 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .footer {
+
+        .icons,
+        .shortcuts {
+            flex-wrap: wrap;
+        }
+    }
+}

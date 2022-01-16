@@ -1,0 +1,56 @@
+@import '../../index.module.scss';
+
+.header {
+    height: 60px;
+    display: flex;
+    background-color: darken($mainGreen, 10%);
+
+    .account {
+        display: flex;
+        margin-right: 3%;
+        padding: 5px 0;
+
+        h1 {
+            font-family: specialFont;
+            font-size: 18px;
+            color: white;
+        }
+
+        i {
+            font-size: 25px;
+            margin: auto;
+            margin-left: 10px;
+            color: white;
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .logo {
+        margin: auto;
+        margin-left: 48%;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+
+        img {
+            width: 45px;
+            height: 45px;
+            margin: auto;
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .header {
+        .account {
+            margin-right: 10%;
+        }
+
+        .logo {
+            margin-left: 10%;
+        }
+    }
+}

@@ -1,0 +1,196 @@
+@import '../../../index.module.scss';
+
+.restaurant {
+    width: 290px;
+    background-color: white;
+    margin: 10px 5px;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    transition: all 0.5s;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    img {
+        width: 96%;
+        height: 250px;
+        border-radius: 20px;
+        margin: 10px auto;
+        object-fit: cover;
+    }
+
+    input,
+    textarea,
+    select {
+        border: 1px solid gray;
+        border-radius: 0;
+        font-size: 18px;
+        font-family: specialFont;
+        background-color: transparent;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        font-weight: bold;
+
+        &::placeholder {
+            font-size: 17px;
+            text-align: center;
+            font-weight: bold;
+            color: grey;
+        }
+
+        &:focus {
+            outline: none;
+
+            +i {
+                color: $mainOrange;
+            }
+        }
+
+        option {
+            color: 50px;
+        }
+
+        .starOn {
+            color: gold;
+            margin: 3px 1px;
+        }
+    }
+
+    h1 {
+        margin: 0 auto;
+        font-size: 25px;
+        font-family: specialFont;
+        color: $header;
+        font-weight: bold;
+    }
+
+    .stars {
+        margin: 5px auto;
+        display: flex;
+
+        .starOn {
+            color: gold;
+            margin: 3px 1px;
+        }
+
+        .starOff {
+            color: lightgrey;
+            margin: 3px 1px;
+        }
+
+        .point {
+            width: 20px;
+            height: 20px;
+            background-color: $mainPurple;
+            color: white;
+            text-align: center;
+            margin: auto;
+            margin-left: 5px;
+            padding: 0 3px;
+            padding-bottom: 4px;
+            border-radius: 5px;
+        }
+    }
+
+    h2 {
+        margin: 0 auto;
+        font-size: 15px;
+        font-family: specialFont;
+        color: $link;
+        font-weight: bold;
+    }
+
+    span {
+        margin: 0 auto;
+        font-size: 18px;
+        font-family: specialFont;
+        color: $title;
+        font-weight: bold;
+    }
+
+    button {
+        color: white;
+        width: 70%;
+        margin: 10px auto;
+        transition: all 0.5s;
+        border: none;
+        border-radius: 50px;
+        font-family: myFont;
+        font-weight: bold;
+        font-size: 22px;
+        transition: all 0.3s;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    button.delete {
+        background-color: rgb(233, 45, 45);
+    }
+
+    button.edit {
+        background-color: $mainOrange;
+    }
+
+    .btn {
+        display: flex;
+
+        button {
+            color: white;
+            width: 70%;
+            margin: 10px auto;
+            transition: all 0.5s;
+            border: none;
+            border-radius: 50px;
+            font-family: myFont;
+            font-weight: bold;
+            font-size: 22px;
+            transition: all 0.3s;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        button.cancel {
+            background-color: rgb(156, 156, 156);
+            font-weight: 500;
+        }
+
+        button.save {
+            background-color: darken($mainGreen, 10%);
+        }
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .restaurant {
+        width: 32%;
+
+        img {
+            width: 91%;
+        }
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .restaurant {
+        width: 48%;
+        margin: 5px auto;
+
+        img {
+            width: 91%;
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .restaurant {
+        width: 97%;
+    }
+}

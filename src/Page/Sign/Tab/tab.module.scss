@@ -1,0 +1,41 @@
+@import '../../../index.module.scss';
+
+.tab {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0 10px 10px;
+
+    .buttons {
+        margin: auto;
+        width: auto;
+
+        button {
+            background-color: white;
+            padding: 10px 50px;
+            font-family: specialFont;
+            font-size: 22px;
+            font-weight: bold;
+            color: $header;
+            width: auto;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        .activeTab {
+            border: none;
+            border-bottom: 5px solid $mainGreen;
+        }
+
+        .notActiveTab {
+            border: none;
+            transition: all 0.2s;
+
+            &:hover {
+                border-bottom: 5px solid lighten($mainGreen, 30%);
+            }
+        }
+    }
+}
