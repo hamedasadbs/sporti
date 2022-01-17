@@ -1,5 +1,5 @@
 .dashboard {
-    width: 100%;
+    width: 80%;
     background-color: rgb(226, 226, 226);
     display: flex;
     flex-direction: column;
@@ -48,10 +48,11 @@
         width: 100%;
         height: 50px;
         display: flex;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
         button {
             width: 100%;
-            border: 1px solid gray;
+            border: none;
             font-family: myFont;
             font-size: 20px;
             color: rgb(54, 54, 54);
@@ -62,9 +63,36 @@
         }
 
         .activeNav {
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-            background-image: linear-gradient(to left, lightsalmon, rgb(255, 208, 122));
-            font-weight: bold;
+            border-top: 3px solid lightsalmon;
+            border-bottom: 3px solid lightsalmon;
+        }
+    }
+
+    .requestGraphs {
+        display: flex;
+        margin: 40px auto;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        padding: 20px 0;
+        width: 100%;
+
+        .barGraph {
+            width: 100%;
+            margin: auto 10px;
+        }
+
+        .dougnutGraph {
+            width: 400px;
+            margin: auto 10px;
+            display: flex;
+            flex-direction: column;
+            margin-top: 0px;
+
+            span {
+                margin: auto;
+                margin-top: -140px;
+                font-size: 25px;
+                color: gray;
+            }
         }
     }
 }
