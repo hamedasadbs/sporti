@@ -1,22 +1,24 @@
 .slideNav {
-    width: 20%;
-    height: 600px;
+    width: 18%;
+    height: 100%;
+    position: fixed;
+    right: 0;
     display: flex;
     flex-direction: column;
     padding: 15px;
-    background-image: url(../Images/workspace-g548dadc7f_1280.png);
+    background-image: linear-gradient(to right, rgb(77, 77, 77), rgb(31, 31, 31));
     background-repeat: no-repeat;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 
     h1 {
         margin: 20px auto;
-        color: lightgray;
-        border-bottom: 1px solid lightgray;
+        color: gray;
+        border-bottom: 1px solid gray;
         padding-bottom: 10px;
         font-family: myFont;
         font-size: 28px;
         width: 100%;
-        text-align: center;
+        text-align: right;
     }
 
     button {
@@ -30,11 +32,15 @@
         border: none;
         font-family: myFont;
         font-weight: bold;
-        color: whitesmoke;
+        color: lightgray;
         justify-content: flex-end;
 
         i {
             margin-left: 10px;
+        }
+
+        .busIcon {
+            transform: rotate(270deg);
         }
 
         &:hover {

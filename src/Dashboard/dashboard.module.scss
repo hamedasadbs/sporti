@@ -15,31 +15,48 @@
             color: gray;
             margin: auto;
             margin-right: 20px;
+            font-size: 30px;
         }
 
         .search {
             margin: auto;
             margin-left: 40px;
+            width: 300px;
+            display: flex;
 
             button {
                 border: none;
+                width: 60px;
                 border-radius: 50px;
                 padding: 10px 12px;
-                margin-left: -10px;
+                margin-left: -20px;
                 background-color: white;
                 box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+                i {
+                    transition: all 0.1s;
+                }
+
+                &:hover {
+                    cursor: pointer;
+
+                    i {
+                        font-size: 20px;
+                    }
+                }
             }
 
             input {
                 text-align: right;
-                width: 150px;
-                height: 30px;
+                width: 100%;
+                height: 50px;
                 outline: none;
                 border: none;
                 border-bottom: 1px solid gray;
                 background-color: transparent;
-                padding-right: 15px;
+                padding-right: 25px;
                 font-family: myFont;
+                font-size: 20px;
             }
         }
     }
@@ -56,6 +73,9 @@
             font-family: myFont;
             font-size: 20px;
             color: rgb(54, 54, 54);
+            border-top: 3px solid rgb(253, 223, 210);
+            border-bottom: 3px solid rgb(253, 223, 210);
+            transition: all 0.3s;
 
             &:hover {
                 cursor: pointer;
@@ -68,29 +88,46 @@
         }
     }
 
-    .requestGraphs {
+    .requestGraphs,
+    .softwares {
         display: flex;
         margin: 40px auto;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         padding: 20px 0;
         width: 100%;
+        height: 300px;
 
         .barGraph {
             width: 100%;
             margin: auto 10px;
         }
 
+        .chooseSW {
+            width: 100%;
+            margin: auto 10px;
+            background-color: lightgreen;
+            margin-top: 20px;
+
+            select {
+                width: 100%;
+                height: 50px;
+                font-size: 25px;
+                font-family: myFont;
+                text-align: center;
+            }
+        }
+
         .dougnutGraph {
-            width: 400px;
+            width: 50%;
             margin: auto 10px;
             display: flex;
             flex-direction: column;
-            margin-top: 0px;
+            margin-top: -20px;
 
             span {
                 margin: auto;
                 margin-top: -140px;
-                font-size: 25px;
+                font-size: 30px;
                 color: gray;
             }
         }

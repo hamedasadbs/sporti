@@ -19,19 +19,22 @@ export const Dashboard = (props) => {
   let totalReqChart = React.createRef();
   let totalResChart = React.createRef();
 
+  let swReqChart = React.createRef();
+  let swResChart = React.createRef();
+
   useEffect(() => {
     const req = reqChart.current.getContext("2d");
     new Chart(req, {
       type: "bar",
       data: {
         labels: [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
+          "نرم افزار اول",
+          "نرم افزار هشتم",
+          "نرم افزار سوم",
+          "نرم افزار دوازدهم",
+          "نرم افزار چهارم",
+          "نرم افزار بیستم",
+          "نرم افزار نهم",
         ],
         datasets: [
           {
@@ -108,6 +111,60 @@ export const Dashboard = (props) => {
         },
       },
     });
+
+    const swRes = swResChart.current.getContext("2d");
+    new Chart(swRes, {
+      type: "doughnut",
+      data: {
+        labels: ["ناموفق", "موفق"],
+        datasets: [
+          {
+            label: "My First Dataset",
+            data: [30, 70],
+            backgroundColor: ["rgb(223, 75, 75)", "rgb(60, 145, 60)"],
+            hoverOffset: 4,
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "مجموع پاسخ ها",
+          },
+        },
+      },
+    });
+
+    const swReq = swReqChart.current.getContext("2d");
+    new Chart(swReq, {
+      type: "doughnut",
+      data: {
+        labels: ["ناموفق", "موفق"],
+        datasets: [
+          {
+            label: "My First Dataset",
+            data: [30, 70],
+            backgroundColor: ["rgb(223, 75, 75)", "rgb(60, 145, 60)"],
+            hoverOffset: 4,
+          },
+        ],
+      },
+      options: {
+        plugins: {
+          legend: {
+            position: "top",
+          },
+          title: {
+            display: true,
+            text: "مجموع درخواست ها",
+          },
+        },
+      },
+    });
   }, []);
 
   return (
@@ -149,6 +206,24 @@ export const Dashboard = (props) => {
         <div className={style.dougnutGraph}>
           <canvas ref={totalResChart} />
           <span>14</span>
+        </div>
+      </main>
+      <main className={style.softwares}>
+        <div className={style.dougnutGraph}>
+          <canvas ref={swResChart} />
+          <span>14</span>
+        </div>
+        <div className={style.chooseSW}>
+          <select>
+            <option value="sw1">نرم افزار اول</option>
+            <option value="sw2">نرم افزار دوم</option>
+            <option value="sw3">نرم افزار سوم</option>
+            <option value="sw4">نرم افزار چهارم</option>
+          </select>
+        </div>
+        <div className={style.dougnutGraph}>
+          <canvas ref={swReqChart} />
+          <span>9</span>
         </div>
       </main>
     </article>
