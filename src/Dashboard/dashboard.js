@@ -7,6 +7,7 @@ import style from "./dashboard.module.scss";
 import { InfoBoxes } from "./infoBoxes/infoBoxes";
 import { BusTransactions } from "./busTransactions/busTransactions";
 import { SoftwareTransactions } from "./softwareTransactions/softwareTransactions";
+import { InfoTables } from "./infoTables/infoTables";
 
 export const Dashboard = (props) => {
   return (
@@ -23,6 +24,7 @@ export const Dashboard = (props) => {
       <InfoBoxes />
       <BusTransactions />
       <SoftwareTransactions />
+      <InfoTables />
     </article>
   );
 };

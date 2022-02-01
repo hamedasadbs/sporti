@@ -1,37 +1,51 @@
 /*INNER COMPONENTS*/
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 /*CSS*/
 import style from "./softwareTransactions.module.scss";
 import Chart from "chart.js/auto";
 
 export const SoftwareTransactions = () => {
+  const softwares = [
+    "نرم افزار ششم",
+    "نرم افزار پنجم",
+    "نرم افزار چهارم",
+    "نرم افزار سوم",
+    "نرم افزار دوم",
+    "نرم افزار اول",
+  ];
+  const [sw, setSW] = useState(softwares[0]);
+
+  const swHandler = (e) => {
+    setSW(e.target.text);
+  };
+
   let swReqChart = React.createRef();
   let swResChart = React.createRef();
 
   useEffect(() => {
     const swRes = swResChart.current.getContext("2d");
     new Chart(swRes, {
-      type: "doughnut",
+      type: "line",
       data: {
-        labels: ["ناموفق", "موفق"],
+        labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050],
         datasets: [
           {
-            label: "My First Dataset",
-            data: [30, 70],
-            backgroundColor: ["rgb(223, 75, 75)", "rgb(60, 145, 60)"],
-            hoverOffset: 4,
+            data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
+            label: "Asia",
+            borderColor: "rgb(126, 33, 126)",
+            fill: false,
           },
         ],
       },
       options: {
         plugins: {
           legend: {
-            position: "top",
+            position: "center",
           },
           title: {
             display: true,
-            text: "مجموع پاسخ ها",
+            text: "بیشترین درخواست های ارسال شده از نرم افزار",
           },
         },
       },
@@ -39,26 +53,26 @@ export const SoftwareTransactions = () => {
 
     const swReq = swReqChart.current.getContext("2d");
     new Chart(swReq, {
-      type: "doughnut",
+      type: "line",
       data: {
-        labels: ["ناموفق", "موفق"],
+        labels: [1500, 1600, 1700, 1750, 1800, 1850, 1900, 1950, 1999, 2050],
         datasets: [
           {
-            label: "My First Dataset",
-            data: [30, 70],
-            backgroundColor: ["rgb(223, 75, 75)", "rgb(60, 145, 60)"],
-            hoverOffset: 4,
+            data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
+            label: "Asia",
+            borderColor: "rgb(214, 155, 44)",
+            fill: false,
           },
         ],
       },
       options: {
         plugins: {
           legend: {
-            position: "top",
+            position: "center",
           },
           title: {
             display: true,
-            text: "مجموع درخواست ها",
+            text: "بیشترین پاسخ های دریافت شده از نرم افزار",
           },
         },
       },
@@ -66,23 +80,35 @@ export const SoftwareTransactions = () => {
   }, []);
 
   return (
-    <main className={style.softwares}>
-      <div className={style.dougnutGraph}>
-        <canvas ref={swResChart} />
-        <span>14</span>
+    <>
+      <div class={`container ${style.setDate}`}>
+        <div class={`dropdown ${style.dropdown}`}>
+          <button
+            class="btn btn-default dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+          >
+            {sw}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">نرم افزارها</li>
+            {softwares.map((sw) => (
+              <li>
+                <a onClick={swHandler}>{sw}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
-      <div className={style.chooseSW}>
-        <select>
-          <option value="sw1">نرم افزار اول</option>
-          <option value="sw2">نرم افزار دوم</option>
-          <option value="sw3">نرم افزار سوم</option>
-          <option value="sw4">نرم افزار چهارم</option>
-        </select>
-      </div>
-      <div className={style.dougnutGraph}>
-        <canvas ref={swReqChart} />
-        <span>9</span>
-      </div>
-    </main>
+      <main className={style.softwares}>
+        <div className={style.lineGraph}>
+          <canvas ref={swResChart} />
+        </div>
+        <div className={style.lineGraph}>
+          <canvas ref={swReqChart} />
+        </div>
+      </main>
+    </>
   );
 };

@@ -80,16 +80,8 @@ export const BusTransactions = () => {
   }, []);
 
   return (
-    <main className={style.requestGraphs}>
-      <div className={style.dougnutGraph}>
-        <canvas ref={totalTransactionChart} />
-        <span>9</span>
-      </div>
-      <div className={style.barGraph}>
-        <canvas ref={reqChart} />
-      </div>
+    <>
       <div class={`container ${style.setDate}`}>
-        <h1>انتخاب بازه زمانی</h1>
         <div class={`dropdown ${style.dropdown}`}>
           <button
             class="btn btn-default dropdown-toggle"
@@ -102,45 +94,40 @@ export const BusTransactions = () => {
           <ul class="dropdown-menu">
             <li class="dropdown-header">کوتاه مدت</li>
             <li>
-              <a onClick={dateHandler} href="#">
-                از روز پیش
-              </a>
+              <a onClick={dateHandler}>از روز پیش</a>
             </li>
             <li>
-              <a onClick={dateHandler} href="#">
-                از هفته پیش
-              </a>
+              <a onClick={dateHandler}>از هفته پیش</a>
             </li>
             <li>
-              <a onClick={dateHandler} href="#">
-                از ماه پیش
-              </a>
+              <a onClick={dateHandler}>از ماه پیش</a>
             </li>
             <li class="divider"></li>
             <li class="dropdown-header">بلند مدت</li>
             <li>
-              <a onClick={dateHandler} href="#">
-                از 1 سال پیش
-              </a>
+              <a onClick={dateHandler}>از 1 سال پیش</a>
             </li>
             <li>
-              <a onClick={dateHandler} href="#">
-                از 2 سال پیش
-              </a>
+              <a onClick={dateHandler}>از 2 سال پیش</a>
             </li>
             <li>
-              <a onClick={dateHandler} href="#">
-                از 5 سال پیش
-              </a>
+              <a onClick={dateHandler}>از 5 سال پیش</a>
             </li>
             <li>
-              <a onClick={dateHandler} href="#">
-                از 10 سال پیش
-              </a>
+              <a onClick={dateHandler}>از 10 سال پیش</a>
             </li>
           </ul>
         </div>
       </div>
-    </main>
+      <main className={style.requestGraphs}>
+        <div className={style.dougnutGraph}>
+          <canvas ref={totalTransactionChart} />
+          <span>9</span>
+        </div>
+        <div className={style.barGraph}>
+          <canvas ref={reqChart} />
+        </div>
+      </main>
+    </>
   );
 };

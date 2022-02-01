@@ -5,8 +5,12 @@ export const InfoBox = (props) => {
   return (
     <span className={style.infoBox}>
       <label className={style.title}>{props.title}</label>
-      <div className={style.icon}>
-        <i className="fa fa-home"></i>
+      <div
+        style={{ backgroundColor: props.bgColor }}
+        className={`${style.icon}`}
+      >
+        {props.icon2 && <i className={`fa ${props.icon2}`}></i>}
+        <i className={`fa ${props.icon1}`}></i>
       </div>
       <span>{props.value}</span>
       <label className={style.moreInfo}>اطلاعات اضافی درباره این باکس</label>

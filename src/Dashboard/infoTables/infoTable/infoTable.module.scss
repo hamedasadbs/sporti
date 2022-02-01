@@ -1,0 +1,40 @@
+.title {
+    font-size: 25px;
+    font-family: myFont;
+    background-color: lightsalmon;
+    width: 80%;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: -20px;
+    border-radius: 5px;
+}
+
+.infoTable {
+    width: 45%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin: 80px 30px;
+    text-align: center;
+
+    table {
+        width: 100%;
+
+        thead {
+            tr {
+                th {
+                    text-align: center;
+                    font-family: specialFont;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    text-align: center;
+                    font-family: myFont;
+                }
+            }
+        }
+    }
+}
