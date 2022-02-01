@@ -16,15 +16,15 @@ export const SlideNav = (props) => {
   return (
     <nav className={style.slideNav}>
       <h1>
-        داشبورد <i className="fa fa-tachometer"></i>
+        مدیریت <i className="fa fa-user-plus"></i>
       </h1>
-      <button onClick={navHandler} className={style.activeNav} id="BUS">
-        BUS<i className={`fa fa-usb ${style.busIcon}`}></i>
+      <button onClick={navHandler} className={style.activeNav} id="داشبورد">
+        داشبورد<i className="fa fa-tachometer"></i>
       </button>
-      <button onClick={navHandler} id="PROFILE">
+      <button onClick={navHandler} id="پروفایل">
         پروفایل<i className="fa fa-user-circle"></i>
       </button>
-      <button onClick={navHandler} id="SETTINGS">
+      <button onClick={navHandler} id="تنظیمات">
         تنظیمات<i className="fa fa-cog"></i>
       </button>
     </nav>

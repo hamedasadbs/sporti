@@ -13,7 +13,7 @@ import { Dashboard } from "./Dashboard/dashboard";
 import style from "./app.module.scss";
 
 export const App = () => {
-  const [dashboard, setDashboard] = useState("BUS");
+  const [dashboard, setDashboard] = useState("داشبورد");
   const dashboardHandler = (d) => {
     setDashboard(d);
   };
