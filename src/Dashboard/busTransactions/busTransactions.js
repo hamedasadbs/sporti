@@ -80,70 +80,67 @@ export const BusTransactions = () => {
   }, []);
 
   return (
-    <>
-      <h1 className={style.title}>BUS تراکنش های</h1>
-      <main className={style.requestGraphs}>
-        <div className={style.dougnutGraph}>
-          <canvas ref={totalTransactionChart} />
-          <span>9</span>
+    <main className={style.requestGraphs}>
+      <div className={style.dougnutGraph}>
+        <canvas ref={totalTransactionChart} />
+        <span>9</span>
+      </div>
+      <div className={style.barGraph}>
+        <canvas ref={reqChart} />
+      </div>
+      <div class={`container ${style.setDate}`}>
+        <h1>انتخاب بازه زمانی</h1>
+        <div class={`dropdown ${style.dropdown}`}>
+          <button
+            class="btn btn-default dropdown-toggle"
+            type="button"
+            data-toggle="dropdown"
+          >
+            {date}
+            <span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu">
+            <li class="dropdown-header">کوتاه مدت</li>
+            <li>
+              <a onClick={dateHandler} href="#">
+                از روز پیش
+              </a>
+            </li>
+            <li>
+              <a onClick={dateHandler} href="#">
+                از هفته پیش
+              </a>
+            </li>
+            <li>
+              <a onClick={dateHandler} href="#">
+                از ماه پیش
+              </a>
+            </li>
+            <li class="divider"></li>
+            <li class="dropdown-header">بلند مدت</li>
+            <li>
+              <a onClick={dateHandler} href="#">
+                از 1 سال پیش
+              </a>
+            </li>
+            <li>
+              <a onClick={dateHandler} href="#">
+                از 2 سال پیش
+              </a>
+            </li>
+            <li>
+              <a onClick={dateHandler} href="#">
+                از 5 سال پیش
+              </a>
+            </li>
+            <li>
+              <a onClick={dateHandler} href="#">
+                از 10 سال پیش
+              </a>
+            </li>
+          </ul>
         </div>
-        <div className={style.barGraph}>
-          <canvas ref={reqChart} />
-        </div>
-        <div class={`container ${style.setDate}`}>
-          <h1>انتخاب بازه زمانی</h1>
-          <div class={`dropdown ${style.dropdown}`}>
-            <button
-              class="btn btn-default dropdown-toggle"
-              type="button"
-              data-toggle="dropdown"
-            >
-              {date}
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li class="dropdown-header">کوتاه مدت</li>
-              <li>
-                <a onClick={dateHandler} href="#">
-                  از روز پیش
-                </a>
-              </li>
-              <li>
-                <a onClick={dateHandler} href="#">
-                  از هفته پیش
-                </a>
-              </li>
-              <li>
-                <a onClick={dateHandler} href="#">
-                  از ماه پیش
-                </a>
-              </li>
-              <li class="divider"></li>
-              <li class="dropdown-header">بلند مدت</li>
-              <li>
-                <a onClick={dateHandler} href="#">
-                  از 1 سال پیش
-                </a>
-              </li>
-              <li>
-                <a onClick={dateHandler} href="#">
-                  از 2 سال پیش
-                </a>
-              </li>
-              <li>
-                <a onClick={dateHandler} href="#">
-                  از 5 سال پیش
-                </a>
-              </li>
-              <li>
-                <a onClick={dateHandler} href="#">
-                  از 10 سال پیش
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </main>
-    </>
+      </div>
+    </main>
   );
 };

@@ -4,6 +4,7 @@ import React from "react";
 /*CSS*/
 import style from "./dashboard.module.scss";
 /*CHILD COMPONENTS*/
+import { InfoBoxes } from "./infoBoxes/infoBoxes";
 import { BusTransactions } from "./busTransactions/busTransactions";
 import { SoftwareTransactions } from "./softwareTransactions/softwareTransactions";
 
@@ -19,6 +20,7 @@ export const Dashboard = (props) => {
         </div>
         <h1>{props.dashboard}</h1>
       </header>
+      <InfoBoxes />
       <BusTransactions />
       <SoftwareTransactions />
     </article>

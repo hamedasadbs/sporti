@@ -1,0 +1,54 @@
+.infoBox {
+    width: 270px;
+    height: 200px;
+    margin: 30px 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 10px;
+    padding-right: 10px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+
+    .icon {
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+        display: flex;
+        border-radius: 5px;
+        margin-left: 10px;
+        margin-top: -160px;
+
+        i {
+            margin: auto;
+            font-size: 50px;
+            color: whitesmoke;
+        }
+    }
+
+    label.title,
+    span {
+        margin: auto;
+        margin-top: 20px;
+        text-align: right;
+        width: 100%;
+        font-weight: bold;
+    }
+
+    label.title {
+        color: rgb(185, 185, 185);
+        font-family: specialFont;
+        font-size: 18px;
+    }
+
+    span {
+        padding-right: 50px;
+        color: gray;
+        font-size: 40px;
+        margin-top: 0px;
+    }
+
+    label.moreInfo {
+        margin-top: -50px;
+        text-align: center;
+    }
+}

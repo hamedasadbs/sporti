@@ -66,26 +66,23 @@ export const SoftwareTransactions = () => {
   }, []);
 
   return (
-    <>
-      <h1 className={style.title}>sf</h1>
-      <main className={style.softwares}>
-        <div className={style.dougnutGraph}>
-          <canvas ref={swResChart} />
-          <span>14</span>
-        </div>
-        <div className={style.chooseSW}>
-          <select>
-            <option value="sw1">نرم افزار اول</option>
-            <option value="sw2">نرم افزار دوم</option>
-            <option value="sw3">نرم افزار سوم</option>
-            <option value="sw4">نرم افزار چهارم</option>
-          </select>
-        </div>
-        <div className={style.dougnutGraph}>
-          <canvas ref={swReqChart} />
-          <span>9</span>
-        </div>
-      </main>
-    </>
+    <main className={style.softwares}>
+      <div className={style.dougnutGraph}>
+        <canvas ref={swResChart} />
+        <span>14</span>
+      </div>
+      <div className={style.chooseSW}>
+        <select>
+          <option value="sw1">نرم افزار اول</option>
+          <option value="sw2">نرم افزار دوم</option>
+          <option value="sw3">نرم افزار سوم</option>
+          <option value="sw4">نرم افزار چهارم</option>
+        </select>
+      </div>
+      <div className={style.dougnutGraph}>
+        <canvas ref={swReqChart} />
+        <span>9</span>
+      </div>
+    </main>
   );
 };
