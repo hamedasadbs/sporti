@@ -1,21 +1,3 @@
-.setDate {
-    width: 100%;
-    margin-top: 80px;
-
-    .dropdown {
-        button {
-            width: 100%;
-        }
-
-        ul {
-            width: 100%;
-            max-height: 220px;
-            overflow-y: scroll;
-            text-align: right;
-        }
-    }
-}
-
 .requestGraphs {
     display: flex;
     margin: auto;
@@ -25,7 +7,7 @@
 
     .barGraph {
         width: 65%;
-        height: 450px;
+        height: 380px;
         margin: auto 10px;
         padding: 20px;
         border-radius: 10px;
@@ -41,13 +23,42 @@
         border-radius: 10px;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         background-color: whitesmoke;
-        height: 450px;
+        height: 380px;
 
         span {
             margin: auto;
-            margin-top: -210px;
+            margin-top: -180px;
             font-size: 40px;
             color: gray;
+        }
+    }
+
+    .setDate {
+        width: 20%;
+
+        h1 {
+            font-family: myFont;
+            font-size: 25px;
+            text-align: right;
+        }
+
+        .dropdown {
+            button {
+                width: 100%;
+            }
+
+            ul {
+                width: 100%;
+                max-height: 350px;
+                overflow-y: scroll;
+                text-align: right;
+
+                li {
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
         }
     }
 }

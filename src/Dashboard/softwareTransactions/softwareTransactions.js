@@ -81,32 +81,33 @@ export const SoftwareTransactions = () => {
 
   return (
     <>
-      <div class={`container ${style.setDate}`}>
-        <div class={`dropdown ${style.dropdown}`}>
-          <button
-            class="btn btn-default dropdown-toggle"
-            type="button"
-            data-toggle="dropdown"
-          >
-            {sw}
-            <span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li class="dropdown-header">نرم افزارها</li>
-            {softwares.map((sw) => (
-              <li>
-                <a onClick={swHandler}>{sw}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
       <main className={style.softwares}>
         <div className={style.lineGraph}>
           <canvas ref={swResChart} />
         </div>
         <div className={style.lineGraph}>
           <canvas ref={swReqChart} />
+        </div>
+        <div class={`container ${style.setDate}`}>
+          <h1>انتخاب نرم افزار</h1>
+          <div class={`dropdown ${style.dropdown}`}>
+            <button
+              class="btn btn-default dropdown-toggle"
+              type="button"
+              data-toggle="dropdown"
+            >
+              {sw}
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li class="dropdown-header">نرم افزارها</li>
+              {softwares.map((sw) => (
+                <li>
+                  <a onClick={swHandler}>{sw}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </main>
     </>
