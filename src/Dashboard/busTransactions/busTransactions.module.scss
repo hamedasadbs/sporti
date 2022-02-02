@@ -19,26 +19,33 @@
 .requestGraphs {
     display: flex;
     margin: auto;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 20px 0;
     width: 100%;
     height: 450px;
 
     .barGraph {
-        width: 100%;
+        width: 65%;
+        height: 450px;
         margin: auto 10px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: whitesmoke;
     }
 
     .dougnutGraph {
-        width: 50%;
+        width: 35%;
         margin: auto 10px;
         display: flex;
         flex-direction: column;
-        margin-top: -20px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        background-color: whitesmoke;
+        height: 450px;
 
         span {
             margin: auto;
-            margin-top: -200px;
+            margin-top: -210px;
             font-size: 40px;
             color: gray;
         }

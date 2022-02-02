@@ -72,7 +72,7 @@ export const SoftwareTransactions = () => {
           },
           title: {
             display: true,
-            text: "بیشترین پاسخ های دریافت شده از نرم افزار",
+            text: "بیشترین پاسخ های دریافت شده ی نرم افزار",
           },
         },
       },
