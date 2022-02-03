@@ -62,6 +62,7 @@ export const BusTransactions = () => {
           {
             data: [30, 70],
             backgroundColor: ["rgb(223, 75, 75)", "rgb(60, 145, 60)"],
+            border: "1px solid black",
           },
         ],
       },

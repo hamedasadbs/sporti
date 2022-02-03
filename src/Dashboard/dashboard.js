@@ -19,8 +19,10 @@ export const Dashboard = (props) => {
             <i className="fa fa-search"></i>
           </button>
         </div>
-        <h1>{props.dashboard}</h1>
       </header>
+      <main className={style.title}>
+        <h1>{props.dashboard}</h1>
+      </main>
       <InfoBoxes />
       <BusTransactions />
       <SoftwareTransactions />
