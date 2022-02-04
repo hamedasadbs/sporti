@@ -8,7 +8,7 @@ export const InfoTable = (props) => {
         {props.title} <i className="fa fa-table"></i>
       </h1>
       {props.type == "1" ? (
-        <table className="table table-striped">
+        <table className="table table-striped table-bordered">
           <thead>
             <tr>
               <th scope="col">اسم</th>
@@ -64,7 +64,7 @@ export const InfoTable = (props) => {
           </tbody>
         </table>
       ) : (
-        <table className="table table-striped">
+        <table className="table table-striped table-bordered">
           <thead>
             <tr>
               <th scope="col">تعداد درخواست دریافت شده</th>

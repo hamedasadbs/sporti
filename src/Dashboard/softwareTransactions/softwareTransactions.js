@@ -48,6 +48,25 @@ export const SoftwareTransactions = () => {
             text: "بیشترین درخواست های ارسال شده از نرم افزار",
           },
         },
+        backgroundColor: "rgb(126, 33, 126)",
+        scales: {
+          x: {
+            display: true,
+            title: {
+              display: true,
+              text: "نرم افزار",
+              color: "rgb(126, 33, 126)",
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: "تعداد درخواست",
+              color: "rgb(126, 33, 126)",
+            },
+          },
+        },
       },
     });
 
@@ -59,7 +78,6 @@ export const SoftwareTransactions = () => {
         datasets: [
           {
             data: [282, 350, 411, 502, 635, 809, 947, 1402, 3700, 5267],
-            label: "Asia",
             borderColor: "rgb(214, 155, 44)",
             fill: false,
           },
@@ -73,6 +91,25 @@ export const SoftwareTransactions = () => {
           title: {
             display: true,
             text: "بیشترین پاسخ های دریافت شده ی نرم افزار",
+          },
+        },
+        backgroundColor: "rgb(214, 155, 44)",
+        scales: {
+          x: {
+            display: true,
+            title: {
+              display: true,
+              text: "نرم افزار",
+              color: "rgb(214, 155, 44)",
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: "تعداد پاسخ",
+              color: "rgb(214, 155, 44)",
+            },
           },
         },
       },

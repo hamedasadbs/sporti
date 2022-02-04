@@ -36,7 +36,7 @@ export const BusTransactions = () => {
             maxBarThickness: 8,
             minBarLength: 2,
             data: [10, 20, 30, 40, 50, 60, 70],
-            backgroundColor: "lightsalmon",
+            backgroundColor: "rgb(126, 33, 126)",
           },
         ],
       },
@@ -50,6 +50,24 @@ export const BusTransactions = () => {
             text: "BUS بیشترین درخواست های ارسال شده از",
           },
         },
+        scales: {
+          x: {
+            display: true,
+            title: {
+              display: true,
+              text: "نرم افزار",
+              color: "rgb(126, 33, 126)",
+            },
+          },
+          y: {
+            display: true,
+            title: {
+              display: true,
+              text: "تعداد درخواست",
+              color: "rgb(126, 33, 126)",
+            },
+          },
+        },
       },
     });
 
@@ -61,7 +79,7 @@ export const BusTransactions = () => {
         datasets: [
           {
             data: [30, 70],
-            backgroundColor: ["rgb(223, 75, 75)", "rgb(60, 145, 60)"],
+            backgroundColor: ["rgb(255, 43, 43)", "rgb(34, 131, 34)"],
             border: "1px solid black",
           },
         ],

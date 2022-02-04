@@ -21,11 +21,10 @@
             button {
                 border: none;
                 width: 60px;
-                border-radius: 50px;
+                border-radius: 0 50px 50px 0;
                 padding: 10px 0px;
                 margin-left: -20px;
-                background-color: white;
-                box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+                background-color: darken(white, 10%);
 
                 i {
                     transition: all 0.1s;
@@ -46,11 +45,27 @@
                 height: 50px;
                 outline: none;
                 border: none;
-                border-bottom: 1px solid whitesmoke;
-                background-color: transparent;
+                background: linear-gradient(to right, white, darken(white, 10%));
                 padding-right: 25px;
                 font-family: myFont;
                 font-size: 20px;
+                border-radius: 50px 0 0 50px;
+
+                &::placeholder {
+                    transition: all 0.2s;
+                    position: absolute;
+                    right: 20px;
+                    top: 10px;
+                    font-size: 20px;
+                }
+
+                &:focus {
+                    &::placeholder {
+                        font-size: 12px;
+                        top: 0;
+                        right: 200px;
+                    }
+                }
             }
         }
     }
