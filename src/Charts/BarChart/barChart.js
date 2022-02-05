@@ -50,6 +50,10 @@ export const BarChart = (props) => {
                 display: true,
                 text: props.xName,
                 color: props.color,
+                font: {
+                  style: "bold",
+                  size: "20px",
+                },
               },
             },
             y: {
@@ -58,6 +62,10 @@ export const BarChart = (props) => {
                 display: true,
                 text: props.yName,
                 color: props.color,
+                font: {
+                  style: "bold",
+                  size: "20px",
+                },
               },
             },
           },

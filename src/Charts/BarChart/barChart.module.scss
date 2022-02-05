@@ -1,5 +1,5 @@
 .barChart {
-    width: 600px;
+    width: 580px;
     display: flex;
     flex-direction: column;
     margin: 20px 0;
@@ -8,17 +8,17 @@
     background-color: whitesmoke;
     padding: 25px;
 
-    .setDate{
+    .setDate {
         display: flex;
         margin-top: 20px;
 
-        h1{
+        h1 {
             font-family: myFont;
             font-size: 25px;
             margin: auto;
         }
 
-        .time{
+        .time {
             display: flex;
             flex-direction: column;
             margin: auto;

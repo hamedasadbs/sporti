@@ -1,7 +1,7 @@
 /*CSS*/
 import style from "./infoBoxes.module.scss";
 /*CHILD COMPONENTS*/
-import { InfoBox } from "./infoBox/infoBox";
+import { InfoBox } from "./InfoBox/infoBox";
 
 export const InfoBoxes = () => {
   return (

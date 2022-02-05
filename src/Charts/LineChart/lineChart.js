@@ -8,11 +8,24 @@ export const LineChart = (props) => {
   let [date, setDate] = useState("minute" + props.id);
   const [chart, setChart] = useState(null);
 
-  const yearDate = [1400, 1399, 1398, 1397];
-  const monthDate = ["تیر", "خرداد", "اردیبهشت", "فروردین"];
-  const dayDate = [0, 1, 2, 3, 30];
-  const hourDate = [0, 1, 2, 3, 24];
-  const minuteDate = [0, 1, 2, 3, 60];
+  const yearDate = [1400, 1399, 1398, 1397, 1396, 1395, 1394, 1393];
+  const monthDate = [
+    "اسفند",
+    "بهمن",
+    "دی",
+    "آذر",
+    "آبان",
+    "مهر",
+    "شهریور",
+    "مرداد",
+    "تیر",
+    "خرداد",
+    "اردیبهشت",
+    "فروردین",
+  ];
+  const dayDate = [...Array(32).keys()];
+  const hourDate = [...Array(26).keys()];
+  const minuteDate = [...Array(62).keys()];
 
   const btnStyling = () => {
     const btn = document.getElementsByClassName("btn" + props.id);
@@ -32,7 +45,10 @@ export const LineChart = (props) => {
           labels: minuteDate,
           datasets: [
             {
-              data: [947, 1402, 3700, 5267, 2500],
+              data: [
+                947, 1402, 3700, 5267, 2500, 300, 1260, 1000, 380, 590, 1500,
+                1300, 4300,
+              ],
               borderColor: props.color,
               fill: false,
             },

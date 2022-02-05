@@ -1,7 +1,7 @@
 /*CSS*/
 import style from "./infoTables.module.scss";
 /*CHILD COMPONENTS*/
-import { InfoTable } from "./infoTable/infoTable";
+import { InfoTable } from "./InfoTable/infoTable";
 
 export const InfoTables = () => {
   return (

@@ -4,9 +4,9 @@ import React from "react";
 /*CSS*/
 import style from "./bus.module.scss";
 /*CHILD COMPONENTS*/
-import { InfoBoxes } from "./infoBoxes/infoBoxes";
+import { InfoBoxes } from "./InfoBoxes/infoBoxes";
 import { BusCharts } from "./BusCharts/busCharts";
-import { InfoTables } from "./infoTables/infoTables";
+import { InfoTables } from "./InfoTables/infoTables";
 
 export const Bus = (props) => {
   return (
