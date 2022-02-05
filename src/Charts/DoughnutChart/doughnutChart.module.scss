@@ -1,0 +1,17 @@
+.dougnutChart {
+    width: 35%;
+    margin: auto 10px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: whitesmoke;
+    height: 380px;
+
+    span {
+        margin: auto;
+        margin-top: -170px;
+        font-size: 40px;
+        color: gray;
+    }
+}

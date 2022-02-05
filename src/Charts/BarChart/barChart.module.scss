@@ -1,0 +1,28 @@
+.barChart {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: whitesmoke;
+    padding: 25px;
+
+    .setDate{
+        display: flex;
+        margin-top: 20px;
+
+        h1{
+            font-family: myFont;
+            font-size: 25px;
+            margin: auto;
+        }
+
+        .time{
+            display: flex;
+            flex-direction: column;
+            margin: auto;
+            margin-right: -50px;
+        }
+    }
+}

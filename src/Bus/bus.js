@@ -2,16 +2,15 @@
 import { useEffect, useState } from "react";
 import React from "react";
 /*CSS*/
-import style from "./dashboard.module.scss";
+import style from "./bus.module.scss";
 /*CHILD COMPONENTS*/
 import { InfoBoxes } from "./infoBoxes/infoBoxes";
-import { BusTransactions } from "./busTransactions/busTransactions";
-import { SoftwareTransactions } from "./softwareTransactions/softwareTransactions";
+import { BusCharts } from "./BusCharts/busCharts";
 import { InfoTables } from "./infoTables/infoTables";
 
-export const Dashboard = (props) => {
+export const Bus = (props) => {
   return (
-    <article className={style.dashboard}>
+    <article className={style.bus}>
       <header>
         <div className={style.search}>
           <input placeholder="جست و جو" />
@@ -24,8 +23,7 @@ export const Dashboard = (props) => {
         <h1>{props.dashboard}</h1>
       </main>
       <InfoBoxes />
-      <BusTransactions />
-      <SoftwareTransactions />
+      <BusCharts />
       <InfoTables />
     </article>
   );
