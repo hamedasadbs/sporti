@@ -3,6 +3,7 @@
     margin: 80px 20px;
     text-align: center;
     border: 1px solid rgb(194, 194, 194);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
     .title {
         font-size: 25px;
@@ -11,10 +12,9 @@
         width: 80%;
         padding: 10px;
         margin: auto;
-        margin-bottom: 50px;
-        margin-top: -20px;
-        border-radius: 5px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        margin-bottom: 20px;
+        margin-top: -50px;
+        border-radius: 50px 50px 0 0;
         color: whitesmoke;
     }
 

@@ -9,6 +9,7 @@ import Chart, {
   Legend,
   ScrollBar,
   Tooltip,
+  Size,
 } from "devextreme-react/chart";
 import { dataset } from "../../Dataset/dataset";
 
@@ -87,7 +88,8 @@ export const LineChart = (props) => {
           color={props.color}
           valueField="data"
         />
-        <ArgumentAxis title={`زمان (${dateTitle})`} visualRange={visualRange} />
+        <Size height={300} />
+        <ArgumentAxis title={`(زمان-${dateTitle})`} visualRange={visualRange} />
         <ScrollBar visible={false} />
         <ZoomAndPan argumentAxis="pan" />
         <Legend visible={false} />

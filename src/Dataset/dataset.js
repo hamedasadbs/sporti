@@ -1,118 +1,9 @@
 const dataset = {
-  minute: [
-    {
-      label: 10,
-      data: 50,
-    },
-    {
-      label: 20,
-      data: 10,
-    },
-    {
-      label: 30,
-      data: 70,
-    },
-    {
-      label: 40,
-      data: 25,
-    },
-    {
-      label: 50,
-      data: 25,
-    },
-    {
-      label: 70,
-      data: 23,
-    },
-  ],
-  hour: [
-    {
-      label: 1,
-      data: 50,
-    },
-    {
-      label: 2,
-      data: 10,
-    },
-    {
-      label: 8,
-      data: 70,
-    },
-    {
-      label: 12,
-      data: 25,
-    },
-    {
-      label: 24,
-      data: 30,
-    },
-  ],
-  day: [
-    {
-      label: 1,
-      data: 50,
-    },
-    {
-      label: 10,
-      data: 10,
-    },
-    {
-      label: 20,
-      data: 70,
-    },
-    {
-      label: 31,
-      data: 25,
-    },
-    {
-      label: 54,
-      data: 70,
-    },
-  ],
-  month: [
-    {
-      label: "فروردین",
-      data: 50,
-    },
-    {
-      label: "اردیبهشت",
-      data: 10,
-    },
-    {
-      label: "خرداد",
-      data: 70,
-    },
-    {
-      label: "تیر",
-      data: 25,
-    },
-    {
-      label: "مرداد",
-      data: 30,
-    },
-  ],
-  year: [
-    {
-      label: 0,
-      data: 50,
-    },
-    {
-      label: 1,
-      data: 10,
-    },
-    {
-      label: 2,
-      data: 70,
-    },
-    {
-      label: 3,
-      data: 25,
-    },
-    {
-      label: 10,
-      data: 42,
-    },
-  ],
+  minute: [],
+  hour: [],
+  day: [],
+  month: [],
+  year: [],
   software: [
     {
       swName: "نرم افزار اول",
@@ -140,5 +31,44 @@ const dataset = {
     },
   ],
 };
+
+function randomData() {
+  return Math.ceil(Math.random() * (200 - 10) + 10);
+}
+
+for (let i = 0; i < 100; i++) {
+  dataset.minute.push({
+    label: i,
+    data: randomData(),
+  });
+}
+
+for (let i = 0; i < 30; i++) {
+  dataset.hour.push({
+    label: i,
+    data: randomData(),
+  });
+}
+
+for (let i = 0; i < 50; i++) {
+  dataset.day.push({
+    label: i,
+    data: randomData(),
+  });
+}
+
+for (let i = 0; i < 30; i++) {
+  dataset.month.push({
+    label: i,
+    data: randomData(),
+  });
+}
+
+for (let i = 0; i < 10; i++) {
+  dataset.year.push({
+    label: i,
+    data: randomData(),
+  });
+}
 
 export { dataset };
