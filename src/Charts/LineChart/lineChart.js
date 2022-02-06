@@ -2,30 +2,24 @@
 import style from "./lineChart.module.scss";
 /*INNER COMPONENTS*/
 import React, { useEffect, useState } from "react";
-import Chart from "chart.js/auto";
+import Chart, {
+  ArgumentAxis,
+  Series,
+  ZoomAndPan,
+  Legend,
+  ScrollBar,
+  Tooltip,
+} from "devextreme-react/chart";
+import { dataset } from "../../Dataset/dataset";
 
 export const LineChart = (props) => {
   let [date, setDate] = useState("minute" + props.id);
-  const [chart, setChart] = useState(null);
-
-  const yearDate = [1400, 1399, 1398, 1397, 1396, 1395, 1394, 1393];
-  const monthDate = [
-    "اسفند",
-    "بهمن",
-    "دی",
-    "آذر",
-    "آبان",
-    "مهر",
-    "شهریور",
-    "مرداد",
-    "تیر",
-    "خرداد",
-    "اردیبهشت",
-    "فروردین",
-  ];
-  const dayDate = [...Array(32).keys()];
-  const hourDate = [...Array(26).keys()];
-  const minuteDate = [...Array(62).keys()];
+  let [dateTitle, setDateTitle] = useState("دقیقه");
+  const [dateType, setDateType] = useState(dataset.minute);
+  const [visualRange, setVisualRange] = useState({
+    startValue: 0,
+    endValue: 60,
+  });
 
   const btnStyling = () => {
     const btn = document.getElementsByClassName("btn" + props.id);
@@ -37,134 +31,106 @@ export const LineChart = (props) => {
 
   useEffect(() => {
     btnStyling();
-    const line = document.getElementById("myCanvas" + props.id);
-    setChart(
-      new Chart(line, {
-        type: "line",
-        data: {
-          labels: minuteDate,
-          datasets: [
-            {
-              data: [
-                947, 1402, 3700, 5267, 2500, 300, 1260, 1000, 380, 590, 1500,
-                1300, 4300,
-              ],
-              borderColor: props.color,
-              fill: false,
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            legend: {
-              position: "center",
-            },
-            title: {
-              display: true,
-              text: props.title,
-            },
-          },
-          backgroundColor: props.color,
-          scales: {
-            x: {
-              display: true,
-              title: {
-                display: true,
-                text: "(" + props.xName + " (" + "دقیقه",
-                color: props.color,
-                font: {
-                  style: "bold",
-                  size: "20px",
-                },
-              },
-            },
-            y: {
-              display: true,
-              title: {
-                display: true,
-                text: props.yName,
-                color: props.color,
-                font: {
-                  style: "bold",
-                  size: "20px",
-                },
-              },
-            },
-          },
-        },
-      })
-    );
   }, []);
 
   const dateHandler = (e) => {
     setDate(e.target.id);
     date = e.target.id;
     btnStyling();
-    props.date(e.target.name);
-    chart.options.scales.x.title.text =
-      "(" + props.xName + " (" + e.target.name;
-
+    setDateTitle(e.target.name);
     switch (e.target.name) {
       case "دقیقه":
-        chart.data.labels = minuteDate;
+        setDateType(dataset.minute);
+        setVisualRange({
+          startValue: 0,
+          endValue: 60,
+        });
         break;
       case "ساعت":
-        chart.data.labels = hourDate;
+        setDateType(dataset.hour);
+        setVisualRange({
+          startValue: 0,
+          endValue: 24,
+        });
         break;
       case "روز":
-        chart.data.labels = dayDate;
+        setDateType(dataset.day);
+        setVisualRange({
+          startValue: 0,
+          endValue: 31,
+        });
         break;
       case "ماه":
-        chart.data.labels = monthDate;
+        setDateType(dataset.month);
+        setVisualRange({
+          startValue: 0,
+          endValue: 12,
+        });
         break;
       case "سال":
-        chart.data.labels = yearDate;
+        setDateType(dataset.year);
+        setVisualRange({
+          startValue: 0,
+          endValue: 5,
+        });
         break;
     }
-    chart.update();
   };
 
   return (
     <div className={style.lineChart}>
-      <canvas id={`myCanvas${props.id}`} />
+      <h1>{props.title}</h1>
+      <Chart id="chart" palette="Harmony Light" dataSource={dateType}>
+        <Series
+          type="line"
+          argumentField="label"
+          color={props.color}
+          valueField="data"
+        />
+        <ArgumentAxis title={`زمان (${dateTitle})`} visualRange={visualRange} />
+        <ScrollBar visible={false} />
+        <ZoomAndPan argumentAxis="pan" />
+        <Legend visible={false} />
+        <Tooltip enabled={true} />
+      </Chart>
       <div className={style.setDate}>
         <button
-          onClick={dateHandler}
           className={`btn${props.id}`}
           id={`yearly${props.id}`}
           name="سال"
+          onClick={dateHandler}
         >
           سالانه
         </button>
         <button
-          onClick={dateHandler}
           className={`btn${props.id}`}
           id={`monthly${props.id}`}
           name="ماه"
+          onClick={dateHandler}
         >
           ماهانه
         </button>
         <button
-          onClick={dateHandler}
           className={`btn${props.id}`}
           id={`daily${props.id}`}
           name="روز"
+          onClick={dateHandler}
         >
           روزانه
         </button>
         <button
-          onClick={dateHandler}
           className={`btn${props.id}`}
           id={`hourly${props.id}`}
           name="ساعت"
+          onClick={dateHandler}
         >
           ساعتی
         </button>
         <button
-          onClick={dateHandler}
           className={`btn${props.id}`}
           id={`minute${props.id}`}
           name="دقیقه"
+          onClick={dateHandler}
         >
           دقیقه
         </button>

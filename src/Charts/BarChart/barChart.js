@@ -2,120 +2,86 @@
 import style from "./barChart.module.scss";
 /*INNER COMPONENTS*/
 import React, { useEffect, useState } from "react";
-import Chart from "chart.js/auto";
+import Chart, {
+  ArgumentAxis,
+  Series,
+  ZoomAndPan,
+  Legend,
+  ScrollBar,
+  Tooltip,
+} from "devextreme-react/chart";
+import { dataset } from "../../Dataset/dataset";
 
 export const BarChart = (props) => {
-  const [chart, setChart] = useState(null);
+  let [date, setDate] = useState("minute" + props.id);
+  const [dateType, setDateType] = useState(dataset.software);
+  const [visualRange, setVisualRange] = useState({
+    startValue: 0,
+    endValue: 60,
+  });
 
-  useEffect(() => {
-    const bar = document.getElementById("myCanvas" + props.id);
-    setChart(
-      new Chart(bar, {
-        type: "bar",
-        data: {
-          labels: [
-            "نرم افزار اول",
-            "نرم افزار هشتم",
-            "نرم افزار سوم",
-            "نرم افزار دوازدهم",
-            "نرم افزار چهارم",
-            "نرم افزار بیستم",
-            "نرم افزار نهم",
-          ],
-          datasets: [
-            {
-              barPercentage: 0.5,
-              barThickness: 15,
-              maxBarThickness: 25,
-              minBarLength: 2,
-              data: [10, 20, 30, 40, 50, 60, 70],
-              backgroundColor: props.color,
-            },
-          ],
-        },
-        options: {
-          plugins: {
-            legend: {
-              position: "center",
-            },
-            title: {
-              display: true,
-              text: props.title,
-            },
-          },
-          scales: {
-            x: {
-              display: true,
-              title: {
-                display: true,
-                text: props.xName,
-                color: props.color,
-                font: {
-                  style: "bold",
-                  size: "20px",
-                },
-              },
-            },
-            y: {
-              display: true,
-              title: {
-                display: true,
-                text: props.yName,
-                color: props.color,
-                font: {
-                  style: "bold",
-                  size: "20px",
-                },
-              },
-            },
-          },
-        },
-      })
-    );
-  }, []);
+  const dateHandler = (e) => {
+    setDate(e.target.id);
+    date = e.target.id;
+  };
 
   return (
     <div className={style.barChart}>
-      <canvas id={`myCanvas${props.id}`} />
+      <h1>{props.title}</h1>
+      <Chart id="chart" palette="Harmony Light" dataSource={dateType}>
+        <Series
+          type="bar"
+          argumentField="swName"
+          color={props.color}
+          valueField="data"
+        />
+        <ArgumentAxis title="نرم افزار" visualRange={visualRange} />
+        <ScrollBar visible={false} />
+        <ZoomAndPan argumentAxis="pan" />
+        <Legend visible={false} />
+        <Tooltip enabled={true} />
+      </Chart>
       <div className={style.setDate}>
-        <div className={style.time}>
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            value="2018-07-22"
-            min="2018-01-01"
-            max="2018-12-31"
-          />
-          <input
-            type="time"
-            id="appt"
-            name="appt"
-            min="09:00"
-            max="18:00"
-            required
-          />
-        </div>
-        <h1>تا</h1>
-        <div className={style.time}>
-          <input
-            type="date"
-            id="start"
-            name="trip-start"
-            value="2018-07-22"
-            min="2018-01-01"
-            max="2018-12-31"
-          />
-          <input
-            type="time"
-            id="appt"
-            name="appt"
-            min="09:00"
-            max="18:00"
-            required
-          />
-        </div>
-        <h1>از</h1>
+        <button
+          className={`btn${props.id}`}
+          id={`yearly${props.id}`}
+          name="سال"
+          onClick={dateHandler}
+        >
+          سالانه
+        </button>
+        <button
+          className={`btn${props.id}`}
+          id={`monthly${props.id}`}
+          name="ماه"
+          onClick={dateHandler}
+        >
+          ماهانه
+        </button>
+        <button
+          className={`btn${props.id}`}
+          id={`daily${props.id}`}
+          name="روز"
+          onClick={dateHandler}
+        >
+          روزانه
+        </button>
+        <button
+          className={`btn${props.id}`}
+          id={`hourly${props.id}`}
+          name="ساعت"
+          onClick={dateHandler}
+        >
+          ساعتی
+        </button>
+        <button
+          className={`btn${props.id}`}
+          id={`minute${props.id}`}
+          name="دقیقه"
+          onClick={dateHandler}
+        >
+          دقیقه
+        </button>
       </div>
     </div>
   );
