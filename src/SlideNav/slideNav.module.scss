@@ -22,7 +22,7 @@
         text-align: right;
     }
 
-    button {
+    .link {
         width: 100%;
         display: flex;
         margin: 10px auto;
@@ -35,6 +35,7 @@
         font-weight: bold;
         color: lightgray;
         justify-content: flex-end;
+        text-decoration: none;
 
         i {
             margin-left: 10px;
@@ -42,14 +43,16 @@
 
         &:hover {
             cursor: pointer;
+            text-decoration: none;
         }
     }
 
     .activeNav {
         background-color: rgba(26, 135, 168, 0.8);
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 
-    .bus{
+    .bus {
         transform: rotate(270deg);
     }
 }

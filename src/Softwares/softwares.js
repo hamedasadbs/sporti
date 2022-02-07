@@ -1,48 +1,35 @@
 import React from "react";
 /*CSS*/
-import style from "./bus.module.scss";
+import style from "./softwares.module.scss";
 /*CHILD COMPONENTS*/
+import { SoftwaresCharts } from "./SoftwaresCharts/softwaresCharts";
 import { InfoBoxes } from "../InfoBoxes/infoBoxes";
-import { BusCharts } from "./BusCharts/busCharts";
 import { InfoTables } from "../InfoTables/infoTables";
+import { dataset } from "../Dataset/dataset";
 
-export const Bus = (props) => {
+export const Softwares = (props) => {
   const infoBox = [
     {
-      bgColor: "rgb(255, 43, 43)",
-      title: "تعداد پاسخ های ناموفق",
-      value: "20",
-      icon1: "fa-reply",
-      icon2: "fa-close",
-    },
-    {
-      bgColor: "rgb(34, 131, 34)",
-      title: "تعداد پاسخ های موفق",
-      value: "12",
-      icon1: "fa-reply",
-      icon2: "fa-check",
-    },
-    {
       bgColor: "rgb(228, 148, 0)",
-      title: "تعداد کل پاسخ ها",
+      title: "تعداد پاسخ های دریافت شده",
       value: "30",
       icon1: "fa-reply",
     },
     {
       bgColor: "rgb(126, 33, 126)",
-      title: "تعداد کل درخواست ها",
+      title: "تعداد درخواست های ارسال شده",
       value: "5",
       icon1: "fa-paper-plane",
     },
     {
-      bgColor: "rgb(41, 41, 250)",
-      title: "تعداد نرم افزارها",
+      bgColor: "rgb(158, 38, 38)",
+      title: "تعداد کل تراکنش ها",
       value: "10",
-      icon1: "fa-desktop",
+      icon1: "fa-exchange",
     },
   ];
   return (
-    <article className={style.bus}>
+    <article className={style.softwares}>
       <header>
         <div className={style.search}>
           <input placeholder="جست و جو" />
@@ -52,10 +39,15 @@ export const Bus = (props) => {
         </div>
       </header>
       <main className={style.title}>
-        <h1>{props.title}</h1>
+        <select>
+          {dataset.software.map((sw) => (
+            <option>{sw.swName}</option>
+          ))}
+        </select>
+        <h1> / {props.title}</h1>
       </main>
       <InfoBoxes infoBox={infoBox} />
-      <BusCharts />
+      <SoftwaresCharts />
       <InfoTables />
     </article>
   );

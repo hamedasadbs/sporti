@@ -1,3 +1,5 @@
+/*INNER-COMPONENTS*/
+import { Link } from "react-router-dom";
 /*CSS*/
 import style from "./slideNav.module.scss";
 
@@ -18,18 +20,38 @@ export const SlideNav = (props) => {
       <h1>
         داشبورد <i className="fa fa-tachometer"></i>
       </h1>
-      <button onClick={navHandler} className={style.activeNav} id="باس">
-        باس<i className={`fa fa-usb ${style.bus}`}></i>
-      </button>
-      <button onClick={navHandler} id="نرم افزار">
-        نرم افزار<i className="fa fa-laptop"></i>
-      </button>
-      <button onClick={navHandler} id="پروفایل">
+      <Link
+        id="گذرگاه"
+        onClick={navHandler}
+        className={`${style.link} ${style.activeNav}`}
+        to="/bus"
+      >
+        گذرگاه<i className={`fa fa-usb ${style.bus}`}></i>
+      </Link>
+      <Link
+        id="نرم افزارها"
+        onClick={navHandler}
+        className={`${style.link}`}
+        to="/softwares"
+      >
+        نرم افزارها<i className="fa fa-laptop"></i>
+      </Link>
+      <Link
+        id="پروفابل"
+        onClick={navHandler}
+        className={`${style.link}`}
+        to="/profile"
+      >
         پروفایل<i className="fa fa-user-circle"></i>
-      </button>
-      <button onClick={navHandler} id="تنظیمات">
+      </Link>
+      <Link
+        id="تنظیمات"
+        onClick={navHandler}
+        className={`${style.link}`}
+        to="/settings"
+      >
         تنظیمات<i className="fa fa-cog"></i>
-      </button>
+      </Link>
     </nav>
   );
 };

@@ -1,5 +1,3 @@
-/*INNER COMPONENTS*/
-import { useEffect, useState } from "react";
 /*CSS*/
 import style from "./infoBox.module.scss";
 
@@ -10,12 +8,14 @@ export const InfoBox = (props) => {
         return "rgb(202, 34, 34)";
       case "rgb(34, 131, 34)":
         return "rgb(25, 100, 25)";
-      case "rgb(214, 155, 44)":
-        return "rgb(163, 118, 33)";
+      case "rgb(228, 148, 0)":
+        return "rgb(167, 108, 0)";
       case "rgb(126, 33, 126)":
         return "rgb(90, 23, 90)";
       case "rgb(41, 41, 250)":
         return "rgb(32, 32, 184)";
+      case "rgb(158, 38, 38)":
+        return "rgb(105, 25, 25)";
     }
   };
 

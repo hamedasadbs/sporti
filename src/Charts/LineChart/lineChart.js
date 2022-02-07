@@ -11,6 +11,7 @@ import Chart, {
   Tooltip,
   Size,
 } from "devextreme-react/chart";
+/*CHILD COMPONENTS*/
 import { dataset } from "../../Dataset/dataset";
 
 export const LineChart = (props) => {

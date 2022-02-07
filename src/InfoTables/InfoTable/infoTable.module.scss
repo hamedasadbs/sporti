@@ -2,13 +2,12 @@
     width: 46%;
     margin: 80px 20px;
     text-align: center;
-    border: 1px solid rgb(194, 194, 194);
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
     .title {
         font-size: 25px;
         font-family: myFont;
-        background-color: #116668;
+        background-color: rgb(26, 135, 168);
         width: 80%;
         padding: 10px;
         margin: auto;
@@ -26,8 +25,9 @@
                 th {
                     text-align: center;
                     font-family: specialFont;
-                    background-color: #44A08D;
+                    background-color: darken(rgb(26, 135, 168), 10%);
                     font-size: 20px;
+                    color: whitesmoke;
                 }
             }
         }

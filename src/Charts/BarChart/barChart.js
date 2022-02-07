@@ -1,7 +1,7 @@
 /*CSS*/
 import style from "./barChart.module.scss";
 /*INNER COMPONENTS*/
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Chart, {
   ArgumentAxis,
   Series,
@@ -11,6 +11,7 @@ import Chart, {
   Tooltip,
   Size,
 } from "devextreme-react/chart";
+/*CHILD COMPONENTS*/
 import { dataset } from "../../Dataset/dataset";
 
 export const BarChart = (props) => {
