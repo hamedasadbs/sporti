@@ -12,12 +12,12 @@ import Chart, {
   Size,
 } from "devextreme-react/chart";
 /*CHILD COMPONENTS*/
-import { dataset } from "../../Dataset/dataset";
+import { dynamicData } from "../../Dataset/dynamicData";
 
 export const LineChart = (props) => {
   let [date, setDate] = useState("minute" + props.id);
   let [dateTitle, setDateTitle] = useState("دقیقه");
-  const [dateType, setDateType] = useState(dataset.minute);
+  const [dateType, setDateType] = useState(dynamicData.minute);
   const [visualRange, setVisualRange] = useState({
     startValue: 0,
     endValue: 60,
@@ -42,35 +42,35 @@ export const LineChart = (props) => {
     setDateTitle(e.target.name);
     switch (e.target.name) {
       case "دقیقه":
-        setDateType(dataset.minute);
+        setDateType(dynamicData.minute);
         setVisualRange({
           startValue: 0,
           endValue: 60,
         });
         break;
       case "ساعت":
-        setDateType(dataset.hour);
+        setDateType(dynamicData.hour);
         setVisualRange({
           startValue: 0,
           endValue: 24,
         });
         break;
       case "روز":
-        setDateType(dataset.day);
+        setDateType(dynamicData.day);
         setVisualRange({
           startValue: 0,
           endValue: 31,
         });
         break;
       case "ماه":
-        setDateType(dataset.month);
+        setDateType(dynamicData.month);
         setVisualRange({
           startValue: 0,
           endValue: 12,
         });
         break;
       case "سال":
-        setDateType(dataset.year);
+        setDateType(dynamicData.year);
         setVisualRange({
           startValue: 0,
           endValue: 5,

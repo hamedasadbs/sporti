@@ -1,4 +1,4 @@
-const dataset = {
+const dynamicData = {
   minute: [],
   hour: [],
   day: [],
@@ -37,38 +37,38 @@ function randomData() {
 }
 
 for (let i = 0; i < 100; i++) {
-  dataset.minute.push({
+  dynamicData.minute.push({
     label: i,
     data: randomData(),
   });
 }
 
 for (let i = 0; i < 30; i++) {
-  dataset.hour.push({
+  dynamicData.hour.push({
     label: i,
     data: randomData(),
   });
 }
 
 for (let i = 0; i < 50; i++) {
-  dataset.day.push({
+  dynamicData.day.push({
     label: i,
     data: randomData(),
   });
 }
 
 for (let i = 0; i < 30; i++) {
-  dataset.month.push({
+  dynamicData.month.push({
     label: i,
     data: randomData(),
   });
 }
 
 for (let i = 0; i < 10; i++) {
-  dataset.year.push({
+  dynamicData.year.push({
     label: i,
     data: randomData(),
   });
 }
 
-export { dataset };
+export { dynamicData };

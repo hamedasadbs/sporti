@@ -12,11 +12,11 @@ import Chart, {
   Size,
 } from "devextreme-react/chart";
 /*CHILD COMPONENTS*/
-import { dataset } from "../../Dataset/dataset";
+import { dynamicData } from "../../Dataset/dynamicData";
 
 export const BarChart = (props) => {
   let [date, setDate] = useState("minute" + props.id);
-  const [dateType, setDateType] = useState(dataset.software);
+  const [dateType, setDateType] = useState(dynamicData.software);
   const [visualRange, setVisualRange] = useState({
     length: 5,
   });

@@ -3,13 +3,16 @@ import style from "./infoTables.module.scss";
 /*CHILD COMPONENTS*/
 import { InfoTable } from "./InfoTable/infoTable";
 
-export const InfoTables = () => {
+export const InfoTables = (props) => {
   return (
     <article className={style.infoTables}>
-      <InfoTable type="1" title="جدول آخرین تراکنش" />
-      <InfoTable type="1" title="جدول آخرین تراکنش های موفق" />
-      <InfoTable type="1" title="جدول آخرین تراکنش های ناموفق" />
-      <InfoTable type="2" title="جدول نرم افزارهای پرکاربرد" />
+      {props.infoTable.map((infotable) => (
+        <InfoTable
+          title={infotable.title}
+          toples={infotable.toples}
+          records={infotable.records}
+        />
+      ))}
     </article>
   );
 };

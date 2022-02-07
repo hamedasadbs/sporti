@@ -5,42 +5,12 @@ import style from "./bus.module.scss";
 import { InfoBoxes } from "../InfoBoxes/infoBoxes";
 import { BusCharts } from "./BusCharts/busCharts";
 import { InfoTables } from "../InfoTables/infoTables";
+import { info } from "../Dataset/staticData";
 
 export const Bus = (props) => {
-  const infoBox = [
-    {
-      bgColor: "rgb(255, 43, 43)",
-      title: "تعداد پاسخ های ناموفق",
-      value: "20",
-      icon1: "fa-reply",
-      icon2: "fa-close",
-    },
-    {
-      bgColor: "rgb(34, 131, 34)",
-      title: "تعداد پاسخ های موفق",
-      value: "12",
-      icon1: "fa-reply",
-      icon2: "fa-check",
-    },
-    {
-      bgColor: "rgb(228, 148, 0)",
-      title: "تعداد کل پاسخ ها",
-      value: "30",
-      icon1: "fa-reply",
-    },
-    {
-      bgColor: "rgb(126, 33, 126)",
-      title: "تعداد کل درخواست ها",
-      value: "5",
-      icon1: "fa-paper-plane",
-    },
-    {
-      bgColor: "rgb(41, 41, 250)",
-      title: "تعداد نرم افزارها",
-      value: "10",
-      icon1: "fa-desktop",
-    },
-  ];
+  const infoBox = info[0].bus;
+  const infoTable = info[1].bus;
+
   return (
     <article className={style.bus}>
       <header>
@@ -56,7 +26,7 @@ export const Bus = (props) => {
       </main>
       <InfoBoxes infoBox={infoBox} />
       <BusCharts />
-      <InfoTables />
+      <InfoTables infoTable={infoTable} />
     </article>
   );
 };
