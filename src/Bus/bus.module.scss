@@ -11,6 +11,19 @@
         padding: 15px 0;
         margin-bottom: 30px;
         background-color: rgb(0, 14, 28);
+        z-index: 5;
+
+        .hiddenMenubtn {
+            margin: auto;
+            margin-right: 40px;
+            font-size: 50px;
+            color: darken(white, 10%);
+            display: none;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
 
         .search {
             margin: auto;
@@ -79,6 +92,36 @@
             font-family: specialFont;
             font-weight: bold;
             text-align: right;
+        }
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .bus {
+        width: 100%;
+
+        header {
+            .hiddenMenubtn {
+                display: initial;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .bus {
+        header {
+            .search {
+                width: 200px;
+
+                input {
+                    &:focus {
+                        &::placeholder {
+                            right: 120px;
+                        }
+                    }
+                }
+            }
         }
     }
 }

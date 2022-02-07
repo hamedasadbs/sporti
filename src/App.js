@@ -31,11 +31,11 @@ export const App = () => {
       <Router>
         <Switch>
           <Route path="/bus">
-            <Bus title={dashboard} />
+            <Bus dashboard={dashboardHandler} title={dashboard} />
             <SlideNav dashboard={dashboardHandler} />
           </Route>
           <Route path="/softwares">
-            <Softwares title={dashboard} />
+            <Softwares dashboard={dashboardHandler} title={dashboard} />
             <SlideNav dashboard={dashboardHandler} />
           </Route>
           <Route exact path="/">

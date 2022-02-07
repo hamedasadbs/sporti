@@ -111,3 +111,33 @@
         }
     }
 }
+
+@media only screen and (max-width: 1100px) {
+    .softwares {
+        width: 100%;
+
+        header {
+            .hiddenMenubtn {
+                display: initial;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 650px) {
+    .softwares {
+        header {
+            .search {
+                width: 200px;
+
+                input {
+                    &:focus {
+                        &::placeholder {
+                            right: 120px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -20,7 +20,14 @@ export const InfoBox = (props) => {
   };
 
   return (
-    <span style={{ backgroundColor: props.bgColor }} className={style.infoBox}>
+    <span
+      style={{
+        background: `linear-gradient(135deg, ${
+          props.bgColor
+        }, ${colorHandler()})`,
+      }}
+      className={style.infoBox}
+    >
       <div className={style.icon}>
         <i
           style={{ color: colorHandler() }}
