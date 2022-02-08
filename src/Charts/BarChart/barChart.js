@@ -56,16 +56,18 @@ export const BarChart = (props) => {
         <Tooltip enabled={true} />
       </Chart>
       <div className={style.setDate}>
-        <span className={style.fromSetDate}>
-          <input type="date" className={style.date} />
-          <input type="time" className={style.time} />
-        </span>
-        <h1>تا</h1>
-        <span className={style.toSetDate}>
-          <input type="date" className={style.date} />
-          <input type="time" className={style.time} />
-        </span>
-        <h1>از</h1>
+        <main>
+          <span className={style.setDateInner}>
+            <input type="date" className={style.date} />
+            <input type="time" className={style.time} />
+          </span>
+          <h1>تا</h1>
+          <span className={style.setDateInner}>
+            <input type="date" className={style.date} />
+            <input type="time" className={style.time} />
+          </span>
+          <h1>از</h1>
+        </main>
       </div>
     </div>
   );

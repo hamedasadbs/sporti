@@ -20,28 +20,34 @@
     .setDate {
         width: 100%;
         display: flex;
-        padding: 0 40px;
         margin-top: 20px;
 
-        button {
-            margin: 0 10px;
-            border: 1px solid gray;
-            padding: 5px 20px;
-            font-family: myFont;
-            font-size: 20px;
-            font-weight: bold;
-            border-radius: 5px;
-            background-color: rgb(226, 226, 226);
-            transition: all 0.5s;
+        main {
+            display: flex;
+            margin: auto;
+            justify-content: space-around;
+            flex-wrap: wrap;
 
-            &:hover {
+            button {
+                margin: 5px 10px;
+                border: 1px solid gray;
+                padding: 5px 20px;
+                font-family: myFont;
+                font-size: 20px;
+                font-weight: bold;
+                border-radius: 5px;
+                background-color: rgb(226, 226, 226);
+                transition: all 0.5s;
+
+                &:hover {
+                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                }
+            }
+
+            .activeDate {
+                background-color: whitesmoke;
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             }
-        }
-
-        .activeDate {
-            background-color: whitesmoke;
-            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
     }
 }
@@ -55,5 +61,6 @@
 @media only screen and (max-width: 800px) {
     .lineChart {
         width: 95%;
+        margin: 20px auto;
     }
 }
