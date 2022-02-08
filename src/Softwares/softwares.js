@@ -7,33 +7,16 @@ import { InfoBoxes } from "../InfoBoxes/infoBoxes";
 import { InfoTables } from "../InfoTables/infoTables";
 import { dynamicData } from "../Dataset/dynamicData";
 import { info } from "../Dataset/staticData";
-import { HiddenMenu } from "../HiddenMenu/hiddenMenu";
+import { Header } from "../Header/header";
 
 export const Softwares = (props) => {
   const [hiddenMenu, setHiddenMenu] = useState(false);
   const infoBox = info[0].softwares;
   const infoTable = info[1].softwares;
 
-  const hiddenMenuHandler = () => {
-    if (hiddenMenu) setHiddenMenu(false);
-    else setHiddenMenu(true);
-  };
-
   return (
     <article className={style.softwares}>
-      <HiddenMenu dashboard={props.dashboard} hiddenMenu={hiddenMenu} />
-      <header>
-        <div className={style.search}>
-          <input placeholder="جست و جو" />
-          <button>
-            <i className="fa fa-search"></i>
-          </button>
-        </div>
-        <i
-          onClick={hiddenMenuHandler}
-          className={`fa fa-bars ${style.hiddenMenubtn}`}
-        ></i>
-      </header>
+      <Header />
       <main className={style.title}>
         <select>
           {dynamicData.software.map((sw) => (

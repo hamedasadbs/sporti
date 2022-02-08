@@ -17,16 +17,18 @@ export const SlideNav = (props) => {
 
   return (
     <nav className={style.slideNav}>
-      <h1>
-        داشبورد <i className="fa fa-tachometer"></i>
-      </h1>
+      <main>
+        <span>داشبورد</span>
+        <i className="fa fa-tachometer"></i>
+      </main>
       <Link
         id="گذرگاه"
         onClick={navHandler}
         className={`${style.link} ${style.activeNav}`}
         to="/bus"
       >
-        گذرگاه<i className={`fa fa-usb ${style.bus}`}></i>
+        <span id="گذرگاه">گذرگاه</span>
+        <i id="گذرگاه" className={`fa fa-usb ${style.bus}`}></i>
       </Link>
       <Link
         id="نرم افزارها"
@@ -34,7 +36,8 @@ export const SlideNav = (props) => {
         className={`${style.link}`}
         to="/softwares"
       >
-        نرم افزارها<i className="fa fa-laptop"></i>
+        <span id="نرم افزارها">نرم افزارها</span>
+        <i id="نرم افزارها" className="fa fa-laptop"></i>
       </Link>
       <Link
         id="پروفابل"
@@ -42,7 +45,8 @@ export const SlideNav = (props) => {
         className={`${style.link}`}
         to="/profile"
       >
-        پروفایل<i className="fa fa-user-circle"></i>
+        <span id="پروفابل">پروفایل</span>
+        <i id="پروفابل" className="fa fa-user-circle"></i>
       </Link>
       <Link
         id="تنظیمات"
@@ -50,7 +54,8 @@ export const SlideNav = (props) => {
         className={`${style.link}`}
         to="/settings"
       >
-        تنظیمات<i className="fa fa-cog"></i>
+        <span id="تنظیمات">تنظیمات</span>
+        <i id="تنظیمات" className="fa fa-cog"></i>
       </Link>
     </nav>
   );
