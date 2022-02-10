@@ -70,6 +70,18 @@
         .search {
             width: 200px;
             margin-left: 20px;
+
+            input {
+                &::placeholder {
+                    font-size: 17px;
+                }
+
+                &:focus {
+                    &::placeholder {
+                        right: 120px;
+                    }
+                }
+            }
         }
     }
 }

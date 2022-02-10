@@ -37,7 +37,6 @@
         display: flex;
         margin: 10px auto;
         background-color: transparent;
-        border-radius: 5px;
         padding: 15px 15px;
         font-size: 25px;
         border: none;
@@ -78,8 +77,6 @@
         }
 
         .link {
-            border-radius: 0;
-
             i {
                 margin: 0px auto;
             }
