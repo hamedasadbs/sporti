@@ -6,21 +6,21 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
-    background-image: url(../Images/slideNav.jpg);
+    background-image: url(../Images/slideNav.png);
     background-repeat: no-repeat;
     background-position-x: -750px;
     background-position-y: -10px;
 
     main {
         display: flex;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid gray;
         padding-bottom: 5px;
         justify-content: space-between;
 
         span {
             margin: 10px auto;
             margin-right: 10px;
-            color: black;
+            color: gray;
             font-family: myFont;
             font-size: 28px;
 
@@ -40,7 +40,7 @@
         border: none;
         font-family: myFont;
         font-weight: bold;
-        color: black;
+        color: lightgray;
         justify-content: flex-end;
         text-decoration: none;
         transition: all 0.5s;
@@ -57,7 +57,7 @@
     }
 
     .activeLink {
-        background-color: rgba(66, 209, 202, 0.8);
+        background-color: rgba(131, 131, 131, 0.8);
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 

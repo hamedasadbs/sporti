@@ -15,6 +15,8 @@ import style from "./app.module.scss";
 
 export const App = () => {
   const [dashboard, setDashboard] = useState("گذرگاه");
+  const [mode, setMode] = useState("light");
+
   const dashboardHandler = (d) => {
     setDashboard(d);
   };
@@ -26,17 +28,25 @@ export const App = () => {
     window.onbeforeunload = null;
   };
 
+  const modeHandler = (md) => {
+    setMode(md);
+  };
+
   return (
     <div className={style.app}>
       <Router>
         <Switch>
           <Route path="/bus">
-            <Bus dashboard={dashboardHandler} title={dashboard} />
-            <SlideNav dashboard={dashboardHandler} />
+            <Bus mode={mode} dashboard={dashboardHandler} title={dashboard} />
+            <SlideNav mode={modeHandler} dashboard={dashboardHandler} />
           </Route>
           <Route path="/softwares">
-            <Softwares dashboard={dashboardHandler} title={dashboard} />
-            <SlideNav dashboard={dashboardHandler} />
+            <Softwares
+              mode={mode}
+              dashboard={dashboardHandler}
+              title={dashboard}
+            />
+            <SlideNav mode={modeHandler} dashboard={dashboardHandler} />
           </Route>
           <Route exact path="/">
             <Redirect to="/bus" />

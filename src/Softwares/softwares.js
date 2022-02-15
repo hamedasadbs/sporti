@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 /*CSS*/
 import style from "./softwares.module.scss";
 /*CHILD COMPONENTS*/
@@ -10,13 +10,23 @@ import { info } from "../Dataset/staticData";
 import { Header } from "../Header/header";
 
 export const Softwares = (props) => {
-  const [hiddenMenu, setHiddenMenu] = useState(false);
   const infoBox = info[0].softwares;
   const infoTable = info[1].softwares;
 
+  useEffect(() => {
+    if (props.mode == "dark")
+      document
+        .getElementsByClassName(style.bus)[0]
+        .classList.add(style.darkMode);
+    else
+      document
+        .getElementsByClassName(style.bus)[0]
+        .classList.remove(style.darkMode);
+  }, [props.mode]);
+
   return (
     <article className={style.softwares}>
-      <Header />
+      <Header mode={props.mode} />
       <main className={style.title}>
         <select>
           {dynamicData.software.map((sw) => (

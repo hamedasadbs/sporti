@@ -1,14 +1,15 @@
 /*INNER-COMPONENTS*/
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-/*CSS*/
-import style from "./slideNav.module.scss";
+import { useEffect, useState } from "react";
+/*CHILD COMPONENTS*/
+import { ToggleSwitch } from "../ToggleSwitch/toggleSwitch";
 
 export const SlideNav = (props) => {
+  const [style, setStyle] = useState(require("./slideNav.module.scss"));
+
   useEffect(() => {
     const bus = document.getElementById("گذرگاه");
-    bus.style.backgroundColor = "rgba(26, 135, 168, 0.8)";
-    bus.style.boxShadow = "rgba(0, 0, 0, 0.24) 0px 3px 8px";
+    bus.classList.add(style.activeLink);
   }, []);
 
   const navHandler = (e) => {
@@ -16,19 +17,25 @@ export const SlideNav = (props) => {
     const otherId = `:not([id^='${e.target.id}'])`;
     const others = document.querySelectorAll(otherId);
     for (let i = 0; i < others.length; i++) {
-      others[i].style.backgroundColor = "transparent";
-      others[i].boxShadow = "none";
+      others[i].classList.remove(style.activeLink);
     }
-    nav.style.backgroundColor = "rgba(26, 135, 168, 0.8)";
-    nav.style.boxShadow = "rgba(0, 0, 0, 0.24) 0px 3px 8px";
+    nav.classList.add(style.activeLink);
     props.dashboard(e.target.id);
+  };
+
+  const modeHandler = (md) => {
+    props.mode(md);
+    if (md == "dark") setStyle(require("./slideNav_dark.module.scss"));
+    else setStyle(require("./slideNav.module.scss"));
   };
 
   return (
     <nav className={style.slideNav}>
       <main>
-        <span>داشبورد</span>
-        <i className="fa fa-tachometer"></i>
+        <ToggleSwitch mode={modeHandler} />
+        <span>
+          داشبورد <i className="fa fa-tachometer"></i>
+        </span>
       </main>
       <Link
         id="گذرگاه"
