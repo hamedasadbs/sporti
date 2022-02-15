@@ -57,13 +57,34 @@
     }
 
     .activeLink {
-        background-color: rgba(131, 131, 131, 0.8);
+        background-color: rgba(3, 140, 219, 0.8);
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
 
     .bus {
         transform: rotate(270deg);
         margin-right: -10px;
+    }
+}
+
+.slideNav_dark {
+    background-image: url(../Images/slideNav.png);
+    background-position-y: -20px;
+
+    main {
+        border-bottom: 1px solid gray;
+
+        span {
+            color: gray;
+        }
+    }
+
+    .link{
+        color: lightgray;
+    }
+
+    .activeLink {
+        background-color: rgba(131, 131, 131, 0.8);
     }
 }
 

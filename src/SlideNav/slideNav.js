@@ -1,12 +1,12 @@
 /*INNER-COMPONENTS*/
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 /*CHILD COMPONENTS*/
 import { ToggleSwitch } from "../ToggleSwitch/toggleSwitch";
+/*CSS*/
+import style from "./slideNav.module.scss";
 
 export const SlideNav = (props) => {
-  const [style, setStyle] = useState(require("./slideNav.module.scss"));
-
   useEffect(() => {
     const bus = document.getElementById("گذرگاه");
     bus.classList.add(style.activeLink);
@@ -25,8 +25,9 @@ export const SlideNav = (props) => {
 
   const modeHandler = (md) => {
     props.mode(md);
-    if (md == "dark") setStyle(require("./slideNav_dark.module.scss"));
-    else setStyle(require("./slideNav.module.scss"));
+    const slideNav = document.getElementsByClassName(style.slideNav)[0];
+    if (md == "dark") slideNav.classList.add(style.slideNav_dark);
+    else slideNav.classList.remove(style.slideNav_dark);
   };
 
   return (
@@ -37,12 +38,7 @@ export const SlideNav = (props) => {
           داشبورد <i className="fa fa-tachometer"></i>
         </span>
       </main>
-      <Link
-        id="گذرگاه"
-        onClick={navHandler}
-        className={`${style.link}`}
-        to="/bus"
-      >
+      <Link id="گذرگاه" onClick={navHandler} className={style.link} to="/bus">
         <span id="گذرگاه">گذرگاه</span>
         <i id="گذرگاه" className={`fa fa-usb ${style.bus}`}></i>
       </Link>
