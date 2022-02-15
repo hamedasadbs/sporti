@@ -13,6 +13,7 @@ export const InfoBoxes = (props) => {
           value={infobox.value}
           icon1={infobox.icon1}
           icon2={infobox.icon2}
+          mode={props.mode}
         />
       ))}
     </article>

@@ -19,10 +19,12 @@
 
     table {
         width: 100%;
+        border: 1px solid lightgray;
 
         thead {
             tr {
                 th {
+                    border: 1px solid lightgray;
                     text-align: center;
                     font-family: specialFont;
                     background-color: darken(rgb(26, 135, 168), 10%);
@@ -35,8 +37,40 @@
         tbody {
             tr {
                 td {
+                    border: 1px solid lightgray;
                     text-align: center;
                     font-family: myFont;
+                }
+            }
+        }
+    }
+}
+
+.infoTable_dark {
+    box-shadow: none;
+
+    .title {
+        background-color: rgb(0, 14, 28);
+    }
+
+    table {
+        border: 1px solid gray;
+
+        thead {
+            tr {
+                th {
+                    border: 1px solid gray;
+                    background-color: rgb(17, 17, 17);
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    border: 1px solid gray;
+                    background-color: rgb(39, 39, 39);
+                    color: white;
                 }
             }
         }

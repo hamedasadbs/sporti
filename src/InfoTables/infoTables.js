@@ -11,6 +11,7 @@ export const InfoTables = (props) => {
           title={infotable.title}
           toples={infotable.toples}
           records={infotable.records}
+          mode={props.mode}
         />
       ))}
     </article>

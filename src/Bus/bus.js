@@ -16,11 +16,11 @@ export const Bus = (props) => {
     if (props.mode == "dark")
       document
         .getElementsByClassName(style.bus)[0]
-        .classList.add(style.darkMode);
+        .classList.add(style.bus_dark);
     else
       document
         .getElementsByClassName(style.bus)[0]
-        .classList.remove(style.darkMode);
+        .classList.remove(style.bus_dark);
   }, [props.mode]);
 
   return (
@@ -29,9 +29,9 @@ export const Bus = (props) => {
       <main className={style.title}>
         <h1>{props.title}</h1>
       </main>
-      <InfoBoxes infoBox={infoBox} />
-      <BusCharts />
-      <InfoTables infoTable={infoTable} />
+      <InfoBoxes mode={props.mode} infoBox={infoBox} />
+      <BusCharts mode={props.mode} />
+      <InfoTables mode={props.mode} infoTable={infoTable} />
     </article>
   );
 };

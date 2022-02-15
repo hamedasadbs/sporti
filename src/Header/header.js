@@ -7,11 +7,11 @@ export const Header = (props) => {
     if (props.mode == "dark") {
       document
         .getElementsByClassName(style.header)[0]
-        .classList.remove(style.header_dark);
+        .classList.add(style.header_dark);
     } else {
       document
         .getElementsByClassName(style.header)[0]
-        .classList.add(style.header_dark);
+        .classList.remove(style.header_dark);
     }
   }, [props.mode]);
 

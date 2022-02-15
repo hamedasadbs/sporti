@@ -35,6 +35,19 @@ export const LineChart = (props) => {
     btnStyling();
   }, []);
 
+  useEffect(() => {
+    const lineCharts = document.getElementsByClassName(style.lineChart);
+    if (props.mode == "dark") {
+      for (let i = 0; i < lineCharts.length; i++) {
+        lineCharts[i].classList.add(style.lineChart_dark);
+      }
+    } else {
+      for (let i = 0; i < lineCharts.length; i++) {
+        lineCharts[i].classList.remove(style.lineChart_dark);
+      }
+    }
+  }, [props.mode]);
+
   const dateHandler = (e) => {
     setDate(e.target.id);
     date = e.target.id;

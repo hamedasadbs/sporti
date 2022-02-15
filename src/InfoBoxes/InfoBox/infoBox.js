@@ -1,3 +1,5 @@
+/*INNER COMPONENTS*/
+import { useEffect } from "react";
 /*CSS*/
 import style from "./infoBox.module.scss";
 
@@ -21,11 +23,18 @@ export const InfoBox = (props) => {
 
   return (
     <span
-      style={{
-        background: `linear-gradient(135deg, ${
-          props.bgColor
-        }, ${colorHandler()})`,
-      }}
+      style={
+        props.mode == "light"
+          ? {
+              background: `linear-gradient(135deg, ${
+                props.bgColor
+              }, ${colorHandler()})`,
+            }
+          : {
+              background:
+                "linear-gradient(135deg,rgb(43, 43, 43), rgb(22, 22, 22))",
+            }
+      }
       className={style.infoBox}
     >
       <div className={style.icon}>

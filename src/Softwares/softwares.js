@@ -16,12 +16,12 @@ export const Softwares = (props) => {
   useEffect(() => {
     if (props.mode == "dark")
       document
-        .getElementsByClassName(style.bus)[0]
-        .classList.add(style.darkMode);
+        .getElementsByClassName(style.softwares)[0]
+        .classList.add(style.softwares_dark);
     else
       document
-        .getElementsByClassName(style.bus)[0]
-        .classList.remove(style.darkMode);
+        .getElementsByClassName(style.softwares)[0]
+        .classList.remove(style.softwares_dark);
   }, [props.mode]);
 
   return (
@@ -35,9 +35,9 @@ export const Softwares = (props) => {
         </select>
         <h1> / {props.title}</h1>
       </main>
-      <InfoBoxes infoBox={infoBox} />
-      <SoftwaresCharts />
-      <InfoTables infoTable={infoTable} />
+      <InfoBoxes mode={props.mode} infoBox={infoBox} />
+      <SoftwaresCharts mode={props.mode} />
+      <InfoTables mode={props.mode} infoTable={infoTable} />
     </article>
   );
 };

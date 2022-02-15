@@ -10,7 +10,7 @@ export const ToggleSwitch = (props) => {
   return (
     <label className={style.switch}>
       <input onChange={modeHadler} type="checkbox" />
-      <span className={style.slider}></span>
+      <span className={`${style.slider} ${style.round}`}></span>
     </label>
   );
 };
