@@ -9,6 +9,7 @@ export const InfoBoxes = (props) => {
       {props.infoBox.map((infobox) => (
         <InfoBox
           bgColor={infobox.bgColor}
+          name={infobox.name}
           title={infobox.title}
           value={infobox.value}
           icon1={infobox.icon1}

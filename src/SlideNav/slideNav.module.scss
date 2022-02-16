@@ -1,3 +1,5 @@
+@import '../index.module.scss';
+
 .slideNav {
     width: 20%;
     height: 100%;
@@ -58,7 +60,7 @@
 
     .activeLink {
         background-color: rgba(3, 140, 219, 0.8);
-        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        box-shadow: $brightBoxShadow1;
     }
 
     .bus {
@@ -79,12 +81,13 @@
         }
     }
 
-    .link{
+    .link {
         color: lightgray;
     }
 
     .activeLink {
         background-color: rgba(131, 131, 131, 0.8);
+        box-shadow: $darkBoxShadow;
     }
 }
 

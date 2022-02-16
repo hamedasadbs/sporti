@@ -1,8 +1,9 @@
+@import '../../index.module.scss';
+
 .infoTable {
     width: 46%;
     margin: 80px 20px;
     text-align: center;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
     .title {
         font-size: 25px;
@@ -20,6 +21,7 @@
     table {
         width: 100%;
         border: 1px solid lightgray;
+        box-shadow: $brightBoxShadow2;
 
         thead {
             tr {
@@ -47,14 +49,13 @@
 }
 
 .infoTable_dark {
-    box-shadow: none;
-
     .title {
         background-color: rgb(0, 14, 28);
     }
 
     table {
         border: 1px solid gray;
+        box-shadow: $brightBoxShadow2;
 
         thead {
             tr {

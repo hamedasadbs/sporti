@@ -5,14 +5,14 @@ import style from "./infoTable.module.scss";
 
 export const InfoTable = (props) => {
   useEffect(() => {
-    const barCharts = document.getElementsByClassName(style.infoTable);
+    const infoTable = document.getElementsByClassName(style.infoTable);
     if (props.mode == "dark") {
-      for (let i = 0; i < barCharts.length; i++) {
-        barCharts[i].classList.add(style.infoTable_dark);
+      for (let i = 0; i < infoTable.length; i++) {
+        infoTable[i].classList.add(style.infoTable_dark);
       }
     } else {
-      for (let i = 0; i < barCharts.length; i++) {
-        barCharts[i].classList.remove(style.infoTable_dark);
+      for (let i = 0; i < infoTable.length; i++) {
+        infoTable[i].classList.remove(style.infoTable_dark);
       }
     }
   }, [props.mode]);

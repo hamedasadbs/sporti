@@ -21,22 +21,54 @@ export const InfoBox = (props) => {
     }
   };
 
-  return (
-    <span
-      style={
-        props.mode == "light"
-          ? {
-              background: `linear-gradient(135deg, ${
-                props.bgColor
-              }, ${colorHandler()})`,
-            }
-          : {
-              background:
-                "linear-gradient(135deg,rgb(43, 43, 43), rgb(22, 22, 22))",
-            }
+  useEffect(() => {
+    const infoBox = document.getElementsByClassName(style.infoBox);
+    if (props.mode != "dark") {
+      for (let i = 0; i < infoBox.length; i++) {
+        infoBox[i].classList.remove(style.infoBox_dark);
+        switch (props.name) {
+          case "failedRes":
+            infoBox[i].classList.add(style.failedRes);
+            break;
+          case "okRes":
+            infoBox[i].classList.add(style.okRes);
+            break;
+          case "totalRes":
+            infoBox[i].classList.add(style.totalRes);
+            break;
+          case "totalReq":
+            infoBox[i].classList.add(style.totalReq);
+            break;
+          case "totalSoft":
+            infoBox[i].classList.add(style.totalSoft);
+            break;
+          case "totalRes":
+            infoBox[i].classList.add(style.totalRes);
+            break;
+          case "totalReq":
+            infoBox[i].classList.add(style.totalReq);
+            break;
+          case "totalTransaction":
+            infoBox[i].classList.add(style.totalTransaction);
+            break;
+        }
       }
-      className={style.infoBox}
-    >
+    } else {
+      for (let i = 0; i < infoBox.length; i++) {
+        infoBox[i].classList.remove(style.failedRes);
+        infoBox[i].classList.remove(style.okRes);
+        infoBox[i].classList.remove(style.totalRes);
+        infoBox[i].classList.remove(style.totalReq);
+        infoBox[i].classList.remove(style.totalSoft);
+        infoBox[i].classList.remove(style.totalTransaction);
+
+        infoBox[i].classList.add(style.infoBox_dark);
+      }
+    }
+  }, [props.mode]);
+
+  return (
+    <span className={style.infoBox}>
       <div className={style.icon}>
         <i
           style={{ color: colorHandler() }}
