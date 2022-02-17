@@ -4,7 +4,7 @@ import style from "./header.module.scss";
 
 export const Header = (props) => {
   useEffect(() => {
-    if (props.mode == "dark") {
+    if (props.mode === "dark") {
       document
         .getElementsByClassName(style.header)[0]
         .classList.add(style.header_dark);
@@ -19,7 +19,11 @@ export const Header = (props) => {
     <header className={style.header}>
       <div className={style.search}>
         <input placeholder="جست و جو" />
-        <button>
+        <button
+          onClick={() => {
+            alert(props.mode);
+          }}
+        >
           <i className="fa fa-search"></i>
         </button>
       </div>

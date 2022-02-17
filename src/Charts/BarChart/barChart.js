@@ -1,7 +1,7 @@
 /*CSS*/
 import style from "./barChart.module.scss";
 /*INNER COMPONENTS*/
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import Chart, {
   ArgumentAxis,
   Series,
@@ -15,20 +15,14 @@ import Chart, {
 import { dynamicData } from "../../Dataset/dynamicData";
 
 export const BarChart = (props) => {
-  let [date, setDate] = useState("minute" + props.id);
-  const [dateType, setDateType] = useState(dynamicData.software);
-  const [visualRange, setVisualRange] = useState({
+  const dateType = dynamicData.software;
+  const visualRange = {
     length: 5,
-  });
-
-  const dateHandler = (e) => {
-    setDate(e.target.id);
-    date = e.target.id;
   };
 
   useEffect(() => {
     const barCharts = document.getElementsByClassName(style.barChart);
-    if (props.mode == "dark") {
+    if (props.mode === "dark") {
       for (let i = 0; i < barCharts.length; i++) {
         barCharts[i].classList.add(style.barChart_dark);
       }

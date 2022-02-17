@@ -6,7 +6,7 @@ import style from "./infoTable.module.scss";
 export const InfoTable = (props) => {
   useEffect(() => {
     const infoTable = document.getElementsByClassName(style.infoTable);
-    if (props.mode == "dark") {
+    if (props.mode === "dark") {
       for (let i = 0; i < infoTable.length; i++) {
         infoTable[i].classList.add(style.infoTable_dark);
       }
@@ -25,16 +25,18 @@ export const InfoTable = (props) => {
       <table className="table table-striped table-bordered">
         <thead>
           <tr>
-            {props.toples.map((tp) => (
-              <th scope="col">{tp}</th>
+            {props.toples.map((tp, index) => (
+              <th scope="col" key={index}>
+                {tp}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
-          {props.records.map((rec) => (
-            <tr>
-              {rec.map((rc) => (
-                <td>{rc}</td>
+          {props.records.map((rec, index) => (
+            <tr key={index}>
+              {rec.map((rc, index) => (
+                <td key={index}>{rc}</td>
               ))}
             </tr>
           ))}

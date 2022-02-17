@@ -33,11 +33,11 @@ export const LineChart = (props) => {
 
   useEffect(() => {
     btnStyling();
-  }, []);
+  });
 
   useEffect(() => {
     const lineCharts = document.getElementsByClassName(style.lineChart);
-    if (props.mode == "dark") {
+    if (props.mode === "dark") {
       for (let i = 0; i < lineCharts.length; i++) {
         lineCharts[i].classList.add(style.lineChart_dark);
       }
@@ -88,6 +88,8 @@ export const LineChart = (props) => {
           startValue: 0,
           endValue: 5,
         });
+        break;
+      default:
         break;
     }
   };

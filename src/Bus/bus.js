@@ -13,7 +13,7 @@ export const Bus = (props) => {
   const infoTable = info[1].bus;
 
   useEffect(() => {
-    if (props.mode == "dark")
+    if (props.mode === "dark")
       document
         .getElementsByClassName(style.bus)[0]
         .classList.add(style.bus_dark);

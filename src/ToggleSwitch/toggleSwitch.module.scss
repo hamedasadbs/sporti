@@ -1,3 +1,5 @@
+@import '../index.module.scss';
+
 .toggle {
     width: 70px;
     height: 40px;
@@ -16,7 +18,7 @@
         width: 35px;
         border-radius: 50px;
         height: 35px;
-        background-color: rgb(0, 69, 136);
+        background-color: $mainBrightBlue;
         z-index: 5;
         margin: auto;
         margin-left: 5px;
@@ -36,5 +38,10 @@
             color: silver;
             display: none;
         }
+    }
+
+    .switch_dark {
+        background-color: $mainDarkBlue;
+        margin-left: 30px;
     }
 }

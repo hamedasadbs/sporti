@@ -6,7 +6,7 @@ import { InfoBox } from "./InfoBox/infoBox";
 export const InfoBoxes = (props) => {
   return (
     <article className={style.infoBoxes}>
-      {props.infoBox.map((infobox) => (
+      {props.infoBox.map((infobox, index) => (
         <InfoBox
           bgColor={infobox.bgColor}
           name={infobox.name}
@@ -15,6 +15,8 @@ export const InfoBoxes = (props) => {
           icon1={infobox.icon1}
           icon2={infobox.icon2}
           mode={props.mode}
+          index={index}
+          key={index}
         />
       ))}
     </article>

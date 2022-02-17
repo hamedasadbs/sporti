@@ -1,35 +1,64 @@
 /*INNER-COMPONENTS*/
-import { useState } from "react";
+import { useEffect } from "react";
 /*CSS*/
 import style from "./toggleSwitch.module.scss";
 
 export const ToggleSwitch = (props) => {
-  const [darkMode, setDarkMode] = useState(false);
+  const getCookie = (cName) => {
+    const nameString = cName + "=";
+    const value = document.cookie.split("; ").filter((item) => {
+      return item.includes(nameString);
+    });
+    if (value.length) {
+      return value[0].substring(nameString.length, value[0].length);
+    } else {
+      return "";
+    }
+  };
 
-  const modeHadler = () => {
+  const setCookie = (cName, cValue, minutes) => {
+    let d = new Date();
+    d.setTime(d.getTime() + minutes * 60 * 1000);
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = cName + "=" + cValue + "; " + expires;
+  };
+
+  const darkModeHadler = () => {
     const switchVar = document.getElementsByClassName(style.switch)[0];
     const brightIcon = document.getElementsByClassName(style.brightIcon)[0];
     const darkIcon = document.getElementsByClassName(style.darkIcon)[0];
 
-    if (darkMode) {
-      props.mode("bright");
-      setDarkMode(false);
-      switchVar.style.marginLeft = "5px";
-      switchVar.style.backgroundColor = "rgb(0, 69, 136)";
+    if (getCookie("darkMode") === "dark") {
+      setCookie("darkMode", "bright", 100);
+      switchVar.classList.remove(style.switch_dark);
       brightIcon.style.display = "initial";
       darkIcon.style.display = "none";
     } else {
-      props.mode("dark");
-      setDarkMode(true);
-      switchVar.style.marginLeft = "30px";
-      switchVar.style.backgroundColor = "rgb(0, 14, 28)";
+      setCookie("darkMode", "dark", 100);
+      switchVar.classList.add(style.switch_dark);
       brightIcon.style.display = "none";
       darkIcon.style.display = "initial";
     }
   };
 
+  useEffect(() => {
+    const switchVar = document.getElementsByClassName(style.switch)[0];
+    const brightIcon = document.getElementsByClassName(style.brightIcon)[0];
+    const darkIcon = document.getElementsByClassName(style.darkIcon)[0];
+
+    if (getCookie("darkMode") === "dark") {
+      switchVar.classList.add(style.switch_dark);
+      brightIcon.style.display = "none";
+      darkIcon.style.display = "initial";
+    } else {
+      switchVar.classList.remove(style.switch_dark);
+      brightIcon.style.display = "initial";
+      darkIcon.style.display = "none";
+    }
+  }, []);
+
   return (
-    <div onClick={modeHadler} className={style.toggle}>
+    <div onClick={darkModeHadler} className={style.toggle}>
       <span className={style.switch}>
         <i className={`fa fa-sun-o ${style.brightIcon}`}></i>
         <i className={`fa fa-moon-o ${style.darkIcon}`}></i>

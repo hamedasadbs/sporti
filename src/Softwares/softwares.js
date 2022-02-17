@@ -14,7 +14,7 @@ export const Softwares = (props) => {
   const infoTable = info[1].softwares;
 
   useEffect(() => {
-    if (props.mode == "dark")
+    if (props.mode === "dark")
       document
         .getElementsByClassName(style.softwares)[0]
         .classList.add(style.softwares_dark);
@@ -29,8 +29,8 @@ export const Softwares = (props) => {
       <Header mode={props.mode} />
       <main className={style.title}>
         <select>
-          {dynamicData.software.map((sw) => (
-            <option>{sw.swName}</option>
+          {dynamicData.software.map((sw, index) => (
+            <option key={index}>{sw.swName}</option>
           ))}
         </select>
         <h1> / {props.title}</h1>
