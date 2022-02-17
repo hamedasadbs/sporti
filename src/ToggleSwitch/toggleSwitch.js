@@ -39,7 +39,6 @@ export const ToggleSwitch = (props) => {
       brightIcon.style.display = "none";
       darkIcon.style.display = "initial";
     }
-    alert(getCookie("darkMode"));
     props.darkModeHandler(getCookie("darkMode"));
   };
 
@@ -48,7 +47,7 @@ export const ToggleSwitch = (props) => {
     const brightIcon = document.getElementsByClassName(style.brightIcon)[0];
     const darkIcon = document.getElementsByClassName(style.darkIcon)[0];
 
-    if (getCookie("darkMode")) {
+    if (getCookie("darkMode") == 1) {
       switchVar.classList.add(style.switch_dark);
       brightIcon.style.display = "none";
       darkIcon.style.display = "initial";
@@ -57,7 +56,6 @@ export const ToggleSwitch = (props) => {
       brightIcon.style.display = "initial";
       darkIcon.style.display = "none";
     }
-    alert(getCookie("darkMode"));
   }, []);
 
   return (
