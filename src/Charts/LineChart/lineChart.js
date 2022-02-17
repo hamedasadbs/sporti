@@ -17,6 +17,7 @@ import { dynamicData } from "../../Dataset/dynamicData";
 export const LineChart = (props) => {
   let [date, setDate] = useState("minute" + props.id);
   let [dateTitle, setDateTitle] = useState("دقیقه");
+  const [chartColor, setChartColor] = useState(props.color);
   const [dateType, setDateType] = useState(dynamicData.minute);
   const [visualRange, setVisualRange] = useState({
     startValue: 0,
@@ -37,16 +38,18 @@ export const LineChart = (props) => {
 
   useEffect(() => {
     const lineCharts = document.getElementsByClassName(style.lineChart);
-    if (props.mode === "dark") {
+    if (props.darkMode == 1) {
+      setChartColor(props.darkColor);
       for (let i = 0; i < lineCharts.length; i++) {
         lineCharts[i].classList.add(style.lineChart_dark);
       }
     } else {
+      setChartColor(props.color);
       for (let i = 0; i < lineCharts.length; i++) {
         lineCharts[i].classList.remove(style.lineChart_dark);
       }
     }
-  }, [props.mode]);
+  }, [props.darkMode]);
 
   const dateHandler = (e) => {
     setDate(e.target.id);
@@ -101,7 +104,7 @@ export const LineChart = (props) => {
         <Series
           type="line"
           argumentField="label"
-          color={props.color}
+          color={chartColor}
           valueField="data"
         />
         <Size height={300} />

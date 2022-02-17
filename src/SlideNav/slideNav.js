@@ -25,14 +25,18 @@ export const SlideNav = (props) => {
 
   useEffect(() => {
     const slideNav = document.getElementsByClassName(style.slideNav)[0];
-    if (props.mode === "dark") slideNav.classList.add(style.slideNav_dark);
+    if (props.darkMode == 1) slideNav.classList.add(style.slideNav_dark);
     else slideNav.classList.remove(style.slideNav_dark);
-  }, [props.mode]);
+  }, [props.darkMode]);
+
+  const darkModeHandler = (dm) => {
+    props.darkModeHandler(dm);
+  };
 
   return (
     <nav className={style.slideNav}>
       <main>
-        <ToggleSwitch />
+        <ToggleSwitch darkModeHandler={darkModeHandler} />
         <span>
           داشبورد <i className="fa fa-tachometer"></i>
         </span>

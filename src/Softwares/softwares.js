@@ -14,7 +14,7 @@ export const Softwares = (props) => {
   const infoTable = info[1].softwares;
 
   useEffect(() => {
-    if (props.mode === "dark")
+    if (props.darkMode == 1)
       document
         .getElementsByClassName(style.softwares)[0]
         .classList.add(style.softwares_dark);
@@ -22,11 +22,11 @@ export const Softwares = (props) => {
       document
         .getElementsByClassName(style.softwares)[0]
         .classList.remove(style.softwares_dark);
-  }, [props.mode]);
+  }, [props.darkMode]);
 
   return (
     <article className={style.softwares}>
-      <Header mode={props.mode} />
+      <Header darkMode={props.darkMode} />
       <main className={style.title}>
         <select>
           {dynamicData.software.map((sw, index) => (
@@ -35,9 +35,9 @@ export const Softwares = (props) => {
         </select>
         <h1> / {props.title}</h1>
       </main>
-      <InfoBoxes mode={props.mode} infoBox={infoBox} />
-      <SoftwaresCharts mode={props.mode} />
-      <InfoTables mode={props.mode} infoTable={infoTable} />
+      <InfoBoxes darkMode={props.darkMode} infoBox={infoBox} />
+      <SoftwaresCharts darkMode={props.darkMode} />
+      <InfoTables darkMode={props.darkMode} infoTable={infoTable} />
     </article>
   );
 };

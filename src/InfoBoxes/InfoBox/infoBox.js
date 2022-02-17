@@ -32,12 +32,12 @@ export const InfoBox = (props) => {
       default:
         break;
     }
-    if (props.mode === "dark") {
+    if (props.darkMode == 1) {
       for (let i = 0; i < infoBox.length; i++) {
         infoBox[i].classList.add(style.infoBox_dark);
       }
     }
-  }, [props.mode]);
+  }, [props.darkMode]);
 
   return (
     <span className={style.infoBox}>

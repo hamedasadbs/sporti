@@ -45,77 +45,77 @@
 }
 
 .failedRes {
-    background: linear-gradient(135deg, rgb(255, 43, 43), darken(rgb(255, 43, 43), 30%));
+    background: linear-gradient(135deg, $failedResColor, darken($failedResColor, 30%));
 
     .icon {
 
         .i1,
         .i2 {
-            color: darken(rgb(255, 43, 43), 30%)
+            color: darken($failedResColor, 30%)
         }
     }
 }
 
 .okRes {
-    background: linear-gradient(135deg, rgb(34, 131, 34), darken(rgb(34, 131, 34), 10%));
+    background: linear-gradient(135deg, $okResColor, darken($okResColor, 10%));
 
     .icon {
 
         .i1,
         .i2 {
-            color: darken(rgb(34, 131, 34), 10%)
+            color: darken($okResColor, 10%)
         }
     }
 }
 
 .totalRes {
-    background: linear-gradient(135deg, rgb(228, 148, 0), darken(rgb(228, 148, 0), 10%));
+    background: linear-gradient(135deg, $totalResColor, darken($totalResColor, 10%));
 
     .icon {
 
         .i1,
         .i2 {
-            color: darken(rgb(228, 148, 0), 10%)
+            color: darken($totalResColor, 10%)
         }
     }
 }
 
 .totalReq {
-    background: linear-gradient(135deg, rgb(126, 33, 126), darken(rgb(126, 33, 126), 10%));
+    background: linear-gradient(135deg, $totalReqColor, darken($totalReqColor, 10%));
 
     .icon {
 
         .i1,
         .i2 {
-            color: darken(rgb(126, 33, 126), 10%)
+            color: darken($totalReqColor, 10%)
         }
     }
 }
 
 .totalSoft {
-    background: linear-gradient(135deg, rgb(41, 41, 250), darken(rgb(41, 41, 250), 10%));
+    background: linear-gradient(135deg, $totalSoftColor, darken($totalSoftColor, 10%));
 
     .icon {
 
         .i1,
         .i2 {
-            color: darken(rgb(41, 41, 250), 10%)
+            color: darken($totalSoftColor, 10%)
         }
     }
 }
 
 .totalTransaction {
-    background: linear-gradient(135deg, rgb(158, 38, 38), darken(rgb(158, 38, 38), 10%));
+    background: linear-gradient(135deg, $totalTransactionColor, darken($totalTransactionColor, 10%));
 
     .icon {
 
         .i1,
         .i2 {
-            color: darken(rgb(158, 38, 38), 10%)
+            color: darken($totalTransactionColor, 10%)
         }
     }
 }
 
 .infoBox_dark {
-    background: linear-gradient(135deg, rgb(27, 27, 27), darken(rgb(27, 27, 27), 10%));
+    background: linear-gradient(135deg, $darkColor, darken($darkColor, 10%));
 }

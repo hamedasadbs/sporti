@@ -13,7 +13,7 @@ export const Bus = (props) => {
   const infoTable = info[1].bus;
 
   useEffect(() => {
-    if (props.mode === "dark")
+    if (props.darkMode == 1)
       document
         .getElementsByClassName(style.bus)[0]
         .classList.add(style.bus_dark);
@@ -21,17 +21,17 @@ export const Bus = (props) => {
       document
         .getElementsByClassName(style.bus)[0]
         .classList.remove(style.bus_dark);
-  }, [props.mode]);
+  }, [props.darkMode]);
 
   return (
     <article className={style.bus}>
-      <Header mode={props.mode} />
+      <Header darkMode={props.darkMode} />
       <main className={style.title}>
         <h1>{props.title}</h1>
       </main>
-      <InfoBoxes mode={props.mode} infoBox={infoBox} />
-      <BusCharts mode={props.mode} />
-      <InfoTables mode={props.mode} infoTable={infoTable} />
+      <InfoBoxes darkMode={props.darkMode} infoBox={infoBox} />
+      <BusCharts darkMode={props.darkMode} />
+      <InfoTables darkMode={props.darkMode} infoTable={infoTable} />
     </article>
   );
 };

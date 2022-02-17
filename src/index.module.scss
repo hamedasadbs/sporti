@@ -7,6 +7,14 @@ rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 $mainBrightBlue:rgb(0, 69, 136);
 $mainDarkBlue:rgb(0, 14, 28);
 
+$failedResColor:rgb(255, 43, 43);
+$okResColor:rgb(34, 131, 34);
+$totalResColor:rgb(228, 148, 0);
+$totalReqColor:rgb(126, 33, 126);
+$totalSoftColor:rgb(41, 41, 250);
+$totalTransactionColor:rgb(158, 38, 38);
+$darkColor:rgb(27, 27, 27);
+
 @mixin bus_softwares {
 
   .bus,

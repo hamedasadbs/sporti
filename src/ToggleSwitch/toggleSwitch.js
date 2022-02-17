@@ -28,17 +28,19 @@ export const ToggleSwitch = (props) => {
     const brightIcon = document.getElementsByClassName(style.brightIcon)[0];
     const darkIcon = document.getElementsByClassName(style.darkIcon)[0];
 
-    if (getCookie("darkMode") === "dark") {
-      setCookie("darkMode", "bright", 100);
+    if (getCookie("darkMode") == 1) {
+      setCookie("darkMode", 0, 100);
       switchVar.classList.remove(style.switch_dark);
       brightIcon.style.display = "initial";
       darkIcon.style.display = "none";
     } else {
-      setCookie("darkMode", "dark", 100);
+      setCookie("darkMode", 1, 100);
       switchVar.classList.add(style.switch_dark);
       brightIcon.style.display = "none";
       darkIcon.style.display = "initial";
     }
+    alert(getCookie("darkMode"));
+    props.darkModeHandler(getCookie("darkMode"));
   };
 
   useEffect(() => {
@@ -46,7 +48,7 @@ export const ToggleSwitch = (props) => {
     const brightIcon = document.getElementsByClassName(style.brightIcon)[0];
     const darkIcon = document.getElementsByClassName(style.darkIcon)[0];
 
-    if (getCookie("darkMode") === "dark") {
+    if (getCookie("darkMode")) {
       switchVar.classList.add(style.switch_dark);
       brightIcon.style.display = "none";
       darkIcon.style.display = "initial";
@@ -55,6 +57,7 @@ export const ToggleSwitch = (props) => {
       brightIcon.style.display = "initial";
       darkIcon.style.display = "none";
     }
+    alert(getCookie("darkMode"));
   }, []);
 
   return (

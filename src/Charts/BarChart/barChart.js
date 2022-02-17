@@ -1,7 +1,7 @@
 /*CSS*/
 import style from "./barChart.module.scss";
 /*INNER COMPONENTS*/
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Chart, {
   ArgumentAxis,
   Series,
@@ -15,6 +15,7 @@ import Chart, {
 import { dynamicData } from "../../Dataset/dynamicData";
 
 export const BarChart = (props) => {
+  const [chartColor, setChartColor] = useState(props.color);
   const dateType = dynamicData.software;
   const visualRange = {
     length: 5,
@@ -22,16 +23,18 @@ export const BarChart = (props) => {
 
   useEffect(() => {
     const barCharts = document.getElementsByClassName(style.barChart);
-    if (props.mode === "dark") {
+    if (props.darkMode == 1) {
+      setChartColor(props.darkColor);
       for (let i = 0; i < barCharts.length; i++) {
         barCharts[i].classList.add(style.barChart_dark);
       }
     } else {
+      setChartColor(props.color);
       for (let i = 0; i < barCharts.length; i++) {
         barCharts[i].classList.remove(style.barChart_dark);
       }
     }
-  }, [props.mode]);
+  }, [props.darkMode]);
 
   let newArray = dateType.sort(function (a, b) {
     let valueA, valueB;
@@ -52,7 +55,7 @@ export const BarChart = (props) => {
         <Series
           type="bar"
           argumentField="swName"
-          color={props.color}
+          color={chartColor}
           valueField="data"
         />
         <Size height={300} />

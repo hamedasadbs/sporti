@@ -40,9 +40,9 @@ export const App = () => {
     window.onbeforeunload = null;
   };
 
-  useEffect(() => {
-    setDarkMode(getCookie("darkMode"));
-  }, [getCookie("darkMode")]);
+  const darkModeHandler = (dm) => {
+    setDarkMode(dm);
+  };
 
   return (
     <div className={style.app}>
@@ -50,19 +50,27 @@ export const App = () => {
         <Switch>
           <Route path="/bus">
             <Bus
-              mode={darkMode}
+              darkMode={darkMode}
               dashboard={dashboardHandler}
               title={dashboard}
             />
-            <SlideNav mode={darkMode} dashboard={dashboardHandler} />
+            <SlideNav
+              darkModeHandler={darkModeHandler}
+              darkMode={darkMode}
+              dashboard={dashboardHandler}
+            />
           </Route>
           <Route path="/softwares">
             <Softwares
-              mode={darkMode}
+              darkMode={darkMode}
               dashboard={dashboardHandler}
               title={dashboard}
             />
-            <SlideNav mode={darkMode} dashboard={dashboardHandler} />
+            <SlideNav
+              darkModeHandler={darkModeHandler}
+              darkMode={darkMode}
+              dashboard={dashboardHandler}
+            />
           </Route>
           <Route exact path="/">
             <Redirect to="/bus" />

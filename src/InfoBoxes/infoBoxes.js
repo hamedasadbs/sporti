@@ -8,13 +8,12 @@ export const InfoBoxes = (props) => {
     <article className={style.infoBoxes}>
       {props.infoBox.map((infobox, index) => (
         <InfoBox
-          bgColor={infobox.bgColor}
           name={infobox.name}
           title={infobox.title}
           value={infobox.value}
           icon1={infobox.icon1}
           icon2={infobox.icon2}
-          mode={props.mode}
+          darkMode={props.darkMode}
           index={index}
           key={index}
         />

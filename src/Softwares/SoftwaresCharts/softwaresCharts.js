@@ -10,39 +10,45 @@ export const SoftwaresCharts = (props) => {
   return (
     <main className={style.softwaresCharts}>
       <LineChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="تعداد درخواست ها"
-        color="rgb(90, 23, 90)"
+        color="#651b65"
+        darkColor="#a12ba1"
         id="1"
       />
       <LineChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="تعداد پاسخ ها"
-        color="rgb(167, 108, 0)"
+        color="#b37400"
+        darkColor="#ffaf1a"
         id="2"
       />
       <LineChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="نسبت موفقیت پاسخ ها"
-        color="rgb(25, 100, 25)"
+        color="#1a651a"
+        darkColor="#2aa22a"
         id="3"
       />
       <BarChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="تراکنش با سیستم های پر استفاده"
-        color="rgb(158, 38, 38)"
+        color="#7b1e1e"
+        darkColor="#b92d2d"
         id="1"
       />
       <BarChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="درخواست به سیستم های پر استفاده"
-        color="rgb(90, 23, 90)"
+        color="#0606f9"
+        darkColor="#5151fb"
         id="2"
       />
       <BarChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="دریافت رویداد و پاسخ از سیستم های پر تراکنش"
-        color="rgb(167, 108, 0)"
+        color="#7b1e1e"
+        darkColor="#b92d2d"
         id="3"
       />
     </main>

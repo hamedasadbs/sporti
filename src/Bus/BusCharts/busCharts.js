@@ -10,51 +10,59 @@ export const BusCharts = (props) => {
   return (
     <main className={style.busCharts}>
       <LineChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="نسبت موفقیت پاسخ ها"
-        color="rgb(25, 100, 25)"
+        color="#1a651a"
+        darkColor="#2aa22a"
         id="1"
       />
       <LineChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="پاسخ های ارسال شده"
-        color="rgb(167, 108, 0)"
+        color="#b37400"
+        darkColor="#ffaf1a"
         id="2"
       />
       <LineChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="درخواست های ارسال شده"
-        color="rgb(90, 23, 90)"
+        color="#651b65"
+        darkColor="#a12ba1"
         id="3"
       />
       <LineChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="پیام های مبادله شده"
-        color="rgb(158, 38, 38)"
+        color="#7b1e1e"
+        darkColor="#b92d2d"
         id="4"
       />
       <BarChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="نرم افزار هایی با بیشترین درخواست"
-        color="rgb(90, 23, 90)"
+        color="#651b65"
+        darkColor="#a12ba1"
         id="1"
       />
       <BarChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="نرم افزار هایی با بیشترین پاسخ"
-        color="rgb(167, 108, 0)"
+        color="#0606f9"
+        darkColor="#5151fb"
         id="2"
       />
       <BarChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="ضریب موفقیت تراکنش ها"
-        color="rgb(158, 38, 38)"
+        color="#7b1e1e"
+        darkColor="#b92d2d"
         id="3"
       />
       <BarChart
-        mode={props.mode}
+        darkMode={props.darkMode}
         title="متوسط زمان پاسخ نرم افزار ها"
-        color="rgb(202, 20, 57)"
+        color="#a2102d"
+        darkColor="#e81741"
         id="4"
       />
     </main>

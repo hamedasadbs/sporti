@@ -1,7 +1,6 @@
 const infoBox = {
   bus: [
     {
-      bgColor: "rgb(255, 43, 43)",
       name: "failedRes",
       title: "تعداد پاسخ های ناموفق",
       value: "20",
@@ -9,7 +8,6 @@ const infoBox = {
       icon2: "fa-close",
     },
     {
-      bgColor: "rgb(34, 131, 34)",
       name: "okRes",
       title: "تعداد پاسخ های موفق",
       value: "12",
@@ -17,21 +15,18 @@ const infoBox = {
       icon2: "fa-check",
     },
     {
-      bgColor: "rgb(228, 148, 0)",
       name: "totalRes",
       title: "تعداد کل پاسخ ها",
       value: "30",
       icon1: "fa-reply",
     },
     {
-      bgColor: "rgb(126, 33, 126)",
       name: "totalReq",
       title: "تعداد کل درخواست ها",
       value: "5",
       icon1: "fa-paper-plane",
     },
     {
-      bgColor: "rgb(41, 41, 250)",
       name: "totalSoft",
       title: "تعداد نرم افزارها",
       value: "10",
@@ -40,21 +35,18 @@ const infoBox = {
   ],
   softwares: [
     {
-      bgColor: "rgb(228, 148, 0)",
       name: "totalRes",
       title: "تعداد پاسخ های دریافت شده",
       value: "30",
       icon1: "fa-reply",
     },
     {
-      bgColor: "rgb(126, 33, 126)",
       name: "totalReq",
       title: "تعداد درخواست های ارسال شده",
       value: "5",
       icon1: "fa-paper-plane",
     },
     {
-      bgColor: "rgb(158, 38, 38)",
       name: "totalTransaction",
       title: "تعداد کل تراکنش ها",
       value: "10",

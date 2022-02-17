@@ -6,7 +6,7 @@ import style from "./infoTable.module.scss";
 export const InfoTable = (props) => {
   useEffect(() => {
     const infoTable = document.getElementsByClassName(style.infoTable);
-    if (props.mode === "dark") {
+    if (props.darkMode == 1) {
       for (let i = 0; i < infoTable.length; i++) {
         infoTable[i].classList.add(style.infoTable_dark);
       }
@@ -15,7 +15,7 @@ export const InfoTable = (props) => {
         infoTable[i].classList.remove(style.infoTable_dark);
       }
     }
-  }, [props.mode]);
+  }, [props.darkMode]);
 
   return (
     <main className={style.infoTable}>
