@@ -17,6 +17,14 @@ export const Header = (props) => {
 
   return (
     <header className={style.header}>
+      <div className={style.profile}>
+        <button>
+          <i className="fa fa-user-circle"></i>
+        </button>
+        <button>
+          <i className="fa fa-bell"></i>
+        </button>
+      </div>
       <div className={style.search}>
         <input placeholder="جست و جو" />
         <button>

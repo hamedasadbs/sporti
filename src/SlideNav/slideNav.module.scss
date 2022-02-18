@@ -8,21 +8,24 @@
     display: flex;
     flex-direction: column;
     padding: 15px;
-    background-image: url(../Images/slideNav.jpg);
+    background-image: url(../Images/slideNav.png);
     background-repeat: no-repeat;
     background-position-x: -750px;
     background-position-y: -10px;
+    box-shadow: $brightBoxShadow2;
+    border-radius: 10px 0 0 10px;
+    box-shadow: 0 5px 15px rgb(12, 12, 12);
 
     main {
         display: flex;
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid gray;
         padding-bottom: 5px;
         justify-content: space-between;
 
         span {
             margin: 10px auto;
             margin-right: 10px;
-            color: black;
+            color: lightgray;
             font-family: myFont;
             font-size: 28px;
 
@@ -37,12 +40,12 @@
         display: flex;
         margin: 10px auto;
         background-color: transparent;
-        padding: 15px 15px;
+        padding: 10px 15px;
         font-size: 25px;
         border: none;
         font-family: myFont;
         font-weight: bold;
-        color: black;
+        color: gray;
         justify-content: flex-end;
         text-decoration: none;
         transition: all 0.5s;
@@ -59,35 +62,14 @@
     }
 
     .activeLink {
-        background-color: lighten($mainBrightBlue, 30%);
-        box-shadow: $brightBoxShadow1;
+        background: linear-gradient(to right, darken(aqua, 10%), lighten($mainBrightBlue, 10%));
+        color: lightgray;
+        border-radius: 10px;
     }
 
     .bus {
         transform: rotate(270deg);
         margin-right: -10px;
-    }
-}
-
-.slideNav_dark {
-    background-image: url(../Images/slideNav.png);
-    background-position-y: -20px;
-
-    main {
-        border-bottom: 1px solid gray;
-
-        span {
-            color: gray;
-        }
-    }
-
-    .link {
-        color: lightgray;
-    }
-
-    .activeLink {
-        background-color: lighten($darkBoxColor, 20%);
-        box-shadow: $darkBoxShadow;
     }
 }
 

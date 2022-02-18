@@ -3,17 +3,19 @@
 .header {
     display: flex;
     width: 100%;
-    justify-content: space-between;
     padding: 15px 0;
     margin-bottom: 30px;
-    background-color: $mainBrightBlue;
+    background-color: $brightBackground;
     z-index: 5;
+    box-shadow: $brightBoxShadow1;
 
     .search {
         margin: auto;
-        margin-left: 40px;
+        margin-right: 20px;
         width: 300px;
         display: flex;
+        border-radius: 50px;
+        border: 1px solid darken($brightBackground, 20%);
 
         button {
             border: none;
@@ -65,12 +67,27 @@
             }
         }
     }
+
+    .profile {
+        margin: auto;
+        margin-left: 20px;
+        display: flex;
+        font-size: 25px;
+
+        button {
+            background-color: transparent;
+            margin: 0 5px;
+        }
+    }
 }
 
 .header_dark {
-    background-color: $mainDarkBlue;
+    background-color: $darkBackground;
+    box-shadow: $darkBoxShadow;
 
     .search {
+        border: 1px solid darken($brightBackground, 50%);
+
         button {
             background-color: lighten($darkBoxColor, 20%);
 
@@ -85,6 +102,14 @@
 
             &::placeholder {
                 color: $brightBoxColor;
+            }
+        }
+    }
+
+    .profile {
+        button {
+            i {
+                color: $brightBackground;
             }
         }
     }

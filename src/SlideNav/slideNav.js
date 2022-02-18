@@ -23,12 +23,6 @@ export const SlideNav = (props) => {
     props.dashboard(e.target.id);
   };
 
-  useEffect(() => {
-    const slideNav = document.getElementsByClassName(style.slideNav)[0];
-    if (props.darkMode == 1) slideNav.classList.add(style.slideNav_dark);
-    else slideNav.classList.remove(style.slideNav_dark);
-  }, [props.darkMode]);
-
   const darkModeHandler = (dm) => {
     props.darkModeHandler(dm);
   };
