@@ -7,25 +7,26 @@
     margin: 20px 10px;
     border-radius: 10px;
     box-shadow: $brightBoxShadow1;
-    background-color: whitesmoke;
+    background-color: $brightBoxColor;
     padding: 25px;
 
     h1 {
         font-family: myFont;
         font-size: 20px;
-        color: rgb(109, 109, 109);
+        color: $chartTitleColor;
         text-align: center;
         margin-bottom: 20px;
         font-weight: bold;
     }
 
     .setDate {
-        width: 100%;
+        width: auto;
         display: flex;
         margin-top: 20px;
 
         main {
             display: flex;
+            width: 100%;
             margin: auto;
 
             h1 {
@@ -38,31 +39,52 @@
                 margin: auto;
 
                 input {
-                    border: 1px solid gray;
+                    border: 1px solid $chartTitleColor;
                     margin: 5px 0;
                     padding: 5px;
                     border-radius: 5px;
-                    background-color: rgb(226, 226, 226);
+                    background-color: $brightBackground;
 
                     &:focus {
-                        background-color: whitesmoke;
+                        background-color: $brightBoxColor;
                         outline: none;
-                        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+                        box-shadow: $brightBoxShadow1;
                     }
                 }
             }
         }
     }
+
+    button {
+        width: 300px;
+        margin: 20px auto 10px auto;
+        padding: 15px;
+        background-color: lighten($mainBrightBlue, 10%);
+        color: $brightBoxColor;
+        border-radius: 5px;
+        box-shadow: $brightBoxShadow1;
+        font-size: 20px;
+    }
 }
 
 .barChart_dark {
-    background-color: rgb(43, 43, 43);
+    background-color: $darkBoxColor;
     box-shadow: $darkBoxShadow;
+
+    button {
+        background-color: lighten($mainDarkBlue, 10%);
+        color: $brightBoxColor;
+        box-shadow: $darkBoxShadow;
+    }
 }
 
 @media only screen and (max-width: 1350px) {
     .barChart {
         margin: 20px 5px;
+
+        button {
+            width: 100%;
+        }
     }
 }
 
@@ -92,6 +114,20 @@
                 .setDateInner {
                     input {
                         width: 195px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .barChart {
+        .setDate {
+            main {
+                .setDateInner {
+                    input {
+                        width: 150px;
                     }
                 }
             }

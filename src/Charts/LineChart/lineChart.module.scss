@@ -7,13 +7,13 @@
     margin: 20px 10px;
     border-radius: 10px;
     box-shadow: $brightBoxShadow1;
-    background-color: whitesmoke;
+    background-color: $brightBoxColor;
     padding: 25px;
 
     h1 {
         font-family: myFont;
         font-size: 20px;
-        color: rgb(109, 109, 109);
+        color: $chartTitleColor;
         text-align: center;
         margin-bottom: 20px;
         font-weight: bold;
@@ -32,13 +32,13 @@
 
             button {
                 margin: 5px 10px;
-                border: 1px solid gray;
+                border: 1px solid $chartTitleColor;
                 padding: 5px 20px;
                 font-family: myFont;
                 font-size: 20px;
                 font-weight: bold;
                 border-radius: 5px;
-                background-color: rgb(226, 226, 226);
+                background-color: $brightBackground;
                 transition: all 0.5s;
 
                 &:hover {
@@ -47,7 +47,7 @@
             }
 
             .activeDate {
-                background-color: whitesmoke;
+                background-color: $brightBoxColor;
                 box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             }
         }
@@ -55,7 +55,7 @@
 }
 
 .lineChart_dark {
-    background-color: rgb(43, 43, 43);
+    background-color: $darkBoxColor;
     box-shadow: $darkBoxShadow;
 }
 

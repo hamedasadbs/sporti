@@ -79,6 +79,7 @@ export const BarChart = (props) => {
           <h1>از</h1>
         </main>
       </div>
+      <button>اعمال بازه زمانی</button>
     </div>
   );
 };

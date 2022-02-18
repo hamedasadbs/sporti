@@ -19,11 +19,7 @@ export const Header = (props) => {
     <header className={style.header}>
       <div className={style.search}>
         <input placeholder="جست و جو" />
-        <button
-          onClick={() => {
-            alert(props.darkMode);
-          }}
-        >
+        <button>
           <i className="fa fa-search"></i>
         </button>
       </div>

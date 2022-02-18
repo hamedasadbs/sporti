@@ -59,7 +59,7 @@
     }
 
     .activeLink {
-        background-color: rgba(3, 140, 219, 0.8);
+        background-color: lighten($mainBrightBlue, 30%);
         box-shadow: $brightBoxShadow1;
     }
 
@@ -86,7 +86,7 @@
     }
 
     .activeLink {
-        background-color: rgba(131, 131, 131, 0.8);
+        background-color: lighten($darkBoxColor, 20%);
         box-shadow: $darkBoxShadow;
     }
 }

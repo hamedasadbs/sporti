@@ -117,5 +117,6 @@
 }
 
 .infoBox_dark {
-    background: linear-gradient(135deg, $darkColor, darken($darkColor, 10%));
+    background: linear-gradient(135deg, $darkBoxColor, darken($darkBoxColor, 20%));
+    box-shadow: $darkBoxShadow;
 }

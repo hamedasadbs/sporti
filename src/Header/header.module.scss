@@ -21,7 +21,7 @@
             border-radius: 0 50px 50px 0;
             padding: 10px 0px;
             margin-left: -20px;
-            background-color: darken(white, 10%);
+            background-color: $brightBoxColor;
 
             i {
                 transition: all 0.1s;
@@ -42,7 +42,7 @@
             height: 50px;
             outline: none;
             border: none;
-            background: linear-gradient(to right, white, darken(white, 10%));
+            background: linear-gradient(to right, white, $brightBoxColor);
             padding-right: 25px;
             font-family: myFont;
             font-size: 20px;
@@ -69,6 +69,25 @@
 
 .header_dark {
     background-color: $mainDarkBlue;
+
+    .search {
+        button {
+            background-color: lighten($darkBoxColor, 20%);
+
+            i {
+                color: $brightBoxColor;
+            }
+        }
+
+        input {
+            background: linear-gradient(to right, lighten($darkBoxColor, 10%), lighten($darkBoxColor, 20%));
+            color: $brightBoxColor;
+
+            &::placeholder {
+                color: $brightBoxColor;
+            }
+        }
+    }
 }
 
 @media only screen and (max-width: 700px) {
