@@ -74,7 +74,6 @@
     button {
         background-color: lighten($mainDarkBlue, 10%);
         color: $brightBoxColor;
-        box-shadow: $darkBoxShadow;
     }
 }
 
@@ -104,7 +103,7 @@
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 900px) {
     .barChart {
         width: 95%;
         margin: 20px auto;

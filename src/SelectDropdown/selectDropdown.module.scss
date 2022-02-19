@@ -1,0 +1,71 @@
+@import '../index.module.scss';
+
+.select {
+    width: 150px;
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-top: 10px;
+
+    button {
+        width: 100%;
+        margin: auto 0;
+        padding: 10px;
+        text-align: center;
+        font-family: myFont;
+        font-size: 20px;
+        border-radius: 5px;
+        border: 1px solid gray;
+        font-weight: bold;
+        appearance: none;
+        background-color: $brightBoxColor;
+        transition: all 0.5s;
+    }
+
+    .options {
+        position: absolute;
+        margin-top: 60px;
+        width: 150px;
+        font-size: 20px;
+        text-align: center;
+        padding: 5px;
+        font-family: myFont;
+        background-color: $brightBoxColor;
+        display: flex;
+        flex-direction: column;
+        z-index: 5;
+        box-shadow: $brightBoxShadow2;
+
+        span {
+            border-bottom: 1px solid lightgray;
+            padding: 5px;
+
+            &:hover {
+                background-color: lighten($mainBrightBlue, 20%);
+                color: $brightBoxColor;
+            }
+        }
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.select_dark {
+    button {
+        background-color: $darkBoxColor;
+        border: 1px solid darken($darkBoxColor, 40%);
+        color: $brightBoxColor;
+    }
+
+    .options {
+        background-color: $darkBoxColor;
+        color: $brightBoxColor;
+
+        span {
+            border-bottom: 1px solid darken($darkBoxColor, 40%);
+        }
+    }
+}

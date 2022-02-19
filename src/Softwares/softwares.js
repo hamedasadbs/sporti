@@ -8,6 +8,7 @@ import { InfoTables } from "../InfoTables/infoTables";
 import { dynamicData } from "../Dataset/dynamicData";
 import { info } from "../Dataset/staticData";
 import { Header } from "../Header/header";
+import { SelectDropdown } from "../SelectDropdown/selectDropdown";
 
 export const Softwares = (props) => {
   const infoBox = info[0].softwares;
@@ -28,12 +29,8 @@ export const Softwares = (props) => {
     <article className={style.softwares}>
       <Header darkMode={props.darkMode} />
       <main className={style.title}>
-        <select>
-          {dynamicData.software.map((sw, index) => (
-            <option key={index}>{sw.swName}</option>
-          ))}
-        </select>
-        <h1> / {props.title}</h1>
+        <SelectDropdown darkMode={props.darkMode} />
+        <h1>/ {props.title}</h1>
       </main>
       <InfoBoxes darkMode={props.darkMode} infoBox={infoBox} />
       <SoftwaresCharts darkMode={props.darkMode} />
