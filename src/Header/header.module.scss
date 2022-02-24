@@ -77,6 +77,109 @@
         button {
             background-color: transparent;
             margin: 0 5px;
+            display: flex;
+
+            .notifications {
+                background-color: rgb(255, 102, 102);
+                height: 30px;
+                position: absolute;
+                margin-top: -10px;
+                margin-left: 10px;
+                z-index: -5;
+                display: flex;
+                padding: 8px;
+                border-radius: 50px;
+
+                span {
+                    margin: auto;
+                    margin-top: -10px;
+                    font-family: Arial, Helvetica, sans-serif;
+                }
+            }
+
+            i {
+                margin: auto;
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50px;
+                margin: auto;
+            }
+        }
+
+        .userInfo {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            width: 250px;
+            margin-top: 70px;
+            left: -250px;
+            border-radius: 10px;
+            transition: all 0.5s ease-in-out;
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+            .informations {
+                display: flex;
+                flex-direction: column;
+                background: linear-gradient(135deg, darken(aqua, 10%), lighten($mainBrightBlue, 10%));
+                padding: 20px;
+                border-radius: 10px 10px 0 0;
+
+                img {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 50px;
+                    margin: 0 auto 20px auto;
+                }
+
+                h1 {
+                    font-size: 15px;
+                    text-align: center;
+                    margin: 5px auto;
+                    color: $brightBoxColor;
+                }
+            }
+
+            .choises {
+                background-color: $brightBoxColor;
+                display: flex;
+                flex-direction: column;
+                border-radius: 0 0 10px 10px;
+                padding: 5px 0;
+
+                .link {
+                    display: flex;
+                    margin: auto;
+                    width: 100%;
+                    background-color: $brightBoxColor;
+                    transition: all 0.3s;
+                    border-top: 1px solid $brightBackground;
+                    border-bottom: 1px solid $brightBackground;
+                    text-decoration: none;
+
+                    h1 {
+                        font-size: 22px;
+                        font-family: myFont;
+                        text-align: center;
+                        margin: 5px auto;
+                        color: $darkBoxColor;
+                        margin-right: 10px;
+                    }
+
+                    i {
+                        margin: auto 0;
+                        margin-right: 5px;
+                        font-size: 20px;
+                        color: $darkBoxColor;
+                    }
+
+                    &:hover {
+                        background-color: $brightBackground;
+                    }
+                }
+            }
         }
     }
 }
@@ -110,6 +213,33 @@
         button {
             i {
                 color: $brightBackground;
+            }
+        }
+
+        .userInfo {
+            box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+
+            .informations {
+                background: linear-gradient(135deg, darken(aqua, 50%), lighten($mainBrightBlue, 10%));
+            }
+
+            .choises {
+                background-color: $darkBoxColor;
+
+                .link {
+                    background-color: $darkBoxColor;
+                    border-top: 1px solid $darkBackground;
+                    border-bottom: 1px solid $darkBackground;
+
+                    h1,
+                    i {
+                        color: $brightBoxColor;
+                    }
+
+                    &:hover {
+                        background-color: rgb(12, 12, 12);
+                    }
+                }
             }
         }
     }

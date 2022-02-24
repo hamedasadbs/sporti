@@ -1,7 +1,7 @@
 @import '../../index.module.scss';
 
 .infoBox {
-    width: 224px;
+    width: 23%;
     margin: 10px 1%;
     box-shadow: $brightBoxShadow1;
     border-radius: 3px;
@@ -119,4 +119,22 @@
 .infoBox_dark {
     background: linear-gradient(135deg, $darkBoxColor, darken($darkBoxColor, 20%));
     box-shadow: $darkBoxShadow;
+}
+
+@media only screen and (max-width: 1300px) {
+    .infoBox {
+        width: 31%;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .infoBox {
+        width: 48%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .infoBox {
+        width: 100%;
+    }
 }

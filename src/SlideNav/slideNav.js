@@ -12,6 +12,36 @@ export const SlideNav = (props) => {
     bus.classList.add(style.activeLink);
   }, []);
 
+  useEffect(() => {
+    switch (window.location.href) {
+      case "http://localhost:3000/bus":
+        hrefNavHandler("گذرگاه");
+        break;
+      case "http://localhost:3000/softwares":
+        hrefNavHandler("نرم افزارها");
+        break;
+      case "http://localhost:3000/profile":
+        hrefNavHandler("پروفایل");
+        break;
+      case "http://localhost:3000/settings":
+        hrefNavHandler("تنظیمات");
+        break;
+      default:
+        break;
+    }
+  }, [window.location.href]);
+
+  const hrefNavHandler = (e) => {
+    const nav = document.getElementById(e);
+    const otherId = `:not([id^='${e}'])`;
+    const others = document.querySelectorAll(otherId);
+    for (let i = 0; i < others.length; i++) {
+      others[i].classList.remove(style.activeLink);
+    }
+    nav.classList.add(style.activeLink);
+    props.dashboard(e);
+  };
+
   const navHandler = (e) => {
     const nav = document.getElementById(e.target.id);
     const otherId = `:not([id^='${e.target.id}'])`;

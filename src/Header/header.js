@@ -1,8 +1,25 @@
-import React, { useEffect } from "react";
+/*INNER COMPONENTS*/
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 /*CSS*/
 import style from "./header.module.scss";
+/*CHILD COMPONENTS*/
+import userPhoto from "../Images/user.jpg";
+import noPhoto from "../Images/no_photo.png";
 
 export const Header = (props) => {
+  const [showUserInfo, setShowUserInfo] = useState(false);
+
+  const showUserInfoHandler = () => {
+    if (showUserInfo) {
+      setShowUserInfo(false);
+      document.getElementsByClassName(style.userInfo)[0].style.left = "-250px";
+    } else {
+      setShowUserInfo(true);
+      document.getElementsByClassName(style.userInfo)[0].style.left = "10px";
+    }
+  };
+
   useEffect(() => {
     if (props.darkMode == 1) {
       document
@@ -18,12 +35,45 @@ export const Header = (props) => {
   return (
     <header className={style.header}>
       <div className={style.profile}>
-        <button>
-          <i className="fa fa-user-circle"></i>
+        <button onClick={showUserInfoHandler}>
+          <img src={userPhoto} />
         </button>
         <button>
           <i className="fa fa-bell"></i>
+          <div className={style.notifications}>
+            <span>1</span>
+          </div>
         </button>
+        <div className={style.userInfo}>
+          <span className={style.informations}>
+            <img src={userPhoto} />
+            <h1>username</h1>
+            <h1>email</h1>
+            <h1>lastUpdate</h1>
+          </span>
+          <nav className={style.choises}>
+            <Link to="/profile" className={style.link}>
+              <h1>پروفایل</h1>
+              <i className="fa fa-user-circle"></i>
+            </Link>
+            <Link to="/bus" className={style.link}>
+              <h1>پیام ها</h1>
+              <i className="fa fa-envelope"></i>
+            </Link>
+            <Link to="/settings" className={style.link}>
+              <h1>تنظیمات</h1>
+              <i className="fa fa-cog"></i>
+            </Link>
+            <Link to="/bus" className={style.link}>
+              <h1>راهنما</h1>
+              <i className="fa fa-question-circle"></i>
+            </Link>
+            <Link to="/bus" className={style.link}>
+              <h1>خروج</h1>
+              <i className="fa fa-sign-out"></i>
+            </Link>
+          </nav>
+        </div>
       </div>
       <div className={style.search}>
         <input placeholder="جست و جو" />
