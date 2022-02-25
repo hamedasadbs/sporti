@@ -13,10 +13,11 @@ export const Header = (props) => {
   const showUserInfoHandler = () => {
     if (showUserInfo) {
       setShowUserInfo(false);
-      document.getElementsByClassName(style.userInfo)[0].style.left = "-250px";
+      document.getElementsByClassName(style.userInfo)[0].style.display = "none";
     } else {
       setShowUserInfo(true);
-      document.getElementsByClassName(style.userInfo)[0].style.left = "10px";
+      document.getElementsByClassName(style.userInfo)[0].style.display =
+        "initial";
     }
   };
 
