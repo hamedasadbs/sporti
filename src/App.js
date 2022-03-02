@@ -26,7 +26,7 @@ export const App = () => {
     }
   };
 
-  const [dashboard, setDashboard] = useState("گذرماه");
+  const [dashboard, setDashboard] = useState("گذرگاه");
   const [darkMode, setDarkMode] = useState(getCookie("darkMode"));
 
   const dashboardHandler = (d) => {
