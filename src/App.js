@@ -10,6 +10,8 @@ import {
 import { SlideNav } from "./SlideNav/slideNav";
 import { Bus } from "./Bus/bus";
 import { Softwares } from "./Softwares/softwares";
+import { Profile } from "./Profile/profile";
+import { Setting } from "./Setting/setting";
 /*CSS*/
 import style from "./app.module.scss";
 
@@ -62,6 +64,30 @@ export const App = () => {
           </Route>
           <Route path="/softwares">
             <Softwares
+              darkMode={darkMode}
+              dashboard={dashboardHandler}
+              title={dashboard}
+            />
+            <SlideNav
+              darkModeHandler={darkModeHandler}
+              darkMode={darkMode}
+              dashboard={dashboardHandler}
+            />
+          </Route>
+          <Route path="/profile">
+            <Profile
+              darkMode={darkMode}
+              dashboard={dashboardHandler}
+              title={dashboard}
+            />
+            <SlideNav
+              darkModeHandler={darkModeHandler}
+              darkMode={darkMode}
+              dashboard={dashboardHandler}
+            />
+          </Route>
+          <Route path="/setting">
+            <Setting
               darkMode={darkMode}
               dashboard={dashboardHandler}
               title={dashboard}

@@ -26,12 +26,6 @@ const infoBox = {
       value: "5",
       icon1: "fa-paper-plane",
     },
-    {
-      name: "totalSoft",
-      title: "تعداد نرم افزارها",
-      value: "10",
-      icon1: "fa-desktop",
-    },
   ],
   softwares: [
     {

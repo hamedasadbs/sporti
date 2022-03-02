@@ -4,7 +4,7 @@
     width: 48%;
     display: flex;
     flex-direction: column;
-    margin: 20px 10px;
+    margin: 20px auto;
     border-radius: 10px;
     box-shadow: $brightBoxShadow1;
     background-color: $brightBoxColor;
@@ -44,6 +44,7 @@
                     padding: 5px;
                     border-radius: 5px;
                     background-color: $brightBackground;
+                    width: auto;
 
                     &:focus {
                         background-color: $brightBoxColor;
@@ -80,22 +81,17 @@
 @media only screen and (max-width: 1350px) {
     .barChart {
         margin: 20px 5px;
+        width: 98%;
 
         button {
             width: 100%;
         }
-    }
-}
-
-@media only screen and (max-width: 1200px) {
-    .barChart {
-        padding: 15px;
 
         .setDate {
             main {
                 .setDateInner {
                     input {
-                        width: 130px;
+                        width: 300px;
                     }
                 }
             }
@@ -103,9 +99,14 @@
     }
 }
 
+@media only screen and (max-width: 1200px) {
+    .barChart {
+        padding: 15px;
+    }
+}
+
 @media only screen and (max-width: 900px) {
     .barChart {
-        width: 95%;
         margin: 20px auto;
 
         .setDate {

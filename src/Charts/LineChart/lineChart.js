@@ -10,6 +10,8 @@ import Chart, {
   ScrollBar,
   Tooltip,
   Size,
+  Point,
+  CommonSeriesSettings,
 } from "devextreme-react/chart";
 /*CHILD COMPONENTS*/
 import { dynamicData } from "../../Dataset/dynamicData";
@@ -101,6 +103,13 @@ export const LineChart = (props) => {
     <div className={style.lineChart}>
       <h1>{props.title}</h1>
       <Chart id="chart" palette="Harmony Light" dataSource={dateType}>
+        <CommonSeriesSettings
+          argumentField="label"
+          valueField="data"
+          type="spline"
+        >
+          <Point visible={true} size="7" />
+        </CommonSeriesSettings>
         <Series
           type="line"
           argumentField="label"

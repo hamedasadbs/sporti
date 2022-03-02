@@ -1,21 +1,22 @@
 @import '../../index.module.scss';
 
 .infoBox {
-    width: 23%;
+    width: auto;
     margin: 10px 1%;
     box-shadow: $brightBoxShadow1;
     border-radius: 3px;
     display: flex;
     flex-direction: column;
     padding: 20px;
+    flex-grow: 1;
 
     .icon {
         position: absolute;
-        margin-left: -15px;
-        margin-top: -15px;
+        margin-left: -10px;
+        margin-top: -10px;
 
         .i1 {
-            font-size: 100px;
+            font-size: 80px;
         }
 
         .i2 {
@@ -122,12 +123,6 @@
 }
 
 @media only screen and (max-width: 1300px) {
-    .infoBox {
-        width: 31%;
-    }
-}
-
-@media only screen and (max-width: 850px) {
     .infoBox {
         width: 48%;
     }

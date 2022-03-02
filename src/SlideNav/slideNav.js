@@ -23,7 +23,7 @@ export const SlideNav = (props) => {
       case "http://localhost:3000/profile":
         hrefNavHandler("پروفایل");
         break;
-      case "http://localhost:3000/settings":
+      case "http://localhost:3000/setting":
         hrefNavHandler("تنظیمات");
         break;
       default:
@@ -79,23 +79,27 @@ export const SlideNav = (props) => {
         <i id="نرم افزارها" className="fa fa-laptop"></i>
       </Link>
       <Link
-        id="پروفابل"
+        id="پروفایل"
         onClick={navHandler}
         className={`${style.link}`}
         to="/profile"
       >
-        <span id="پروفابل">پروفایل</span>
-        <i id="پروفابل" className="fa fa-user-circle"></i>
+        <span id="پروفایل">پروفایل</span>
+        <i id="پروفایل" className="fa fa-user-circle"></i>
       </Link>
       <Link
         id="تنظیمات"
         onClick={navHandler}
         className={`${style.link}`}
-        to="/settings"
+        to="/setting"
       >
         <span id="تنظیمات">تنظیمات</span>
         <i id="تنظیمات" className="fa fa-cog"></i>
       </Link>
+      <button className={style.logout}>
+        <span>خروج</span>
+        <i className="fa fa-sign-out"></i>
+      </button>
     </nav>
   );
 };

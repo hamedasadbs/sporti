@@ -10,10 +10,8 @@
     padding: 15px;
     background-image: url(../Images/slideNav.png);
     background-repeat: no-repeat;
-    background-position-x: -750px;
-    background-position-y: -10px;
     box-shadow: $brightBoxShadow2;
-    border-radius: 0 0 0 10px;
+    border-radius: 0;
     box-shadow: 0 5px 15px rgb(12, 12, 12);
 
     main {
@@ -49,6 +47,7 @@
         justify-content: flex-end;
         text-decoration: none;
         transition: all 0.5s;
+        border-radius: 10px;
 
         i {
             margin: auto 0 auto 5px;
@@ -63,12 +62,36 @@
     .activeLink {
         background: linear-gradient(to right, darken(aqua, 10%), lighten($mainBrightBlue, 10%));
         color: lightgray;
-        border-radius: 10px;
     }
 
     .bus {
         transform: rotate(270deg);
         margin-right: -10px;
+    }
+
+    .logout {
+        width: 100%;
+        display: flex;
+        margin: 270px auto;
+        background-color: rgba(255, 255, 255, 0.5);
+        padding: 5px 15px;
+        font-size: 25px;
+        border: none;
+        font-family: myFont;
+        font-weight: bold;
+        color: whitesmoke;
+        justify-content: center;
+        text-decoration: none;
+        transition: all 0.5s;
+        border-radius: 5px;
+
+        i {
+            margin: auto 0 auto 5px;
+        }
+
+        &:hover {
+            background-color: $failedResColor;
+        }
     }
 }
 
@@ -86,7 +109,8 @@
             }
         }
 
-        .link {
+        .link,
+        .logout {
             i {
                 margin: 0px auto;
             }
@@ -94,6 +118,12 @@
             span {
                 display: none;
             }
+        }
+
+        .logout {
+            border-radius: 50px;
+            padding: 10px;
+            width: auto;
         }
     }
 }

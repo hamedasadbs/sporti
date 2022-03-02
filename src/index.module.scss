@@ -22,10 +22,12 @@ $darkColor:rgb(27, 27, 27);
 
 $chartTitleColor:rgb(109, 109, 109);
 
-@mixin bus_softwares {
+@mixin main_article {
 
   .bus,
-  .softwares {
+  .softwares,
+  .profile,
+  .setting {
     width: 100%;
     background-color: $brightBackground;
     display: flex;
