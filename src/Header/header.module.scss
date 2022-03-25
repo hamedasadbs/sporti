@@ -33,7 +33,7 @@
                 cursor: pointer;
 
                 i {
-                    font-size: 20px;
+                    font-size: $fontSize3;
                 }
             }
         }
@@ -47,20 +47,20 @@
             background: linear-gradient(to right, white, $brightBoxColor);
             padding-right: 25px;
             font-family: myFont;
-            font-size: 20px;
+            font-size: $fontSize3;
             border-radius: 50px 0 0 50px;
 
             &::placeholder {
                 transition: all 0.2s;
                 position: absolute;
                 right: 20px;
-                top: 10px;
-                font-size: 20px;
+                top: 13px;
+                font-size: $fontSize2;
             }
 
             &:focus {
                 &::placeholder {
-                    font-size: 12px;
+                    font-size: $fontSize1;
                     top: 0;
                     right: 200px;
                 }
@@ -72,7 +72,7 @@
         margin: auto;
         margin-left: 20px;
         display: flex;
-        font-size: 25px;
+        font-size: $fontSize5;
 
         button {
             background-color: transparent;
@@ -135,7 +135,7 @@
                 }
 
                 h1 {
-                    font-size: 15px;
+                    font-size: $fontSize2;
                     text-align: center;
                     margin: 5px auto;
                     color: $brightBoxColor;
@@ -160,7 +160,7 @@
                     text-decoration: none;
 
                     h1 {
-                        font-size: 22px;
+                        font-size: $fontSize3;
                         font-family: myFont;
                         text-align: center;
                         margin: 5px auto;
@@ -171,7 +171,7 @@
                     i {
                         margin: auto 0;
                         margin-right: 5px;
-                        font-size: 20px;
+                        font-size: $fontSize3;
                         color: $darkBoxColor;
                     }
 
@@ -189,10 +189,10 @@
     box-shadow: $darkBoxShadow;
 
     .search {
-        border: 1px solid darken($brightBackground, 50%);
+        border: none;
 
         button {
-            background-color: lighten($darkBoxColor, 20%);
+            background-color: lighten($darkBoxColor, 10%);
 
             i {
                 color: $brightBoxColor;
@@ -200,7 +200,7 @@
         }
 
         input {
-            background: linear-gradient(to right, lighten($darkBoxColor, 10%), lighten($darkBoxColor, 20%));
+            background: linear-gradient(to right, lighten($darkBoxColor, 5%), lighten($darkBoxColor, 10%));
             color: $brightBoxColor;
 
             &::placeholder {
@@ -253,7 +253,7 @@
 
             input {
                 &::placeholder {
-                    font-size: 17px;
+                    font-size: $fontSize2;
                 }
 
                 &:focus {

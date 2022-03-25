@@ -2,7 +2,7 @@
 
 .select {
     width: 150px;
-    font-size: 25px;
+    font-size: $fontSize3;
     display: flex;
     flex-direction: column;
     margin-right: 20px;
@@ -14,7 +14,7 @@
         padding: 10px;
         text-align: center;
         font-family: myFont;
-        font-size: 20px;
+        font-size: $fontSize2;
         border-radius: 5px;
         border: 1px solid gray;
         font-weight: bold;
@@ -27,7 +27,7 @@
         position: absolute;
         margin-top: 60px;
         width: 150px;
-        font-size: 20px;
+        font-size: $fontSize2;
         text-align: center;
         padding: 5px;
         font-family: myFont;

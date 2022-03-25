@@ -1,0 +1,10 @@
+@import '../index.module.scss';
+
+.title {
+    color: gray;
+    margin-right: 40px;
+    font-size: $fontSize4;
+    font-family: specialFont;
+    font-weight: bold;
+    text-align: right;
+}

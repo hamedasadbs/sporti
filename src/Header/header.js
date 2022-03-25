@@ -37,7 +37,7 @@ export const Header = (props) => {
     <header className={style.header}>
       <div className={style.profile}>
         <button onClick={showUserInfoHandler}>
-          <img src={userPhoto} />
+          <img src={userPhoto} alt="userPhoto" />
         </button>
         <button>
           <i className="fa fa-bell"></i>
@@ -47,7 +47,7 @@ export const Header = (props) => {
         </button>
         <div className={style.userInfo}>
           <span className={style.informations}>
-            <img src={userPhoto} />
+            <img src={userPhoto} alt="userPhoto" />
             <h1>username</h1>
             <h1>email</h1>
             <h1>lastUpdate</h1>
@@ -61,7 +61,7 @@ export const Header = (props) => {
               <h1>پیام ها</h1>
               <i className="fa fa-envelope"></i>
             </Link>
-            <Link to="/settings" className={style.link}>
+            <Link to="/setting" className={style.link}>
               <h1>تنظیمات</h1>
               <i className="fa fa-cog"></i>
             </Link>

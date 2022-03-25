@@ -20,7 +20,7 @@
         }
 
         .i2 {
-            font-size: 50px;
+            font-size: $fontSize9;
         }
     }
 
@@ -34,12 +34,12 @@
 
     label.title {
         font-family: specialFont;
-        font-size: 15px;
+        font-size: $fontSize2;
         margin-top: 20px;
     }
 
     span {
-        font-size: 40px;
+        font-size: $fontSize7;
         margin-top: 0px;
         font-weight: bold;
     }

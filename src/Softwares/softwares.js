@@ -8,6 +8,7 @@ import { InfoTables } from "../InfoTables/infoTables";
 import { dynamicData } from "../Dataset/dynamicData";
 import { info } from "../Dataset/staticData";
 import { Header } from "../Header/header";
+import { Title } from "../Title/title";
 import { SelectDropdown } from "../SelectDropdown/selectDropdown";
 
 export const Softwares = (props) => {
@@ -28,9 +29,9 @@ export const Softwares = (props) => {
   return (
     <article className={style.softwares}>
       <Header darkMode={props.darkMode} />
-      <main className={style.title}>
+      <main>
         <SelectDropdown darkMode={props.darkMode} />
-        <h1>/ {props.title}</h1>
+        <Title>/ {props.title}</Title>
       </main>
       <InfoBoxes darkMode={props.darkMode} infoBox={infoBox} />
       <SoftwaresCharts darkMode={props.darkMode} />

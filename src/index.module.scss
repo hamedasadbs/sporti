@@ -5,13 +5,11 @@ $brightBoxShadow2:rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
 $darkBackground:rgb(22, 22, 22);
-$brightBackground:rgb(226, 226, 226);
+$brightBackground:whitesmoke;
 $darkBoxColor:rgb(43, 43, 43);
-$brightBoxColor:whitesmoke;
-
+$brightBoxColor:white;
 $mainBrightBlue:rgb(0, 69, 136);
 $mainDarkBlue:rgb(0, 14, 28);
-
 $failedResColor:rgb(255, 43, 43);
 $okResColor:rgb(34, 131, 34);
 $totalResColor:rgb(228, 148, 0);
@@ -19,34 +17,32 @@ $totalReqColor:rgb(126, 33, 126);
 $totalSoftColor:rgb(41, 41, 250);
 $totalTransactionColor:rgb(158, 38, 38);
 $darkColor:rgb(27, 27, 27);
-
 $chartTitleColor:rgb(109, 109, 109);
+/*Font Sizes*/
+$fontSize1:10px;
+$fontSize2:15px;
+$fontSize3:20px;
+$fontSize4:25px;
+$fontSize5:30px;
+$fontSize6:35px;
+$fontSize7:40px;
+$fontSize8:45px;
+$fontSize9:50px;
 
 @mixin main_article {
 
   .bus,
   .softwares,
-  .profile,
   .setting {
     width: 100%;
-    background-color: $brightBackground;
     display: flex;
     flex-direction: column;
     padding-right: 300px;
 
-    .title {
+    main {
       display: flex;
       justify-content: flex-end;
       margin-top: -20px;
-
-      h1 {
-        color: gray;
-        margin-right: 20px;
-        font-size: 30px;
-        font-family: specialFont;
-        font-weight: bold;
-        text-align: right;
-      }
 
       select {
         margin: auto 0;
@@ -122,6 +118,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: column;
+  background-color: $brightBackground;
 }
 
 code {
@@ -145,15 +142,10 @@ button {
 
 @font-face {
   font-family: myFont;
-  src: url("./Fonts/BMitra.ttf");
+  src: url("./Fonts/Yekan.ttf");
 }
 
 @font-face {
   font-family: specialFont;
-  src: url("./Fonts/BNazanin.ttf");
-}
-
-@font-face {
-  font-family: uniqueFont;
-  src: url("./Fonts/BFantezy.ttf");
+  src: url("./Fonts/titr.ttf");
 }

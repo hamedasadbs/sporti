@@ -2,11 +2,13 @@
 
 .infoTable {
     width: 46%;
-    margin: 60px auto;
+    margin: 100px auto;
     text-align: center;
+    display: flex;
+    flex-direction: column;
 
     .title {
-        font-size: 25px;
+        font-size: $fontSize3;
         font-family: myFont;
         background-color: $mainBrightBlue;
         width: 80%;
@@ -28,7 +30,7 @@
                     text-align: center;
                     font-family: specialFont;
                     background-color: lighten($mainBrightBlue, 20%);
-                    font-size: 20px;
+                    font-size: $fontSize2;
                     color: $brightBoxColor;
                 }
             }

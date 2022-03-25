@@ -7,6 +7,7 @@ import { BusCharts } from "./BusCharts/busCharts";
 import { InfoTables } from "../InfoTables/infoTables";
 import { info } from "../Dataset/staticData";
 import { Header } from "../Header/header";
+import { Title } from "../Title/title";
 
 export const Bus = (props) => {
   const infoBox = info[0].bus;
@@ -26,8 +27,8 @@ export const Bus = (props) => {
   return (
     <article className={style.bus}>
       <Header darkMode={props.darkMode} />
-      <main className={style.title}>
-        <h1>{props.title}</h1>
+      <main>
+        <Title>{props.title}</Title>
       </main>
       <InfoBoxes darkMode={props.darkMode} infoBox={infoBox} />
       <BusCharts darkMode={props.darkMode} />

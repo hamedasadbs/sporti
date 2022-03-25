@@ -25,10 +25,10 @@
             margin-right: 10px;
             color: lightgray;
             font-family: myFont;
-            font-size: 28px;
+            font-size: $fontSize4;
 
             i {
-                font-size: 30px;
+                font-size: $fontSize5;
             }
         }
     }
@@ -39,7 +39,7 @@
         margin: 10px auto;
         background-color: transparent;
         padding: 10px 15px;
-        font-size: 25px;
+        font-size: $fontSize4;
         border: none;
         font-family: myFont;
         font-weight: bold;
@@ -75,7 +75,7 @@
         margin: 270px auto;
         background-color: rgba(255, 255, 255, 0.5);
         padding: 5px 15px;
-        font-size: 25px;
+        font-size: $fontSize4;
         border: none;
         font-family: myFont;
         font-weight: bold;
