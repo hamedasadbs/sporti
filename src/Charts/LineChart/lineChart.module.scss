@@ -11,12 +11,7 @@
     padding: 25px;
 
     h1 {
-        font-family: myFont;
-        font-size: $fontSize3;
-        color: $chartTitleColor;
-        text-align: center;
-        margin-bottom: 20px;
-        font-weight: bold;
+        @include chartTitle()
     }
 
     .setDate {
@@ -31,11 +26,11 @@
             flex-wrap: wrap;
 
             button {
-                margin: 5px 10px;
+                margin: 5px;
                 border: 1px solid $chartTitleColor;
                 padding: 5px 20px;
                 font-family: myFont;
-                font-size: $fontSize3;
+                font-size: $fontSize2;
                 font-weight: bold;
                 border-radius: 5px;
                 background-color: $brightBackground;

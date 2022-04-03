@@ -21,6 +21,12 @@ export const Header = (props) => {
     }
   };
 
+  window.onclick = function (e) {
+    if (e.target.id !== "userPhoto" && showUserInfo) {
+      showUserInfoHandler();
+    }
+  };
+
   useEffect(() => {
     if (props.darkMode == 1) {
       document
@@ -36,8 +42,8 @@ export const Header = (props) => {
   return (
     <header className={style.header}>
       <div className={style.profile}>
-        <button onClick={showUserInfoHandler}>
-          <img src={userPhoto} alt="userPhoto" />
+        <button id="userPhoto" onClick={showUserInfoHandler}>
+          <img src={userPhoto} id="userPhoto" alt="userPhoto" />
         </button>
         <button>
           <i className="fa fa-bell"></i>
