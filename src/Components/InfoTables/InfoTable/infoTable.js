@@ -1,5 +1,5 @@
 /*INNER COMPONENTS*/
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 /*CSS*/
 import style from "./infoTable.module.scss";
 

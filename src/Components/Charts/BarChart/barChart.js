@@ -1,7 +1,7 @@
 /*CSS*/
 import style from "./barChart.module.scss";
 /*INNER COMPONENTS*/
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Chart, {
   ArgumentAxis,
   Series,

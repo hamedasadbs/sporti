@@ -1,7 +1,7 @@
 /*CSS*/
 import style from "./lineChart.module.scss";
 /*INNER COMPONENTS*/
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Chart, {
   ArgumentAxis,
   Series,

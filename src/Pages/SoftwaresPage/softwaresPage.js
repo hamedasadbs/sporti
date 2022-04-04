@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 /*CSS*/
 import style from "./softwaresPage.module.scss";
 /*CHILD COMPONENTS*/

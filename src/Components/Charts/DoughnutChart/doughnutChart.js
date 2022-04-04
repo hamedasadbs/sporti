@@ -1,11 +1,11 @@
 /*CSS*/
 import style from "./doughnutChart.module.scss";
 /*INNER COMPONENTS*/
-import React, { useEffect } from "react";
+import { useEffect, createRef } from "react";
 import Chart from "chart.js/auto";
 
 export const DoughnutChart = (props) => {
-  let doughnutChart = React.createRef();
+  let doughnutChart = createRef();
 
   useEffect(() => {
     const doughnut = doughnutChart.current.getContext("2d");

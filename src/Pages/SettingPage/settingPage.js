@@ -1,4 +1,3 @@
-import React from "react";
 /*CSS*/
 import style from "./settingPage.module.scss";
 /*CHILD COMPONENTS*/

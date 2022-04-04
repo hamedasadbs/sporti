@@ -1,5 +1,3 @@
-/*INNER COMPONENTS*/
-import React from "react";
 /*CSS*/
 import style from "./busCharts.module.scss";
 /*CHILD COMPONENTS*/
