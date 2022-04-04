@@ -14,7 +14,7 @@ import Chart, {
   CommonSeriesSettings,
 } from "devextreme-react/chart";
 /*CHILD COMPONENTS*/
-import { dynamicData } from "../../../Config/Dataset/dynamicData";
+import { dynamicData } from "../../../Middleware/Dataset/dynamicData";
 
 export const LineChart = (props) => {
   let [date, setDate] = useState("minute" + props.id);

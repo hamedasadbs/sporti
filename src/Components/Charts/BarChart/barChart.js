@@ -12,7 +12,7 @@ import Chart, {
   Size,
 } from "devextreme-react/chart";
 /*CHILD COMPONENTS*/
-import { dynamicData } from "../../../Config/Dataset/dynamicData";
+import { dynamicData } from "../../../Middleware/Dataset/dynamicData";
 
 export const BarChart = (props) => {
   const [chartColor, setChartColor] = useState(props.color);

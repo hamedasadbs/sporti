@@ -5,7 +5,7 @@ import style from "./busPage.module.scss";
 import { InfoBoxes } from "../../Components/InfoBoxes/infoBoxes";
 import { BusCharts } from "./BusCharts/busCharts";
 import { InfoTables } from "../../Components/InfoTables/infoTables";
-import { info } from "../../Config/Dataset/staticData";
+import { info } from "../../Middleware/Dataset/staticData";
 import { Header } from "../../Layouts/Header/header";
 import { Title } from "../../Components/Title/title";
 

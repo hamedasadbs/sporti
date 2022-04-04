@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 /*CSS*/
 import style from "./selectDropdown.module.scss";
 /*CHILD COMPONENTS*/
-import { dynamicData } from "../../Config/Dataset/dynamicData";
+import { dynamicData } from "../../Middleware/Dataset/dynamicData";
 
 export const SelectDropdown = (props) => {
   const [sw, setSW] = useState(dynamicData.software[0].swName);
