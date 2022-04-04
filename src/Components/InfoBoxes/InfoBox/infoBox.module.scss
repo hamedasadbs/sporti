@@ -1,0 +1,135 @@
+@import '../../../index.module.scss';
+
+.infoBox {
+    width: 100%;
+    margin: 10px 1%;
+    box-shadow: $brightBoxShadow1;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex-grow: 1;
+
+    .icon {
+        position: absolute;
+        margin-left: -10px;
+        margin-top: -10px;
+
+        .i1 {
+            font-size: 80px;
+        }
+
+        .i2 {
+            font-size: $fontSize9;
+        }
+    }
+
+    label.title,
+    span {
+        margin: auto;
+        text-align: right;
+        width: 100%;
+        color: white;
+    }
+
+    label.title {
+        font-family: specialFont;
+        font-size: $fontSize2;
+        margin-top: 20px;
+    }
+
+    span {
+        font-size: $fontSize7;
+        margin-top: 0px;
+        font-weight: bold;
+    }
+}
+
+.failedRes {
+    background: linear-gradient(135deg, $failedResColor, darken($failedResColor, 30%));
+
+    .icon {
+
+        .i1,
+        .i2 {
+            color: darken($failedResColor, 30%)
+        }
+    }
+}
+
+.okRes {
+    background: linear-gradient(135deg, $okResColor, darken($okResColor, 10%));
+
+    .icon {
+
+        .i1,
+        .i2 {
+            color: darken($okResColor, 10%)
+        }
+    }
+}
+
+.totalRes {
+    background: linear-gradient(135deg, $totalResColor, darken($totalResColor, 10%));
+
+    .icon {
+
+        .i1,
+        .i2 {
+            color: darken($totalResColor, 10%)
+        }
+    }
+}
+
+.totalReq {
+    background: linear-gradient(135deg, $totalReqColor, darken($totalReqColor, 10%));
+
+    .icon {
+
+        .i1,
+        .i2 {
+            color: darken($totalReqColor, 10%)
+        }
+    }
+}
+
+.totalSoft {
+    background: linear-gradient(135deg, $totalSoftColor, darken($totalSoftColor, 10%));
+
+    .icon {
+
+        .i1,
+        .i2 {
+            color: darken($totalSoftColor, 10%)
+        }
+    }
+}
+
+.totalTransaction {
+    background: linear-gradient(135deg, $totalTransactionColor, darken($totalTransactionColor, 10%));
+
+    .icon {
+
+        .i1,
+        .i2 {
+            color: darken($totalTransactionColor, 10%)
+        }
+    }
+}
+
+.infoBox_dark {
+    background: linear-gradient(135deg, $darkBoxColor, darken($darkBoxColor, 20%));
+    box-shadow: $darkBoxShadow;
+}
+
+@media only screen and (max-width: 1300px) {
+    .infoBox {
+        width: 48%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .infoBox {
+        width: 100%;
+    }
+}

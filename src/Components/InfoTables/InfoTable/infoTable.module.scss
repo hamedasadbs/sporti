@@ -1,0 +1,92 @@
+@import '../../../index.module.scss';
+
+.infoTable {
+    width: 46%;
+    margin: 100px auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+        font-size: $fontSize3;
+        font-family: myFont;
+        background-color: $mainBrightBlue;
+        width: 80%;
+        padding: 10px;
+        margin: -50px auto 20px auto;
+        border-radius: 50px 50px 0 0;
+        color: $brightBoxColor;
+    }
+
+    table {
+        width: 100%;
+        border: 1px solid $brightBoxColor;
+        box-shadow: $brightBoxShadow2;
+
+        thead {
+            tr {
+                th {
+                    border: 1px solid $brightBoxColor;
+                    text-align: center;
+                    font-family: specialFont;
+                    background-color: lighten($mainBrightBlue, 20%);
+                    font-size: $fontSize2;
+                    color: $brightBoxColor;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    border: 1px solid $brightBoxColor;
+                    text-align: center;
+                    font-family: myFont;
+                }
+            }
+        }
+    }
+}
+
+.infoTable_dark {
+    .title {
+        background-color: $mainDarkBlue;
+    }
+
+    table {
+        border: 1px solid lighten($darkBoxColor, 20%);
+        box-shadow: $darkBoxShadow;
+
+        thead {
+            tr {
+                th {
+                    border: 1px solid lighten($darkBoxColor, 20%);
+                    background-color: darken($darkBoxColor, 10%);
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    border: 1px solid lighten($darkBoxColor, 20%);
+                    background-color: $darkBoxColor;
+                    color: white;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .infoTable {
+        width: 80%;
+        margin: 50px auto;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .infoTable {
+        width: 90%;
+    }
+}

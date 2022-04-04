@@ -1,9 +1,9 @@
+/*Box Shadows*/
 $darkBoxShadow:0 5px 10px rgb(12, 12, 12);
-
 $brightBoxShadow1:0px 3px 8px rgba(0, 0, 0, 0.24);
 $brightBoxShadow2:rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-
+/*Colors*/
 $darkBackground:rgb(22, 22, 22);
 $brightBackground:whitesmoke;
 $darkBoxColor:rgb(43, 43, 43);
@@ -151,10 +151,10 @@ button {
 
 @font-face {
   font-family: myFont;
-  src: url("./Fonts/Yekan.ttf");
+  src: url("./Assets/Fonts/Yekan.ttf");
 }
 
 @font-face {
   font-family: specialFont;
-  src: url("./Fonts/titr.ttf");
+  src: url("./Assets/Fonts/titr.ttf");
 }

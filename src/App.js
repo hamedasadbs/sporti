@@ -7,11 +7,11 @@ import {
   Redirect,
 } from "react-router-dom";
 /*CHILD-COMPONENTS*/
-import { SlideNav } from "./SlideNav/slideNav";
-import { Bus } from "./Bus/bus";
-import { Softwares } from "./Softwares/softwares";
-import { Profile } from "./Profile/profile";
-import { Setting } from "./Setting/setting";
+import { SlideNav } from "./Layouts/SlideNav/slideNav";
+import { BusPage } from "./Pages/BusPage/busPage";
+import { SoftwaresPage } from "./Pages/SoftwaresPage/softwaresPage";
+import { ProfilePage } from "./Pages/ProfilePage/profilePage";
+import { SettingPage } from "./Pages/SettingPage/settingPage";
 /*CSS*/
 import style from "./app.module.scss";
 
@@ -51,7 +51,7 @@ export const App = () => {
       <Router>
         <Switch>
           <Route path="/bus">
-            <Bus
+            <BusPage
               darkMode={darkMode}
               dashboard={dashboardHandler}
               title={dashboard}
@@ -63,7 +63,7 @@ export const App = () => {
             />
           </Route>
           <Route path="/softwares">
-            <Softwares
+            <SoftwaresPage
               darkMode={darkMode}
               dashboard={dashboardHandler}
               title={dashboard}
@@ -75,7 +75,7 @@ export const App = () => {
             />
           </Route>
           <Route path="/profile">
-            <Profile
+            <ProfilePage
               darkMode={darkMode}
               dashboard={dashboardHandler}
               title={dashboard}
@@ -87,7 +87,7 @@ export const App = () => {
             />
           </Route>
           <Route path="/setting">
-            <Setting
+            <SettingPage
               darkMode={darkMode}
               dashboard={dashboardHandler}
               title={dashboard}
