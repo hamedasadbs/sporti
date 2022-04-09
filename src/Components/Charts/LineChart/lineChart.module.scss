@@ -35,15 +35,10 @@
                 border-radius: 5px;
                 background-color: $brightBackground;
                 transition: all 0.5s;
-
-                &:hover {
-                    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-                }
             }
 
             .activeDate {
                 background-color: $brightBoxColor;
-                box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
             }
         }
     }
@@ -57,7 +52,7 @@
 @media only screen and (max-width: 1350px) {
     .lineChart {
         width: 98%;
-        margin: 20px 5px;
+        margin: 20px auto;
     }
 }
 

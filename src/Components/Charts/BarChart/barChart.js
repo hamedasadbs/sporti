@@ -50,7 +50,9 @@ export const BarChart = (props) => {
 
   return (
     <div className={style.barChart}>
-      <h1>{props.title}</h1>
+      <h1>
+        {props.title} <i className="fa fa-bar-chart"></i>
+      </h1>
       <Chart id="chart" palette="Harmony Light" dataSource={newArray}>
         <Series
           type="bar"

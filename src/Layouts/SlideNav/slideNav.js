@@ -96,10 +96,10 @@ export const SlideNav = (props) => {
         <span id="تنظیمات">تنظیمات</span>
         <i id="تنظیمات" className="fa fa-cog"></i>
       </Link>
-      <button className={style.logout}>
+      <Link className={style.logout}>
         <span>خروج</span>
         <i className="fa fa-sign-out"></i>
-      </button>
+      </Link>
     </nav>
   );
 };

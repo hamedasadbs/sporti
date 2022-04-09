@@ -17,7 +17,7 @@
     main {
         display: flex;
         border-bottom: 1px solid gray;
-        padding-bottom: 6px;
+        padding-bottom: 3px;
         justify-content: space-between;
 
         span {
@@ -72,8 +72,9 @@
     .logout {
         width: 100%;
         display: flex;
-        margin: 220px auto;
-        background-color: rgba(255, 255, 255, 0.5);
+        margin: 10px auto;
+        margin-top: auto;
+        background-color: rgba(255, 255, 255, 0.2);
         padding: 5px 15px;
         font-size: $fontSize3;
         border: none;
@@ -111,6 +112,8 @@
 
         .link,
         .logout {
+            border-radius: 0;
+
             i {
                 margin: 0px auto;
             }

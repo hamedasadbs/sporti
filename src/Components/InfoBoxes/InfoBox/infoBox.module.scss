@@ -33,7 +33,7 @@
     }
 
     label.title {
-        font-family: specialFont;
+        font-family: myFont;
         font-size: $fontSize2;
         margin-top: 20px;
     }
@@ -42,6 +42,7 @@
         font-size: $fontSize7;
         margin-top: 0px;
         font-weight: bold;
+        font-family: specialFont;
     }
 }
 

@@ -127,7 +127,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: column;
-  background-color: $brightBackground;
+  background-color: darken($brightBackground, 5%);
 }
 
 code {
@@ -156,5 +156,5 @@ button {
 
 @font-face {
   font-family: specialFont;
-  src: url("./Assets/Fonts/titr.ttf");
+  src: url("./Assets/Fonts/homa.ttf");
 }

@@ -101,7 +101,9 @@ export const LineChart = (props) => {
 
   return (
     <div className={style.lineChart}>
-      <h1>{props.title}</h1>
+      <h1>
+        {props.title} <i className="fa fa-line-chart"></i>
+      </h1>
       <Chart id="chart" palette="Harmony Light" dataSource={dateType}>
         <CommonSeriesSettings
           argumentField="label"
