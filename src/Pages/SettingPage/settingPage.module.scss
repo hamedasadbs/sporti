@@ -1,3 +1,128 @@
 @import '../../index.module.scss';
 
-@include main_article;
+.setting {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding-right: 250px;
+    min-height: 100vh;
+
+    main {
+        display: flex;
+        flex-direction: column;
+        margin-top: -20px;
+
+        .settings {
+            display: flex;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: $brightBoxShadow1;
+            width: 95%;
+            margin: 30px auto;
+            background-color: $brightBoxColor;
+
+            span {
+                display: flex;
+                width: 100%;
+                justify-content: flex-end;
+
+                label {
+                    font-family: myFont;
+                    font-size: $fontSize2;
+                    text-align: right;
+                    color: gray;
+                    margin: auto;
+                    margin-right: 0;
+                    margin-left: 10px;
+                    font-weight: 100;
+                }
+            }
+        }
+    }
+}
+
+.setting_dark {
+    background-color: $darkBackground;
+
+    main {
+        .settings {
+            background-color: $darkBoxColor;
+            box-shadow: $darkBoxShadow;
+
+            h1 {
+                color: $brightBackground;
+            }
+
+            main {
+                span {
+
+                    label {
+                        color: whitesmoke;
+                    }
+
+                    input,
+                    textarea {
+                        background: linear-gradient(to right, lighten($darkBoxColor, 7%), lighten($darkBoxColor, 10%));
+                        color: whitesmoke;
+                        border: none;
+                    }
+                }
+            }
+
+            .previewDescription {
+                p {
+                    color: $brightBackground;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 900px) {
+
+    .setting {
+        padding-right: 70px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .setting {
+        main {
+            article {
+
+                .settingUpdate,
+                .settings {
+                    width: 50%;
+                    border-radius: 0;
+                    box-shadow: none;
+                }
+
+                .settings {
+                    border-left: 1px solid lightgray;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .setting {
+        main {
+            article {
+                flex-direction: column;
+
+                .settingUpdate,
+                .settings {
+                    width: 90%;
+                    margin: 10px auto;
+                    border-radius: 10px;
+                    box-shadow: $brightBoxShadow1;
+                }
+
+                .settings {
+                    border-left: none;
+                }
+            }
+        }
+    }
+}

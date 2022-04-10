@@ -56,11 +56,7 @@ export const App = () => {
               dashboard={dashboardHandler}
               title={dashboard}
             />
-            <SlideNav
-              darkModeHandler={darkModeHandler}
-              darkMode={darkMode}
-              dashboard={dashboardHandler}
-            />
+            <SlideNav darkMode={darkMode} dashboard={dashboardHandler} />
           </Route>
           <Route path="/softwares">
             <SoftwaresPage
@@ -68,11 +64,7 @@ export const App = () => {
               dashboard={dashboardHandler}
               title={dashboard}
             />
-            <SlideNav
-              darkModeHandler={darkModeHandler}
-              darkMode={darkMode}
-              dashboard={dashboardHandler}
-            />
+            <SlideNav darkMode={darkMode} dashboard={dashboardHandler} />
           </Route>
           <Route path="/profile">
             <ProfilePage
@@ -80,23 +72,16 @@ export const App = () => {
               dashboard={dashboardHandler}
               title={dashboard}
             />
-            <SlideNav
-              darkModeHandler={darkModeHandler}
-              darkMode={darkMode}
-              dashboard={dashboardHandler}
-            />
+            <SlideNav darkMode={darkMode} dashboard={dashboardHandler} />
           </Route>
           <Route path="/setting">
             <SettingPage
               darkMode={darkMode}
               dashboard={dashboardHandler}
               title={dashboard}
-            />
-            <SlideNav
               darkModeHandler={darkModeHandler}
-              darkMode={darkMode}
-              dashboard={dashboardHandler}
             />
+            <SlideNav darkMode={darkMode} dashboard={dashboardHandler} />
           </Route>
           <Route exact path="/">
             <Redirect to="/bus" />

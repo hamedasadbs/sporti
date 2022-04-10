@@ -16,18 +16,21 @@
 
     table {
         width: 100%;
-        margin: auto;
+        background-color: white;
+        text-align: center;
+        border-radius: 5px;
         margin-top: 0;
+        margin-bottom: auto;
 
         thead {
             tr {
                 th {
-                    border: 1px solid $brightBoxColor;
                     text-align: center;
-                    font-family: specialFont;
-                    background-color: lighten($mainBrightBlue, 20%);
+                    font-family: myFont;
                     font-size: $fontSize2;
-                    color: $brightBoxColor;
+                    background-color: $mainBrightBlue;
+                    color: whitesmoke;
+                    margin-top: auto;
                 }
             }
         }
@@ -35,9 +38,9 @@
         tbody {
             tr {
                 td {
-                    border: 1px solid $brightBoxColor;
                     text-align: center;
-                    font-family: myFont;
+                    font-size: $fontSize2;
+                    font-family: specialFont;
                 }
             }
         }

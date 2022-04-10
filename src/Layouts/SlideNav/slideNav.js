@@ -1,35 +1,34 @@
 /*INNER-COMPONENTS*/
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-/*CHILD COMPONENTS*/
-import { ToggleSwitch } from "../../Components/ToggleSwitch/toggleSwitch";
 /*CSS*/
 import style from "./slideNav.module.scss";
 
 export const SlideNav = (props) => {
+  let location = useLocation();
   useEffect(() => {
     const bus = document.getElementById("گذرگاه");
     bus.classList.add(style.activeLink);
   }, []);
 
   useEffect(() => {
-    switch (window.location.href) {
-      case "http://localhost:3000/bus":
+    switch (location.pathname) {
+      case "/bus":
         hrefNavHandler("گذرگاه");
         break;
-      case "http://localhost:3000/softwares":
+      case "/softwares":
         hrefNavHandler("نرم افزارها");
         break;
-      case "http://localhost:3000/profile":
+      case "/profile":
         hrefNavHandler("پروفایل");
         break;
-      case "http://localhost:3000/setting":
+      case "/setting":
         hrefNavHandler("تنظیمات");
         break;
       default:
         break;
     }
-  }, [window.location.href]);
+  }, [location.pathname]);
 
   const hrefNavHandler = (e) => {
     const nav = document.getElementById(e);
@@ -53,17 +52,11 @@ export const SlideNav = (props) => {
     props.dashboard(e.target.id);
   };
 
-  const darkModeHandler = (dm) => {
-    props.darkModeHandler(dm);
-  };
-
   return (
     <nav className={style.slideNav}>
       <main>
-        <ToggleSwitch darkModeHandler={darkModeHandler} />
-        <span>
-          داشبورد <i className="fa fa-tachometer"></i>
-        </span>
+        <h1>داشبورد</h1>
+        <i className="fa fa-tachometer"></i>
       </main>
       <Link id="گذرگاه" onClick={navHandler} className={style.link} to="/bus">
         <span id="گذرگاه">گذرگاه</span>
@@ -96,7 +89,7 @@ export const SlideNav = (props) => {
         <span id="تنظیمات">تنظیمات</span>
         <i id="تنظیمات" className="fa fa-cog"></i>
       </Link>
-      <Link className={style.logout}>
+      <Link to={location.pathname} className={style.logout}>
         <span>خروج</span>
         <i className="fa fa-sign-out"></i>
       </Link>

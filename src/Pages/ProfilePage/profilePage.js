@@ -29,19 +29,19 @@ export const ProfilePage = (props) => {
             <main>
               <span>
                 <label>نام خانوادگی</label>
-                <input />
+                <input placeholder="علیپور" />
               </span>
               <span>
                 <label>نام</label>
-                <input />
+                <input placeholder="علی" />
               </span>
               <span className={style.leftAlign}>
                 <label>رمز عبور</label>
-                <input />
+                <input placeholder="******" />
               </span>
               <span className={style.leftAlign}>
                 <label>ایمیل</label>
-                <input />
+                <input placeholder="alialipour1975@yahoo.com" />
               </span>
               <span className={`${style.fullWidth} ${style.leftAlign}`}>
                 <label>آدرس</label>
@@ -55,8 +55,8 @@ export const ProfilePage = (props) => {
           </div>
           <div className={style.profilePreview}>
             <img src={userPhoto} alt="userPhoto" />
-            <h1>نام و نام خانوادگی</h1>
-            <h2>سمت</h2>
+            <h1>علی علیپور</h1>
+            <h2>معاون پشتیبانی</h2>
             <div className={style.previewDescription}>
               <h1>توضیحات</h1>
               <p>

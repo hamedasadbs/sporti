@@ -60,10 +60,10 @@ export const ToggleSwitch = (props) => {
 
   return (
     <div onClick={darkModeHadler} className={style.toggle}>
-      <span className={style.switch}>
+      <div className={style.switch}>
         <i className={`fa fa-sun-o ${style.brightIcon}`}></i>
         <i className={`fa fa-moon-o ${style.darkIcon}`}></i>
-      </span>
+      </div>
     </div>
   );
 };

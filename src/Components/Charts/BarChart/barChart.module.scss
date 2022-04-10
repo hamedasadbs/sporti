@@ -54,12 +54,18 @@
     button {
         width: 300px;
         margin: 20px auto 10px auto;
-        padding: 15px;
+        padding: 10px;
         background-color: lighten($mainBrightBlue, 10%);
         color: $brightBoxColor;
         border-radius: 5px;
         box-shadow: $brightBoxShadow1;
         font-size: $fontSize2;
+        font-family: specialFont;
+        transition: all 0.5s;
+
+        &:hover {
+            background-color: lighten($mainBrightBlue, 20%);
+        }
     }
 }
 
@@ -67,9 +73,29 @@
     background-color: $darkBoxColor;
     box-shadow: $darkBoxShadow;
 
+    .setDate {
+        main {
+            .setDateInner {
+                input {
+                    border: 1px solid rgb(55, 55, 55);
+                    background-color: lighten($darkBackground, 5%);
+                    color: whitesmoke;
+
+                    &:focus {
+                        background-color: $darkBackground;
+                    }
+                }
+            }
+        }
+    }
+
     button {
         background-color: lighten($mainDarkBlue, 10%);
         color: $brightBoxColor;
+
+        &:hover {
+            background-color: lighten($mainDarkBlue, 20%);
+        }
     }
 }
 

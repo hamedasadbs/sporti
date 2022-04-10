@@ -1,13 +1,13 @@
 @import '../../index.module.scss';
 
 .toggle {
-    width: 70px;
-    height: 40px;
+    width: 50px;
+    height: 30px;
     background-color: lightgray;
     display: flex;
     border-radius: 50px;
     margin: auto;
-    margin-left: 0;
+    margin-right: 0;
     transition: all 0.5s;
 
     &:hover {
@@ -15,9 +15,9 @@
     }
 
     .switch {
-        width: 35px;
-        border-radius: 50px;
-        height: 35px;
+        width: 25px;
+        border-radius: 100px;
+        height: 25px;
         background-color: $mainBrightBlue;
         z-index: 5;
         margin: auto;
@@ -27,7 +27,7 @@
 
         i {
             margin: auto;
-            font-size: 25px;
+            font-size: 20px;
         }
 
         .brightIcon {
@@ -42,6 +42,6 @@
 
     .switch_dark {
         background-color: $mainDarkBlue;
-        margin-left: 30px;
+        margin-left: 21px;
     }
 }

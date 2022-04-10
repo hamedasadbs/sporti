@@ -22,7 +22,7 @@ export const InfoTable = (props) => {
       <h1 className={style.title}>
         {props.title} <i className="fa fa-table"></i>
       </h1>
-      <table className="table table-striped table-bordered">
+      <table className="table table-hover">
         <thead>
           <tr>
             {props.toples.map((tp, index) => (

@@ -10,27 +10,34 @@
     padding: 15px;
     background-image: url(../../Assets/Images/slideNav.png);
     background-repeat: no-repeat;
-    box-shadow: $brightBoxShadow2;
     border-radius: 0;
-    box-shadow: 0 5px 15px rgb(12, 12, 12);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 
     main {
         display: flex;
         border-bottom: 1px solid gray;
-        padding-bottom: 3px;
+        padding-bottom: 18px;
         justify-content: space-between;
+        margin: 10px auto;
+        margin-right: 10px;
+        width: 100%;
 
-        span {
-            margin: 10px auto;
-            margin-right: 10px;
+        h1 {
+            margin: auto;
+            margin-right: 0;
             color: lightgray;
             font-family: myFont;
             font-size: $fontSize3;
-
-            i {
-                font-size: $fontSize5;
-            }
         }
+
+        i {
+            margin: auto;
+            margin-right: 10px;
+            color: lightgray;
+            margin-left: 10px;
+            font-size: $fontSize5;
+        }
+
     }
 
     .link {
@@ -74,7 +81,7 @@
         display: flex;
         margin: 10px auto;
         margin-top: auto;
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.5);
         padding: 5px 15px;
         font-size: $fontSize3;
         border: none;
@@ -96,17 +103,19 @@
     }
 }
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 900px) {
     .slideNav {
         width: 70px;
         padding: 15px 0;
         z-index: 5;
 
         main {
-            padding-bottom: 26px;
-
-            span {
+            h1 {
                 display: none;
+            }
+
+            i {
+                margin: auto;
             }
         }
 
