@@ -51,6 +51,7 @@ export const InfoBoxes = (props) => {
         title: "تعداد کل درخواست های رویدادها",
         value: data.result.allEventsRequests,
         icon1: "fa-paper-plane",
+        icon2: "fa-calendar",
       },
     ],
     softwares: [

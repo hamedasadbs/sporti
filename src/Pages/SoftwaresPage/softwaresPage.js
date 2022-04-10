@@ -14,7 +14,7 @@ import { SelectDropdown } from "../../Components/SelectDropdown/selectDropdown";
 
 export const SoftwaresPage = (props) => {
   const infoBoxIndex = "softwares";
-  const infoTable = info[1].softwares;
+  const infoTable = info.softwares;
 
   const [infoBoxData, setInfoBoxData] = useState("");
 

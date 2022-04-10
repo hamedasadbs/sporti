@@ -1,7 +1,7 @@
 @import '../../../index.module.scss';
 
 .infoBox {
-    width: 100%;
+    width: 30%;
     margin: 10px 1%;
     box-shadow: $brightBoxShadow1;
     border-radius: 3px;
@@ -107,6 +107,18 @@
 }
 
 .totalTransaction {
+    background: linear-gradient(135deg, $totalTransactionColor, darken($totalTransactionColor, 10%));
+
+    .icon {
+
+        .i1,
+        .i2 {
+            color: darken($totalTransactionColor, 10%)
+        }
+    }
+}
+
+.totalEventsReq {
     background: linear-gradient(135deg, $totalTransactionColor, darken($totalTransactionColor, 10%));
 
     .icon {

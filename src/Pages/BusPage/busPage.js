@@ -12,7 +12,7 @@ import { Title } from "../../Components/Title/title";
 
 export const BusPage = (props) => {
   const infoBoxIndex = "bus";
-  const infoTable = info[1].bus;
+  const infoTable = info.bus;
 
   const [infoBoxData, setInfoBoxData] = useState("");
 

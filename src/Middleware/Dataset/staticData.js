@@ -1,55 +1,4 @@
-const infoBox = {
-  bus: [
-    {
-      name: "failedRes",
-      title: "تعداد پاسخ های ناموفق",
-      value: "20",
-      icon1: "fa-reply",
-      icon2: "fa-close",
-    },
-    {
-      name: "okRes",
-      title: "تعداد پاسخ های موفق",
-      value: "12",
-      icon1: "fa-reply",
-      icon2: "fa-check",
-    },
-    {
-      name: "totalRes",
-      title: "تعداد کل پاسخ ها",
-      value: "30",
-      icon1: "fa-reply",
-    },
-    {
-      name: "totalReq",
-      title: "تعداد کل درخواست ها",
-      value: "5",
-      icon1: "fa-paper-plane",
-    },
-  ],
-  softwares: [
-    {
-      name: "totalRes",
-      title: "تعداد پاسخ های دریافت شده",
-      value: "30",
-      icon1: "fa-reply",
-    },
-    {
-      name: "totalReq",
-      title: "تعداد درخواست های ارسال شده",
-      value: "5",
-      icon1: "fa-paper-plane",
-    },
-    {
-      name: "totalTransaction",
-      title: "تعداد کل تراکنش ها",
-      value: "10",
-      icon1: "fa-exchange",
-    },
-  ],
-};
-
-const infoTable = {
+const info = {
   bus: [
     {
       title: "جدول آخرین تراکنش",
@@ -151,7 +100,5 @@ const infoTable = {
     },
   ],
 };
-
-const info = [infoBox, infoTable];
 
 export { info };

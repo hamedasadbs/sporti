@@ -30,6 +30,9 @@ export const InfoBox = (props) => {
       case "totalTransaction":
         infoBox[props.index].classList.add(style.totalTransaction);
         break;
+      case "totalEventsReq":
+        infoBox[props.index].classList.add(style.totalEventsReq);
+        break;
       default:
         break;
     }
