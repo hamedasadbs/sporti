@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 /*CSS*/
 import style from "./softwaresPage.module.scss";
 /*CHILD COMPONENTS*/
@@ -12,8 +13,10 @@ import { Title } from "../../Components/Title/title";
 import { SelectDropdown } from "../../Components/SelectDropdown/selectDropdown";
 
 export const SoftwaresPage = (props) => {
-  const infoBox = info[0].softwares;
+  const infoBoxIndex = "softwares";
   const infoTable = info[1].softwares;
+
+  const [infoBoxData, setInfoBoxData] = useState("");
 
   useEffect(() => {
     if (props.darkMode == 1)
@@ -26,6 +29,15 @@ export const SoftwaresPage = (props) => {
         .classList.remove(style.softwares_dark);
   }, [props.darkMode]);
 
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `http://10.42.0.72:44351/api/Software/StatisticsInfo`,
+    }).then((res) => {
+      setInfoBoxData(res.data);
+    });
+  }, []);
+
   return (
     <article className={style.softwares}>
       <Header darkMode={props.darkMode} />
@@ -33,7 +45,11 @@ export const SoftwaresPage = (props) => {
         <SelectDropdown darkMode={props.darkMode} />
         <Title>/ {props.title}</Title>
       </main>
-      <InfoBoxes darkMode={props.darkMode} infoBox={infoBox} />
+      <InfoBoxes
+        dataset={infoBoxData}
+        darkMode={props.darkMode}
+        infoBoxIndex={infoBoxIndex}
+      />
       <SoftwaresCharts darkMode={props.darkMode} />
       <InfoTables darkMode={props.darkMode} infoTable={infoTable} />
     </article>

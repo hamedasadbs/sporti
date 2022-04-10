@@ -10,6 +10,7 @@ export const InfoBox = (props) => {
     for (let i = 0; i < infoBox.length; i++) {
       infoBox[i].classList.remove(style.infoBox_dark);
     }
+
     switch (props.name) {
       case "failedRes":
         infoBox[props.index].classList.add(style.failedRes);

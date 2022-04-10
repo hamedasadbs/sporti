@@ -1,4 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 /*CSS*/
 import style from "./busPage.module.scss";
 /*CHILD COMPONENTS*/
@@ -10,8 +11,10 @@ import { Header } from "../../Layouts/Header/header";
 import { Title } from "../../Components/Title/title";
 
 export const BusPage = (props) => {
-  const infoBox = info[0].bus;
+  const infoBoxIndex = "bus";
   const infoTable = info[1].bus;
+
+  const [infoBoxData, setInfoBoxData] = useState("");
 
   useEffect(() => {
     if (props.darkMode == 1)
@@ -24,13 +27,26 @@ export const BusPage = (props) => {
         .classList.remove(style.bus_dark);
   }, [props.darkMode]);
 
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `http://10.42.0.72:44351/api/Bus/StatisticsInfo`,
+    }).then((res) => {
+      setInfoBoxData(res.data);
+    });
+  }, []);
+
   return (
     <article className={style.bus}>
       <Header darkMode={props.darkMode} />
       <main>
         <Title>{props.title}</Title>
       </main>
-      <InfoBoxes darkMode={props.darkMode} infoBox={infoBox} />
+      <InfoBoxes
+        dataset={infoBoxData}
+        darkMode={props.darkMode}
+        infoBoxIndex={infoBoxIndex}
+      />
       <BusCharts darkMode={props.darkMode} />
       <InfoTables darkMode={props.darkMode} infoTable={infoTable} />
     </article>
