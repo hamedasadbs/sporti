@@ -1,7 +1,7 @@
 @import '../../../index.module.scss';
 
 .infoTable {
-    width: 48%;
+    width: 95%;
     display: flex;
     flex-direction: column;
     margin: 70px auto;
@@ -30,7 +30,7 @@
                     font-size: $fontSize2;
                     background-color: $mainBrightBlue;
                     color: whitesmoke;
-                    margin-top: auto;
+                    margin: auto;
                 }
             }
         }
@@ -77,13 +77,6 @@
 
 @media only screen and (max-width: 1350px) {
     .infoTable {
-        width: 95%;
         margin: 50px auto;
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .infoTable {
-        width: 95%;
     }
 }

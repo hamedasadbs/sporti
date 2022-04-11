@@ -1,13 +1,13 @@
 /*INNER-COMPONENTS*/
 import { useState, useEffect } from "react";
+import axios from "axios";
 /*CSS*/
 import style from "./selectDropdown.module.scss";
-/*CHILD COMPONENTS*/
-import { dynamicData } from "../../Middleware/Dataset/dynamicData";
 
 export const SelectDropdown = (props) => {
-  const [sw, setSW] = useState(dynamicData.software[0].swName);
+  const [softwares, setSoftwares] = useState([]);
   const [showOptions, setShowOptions] = useState(false);
+  const [sw, setSW] = useState(null);
 
   window.onclick = function (e) {
     if (e.target.nodeName !== "BUTTON") {
@@ -20,9 +20,10 @@ export const SelectDropdown = (props) => {
     else setShowOptions(true);
   };
 
-  const selectHandler = (sw) => {
-    setSW(sw.target.innerHTML);
+  const selectHandler = (s) => {
+    setSW(s.target.innerHTML);
     setShowOptions(false);
+    props.softwareHandler(sw);
   };
 
   useEffect(() => {
@@ -37,13 +38,23 @@ export const SelectDropdown = (props) => {
     }
   }, [props.darkMode]);
 
+  useEffect(() => {
+    axios({
+      method: "get",
+      url: `http://10.42.0.72:44351/api/Software/Softwares`,
+    }).then((res) => {
+      setSoftwares(res.data.result);
+      setSW(res.data.result[0]);
+    });
+  }, []);
+
   return (
     <div className={style.select}>
       <button onClick={showOptionsHandler}>{sw}</button>
       {showOptions && (
         <div className={style.options}>
-          {dynamicData.software.map((sw) => (
-            <span onClick={selectHandler}>{sw.swName}</span>
+          {softwares.map((sw) => (
+            <span onClick={selectHandler}>{sw}</span>
           ))}
         </div>
       )}

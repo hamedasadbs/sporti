@@ -1,9 +1,15 @@
 /*INNER COMPONENTS*/
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 /*CSS*/
 import style from "./infoTable.module.scss";
+/*CHILD COMPONENT*/
+import { Pagination } from "../../Pagination/pagination";
 
 export const InfoTable = (props) => {
+  const pageHandler = (p) => {
+    props.pageHandler(p);
+  };
+
   useEffect(() => {
     const infoTable = document.getElementsByClassName(style.infoTable);
     if (props.darkMode == 1) {
@@ -42,6 +48,11 @@ export const InfoTable = (props) => {
           ))}
         </tbody>
       </table>
+      <Pagination
+        numberOfPages={props.numberOfPages}
+        pageHandler={pageHandler}
+        currentPage={props.currentPage}
+      />
     </main>
   );
 };

@@ -6,50 +6,57 @@ import style from "./infoBoxes.module.scss";
 import { InfoBox } from "./InfoBox/infoBox";
 
 export const InfoBoxes = (props) => {
-  const [data, setData] = useState({ result: { allFailedResponses: 0 } });
-
-  const dataHandler = () => {
-    setData(props.dataset);
-  };
+  const [busInfoBoxData, setBusInfoBoxData] = useState({});
+  const [softwaresInfoBoxData, setSoftwaresBusInfoBoxData] = useState({});
 
   useEffect(() => {
-    if (props.dataset) {
-      dataHandler();
-    }
-  }, [props.dataset]);
+    axios({
+      method: "get",
+      url: `http://10.42.0.72:44351/api/Bus/StatisticsInfo`,
+    }).then((res) => {
+      setBusInfoBoxData(res.data.result);
+    });
+
+    axios({
+      method: "get",
+      url: `http://10.42.0.72:44351/api/Software/StatisticsInfo`,
+    }).then((res) => {
+      setSoftwaresBusInfoBoxData(res.data.result);
+    });
+  }, []);
 
   const infoBox = {
     bus: [
       {
         name: "failedRes",
         title: "تعداد پاسخ های ناموفق",
-        value: data.result.allFailedResponses,
+        value: busInfoBoxData.allFailedResponses,
         icon1: "fa-reply",
         icon2: "fa-close",
       },
       {
         name: "okRes",
         title: "تعداد پاسخ های موفق",
-        value: data.result.allOkResponses,
+        value: busInfoBoxData.allOkResponses,
         icon1: "fa-reply",
         icon2: "fa-check",
       },
       {
         name: "totalRes",
         title: "تعداد کل پاسخ ها",
-        value: data.result.allResponses,
+        value: busInfoBoxData.allResponses,
         icon1: "fa-reply",
       },
       {
         name: "totalReq",
         title: "تعداد کل درخواست ها",
-        value: data.result.allRequests,
+        value: busInfoBoxData.allRequests,
         icon1: "fa-paper-plane",
       },
       {
         name: "totalEventsReq",
         title: "تعداد کل درخواست های رویدادها",
-        value: data.result.allEventsRequests,
+        value: busInfoBoxData.allEventsRequests,
         icon1: "fa-paper-plane",
         icon2: "fa-calendar",
       },
@@ -58,19 +65,19 @@ export const InfoBoxes = (props) => {
       {
         name: "totalRes",
         title: "تعداد پاسخ های دریافت شده",
-        value: data.result.responsesCount,
+        value: softwaresInfoBoxData.responsesCount,
         icon1: "fa-reply",
       },
       {
         name: "totalReq",
         title: "تعداد درخواست های ارسال شده",
-        value: data.result.requestsCount,
+        value: softwaresInfoBoxData.requestsCount,
         icon1: "fa-paper-plane",
       },
       {
         name: "totalTransaction",
         title: "تعداد کل تراکنش ها",
-        value: data.result.transactionsCount,
+        value: softwaresInfoBoxData.transactionsCount,
         icon1: "fa-exchange",
       },
     ],
@@ -78,7 +85,7 @@ export const InfoBoxes = (props) => {
 
   return (
     <article className={style.infoBoxes}>
-      {props.infoBoxIndex == "bus"
+      {props.infoIndex == "bus"
         ? infoBox.bus.map((ib, index) => (
             <InfoBox
               name={ib.name}

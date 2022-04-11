@@ -1,0 +1,51 @@
+@import '../../index.module.scss';
+
+.pagination {
+    margin: 40px auto 0 auto;
+    width: 50%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+
+    .list {
+        display: flex;
+
+        span {
+            width: 100%;
+            background-color: whitesmoke;
+            padding: 5px;
+            margin: auto 5px;
+            display: flex;
+            z-index: 5;
+            font-size: $fontSize2;
+            justify-content: center;
+            user-select: none;
+            font-weight: bold;
+            color: rgb(75, 75, 75);
+            border: 1px solid lightgray;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(231, 231, 231);
+            }
+        }
+
+        .threeDots {
+            font-size: $fontSize3;
+            font-weight: bold;
+            margin: auto 5px;
+            color: gray;
+        }
+
+        .activePage {
+            color: red;
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .pagination {
+        width: 100%;
+        border-radius: 0;
+    }
+}
