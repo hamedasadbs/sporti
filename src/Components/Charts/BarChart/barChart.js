@@ -23,7 +23,7 @@ export const BarChart = (props) => {
 
   useEffect(() => {
     const barCharts = document.getElementsByClassName(style.barChart);
-    if (props.darkMode == 1) {
+    if (props.darkMode === 1) {
       setChartColor(props.darkColor);
       for (let i = 0; i < barCharts.length; i++) {
         barCharts[i].classList.add(style.barChart_dark);
@@ -34,7 +34,7 @@ export const BarChart = (props) => {
         barCharts[i].classList.remove(style.barChart_dark);
       }
     }
-  }, [props.darkMode]);
+  }, [props.darkMode, props]);
 
   let newArray = dateType.sort(function (a, b) {
     let valueA, valueB;
@@ -47,6 +47,18 @@ export const BarChart = (props) => {
     }
     return 0;
   });
+
+  const timeRangeHandler = () => {
+    const setDateInner = document.getElementsByClassName(style.setDateInner);
+
+    const startDate = setDateInner[props.id * 2 - 2].firstChild.value;
+    const startTime = setDateInner[props.id * 2 - 2].lastChild.value;
+    const finishDate = setDateInner[props.id * 2 - 1].firstChild.value;
+    const finishTime = setDateInner[props.id * 2 - 1].lastChild.value;
+
+    const timeRange = [startDate, startTime, finishDate, finishTime];
+    props.setTimeRange(timeRange);
+  };
 
   return (
     <div className={style.barChart}>
@@ -70,18 +82,18 @@ export const BarChart = (props) => {
       <div className={style.setDate}>
         <main>
           <span className={style.setDateInner}>
-            <input type="date" className={style.date} />
-            <input type="time" className={style.time} />
+            <input id="finishDate" type="date" className={style.date} />
+            <input id="finishTime" type="time" className={style.time} />
           </span>
           <h1>تا</h1>
           <span className={style.setDateInner}>
-            <input type="date" className={style.date} />
-            <input type="time" className={style.time} />
+            <input id="startDate" type="date" className={style.date} />
+            <input id="startTime" type="time" className={style.time} />
           </span>
           <h1>از</h1>
         </main>
       </div>
-      <button>اعمال بازه زمانی</button>
+      <button onClick={timeRangeHandler}>اعمال بازه زمانی</button>
     </div>
   );
 };

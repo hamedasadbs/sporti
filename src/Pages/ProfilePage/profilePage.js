@@ -8,7 +8,7 @@ import userPhoto from "../../Assets/Images/user.jpg";
 
 export const ProfilePage = (props) => {
   useEffect(() => {
-    if (props.darkMode == 1)
+    if (props.darkMode === 1)
       document
         .getElementsByClassName(style.profile)[0]
         .classList.add(style.profile_dark);

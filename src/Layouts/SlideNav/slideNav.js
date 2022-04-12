@@ -12,6 +12,17 @@ export const SlideNav = (props) => {
   }, []);
 
   useEffect(() => {
+    const hrefNavHandler = (e) => {
+      const nav = document.getElementById(e);
+      const otherId = `:not([id^='${e}'])`;
+      const others = document.querySelectorAll(otherId);
+      for (let i = 0; i < others.length; i++) {
+        others[i].classList.remove(style.activeLink);
+      }
+      nav.classList.add(style.activeLink);
+      props.dashboard(e);
+    };
+
     switch (location.pathname) {
       case "/bus":
         hrefNavHandler("گذرگاه");
@@ -28,18 +39,7 @@ export const SlideNav = (props) => {
       default:
         break;
     }
-  }, [location.pathname]);
-
-  const hrefNavHandler = (e) => {
-    const nav = document.getElementById(e);
-    const otherId = `:not([id^='${e}'])`;
-    const others = document.querySelectorAll(otherId);
-    for (let i = 0; i < others.length; i++) {
-      others[i].classList.remove(style.activeLink);
-    }
-    nav.classList.add(style.activeLink);
-    props.dashboard(e);
-  };
+  }, [location.pathname, props]);
 
   const navHandler = (e) => {
     const nav = document.getElementById(e.target.id);

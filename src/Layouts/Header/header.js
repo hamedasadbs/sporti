@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import style from "./header.module.scss";
 /*CHILD COMPONENTS*/
 import userPhoto from "../../Assets/Images/user.jpg";
-import noPhoto from "../../Assets/Images/no_photo.png";
 
 export const Header = (props) => {
   const [showUserInfo, setShowUserInfo] = useState(false);
@@ -28,7 +27,7 @@ export const Header = (props) => {
   };
 
   useEffect(() => {
-    if (props.darkMode == 1) {
+    if (props.darkMode === 1) {
       document
         .getElementsByClassName(style.header)[0]
         .classList.add(style.header_dark);

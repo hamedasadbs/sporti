@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 /*CSS*/
 import style from "./softwaresPage.module.scss";
 /*CHILD COMPONENTS*/
@@ -20,7 +19,7 @@ export const SoftwaresPage = (props) => {
   };
 
   useEffect(() => {
-    if (props.darkMode == 1)
+    if (props.darkMode === 1)
       document
         .getElementsByClassName(style.softwares)[0]
         .classList.add(style.softwares_dark);
@@ -41,12 +40,12 @@ export const SoftwaresPage = (props) => {
         <Title>/ {props.title}</Title>
       </main>
       <InfoBoxes darkMode={props.darkMode} infoIndex={infoIndex} />
-      <SoftwaresCharts darkMode={props.darkMode} />
-      <InfoTables
+      <SoftwaresCharts software={software} darkMode={props.darkMode} />
+      {/* <InfoTables
         software={software}
         darkMode={props.darkMode}
         infoIndex={infoIndex}
-      />
+      /> */}
     </article>
   );
 };

@@ -85,7 +85,7 @@ export const InfoBoxes = (props) => {
 
   return (
     <article className={style.infoBoxes}>
-      {props.infoIndex == "bus"
+      {props.infoIndex === "bus"
         ? infoBox.bus.map((ib, index) => (
             <InfoBox
               name={ib.name}

@@ -13,14 +13,11 @@ import Chart, {
   Point,
   CommonSeriesSettings,
 } from "devextreme-react/chart";
-/*CHILD COMPONENTS*/
-import { dynamicData } from "../../../Middleware/Dataset/dynamicData";
 
 export const LineChart = (props) => {
   let [date, setDate] = useState("minute" + props.id);
   let [dateTitle, setDateTitle] = useState("دقیقه");
   const [chartColor, setChartColor] = useState(props.color);
-  const [dateType, setDateType] = useState(dynamicData.minute);
   const [visualRange, setVisualRange] = useState({
     startValue: 0,
     endValue: 60,
@@ -40,7 +37,7 @@ export const LineChart = (props) => {
 
   useEffect(() => {
     const lineCharts = document.getElementsByClassName(style.lineChart);
-    if (props.darkMode == 1) {
+    if (props.darkMode === 1) {
       setChartColor(props.darkColor);
       for (let i = 0; i < lineCharts.length; i++) {
         lineCharts[i].classList.add(style.lineChart_dark);
@@ -51,7 +48,7 @@ export const LineChart = (props) => {
         lineCharts[i].classList.remove(style.lineChart_dark);
       }
     }
-  }, [props.darkMode]);
+  }, [props.darkMode, props]);
 
   const dateHandler = (e) => {
     setDate(e.target.id);
@@ -60,39 +57,39 @@ export const LineChart = (props) => {
     setDateTitle(e.target.name);
     switch (e.target.name) {
       case "دقیقه":
-        setDateType(dynamicData.minute);
         setVisualRange({
           startValue: 0,
           endValue: 60,
         });
+        props.setTimeType(0);
         break;
       case "ساعت":
-        setDateType(dynamicData.hour);
         setVisualRange({
           startValue: 0,
           endValue: 24,
         });
+        props.setTimeType(1);
         break;
       case "روز":
-        setDateType(dynamicData.day);
         setVisualRange({
           startValue: 0,
           endValue: 31,
         });
+        props.setTimeType(2);
         break;
       case "ماه":
-        setDateType(dynamicData.month);
         setVisualRange({
           startValue: 0,
           endValue: 12,
         });
+        props.setTimeType(3);
         break;
       case "سال":
-        setDateType(dynamicData.year);
         setVisualRange({
           startValue: 0,
-          endValue: 5,
+          endValue: 10,
         });
+        props.setTimeType(4);
         break;
       default:
         break;
@@ -104,19 +101,19 @@ export const LineChart = (props) => {
       <h1>
         {props.title} <i className="fa fa-line-chart"></i>
       </h1>
-      <Chart id="chart" palette="Harmony Light" dataSource={dateType}>
+      <Chart id="chart" palette="Harmony Light" dataSource={props.dataset}>
         <CommonSeriesSettings
-          argumentField="label"
-          valueField="data"
+          argumentField="xPosition"
+          valueField={props.yPosition}
           type="spline"
         >
           <Point visible={true} size="7" />
         </CommonSeriesSettings>
         <Series
           type="line"
-          argumentField="label"
+          argumentField="xPosition"
           color={chartColor}
-          valueField="data"
+          valueField={props.yPosition}
         />
         <Size height={300} />
         <ArgumentAxis title={`(زمان-${dateTitle})`} visualRange={visualRange} />

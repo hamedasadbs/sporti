@@ -1,5 +1,5 @@
 /*INNER COMPONENTS*/
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 /*CSS*/
 import style from "./infoTable.module.scss";
 /*CHILD COMPONENT*/
@@ -12,7 +12,7 @@ export const InfoTable = (props) => {
 
   useEffect(() => {
     const infoTable = document.getElementsByClassName(style.infoTable);
-    if (props.darkMode == 1) {
+    if (props.darkMode === 1) {
       for (let i = 0; i < infoTable.length; i++) {
         infoTable[i].classList.add(style.infoTable_dark);
       }
@@ -52,6 +52,7 @@ export const InfoTable = (props) => {
         numberOfPages={props.numberOfPages}
         pageHandler={pageHandler}
         currentPage={props.currentPage}
+        index={props.index}
       />
     </main>
   );

@@ -29,21 +29,13 @@ export const App = () => {
   };
 
   const [dashboard, setDashboard] = useState("گذرگاه");
-  const [darkMode, setDarkMode] = useState(getCookie("darkMode"));
-
-  const dashboardHandler = (d) => {
-    setDashboard(d);
-  };
+  const [darkMode, setDarkMode] = useState(parseInt(getCookie("darkMode")));
 
   window.onbeforeunload = function () {
     window.setTimeout(function () {
       window.location = "/";
     }, 0);
     window.onbeforeunload = null;
-  };
-
-  const darkModeHandler = (dm) => {
-    setDarkMode(dm);
   };
 
   return (
@@ -53,35 +45,35 @@ export const App = () => {
           <Route path="/bus">
             <BusPage
               darkMode={darkMode}
-              dashboard={dashboardHandler}
+              dashboard={setDashboard}
               title={dashboard}
             />
-            <SlideNav darkMode={darkMode} dashboard={dashboardHandler} />
+            <SlideNav darkMode={darkMode} dashboard={setDashboard} />
           </Route>
           <Route path="/softwares">
             <SoftwaresPage
               darkMode={darkMode}
-              dashboard={dashboardHandler}
+              dashboard={setDashboard}
               title={dashboard}
             />
-            <SlideNav darkMode={darkMode} dashboard={dashboardHandler} />
+            <SlideNav darkMode={darkMode} dashboard={setDashboard} />
           </Route>
           <Route path="/profile">
             <ProfilePage
               darkMode={darkMode}
-              dashboard={dashboardHandler}
+              dashboard={setDashboard}
               title={dashboard}
             />
-            <SlideNav darkMode={darkMode} dashboard={dashboardHandler} />
+            <SlideNav darkMode={darkMode} dashboard={setDashboard} />
           </Route>
           <Route path="/setting">
             <SettingPage
               darkMode={darkMode}
-              dashboard={dashboardHandler}
+              dashboard={setDashboard}
               title={dashboard}
-              darkModeHandler={darkModeHandler}
+              setDarkMode={setDarkMode}
             />
-            <SlideNav darkMode={darkMode} dashboard={dashboardHandler} />
+            <SlideNav darkMode={darkMode} dashboard={setDashboard} />
           </Route>
           <Route exact path="/">
             <Redirect to="/bus" />

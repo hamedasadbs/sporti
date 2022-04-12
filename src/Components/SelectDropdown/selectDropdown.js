@@ -27,7 +27,7 @@ export const SelectDropdown = (props) => {
   };
 
   useEffect(() => {
-    if (props.darkMode == 1) {
+    if (props.darkMode === 1) {
       document
         .getElementsByClassName(style.select)[0]
         .classList.add(style.select_dark);

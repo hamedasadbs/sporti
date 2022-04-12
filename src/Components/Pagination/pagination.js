@@ -1,5 +1,5 @@
 /*INNER COMPONENTS*/
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 /*CSS*/
 import style from "./pagination.module.scss";
 
@@ -21,14 +21,16 @@ export const Pagination = (props) => {
   };
 
   useEffect(() => {
-    const pages = document.getElementsByClassName("pageLink");
+    const list = document.getElementsByClassName(style.list);
+    const pages = list[props.index].getElementsByClassName("pageLink");
+
     for (let i = 0; i < pages.length; i++) {
       pages[i].classList.remove(style.activePage);
       if (parseInt(pages[i].id) === props.currentPage) {
         pages[i].classList.add(style.activePage);
       }
     }
-  }, [props.currentPage]);
+  }, [props.currentPage, props]);
 
   const indexHandler = () => {
     let span = [];
