@@ -45,6 +45,13 @@
             }
         }
     }
+
+    .noDataToShow {
+        color: rgb(160, 0, 0);
+        background-color: pink;
+        padding: 30px;
+        border-radius: 10px;
+    }
 }
 
 .infoTable_dark {

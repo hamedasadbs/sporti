@@ -23,11 +23,11 @@ export const SelectDropdown = (props) => {
   const selectHandler = (s) => {
     setSW(s.target.innerHTML);
     setShowOptions(false);
-    props.softwareHandler(sw);
+    props.setSoftware(s.target.innerHTML);
   };
 
   useEffect(() => {
-    if (props.darkMode === 1) {
+    if (props.darkMode) {
       document
         .getElementsByClassName(style.select)[0]
         .classList.add(style.select_dark);

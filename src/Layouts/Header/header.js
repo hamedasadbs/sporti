@@ -27,7 +27,7 @@ export const Header = (props) => {
   };
 
   useEffect(() => {
-    if (props.darkMode === 1) {
+    if (props.darkMode) {
       document
         .getElementsByClassName(style.header)[0]
         .classList.add(style.header_dark);

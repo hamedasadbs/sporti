@@ -12,14 +12,10 @@ import { SelectDropdown } from "../../Components/SelectDropdown/selectDropdown";
 
 export const SoftwaresPage = (props) => {
   const infoIndex = "softwares";
-  const [software, setSoftware] = useState(null);
-
-  const softwareHandler = (sw) => {
-    setSoftware(sw);
-  };
+  const [software, setSoftware] = useState("CallCenter");
 
   useEffect(() => {
-    if (props.darkMode === 1)
+    if (props.darkMode)
       document
         .getElementsByClassName(style.softwares)[0]
         .classList.add(style.softwares_dark);
@@ -33,19 +29,16 @@ export const SoftwaresPage = (props) => {
     <article className={style.softwares}>
       <Header darkMode={props.darkMode} />
       <main>
-        <SelectDropdown
-          softwareHandler={softwareHandler}
-          darkMode={props.darkMode}
-        />
+        <SelectDropdown setSoftware={setSoftware} darkMode={props.darkMode} />
         <Title>/ {props.title}</Title>
       </main>
       <InfoBoxes darkMode={props.darkMode} infoIndex={infoIndex} />
       <SoftwaresCharts software={software} darkMode={props.darkMode} />
-      {/* <InfoTables
+      <InfoTables
         software={software}
         darkMode={props.darkMode}
         infoIndex={infoIndex}
-      /> */}
+      />
     </article>
   );
 };

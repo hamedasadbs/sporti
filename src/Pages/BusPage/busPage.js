@@ -12,7 +12,7 @@ export const BusPage = (props) => {
   const infoIndex = "bus";
 
   useEffect(() => {
-    if (props.darkMode === 1)
+    if (props.darkMode)
       document
         .getElementsByClassName(style.bus)[0]
         .classList.add(style.bus_dark);
@@ -30,7 +30,7 @@ export const BusPage = (props) => {
       </main>
       <InfoBoxes darkMode={props.darkMode} infoIndex={infoIndex} />
       <BusCharts darkMode={props.darkMode} />
-      {/* <InfoTables darkMode={props.darkMode} infoIndex={infoIndex} /> */}
+      <InfoTables darkMode={props.darkMode} infoIndex={infoIndex} />
     </article>
   );
 };

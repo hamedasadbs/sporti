@@ -13,8 +13,13 @@ import Chart, {
   Point,
   CommonSeriesSettings,
 } from "devextreme-react/chart";
+/*CHILD COMPONENTS*/
+import * as request from "../../../Middleware/Requests/axiosRequest";
 
 export const LineChart = (props) => {
+  const [timeType, setTimeType] = useState(0);
+  const [dataset, setDataset] = useState([]);
+
   let [date, setDate] = useState("minute" + props.id);
   let [dateTitle, setDateTitle] = useState("دقیقه");
   const [chartColor, setChartColor] = useState(props.color);
@@ -37,7 +42,7 @@ export const LineChart = (props) => {
 
   useEffect(() => {
     const lineCharts = document.getElementsByClassName(style.lineChart);
-    if (props.darkMode === 1) {
+    if (props.darkMode) {
       setChartColor(props.darkColor);
       for (let i = 0; i < lineCharts.length; i++) {
         lineCharts[i].classList.add(style.lineChart_dark);
@@ -61,67 +66,103 @@ export const LineChart = (props) => {
           startValue: 0,
           endValue: 60,
         });
-        props.setTimeType(0);
+        setTimeType(0);
         break;
       case "ساعت":
         setVisualRange({
           startValue: 0,
           endValue: 24,
         });
-        props.setTimeType(1);
+        setTimeType(1);
         break;
       case "روز":
         setVisualRange({
           startValue: 0,
           endValue: 31,
         });
-        props.setTimeType(2);
+        setTimeType(2);
         break;
       case "ماه":
         setVisualRange({
           startValue: 0,
           endValue: 12,
         });
-        props.setTimeType(3);
+        setTimeType(3);
         break;
       case "سال":
         setVisualRange({
           startValue: 0,
           endValue: 10,
         });
-        props.setTimeType(4);
+        setTimeType(4);
         break;
       default:
         break;
     }
   };
 
+  useEffect(() => {
+    let url = "";
+    switch (props.name) {
+      /*bus charts*/
+      case "okResponseRatios_bus":
+        url = `http://10.42.0.72:44351/api/Bus/OkResponseRatios?timeType=${timeType}`;
+        break;
+      case "responseDiagram_bus":
+        url = `http://10.42.0.72:44351/api/Bus/ResponseDiagram?timeType=${timeType}`;
+        break;
+      case "requestDiagram_bus":
+        url = `http://10.42.0.72:44351/api/Bus/RequestDiagram?timeType=${timeType}`;
+        break;
+      /*softwares charts*/
+      case "okResponseRatios_softwares":
+        url = `http://10.42.0.72:44351/api/Software/OkResponseRatios?software=${props.software}&timeType=${timeType}`;
+        break;
+      case "responseDiagram_softwares":
+        url = `http://10.42.0.72:44351/api/Software/ResponseDiagram?software=${props.software}&timeType=${timeType}`;
+        break;
+      case "requestDiagram_softwares":
+        url = `http://10.42.0.72:44351/api/Software/RequestDiagram?software=${props.software}&timeType=${timeType}`;
+        break;
+      default:
+        url = "";
+    }
+    request.axiosRequest(url).then((res) => {
+      setDataset(res);
+    });
+  }, [timeType, props.software, props]);
+
   return (
     <div className={style.lineChart}>
       <h1>
         {props.title} <i className="fa fa-line-chart"></i>
       </h1>
-      <Chart id="chart" palette="Harmony Light" dataSource={props.dataset}>
-        <CommonSeriesSettings
-          argumentField="xPosition"
-          valueField={props.yPosition}
-          type="spline"
-        >
-          <Point visible={true} size="7" />
-        </CommonSeriesSettings>
-        <Series
-          type="line"
-          argumentField="xPosition"
-          color={chartColor}
-          valueField={props.yPosition}
-        />
-        <Size height={300} />
-        <ArgumentAxis title={`(زمان-${dateTitle})`} visualRange={visualRange} />
-        <ScrollBar visible={false} />
-        <ZoomAndPan argumentAxis="pan" />
-        <Legend visible={false} />
-        <Tooltip enabled={true} />
-      </Chart>
+      {dataset.length && (
+        <Chart id="chart" palette="Harmony Light" dataSource={dataset}>
+          <CommonSeriesSettings
+            argumentField="xPosition"
+            valueField={Object.keys(dataset[0])[0]}
+            type="spline"
+          >
+            <Point visible={true} size="7" />
+          </CommonSeriesSettings>
+          <Series
+            type="line"
+            argumentField="xPosition"
+            color={chartColor}
+            valueField={Object.keys(dataset[0])[0]}
+          />
+          <Size height={300} />
+          <ArgumentAxis
+            title={`(زمان-${dateTitle})`}
+            visualRange={visualRange}
+          />
+          <ScrollBar visible={false} />
+          <ZoomAndPan argumentAxis="pan" />
+          <Legend visible={false} />
+          <Tooltip enabled={true} />
+        </Chart>
+      )}
       <div className={style.setDate}>
         <main>
           <button

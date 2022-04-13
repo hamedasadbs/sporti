@@ -8,7 +8,7 @@ import { ToggleSwitch } from "../../Components/ToggleSwitch/toggleSwitch";
 
 export const SettingPage = (props) => {
   useEffect(() => {
-    if (props.darkMode === 1)
+    if (props.darkMode)
       document
         .getElementsByClassName(style.setting)[0]
         .classList.add(style.setting_dark);

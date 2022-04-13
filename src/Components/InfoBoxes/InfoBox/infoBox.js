@@ -36,7 +36,7 @@ export const InfoBox = (props) => {
       default:
         break;
     }
-    if (props.darkMode === 1) {
+    if (props.darkMode) {
       for (let i = 0; i < infoBox.length; i++) {
         infoBox[i].classList.add(style.infoBox_dark);
       }

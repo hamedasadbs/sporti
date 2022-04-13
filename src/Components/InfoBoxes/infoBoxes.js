@@ -4,25 +4,24 @@ import axios from "axios";
 import style from "./infoBoxes.module.scss";
 /*CHILD COMPONENTS*/
 import { InfoBox } from "./InfoBox/infoBox";
+import * as request from "../../Middleware/Requests/axiosRequest";
 
 export const InfoBoxes = (props) => {
   const [busInfoBoxData, setBusInfoBoxData] = useState({});
   const [softwaresInfoBoxData, setSoftwaresBusInfoBoxData] = useState({});
 
   useEffect(() => {
-    axios({
-      method: "get",
-      url: `http://10.42.0.72:44351/api/Bus/StatisticsInfo`,
-    }).then((res) => {
-      setBusInfoBoxData(res.data.result);
-    });
+    request
+      .axiosRequest("http://10.42.0.72:44351/api/Bus/StatisticsInfo")
+      .then((res) => {
+        setBusInfoBoxData(res);
+      });
 
-    axios({
-      method: "get",
-      url: `http://10.42.0.72:44351/api/Software/StatisticsInfo`,
-    }).then((res) => {
-      setSoftwaresBusInfoBoxData(res.data.result);
-    });
+    request
+      .axiosRequest("http://10.42.0.72:44351/api/Software/StatisticsInfo")
+      .then((res) => {
+        setSoftwaresBusInfoBoxData(res);
+      });
   }, []);
 
   const infoBox = {
