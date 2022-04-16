@@ -4,3 +4,4 @@ build project:
     - yarn install
     - yarn test
     - yarn build
+    
