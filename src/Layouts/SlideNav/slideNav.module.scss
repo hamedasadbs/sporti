@@ -7,7 +7,7 @@
     right: 0;
     display: flex;
     flex-direction: column;
-    padding: 15px;
+    padding: 15px 0;
     background-image: url(../../Assets/Images/slideNav.png);
     background-repeat: no-repeat;
     border-radius: 0;
@@ -21,6 +21,7 @@
         margin: 10px auto;
         margin-right: 10px;
         width: 100%;
+        margin-right: 10px;
 
         h1 {
             margin: auto;
@@ -43,9 +44,9 @@
     .link {
         width: 100%;
         display: flex;
-        margin: 10px auto;
+        margin: 5px auto;
         background-color: transparent;
-        padding: 10px 15px;
+        padding: 15px;
         font-size: $fontSize3;
         border: none;
         font-family: myFont;
@@ -53,8 +54,7 @@
         color: gray;
         justify-content: flex-end;
         text-decoration: none;
-        transition: all 0.5s;
-        border-radius: 10px;
+        border-right: 3px solid transparent;
 
         i {
             margin: auto 0 auto 5px;
@@ -67,8 +67,9 @@
     }
 
     .activeLink {
-        background: linear-gradient(to right, darken(aqua, 10%), lighten($mainBrightBlue, 10%));
-        color: lightgray;
+        color: darken(aqua, 10%);
+        border-right: 3px solid darken(aqua, 10%);
+        background-color: rgba(darken(aqua, 10%), 0.05);
     }
 
     .bus {
@@ -77,7 +78,7 @@
     }
 
     .logout {
-        width: 100%;
+        width: 80%;
         display: flex;
         margin: 10px auto;
         margin-top: auto;

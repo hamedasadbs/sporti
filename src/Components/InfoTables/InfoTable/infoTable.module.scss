@@ -9,6 +9,7 @@
     box-shadow: $brightBoxShadow1;
     background-color: $brightBoxColor;
     padding: 25px;
+    height: 600px;
 
     h1 {
         @include chartTitle()
@@ -51,6 +52,8 @@
         background-color: pink;
         padding: 30px;
         border-radius: 10px;
+        margin-top: 30px;
+        margin-bottom: auto;
     }
 }
 
