@@ -1,0 +1,5 @@
+build project:
+  script:
+    - yarn install
+    - yarn test
+    - yarn build
