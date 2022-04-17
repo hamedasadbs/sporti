@@ -11,10 +11,10 @@
         display: flex;
 
         span {
-            width: 100%;
+            width: 50px;
             background-color: whitesmoke;
-            padding: 5px;
-            margin: auto 5px;
+            padding: 5px 10px;
+            margin: auto;
             display: flex;
             z-index: 5;
             font-size: $fontSize2;
@@ -23,6 +23,10 @@
             font-weight: bold;
             color: rgb(75, 75, 75);
             border: 1px solid lightgray;
+
+            i {
+                font-size: $fontSize4;
+            }
 
             &:hover {
                 cursor: pointer;
@@ -39,6 +43,22 @@
 
         .activePage {
             color: red;
+        }
+    }
+}
+
+.pagination_dark {
+    background-color: rgba(0, 0, 0, 0.4);
+
+    .list {
+        span {
+            background-color: lighten($mainDarkBlue, 10%);
+            color: $brightBoxColor;
+            border: 1px solid gray;
+
+            &:hover {
+                background-color: lighten($mainDarkBlue, 20%);
+            }
         }
     }
 }

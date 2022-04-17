@@ -50,7 +50,7 @@ $fontSize9:50px;
         height: 50px;
         text-align: center;
         font-family: myFont;
-        font-size: 20px;
+        font-size: $fontSize2;
         border-radius: 10px;
         border: 1px solid gray;
         font-weight: bold;
@@ -66,7 +66,7 @@ $fontSize9:50px;
           outline: none;
           background-color: white;
           box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          border-radius: 10px 10px 0 0;
+          border-radius: 5px 5px 0 0;
         }
       }
     }
@@ -75,6 +75,23 @@ $fontSize9:50px;
   .bus_dark,
   .softwares_dark {
     background-color: $darkBackground;
+
+    main {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: -20px;
+
+      select {
+        border: 1px solid gray;
+        background-color: $darkBoxColor;
+        color: whitesmoke;
+
+        &:focus {
+          background-color: darken($darkBoxColor, 10%);
+          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        }
+      }
+    }
   }
 
   @media only screen and (max-width: 900px) {

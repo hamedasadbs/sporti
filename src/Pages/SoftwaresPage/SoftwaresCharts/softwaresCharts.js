@@ -1,36 +1,39 @@
 /*CSS*/
 import style from "./softwaresCharts.module.scss";
 /*CHILD COMPONENTS*/
-import { LineChart } from "../../../Components/Charts/LineChart/lineChart";
 import { BarChart } from "../../../Components/Charts/BarChart/barChart";
+import { SplineChart } from "../../../Components/Charts/SplineChart/splineChart";
 
 export const SoftwaresCharts = (props) => {
   return (
     <main className={style.softwaresCharts}>
-      <LineChart
+      <SplineChart
         darkMode={props.darkMode}
         title="نسبت موفقیت پاسخ ها"
         name="okResponseRatios_softwares"
         software={props.software}
         color="#1a651a"
         darkColor="#2aa22a"
+        yAxisType="نسبت"
         id="1"
       />
-      <LineChart
+      <SplineChart
         darkMode={props.darkMode}
         title="تعداد درخواست ها"
         name="responseDiagram_softwares"
         software={props.software}
         color="#651b65"
         darkColor="#a12ba1"
+        yAxisType="تعداد"
         id="2"
       />
-      <LineChart
+      <SplineChart
         darkMode={props.darkMode}
         title="تعداد پاسخ ها"
         name="requestDiagram_softwares"
         software={props.software}
         color="#b37400"
+        yAxisType="تعداد"
         darkColor="#ffaf1a"
       />
 
@@ -41,6 +44,7 @@ export const SoftwaresCharts = (props) => {
         software={props.software}
         color="#7b1e1e"
         darkColor="#b92d2d"
+        yAxisType="تعداد"
         id={1}
       />
       <BarChart
@@ -50,6 +54,7 @@ export const SoftwaresCharts = (props) => {
         software={props.software}
         color="#0606f9"
         darkColor="#5151fb"
+        yAxisType="تعداد"
         id={2}
       />
     </main>

@@ -1,22 +1,13 @@
 /*CSS*/
-import style from "./lineChart.module.scss";
+import style from "./splineChart.module.scss";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
 /*INNER COMPONENTS*/
 import { useEffect, useState } from "react";
-import Chart, {
-  ArgumentAxis,
-  Series,
-  ZoomAndPan,
-  Legend,
-  ScrollBar,
-  Tooltip,
-  Size,
-  Point,
-  CommonSeriesSettings,
-} from "devextreme-react/chart";
 /*CHILD COMPONENTS*/
 import * as request from "../../../Middleware/Requests/axiosRequest";
 
-export const LineChart = (props) => {
+export const SplineChart = (props) => {
   const [timeType, setTimeType] = useState(0);
   const [dataset, setDataset] = useState([]);
 
@@ -41,16 +32,16 @@ export const LineChart = (props) => {
   });
 
   useEffect(() => {
-    const lineCharts = document.getElementsByClassName(style.lineChart);
+    const splineChart = document.getElementsByClassName(style.splineChart);
     if (props.darkMode) {
       setChartColor(props.darkColor);
-      for (let i = 0; i < lineCharts.length; i++) {
-        lineCharts[i].classList.add(style.lineChart_dark);
+      for (let i = 0; i < splineChart.length; i++) {
+        splineChart[i].classList.add(style.splineChart_dark);
       }
     } else {
       setChartColor(props.color);
-      for (let i = 0; i < lineCharts.length; i++) {
-        lineCharts[i].classList.remove(style.lineChart_dark);
+      for (let i = 0; i < splineChart.length; i++) {
+        splineChart[i].classList.remove(style.splineChart_dark);
       }
     }
   }, [props.darkMode, props]);
@@ -132,36 +123,84 @@ export const LineChart = (props) => {
     });
   }, [timeType, props.software, props]);
 
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+      ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16),
+        }
+      : null;
+  }
+
+  const options = {
+    chart: {
+      type: "areaspline",
+      backgroundColor:
+        Highcharts.defaultOptions.legend?.backgroundColor || "transparent",
+      height: 300,
+    },
+    legend: {
+      enabled: false,
+    },
+    title: {
+      text: " ",
+    },
+    xAxis: {
+      categories: dataset.map((ds) => ds.xPosition),
+      title: {
+        text: `(زمان-${dateTitle})`,
+        style: {
+          fontSize: "17px",
+        },
+      },
+    },
+    yAxis: {
+      title: {
+        text: " ",
+      },
+    },
+    tooltip: {
+      shared: true,
+    },
+    credits: {
+      enabled: false,
+    },
+    series: [
+      {
+        name: props.yAxisType,
+        data: dataset.map((ds) => ds[Object.keys(dataset[0])[0]]),
+        color: props.darkMode ? props.darkColor : props.color,
+        shadow: {
+          color: props.darkMode
+            ? `rgba(${hexToRgb(props.darkColor).r},${
+                hexToRgb(props.darkColor).g
+              },${hexToRgb(props.darkColor).b},0.6)`
+            : `rgba(${hexToRgb(props.color).r},${hexToRgb(props.color).g},${
+                hexToRgb(props.color).b
+              },0.2)`,
+          offsetX: 1,
+          offsetY: 1,
+          opacity: "0.1",
+          width: 10,
+        },
+      },
+    ],
+    plotOptions: {
+      series: {
+        fillOpacity: 0.5,
+      },
+    },
+  };
+
   return (
-    <div className={style.lineChart}>
+    <div className={style.splineChart}>
       <h1>
         {props.title} <i className="fa fa-line-chart"></i>
       </h1>
       {dataset.length && (
-        <Chart id="chart" palette="Harmony Light" dataSource={dataset}>
-          <CommonSeriesSettings
-            argumentField="xPosition"
-            valueField={Object.keys(dataset[0])[0]}
-            type="spline"
-          >
-            <Point visible={true} size="7" />
-          </CommonSeriesSettings>
-          <Series
-            type="line"
-            argumentField="xPosition"
-            color={chartColor}
-            valueField={Object.keys(dataset[0])[0]}
-          />
-          <Size height={300} />
-          <ArgumentAxis
-            title={`(زمان-${dateTitle})`}
-            visualRange={visualRange}
-          />
-          <ScrollBar visible={false} />
-          <ZoomAndPan argumentAxis="pan" />
-          <Legend visible={false} />
-          <Tooltip enabled={true} />
-        </Chart>
+        <HighchartsReact highcharts={Highcharts} options={options} />
       )}
       <div className={style.setDate}>
         <main>

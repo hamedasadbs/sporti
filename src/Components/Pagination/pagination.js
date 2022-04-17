@@ -21,6 +21,17 @@ export const Pagination = (props) => {
   };
 
   useEffect(() => {
+    const pagination = document.getElementsByClassName(style.pagination);
+    for (let i = 0; i < pagination.length; i++) {
+      if (props.darkMode) {
+        pagination[i].classList.add(style.pagination_dark);
+      } else {
+        pagination[i].classList.remove(style.pagination_dark);
+      }
+    }
+  }, [props.darkMode]);
+
+  useEffect(() => {
     const list = document.getElementsByClassName(style.list);
     const pages = list[props.index].getElementsByClassName("pageLink");
 
@@ -91,7 +102,7 @@ export const Pagination = (props) => {
     <nav className={style.pagination}>
       <div className={style.list}>
         <span id="previous" onClick={activePageHandler}>
-          &laquo;
+          <i className="fa fa-angle-left"></i>
         </span>
         {
           <span className="pageLink" id="1" onClick={activePageHandler}>
@@ -111,7 +122,7 @@ export const Pagination = (props) => {
           </span>
         )}
         <span id="next" onClick={activePageHandler}>
-          &raquo;
+          <i className="fa fa-angle-right"></i>
         </span>
       </div>
     </nav>

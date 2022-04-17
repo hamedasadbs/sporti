@@ -2,37 +2,24 @@
 import style from "./barChart.module.scss";
 /*INNER COMPONENTS*/
 import { useState, useEffect } from "react";
-import Chart, {
-  ArgumentAxis,
-  Series,
-  ZoomAndPan,
-  Legend,
-  ScrollBar,
-  Tooltip,
-  Size,
-  Label,
-} from "devextreme-react/chart";
+import Highcharts from "highcharts";
+import HighchartsReact from "highcharts-react-official";
+import { DatePicker } from "jalali-react-datepicker";
 /*CHILD COMPONENTS*/
 import * as request from "../../../Middleware/Requests/axiosRequest";
+import * as geo_jal from "../../../Middleware/Library/gregorian_Jalali";
 
 export const BarChart = (props) => {
-  const [chartColor, setChartColor] = useState(props.color);
   const [range, setRange] = useState([]);
   const [dataset, setDataset] = useState([]);
-
-  const visualRange = {
-    length: 5,
-  };
 
   useEffect(() => {
     const barCharts = document.getElementsByClassName(style.barChart);
     if (props.darkMode) {
-      setChartColor(props.darkColor);
       for (let i = 0; i < barCharts.length; i++) {
         barCharts[i].classList.add(style.barChart_dark);
       }
     } else {
-      setChartColor(props.color);
       for (let i = 0; i < barCharts.length; i++) {
         barCharts[i].classList.remove(style.barChart_dark);
       }
@@ -40,23 +27,68 @@ export const BarChart = (props) => {
   }, [props.darkMode, props]);
 
   const timeRangeHandler = () => {
-    const setDateInner = document.getElementsByClassName(style.setDateInner);
+    const setDate = document.getElementsByClassName(style.setDate);
 
-    const startDate = setDateInner[props.id * 2 - 1].firstChild.value;
-    const startTime = setDateInner[props.id * 2 - 1].lastChild.value;
-    const finishDate = setDateInner[props.id * 2 - 2].firstChild.value;
-    const finishTime = setDateInner[props.id * 2 - 2].lastChild.value;
+    const startDate =
+      setDate[
+        props.id - 1
+      ].childNodes[0].childNodes[0].childNodes[1].childNodes[0].value.split(
+        " - "
+      );
+    const finishDate =
+      setDate[
+        props.id - 1
+      ].childNodes[0].childNodes[2].childNodes[1].childNodes[0].value.split(
+        " - "
+      );
 
-    const sTime = startTime.split(":");
+    /*start date*/
+    const sDate = startDate[0].split("/");
+    let sYear = sDate[0];
+    let sMonth = sDate[1];
+    let sDay = sDate[2];
+    /*start time*/
+    const sTime = startDate[1].split(":");
     const sHour = sTime[0];
-    const sMin = sTime[1];
-
-    const fTime = finishTime.split(":");
+    const sMinute = sTime[1];
+    /*finish date*/
+    const fDate = finishDate[0].split("/");
+    let fYear = fDate[0];
+    let fMonth = fDate[1];
+    let fDay = fDate[2];
+    /*finish time*/
+    const fTime = finishDate[1].split(":");
     const fHour = fTime[0];
-    const fMin = fTime[1];
+    const fMinute = fTime[1];
 
-    const timeRange = [startDate, sHour, sMin, finishDate, fHour, fMin];
-    setRange(timeRange);
+    const jSDate = geo_jal.jalali_to_gregorian(
+      parseInt(sYear),
+      parseInt(sMonth),
+      parseInt(sDay)
+    );
+
+    const jFDate = geo_jal.jalali_to_gregorian(
+      parseInt(fYear),
+      parseInt(fMonth),
+      parseInt(fDay)
+    );
+
+    sYear = jSDate[0];
+    sMonth = jSDate[1];
+    sDay = jSDate[2];
+
+    fYear = jFDate[0];
+    fMonth = jFDate[1];
+    fDay = jFDate[2];
+
+    setRange([
+      `${sYear}/${sMonth}/${sDay}`,
+      sHour,
+      sMinute,
+      `${fYear}/${fMonth}/${fDay}`,
+      fHour,
+      fMinute,
+    ]);
   };
 
   useEffect(() => {
@@ -97,53 +129,112 @@ export const BarChart = (props) => {
     });
   }, [range, props.software, props]);
 
+  function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result
+      ? {
+          r: parseInt(result[1], 16),
+          g: parseInt(result[2], 16),
+          b: parseInt(result[3], 16),
+        }
+      : null;
+  }
+
+  const options = {
+    chart: {
+      type: "column",
+      backgroundColor:
+        Highcharts.defaultOptions.legend.backgroundColor || "transparent",
+      style: {
+        fontFamily: "arial",
+      },
+      height: 300,
+    },
+    title: {
+      text: " ",
+    },
+    xAxis: {
+      categories: dataset.map((ds) =>
+        typeof dataset[0][Object.keys(dataset[0])[0]] == "string"
+          ? ds[Object.keys(dataset[0])[0]]
+          : ds[Object.keys(dataset[0])[1]]
+      ),
+      title: {
+        text: `(نرم افزار)`,
+        style: {
+          fontSize: "17px",
+        },
+      },
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: " ",
+      },
+    },
+    legend: {
+      enabled: false,
+    },
+    plotOptions: {
+      series: {
+        stacking: "normal",
+        pointWidth: 50,
+        borderWidth: 3,
+        borderColor: props.color,
+      },
+    },
+    credits: {
+      enabled: false,
+    },
+    series: [
+      {
+        name: props.yAxisType,
+        color: props.darkMode
+          ? `rgba(${hexToRgb(props.darkColor).r},${
+              hexToRgb(props.darkColor).g
+            },${hexToRgb(props.darkColor).b},0.5)`
+          : `rgba(${hexToRgb(props.color).r},${hexToRgb(props.color).g},${
+              hexToRgb(props.color).b
+            },0.5)`,
+        data: dataset.map((ds) => ({
+          y:
+            typeof dataset[0][Object.keys(dataset[0])[0]] == "number"
+              ? ds[Object.keys(dataset[0])[0]]
+              : ds[Object.keys(dataset[0])[1]],
+        })),
+        shadow: {
+          color: props.darkMode
+            ? `rgba(${hexToRgb(props.darkColor).r},${
+                hexToRgb(props.darkColor).g
+              },${hexToRgb(props.darkColor).b},0.6)`
+            : `rgba(${hexToRgb(props.color).r},${hexToRgb(props.color).g},${
+                hexToRgb(props.color).b
+              },0.2)`,
+          offsetX: 1,
+          offsetY: 1,
+          opacity: "0.1",
+          width: 12,
+        },
+      },
+    ],
+  };
+
   return (
     <div className={style.barChart}>
       <h1>
         {props.title} <i className="fa fa-bar-chart"></i>
       </h1>
       {dataset.length ? (
-        <Chart id="chart" palette="Harmony Light" dataSource={dataset}>
-          {typeof dataset[0][Object.keys(dataset[0])[0]] == "string" ? (
-            <Series
-              type="bar"
-              argumentField={Object.keys(dataset[0])[0]}
-              color={chartColor}
-              valueField={Object.keys(dataset[0])[1]}
-            />
-          ) : (
-            <Series
-              type="bar"
-              argumentField={Object.keys(dataset[0])[1]}
-              color={chartColor}
-              valueField={Object.keys(dataset[0])[0]}
-            />
-          )}
-
-          <Size height={300} />
-          <ArgumentAxis title="(نرم افزار)" visualRange={visualRange}>
-            <Label displayMode="stagger" />
-          </ArgumentAxis>
-          <ScrollBar visible={false} />
-          <ZoomAndPan argumentAxis="pan" />
-          <Legend visible={false} />
-          <Tooltip enabled={true} />
-        </Chart>
+        <HighchartsReact highcharts={Highcharts} options={options} />
       ) : (
         <h1 className={style.noDataToShow}>اطلاعاتی جهت نمایش وجود ندارد</h1>
       )}
 
       <div className={style.setDate}>
         <main>
-          <span className={style.setDateInner}>
-            <input id="finishDate" type="date" className={style.date} />
-            <input id="finishTime" type="time" className={style.time} />
-          </span>
+          <DatePicker className={style.setDateInner} id="finishDate" />
           <h1>تا</h1>
-          <span className={style.setDateInner}>
-            <input id="startDate" type="date" className={style.date} />
-            <input id="startTime" type="time" className={style.time} />
-          </span>
+          <DatePicker className={style.setDateInner} id="startDate" />
           <h1>از</h1>
         </main>
       </div>

@@ -9,10 +9,10 @@ export const InfoTables = (props) => {
         title: "جدول آخرین درخواست ها",
         name: "lastRequests",
         toples: [
-          "شناسه",
+          "شناسه درخواست",
           "زمان درخواست",
-          "نام سیستم",
-          "نام مقصد",
+          "سیستم مبدا",
+          "سیستم مقصد",
           "فعل",
           "اسم",
           "نوع درخواست",
@@ -22,14 +22,14 @@ export const InfoTables = (props) => {
         title: "جدول آخرین پاسخ ها",
         name: "lastResponses",
         toples: [
-          "شناسه",
-          "تاریخ پاسخ",
-          "تاریخ درخواست",
-          "نام سیستم درخواست کننده",
-          "نام پاسخ گیرنده",
+          "شناسه درخواست",
+          "زمان درخواست",
+          "زمان پاسخ",
+          "سیستم درخواست کننده",
+          "سیستم پاسخ گیرنده",
           "فعل",
           "اسم",
-          "زمان اجرا",
+          "مدت زمان اجرا",
           "نوع نتیجه",
         ],
       },
@@ -49,11 +49,11 @@ export const InfoTables = (props) => {
         title: "جدول تراکنش ها",
         name: "transactions",
         toples: [
-          "شناسه",
-          "مبدا",
-          "مقصد",
-          "تاریخ درخواست",
-          "تاریخ پاسخ",
+          "شناسه درخواست",
+          "سیستم مبدا",
+          "سیستم مقصد",
+          "زمان درخواست",
+          "زمان پاسخ",
           "نوع درخواست",
           "نوع پاسخ",
         ],
@@ -62,10 +62,10 @@ export const InfoTables = (props) => {
         title: "جدول درخواست ها",
         name: "requests",
         toples: [
-          "شناسه",
+          "شناسه درخواست",
           "تاریخ درخواست",
-          "نام سیستم",
-          "نام مقصد",
+          "سیستم مبدا",
+          "سیستم مقصد",
           "فعل",
           "اسم",
           "نوع درخواست",
@@ -75,10 +75,10 @@ export const InfoTables = (props) => {
         title: "جدول پاسخ ها",
         name: "responses",
         toples: [
-          "شناسه",
-          "تاریخ درخواست",
-          "تاریخ پاسخ",
-          "نام سیستم درخواست کننده",
+          "شناسه درخواست",
+          "زمان درخواست",
+          "زمان پاسخ",
+          "نام درخواست کننده",
           "نام پاسخ دهنده",
           "فعل",
           "اسم",
@@ -96,7 +96,7 @@ export const InfoTables = (props) => {
             <InfoTable
               title={it.title}
               name={it.name}
-              toples={it.toples}
+              toples={it.toples.reverse()}
               darkMode={props.darkMode}
               key={index}
               index={index}
@@ -108,7 +108,7 @@ export const InfoTables = (props) => {
             <InfoTable
               title={it.title}
               name={it.name}
-              toples={it.toples}
+              toples={it.toples.reverse()}
               darkMode={props.darkMode}
               key={index}
               index={index}

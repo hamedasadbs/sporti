@@ -11,7 +11,7 @@
     padding: 25px;
 
     h1 {
-        @include chartTitle()
+        @include chartTitle();
     }
 
     .noDataToShow {
@@ -32,27 +32,21 @@
             margin: auto;
 
             h1 {
-                margin: auto 10px;
+                margin: 30px auto 0 auto;
             }
 
             .setDateInner {
-                display: flex;
-                flex-direction: column;
+                border: 1px solid $chartTitleColor;
+                padding: 5px;
+                border-radius: 5px;
+                background-color: $brightBackground;
+                width: auto;
                 margin: auto;
 
-                input {
-                    border: 1px solid $chartTitleColor;
-                    margin: 5px 0;
-                    padding: 5px;
-                    border-radius: 5px;
-                    background-color: $brightBackground;
-                    width: auto;
-
-                    &:focus {
-                        background-color: $brightBoxColor;
-                        outline: none;
-                        box-shadow: $brightBoxShadow1;
-                    }
+                &:focus {
+                    background-color: $brightBoxColor;
+                    outline: none;
+                    box-shadow: $brightBoxShadow1;
                 }
             }
         }
@@ -83,14 +77,12 @@
     .setDate {
         main {
             .setDateInner {
-                input {
-                    border: 1px solid rgb(55, 55, 55);
-                    background-color: lighten($darkBackground, 5%);
-                    color: whitesmoke;
+                border: 1px solid rgb(55, 55, 55);
+                background-color: lighten($darkBackground, 5%);
+                color: whitesmoke;
 
-                    &:focus {
-                        background-color: $darkBackground;
-                    }
+                &:focus {
+                    background-color: $darkBackground;
                 }
             }
         }
@@ -118,9 +110,7 @@
         .setDate {
             main {
                 .setDateInner {
-                    input {
-                        width: 300px;
-                    }
+                    width: 300px;
                 }
             }
         }
@@ -140,9 +130,7 @@
         .setDate {
             main {
                 .setDateInner {
-                    input {
-                        width: 195px;
-                    }
+                    width: 195px;
                 }
             }
         }
@@ -154,9 +142,7 @@
         .setDate {
             main {
                 .setDateInner {
-                    input {
-                        width: 150px;
-                    }
+                    width: 150px;
                 }
             }
         }

@@ -9,10 +9,56 @@
     box-shadow: $brightBoxShadow1;
     background-color: $brightBoxColor;
     padding: 25px;
-    height: 600px;
+    min-height: 600px;
 
     h1 {
         @include chartTitle()
+    }
+
+    .filter {
+        display: flex;
+        margin: auto;
+        margin-top: -50px;
+        margin-right: 0;
+        margin-bottom: 30px;
+
+        label {
+            @include chartTitle();
+            margin: auto;
+        }
+
+        select {
+            padding: 5px 10px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    }
+
+    .numberOfRecords {
+        display: flex;
+        margin: auto;
+        margin-top: -60px;
+        margin-left: 0;
+        margin-bottom: 30px;
+
+        label {
+            @include chartTitle();
+            margin: auto;
+        }
+
+        input {
+            text-align: center;
+            width: 50px;
+            outline: none;
+            border: none;
+            background-color: whitesmoke;
+            font-family: specialFont;
+            font-size: $fontSize3;
+            border-radius: 5px;
+            margin-right: 10px;
+            border: 1px solid gray;
+        }
     }
 
     table {
@@ -60,6 +106,14 @@
 .infoTable_dark {
     background-color: $darkBoxColor;
     box-shadow: $darkBoxShadow;
+
+    .numberOfRecords {
+        input {
+            color: whitesmoke;
+            background-color: $darkBoxColor;
+            border: 1px solid gray;
+        }
+    }
 
     table {
         border: 1px solid lighten($darkBoxColor, 20%);

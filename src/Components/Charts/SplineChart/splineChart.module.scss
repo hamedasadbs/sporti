@@ -1,6 +1,6 @@
 @import '../../../index.module.scss';
 
-.lineChart {
+.splineChart {
     width: 48%;
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@
     }
 }
 
-.lineChart_dark {
+.splineChart_dark {
     background-color: $darkBoxColor;
     box-shadow: $darkBoxShadow;
 
@@ -64,14 +64,14 @@
 }
 
 @media only screen and (max-width: 1050px) {
-    .lineChart {
+    .splineChart {
         width: 98%;
         margin: 20px auto;
     }
 }
 
 @media only screen and (max-width: 900px) {
-    .lineChart {
+    .splineChart {
         margin: 20px auto;
     }
 }
