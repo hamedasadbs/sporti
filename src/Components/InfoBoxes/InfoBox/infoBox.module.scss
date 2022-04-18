@@ -135,13 +135,13 @@
     box-shadow: $darkBoxShadow;
 }
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: $large) {
     .infoBox {
         width: 48%;
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: $super_small) {
     .infoBox {
         width: 100%;
     }

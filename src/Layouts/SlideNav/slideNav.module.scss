@@ -104,7 +104,7 @@
     }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: $small) {
     .slideNav {
         width: 70px;
         padding: 15px 0;

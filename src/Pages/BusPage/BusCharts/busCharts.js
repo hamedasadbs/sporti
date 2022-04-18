@@ -37,7 +37,7 @@ export const BusCharts = (props) => {
 
       <BarChart
         darkMode={props.darkMode}
-        title="درخواست های نرم افزارها"
+        title="تعداد درخواست های نرم افزارها"
         name="softwareRequestDiagram_bus"
         color="#651b65"
         darkColor="#a12ba1"
@@ -46,10 +46,10 @@ export const BusCharts = (props) => {
       />
       <BarChart
         darkMode={props.darkMode}
-        title="پاسخ های نرم افزارها"
+        title="تعداد پاسخ های نرم افزارها"
         name="softwareResponseDiagram_bus"
-        color="#0606f9"
-        darkColor="#5151fb"
+        color="#b37400"
+        darkColor="#ffaf1a"
         yAxisType="تعداد"
         id={2}
       />
@@ -64,7 +64,7 @@ export const BusCharts = (props) => {
       />
       <BarChart
         darkMode={props.darkMode}
-        title="متوسط زمان پاسخ نرم افزارها"
+        title="متوسط زمان پاسخ نرم افزارها (بر حسب ثانیه)"
         name="responseTimeAverage"
         color="#a2102d"
         darkColor="#e81741"

@@ -4,7 +4,7 @@ import style from "./profilePage.module.scss";
 /*CHILD COMPONENTS*/
 import { Header } from "../../Layouts/Header/header";
 import { Title } from "../../Components/Title/title";
-import userPhoto from "../../Assets/Images/user.jpg";
+import userPhoto from "../../Assets/Images/no_photo.png";
 
 export const ProfilePage = (props) => {
   useEffect(() => {

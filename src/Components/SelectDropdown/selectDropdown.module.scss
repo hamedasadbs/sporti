@@ -57,7 +57,7 @@
 .select_dark {
     button {
         background-color: $mainDarkBox;
-        border: 1px solid darken($darkBoxColor, 40%);
+        border: 1px solid darken($mainDarkBox, 40%);
         color: $inputDarkText;
     }
 

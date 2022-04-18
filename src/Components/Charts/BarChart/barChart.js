@@ -140,6 +140,10 @@ export const BarChart = (props) => {
       : null;
   }
 
+  const fixHandler = (x) => {
+    return parseFloat(x.toFixed(2));
+  };
+
   const options = {
     chart: {
       type: "column",
@@ -199,8 +203,8 @@ export const BarChart = (props) => {
         data: dataset.map((ds) => ({
           y:
             typeof dataset[0][Object.keys(dataset[0])[0]] == "number"
-              ? ds[Object.keys(dataset[0])[0]]
-              : ds[Object.keys(dataset[0])[1]],
+              ? fixHandler(ds[Object.keys(dataset[0])[0]])
+              : fixHandler(ds[Object.keys(dataset[0])[1]]),
         })),
         shadow: {
           color: props.darkMode

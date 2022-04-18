@@ -174,7 +174,6 @@ export const InfoTable = (props) => {
             </div>
           ))}
       </main>
-
       {dataset.length ? (
         <table className="table table-hover">
           <thead>

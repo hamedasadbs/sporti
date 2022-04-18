@@ -36,7 +36,7 @@
             }
 
             .setDateInner {
-                border: 1px solid $chartTitleColor;
+                border: 1px solid $inputBrightText;
                 padding: 5px;
                 border-radius: 5px;
                 background-color: $inputBrightBack;
@@ -103,7 +103,13 @@
     }
 }
 
-@media only screen and (max-width: 1050px) {
+@media only screen and (max-width: $medium_large) {
+    .barChart {
+        padding: 15px;
+    }
+}
+
+@media only screen and (max-width: $medium) {
     .barChart {
         margin: 20px auto;
         width: 98%;
@@ -122,13 +128,7 @@
     }
 }
 
-@media only screen and (max-width: 1200px) {
-    .barChart {
-        padding: 15px;
-    }
-}
-
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: $small) {
     .barChart {
         margin: 20px auto;
 
@@ -142,7 +142,7 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: $super_small) {
     .barChart {
         .setDate {
             main {

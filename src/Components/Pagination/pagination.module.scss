@@ -74,13 +74,13 @@
     }
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: $medium_large) {
     .pagination {
         width: 70%;
     }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: $small) {
     .pagination {
         width: 100%;
     }

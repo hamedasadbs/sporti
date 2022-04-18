@@ -4,20 +4,12 @@ $brightBoxShadow1:0px 3px 8px rgba(0, 0, 0, 0.24);
 $brightBoxShadow2:rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 /*General Colors*/
-$darkBackground:rgb(22, 22, 22);
-$brightBackground:whitesmoke;
-$darkBoxColor:rgb(43, 43, 43);
-$brightBoxColor:white;
-$mainBrightBlue:rgb(0, 69, 136);
-$mainDarkBlue:rgb(0, 14, 28);
 $failedResColor:rgb(255, 43, 43);
 $okResColor:rgb(34, 131, 34);
 $totalResColor:rgb(228, 148, 0);
 $totalReqColor:rgb(126, 33, 126);
 $totalSoftColor:rgb(41, 41, 250);
 $totalTransactionColor:rgb(158, 38, 38);
-$darkColor:rgb(27, 27, 27);
-$chartTitleColor:rgb(109, 109, 109);
 /*Bright Theme Colors*/
 $mainBrightBox:white;
 $mainBrightBack:whitesmoke;
@@ -46,6 +38,12 @@ $fontSize6:35px;
 $fontSize7:40px;
 $fontSize8:45px;
 $fontSize9:50px;
+/*Media Queries*/
+$large:1300px;
+$medium_large:1200px;
+$medium:1100px;
+$small:900px;
+$super_small:600px;
 
 @mixin main_article {
 
@@ -75,7 +73,7 @@ $fontSize9:50px;
     }
   }
 
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: $small) {
 
     .bus,
     .softwares {
@@ -106,7 +104,7 @@ $fontSize9:50px;
     padding: 0 20px;
   }
 
-  @media only screen and (max-width: 1100px) {
+  @media only screen and (max-width: $medium) {
 
     .busCharts,
     .softwaresCharts {

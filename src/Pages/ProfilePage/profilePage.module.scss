@@ -6,6 +6,7 @@
     flex-direction: column;
     padding-right: 250px;
     min-height: 100vh;
+    background-color: $mainBrightBack;
 
     main {
         display: flex;
@@ -204,7 +205,7 @@
     }
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: $small) {
     .profile {
         padding-right: 70px;
 
@@ -226,7 +227,7 @@
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: $super_small) {
     .profile {
         main {
             article {

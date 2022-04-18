@@ -118,7 +118,7 @@
                 border-radius: 10px;
                 transition: all 0.5s ease-in-out;
                 box-shadow: $brightBoxShadow2;
-                background: linear-gradient(135deg, darken(aqua, 10%), lighten($mainBrightBlue, 10%));
+                background: linear-gradient(135deg, darken(aqua, 10%), lighten($tableHeaderBack, 10%));
 
                 .informations {
                     display: flex;
@@ -253,20 +253,20 @@
 
                 h1,
                 i {
-                    color: $inputDarkText;
+                    color: $mainDarkText
                 }
             }
 
             .userInfo {
-                background: linear-gradient(135deg, darken(aqua, 50%), lighten($mainBrightBlue, 10%));
+                background: linear-gradient(135deg, darken(aqua, 50%), lighten($tableHeaderBack, 10%));
 
                 .choises {
                     background-color: $mainDarkBox;
 
                     .link {
                         background-color: $mainDarkBox;
-                        border-top: 1px solid $darkBackground;
-                        border-bottom: 1px solid $darkBackground;
+                        border-top: 1px solid $mainDarkBack;
+                        border-bottom: 1px solid $mainDarkBack;
 
                         h1,
                         i {
@@ -283,29 +283,17 @@
 
         .massages {
             i {
-                color: $inputDarkText;
+                color: $mainDarkText;
             }
         }
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: $small) {
     .header {
         .search {
             width: 200px;
             margin-left: 20px;
-
-            input {
-                &::placeholder {
-                    font-size: $fontSize2;
-                }
-
-                &:focus {
-                    &::placeholder {
-                        right: 120px;
-                    }
-                }
-            }
         }
     }
 }
