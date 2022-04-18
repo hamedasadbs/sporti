@@ -13,11 +13,6 @@ export const SplineChart = (props) => {
 
   let [date, setDate] = useState("minute" + props.id);
   let [dateTitle, setDateTitle] = useState("دقیقه");
-  const [chartColor, setChartColor] = useState(props.color);
-  const [visualRange, setVisualRange] = useState({
-    startValue: 0,
-    endValue: 60,
-  });
 
   const btnStyling = () => {
     const btn = document.getElementsByClassName("btn" + props.id);
@@ -34,12 +29,10 @@ export const SplineChart = (props) => {
   useEffect(() => {
     const splineChart = document.getElementsByClassName(style.splineChart);
     if (props.darkMode) {
-      setChartColor(props.darkColor);
       for (let i = 0; i < splineChart.length; i++) {
         splineChart[i].classList.add(style.splineChart_dark);
       }
     } else {
-      setChartColor(props.color);
       for (let i = 0; i < splineChart.length; i++) {
         splineChart[i].classList.remove(style.splineChart_dark);
       }
@@ -53,38 +46,18 @@ export const SplineChart = (props) => {
     setDateTitle(e.target.name);
     switch (e.target.name) {
       case "دقیقه":
-        setVisualRange({
-          startValue: 0,
-          endValue: 60,
-        });
         setTimeType(0);
         break;
       case "ساعتی":
-        setVisualRange({
-          startValue: 0,
-          endValue: 24,
-        });
         setTimeType(1);
         break;
       case "روزانه":
-        setVisualRange({
-          startValue: 0,
-          endValue: 31,
-        });
         setTimeType(2);
         break;
       case "ماهانه":
-        setVisualRange({
-          startValue: 0,
-          endValue: 12,
-        });
         setTimeType(3);
         break;
       case "سالانه":
-        setVisualRange({
-          startValue: 0,
-          endValue: 10,
-        });
         setTimeType(4);
         break;
       default:

@@ -13,13 +13,13 @@
 
     h1 {
         @include chartTitle();
+        width: 100%;
     }
 
     main {
         display: flex;
         justify-content: center;
-        margin-top: -55px;
-        margin-bottom: 50px;
+        margin-top: -50px;
 
         .filter {
             display: flex;
@@ -86,7 +86,11 @@
     .tableContainer {
         display: flex;
         overflow-x: scroll;
-        margin-bottom: 30px;
+        margin: 30px 0;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         table {
             background-color: $mainBrightBox;
@@ -189,6 +193,12 @@
 @media only screen and (max-width: $large) {
     .infoTable {
         margin: 50px auto;
+
+        .tableContainer {
+            &::-webkit-scrollbar {
+                display: initial;
+            }
+        }
     }
 }
 

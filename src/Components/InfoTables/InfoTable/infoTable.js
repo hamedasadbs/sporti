@@ -109,21 +109,21 @@ export const InfoTable = (props) => {
     let td = [];
     for (let i = 0; i < Object.keys(rec).length; i++) {
       if (rec[Object.keys(rec)[i]] !== null) {
-        if (Object.keys(rec)[i] == "requestType") {
-          if (rec[Object.keys(rec)[i]] == 1) {
+        if (Object.keys(rec)[i] === "requestType") {
+          if (rec[Object.keys(rec)[i]] === 1) {
             td.push("درخواست");
-          } else if (rec[Object.keys(rec)[i]] == 2) {
+          } else if (rec[Object.keys(rec)[i]] === 2) {
             td.push("رویداد");
           }
-        } else if (Object.keys(rec)[i] == "resultType") {
-          if (rec[Object.keys(rec)[i]] == 0) {
+        } else if (Object.keys(rec)[i] === "resultType") {
+          if (rec[Object.keys(rec)[i]] === 0) {
             td.push("موفق");
-          } else if (rec[Object.keys(rec)[i]] == 1) {
+          } else if (rec[Object.keys(rec)[i]] === 1) {
             td.push("ناموفق");
           }
         } else if (
-          Object.keys(rec)[i] == "requestTime" ||
-          Object.keys(rec)[i] == "responseTime"
+          Object.keys(rec)[i] === "requestTime" ||
+          Object.keys(rec)[i] === "responseTime"
         ) {
           td.push(convertToJalali(rec[Object.keys(rec)[i]]));
         } else {
@@ -160,13 +160,11 @@ export const InfoTable = (props) => {
           />
           <label>تعداد نتایج</label>
         </div>
-        {props.name == "responses" ||
-          (props.name == "lastResponses" && (
+        {props.name === "responses" ||
+          (props.name === "lastResponses" && (
             <div className={style.filter}>
               <select onChange={typeHandler}>
-                <option value="" selected>
-                  موفق و ناموفق
-                </option>
+                <option value="">موفق و ناموفق</option>
                 <option value={0}>موفق</option>
                 <option value={1}>ناموفق</option>
               </select>
@@ -174,7 +172,6 @@ export const InfoTable = (props) => {
             </div>
           ))}
       </main>
-
       {dataset.length ? (
         <div className={style.tableContainer}>
           <table className="table table-hover">

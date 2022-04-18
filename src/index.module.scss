@@ -61,7 +61,6 @@ $super_small:600px;
       display: flex;
       justify-content: flex-end;
       margin-top: -20px;
-      flex-direction: column;
 
       .settings {
         display: flex;
@@ -89,6 +88,12 @@ $super_small:600px;
           }
         }
       }
+    }
+  }
+
+  .setting {
+    main {
+      flex-direction: column;
     }
   }
 
@@ -127,8 +132,7 @@ $super_small:600px;
   font-size: $fontSize2;
   color: $mainBrightText;
   text-align: center;
-  margin-top: 0;
-  margin-bottom: 30px;
+  margin: 20px auto;
   font-weight: bold;
 }
 

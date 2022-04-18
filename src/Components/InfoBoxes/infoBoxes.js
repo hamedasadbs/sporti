@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 /*CSS*/
 import style from "./infoBoxes.module.scss";
 /*CHILD COMPONENTS*/

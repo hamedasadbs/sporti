@@ -24,7 +24,7 @@
     .setDate {
         width: auto;
         display: flex;
-        margin-top: 20px;
+        margin: auto;
 
         main {
             display: flex;
@@ -40,8 +40,8 @@
                 padding: 5px;
                 border-radius: 5px;
                 background-color: $inputBrightBack;
-                width: auto;
-                margin: auto;
+                width: 100%;
+                margin: auto 10px;
                 color: $inputBrightText;
 
                 &:focus {
@@ -100,12 +100,6 @@
         &:hover {
             background-color: $tableDarkHeaderBack;
         }
-    }
-}
-
-@media only screen and (max-width: $medium_large) {
-    .barChart {
-        padding: 15px;
     }
 }
 
