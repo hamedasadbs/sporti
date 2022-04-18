@@ -9,17 +9,17 @@ export const SoftwaresCharts = (props) => {
     <main className={style.softwaresCharts}>
       <SplineChart
         darkMode={props.darkMode}
-        title="نسبت موفقیت پاسخ ها"
+        title="نرخ موفقیت پاسخ ها"
         name="okResponseRatios_softwares"
         software={props.software}
         color="#1a651a"
         darkColor="#2aa22a"
-        yAxisType="نسبت"
+        yAxisType="نرخ موفقیت"
         id="1"
       />
       <SplineChart
         darkMode={props.darkMode}
-        title="تعداد درخواست ها"
+        title="تعداد پاسخ های دریافت شده"
         name="responseDiagram_softwares"
         software={props.software}
         color="#651b65"
@@ -29,7 +29,7 @@ export const SoftwaresCharts = (props) => {
       />
       <SplineChart
         darkMode={props.darkMode}
-        title="تعداد پاسخ ها"
+        title="تعداد درخواست های ارسال شده"
         name="requestDiagram_softwares"
         software={props.software}
         color="#b37400"
@@ -39,7 +39,7 @@ export const SoftwaresCharts = (props) => {
 
       <BarChart
         darkMode={props.darkMode}
-        title="درخواست های نرم افزار"
+        title="درخواست های نرم افزارها"
         name="softwareRequestDiagram_softwares"
         software={props.software}
         color="#7b1e1e"
@@ -49,7 +49,7 @@ export const SoftwaresCharts = (props) => {
       />
       <BarChart
         darkMode={props.darkMode}
-        title="پاسخ های نرم افزار"
+        title="پاسخ های نرم افزارها"
         name="softwareResponseDiagram_softwares"
         software={props.software}
         color="#0606f9"

@@ -1,10 +1,14 @@
 @import '../../index.module.scss';
 
 .title {
-    color: gray;
+    color: $mainBrightText;
     margin-right: 40px;
     font-size: $fontSize4;
     font-family: myFont;
     font-weight: bold;
     text-align: right;
+}
+
+.title_dark {
+    color: $mainDarkText;
 }

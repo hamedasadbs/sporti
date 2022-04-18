@@ -7,7 +7,7 @@
     margin: 20px auto;
     border-radius: 10px;
     box-shadow: $brightBoxShadow1;
-    background-color: $brightBoxColor;
+    background-color: $mainBrightBox;
     padding: 25px;
 
     h1 {
@@ -15,7 +15,7 @@
     }
 
     .noDataToShow {
-        color: rgb(160, 0, 0);
+        color: $mainBrightRed;
         background-color: pink;
         padding: 30px;
         border-radius: 10px;
@@ -39,14 +39,16 @@
                 border: 1px solid $chartTitleColor;
                 padding: 5px;
                 border-radius: 5px;
-                background-color: $brightBackground;
+                background-color: $inputBrightBack;
                 width: auto;
                 margin: auto;
+                color: $inputBrightText;
 
                 &:focus {
-                    background-color: $brightBoxColor;
+                    background-color: $mainBrightBox;
                     outline: none;
                     box-shadow: $brightBoxShadow1;
+                    color: $mainBrightText;
                 }
             }
         }
@@ -56,8 +58,8 @@
         width: 300px;
         margin: 20px auto 10px auto;
         padding: 10px;
-        background-color: lighten($mainBrightBlue, 10%);
-        color: $brightBoxColor;
+        background-color: $tableHeaderBack;
+        color: $mainBrightBox;
         border-radius: 5px;
         box-shadow: $brightBoxShadow1;
         font-size: $fontSize2;
@@ -65,35 +67,38 @@
         transition: all 0.5s;
 
         &:hover {
-            background-color: lighten($mainBrightBlue, 20%);
+            background-color: lighten($tableHeaderBack, 10%);
         }
     }
 }
 
 .barChart_dark {
-    background-color: $darkBoxColor;
+    background-color: $mainDarkBox;
     box-shadow: $darkBoxShadow;
+
+    h1 {
+        color: $mainDarkText;
+    }
 
     .setDate {
         main {
             .setDateInner {
                 border: 1px solid rgb(55, 55, 55);
-                background-color: lighten($darkBackground, 5%);
-                color: whitesmoke;
+                background-color: $inputDarkBack;
+                color: $inputDarkText;
 
                 &:focus {
-                    background-color: $darkBackground;
+                    background-color: $mainDarkBox;
                 }
             }
         }
     }
 
     button {
-        background-color: lighten($mainDarkBlue, 10%);
-        color: $brightBoxColor;
+        background-color: lighten($tableDarkHeaderBack, 5%);
 
         &:hover {
-            background-color: lighten($mainDarkBlue, 20%);
+            background-color: $tableDarkHeaderBack;
         }
     }
 }

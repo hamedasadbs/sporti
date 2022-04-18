@@ -30,7 +30,7 @@ export const SoftwaresPage = (props) => {
       <Header darkMode={props.darkMode} />
       <main>
         <SelectDropdown setSoftware={setSoftware} darkMode={props.darkMode} />
-        <Title>/ {props.title}</Title>
+        <Title darkMode={props.darkMode}>/ {props.title}</Title>
       </main>
       <InfoBoxes darkMode={props.darkMode} infoIndex={infoIndex} />
       <SoftwaresCharts software={software} darkMode={props.darkMode} />

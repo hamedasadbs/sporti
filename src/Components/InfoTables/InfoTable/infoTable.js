@@ -145,33 +145,36 @@ export const InfoTable = (props) => {
   };
 
   return (
-    <main className={style.infoTable}>
+    <article className={style.infoTable}>
       <h1 className={style.title}>
         {props.title} <i className="fa fa-table"></i>
       </h1>
-      {props.name == "responses" ||
-        (props.name == "lastResponses" && (
-          <div className={style.filter}>
-            <select onChange={typeHandler}>
-              <option value="" selected>
-                موفق و ناموفق
-              </option>
-              <option value={0}>موفق</option>
-              <option value={1}>ناموفق</option>
-            </select>
-            <label>فیلتر نوع نتیجه</label>
-          </div>
-        ))}
-      <div className={style.numberOfRecords}>
-        <input
-          onChange={numberOfTableRowsHandler}
-          type="number"
-          value={numberOfTableRows}
-          min="1"
-          max={dataCount}
-        />
-        <label>تعداد نتایج</label>
-      </div>
+      <main>
+        <div className={style.numberOfRecords}>
+          <input
+            onChange={numberOfTableRowsHandler}
+            type="number"
+            value={numberOfTableRows}
+            min="1"
+            max={dataCount}
+          />
+          <label>تعداد نتایج</label>
+        </div>
+        {props.name == "responses" ||
+          (props.name == "lastResponses" && (
+            <div className={style.filter}>
+              <select onChange={typeHandler}>
+                <option value="" selected>
+                  موفق و ناموفق
+                </option>
+                <option value={0}>موفق</option>
+                <option value={1}>ناموفق</option>
+              </select>
+              <label>فیلتر نوع نتیجه</label>
+            </div>
+          ))}
+      </main>
+
       {dataset.length ? (
         <table className="table table-hover">
           <thead>
@@ -205,6 +208,6 @@ export const InfoTable = (props) => {
         index={props.index}
         darkMode={props.darkMode}
       />
-    </main>
+    </article>
   );
 };

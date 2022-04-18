@@ -7,7 +7,7 @@
     margin: 20px auto;
     border-radius: 10px;
     box-shadow: $brightBoxShadow1;
-    background-color: $brightBoxColor;
+    background-color: $mainBrightBox;
     padding: 25px;
 
     h1 {
@@ -33,31 +33,38 @@
                 font-size: $fontSize2;
                 font-weight: bold;
                 border-radius: 5px;
-                background-color: $brightBackground;
+                background-color: $inputBrightBack;
                 transition: all 0.5s;
+                color: $mainBrightText;
             }
 
             .activeDate {
-                background-color: $brightBoxColor;
+                background-color: $mainBrightBox;
+                color: $inputBrightText;
             }
         }
     }
 }
 
 .splineChart_dark {
-    background-color: $darkBoxColor;
+    background-color: $mainDarkBox;
     box-shadow: $darkBoxShadow;
+
+    h1 {
+        color: $mainDarkText;
+    }
 
     .setDate {
         main {
             button {
                 border: 1px solid rgb(55, 55, 55);
-                background-color: lighten($darkBackground, 5%);
-                color: whitesmoke;
+                background-color: $mainDarkBox;
+                color: $inputDarkText;
             }
 
             .activeDate {
-                background-color: $darkBackground;
+                background-color: $inputDarkBack;
+                color: $mainDarkText;
             }
         }
     }

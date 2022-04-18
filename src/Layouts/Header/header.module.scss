@@ -5,7 +5,7 @@
     width: 100%;
     padding: 15px 0;
     margin-bottom: 30px;
-    background-color: $brightBackground;
+    background-color: $mainBrightBox;
     z-index: 5;
     box-shadow: $brightBoxShadow1;
 
@@ -21,17 +21,22 @@
             border-radius: 0 50px 50px 0;
             padding: 10px 15px;
             margin-left: -20px;
-            background-color: darken($brightBackground, 5%);
+            background-color: $inputBrightBack;
+            transition: all 0.3s;
 
             i {
                 transition: all 0.1s;
-                color: gray;
+                color: $mainBrightText;
                 font-size: $fontSize3;
             }
 
             &:hover {
                 cursor: pointer;
-                background-color: darken($brightBackground, 10%);
+                background-color: darken($inputBrightBack, 10%);
+
+                i {
+                    color: $inputBrightText;
+                }
             }
         }
 
@@ -40,7 +45,8 @@
             width: 100%;
             outline: none;
             border: none;
-            background: darken($brightBackground, 5%);
+            background-color: $inputBrightBack;
+            color: $mainBrightText;
             padding-right: 25px;
             font-family: myFont;
             font-size: $fontSize3;
@@ -51,7 +57,7 @@
                 position: absolute;
                 right: 30px;
                 top: 8px;
-                color: gray;
+                color: $mainBrightText;
                 font-size: $fontSize2;
             }
 
@@ -82,6 +88,7 @@
 
                 i {
                     margin: auto;
+                    color: $inputBrightText;
                 }
 
                 h1 {
@@ -89,6 +96,7 @@
                     font-size: $fontSize3;
                     margin: auto;
                     margin-right: 10px;
+                    color: $inputBrightText;
                 }
 
                 img {
@@ -128,7 +136,7 @@
                         font-size: $fontSize3;
                         text-align: center;
                         line-height: 0px;
-                        color: whitesmoke;
+                        color: $mainBrightBox;
                     }
                 }
 
@@ -138,16 +146,16 @@
                     border-radius: 0 0 10px 10px;
                     padding: 5px 0;
                     margin-top: 20px;
-                    background-color: $brightBoxColor;
+                    background-color: $mainBrightBox;
 
                     .link {
                         display: flex;
                         margin: auto;
                         width: 100%;
-                        background-color: $brightBoxColor;
+                        background-color: $mainBrightBox;
                         transition: all 0.3s;
-                        border-top: 1px solid $brightBackground;
-                        border-bottom: 1px solid $brightBackground;
+                        border-top: 1px solid $inputBrightBack;
+                        border-bottom: 1px solid $inputBrightBack;
                         text-decoration: none;
 
                         h1 {
@@ -155,7 +163,7 @@
                             font-family: myFont;
                             text-align: center;
                             margin: 5px auto;
-                            color: $darkBoxColor;
+                            color: $inputBrightText;
                             margin-right: 10px;
                         }
 
@@ -163,11 +171,11 @@
                             margin: auto 0;
                             margin-right: 5px;
                             font-size: $fontSize3;
-                            color: $darkBoxColor;
+                            color: $inputBrightText;
                         }
 
                         &:hover {
-                            background-color: $brightBackground;
+                            background-color: $inputBrightBack;
                         }
                     }
                 }
@@ -180,7 +188,7 @@
             display: flex;
 
             .notifications {
-                background-color: lighten($failedResColor, 10%);
+                background-color: lighten($mainBrightRed, 30%);
                 height: 25px;
                 position: absolute;
                 margin-top: -10px;
@@ -206,30 +214,35 @@
 }
 
 .header_dark {
-    background-color: $darkBackground;
+    background-color: $mainDarkBox;
     box-shadow: $darkBoxShadow;
 
     .search {
         border: none;
 
         button {
-            background-color: lighten($darkBoxColor, 5%);
+            background-color: $inputDarkBack;
 
             &:hover {
-                background-color: lighten($darkBoxColor, 10%);
+                background-color: lighten($inputDarkBack, 10%);
+
+                i {
+                    color: $mainDarkText;
+                }
             }
 
             i {
-                color: $brightBoxColor;
+
+                color: $inputDarkText;
             }
         }
 
         input {
-            background-color: lighten($darkBoxColor, 5%);
-            color: $brightBoxColor;
+            background-color: $inputDarkBack;
+            color: $mainDarkText;
 
             &::placeholder {
-                color: $brightBoxColor;
+                color: $inputDarkText;
             }
         }
     }
@@ -240,7 +253,7 @@
 
                 h1,
                 i {
-                    color: lightgray;
+                    color: $inputDarkText;
                 }
             }
 
@@ -248,20 +261,20 @@
                 background: linear-gradient(135deg, darken(aqua, 50%), lighten($mainBrightBlue, 10%));
 
                 .choises {
-                    background-color: $darkBoxColor;
+                    background-color: $mainDarkBox;
 
                     .link {
-                        background-color: $darkBoxColor;
+                        background-color: $mainDarkBox;
                         border-top: 1px solid $darkBackground;
                         border-bottom: 1px solid $darkBackground;
 
                         h1,
                         i {
-                            color: lightgray;
+                            color: $inputDarkText;
                         }
 
                         &:hover {
-                            background-color: $darkBackground;
+                            background-color: $inputDarkBack;
                         }
                     }
                 }
@@ -270,7 +283,7 @@
 
         .massages {
             i {
-                color: lightgray;
+                color: $inputDarkText;
             }
         }
     }

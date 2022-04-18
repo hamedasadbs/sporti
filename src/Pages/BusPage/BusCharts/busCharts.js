@@ -9,11 +9,11 @@ export const BusCharts = (props) => {
     <main className={style.busCharts}>
       <SplineChart
         darkMode={props.darkMode}
-        title="نسبت موفقیت پاسخ ها"
+        title="نرخ موفقیت پاسخ ها"
         name="okResponseRatios_bus"
         color="#1a651a"
         darkColor="#2aa22a"
-        yAxisType="نسبت"
+        yAxisType="نرخ موفقیتُ"
         id="1"
       />
       <SplineChart
@@ -37,7 +37,7 @@ export const BusCharts = (props) => {
 
       <BarChart
         darkMode={props.darkMode}
-        title="نرم افزار هایی با بیشترین درخواست"
+        title="درخواست های نرم افزارها"
         name="softwareRequestDiagram_bus"
         color="#651b65"
         darkColor="#a12ba1"
@@ -46,7 +46,7 @@ export const BusCharts = (props) => {
       />
       <BarChart
         darkMode={props.darkMode}
-        title="نرم افزار هایی با بیشترین پاسخ"
+        title="پاسخ های نرم افزارها"
         name="softwareResponseDiagram_bus"
         color="#0606f9"
         darkColor="#5151fb"
@@ -55,16 +55,16 @@ export const BusCharts = (props) => {
       />
       <BarChart
         darkMode={props.darkMode}
-        title="ضریب موفقیت تراکنش ها"
+        title="نرخ موفقیت تراکنش ها"
         name="transactionsSuccessRatio"
         color="#7b1e1e"
         darkColor="#b92d2d"
-        yAxisType="ضریب"
+        yAxisType="نرخ موفقیت"
         id={3}
       />
       <BarChart
         darkMode={props.darkMode}
-        title="متوسط زمان پاسخ نرم افزار ها"
+        title="متوسط زمان پاسخ نرم افزارها"
         name="responseTimeAverage"
         color="#a2102d"
         darkColor="#e81741"

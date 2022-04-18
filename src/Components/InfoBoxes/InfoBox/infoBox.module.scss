@@ -29,7 +29,7 @@
         margin: auto;
         text-align: right;
         width: 100%;
-        color: white;
+        color: $mainBrightBox;
     }
 
     label.title {
@@ -131,7 +131,7 @@
 }
 
 .infoBox_dark {
-    background: linear-gradient(135deg, $darkBoxColor, darken($darkBoxColor, 20%));
+    background: linear-gradient(135deg, $mainDarkBox, darken($mainDarkBox, 20%));
     box-shadow: $darkBoxShadow;
 }
 

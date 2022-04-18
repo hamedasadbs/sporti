@@ -59,28 +59,28 @@ export const SplineChart = (props) => {
         });
         setTimeType(0);
         break;
-      case "ساعت":
+      case "ساعتی":
         setVisualRange({
           startValue: 0,
           endValue: 24,
         });
         setTimeType(1);
         break;
-      case "روز":
+      case "روزانه":
         setVisualRange({
           startValue: 0,
           endValue: 31,
         });
         setTimeType(2);
         break;
-      case "ماه":
+      case "ماهانه":
         setVisualRange({
           startValue: 0,
           endValue: 12,
         });
         setTimeType(3);
         break;
-      case "سال":
+      case "سالانه":
         setVisualRange({
           startValue: 0,
           endValue: 10,
@@ -207,7 +207,7 @@ export const SplineChart = (props) => {
           <button
             className={`btn${props.id}`}
             id={`yearly${props.id}`}
-            name="سال"
+            name="سالانه"
             onClick={dateHandler}
           >
             سالانه
@@ -215,7 +215,7 @@ export const SplineChart = (props) => {
           <button
             className={`btn${props.id}`}
             id={`monthly${props.id}`}
-            name="ماه"
+            name="ماهانه"
             onClick={dateHandler}
           >
             ماهانه
@@ -223,7 +223,7 @@ export const SplineChart = (props) => {
           <button
             className={`btn${props.id}`}
             id={`daily${props.id}`}
-            name="روز"
+            name="روزانه"
             onClick={dateHandler}
           >
             روزانه
@@ -231,7 +231,7 @@ export const SplineChart = (props) => {
           <button
             className={`btn${props.id}`}
             id={`hourly${props.id}`}
-            name="ساعت"
+            name="ساعتی"
             onClick={dateHandler}
           >
             ساعتی

@@ -3,7 +3,7 @@ $darkBoxShadow:0 5px 10px rgb(12, 12, 12);
 $brightBoxShadow1:0px 3px 8px rgba(0, 0, 0, 0.24);
 $brightBoxShadow2:rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-/*Colors*/
+/*General Colors*/
 $darkBackground:rgb(22, 22, 22);
 $brightBackground:whitesmoke;
 $darkBoxColor:rgb(43, 43, 43);
@@ -18,6 +18,24 @@ $totalSoftColor:rgb(41, 41, 250);
 $totalTransactionColor:rgb(158, 38, 38);
 $darkColor:rgb(27, 27, 27);
 $chartTitleColor:rgb(109, 109, 109);
+/*Bright Theme Colors*/
+$mainBrightBox:white;
+$mainBrightBack:whitesmoke;
+$inputBrightBack:whitesmoke;
+$mainBrightText:rgb(99, 99, 99);
+$inputBrightText:rgb(54, 54, 54);
+$bottonsBrightBack:aqua;
+$tableHeaderBack:rgb(0, 69, 136);
+$mainBrightRed:rgb(230, 0, 0);
+/*Dark Theme Colors*/
+$mainDarkBox:#232931;
+$mainDarkBack:rgb(22, 22, 22);
+$inputDarkBack:#393E46;
+$mainDarkText:#EEEEEE;
+$inputDarkText:#b9b9b9;
+$bottonsDarkBack:#4ECCA3;
+$tableDarkHeaderBack:#0e1013;
+$mainDarkRed:rgb(255, 31, 31);
 /*Font Sizes*/
 $fontSize1:10px;
 $fontSize2:15px;
@@ -37,60 +55,23 @@ $fontSize9:50px;
     display: flex;
     flex-direction: column;
     padding-right: 250px;
+    background-color: $mainBrightBack;
 
     main {
       display: flex;
       justify-content: flex-end;
       margin-top: -20px;
-
-      select {
-        margin: auto 0;
-        margin-right: 20px;
-        padding: 0 20px;
-        height: 50px;
-        text-align: center;
-        font-family: myFont;
-        font-size: $fontSize2;
-        border-radius: 10px;
-        border: 1px solid gray;
-        font-weight: bold;
-        appearance: none;
-        background-color: whitesmoke;
-        transition: all 0.5s;
-
-        &:hover {
-          cursor: pointer;
-        }
-
-        &:focus {
-          outline: none;
-          background-color: white;
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-          border-radius: 5px 5px 0 0;
-        }
-      }
     }
   }
 
   .bus_dark,
   .softwares_dark {
-    background-color: $darkBackground;
+    background-color: $mainDarkBack;
 
     main {
       display: flex;
       justify-content: flex-end;
       margin-top: -20px;
-
-      select {
-        border: 1px solid gray;
-        background-color: $darkBoxColor;
-        color: whitesmoke;
-
-        &:focus {
-          background-color: darken($darkBoxColor, 10%);
-          box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-        }
-      }
     }
   }
 
@@ -106,9 +87,10 @@ $fontSize9:50px;
 @mixin chartTitle {
   font-family: myFont;
   font-size: $fontSize2;
-  color: $chartTitleColor;
+  color: $mainBrightText;
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 0;
+  margin-bottom: 30px;
   font-weight: bold;
 }
 
@@ -143,7 +125,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   display: flex;
   flex-direction: column;
-  background-color: darken($brightBackground, 5%);
 }
 
 code {

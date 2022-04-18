@@ -15,7 +15,7 @@
 
     main {
         display: flex;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid darken($mainBrightBack, 15%);
         padding-bottom: 18px;
         justify-content: space-between;
         margin: 10px auto;
@@ -26,7 +26,7 @@
         h1 {
             margin: auto;
             margin-right: 0;
-            color: lightgray;
+            color: darken($mainBrightBack, 15%);
             font-family: myFont;
             font-size: $fontSize3;
         }
@@ -34,7 +34,7 @@
         i {
             margin: auto;
             margin-right: 10px;
-            color: lightgray;
+            color: darken($mainBrightBack, 15%);
             margin-left: 10px;
             font-size: $fontSize5;
         }
@@ -51,7 +51,7 @@
         border: none;
         font-family: myFont;
         font-weight: bold;
-        color: gray;
+        color: darken($mainBrightBack, 35%);
         justify-content: flex-end;
         text-decoration: none;
         border-right: 3px solid transparent;
@@ -67,9 +67,9 @@
     }
 
     .activeLink {
-        color: darken(aqua, 10%);
-        border-right: 3px solid darken(aqua, 10%);
-        background-color: rgba(darken(aqua, 10%), 0.05);
+        color: darken($bottonsBrightBack, 10%);
+        border-right: 3px solid darken($bottonsBrightBack, 10%);
+        background-color: rgba(darken($bottonsBrightBack, 10%), 0.05);
     }
 
     .bus {
@@ -82,13 +82,13 @@
         display: flex;
         margin: 10px auto;
         margin-top: auto;
-        background-color: rgba(255, 255, 255, 0.5);
+        background-color: rgba($mainBrightText, 0.5);
         padding: 5px 15px;
         font-size: $fontSize3;
         border: none;
         font-family: myFont;
         font-weight: bold;
-        color: whitesmoke;
+        color: $mainBrightBack;
         justify-content: center;
         text-decoration: none;
         transition: all 0.5s;
@@ -99,7 +99,7 @@
         }
 
         &:hover {
-            background-color: $failedResColor;
+            background-color: rgba($mainBrightRed, 0.7);
         }
     }
 }

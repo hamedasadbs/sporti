@@ -179,7 +179,7 @@ export const BarChart = (props) => {
       series: {
         stacking: "normal",
         pointWidth: 50,
-        borderWidth: 3,
+        borderWidth: 2,
         borderColor: props.color,
       },
     },

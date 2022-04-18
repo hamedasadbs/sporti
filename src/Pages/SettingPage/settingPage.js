@@ -22,7 +22,7 @@ export const SettingPage = (props) => {
     <article className={style.setting}>
       <Header darkMode={props.darkMode} />
       <main>
-        <Title>{props.title}</Title>
+        <Title darkMode={props.darkMode}>{props.title}</Title>
         <div className={style.settings}>
           <span>
             <ToggleSwitch setDarkMode={props.setDarkMode} />

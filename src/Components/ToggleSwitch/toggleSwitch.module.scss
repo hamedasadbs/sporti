@@ -3,12 +3,13 @@
 .toggle {
     width: 50px;
     height: 30px;
-    background-color: lightgray;
+    background-color: $inputBrightBack;
     display: flex;
     border-radius: 50px;
     margin: auto;
     margin-right: 0;
     transition: all 0.5s;
+    border: 1px solid darken($inputBrightBack, 20%);
 
     &:hover {
         cursor: pointer;
@@ -18,7 +19,7 @@
         width: 25px;
         border-radius: 100px;
         height: 25px;
-        background-color: $mainBrightBlue;
+        background-color: $tableHeaderBack;
         z-index: 5;
         margin: auto;
         margin-left: 5px;
@@ -41,7 +42,7 @@
     }
 
     .switch_dark {
-        background-color: $mainDarkBlue;
+        background-color: $tableDarkHeaderBack;
         margin-left: 21px;
     }
 }

@@ -5,24 +5,25 @@
     width: 50%;
     padding: 10px 20px;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: $tableHeaderBack;
 
     .list {
         display: flex;
 
         span {
-            width: 50px;
-            background-color: whitesmoke;
+            width: 100%;
+            background-color: $inputBrightBack;
             padding: 5px 10px;
-            margin: auto;
+            margin: auto 5px;
             display: flex;
             z-index: 5;
             font-size: $fontSize2;
             justify-content: center;
             user-select: none;
             font-weight: bold;
-            color: rgb(75, 75, 75);
+            color: $mainBrightText;
             border: 1px solid lightgray;
+            transition: all 0.2s;
 
             i {
                 font-size: $fontSize4;
@@ -30,7 +31,7 @@
 
             &:hover {
                 cursor: pointer;
-                background-color: rgb(231, 231, 231);
+                background-color: darken($inputBrightBack, 5%);
             }
         }
 
@@ -38,34 +39,49 @@
             font-size: $fontSize3;
             font-weight: bold;
             margin: auto 5px;
-            color: gray;
+            color: $inputBrightBack;
         }
 
         .activePage {
-            color: red;
+            color: $mainBrightRed;
+            background-color: $mainBrightBox;
         }
     }
 }
 
 .pagination_dark {
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: $tableDarkHeaderBack;
 
     .list {
         span {
-            background-color: lighten($mainDarkBlue, 10%);
-            color: $brightBoxColor;
-            border: 1px solid gray;
+            background-color: $mainDarkBox;
+            color: $mainDarkText;
+            border: 1px solid lighten($inputDarkBack, 10%);
 
             &:hover {
-                background-color: lighten($mainDarkBlue, 20%);
+                background-color: darken($inputDarkBack, 5%);
             }
+        }
+
+        .threeDots {
+            color: $inputDarkBack;
+        }
+
+        .activePage {
+            color: $mainDarkRed;
+            background-color: $inputDarkBack;
         }
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 1200px) {
+    .pagination {
+        width: 70%;
+    }
+}
+
+@media only screen and (max-width: 800px) {
     .pagination {
         width: 100%;
-        border-radius: 0;
     }
 }

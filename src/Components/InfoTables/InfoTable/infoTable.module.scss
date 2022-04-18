@@ -7,63 +7,85 @@
     margin: 70px auto;
     border-radius: 10px;
     box-shadow: $brightBoxShadow1;
-    background-color: $brightBoxColor;
+    background-color: $mainBrightBox;
     padding: 25px;
     min-height: 600px;
 
     h1 {
-        @include chartTitle()
+        @include chartTitle();
     }
 
-    .filter {
+    main {
         display: flex;
-        margin: auto;
-        margin-top: -50px;
-        margin-right: 0;
-        margin-bottom: 30px;
+        justify-content: center;
+        margin-top: -55px;
+        margin-bottom: 50px;
 
-        label {
-            @include chartTitle();
+        .filter {
+            display: flex;
             margin: auto;
+            margin-right: 0;
+
+            label {
+                @include chartTitle();
+                margin: auto;
+            }
+
+            select {
+                text-align: center;
+                width: auto;
+                outline: none;
+                border: none;
+                background-color: $inputBrightBack;
+                font-family: specialFont;
+                font-size: $fontSize2;
+                border-radius: 5px;
+                margin-right: 10px;
+                border: 1px solid gray;
+                color: $inputBrightText;
+
+                &:focus {
+                    background-color: $mainBrightBox;
+                    color: $mainBrightText;
+                    border-radius: 5px 5px 0 0;
+                }
+            }
         }
 
-        select {
-            padding: 5px 10px;
-            height: auto;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-    }
-
-    .numberOfRecords {
-        display: flex;
-        margin: auto;
-        margin-top: -60px;
-        margin-left: 0;
-        margin-bottom: 30px;
-
-        label {
-            @include chartTitle();
+        .numberOfRecords {
+            display: flex;
             margin: auto;
-        }
+            margin-left: 0;
 
-        input {
-            text-align: center;
-            width: 50px;
-            outline: none;
-            border: none;
-            background-color: whitesmoke;
-            font-family: specialFont;
-            font-size: $fontSize3;
-            border-radius: 5px;
-            margin-right: 10px;
-            border: 1px solid gray;
+            label {
+                @include chartTitle();
+                margin: auto;
+            }
+
+            input {
+                text-align: center;
+                width: 50px;
+                outline: none;
+                border: none;
+                background-color: $inputBrightBack;
+                font-family: specialFont;
+                font-size: $fontSize3;
+                border-radius: 5px;
+                margin-right: 10px;
+                border: 1px solid gray;
+                color: $inputBrightText;
+
+                &:focus {
+                    background-color: $mainBrightBox;
+                    color: $mainBrightText
+                }
+            }
         }
     }
 
     table {
         width: 100%;
-        background-color: white;
+        background-color: $mainBrightBox;
         text-align: center;
         border-radius: 5px;
         margin-top: 0;
@@ -75,8 +97,8 @@
                     text-align: center;
                     font-family: myFont;
                     font-size: $fontSize2;
-                    background-color: $mainBrightBlue;
-                    color: whitesmoke;
+                    background-color: $tableHeaderBack;
+                    color: $mainBrightBox;
                     margin: auto;
                 }
             }
@@ -94,7 +116,7 @@
     }
 
     .noDataToShow {
-        color: rgb(160, 0, 0);
+        color: $mainBrightRed;
         background-color: pink;
         padding: 30px;
         border-radius: 10px;
@@ -104,25 +126,43 @@
 }
 
 .infoTable_dark {
-    background-color: $darkBoxColor;
+    background-color: $mainDarkBox;
     box-shadow: $darkBoxShadow;
 
-    .numberOfRecords {
-        input {
-            color: whitesmoke;
-            background-color: $darkBoxColor;
-            border: 1px solid gray;
+    h1 {
+        color: $mainDarkText;
+    }
+
+    main {
+
+        .filter,
+        .numberOfRecords {
+
+            label {
+                color: $mainDarkText;
+            }
+
+            select,
+            input {
+                background-color: $inputDarkBack;
+                color: $inputDarkText;
+
+                &:focus {
+                    background-color: $mainDarkBox;
+                    color: $mainDarkText;
+                }
+            }
         }
     }
 
     table {
-        border: 1px solid lighten($darkBoxColor, 20%);
+        border: 1px solid lighten($mainDarkBox, 20%);
 
         thead {
             tr {
                 th {
-                    border: 1px solid lighten($darkBoxColor, 20%);
-                    background-color: darken($darkBoxColor, 10%);
+                    border: 1px solid lighten($mainDarkBox, 20%);
+                    background-color: $tableDarkHeaderBack;
                 }
             }
         }
@@ -131,8 +171,8 @@
             tr {
                 td {
                     border: 1px solid lighten($darkBoxColor, 20%);
-                    background-color: $darkBoxColor;
-                    color: white;
+                    background-color: $inputDarkBack;
+                    color: $mainDarkText;
                 }
             }
         }

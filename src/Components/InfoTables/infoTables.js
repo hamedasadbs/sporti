@@ -6,7 +6,7 @@ export const InfoTables = (props) => {
   const tableInfo = {
     bus: [
       {
-        title: "جدول آخرین درخواست ها",
+        title: "آخرین درخواست ها",
         name: "lastRequests",
         toples: [
           "شناسه درخواست",
@@ -19,7 +19,7 @@ export const InfoTables = (props) => {
         ],
       },
       {
-        title: "جدول آخرین پاسخ ها",
+        title: "آخرین پاسخ ها",
         name: "lastResponses",
         toples: [
           "شناسه درخواست",
@@ -34,7 +34,7 @@ export const InfoTables = (props) => {
         ],
       },
       {
-        title: "جدول نرم افزارهای پرکاربرد",
+        title: "نرم افزارهای پرکاربرد",
         name: "mostUsedSoftware",
         toples: [
           "نام نرم افزار",
@@ -46,7 +46,7 @@ export const InfoTables = (props) => {
     ],
     softwares: [
       {
-        title: "جدول تراکنش ها",
+        title: "تراکنش ها",
         name: "transactions",
         toples: [
           "شناسه درخواست",
@@ -59,7 +59,7 @@ export const InfoTables = (props) => {
         ],
       },
       {
-        title: "جدول درخواست ها",
+        title: "درخواست ها",
         name: "requests",
         toples: [
           "شناسه درخواست",
@@ -72,7 +72,7 @@ export const InfoTables = (props) => {
         ],
       },
       {
-        title: "جدول پاسخ ها",
+        title: "پاسخ ها",
         name: "responses",
         toples: [
           "شناسه درخواست",

@@ -25,7 +25,7 @@
                 border-radius: 10px;
                 box-shadow: $brightBoxShadow1;
                 width: 30%;
-                background-color: $brightBoxColor;
+                background-color: $mainBrightBox;
                 margin-right: 10px;
 
                 img {
@@ -39,7 +39,7 @@
                 h1 {
                     margin: 20px auto 5px auto;
                     font-family: myFont;
-                    color: rgb(41, 41, 41);
+                    color: $inputBrightText;
                     font-size: $fontSize4;
                 }
 
@@ -47,17 +47,18 @@
                     margin: auto;
                     font-family: myFont;
                     font-weight: bold;
-                    color: gray;
                     font-size: $fontSize2;
+                    color: $mainBrightText;
                 }
 
                 .previewDescription {
-                    border-top: 1px solid lightgray;
+                    border-top: 1px solid darken($mainBrightBack, 10%);
 
                     h1 {
                         text-align: right;
                         font-size: $fontSize3;
                         font-weight: bold;
+                        color: $inputBrightText;
                     }
 
                     p {
@@ -65,6 +66,7 @@
                         font-size: $fontSize2;
                         text-align: justify;
                         text-align-last: right;
+                        color: $mainBrightText;
                     }
                 }
             }
@@ -76,15 +78,15 @@
                 border-radius: 10px;
                 box-shadow: $brightBoxShadow1;
                 width: 63%;
-                background-color: $brightBoxColor;
+                background-color: $mainBrightBox;
                 margin-left: 20px;
 
                 h1 {
                     margin: 20px 5px 5px auto;
                     font-family: myFont;
-                    color: rgb(41, 41, 41);
+                    color: $inputBrightText;
                     font-size: $fontSize3;
-                    border-bottom: 1px solid lightgray;
+                    border-bottom: 1px solid darken($mainBrightBack, 10%);
                     width: 100%;
                     padding-bottom: 30px;
                     margin-bottom: 30px;
@@ -106,17 +108,25 @@
                             font-family: myFont;
                             font-size: $fontSize2;
                             text-align: right;
-                            color: gray;
+                            color: $mainBrightText;
                             margin-right: 5px;
                             font-weight: 100;
                         }
 
                         input,
                         textarea {
-                            border: 1px solid lightgray;
                             padding: 7px;
                             border-radius: 5px;
                             text-align: right;
+                            background-color: $inputBrightBack;
+                            color: $mainBrightText;
+                            border: 1px solid gray;
+
+                            &:focus {
+                                background-color: $mainBrightBox;
+                                color: $mainBrightText;
+                                outline: none;
+                            }
                         }
 
                         textarea {
@@ -140,39 +150,53 @@
 }
 
 .profile_dark {
-    background-color: $darkBackground;
+    background-color: $mainDarkBack;
 
     main {
         article {
 
             .profileUpdate,
             .profilePreview {
-                background-color: $darkBoxColor;
+                background-color: $mainDarkBox;
                 box-shadow: $darkBoxShadow;
 
                 h1 {
-                    color: $brightBackground;
+                    color: $mainDarkText;
+                }
+
+                h2 {
+                    color: $inputDarkText;
                 }
 
                 main {
                     span {
 
                         label {
-                            color: whitesmoke;
+                            color: $mainDarkText;
                         }
 
                         input,
                         textarea {
-                            background: linear-gradient(to right, lighten($darkBoxColor, 7%), lighten($darkBoxColor, 10%));
-                            color: whitesmoke;
-                            border: none;
+                            background-color: $inputDarkBack;
+                            ;
+                            color: $mainDarkText;
+
+                            &:focus {
+                                background-color: $mainDarkBox;
+                                color: $mainDarkText;
+                                outline: none;
+                            }
                         }
                     }
                 }
 
                 .previewDescription {
+                    h1 {
+                        color: $mainDarkText;
+                    }
+
                     p {
-                        color: $brightBackground;
+                        color: $inputDarkText;
                     }
                 }
             }

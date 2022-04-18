@@ -26,7 +26,7 @@ export const BusPage = (props) => {
     <article className={style.bus}>
       <Header darkMode={props.darkMode} />
       <main>
-        <Title>{props.title}</Title>
+        <Title darkMode={props.darkMode}>{props.title}</Title>
       </main>
       <InfoBoxes darkMode={props.darkMode} infoIndex={infoIndex} />
       <BusCharts darkMode={props.darkMode} />

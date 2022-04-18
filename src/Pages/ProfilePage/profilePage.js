@@ -22,7 +22,7 @@ export const ProfilePage = (props) => {
     <article className={style.profile}>
       <Header darkMode={props.darkMode} />
       <main>
-        <Title>{props.title}</Title>
+        <Title darkMode={props.darkMode}>{props.title}</Title>
         <article>
           <div className={style.profileUpdate}>
             <h1>جزئیات حساب کاربری</h1>
