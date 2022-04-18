@@ -83,33 +83,38 @@
         }
     }
 
-    table {
-        width: 100%;
-        background-color: $mainBrightBox;
-        text-align: center;
-        border-radius: 5px;
-        margin-top: 0;
-        margin-bottom: auto;
+    .tableContainer {
+        display: flex;
+        overflow-x: scroll;
+        margin-bottom: 30px;
 
-        thead {
-            tr {
-                th {
-                    text-align: center;
-                    font-family: myFont;
-                    font-size: $fontSize2;
-                    background-color: $tableHeaderBack;
-                    color: $mainBrightBox;
-                    margin: auto;
+        table {
+            background-color: $mainBrightBox;
+            text-align: center;
+            border-radius: 5px;
+            margin-top: 0;
+            margin-bottom: auto;
+
+            thead {
+                tr {
+                    th {
+                        text-align: center;
+                        font-family: myFont;
+                        font-size: $fontSize2;
+                        background-color: $tableHeaderBack;
+                        color: $mainBrightBox;
+                        margin: auto;
+                    }
                 }
             }
-        }
 
-        tbody {
-            tr {
-                td {
-                    text-align: center;
-                    font-size: $fontSize2;
-                    font-family: specialFont;
+            tbody {
+                tr {
+                    td {
+                        text-align: center;
+                        font-size: $fontSize2;
+                        font-family: specialFont;
+                    }
                 }
             }
         }
@@ -155,24 +160,26 @@
         }
     }
 
-    table {
-        border: 1px solid lighten($mainDarkBox, 20%);
+    .tableContainer {
+        table {
+            border: 1px solid lighten($mainDarkBox, 20%);
 
-        thead {
-            tr {
-                th {
-                    border: 1px solid lighten($mainDarkBox, 20%);
-                    background-color: $tableDarkHeaderBack;
+            thead {
+                tr {
+                    th {
+                        border: 1px solid lighten($mainDarkBox, 20%);
+                        background-color: $tableDarkHeaderBack;
+                    }
                 }
             }
-        }
 
-        tbody {
-            tr {
-                td {
-                    border: 1px solid lighten($mainDarkBox, 20%);
-                    background-color: $inputDarkBack;
-                    color: $mainDarkText;
+            tbody {
+                tr {
+                    td {
+                        border: 1px solid lighten($mainDarkBox, 20%);
+                        background-color: $inputDarkBack;
+                        color: $mainDarkText;
+                    }
                 }
             }
         }
@@ -182,5 +189,26 @@
 @media only screen and (max-width: $large) {
     .infoTable {
         margin: 50px auto;
+    }
+}
+
+@media only screen and (max-width: $small) {
+    .infoTable {
+        main {
+            margin-top: 0;
+        }
+    }
+}
+
+@media only screen and (max-width: $super_small) {
+    .infoTable {
+        main {
+            flex-direction: column;
+
+            .numberOfRecords,
+            .filter {
+                margin: 5px auto;
+            }
+        }
     }
 }

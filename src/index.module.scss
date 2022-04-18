@@ -48,35 +48,75 @@ $super_small:600px;
 @mixin main_article {
 
   .bus,
-  .softwares {
+  .softwares,
+  .setting {
     width: 100%;
     display: flex;
     flex-direction: column;
     padding-right: 250px;
     background-color: $mainBrightBack;
+    min-height: 100vh;
 
     main {
       display: flex;
       justify-content: flex-end;
       margin-top: -20px;
+      flex-direction: column;
+
+      .settings {
+        display: flex;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: $brightBoxShadow1;
+        width: 95%;
+        margin: 30px auto;
+        background-color: $mainBrightBox;
+
+        span {
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+
+          label {
+            font-family: myFont;
+            font-size: $fontSize2;
+            text-align: right;
+            color: $inputBrightText;
+            margin: auto;
+            margin-right: 0;
+            margin-left: 10px;
+            font-weight: 100;
+          }
+        }
+      }
     }
   }
 
   .bus_dark,
-  .softwares_dark {
+  .softwares_dark,
+  .setting_dark {
     background-color: $mainDarkBack;
 
     main {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: -20px;
+      .settings {
+        background-color: $mainDarkBox;
+        box-shadow: $darkBoxShadow;
+
+        span {
+
+          label {
+            color: $inputDarkText;
+          }
+        }
+      }
     }
   }
 
   @media only screen and (max-width: $small) {
 
     .bus,
-    .softwares {
+    .softwares,
+    .setting {
       padding-right: 70px;
     }
   }

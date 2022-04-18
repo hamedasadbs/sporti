@@ -174,32 +174,36 @@ export const InfoTable = (props) => {
             </div>
           ))}
       </main>
+
       {dataset.length ? (
-        <table className="table table-hover">
-          <thead>
-            <tr>
-              {props.toples.map((tp, index) => (
-                <th scope="col" key={index}>
-                  {tp}
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {dataset.map((rec, index) => (
-              <tr key={index}>
-                {tdHandler(rec)
-                  .reverse()
-                  .map((r, i) => (
-                    <td key={i}>{r}</td>
-                  ))}
+        <div className={style.tableContainer}>
+          <table className="table table-hover">
+            <thead>
+              <tr>
+                {props.toples.map((tp, index) => (
+                  <th scope="col" key={index}>
+                    {tp}
+                  </th>
+                ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {dataset.map((rec, index) => (
+                <tr key={index}>
+                  {tdHandler(rec)
+                    .reverse()
+                    .map((r, i) => (
+                      <td key={i}>{r}</td>
+                    ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       ) : (
         <h1 className={style.noDataToShow}>اطلاعاتی جهت نمایش وجود ندارد</h1>
       )}
+
       <Pagination
         numberOfPages={Math.ceil(dataCount / numberOfTableRows)}
         pageHandler={setPage}
