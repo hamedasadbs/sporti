@@ -189,9 +189,19 @@ export const InfoTable = (props) => {
                 <tr key={index}>
                   {tdHandler(rec)
                     .reverse()
-                    .map((r, i) => (
-                      <td key={i}>{r}</td>
-                    ))}
+                    .map((r, i) =>
+                      r === "موفق" ? (
+                        <td className={style.ok} key={i}>
+                          {r}
+                        </td>
+                      ) : r === "ناموفق" ? (
+                        <td className={style.failed} key={i}>
+                          {r}
+                        </td>
+                      ) : (
+                        <td key={i}>{r}</td>
+                      )
+                    )}
                 </tr>
               ))}
             </tbody>

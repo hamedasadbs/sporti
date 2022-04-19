@@ -1,7 +1,17 @@
+@import '../../index.module.scss';
+
 .infoTables {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     padding: 0 20px;
     margin: 0px auto;
+}
+
+@media only screen and (max-width: $medium) {
+
+    .infoTables {
+        padding: 0 5px;
+        margin-left: 0px;
+    }
 }

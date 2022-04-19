@@ -10,6 +10,20 @@ import * as request from "../../../Middleware/Requests/axiosRequest";
 export const SplineChart = (props) => {
   const [timeType, setTimeType] = useState(0);
   const [dataset, setDataset] = useState([]);
+  const months = [
+    "فروردین",
+    "اردیبهشت",
+    "خرداد",
+    "تیر",
+    "مرداد",
+    "شهریور",
+    "مهر",
+    "آبان",
+    "آذر",
+    "دی",
+    "بهمن",
+    "اسفند",
+  ];
 
   let [date, setDate] = useState("minute" + props.id);
   let [dateTitle, setDateTitle] = useState("دقیقه");
@@ -121,17 +135,36 @@ export const SplineChart = (props) => {
       text: " ",
     },
     xAxis: {
-      categories: dataset.map((ds) => ds.xPosition),
+      categories: dataset.map((ds, i) =>
+        dateTitle === "ماهانه"
+          ? months[i]
+          : dateTitle === "سالانه"
+          ? new Date().getFullYear() - 621 - ds.xPosition
+          : ds.xPosition
+      ),
       title: {
         text: `(زمان-${dateTitle})`,
         style: {
           fontSize: "17px",
+          color: "lightgray",
+        },
+      },
+      labels: {
+        style: {
+          fontSize: "12px",
+          color: props.darkMode ? "white" : "gray",
         },
       },
     },
     yAxis: {
       title: {
         text: " ",
+      },
+      labels: {
+        style: {
+          fontSize: "12px",
+          color: props.darkMode ? "white" : "gray",
+        },
       },
     },
     tooltip: {

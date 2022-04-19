@@ -129,14 +129,13 @@ $super_small:600px;
 
 @mixin chartTitle {
   font-family: myFont;
-  font-size: $fontSize2;
+  font-size: $fontSize3/1.1;
   color: $mainBrightText;
   text-align: center;
-  margin: 20px auto;
-  font-weight: bold;
+  margin: 20px auto 60px auto;
 }
 
-@mixin busCarts_softwaresCharts {
+@mixin busCharts_softwaresCharts {
 
   .busCharts,
   .softwaresCharts {

@@ -167,6 +167,13 @@ export const BarChart = (props) => {
         text: `(نرم افزار)`,
         style: {
           fontSize: "17px",
+          color: "lightgray",
+        },
+      },
+      labels: {
+        style: {
+          fontSize: "12px",
+          color: props.darkMode ? "white" : "gray",
         },
       },
     },
@@ -174,6 +181,12 @@ export const BarChart = (props) => {
       min: 0,
       title: {
         text: " ",
+      },
+      labels: {
+        style: {
+          fontSize: "12px",
+          color: props.darkMode ? "white" : "gray",
+        },
       },
     },
     legend: {
