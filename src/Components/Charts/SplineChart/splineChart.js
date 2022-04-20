@@ -1,13 +1,15 @@
-/*CSS*/
+/*css*/
 import style from "./splineChart.module.scss";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
-/*INNER COMPONENTS*/
+/*inner components*/
 import { useEffect, useState } from "react";
-/*CHILD COMPONENTS*/
+/*child components*/
 import * as request from "../../../Middleware/Requests/axiosRequest";
+import * as dark from "../../../Middleware/Library/darkMode";
 
 export const SplineChart = (props) => {
+  /*states*/
   const [timeType, setTimeType] = useState(0);
   const [dataset, setDataset] = useState([]);
   const months = [
@@ -24,61 +26,17 @@ export const SplineChart = (props) => {
     "بهمن",
     "اسفند",
   ];
-
   let [date, setDate] = useState("minute" + props.id);
   let [dateTitle, setDateTitle] = useState("دقیقه");
-
-  const btnStyling = () => {
-    const btn = document.getElementsByClassName("btn" + props.id);
-    for (let i = 0; i < btn.length; i++) {
-      btn[i].classList.remove(style.activeDate);
-    }
-    document.getElementById(date).classList.add(style.activeDate);
-  };
-
+  /*initial button styles*/
   useEffect(() => {
     btnStyling();
   });
-
+  /*dark mode*/
   useEffect(() => {
-    const splineChart = document.getElementsByClassName(style.splineChart);
-    if (props.darkMode) {
-      for (let i = 0; i < splineChart.length; i++) {
-        splineChart[i].classList.add(style.splineChart_dark);
-      }
-    } else {
-      for (let i = 0; i < splineChart.length; i++) {
-        splineChart[i].classList.remove(style.splineChart_dark);
-      }
-    }
+    dark.darkMode(style.splineChart, style.splineChart_dark, props.darkMode);
   }, [props.darkMode, props]);
-
-  const dateHandler = (e) => {
-    setDate(e.target.id);
-    date = e.target.id;
-    btnStyling();
-    setDateTitle(e.target.name);
-    switch (e.target.name) {
-      case "دقیقه":
-        setTimeType(0);
-        break;
-      case "ساعتی":
-        setTimeType(1);
-        break;
-      case "روزانه":
-        setTimeType(2);
-        break;
-      case "ماهانه":
-        setTimeType(3);
-        break;
-      case "سالانه":
-        setTimeType(4);
-        break;
-      default:
-        break;
-    }
-  };
-
+  /*send request*/
   useEffect(() => {
     let url = "";
     switch (props.name) {
@@ -109,8 +67,42 @@ export const SplineChart = (props) => {
       setDataset(res);
     });
   }, [timeType, props.software, props]);
-
-  function hexToRgb(hex) {
+  /*button styling*/
+  const btnStyling = () => {
+    const btn = document.getElementsByClassName("btn" + props.id);
+    for (let i = 0; i < btn.length; i++) {
+      btn[i].classList.remove(style.activeDate);
+    }
+    document.getElementById(date).classList.add(style.activeDate);
+  };
+  /*change date*/
+  const dateHandler = (e) => {
+    setDate(e.target.id);
+    date = e.target.id;
+    btnStyling();
+    setDateTitle(e.target.name);
+    switch (e.target.name) {
+      case "دقیقه":
+        setTimeType(0);
+        break;
+      case "ساعتی":
+        setTimeType(1);
+        break;
+      case "روزانه":
+        setTimeType(2);
+        break;
+      case "ماهانه":
+        setTimeType(3);
+        break;
+      case "سالانه":
+        setTimeType(4);
+        break;
+      default:
+        break;
+    }
+  };
+  /*hex color to rgb color*/
+  const hexToRgb = (hex) => {
     var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
     return result
       ? {
@@ -119,8 +111,8 @@ export const SplineChart = (props) => {
           b: parseInt(result[3], 16),
         }
       : null;
-  }
-
+  };
+  /*chart options*/
   const options = {
     chart: {
       type: "areaspline",
@@ -199,7 +191,7 @@ export const SplineChart = (props) => {
       },
     },
   };
-
+  /*render component*/
   return (
     <div className={style.splineChart}>
       <h1>

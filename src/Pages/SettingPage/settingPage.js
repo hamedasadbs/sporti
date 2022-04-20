@@ -1,28 +1,23 @@
+/*inner components*/
 import { useEffect } from "react";
-/*CSS*/
+/*css*/
 import style from "./settingPage.module.scss";
-/*CHILD COMPONENTS*/
+/*child components*/
 import { Header } from "../../Layouts/Header/header";
-import { Title } from "../../Components/Title/title";
 import { ToggleSwitch } from "../../Components/ToggleSwitch/toggleSwitch";
+import * as dark from "../../Middleware/Library/darkMode";
 
 export const SettingPage = (props) => {
+  /*dark mode*/
   useEffect(() => {
-    if (props.darkMode)
-      document
-        .getElementsByClassName(style.setting)[0]
-        .classList.add(style.setting_dark);
-    else
-      document
-        .getElementsByClassName(style.setting)[0]
-        .classList.remove(style.setting_dark);
+    dark.darkMode(style.setting, style.setting_dark, props.darkMode);
   }, [props.darkMode]);
-
+  /*render component*/
   return (
     <article className={style.setting}>
       <Header darkMode={props.darkMode} />
       <main>
-        <Title darkMode={props.darkMode}>{props.title}</Title>
+        <h1 className={style.title}>{props.title}</h1>
         <div className={style.settings}>
           <span>
             <ToggleSwitch setDarkMode={props.setDarkMode} />

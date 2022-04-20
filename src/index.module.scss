@@ -1,16 +1,16 @@
-/*Box Shadows*/
+/*box shadows*/
 $darkBoxShadow:0 5px 10px rgb(12, 12, 12);
 $brightBoxShadow1:0px 3px 8px rgba(0, 0, 0, 0.24);
 $brightBoxShadow2:rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
 rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-/*General Colors*/
+/*general colors*/
 $failedResColor:rgb(255, 43, 43);
 $okResColor:rgb(34, 131, 34);
 $totalResColor:rgb(228, 148, 0);
 $totalReqColor:rgb(126, 33, 126);
 $totalSoftColor:rgb(41, 41, 250);
 $totalTransactionColor:rgb(158, 38, 38);
-/*Bright Theme Colors*/
+/*bright theme colors*/
 $mainBrightBox:white;
 $mainBrightBack:whitesmoke;
 $inputBrightBack:whitesmoke;
@@ -19,7 +19,7 @@ $inputBrightText:rgb(54, 54, 54);
 $bottonsBrightBack:aqua;
 $tableHeaderBack:rgb(0, 69, 136);
 $mainBrightRed:rgb(230, 0, 0);
-/*Dark Theme Colors*/
+/*dark theme colors*/
 $mainDarkBox:#232931;
 $mainDarkBack:rgb(22, 22, 22);
 $inputDarkBack:#393E46;
@@ -28,7 +28,7 @@ $inputDarkText:#b9b9b9;
 $bottonsDarkBack:#4ECCA3;
 $tableDarkHeaderBack:#0e1013;
 $mainDarkRed:rgb(255, 31, 31);
-/*Font Sizes*/
+/*font sizes*/
 $fontSize1:10px;
 $fontSize2:15px;
 $fontSize3:20px;
@@ -38,18 +38,21 @@ $fontSize6:35px;
 $fontSize7:40px;
 $fontSize8:45px;
 $fontSize9:50px;
-/*Media Queries*/
+/*media query sizes*/
 $large:1300px;
 $medium_large:1200px;
 $medium:1100px;
 $small:900px;
 $super_small:600px;
 
-@mixin main_article {
+/*mixins*/
+@mixin mainArticle {
 
   .bus,
   .softwares,
-  .setting {
+  .profile,
+  .setting,
+  .loading {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -61,6 +64,14 @@ $super_small:600px;
       display: flex;
       justify-content: flex-end;
       margin-top: -20px;
+
+      .title {
+        color: $mainBrightText;
+        margin-right: 40px;
+        font-size: $fontSize4;
+        font-weight: bold;
+        text-align: right;
+      }
 
       .settings {
         display: flex;
@@ -77,7 +88,6 @@ $super_small:600px;
           justify-content: flex-end;
 
           label {
-            font-family: myFont;
             font-size: $fontSize2;
             text-align: right;
             color: $inputBrightText;
@@ -91,18 +101,244 @@ $super_small:600px;
     }
   }
 
+  .profile {
+    main {
+      flex-direction: column;
+
+      article {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        margin: 30px auto;
+
+        .profilePreview {
+          display: flex;
+          flex-direction: column;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: $brightBoxShadow1;
+          width: 30%;
+          background-color: $mainBrightBox;
+          margin-right: 10px;
+
+          img {
+            width: 120px;
+            height: 120px;
+            border-radius: 100px;
+            margin: auto;
+            margin-top: 0;
+            margin-bottom: 20px;
+          }
+
+          h1 {
+            margin: auto;
+            margin-top: 0;
+            margin-bottom: 10px;
+            color: $inputBrightText;
+            font-size: $fontSize4;
+          }
+
+          h2 {
+            margin: auto;
+            margin-top: 0;
+            margin-bottom: 40px;
+            font-weight: bold;
+            font-size: $fontSize2;
+            color: $mainBrightText;
+          }
+
+          .previewDescription {
+            border-top: 1px solid darken($mainBrightBack, 10%);
+
+            h1 {
+              text-align: right;
+              font-size: $fontSize3;
+              font-weight: bold;
+              color: $inputBrightText;
+              margin: auto;
+              margin-top: 20px;
+              margin-bottom: 10px;
+            }
+
+            p {
+              font-size: $fontSize2/1.2;
+              text-align: justify;
+              text-align-last: right;
+              color: $mainBrightText;
+            }
+          }
+        }
+
+        .profileUpdate {
+          display: flex;
+          flex-direction: column;
+          padding: 30px;
+          border-radius: 10px;
+          box-shadow: $brightBoxShadow1;
+          width: 63%;
+          background-color: $mainBrightBox;
+          margin-left: 20px;
+
+          h1 {
+            margin: 20px 5px 5px auto;
+            color: $inputBrightText;
+            font-size: $fontSize3;
+            border-bottom: 1px solid darken($mainBrightBack, 10%);
+            width: 100%;
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            text-align: right;
+          }
+
+          main {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+
+            span {
+              display: flex;
+              flex-direction: column;
+              width: 46%;
+              margin: 10px auto;
+
+              label {
+                font-size: $fontSize2;
+                text-align: right;
+                color: $mainBrightText;
+                margin-right: 5px;
+                font-weight: 100;
+              }
+
+              input,
+              textarea {
+                @include input;
+                text-align: right;
+                padding: 3px;
+                margin-right: 0;
+                font-size: $fontSize2;
+              }
+
+              textarea {
+                resize: vertical;
+              }
+
+              button {
+                @include button;
+                width: 100%;
+              }
+            }
+
+            .leftAlign {
+              input {
+                text-align: left;
+              }
+            }
+
+            .fullWidth {
+              width: 96%;
+            }
+          }
+        }
+      }
+    }
+  }
+
   .setting {
     main {
       flex-direction: column;
     }
   }
 
+  .loading {
+    padding-right: 0;
+
+    .loadTitle {
+      font-family: paragraphFont;
+      color: $inputBrightText;
+      margin: auto;
+      margin-top: 20px;
+      font-size: $fontSize4;
+    }
+
+    .loadBar {
+      margin: auto;
+      margin-bottom: 0;
+    }
+  }
+
   .bus_dark,
   .softwares_dark,
-  .setting_dark {
+  .profile_dark,
+  .setting_dark,
+  .loading_dark {
     background-color: $mainDarkBack;
 
+    .loadTitle {
+      color: $mainDarkText;
+    }
+
     main {
+      .title {
+        color: $mainDarkText;
+      }
+
+      article {
+
+        .profileUpdate,
+        .profilePreview {
+          background-color: $mainDarkBox;
+          box-shadow: $darkBoxShadow;
+
+          h1 {
+            color: $mainDarkText;
+          }
+
+          h2 {
+            color: $inputDarkText;
+          }
+
+          main {
+            span {
+
+              label {
+                color: $mainDarkText;
+              }
+
+              input,
+              textarea {
+                background-color: $inputDarkBack;
+                ;
+                color: $mainDarkText;
+
+                &:focus {
+                  background-color: $mainDarkBox;
+                  color: $mainDarkText;
+                  outline: none;
+                }
+              }
+
+              button {
+                background-color: lighten($tableDarkHeaderBack, 5%);
+
+                &:hover {
+                  background-color: $tableDarkHeaderBack;
+                }
+              }
+            }
+          }
+
+          .previewDescription {
+            h1 {
+              color: $mainDarkText;
+            }
+
+            p {
+              color: $inputDarkText;
+            }
+          }
+        }
+      }
+
       .settings {
         background-color: $mainDarkBox;
         box-shadow: $darkBoxShadow;
@@ -121,21 +357,60 @@ $super_small:600px;
 
     .bus,
     .softwares,
-    .setting {
+    .profile,
+    .setting,
+    .loading {
       padding-right: 70px;
+
+      main {
+        article {
+
+          .profileUpdate,
+          .profilePreview {
+            width: 50%;
+            border-radius: 0;
+            box-shadow: none;
+          }
+
+          .profilePreview {
+            border-left: 1px solid lightgray;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: $super_small) {
+    .profile {
+      main {
+        article {
+          flex-direction: column;
+
+          .profileUpdate,
+          .profilePreview {
+            width: 90%;
+            margin: 10px auto;
+            border-radius: 10px;
+            box-shadow: $brightBoxShadow1;
+          }
+
+          .profilePreview {
+            border-left: none;
+          }
+        }
+      }
     }
   }
 }
 
 @mixin chartTitle {
-  font-family: myFont;
   font-size: $fontSize3/1.1;
   color: $mainBrightText;
   text-align: center;
   margin: 20px auto 60px auto;
 }
 
-@mixin busCharts_softwaresCharts {
+@mixin charts {
 
   .busCharts,
   .softwaresCharts {
@@ -157,11 +432,63 @@ $super_small:600px;
   }
 }
 
+@mixin input {
+  text-align: center;
+  outline: none;
+  border: none;
+  background-color: $inputBrightBack;
+  font-size: $fontSize3;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 1px solid gray;
+  color: $inputBrightText;
+
+  &:focus {
+    background-color: $mainBrightBox;
+    color: $mainBrightText
+  }
+}
+
+@mixin button {
+  width: 300px;
+  margin: 20px auto 10px auto;
+  padding: 10px;
+  background-color: $tableHeaderBack;
+  color: $mainBrightBox;
+  border-radius: 5px;
+  box-shadow: $brightBoxShadow1;
+  font-size: $fontSize2;
+  transition: all 0.5s;
+
+  &:hover {
+    background-color: lighten($tableHeaderBack, 10%);
+  }
+}
+
+@mixin select {
+  text-align: center;
+  width: auto;
+  outline: none;
+  border: none;
+  background-color: $inputBrightBack;
+  font-family: paragraphFont;
+  font-size: $fontSize2;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 1px solid gray;
+  color: $inputBrightText;
+  padding: 5px;
+
+  &:focus {
+    background-color: $mainBrightBox;
+    color: $mainBrightText;
+    border-radius: 5px 5px 0 0;
+  }
+}
+
+/*global tags style*/
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
@@ -180,24 +507,77 @@ a {
 button {
   border: none;
   outline: none;
-  font-family: myFont;
 
   &:hover {
     cursor: pointer;
   }
 }
 
+::-webkit-scrollbar {
+  width: 15px;
+  background-color: $mainBrightBack;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $mainBrightText;
+  border-radius: 0px;
+  transition: all 0.5s;
+
+  &:hover {
+    background: $inputBrightText;
+  }
+}
+
+/*font declare*/
 @font-face {
-  font-family: myFont;
+  font-family: titleFont;
   src: url("./Assets/Fonts/Yekan.ttf");
 }
 
 @font-face {
-  font-family: specialFont;
+  font-family: finglishFont;
   src: url("./Assets/Fonts/homa.ttf");
 }
 
 @font-face {
   font-family: paragraphFont;
   src: url("./Assets/Fonts/IranianSans.ttf");
+}
+
+/*global tags font family set*/
+h1,
+h2,
+button,
+label,
+table {
+  font-family: titleFont;
+
+  thead {
+    tr {
+      th {
+        font-family: titleFont;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      td {
+        font-family: finglishFont;
+      }
+    }
+  }
+}
+
+input {
+  font-family: finglishFont;
+}
+
+p {
+  font-family: paragraphFont;
 }

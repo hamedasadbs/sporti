@@ -48,7 +48,6 @@
             background-color: $inputBrightBack;
             color: $mainBrightText;
             padding-right: 25px;
-            font-family: myFont;
             font-size: $fontSize3;
             border-radius: 50px 0 0 50px;
 
@@ -92,7 +91,6 @@
                 }
 
                 h1 {
-                    font-family: myFont;
                     font-size: $fontSize3;
                     margin: auto;
                     margin-right: 10px;
@@ -132,7 +130,7 @@
                     }
 
                     h1 {
-                        font-family: specialFont;
+                        font-family: finglishFont;
                         font-size: $fontSize3;
                         text-align: center;
                         line-height: 0px;
@@ -160,7 +158,6 @@
 
                         h1 {
                             font-size: $fontSize3;
-                            font-family: myFont;
                             text-align: center;
                             margin: 5px auto;
                             color: $inputBrightText;
@@ -201,7 +198,7 @@
                 span {
                     margin: auto;
                     margin-top: -10px;
-                    font-family: specialFont;
+                    font-family: finglishFont;
                     font-size: $fontSize3;
                 }
             }

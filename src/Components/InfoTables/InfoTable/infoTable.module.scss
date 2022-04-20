@@ -32,23 +32,7 @@
             }
 
             select {
-                text-align: center;
-                width: auto;
-                outline: none;
-                border: none;
-                background-color: $inputBrightBack;
-                font-family: specialFont;
-                font-size: $fontSize2;
-                border-radius: 5px;
-                margin-right: 10px;
-                border: 1px solid gray;
-                color: $inputBrightText;
-
-                &:focus {
-                    background-color: $mainBrightBox;
-                    color: $mainBrightText;
-                    border-radius: 5px 5px 0 0;
-                }
+                @include select;
             }
         }
 
@@ -64,24 +48,14 @@
             }
 
             input {
-                text-align: center;
+                @include input;
                 width: 50px;
-                outline: none;
-                border: none;
-                background-color: $inputBrightBack;
-                font-family: specialFont;
-                font-size: $fontSize3;
-                border-radius: 5px;
-                margin-right: 10px;
-                border: 1px solid gray;
-                color: $inputBrightText;
-
-                &:focus {
-                    background-color: $mainBrightBox;
-                    color: $mainBrightText
-                }
             }
         }
+    }
+
+    .softwareTable {
+        margin-top: -87px;
     }
 
     .tableContainer {
@@ -104,7 +78,6 @@
                 tr {
                     th {
                         text-align: center;
-                        font-family: myFont;
                         font-size: $fontSize2;
                         background-color: $tableHeaderBack;
                         color: $mainBrightBox;
@@ -118,7 +91,6 @@
                     td {
                         text-align: center;
                         font-size: $fontSize2;
-                        font-family: specialFont;
                     }
 
                     .ok {
@@ -201,25 +173,29 @@
 @media only screen and (max-width: $large) {
     .infoTable {
         margin: 50px auto;
-
-        .tableContainer {
-            &::-webkit-scrollbar {
-                display: initial;
-            }
-        }
     }
 }
 
 @media only screen and (max-width: $medium) {
     .infoTable {
         width: 98%;
+
+        .tableContainer {
+            &::-webkit-scrollbar {
+                display: block;
+            }
+        }
     }
 }
 
 @media only screen and (max-width: $small) {
     .infoTable {
         main {
-            margin-top: 0;
+            margin-top: -40px;
+        }
+
+        .softwareTable {
+            margin-top: -40px;
         }
     }
 }

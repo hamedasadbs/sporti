@@ -1,16 +1,18 @@
-/*INNER-COMPONENTS*/
+/*inner components*/
 import { Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-/*CSS*/
+/*css*/
 import style from "./slideNav.module.scss";
 
 export const SlideNav = (props) => {
+  /*variables*/
   let location = useLocation();
+  /*initialize slide nav links*/
   useEffect(() => {
     const bus = document.getElementById("گذرگاه");
     bus.classList.add(style.activeLink);
   }, []);
-
+  /*set slide nav links*/
   useEffect(() => {
     const hrefNavHandler = (e) => {
       const nav = document.getElementById(e);
@@ -40,7 +42,7 @@ export const SlideNav = (props) => {
         break;
     }
   }, [location.pathname, props]);
-
+  /*set navigation*/
   const navHandler = (e) => {
     const nav = document.getElementById(e.target.id);
     const otherId = `:not([id^='${e.target.id}'])`;
@@ -51,7 +53,7 @@ export const SlideNav = (props) => {
     nav.classList.add(style.activeLink);
     props.dashboard(e.target.id);
   };
-
+  /*render component*/
   return (
     <nav className={style.slideNav}>
       <main>
@@ -65,7 +67,7 @@ export const SlideNav = (props) => {
       <Link
         id="نرم افزارها"
         onClick={navHandler}
-        className={`${style.link}`}
+        className={style.link}
         to="/softwares"
       >
         <span id="نرم افزارها">نرم افزارها</span>
@@ -74,7 +76,7 @@ export const SlideNav = (props) => {
       <Link
         id="پروفایل"
         onClick={navHandler}
-        className={`${style.link}`}
+        className={style.link}
         to="/profile"
       >
         <span id="پروفایل">پروفایل</span>
@@ -83,7 +85,7 @@ export const SlideNav = (props) => {
       <Link
         id="تنظیمات"
         onClick={navHandler}
-        className={`${style.link}`}
+        className={style.link}
         to="/setting"
       >
         <span id="تنظیمات">تنظیمات</span>

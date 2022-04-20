@@ -1,10 +1,11 @@
-/*CSS*/
+/*css*/
 import style from "./softwaresCharts.module.scss";
-/*CHILD COMPONENTS*/
+/*child components*/
 import { BarChart } from "../../../Components/Charts/BarChart/barChart";
 import { SplineChart } from "../../../Components/Charts/SplineChart/splineChart";
 
 export const SoftwaresCharts = (props) => {
+  /*render component*/
   return (
     <main className={style.softwaresCharts}>
       <SplineChart

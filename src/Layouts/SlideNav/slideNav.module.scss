@@ -27,7 +27,6 @@
             margin: auto;
             margin-right: 0;
             color: darken($mainBrightBack, 15%);
-            font-family: myFont;
             font-size: $fontSize3;
         }
 
@@ -49,7 +48,7 @@
         padding: 15px;
         font-size: $fontSize3;
         border: none;
-        font-family: myFont;
+        font-family: titleFont;
         font-weight: bold;
         color: darken($mainBrightBack, 35%);
         justify-content: flex-end;
@@ -86,7 +85,7 @@
         padding: 5px 15px;
         font-size: $fontSize3;
         border: none;
-        font-family: myFont;
+        font-family: titleFont;
         font-weight: bold;
         color: $mainBrightBack;
         justify-content: center;

@@ -1,11 +1,30 @@
-/*INNER COMPONENTS*/
+/*inner components*/
 import React, { useEffect } from "react";
-/*CSS*/
+/*css*/
 import style from "./pagination.module.scss";
+/*child components*/
+import * as dark from "../../Middleware/Library/darkMode";
 
 export const Pagination = (props) => {
+  /*variables*/
   const page = props.numberOfPages;
+  /*dark mode*/
+  useEffect(() => {
+    dark.darkMode(style.pagination, style.pagination_dark, props.darkMode);
+  }, [props.darkMode]);
+  /*check current page*/
+  useEffect(() => {
+    const list = document.getElementsByClassName(style.list);
+    const pages = list[props.index].getElementsByClassName("pageLink");
 
+    for (let i = 0; i < pages.length; i++) {
+      pages[i].classList.remove(style.activePage);
+      if (parseInt(pages[i].id) === props.currentPage) {
+        pages[i].classList.add(style.activePage);
+      }
+    }
+  }, [props.currentPage, props]);
+  /*set active page*/
   const activePageHandler = (e) => {
     if (e.currentTarget.id === "previous") {
       if (props.currentPage > 1) {
@@ -19,30 +38,7 @@ export const Pagination = (props) => {
       props.pageHandler(parseInt(e.currentTarget.id));
     }
   };
-
-  useEffect(() => {
-    const pagination = document.getElementsByClassName(style.pagination);
-    for (let i = 0; i < pagination.length; i++) {
-      if (props.darkMode) {
-        pagination[i].classList.add(style.pagination_dark);
-      } else {
-        pagination[i].classList.remove(style.pagination_dark);
-      }
-    }
-  }, [props.darkMode]);
-
-  useEffect(() => {
-    const list = document.getElementsByClassName(style.list);
-    const pages = list[props.index].getElementsByClassName("pageLink");
-
-    for (let i = 0; i < pages.length; i++) {
-      pages[i].classList.remove(style.activePage);
-      if (parseInt(pages[i].id) === props.currentPage) {
-        pages[i].classList.add(style.activePage);
-      }
-    }
-  }, [props.currentPage, props]);
-
+  /*check index*/
   const indexHandler = () => {
     let span = [];
     if (page > 1) {
@@ -97,7 +93,7 @@ export const Pagination = (props) => {
       return span;
     }
   };
-
+  /*render component*/
   return (
     <nav className={style.pagination}>
       <div className={style.list}>

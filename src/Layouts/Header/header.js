@@ -1,14 +1,20 @@
-/*INNER COMPONENTS*/
+/*inner components*/
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-/*CSS*/
+/*css*/
 import style from "./header.module.scss";
-/*CHILD COMPONENTS*/
+/*child components*/
 import userPhoto from "../../Assets/Images/no_photo.png";
+import * as dark from "../../Middleware/Library/darkMode";
 
 export const Header = (props) => {
+  /*states*/
   const [showUserInfo, setShowUserInfo] = useState(false);
-
+  /*dark mode*/
+  useEffect(() => {
+    dark.darkMode(style.header, style.header_dark, props.darkMode);
+  }, [props.darkMode]);
+  /*display user information*/
   const showUserInfoHandler = () => {
     if (showUserInfo) {
       setShowUserInfo(false);
@@ -19,25 +25,13 @@ export const Header = (props) => {
         "initial";
     }
   };
-
+  /*initialize user information*/
   window.onclick = function (e) {
     if (e.target.id !== "userPhoto" && showUserInfo) {
       showUserInfoHandler();
     }
   };
-
-  useEffect(() => {
-    if (props.darkMode) {
-      document
-        .getElementsByClassName(style.header)[0]
-        .classList.add(style.header_dark);
-    } else {
-      document
-        .getElementsByClassName(style.header)[0]
-        .classList.remove(style.header_dark);
-    }
-  }, [props.darkMode]);
-
+  /*render component*/
   return (
     <header className={style.header}>
       <div className={style.account}>

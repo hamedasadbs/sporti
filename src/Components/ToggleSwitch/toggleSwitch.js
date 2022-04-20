@@ -1,9 +1,26 @@
-/*INNER-COMPONENTS*/
+/*inner components*/
 import { useEffect } from "react";
-/*CSS*/
+/*css*/
 import style from "./toggleSwitch.module.scss";
 
 export const ToggleSwitch = (props) => {
+  /*dark mode*/
+  useEffect(() => {
+    const switchVar = document.getElementsByClassName(style.switch)[0];
+    const brightIcon = document.getElementsByClassName(style.brightIcon)[0];
+    const darkIcon = document.getElementsByClassName(style.darkIcon)[0];
+
+    if (parseInt(getCookie("darkMode"))) {
+      switchVar.classList.add(style.switch_dark);
+      brightIcon.style.display = "none";
+      darkIcon.style.display = "initial";
+    } else {
+      switchVar.classList.remove(style.switch_dark);
+      brightIcon.style.display = "initial";
+      darkIcon.style.display = "none";
+    }
+  }, []);
+  /*get cookie*/
   const getCookie = (cName) => {
     const nameString = cName + "=";
     const value = document.cookie.split("; ").filter((item) => {
@@ -15,14 +32,14 @@ export const ToggleSwitch = (props) => {
       return "";
     }
   };
-
+  /*set cookie*/
   const setCookie = (cName, cValue, minutes) => {
     let d = new Date();
     d.setTime(d.getTime() + minutes * 60 * 1000);
     let expires = "expires=" + d.toUTCString();
     document.cookie = cName + "=" + cValue + "; " + expires;
   };
-
+  /*set & check dark mode*/
   const darkModeHadler = () => {
     const switchVar = document.getElementsByClassName(style.switch)[0];
     const brightIcon = document.getElementsByClassName(style.brightIcon)[0];
@@ -41,23 +58,7 @@ export const ToggleSwitch = (props) => {
     }
     props.setDarkMode(parseInt(getCookie("darkMode")));
   };
-
-  useEffect(() => {
-    const switchVar = document.getElementsByClassName(style.switch)[0];
-    const brightIcon = document.getElementsByClassName(style.brightIcon)[0];
-    const darkIcon = document.getElementsByClassName(style.darkIcon)[0];
-
-    if (parseInt(getCookie("darkMode"))) {
-      switchVar.classList.add(style.switch_dark);
-      brightIcon.style.display = "none";
-      darkIcon.style.display = "initial";
-    } else {
-      switchVar.classList.remove(style.switch_dark);
-      brightIcon.style.display = "initial";
-      darkIcon.style.display = "none";
-    }
-  }, []);
-
+  /*render component*/
   return (
     <div onClick={darkModeHadler} className={style.toggle}>
       <div className={style.switch}>

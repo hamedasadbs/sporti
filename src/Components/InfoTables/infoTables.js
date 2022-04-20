@@ -1,8 +1,10 @@
+/*inner components*/
 import style from "./infoTables.module.scss";
-/*CHILD COMPONENTS*/
+/*child components*/
 import { InfoTable } from "./InfoTable/infoTable";
 
 export const InfoTables = (props) => {
+  /*variables*/
   const tableInfo = {
     bus: [
       {
@@ -83,7 +85,7 @@ export const InfoTables = (props) => {
       },
     ],
   };
-
+  /*render component*/
   return (
     <article className={style.infoTables}>
       {props.infoIndex === "bus"

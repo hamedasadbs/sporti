@@ -1,28 +1,16 @@
+/*inner components*/
 import { useEffect, useState } from "react";
-/*CSS*/
+/*css*/
 import style from "./infoBoxes.module.scss";
-/*CHILD COMPONENTS*/
+/*child components*/
 import { InfoBox } from "./InfoBox/infoBox";
 import * as request from "../../Middleware/Requests/axiosRequest";
 
 export const InfoBoxes = (props) => {
+  /*states*/
   const [busInfoBoxData, setBusInfoBoxData] = useState({});
   const [softwaresInfoBoxData, setSoftwaresBusInfoBoxData] = useState({});
-
-  useEffect(() => {
-    request
-      .axiosRequest("http://10.42.0.72:44351/api/Bus/StatisticsInfo")
-      .then((res) => {
-        setBusInfoBoxData(res);
-      });
-
-    request
-      .axiosRequest("http://10.42.0.72:44351/api/Software/StatisticsInfo")
-      .then((res) => {
-        setSoftwaresBusInfoBoxData(res);
-      });
-  }, []);
-
+  /*variables*/
   const infoBox = {
     bus: [
       {
@@ -80,7 +68,21 @@ export const InfoBoxes = (props) => {
       },
     ],
   };
+  /*send request*/
+  useEffect(() => {
+    request
+      .axiosRequest("http://10.42.0.72:44351/api/Bus/StatisticsInfo")
+      .then((res) => {
+        setBusInfoBoxData(res);
+      });
 
+    request
+      .axiosRequest("http://10.42.0.72:44351/api/Software/StatisticsInfo")
+      .then((res) => {
+        setSoftwaresBusInfoBoxData(res);
+      });
+  }, []);
+  /*render component*/
   return (
     <article className={style.infoBoxes}>
       {props.infoIndex === "bus"

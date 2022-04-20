@@ -13,7 +13,6 @@
         margin: auto 0;
         padding: 10px;
         text-align: center;
-        font-family: myFont;
         font-size: $fontSize2;
         border-radius: 5px;
         border: 1px solid gray;
@@ -31,7 +30,6 @@
         font-size: $fontSize2;
         text-align: center;
         padding: 5px;
-        font-family: myFont;
         background-color: $mainBrightBox;
         display: flex;
         flex-direction: column;
@@ -42,6 +40,7 @@
         span {
             border-bottom: 1px solid $inputBrightBack;
             padding: 5px;
+            font-family: finglishFont;
 
             &:hover {
                 background-color: $inputBrightBack;

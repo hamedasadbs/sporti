@@ -1,9 +1,10 @@
-/*INNER COMPONENTS*/
+/*inner component*/
 import { useEffect } from "react";
-/*CSS*/
+/*css*/
 import style from "./infoBox.module.scss";
 
 export const InfoBox = (props) => {
+  /*dark mode*/
   useEffect(() => {
     const infoBox = document.getElementsByClassName(style.infoBox);
 
@@ -42,7 +43,7 @@ export const InfoBox = (props) => {
       }
     }
   }, [props.darkMode, props]);
-
+  /*render component*/
   return (
     <span className={style.infoBox}>
       <div className={style.icon}>

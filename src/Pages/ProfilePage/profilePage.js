@@ -1,12 +1,13 @@
+/*iner components*/
 import { useEffect } from "react";
 /*CSS*/
 import style from "./profilePage.module.scss";
-/*CHILD COMPONENTS*/
+/*child components*/
 import { Header } from "../../Layouts/Header/header";
-import { Title } from "../../Components/Title/title";
 import userPhoto from "../../Assets/Images/no_photo.png";
 
 export const ProfilePage = (props) => {
+  /*dark mode*/
   useEffect(() => {
     if (props.darkMode)
       document
@@ -17,12 +18,12 @@ export const ProfilePage = (props) => {
         .getElementsByClassName(style.profile)[0]
         .classList.remove(style.profile_dark);
   }, [props.darkMode]);
-
+  /*render component*/
   return (
     <article className={style.profile}>
       <Header darkMode={props.darkMode} />
       <main>
-        <Title darkMode={props.darkMode}>{props.title}</Title>
+        <h1 className={style.title}>{props.title}</h1>
         <article>
           <div className={style.profileUpdate}>
             <h1>جزئیات حساب کاربری</h1>
@@ -50,6 +51,9 @@ export const ProfilePage = (props) => {
               <span className={style.fullWidth}>
                 <label>توضیحات</label>
                 <textarea />
+              </span>
+              <span className={style.fullWidth}>
+                <button>ذخیره تغییرات</button>
               </span>
             </main>
           </div>

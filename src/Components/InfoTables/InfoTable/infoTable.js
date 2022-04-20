@@ -1,38 +1,34 @@
-/*INNER COMPONENTS*/
+/*inner components*/
 import { useEffect, useState } from "react";
 /*CSS*/
 import style from "./infoTable.module.scss";
-/*CHILD COMPONENT*/
+/*child components*/
 import { Pagination } from "../../Pagination/pagination";
 import * as request from "../../../Middleware/Requests/axiosRequest";
 import * as geo_jal from "../../../Middleware/Library/gregorian_Jalali";
+import * as dark from "../../../Middleware/Library/darkMode";
 
 export const InfoTable = (props) => {
-  //const numberOfTableRows = 5;
+  /*states*/
   const [page, setPage] = useState(1);
   const [dataset, setDataset] = useState([]);
   const [dataCount, setDataCount] = useState(0);
-  const [type, setType] = useState("");
+  const [resType, setResType] = useState("");
+  const [reqType, setReqType] = useState("");
   const [numberOfTableRows, setNumberOfTableRows] = useState(5);
-
+  /*dark mode*/
   useEffect(() => {
-    const infoTable = document.getElementsByClassName(style.infoTable);
-    if (props.darkMode) {
-      for (let i = 0; i < infoTable.length; i++) {
-        infoTable[i].classList.add(style.infoTable_dark);
-      }
-    } else {
-      for (let i = 0; i < infoTable.length; i++) {
-        infoTable[i].classList.remove(style.infoTable_dark);
-      }
-    }
+    dark.darkMode(style.infoTable, style.infoTable_dark, props.darkMode);
   }, [props.darkMode]);
-
+  /*send request*/
   useEffect(() => {
     let url = "";
     let t = "";
-    if (type !== "") {
-      t = `&type=${type}`;
+    if (resType !== "") {
+      t = `&type=${resType}`;
+    }
+    if (reqType !== "") {
+      t = `&type=${reqType}`;
     }
     switch (props.name) {
       /*bus table*/
@@ -83,8 +79,8 @@ export const InfoTable = (props) => {
       }
       setDataCount(res.count);
     });
-  }, [page, props.software, props, type, numberOfTableRows]);
-
+  }, [page, props.software, props, resType, reqType, numberOfTableRows]);
+  /*converting geo date to jalali date*/
   const convertToJalali = (d) => {
     const date = d.split("T")[0];
     const time = d.split("T")[1].split(".")[0];
@@ -104,7 +100,7 @@ export const InfoTable = (props) => {
     const jDay = jDate[2];
     return jYear + "/" + jMonth + "/" + jDay + " - " + time;
   };
-
+  /*table columns*/
   const tdHandler = (rec) => {
     let td = [];
     for (let i = 0; i < Object.keys(rec).length; i++) {
@@ -135,21 +131,25 @@ export const InfoTable = (props) => {
     }
     return td;
   };
-
-  const typeHandler = (e) => {
-    setType(e.target.value);
+  /*response type*/
+  const resTypeHandler = (e) => {
+    setResType(e.target.value);
   };
-
+  /*request type*/
+  const reqTypeHandler = (e) => {
+    setReqType(e.target.value);
+  };
+  /*number of table records*/
   const numberOfTableRowsHandler = (e) => {
     setNumberOfTableRows(e.target.value);
   };
-
+  /*render component*/
   return (
     <article className={style.infoTable}>
       <h1 className={style.title}>
         {props.title} <i className="fa fa-table"></i>
       </h1>
-      <main>
+      <main className={props.software && style.softwareTable}>
         <div className={style.numberOfRecords}>
           <input
             onChange={numberOfTableRowsHandler}
@@ -160,17 +160,26 @@ export const InfoTable = (props) => {
           />
           <label>تعداد نتایج</label>
         </div>
-        {props.name === "responses" ||
-          (props.name === "lastResponses" && (
-            <div className={style.filter}>
-              <select onChange={typeHandler}>
-                <option value="">موفق و ناموفق</option>
-                <option value={0}>موفق</option>
-                <option value={1}>ناموفق</option>
-              </select>
-              <label>فیلتر نوع نتیجه</label>
-            </div>
-          ))}
+        {props.name === "lastResponses" && (
+          <div className={style.filter}>
+            <select onChange={resTypeHandler}>
+              <option value="">موفق و ناموفق</option>
+              <option value={0}>موفق</option>
+              <option value={1}>ناموفق</option>
+            </select>
+            <label>فیلتر نوع نتیجه</label>
+          </div>
+        )}
+        {props.name === "transactions" && (
+          <div className={style.filter}>
+            <select onChange={reqTypeHandler}>
+              <option value="">رویداد و درخواست</option>
+              <option value={0}>رویداد</option>
+              <option value={1}>درخواست</option>
+            </select>
+            <label>فیلتر نوع درخواست</label>
+          </div>
+        )}
       </main>
       {dataset.length ? (
         <div className={style.tableContainer}>
