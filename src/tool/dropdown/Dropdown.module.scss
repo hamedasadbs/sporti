@@ -1,0 +1,178 @@
+@import "../../GlobalStyles.scss";
+
+button {
+    outline: none;
+    border: none;
+    border-radius: 5px;
+}
+
+.login,
+.logout,
+.conformShop {
+    background-color: #21D4FD;
+    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    color: $superLightColor;
+    transition: all 0.5s;
+    padding: 10px;
+    width: 100%;
+
+    &:hover {
+        background-color: darken($btnColor1, 5%);
+    }
+}
+
+.signup {
+    background-color: transparent;
+    color: #21D4FD;
+    border: 1px solid #21D4FD;
+}
+
+.cart {
+    margin: 0;
+    position: relative;
+
+    table {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        tr {
+            display: flex;
+            background-color: $superLightColor;
+            width: 100%;
+            margin: 5px auto;
+            padding: 20px 0;
+
+            &:hover {
+                cursor: auto;
+            }
+
+            aside {
+                display: flex;
+                flex-direction: column;
+                padding: auto;
+
+                h1 {
+                    font-size: 15px;
+                    margin: 10px auto;
+                    width: 150px;
+                    height: fit-content;
+                }
+
+                .delete {
+                    width: fit-content;
+                    height: fit-content;
+                    margin: auto;
+
+                    .fillDelete {
+                        color: $hoverColor;
+                    }
+
+                    .outlineDelete {
+                        color: $hoverColor;
+                        display: none;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        .fillDelete {
+                            display: none;
+                        }
+
+                        .outlineDelete {
+                            display: initial;
+                        }
+                    }
+                }
+
+                .add {
+                    width: fit-content;
+                    height: fit-content;
+                    margin: auto;
+
+                    .fillAdd {
+                        color: $hoverColor;
+                    }
+
+                    .outlineAdd {
+                        color: $hoverColor;
+                        display: none;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        .fillAdd {
+                            display: none;
+                        }
+
+                        .outlineAdd {
+                            display: initial;
+                        }
+                    }
+                }
+
+                .minus {
+                    width: fit-content;
+                    height: fit-content;
+                    margin: auto;
+
+                    .fillMinus {
+                        color: $hoverColor;
+                    }
+
+                    .outlineMinus {
+                        color: $hoverColor;
+                        display: none;
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+
+                        .fillMinus {
+                            display: none;
+                        }
+
+                        .outlineMinus {
+                            display: initial;
+                        }
+                    }
+                }
+            }
+
+            img {
+                width: 100px;
+                height: 100px;
+                object-fit: contain;
+            }
+        }
+    }
+
+    button {
+        font-family: $font;
+    }
+}
+
+main.dropdownContainer {
+    justify-content: center;
+    background-color: darken($superLightColor, 10%);
+    width: 100%;
+
+    span.dropdown {
+        border-radius: 5px;
+        font-size: 10px;
+        line-height: 15px;
+        text-align: center;
+        margin: 5px auto;
+        padding: 10px;
+        color: $linkColor;
+        width: 70%;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $superLightColor;
+            color: $hoverColor;
+        }
+    }
+}

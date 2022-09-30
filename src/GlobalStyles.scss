@@ -1,0 +1,143 @@
+$font: "iran";
+$numberFont: "vazir";
+
+$thumbBackColor: rgb(105, 105, 105);
+$mainColor: gold;
+$superDarkColor: rgb(10, 10, 10);
+$superLightColor: white;
+$pageBackColor: whitesmoke;
+$footerBackColor: rgb(37, 37, 37);
+$linkColor: gray;
+
+$hoverColor: rgb(252, 0, 11);
+$btnColor1:#182f41;
+$btnColor2:#f19372;
+
+$big: 1300px;
+$medium: 1005px;
+$small: 705px;
+$verySmall: 515px;
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+button:hover {
+  &:hover {
+    cursor: pointer;
+    outline: none;
+  }
+
+  &:active {
+    outline: none;
+  }
+}
+
+@mixin btn($backColor, $color, $backColorHovered, $colorHovered) {
+  background-color: $backColor;
+  color: $color;
+  border: 1px $color solid;
+  font-family: $font;
+
+  &:hover {
+    background-color: $backColorHovered;
+    transition: all 0.5s;
+    color: $colorHovered;
+  }
+
+  &:not(:hover) {
+    background-color: $backColor;
+    transition: all 0.5s;
+  }
+}
+
+@mixin closeBtn($size) {
+  font-size: $size;
+  flex-grow: 0;
+  margin: 10px;
+  width: auto;
+  height: 45px;
+  font-weight: lighter;
+
+  &:hover {
+    cursor: pointer;
+    animation: rotateCloseBtn 1s;
+  }
+}
+
+@keyframes rotateCloseBtn {
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@mixin inp() {
+  width: 100%;
+  margin: auto;
+  height: 40px;
+  border: 0;
+  border-bottom: 1px solid lightgray;
+  border-radius: 0;
+  text-align: right;
+  font-size: 18px;
+  font-family: $font;
+  background-color: transparent;
+  transition: all 0.5s;
+  color: $footerBackColor;
+
+  &::placeholder {
+    font-size: 15px;
+    color: lightgray;
+  }
+
+  &:focus {
+    outline: none;
+    border-bottom: 1px solid $linkColor;
+
+    &::placeholder {
+      color: $linkColor;
+    }
+  }
+}
+
+@mixin dropdown {
+  font-size: 60px;
+  margin-top: -20px;
+  color: darken($linkColor, 20%);
+  position: absolute;
+  top: 15px;
+}
+
+@mixin dropdownDiv($width, $top, $right) {
+  position: absolute;
+  display: initial !important;
+  width: $width;
+  right: $right;
+  top: $top;
+  z-index: 5;
+  padding: 10px;
+  border: 1px $superDarkColor solid;
+  text-align: center;
+  font-family: $font;
+  transition: all 0.5s ease-in-out;
+  @include shadow();
+}
+
+@mixin shadow {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+@mixin title {
+  width: 100%;
+  background-color: $btnColor1;
+  color: $superLightColor;
+  padding: 10px;
+  text-align: center;
+  font-family: $font;
+  border-radius: 5px 5px 0 0;
+  font-size: 15px;
+}

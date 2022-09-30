@@ -1,0 +1,234 @@
+@import "../../GlobalStyles.scss";
+
+.footer {
+  width: 100%;
+  background-color: $footerBackColor;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    text-align: right;
+    margin: 25px auto;
+    direction: rtl;
+    padding-right: 10px;
+    margin-left: 0;
+    padding-bottom: 10px;
+    font-family: $font;
+    font-size: 20px;
+    font-weight: 100;
+    color: lighten($linkColor, 20%);
+    border-bottom: 1px darken($linkColor, 20%) solid;
+  }
+
+  main {
+    display: flex;
+
+    .rightSide {
+      width: 50%;
+
+      .subjects {
+        width: 600px;
+        font-family: $font;
+        font-size: 14px;
+        float: right;
+        margin-right: 100px;
+        text-align: right;
+        font-weight: 100;
+        line-height: 30px;
+
+        tbody {
+          float: right;
+
+          tr {
+            td {
+              .link {
+                color: lighten($linkColor, 20%);
+
+                &:hover {
+                  cursor: pointer;
+                  color: $hoverColor;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .leftSide {
+      width: 50%;
+      position: relative;
+
+      label {
+        text-align: right;
+        font-size: 17px;
+        font-family: $font;
+        color: lighten($linkColor, 20%);
+        width: 100%;
+        float: right;
+        position: relative;
+        margin: 15px 0;
+      }
+
+      .notificationForm {
+        text-align: right;
+        font-size: 17px;
+        font-family: $font;
+        color: lighten($linkColor, 20%);
+        width: 100%;
+        float: right;
+        position: relative;
+        margin: 15px 0;
+      }
+
+      .socialMedias {
+        float: right;
+
+        a {
+          .i {
+            font-size: 40px;
+            margin: 0 10px;
+            color: darken($linkColor, 20%);
+
+            &:hover {
+              cursor: pointer;
+              transition: all 0.5s;
+            }
+
+            &:not(:hover) {
+              color: darken($linkColor, 20%);
+              transition: all 0.2s;
+            }
+          }
+
+          .facebook {
+            &:hover {
+              color: rgb(55, 55, 248);
+            }
+          }
+
+          .telegram {
+            &:hover {
+              color: rgb(55, 161, 248);
+            }
+          }
+
+          .instagram {
+            &:hover {
+              color: rgb(255, 0, 85);
+            }
+          }
+
+          .google {
+            &:hover {
+              color: rgb(216, 27, 27);
+            }
+          }
+
+          .whatsapp {
+            &:hover {
+              color: rgb(0, 172, 23);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .copyRight {
+    text-align: center;
+    font-family: $font;
+    font-size: 17px;
+    font-weight: 100;
+    color: lighten($linkColor, 20%);
+    border-top: 1px darken($linkColor, 20%) solid;
+    width: 100%;
+    top: 500px;
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .footer {
+    main {
+      .rightSide {
+        width: 50%;
+      }
+
+      .leftSide {
+        width: 50%;
+        padding-left: 50px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .footer {
+    .title {
+      font-size: 15px;
+    }
+
+    main {
+      .rightSide {
+        width: 40%;
+
+        .subjects {
+          margin-right: 30px;
+          width: 100%;
+        }
+      }
+
+      .leftSide {
+        padding-left: 0px;
+        width: 60%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .footer {
+    .title {
+      text-align: center;
+      padding-right: 0px;
+    }
+
+    main {
+      flex-direction: column;
+
+      .rightSide,
+      .leftSide {
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 40px;
+
+        .subjects {
+          margin: 0px auto;
+          text-align: center;
+
+          tbody {
+            float: none;
+          }
+        }
+
+        label {
+          text-align: center;
+          margin: 0 auto;
+        }
+
+        .socialMedias {
+          width: 100%;
+          float: none;
+          margin: 0px auto;
+          margin-top: 100px;
+          display: flex;
+
+          a {
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

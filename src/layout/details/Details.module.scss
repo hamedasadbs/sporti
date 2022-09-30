@@ -1,0 +1,179 @@
+@import "../../GlobalStyles.scss";
+
+.details {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    @include title();
+    font-family: $font;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  article {
+    display: flex;
+    margin-top: -15px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+    .images {
+      display: flex;
+      height: 500px;
+      width: 50%;
+
+      .primary {
+        display: flex;
+        flex-grow: 2;
+
+        img {
+          width: 400px;
+          height: 400px;
+          object-fit: contain;
+          margin: 50px auto;
+        }
+      }
+
+      .secondary {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        margin: auto;
+
+        img {
+          width: 50px;
+          height: 50px;
+          margin: 0 3px;
+          transition: all 0.5s;
+          border: 1px solid $footerBackColor;
+          background-color: whitesmoke;
+          @include shadow();
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .extraInfos {
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+      width: 50%;
+
+      .tabs {
+        display: flex;
+        justify-content: flex-end;
+
+        button {
+          background-color: lightgray;
+          color: $superDarkColor;
+          border: 1px $superDarkColor solid;
+          font-family: $font;
+          font-size: 18px;
+          padding: 5px;
+          padding-left: 15px;
+          padding-right: 15px;
+          z-index: 6;
+          border-radius: 0;
+
+          &:nth-child(1) {
+            border-right: 1px transparent solid;
+            border-radius: 20px 0 0 0;
+          }
+
+          &:nth-child(3) {
+            border-left: 1px transparent solid;
+            border-radius: 0 20px 0 0;
+          }
+
+          &:hover {
+            background-color: lighten(lightgray, 5%);
+          }
+        }
+
+        .activeTab {
+          background-color: $superLightColor;
+          border-bottom: 1px transparent solid;
+
+          &:hover {
+            background-color: $superLightColor;
+          }
+        }
+      }
+
+      .description {
+        @include dropdownDiv(100%, -1px, 0);
+        height: 500px;
+        position: relative;
+        font-size: 15px;
+        text-align: right;
+        background-color: $superLightColor;
+        padding-top: 20px;
+      }
+
+      .features {
+        @include dropdownDiv(100%, -1px, 0);
+        height: 500px;
+        position: relative;
+        font-size: 15px;
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        background-color: $superLightColor;
+        padding-top: 20px;
+      }
+
+      .comments {
+        @include dropdownDiv(100%, -1px, 0);
+        height: 500px;
+        position: relative;
+        font-size: 15px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        background-color: $superLightColor;
+        padding-top: 20px;
+      }
+
+      .displayNone {
+        display: none;
+      }
+
+      .addToCart {
+        background-color: #ffa63b;
+        background-image: linear-gradient(147deg, #ffa63b 0%, #FF2525 74%);
+        color: $superLightColor;
+        font-family: $font;
+        transition: all 0.5s;
+        padding: 10px;
+        width: 100%;
+        border-radius: 5px 5px 0 0;
+        margin-top: 10px;
+        opacity: 0.9;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      .disabled {
+        background-color: rgb(230, 230, 230);
+        color: rgb(173, 173, 173);
+        transition: all 0.5s;
+        padding: 10px;
+        width: 100%;
+        font-family: $font;
+        border-radius: 5px 5px 0 0;
+        margin-top: 10px;
+
+        &:hover {
+          cursor: not-allowed;
+        }
+      }
+    }
+  }
+}

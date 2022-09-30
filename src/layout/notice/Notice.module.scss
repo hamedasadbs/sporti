@@ -1,0 +1,239 @@
+@import "../../GlobalStyles.scss";
+
+.about {
+  width: 100%;
+  height: 300px;
+  background-color: lightgray;
+  text-align: center;
+  margin-bottom: 50px;
+
+  tbody {
+    tr {
+      td {
+        p {
+          width: 100%;
+          margin-top: 50px;
+          padding-right: 80px;
+          padding-left: 50px;
+          text-align: right;
+          font-family: $font;
+          color: darken($linkColor, 30%);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .about {
+    margin-top: 80px;
+
+    tbody {
+      tr {
+        td {
+          p {
+            font-size: 15px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .about {
+    tbody {
+      tr {
+        td {
+          p {
+            font-size: 13px;
+            padding-left: 5px;
+            padding-right: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/////////////////////////////////////////////////////////@include
+
+.contact {
+  background-color: lightgray;
+  width: auto;
+
+  .contactAddress {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    p {
+      margin: 10px auto;
+      font-family: $font;
+      color: darken($linkColor, 30%);
+
+      span {
+        font-family: $numberFont;
+      }
+    }
+  }
+
+  .sendMassage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-right: 80px;
+    padding-left: 50px;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      margin: 15px;
+
+      label {
+        font-family: $font;
+        color: darken($linkColor, 30%);
+        margin: auto 0;
+      }
+
+      input {
+        @include inp();
+        background-color: white;
+        margin-right: 20px;
+        width: auto;
+
+        &::placeholder {
+          color: transparent;
+          text-align: center;
+        }
+      }
+
+      .captcha {
+        background-color: darken($footerBackColor, 10%);
+        padding: 10px;
+        text-align: center;
+        margin-left: 500px;
+
+        span {
+          margin: auto;
+        }
+      }
+
+      textarea {
+        border: none;
+        border-bottom: 1px solid $linkColor;
+        border-radius: 5px;
+        margin-right: 20px;
+        width: 100%;
+        text-align: right;
+        font-family: $font;
+        font-size: 15px;
+
+        &::placeholder {
+          color: transparent;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      .send {
+        @include btn(white, black, $hoverColor, white);
+        margin: 15px auto;
+        padding: 10px;
+        border-radius: 5px;
+        width: 300px;
+      }
+
+      .refresh {
+        @include btn(white, black, $hoverColor, white);
+        margin: 0 auto;
+        padding: 10px;
+        border-radius: 5px;
+        width: auto;
+        margin-right: -500px;
+
+        &:hover {
+          .i {
+            animation: rotateRefresh 1s infinite;
+          }
+        }
+      }
+
+      @keyframes rotateRefresh {
+        100% {
+          transform: rotate(-360deg);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .contact {
+    margin-top: 80px;
+
+    .contactAddress {
+      p {
+        text-align: center;
+      }
+    }
+
+    .sendMassage {
+      padding-right: 0px;
+      padding-left: 0;
+
+      div {
+        margin: 5px;
+
+        input {
+          width: auto;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .contact {
+    .contactAddress {
+      p {
+        font-size: 12px;
+      }
+    }
+
+    .sendMassage {
+      padding-right: 0px;
+      padding-left: 0;
+
+      div {
+        flex-direction: column;
+
+        label {
+          display: none;
+        }
+
+        input {
+          width: auto;
+
+          &::placeholder {
+            color: $linkColor;
+          }
+        }
+
+        textarea {
+          &::placeholder {
+            color: $linkColor;
+            font-size: 15px;
+            font-family: $font;
+          }
+        }
+
+        .captcha {
+          margin: 10px auto;
+        }
+      }
+    }
+  }
+}

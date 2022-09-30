@@ -1,0 +1,249 @@
+@import '../../GlobalStyles.scss';
+
+.hiddenMenu {
+  display: none;
+}
+
+@media only screen and (max-width: $big) {
+  .hiddenMenu {
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: $superLightColor;
+    z-index: 10;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+    border-bottom: 1px solid $linkColor;
+    box-shadow: 0px 0px 50px 3000px rgba(0, 0, 0, 0.6);
+
+    .closeHiddenMenu {
+      @include closeBtn(45px);
+      width: 40px;
+    }
+
+    .rightSide {
+      font-family: $font;
+      color: $linkColor;
+      position: relative;
+      z-index: 1;
+
+      li {
+        margin: 0px 20px 0px auto;
+        width: fit-content;
+        font-size: 20px;
+        display: block;
+        padding: 0px 8px;
+        font-weight: 500;
+        text-align: right;
+        line-height: 50px;
+
+        div {
+          display: none;
+        }
+
+        a {
+          color: $linkColor;
+
+          &:hover {
+            color: $hoverColor;
+            transition: all 0.2s;
+          }
+        }
+      }
+
+      li.account,
+      li.basket {
+        display: none;
+      }
+
+      li.search {
+        position: relative;
+        margin: 20px 20px 20px auto;
+        width: 300px;
+        display: flex;
+
+        input {
+          @include inp();
+
+          &::placeholder {
+            font-size: 15px;
+          }
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        button {
+          @include btn(transparent,
+            $superDarkColor,
+            darken($pageBackColor, 10%),
+            $superDarkColor);
+          width: 40px;
+          border: none;
+          border-bottom: 1px solid $linkColor;
+          border-radius: 0;
+        }
+      }
+
+      li.products,
+      li.productType {
+        ul {
+          width: 300px;
+          height: 300px;
+          overflow-y: scroll;
+
+          &::-webkit-scrollbar {
+            width: 10px;
+          }
+
+          &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px $thumbBackColor;
+            border-radius: 10px;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background: $thumbBackColor;
+            border-radius: 10px;
+          }
+
+          &::-webkit-scrollbar-thumb:active {
+            background: $hoverColor;
+          }
+
+          li {
+            &:hover {
+              cursor: pointer;
+              color: $hoverColor;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .hiddenMenu {
+    .rightSide {
+
+      li.products,
+      li.productType {
+        &:hover {
+          div {
+            @include dropdownDiv(450px, 45px, 200px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .hiddenMenu {
+    .rightSide {
+      li {
+        cursor: pointer;
+
+        label {
+          cursor: pointer;
+        }
+      }
+
+      li.account {
+        display: block;
+
+        &:hover {
+          cursor: pointer;
+          color: $hoverColor;
+        }
+
+        button {
+          width: 100%;
+          height: 40px;
+          font-family: $font;
+          font-size: 18px;
+          margin: 5px auto;
+          border-radius: 2px;
+        }
+
+        button.login {
+          @include btn($superDarkColor,
+            $superLightColor,
+            lighten($superDarkColor, 10%),
+            $superLightColor);
+        }
+
+        button.register {
+          @include btn($superLightColor,
+            $superDarkColor,
+            darken($superLightColor, 10%),
+            $superDarkColor);
+        }
+      }
+
+      li.basket {
+        display: block;
+        margin-top: 10px;
+
+        ul {
+          li {
+            font-size: 15px;
+          }
+        }
+
+        &:hover {
+          color: $hoverColor;
+
+          ul {
+            display: block;
+
+            li {
+              color: $linkColor;
+            }
+          }
+        }
+      }
+
+      li.search {
+        width: 300px;
+      }
+
+      li.products,
+      li.productType {
+        &:hover {
+          div {
+            @include dropdownDiv(250px, 45px, 200px);
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .hiddenMenu {
+    width: 400px;
+    margin-left: -60px;
+
+    .rightSide {
+      float: none;
+
+      li {
+        font-size: 15px;
+      }
+
+      li.search {
+        width: auto;
+        margin: 10px auto;
+
+        input {
+          &::placeholder {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}
