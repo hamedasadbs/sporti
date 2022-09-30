@@ -169,7 +169,7 @@ export const App = () => {
 
           <Route path="/contact" element={<Notice title="contact" />} />
 
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home setIsSignShown={setIsSignShown} />} />
         </Routes>
       </div>
     </Router>

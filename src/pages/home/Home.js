@@ -2,18 +2,19 @@
 import { Header } from "../../layout/header/Header";
 import { Advertising } from "./advertising/Advertising";
 import { Categories } from "./categories/Categories";
-import { LastProducts } from "./lastProducts/LastProducts";
+import { ProductList } from "../../layout/productList/ProductList";
 import { Footer } from "../../layout/footer/Footer";
 /*STYLE*/
 import classes from "./Home.module.scss";
 
-export const Home = () => {
+export const Home = (props) => {
   return (
     <div className={classes.home}>
-      <Header />
+      <Header setIsSignShown={props.setIsSignShown} />
       <Advertising />
       <Categories />
-      <LastProducts />
+      <ProductList title="جدیدترین محصولات" />
+      <ProductList title="محصولات منتخب" />
       <Footer />
     </div>
   );

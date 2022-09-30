@@ -1,0 +1,128 @@
+@import "../../GlobalStyles.scss";
+
+.productList {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: 100px auto;
+  position: relative;
+
+  .title {
+    @include title();
+    font-size: 15px;
+  }
+
+  .arrow {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .productList {
+    .imageList {
+      .image {
+        width: 200px;
+
+        img {
+          width: 200px;
+          height: 200px;
+        }
+
+        .caption {
+          .productName {
+            font-size: 15px;
+          }
+
+          .productPrice {
+            font-size: 14px;
+          }
+        }
+
+        .icons {
+          .stars {
+            margin: 16px 0 0 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .productList {
+    .imageList {
+      .image {
+        width: 150px;
+
+        img {
+          width: 150px;
+          height: 150px;
+        }
+
+        .caption {
+          .productName {
+            font-size: 14px;
+            padding-right: 0;
+            text-align: center;
+          }
+
+          .productPrice {
+            font-size: 13px;
+            padding-left: 0;
+            text-align: center;
+          }
+        }
+
+        button {
+          padding: 5px;
+        }
+
+        .icons {
+          flex-direction: column;
+
+          .stars {
+            margin: auto;
+          }
+
+          .liked {
+            margin: 10px auto;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .productList {
+    .imageList {
+      flex-direction: column;
+      overflow: scroll;
+      overflow-x: hidden;
+      max-height: 460px;
+
+      .image {
+        width: 250px;
+
+        img {
+          width: 250px;
+          height: 250px;
+        }
+
+        .icons {
+          flex-direction: row;
+
+          .stars {
+            margin: auto;
+          }
+
+          .liked {
+            margin: 10px auto;
+          }
+        }
+      }
+    }
+  }
+}

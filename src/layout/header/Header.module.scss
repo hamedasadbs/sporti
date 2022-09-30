@@ -3,6 +3,7 @@
 .header {
   width: 90%;
   margin: auto;
+  z-index: 3;
 
   nav {
     width: 100%;
@@ -112,7 +113,7 @@
         }
 
         &:hover {
-          background-color: darken($pageBackColor, 10%);
+          background-color: darken($superLightColor, 5%);
 
           .i {
             cursor: pointer;
@@ -184,7 +185,7 @@
 
         &:hover {
           div.basket {
-            @include dropdownDiv(300px, 100px, 0px);
+            @include dropdownDiv(300px, 110px, 0px);
           }
         }
       }

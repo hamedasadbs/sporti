@@ -1,0 +1,112 @@
+@import "../../../GlobalStyles.scss";
+
+.product {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 10px;
+  min-width: 300px;
+  @include shadow();
+  border-radius: 10px;
+  padding: 10px;
+
+  .icons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .liked {
+      font-size: 30px;
+      margin: auto;
+      margin-left: 0;
+      color: red;
+      transition: all 0.5s;
+
+      &:hover {
+        cursor: pointer;
+        color: lighten(red, 10%);
+      }
+    }
+
+    .notLiked {
+      font-size: 30px;
+      margin: auto;
+      margin-left: 0;
+      color: lightgray;
+      transition: all 0.5s;
+
+      &:hover {
+        cursor: pointer;
+        color: lighten(red, 30%);
+      }
+    }
+
+    .stars {
+      display: flex;
+      margin: auto;
+      margin-right: 0;
+
+      .star {
+        color: gray;
+      }
+
+      .lightStar {
+        color: gold;
+      }
+    }
+  }
+
+
+  img {
+    width: 70%;
+    height: 250px;
+    object-fit: contain;
+    margin: 10px auto;
+  }
+
+  .caption {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .productName {
+      font-size: 17px;
+      text-align: right;
+      direction: rtl;
+      font-family: $font;
+      margin: 10px auto;
+      margin-right: 0;
+      color: $footerBackColor;
+      text-overflow: ellipsis;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .productPrice {
+      font-size: 16px;
+      font-family: $numberFont;
+      text-align: left;
+      direction: rtl;
+      margin-top: 0px;
+      margin: 5px auto;
+      margin-right: 0;
+      color: $footerBackColor;
+    }
+  }
+
+  .link {
+    button {
+      color: $btnColor1;
+      border: 1px solid $btnColor1;
+      transition: all 0.5s;
+      font-family: $font;
+      padding: 5px;
+      border-radius: 5px;
+      width: 100%;
+
+      &:hover {
+        border-radius: 0;
+        background-color: lighten($btnColor1, 75%);
+      }
+    }
+  }
+}

@@ -6,21 +6,22 @@ import axios from "axios";
 /*CSS*/
 import classes from "./Header.module.scss";
 /*ASSETS*/
-import { Person, Search, HorizontalSplit } from "@material-ui/icons";
+import { Search, HorizontalSplit } from "@material-ui/icons";
 /** */
 import { Dropdown } from "../../tool/dropdown/Dropdown";
 import allActions from "../../redux/AllActions";
 
+import { Sign } from "../sign/Sign";
+
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 
-export const Header = () => {
+export const Header = (props) => {
   /*STATE*/
   const [sportsData, setSportsData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
-  const [isSignShown, setIsSignShown] = useState(false);
   const [isSportsOpen, setIsSportsOpen] = useState(false);
   const [isBrandsOpen, setIsBrandsOpen] = useState(false);
   const [isProductTypeOpen, setIsProductTypeOpen] = useState(false);
@@ -46,7 +47,7 @@ export const Header = () => {
   const showSign = () => {
     if (getCookie("isOnline") == false) {
       disableAll(true);
-      setIsSignShown(true);
+      props.setIsSignShown(true);
       window.scrollTo(0, 0);
       disableScroll();
     } else {
@@ -130,8 +131,12 @@ export const Header = () => {
           username: getCookie("accountName"),
         })
       )
-      .then((res) => setCart(res.data));
+      .then((res) => {
+        setCart(res.data);
+        // console.log(res.data);
+      });
   };
+
   return (
     <header className={classes.header}>
       <nav className={classes.topHeader}>
@@ -167,23 +172,35 @@ export const Header = () => {
         <ul className={classes.leftSide}>
           <li className={classes.account} onClick={showSign}>
             <PersonOutlinedIcon className={classes.i} />
-            {getCookie("isOnline") == false ? (
-              <label>حساب من</label>
-            ) : (
+            {getCookie("isOnline") ? (
               <label>{getCookie("accountName")}</label>
+            ) : (
+              <label>حساب من</label>
             )}
           </li>
-          <li className={classes.basket}>
-            <div className={classes.carts}>{cart.length}</div>
+          <li
+            className={classes.basket}
+            onClick={
+              getCookie("isOnline")
+                ? null
+                : () => alert("ابتدا وارد حساب خود شوید")
+            }
+          >
+            {getCookie("isOnline") && (
+              <div className={classes.carts}>{cart.length}</div>
+            )}
             <ShoppingCartOutlinedIcon className={classes.i} />
             <label>سبد من</label>
-            <div className={classes.basket}>
-              <Dropdown
-                type={classes.basket}
-                checkTheCart={checkTheCart}
-                cart={cart}
-              />
-            </div>
+            {getCookie("isOnline") && cart.length ? (
+              <div className={classes.basket}>
+                <Dropdown
+                  isOnline={getCookie("isOnline")}
+                  type="basket"
+                  checkTheCart={checkTheCart}
+                  cart={cart}
+                />
+              </div>
+            ) : null}
           </li>
         </ul>
       </nav>

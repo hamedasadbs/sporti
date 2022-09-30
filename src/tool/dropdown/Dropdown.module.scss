@@ -27,7 +27,7 @@ button {
     border: 1px solid #21D4FD;
 }
 
-.cart {
+.cartDropdown {
     margin: 0;
     position: relative;
 
@@ -38,10 +38,12 @@ button {
 
         tr {
             display: flex;
+            flex-direction: row-reverse;
             background-color: $superLightColor;
             width: 100%;
             margin: 5px auto;
-            padding: 20px 0;
+            justify-content: space-around;
+            align-items: center;
 
             &:hover {
                 cursor: auto;
@@ -50,92 +52,107 @@ button {
             aside {
                 display: flex;
                 flex-direction: column;
-                padding: auto;
+                justify-content: space-evenly;
+                align-items: center;
 
                 h1 {
                     font-size: 15px;
-                    margin: 10px auto;
                     width: 150px;
-                    height: fit-content;
                 }
 
-                .delete {
-                    width: fit-content;
-                    height: fit-content;
-                    margin: auto;
-
-                    .fillDelete {
-                        color: $hoverColor;
-                    }
-
-                    .outlineDelete {
-                        color: $hoverColor;
-                        display: none;
-                    }
-
-                    &:hover {
-                        cursor: pointer;
-
-                        .fillDelete {
-                            display: none;
-                        }
-
-                        .outlineDelete {
-                            display: initial;
-                        }
-                    }
+                .productName {
+                    color: $btnColor1;
                 }
 
-                .add {
-                    width: fit-content;
-                    height: fit-content;
-                    margin: auto;
+                .productPrice {
+                    color: $footerBackColor;
+                    font-family: 'vazir';
+                    direction: rtl;
+                }
 
-                    .fillAdd {
-                        color: $hoverColor;
-                    }
+                article {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
 
-                    .outlineAdd {
-                        color: $hoverColor;
-                        display: none;
-                    }
-
-                    &:hover {
-                        cursor: pointer;
+                    .add {
+                        display: flex;
 
                         .fillAdd {
+                            color: lighten($hoverColor, 20%);
                             display: none;
                         }
 
                         .outlineAdd {
-                            display: initial;
+                            color: lighten($hoverColor, 20%);
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+
+                            .fillAdd {
+                                display: initial;
+                            }
+
+                            .outlineAdd {
+                                display: none;
+                            }
                         }
                     }
-                }
 
-                .minus {
-                    width: fit-content;
-                    height: fit-content;
-                    margin: auto;
-
-                    .fillMinus {
-                        color: $hoverColor;
+                    .productCount {
+                        color: $footerBackColor;
+                        width: fit-content;
+                        margin: auto 5px;
                     }
 
-                    .outlineMinus {
-                        color: $hoverColor;
-                        display: none;
-                    }
-
-                    &:hover {
-                        cursor: pointer;
+                    .minus {
+                        display: flex;
 
                         .fillMinus {
+                            color: lighten($hoverColor, 20%);
                             display: none;
                         }
 
                         .outlineMinus {
-                            display: initial;
+                            color: lighten($hoverColor, 20%);
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+
+                            .fillMinus {
+                                display: initial;
+                            }
+
+                            .outlineMinus {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .delete {
+                        display: flex;
+
+                        .fillDelete {
+                            color: lighten($hoverColor, 20%);
+                            display: none;
+                        }
+
+                        .outlineDelete {
+                            color: lighten($hoverColor, 20%);
+                        }
+
+                        &:hover {
+                            cursor: pointer;
+
+                            .fillDelete {
+                                display: initial;
+                            }
+
+                            .outlineDelete {
+                                display: none;
+                            }
                         }
                     }
                 }
@@ -145,6 +162,8 @@ button {
                 width: 100px;
                 height: 100px;
                 object-fit: contain;
+                padding: 10px;
+                border-left: 1px solid whitesmoke;
             }
         }
     }
@@ -158,6 +177,7 @@ main.dropdownContainer {
     justify-content: center;
     background-color: darken($superLightColor, 10%);
     width: 100%;
+    z-index: 100;
 
     span.dropdown {
         border-radius: 5px;
@@ -172,7 +192,7 @@ main.dropdownContainer {
         &:hover {
             cursor: pointer;
             background-color: $superLightColor;
-            color: $hoverColor;
+            color: lighten($hoverColor, 20%);
         }
     }
 }

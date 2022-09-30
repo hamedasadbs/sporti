@@ -7,6 +7,7 @@
   margin-top: 60px;
   padding: 5px 10px;
   justify-content: center;
+  z-index: 1;
 
   .photoContainer {
     width: 330px;
@@ -24,7 +25,7 @@
 
   .titleContainer {
     margin-left: 70px;
-    z-index: 99;
+    z-index: 2;
 
     h1 {
       font-family: "iran";

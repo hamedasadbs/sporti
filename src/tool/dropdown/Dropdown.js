@@ -1,7 +1,6 @@
 /*INNER-COMPONENTS*/
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
 /*CSS*/
 import detailsStyle from "../../layout/details/Details.module.scss";
 import classes from "./Dropdown.module.scss";
@@ -15,6 +14,8 @@ import {
   RemoveCircleOutline,
 } from "@material-ui/icons";
 
+import * as separateLib from "../../logic/Separate";
+
 export const Dropdown = (props) => {
   /*STATES*/
   const [sportsData, setSportsData] = useState([]);
@@ -25,8 +26,6 @@ export const Dropdown = (props) => {
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
   const cartDeleteURL = "http://localhost/bsShop/cart.php";
-  const cart = props.cart;
-  const isOnline = useSelector((state) => state.isOnline);
   /*FUNCTIONS*/
   useEffect(() => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
@@ -52,30 +51,15 @@ export const Dropdown = (props) => {
   return (
     <>
       {props.type === "basket" ? (
-        isOnline == false ? (
-          <span>لطفا وارد حساب کاربری خود شوید</span>
-        ) : cart.length === 0 ? (
-          <span>سبد شما خالی است</span>
-        ) : (
-          <span className={classes.cart}>
-            <table>
-              {cart.map((res, index) => (
-                <tr key={index}>
-                  <img
-                    src={`/Images/Product/${res.image}`}
-                    alt={res.fa_title}
-                  />
-                  <aside>
-                    <article>
-                      <span
-                        onClick={() =>
-                          deleteCartHandler(res.username, res.product_id)
-                        }
-                        className={classes.minus}
-                      >
-                        <RemoveCircle className={classes.fillMinus} />
-                        <RemoveCircleOutline className={classes.outlineMinus} />
-                      </span>
+        <span className={classes.cartDropdown}>
+          <table>
+            {props.cart.map((res, index) => (
+              <tr key={index}>
+                <img src={`/Images/Product/${res.image}`} alt={res.fa_title} />
+                <aside>
+                  <h1 className={classes.productName}>{res.fa_title}</h1>
+                  <article>
+                    {res.number < 2 ? (
                       <span
                         onClick={() =>
                           deleteCartHandler(res.username, res.product_id)
@@ -85,30 +69,40 @@ export const Dropdown = (props) => {
                         <Delete className={classes.fillDelete} />
                         <DeleteOutline className={classes.outlineDelete} />
                       </span>
+                    ) : (
                       <span
                         onClick={() =>
                           deleteCartHandler(res.username, res.product_id)
                         }
-                        className={classes.add}
+                        className={classes.minus}
                       >
-                        <AddCircle className={classes.fillAdd} />
-                        <AddCircleOutline className={classes.outlineAdd} />
+                        <RemoveCircle className={classes.fillMinus} />
+                        <RemoveCircleOutline className={classes.outlineMinus} />
                       </span>
-                    </article>
-                    <h1>{res.fa_title}</h1>
-                    <h1>
-                      {` ${res.number} `}
-                      :تعداد{" "}
-                    </h1>
-                  </aside>
-                </tr>
-              ))}
-            </table>
-            <button onClick={props.signInClick} className={classes.conformShop}>
-              تکمیل فرآیند خرید
-            </button>
-          </span>
-        )
+                    )}
+                    <h1 className={classes.productCount}>{res.number}</h1>
+                    <span
+                      onClick={() =>
+                        deleteCartHandler(res.username, res.product_id)
+                      }
+                      className={classes.add}
+                    >
+                      <AddCircle className={classes.fillAdd} />
+                      <AddCircleOutline className={classes.outlineAdd} />
+                    </span>
+                  </article>
+                  <h1 className={classes.productPrice}>
+                    {separateLib.separate(res.price) + " "}
+                    تومان
+                  </h1>
+                </aside>
+              </tr>
+            ))}
+          </table>
+          <button onClick={props.signInClick} className={classes.conformShop}>
+            تکمیل فرآیند خرید
+          </button>
+        </span>
       ) : props.type === "sports" ? (
         <main className={classes.dropdownContainer}>
           {sportsData.map((res, index) => (

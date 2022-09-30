@@ -120,10 +120,11 @@ button:hover {
   top: $top;
   z-index: 5;
   padding: 10px;
-  border: 1px $superDarkColor solid;
+  // border: 1px $superDarkColor solid;
   text-align: center;
   font-family: $font;
   transition: all 0.5s ease-in-out;
+  background-color: darken($superLightColor, 5%);
   @include shadow();
 }
 

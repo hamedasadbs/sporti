@@ -1,5 +1,5 @@
 /*INNER-COMPONENTS*/
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 /*CSS*/
@@ -140,7 +140,7 @@ export const Sign = (props) => {
             setCookie("isOnline", true, 100);
             setCookie("accountName", res.data[0].username, 100);
             dispatch(allActions.cookieActions.setOnline());
-            props.close(true);
+            props.close();
             window.location.href = window.location.href;
           }
         });
@@ -158,7 +158,7 @@ export const Sign = (props) => {
   };
 
   return (
-    <>
+    <div className={classes.signContainer}>
       <article className={classes.sign}>
         {sign === "login" ? (
           <>
@@ -275,6 +275,6 @@ export const Sign = (props) => {
           </>
         )}
       </article>
-    </>
+    </div>
   );
 };
