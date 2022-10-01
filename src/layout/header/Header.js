@@ -1,20 +1,20 @@
 /*INNER-COMPONENTS*/
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import { Context } from "../../logic/Context";
 /*CSS*/
 import classes from "./Header.module.scss";
 /*ASSETS*/
 import { Search, HorizontalSplit } from "@material-ui/icons";
 /** */
 import { Dropdown } from "../../tool/dropdown/Dropdown";
-import allActions from "../../redux/AllActions";
 
-import { Sign } from "../sign/Sign";
-
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+
+import * as cookieLib from "../../logic/Cookie";
 
 export const Header = (props) => {
   /*STATE*/
@@ -28,16 +28,13 @@ export const Header = (props) => {
   const [isBasketOpen, setIsBasketOpen] = useState(false);
   const [cart, setCart] = useState([]);
   /*VARIABLE*/
-  const dispatch = useDispatch();
-  const page = useSelector((state) => state.pageReducer.page);
+  const [login, setLogin] = useContext(Context).loginCon;
+  const [username, setUsername] = useContext(Context).usernameCon;
+  const [page, setPage] = useContext(Context).pageCon;
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
   const cartURL = "http://localhost/bsShop/cart.php";
-
-  const pageHandler = (pageName) => {
-    dispatch(allActions.pageActions.setPage(pageName));
-  };
 
   const showHiddenMenu = () => {
     setIsHiddenMenuShown(true);
@@ -45,7 +42,7 @@ export const Header = (props) => {
   };
 
   const showSign = () => {
-    if (getCookie("isOnline") == false) {
+    if (login == false) {
       disableAll(true);
       props.setIsSignShown(true);
       window.scrollTo(0, 0);
@@ -57,9 +54,10 @@ export const Header = (props) => {
 
   const logoutHandler = () => {
     if (window.confirm("آیا میخواهید از این حساب خارج شوید؟")) {
-      setCookie("isOnline", "", -100);
-      setCookie("accountName", "", -100);
-      window.location.href = window.location.href;
+      cookieLib.setCookie("login", "", -100);
+      setLogin(false);
+      cookieLib.setCookie("username", "", -100);
+      setUsername("");
     }
   };
 
@@ -83,42 +81,12 @@ export const Header = (props) => {
     }
   };
 
-  const getCookie = (cName) => {
-    const nameString = cName + "=";
-
-    const value = document.cookie.split("; ").filter((item) => {
-      return item.includes(nameString);
-    });
-
-    if (value.length) {
-      return value[0].substring(nameString.length, value[0].length);
-    } else {
-      return "";
-    }
-  };
-
-  const setCookie = (cName, cValue, minutes) => {
-    let d = new Date();
-    d.setTime(d.getTime() + minutes * 60 * 1000);
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cName + "=" + cValue + "; " + expires;
-  };
-
   useEffect(() => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
     axios.post(brandsURL).then((res) => setBrandsData(res.data));
     axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
-    if (getCookie("isOnline")) {
+    if (login) {
       checkTheCart();
-      dispatch(allActions.cookieActions.setOnline());
-      dispatch(
-        allActions.cookieActions.setAccountName(getCookie("accountName"))
-      );
-    } else {
-      dispatch(allActions.cookieActions.setOffline());
-      dispatch(
-        allActions.cookieActions.setAccountName(getCookie("accountName"))
-      );
     }
   }, []);
 
@@ -128,12 +96,11 @@ export const Header = (props) => {
         cartURL,
         JSON.stringify({
           method: "checkTheCart",
-          username: getCookie("accountName"),
+          username: username,
         })
       )
       .then((res) => {
         setCart(res.data);
-        // console.log(res.data);
       });
   };
 
@@ -147,7 +114,7 @@ export const Header = (props) => {
           <div
             className={classes.mainLogo}
             onClick={() => {
-              pageHandler("http://localhost:3000/");
+              setPage("home");
             }}
           >
             <Link to="/#">
@@ -172,29 +139,19 @@ export const Header = (props) => {
         <ul className={classes.leftSide}>
           <li className={classes.account} onClick={showSign}>
             <PersonOutlinedIcon className={classes.i} />
-            {getCookie("isOnline") ? (
-              <label>{getCookie("accountName")}</label>
-            ) : (
-              <label>حساب من</label>
-            )}
+            {login ? <label>{username}</label> : <label>حساب من</label>}
           </li>
           <li
             className={classes.basket}
-            onClick={
-              getCookie("isOnline")
-                ? null
-                : () => alert("ابتدا وارد حساب خود شوید")
-            }
+            onClick={login ? null : () => alert("ابتدا وارد حساب خود شوید")}
           >
-            {getCookie("isOnline") && (
-              <div className={classes.carts}>{cart.length}</div>
-            )}
+            {login && <div className={classes.carts}>{cart.length}</div>}
             <ShoppingCartOutlinedIcon className={classes.i} />
             <label>سبد من</label>
-            {getCookie("isOnline") && cart.length ? (
+            {login && cart.length ? (
               <div className={classes.basket}>
                 <Dropdown
-                  isOnline={getCookie("isOnline")}
+                  login={login}
                   type="basket"
                   checkTheCart={checkTheCart}
                   cart={cart}
@@ -210,14 +167,12 @@ export const Header = (props) => {
           <Link
             className={classes.link}
             onClick={() => {
-              pageHandler("http://localhost:3000/contact");
+              setPage("contact");
             }}
             to="/contact"
           >
             <span
-              {...(page === "http://localhost:3000/contact"
-                ? { className: classes.activeNav }
-                : {})}
+              {...(page === "contact" ? { className: classes.activeNav } : {})}
             >
               ارتباط با ما
             </span>
@@ -227,14 +182,12 @@ export const Header = (props) => {
           <Link
             className={classes.link}
             onClick={() => {
-              pageHandler("http://localhost:3000/about");
+              setPage("about");
             }}
             to="/about"
           >
             <span
-              {...(page === "http://localhost:3000/about"
-                ? { className: classes.activeNav }
-                : {})}
+              {...(page === "about" ? { className: classes.activeNav } : {})}
             >
               درباره ما
             </span>
@@ -244,12 +197,12 @@ export const Header = (props) => {
           <Link
             className={classes.link}
             onClick={() => {
-              pageHandler("http://localhost:3000/blog-news");
+              setPage("blog-news");
             }}
             to="/blog-news"
           >
             <span
-              {...(page === "http://localhost:3000/blog-news"
+              {...(page === "blog-news"
                 ? { className: classes.activeNav }
                 : {})}
             >
@@ -263,6 +216,7 @@ export const Header = (props) => {
               <div className={classes.productType}>
                 <Dropdown type="productType" />
               </div>
+              <KeyboardArrowDownIcon />
               نوع محصول
             </span>
           </Link>
@@ -273,6 +227,7 @@ export const Header = (props) => {
               <div className={classes.brands}>
                 <Dropdown type="brands" />
               </div>
+              <KeyboardArrowDownIcon />
               برند ها
             </span>
           </Link>
@@ -283,6 +238,7 @@ export const Header = (props) => {
               <div className={classes.sports}>
                 <Dropdown type="sports" />
               </div>
+              <KeyboardArrowDownIcon />
               ورزش ها
             </span>
           </Link>
@@ -291,14 +247,12 @@ export const Header = (props) => {
           <Link
             className={classes.link}
             onClick={() => {
-              pageHandler("http://localhost:3000/");
+              setPage("home");
             }}
             to="/#"
           >
             <span
-              {...(page === "http://localhost:3000/"
-                ? { className: classes.activeNav }
-                : {})}
+              {...(page === "home" ? { className: classes.activeNav } : {})}
             >
               خانه
             </span>

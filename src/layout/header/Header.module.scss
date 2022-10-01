@@ -62,7 +62,6 @@
             width: 210px;
             height: 80px;
             margin: 10px 0 0 -50px;
-            filter: drop-shadow(-10px 10px 10px lightgray);
           }
         }
       }
@@ -243,9 +242,8 @@
         span.brands,
         span.productType {
           display: flex;
-          flex-direction: column-reverse;
           position: relative;
-          align-items: center;
+          justify-content: center;
         }
 
         &:hover {

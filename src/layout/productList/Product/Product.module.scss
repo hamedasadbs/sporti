@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   margin: 30px 10px;
-  min-width: 300px;
+  width: 270px;
   @include shadow();
   border-radius: 10px;
   padding: 10px;
@@ -76,7 +76,6 @@
       margin: 10px auto;
       margin-right: 0;
       color: $footerBackColor;
-      text-overflow: ellipsis;
       overflow-x: hidden;
       width: 100%;
     }
@@ -95,17 +94,17 @@
 
   .link {
     button {
-      color: $btnColor1;
-      border: 1px solid $btnColor1;
+      color: $primaryColor1;
+      border: 1px solid $primaryColor1;
       transition: all 0.5s;
-      font-family: $font;
+      font-family: 'vazir';
       padding: 5px;
       border-radius: 5px;
       width: 100%;
 
       &:hover {
         border-radius: 0;
-        background-color: lighten($btnColor1, 75%);
+        background-color: lighten($primaryColor1, 75%);
       }
     }
   }

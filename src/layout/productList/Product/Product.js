@@ -1,8 +1,8 @@
 /*INNER-COMPONENTS*/
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { Context } from "../../../logic/Context";
 /*CSS*/
 import classes from "./Product.module.scss";
 /*ASSETS*/
@@ -15,9 +15,9 @@ export const Product = (props) => {
   const [liked, setLiked] = useState([]);
   const [loaded, setLoaded] = useState(false);
   /*VARIABLES*/
+  const login = useContext(Context).loginCon[0];
+  const username = useContext(Context).usernameCon[0];
   const likedURL = "http://localhost/bsShop/liked.php";
-  const isOnline = useSelector((state) => state.cookieReducer.isOnline);
-  const accountName = useSelector((state) => state.cookieReducer.accountName);
   /*FUNCTIONS*/
   useEffect(() => {
     checkTheLiked();
@@ -33,20 +33,20 @@ export const Product = (props) => {
         likedURL,
         JSON.stringify({
           method: "checkTheLiked",
-          username: accountName,
+          username: username,
         })
       )
       .then((res) => setLiked(res.data));
   };
 
   const addToLiked = (id) => {
-    if (isOnline) {
+    if (login) {
       axios
         .post(
           likedURL,
           JSON.stringify({
             method: "addToLiked",
-            username: accountName,
+            username: username,
             productId: id,
           })
         )

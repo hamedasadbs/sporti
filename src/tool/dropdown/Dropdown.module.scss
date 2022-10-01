@@ -17,7 +17,7 @@ button {
     width: 100%;
 
     &:hover {
-        background-color: darken($btnColor1, 5%);
+        background-color: darken($primaryColor1, 5%);
     }
 }
 
@@ -61,7 +61,7 @@ button {
                 }
 
                 .productName {
-                    color: $btnColor1;
+                    color: $primaryColor1;
                 }
 
                 .productPrice {

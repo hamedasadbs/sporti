@@ -1,7 +1,6 @@
 /*INNER-COMPONENTS*/
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useDispatch } from "react-redux";
 /*CSS*/
 import classes from "./Sign.module.scss";
 /*CHILD-COMPONENTS*/
@@ -15,7 +14,6 @@ import {
   AccountCircle,
   PersonAdd,
 } from "@material-ui/icons";
-import allActions from "../../redux/AllActions";
 
 export const Sign = (props) => {
   /*STATES*/
@@ -26,10 +24,6 @@ export const Sign = (props) => {
   const [email, setEmail] = useState(null);
   const [signupPassword, setSignupPassword] = useState(null);
   let [loginPassword, setLoginPassword] = useState(null);
-  /*VARIABLES*/
-  const loginURL = "http://localhost/bsShop/login.php";
-  const signupURL = "http://localhost/bsShop/signup.php";
-  const dispatch = useDispatch();
   /*FUNCTIONS*/
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -89,22 +83,25 @@ export const Sign = (props) => {
       if (document.getElementById("notRobot").checked) {
         if (validateEmail(email) && validatePassword(signupPassword)) {
           axios
-            .post(
-              signupURL,
-              JSON.stringify({
-                name: name,
-                username: signupUsername,
-                email: email,
-                password: signupPassword,
-              })
-            )
+            .post("http://localhost:8080/signup", {
+              name: name,
+              username: signupUsername,
+              email: email,
+              password: signupPassword,
+            })
             .then((res) => {
-              alert(res.data);
-              setLoginUsername(signupUsername);
-              loginUsername = signupUsername;
-              setLoginPassword(signupPassword);
-              loginPassword = signupPassword;
-              enterToAccount();
+              setCookie("login", true, 60);
+              setCookie("username", signupUsername, 60);
+              if (res.status == 200) {
+                setLoginUsername(signupUsername);
+                loginUsername = signupUsername;
+                setLoginPassword(signupPassword);
+                loginPassword = signupPassword;
+                enterToAccount();
+              }
+            })
+            .catch(() => {
+              alert("نام کاربری یا رمز وارد شده اشتباه است");
             });
         }
       } else alert("لطفا تیک من ربات نیستم را بزنید");
@@ -123,26 +120,18 @@ export const Sign = (props) => {
   const enterToAccount = () => {
     if (loginUsername != null && loginPassword != null) {
       axios
-        .post(
-          loginURL,
-          JSON.stringify({
-            username: loginUsername,
-            password: loginPassword,
-          })
-        )
+        .post("http://localhost:8080/login", {
+          username: loginUsername,
+          password: loginPassword,
+        })
         .then((res) => {
-          if (res.data[0] == null)
-            alert("نام کاربری یا رمز عبور شما اشتباه است");
-          else {
-            alert(
-              `شما با نام ${res.data[0].username} وارد حساب کاربری خود شدید`
-            );
-            setCookie("isOnline", true, 100);
-            setCookie("accountName", res.data[0].username, 100);
-            dispatch(allActions.cookieActions.setOnline());
-            props.close();
-            window.location.href = window.location.href;
-          }
+          setCookie("login", true, 60);
+          setCookie("username", loginUsername, 60);
+          alert(`شما با نام ${loginUsername} وارد حساب کاربری خود شدید`);
+          window.location.href = "/";
+        })
+        .catch((err) => {
+          alert(err);
         });
     } else {
       alert("لطفا تمام اطلاعات خود را تکمیل کرده سپس ثبت کنید");

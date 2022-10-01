@@ -6,32 +6,45 @@
   display: flex;
   margin-top: 60px;
   padding: 5px 10px;
-  justify-content: center;
   z-index: 1;
+  justify-content: center;
+  position: relative;
 
   .photoContainer {
-    width: 330px;
-    margin-right: 70px;
+    width: 100%;
+    position: absolute;
     z-index: 1;
 
     .photo {
+      position: absolute;
       width: 100px;
       height: 100px;
       margin: 5px;
-      position: absolute;
-      opacity: 0.1;
+      opacity: 0.05;
+    }
+  }
+
+  .bannerContainer {
+    z-index: 1;
+    margin-right: 10px;
+    filter: drop-shadow(16px 16px 10px lightgray);
+
+    .banner {
+      width: 450px;
+      object-fit: cover;
+      margin: 5px;
     }
   }
 
   .titleContainer {
-    margin-left: 70px;
     z-index: 2;
+    margin-left: 10px;
 
     h1 {
       font-family: "iran";
       font-size: 35px;
       text-align: right;
-      color: $btnColor1;
+      color: $primaryColor3;
       padding-right: 10px;
       border-right: 5px double $btnColor2;
     }

@@ -10,10 +10,12 @@ export const Categories = () => {
   /*STATES*/
   const [productsData, setProductsData] = useState([]);
   /*VARIABLES*/
-  const url = "http://localhost/bsShop/category.php";
+  const url = "http://localhost:8080/category";
   /*FUNCTIONS*/
   useEffect(() => {
-    axios.post(url).then((res) => setProductsData(res.data));
+    axios.get(url).then((res) => {
+      setProductsData(res.data.cat);
+    });
   }, []);
 
   return (

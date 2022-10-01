@@ -17,10 +17,12 @@ export const ProductList = (props) => {
 
   const [loaded, setLoaded] = useState(false);
   /*VARIABLES*/
-  const url = "http://localhost/bsShop/lastProducts.php";
+  const url = "http://localhost:8080/products";
   /*FUNCTIONS*/
   useEffect(() => {
-    axios.post(url).then((res) => setProductsData(res.data));
+    axios.get(url).then((res) => {
+      setProductsData(res.data.pro);
+    });
   }, []);
 
   setTimeout(() => {

@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 /*CSS*/
 import classes from "./Advertising.module.scss";
 
+import banner from "../../../assets/images/banner.png";
+
 export const Advertising = () => {
   let photos = [];
   for (let i = 1; i <= 12; i++) {
@@ -20,12 +22,15 @@ export const Advertising = () => {
               src={photo}
               alt={photo}
               style={{
-                top: Math.random() * (600 - 200) + 200,
-                right: (index + 1) * 110,
+                top: Math.random() * (500 + 80) - 80,
+                right: (index + 1) * 100,
                 transform: `rotate(${Math.random() * 360}deg)`,
               }}
             />
           ))}
+      </div>
+      <div className={classes.bannerContainer}>
+        <img className={classes.banner} src={banner} alt="banner" />
       </div>
       <div className={classes.titleContainer}>
         <h1>فروشگاه اسپورتی</h1>
