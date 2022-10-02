@@ -1,16 +1,14 @@
-/*INNER-COMPONENTS*/
-import React from "react";
-import { Link } from "react-router-dom";
-/*CSS*/
+/*STYLE*/
 import classes from "./Advertising.module.scss";
-
-import banner from "../../../assets/images/banner.png";
+/*IMAGE*/
+import banner from "../../../assets/images/banner.svg";
 
 export const Advertising = () => {
   let photos = [];
   for (let i = 1; i <= 12; i++) {
     photos.push(`/Images/advertising/ad${i}.svg`);
   }
+  /*JSX*/
   return (
     <article className={classes.advertising}>
       <div className={classes.photoContainer}>

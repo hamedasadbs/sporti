@@ -1,19 +1,18 @@
-/*INNER-COMPONENTS*/
-import React, { useEffect, useState } from "react";
+/*INNER COMPONENT*/
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
-/*CSS*/
+/*STYLE*/
 import classes from "./Gallery.module.scss";
-/*CHILD-COMPONENTS*/
+/*CHILD COMPONENT*/
 import { Product } from "./product/Product";
 import { Details } from "../details/Details";
-import { Logic } from "../../logic/Logic";
-/*ASSETS*/
+/*MUI*/
 import Checkbox from "@material-ui/core/Checkbox";
 import { ChevronRightTwoTone, ChevronLeftTwoTone } from "@material-ui/icons";
 
 export const Gallery = (props) => {
-  /*STATES*/
+  /*STATE*/
   const [totalGallery, setTotalGallery] = useState([]);
   const [gallery, setGallery] = useState([]);
   let [minPrice, setMinPrice] = useState(0);
@@ -24,12 +23,12 @@ export const Gallery = (props) => {
   const [kindFilter, setKindFilter] = useState([]);
   const [brandFilter, setBrandFilter] = useState([]);
   const [type, setType] = useState(["کفش"]);
-  /*VARIABLES*/
+  /*VARIABLE*/
   const url = "http://localhost/bsShop/gallery.php";
   const productsURL = "http://localhost/bsShop/products.php";
   const numberOfItemsToShow = 10;
   const numberOfOffsets = totalGallery.length / numberOfItemsToShow;
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   const updateRequest = () => {
     let offset = (page - 1) * numberOfItemsToShow;
     axios
@@ -85,7 +84,6 @@ export const Gallery = (props) => {
         })
       )
       .then((res) => setBrandFilter(res.data));
-    //alert(Logic())
   };
 
   useEffect(() => {
@@ -157,225 +155,221 @@ export const Gallery = (props) => {
       </li>
     );
   }
-
+  /*JSX*/
   return (
-    <>
-      <Routes>
-        {productsData.map((res) => (
-          <Route
-            path={`/category/${res.category}/${res.fa_title}`}
-            key={res.name}
-            element={
-              <Details
-                faTitle={res.fa_title}
-                image={res.image}
-                price={res.price}
-                desc={res.description}
-                type={res.type}
-                kind={res.kind}
-                size={res.size}
-                exi={res.existence}
-                checkTheCart={props.checkTheCart}
-                key={res.id}
-                id={res.id}
-                cart={props.cart}
-              />
-            }
-          />
-        ))}
-        {productsData.map((res) => (
-          <Route
-            path={`/category/${res.brand}/${res.fa_title}`}
-            key={res.name}
-            element={
-              <Details
-                faTitle={res.fa_title}
-                image={res.image}
-                price={res.price}
-                desc={res.description}
-                type={res.type}
-                kind={res.kind}
-                size={res.size}
-                exi={res.existence}
-                checkTheCart={props.checkTheCart}
-                key={res.id}
-                id={res.id}
-                cart={props.cart}
-              />
-            }
-          />
-        ))}
-        {productsData.map((res) => (
-          <Route
-            path={`/category/${res.type}/${res.fa_title}`}
-            key={res.name}
-            element={
-              <Details
-                faTitle={res.fa_title}
-                image={res.image}
-                price={res.price}
-                desc={res.description}
-                type={res.type}
-                kind={res.kind}
-                size={res.size}
-                exi={res.existence}
-                checkTheCart={props.checkTheCart}
-                key={res.id}
-                id={res.id}
-                cart={props.cart}
-              />
-            }
-          />
-        ))}
+    <Routes>
+      {productsData.map((res) => (
         <Route
-          path={`/category/${props.categoryName}`}
+          path={`/category/${res.category}/${res.fa_title}`}
+          key={res.name}
           element={
-            <article className={classes.galleries}>
-              <div className={classes.gallery}>
-                <h1 className={classes.title}>{props.faTitle}</h1>
-                <main>
-                  <h1>dsf</h1>
-                  {gallery.length > 0 ? (
-                    gallery.map((res) => {
-                      return res.price <= maxPrice && res.price >= minPrice ? (
-                        res.existence !== 0 ? (
-                          <Product
-                            exi={res.existence}
-                            faTitle={res.fa_title}
-                            price={res.price}
-                            image={res.image}
-                            key={res.id}
-                            id={res.id}
-                            categoryName={props.categoryName}
-                            checkTheCart={props.checkTheCart}
-                            cart={props.cart}
-                          />
-                        ) : (
-                          <Product
-                            exi={res.existence}
-                            faTitle={res.fa_title}
-                            price={res.price}
-                            image={res.image}
-                            key={res.id}
-                            categoryName={props.categoryName}
-                          />
-                        )
-                      ) : null;
-                    })
-                  ) : (
-                    <span className={classes.nothingToShow}>
-                      !موردی یافت نشد
-                    </span>
-                  )}
-                </main>
-                {gallery.length > 0 && (
-                  <ul className={classes.offset}>
-                    <li onClick={offsetDecrescent}>
-                      <ChevronLeftTwoTone />
-                    </li>
-                    <li onClick={offsetFirst}>اول</li>
-                    {numbers}
-                    <li onClick={offsetLast}>آخر</li>
-                    <li onClick={offsetCrescent}>
-                      <ChevronRightTwoTone />
-                    </li>
-                  </ul>
-                )}
-              </div>
-              <div className={classes.filter}>
-                <table className={classes.price}>
-                  <thead>
-                    <tr>
-                      <td>قیمت (تومان)</td>
-                    </tr>
-                  </thead>
-                  <tbody className={classes.price}>
-                    <tr>
-                      <td>
-                        <span>{minPrice + " - " + maxPrice}</span>
-                        <div className={classes.priceBar}>
-                          <input
-                            onChange={showMinRange}
-                            type="range"
-                            min="0"
-                            max="500000"
-                            value={minPrice}
-                            step="10000"
-                          />
-                          <input
-                            onChange={showMaxRange}
-                            type="range"
-                            min="0"
-                            max="500000"
-                            value={maxPrice}
-                            step="10000"
-                          />
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <table className={classes.type}>
-                  <thead>
-                    <tr>
-                      <td>نوع کالا</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {typeFilter.map((res) => (
-                      <tr key={res.fa_type}>
-                        <td>
-                          {res.fa_type}
-                          <Checkbox
-                            onChange={filterHandler}
-                            value={res.fa_type}
-                            color="primary"
-                          />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <table className={classes.kind}>
-                  <thead>
-                    <tr>
-                      <td>جنس کالا</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {kindFilter.map((res) => (
-                      <tr key={res.kind}>
-                        <td>
-                          {res.kind}
-                          <Checkbox color="secondary" />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <table className={classes.brand}>
-                  <thead>
-                    <tr>
-                      <td>برند کالا</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {brandFilter.map((res) => (
-                      <tr key={res.brand}>
-                        <td>
-                          {res.brand}
-                          <Checkbox color="secondary" />
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-                <button onClick={updateRequest}>اعمال فیلتر</button>
-              </div>
-            </article>
+            <Details
+              faTitle={res.fa_title}
+              image={res.image}
+              price={res.price}
+              desc={res.description}
+              type={res.type}
+              kind={res.kind}
+              size={res.size}
+              exi={res.existence}
+              checkTheCart={props.checkTheCart}
+              key={res.id}
+              id={res.id}
+              cart={props.cart}
+            />
           }
         />
-      </Routes>
-    </>
+      ))}
+      {productsData.map((res) => (
+        <Route
+          path={`/category/${res.brand}/${res.fa_title}`}
+          key={res.name}
+          element={
+            <Details
+              faTitle={res.fa_title}
+              image={res.image}
+              price={res.price}
+              desc={res.description}
+              type={res.type}
+              kind={res.kind}
+              size={res.size}
+              exi={res.existence}
+              checkTheCart={props.checkTheCart}
+              key={res.id}
+              id={res.id}
+              cart={props.cart}
+            />
+          }
+        />
+      ))}
+      {productsData.map((res) => (
+        <Route
+          path={`/category/${res.type}/${res.fa_title}`}
+          key={res.name}
+          element={
+            <Details
+              faTitle={res.fa_title}
+              image={res.image}
+              price={res.price}
+              desc={res.description}
+              type={res.type}
+              kind={res.kind}
+              size={res.size}
+              exi={res.existence}
+              checkTheCart={props.checkTheCart}
+              key={res.id}
+              id={res.id}
+              cart={props.cart}
+            />
+          }
+        />
+      ))}
+      <Route
+        path={`/category/${props.categoryName}`}
+        element={
+          <article className={classes.galleries}>
+            <div className={classes.gallery}>
+              <h1 className={classes.title}>{props.faTitle}</h1>
+              <main>
+                <h1>dsf</h1>
+                {gallery.length > 0 ? (
+                  gallery.map((res) => {
+                    return res.price <= maxPrice && res.price >= minPrice ? (
+                      res.existence !== 0 ? (
+                        <Product
+                          exi={res.existence}
+                          faTitle={res.fa_title}
+                          price={res.price}
+                          image={res.image}
+                          key={res.id}
+                          id={res.id}
+                          categoryName={props.categoryName}
+                          checkTheCart={props.checkTheCart}
+                          cart={props.cart}
+                        />
+                      ) : (
+                        <Product
+                          exi={res.existence}
+                          faTitle={res.fa_title}
+                          price={res.price}
+                          image={res.image}
+                          key={res.id}
+                          categoryName={props.categoryName}
+                        />
+                      )
+                    ) : null;
+                  })
+                ) : (
+                  <span className={classes.nothingToShow}>!موردی یافت نشد</span>
+                )}
+              </main>
+              {gallery.length > 0 && (
+                <ul className={classes.offset}>
+                  <li onClick={offsetDecrescent}>
+                    <ChevronLeftTwoTone />
+                  </li>
+                  <li onClick={offsetFirst}>اول</li>
+                  {numbers}
+                  <li onClick={offsetLast}>آخر</li>
+                  <li onClick={offsetCrescent}>
+                    <ChevronRightTwoTone />
+                  </li>
+                </ul>
+              )}
+            </div>
+            <div className={classes.filter}>
+              <table className={classes.price}>
+                <thead>
+                  <tr>
+                    <td>قیمت (تومان)</td>
+                  </tr>
+                </thead>
+                <tbody className={classes.price}>
+                  <tr>
+                    <td>
+                      <span>{minPrice + " - " + maxPrice}</span>
+                      <div className={classes.priceBar}>
+                        <input
+                          onChange={showMinRange}
+                          type="range"
+                          min="0"
+                          max="500000"
+                          value={minPrice}
+                          step="10000"
+                        />
+                        <input
+                          onChange={showMaxRange}
+                          type="range"
+                          min="0"
+                          max="500000"
+                          value={maxPrice}
+                          step="10000"
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <table className={classes.type}>
+                <thead>
+                  <tr>
+                    <td>نوع کالا</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {typeFilter.map((res) => (
+                    <tr key={res.fa_type}>
+                      <td>
+                        {res.fa_type}
+                        <Checkbox
+                          onChange={filterHandler}
+                          value={res.fa_type}
+                          color="primary"
+                        />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <table className={classes.kind}>
+                <thead>
+                  <tr>
+                    <td>جنس کالا</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {kindFilter.map((res) => (
+                    <tr key={res.kind}>
+                      <td>
+                        {res.kind}
+                        <Checkbox color="secondary" />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <table className={classes.brand}>
+                <thead>
+                  <tr>
+                    <td>برند کالا</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  {brandFilter.map((res) => (
+                    <tr key={res.brand}>
+                      <td>
+                        {res.brand}
+                        <Checkbox color="secondary" />
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <button onClick={updateRequest}>اعمال فیلتر</button>
+            </div>
+          </article>
+        }
+      />
+    </Routes>
   );
 };

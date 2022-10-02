@@ -1,7 +1,6 @@
-/*INNER-COMPONENTS*/
-import React from "react";
+/*INNER COMPONENT*/
 import { Link } from "react-router-dom";
-/*CSS*/
+/*STYLE*/
 import classes from "./Category.module.scss";
 
 export const Category = (props) => (

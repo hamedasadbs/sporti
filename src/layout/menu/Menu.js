@@ -1,13 +1,13 @@
-/*INNER-COMPONENTS*/
-import React, { useState, useEffect, useContext } from "react";
+/*INNER COMPONENT*/
+import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Context } from "../../logic/Context";
-/*CSS*/
+/*STYLE*/
 import classes from "./Menu.module.scss";
-/*ASSETS*/
+/*ICON*/
 import { Cancel, ArrowDropDown, ArrowLeft, Search } from "@material-ui/icons";
-
+/*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 
 export const Menu = () => {
@@ -25,25 +25,20 @@ export const Menu = () => {
   /*VARIABLE*/
   const [login, setLogin] = useContext(Context).loginCon;
   const [username, setUsername] = useContext(Context).usernameCon;
-  const [page, setPage] = useContext(Context).pageCon;
+  const setPage = useContext(Context).pageCon[1];
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
   const cartURL = "http://localhost/bsShop/cart.php";
 
-  const showHiddenMenu = () => {
-    setIsHiddenMenuShown(true);
-    window.scrollTo(0, 0);
-  };
-
   const showSign = () => {
-    if (login == false) {
+    if (login) {
+      logoutHandler();
+    } else {
       disableAll(true);
       setIsSignShown(true);
       window.scrollTo(0, 0);
       disableScroll();
-    } else {
-      logoutHandler();
     }
   };
 
@@ -126,6 +121,7 @@ export const Menu = () => {
     if (isProductTypeOpen) setIsProductTypeOpen(false);
     else setIsProductTypeOpen(true);
   };
+  /*JSX*/
   return (
     <div className={classes.hiddenMenu}>
       <Cancel onClick={closeHiddenMenu} className={classes.closeHiddenMenu} />

@@ -1,20 +1,20 @@
-/*INNER-COMPONENTS*/
-import React, { useState, useEffect } from "react";
-/*CSS*/
+/*INNER COMPONENT*/
+import { useState, useEffect } from "react";
+/*STYLE*/
 import classes from "./Notice.module.scss";
-/*ASSETS*/
+/*ICON*/
 import { Undo } from "@material-ui/icons";
 
 export const Notice = (props) => {
-  /*STATES*/
+  /*STATE*/
   const [aboutText, setAboutText] = useState(null);
   let [isCaptchaTrue, setIsCaptchaTrue] = useState(false);
-  /*VARIABLES*/
+  /*VARIABLE*/
   const symbol = ["+", "-", "*"];
   let symbolIndex = Math.floor(Math.random() * symbol.length);
   let firstNum = Math.floor(Math.random() * 50);
   let secondNum = Math.floor(Math.random() * 50);
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   useEffect(() => {
     fetch("/about.txt")
       .then((r) => r.text())
@@ -59,7 +59,7 @@ export const Notice = (props) => {
     }
     alert(isCaptchaTrue);
   };
-
+  /*JSX*/
   return (
     <>
       {props.title === "about" ? (

@@ -1,23 +1,23 @@
-/*INNER-COMPONENTS*/
-import React, { useEffect, useState, useContext } from "react";
+/*INNER COMPONENT*/
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { Context } from "../../../logic/Context";
-/*CSS*/
+/*STYLE*/
 import classes from "./Product.module.scss";
-/*ASSETS*/
+/*ICON*/
 import { Star, Favorite } from "@material-ui/icons";
-/*CONFIGURATION*/
+/*LIBRARY*/
 import * as separateLib from "../../../logic/Separate";
 
 export const Product = (props) => {
-  /*STATES*/
+  /*STATE*/
   const [liked, setLiked] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  /*VARIABLES*/
+  /*VARIABLE*/
   const login = useContext(Context).loginCon[0];
   const username = useContext(Context).usernameCon[0];
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   useEffect(() => {
     checkTheLiked();
   }, [liked]);
@@ -47,7 +47,7 @@ export const Product = (props) => {
         });
     } else alert("ابتدا وارد حساب خود شوید");
   };
-
+  /*JSX*/
   if (loaded)
     return (
       <div className={classes.product}>

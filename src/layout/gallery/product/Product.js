@@ -1,19 +1,19 @@
-/*INNER-COMPONENTS*/
-import React, { useState } from "react";
+/*INNER COMPONENT*/
+import { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-/*CSS*/
+/*STYLE*/
 import classes from "./Product.module.scss";
 
 export const Product = (props) => {
-  /*VARIABLES*/
+  /*VARIABLE*/
   const url = "http://localhost/bsShop/cart.php";
   const isOnline = useSelector((state) => state.isOnline);
   const accountName = useSelector((state) => state.accountName);
   const cart = props.cart;
   const [number, setNumber] = useState(props.exi);
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   const addToCart = () => {
     if (isOnline) {
       axios
@@ -41,57 +41,55 @@ export const Product = (props) => {
     });
     return isInCart;
   };
-
+  /*JSX*/
   return (
-    <>
-      <aside className={classes.picture}>
-        <div className={classes.mainImage}>
-          <img
-            src={`/Images/Product/${props.image}`}
-            alt={"image/" + props.image}
-            width="533"
-            height="300"
-          />
-        </div>
-        <div className={classes.caption}>
-          <p>{props.faTitle}</p>
-          <h2>{props.price} تومان</h2>
-          {number <= 5 && number > 0 && (
-            <h3>تنها {number} عدد در انبار باقی مانده است</h3>
-          )}
-        </div>
-        {number <= 0 ? (
-          <div className={classes.btn}>
-            <button className={classes.disabled} disabled>
-              ناموجود
-            </button>
-            <Link
-              className={classes.link}
-              to={`/category/${props.categoryName}/${props.faTitle}`}
-            >
-              <button className={classes.showDetails}>مشاهده جزئیات</button>
-            </Link>
-          </div>
-        ) : (
-          <div className={classes.btn}>
-            {isInCart() ? (
-              <button onClick={addToCart} className={classes.addToCart}>
-                موجود در سبد (افزودن)
-              </button>
-            ) : (
-              <button onClick={addToCart} className={classes.addToCart}>
-                افزودن به سبد
-              </button>
-            )}
-            <Link
-              className={classes.link}
-              to={`/category/${props.categoryName}/${props.faTitle}`}
-            >
-              <button className={classes.showDetails}>مشاهده جزئیات</button>
-            </Link>
-          </div>
+    <aside className={classes.picture}>
+      <div className={classes.mainImage}>
+        <img
+          src={`/Images/Product/${props.image}`}
+          alt={"image/" + props.image}
+          width="533"
+          height="300"
+        />
+      </div>
+      <div className={classes.caption}>
+        <p>{props.faTitle}</p>
+        <h2>{props.price} تومان</h2>
+        {number <= 5 && number > 0 && (
+          <h3>تنها {number} عدد در انبار باقی مانده است</h3>
         )}
-      </aside>
-    </>
+      </div>
+      {number <= 0 ? (
+        <div className={classes.btn}>
+          <button className={classes.disabled} disabled>
+            ناموجود
+          </button>
+          <Link
+            className={classes.link}
+            to={`/category/${props.categoryName}/${props.faTitle}`}
+          >
+            <button className={classes.showDetails}>مشاهده جزئیات</button>
+          </Link>
+        </div>
+      ) : (
+        <div className={classes.btn}>
+          {isInCart() ? (
+            <button onClick={addToCart} className={classes.addToCart}>
+              موجود در سبد (افزودن)
+            </button>
+          ) : (
+            <button onClick={addToCart} className={classes.addToCart}>
+              افزودن به سبد
+            </button>
+          )}
+          <Link
+            className={classes.link}
+            to={`/category/${props.categoryName}/${props.faTitle}`}
+          >
+            <button className={classes.showDetails}>مشاهده جزئیات</button>
+          </Link>
+        </div>
+      )}
+    </aside>
   );
 };

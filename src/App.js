@@ -1,45 +1,41 @@
-/*INNER-COMPONENTS*/
-import React, { useState, useEffect } from "react";
+/*INNER COMPONENT*/
+import { useState, useEffect } from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import axios from "axios";
-/*CSS*/
+import { Context } from "./logic/Context";
+/*STYLE*/
 import "./App.scss";
-/*CHILD-COMPONENTS*/
+/*CHILD COMPONENT*/
 import { Home } from "../src/pages/home/Home";
 import { Menu } from "./layout/menu/Menu";
 import { Sign } from "../src/layout/sign/Sign";
 import { Gallery } from "../src/layout/gallery/Gallery";
 import { Notice } from "../src/layout/notice/Notice";
-/*ASSETS*/
-
-import { Context } from "./logic/Context";
-
+/*LIBRARY*/
 import * as cookieLib from "./logic/Cookie";
 
 export const App = () => {
-  /*STATES*/
+  /*STATE*/
   const [username, setUsername] = useState(cookieLib.getCookie("username"));
   const [login, setLogin] = useState(cookieLib.getCookie("login"));
   const [page, setPage] = useState("home");
-
   const [sportsData, setSportsData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [isSignShown, setIsSignShown] = useState(false);
   const [cart, setCart] = useState([]);
-  /*VARIABLES*/
+  /*VARIABLE*/
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
   const cartURL = "http://localhost/bsShop/cart.php";
-
   const context = {
     usernameCon: [username, setUsername],
     loginCon: [login, setLogin],
     pageCon: [page, setPage],
   };
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   const disableAll = (disable) => {
     const tagsArray = ["li", "button", "input", "a"];
 
@@ -79,7 +75,7 @@ export const App = () => {
     } else {
     }
   }, []);
-
+  /*JSX*/
   return (
     <Context.Provider value={context}>
       <Router>

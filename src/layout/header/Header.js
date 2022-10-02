@@ -1,19 +1,19 @@
-/*INNER-COMPONENTS*/
+/*INNER COMPONENT*/
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { Context } from "../../logic/Context";
-/*CSS*/
+/*STYLE*/
 import classes from "./Header.module.scss";
-/*ASSETS*/
+/*MUI*/
 import { Search, HorizontalSplit } from "@material-ui/icons";
-/** */
+/*CHILD COMPONENT*/
 import { Dropdown } from "../../tool/dropdown/Dropdown";
-
+/*ICON*/
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-
+/*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 
 export const Header = (props) => {
@@ -22,10 +22,6 @@ export const Header = (props) => {
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
-  const [isSportsOpen, setIsSportsOpen] = useState(false);
-  const [isBrandsOpen, setIsBrandsOpen] = useState(false);
-  const [isProductTypeOpen, setIsProductTypeOpen] = useState(false);
-  const [isBasketOpen, setIsBasketOpen] = useState(false);
   const [cart, setCart] = useState([]);
   /*VARIABLE*/
   const [login, setLogin] = useContext(Context).loginCon;
@@ -103,7 +99,7 @@ export const Header = (props) => {
         setCart(res.data);
       });
   };
-
+  /*JSX*/
   return (
     <header className={classes.header}>
       <nav className={classes.topHeader}>

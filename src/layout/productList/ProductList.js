@@ -1,24 +1,22 @@
-/*INNER-COMPONENTS*/
-import React, { useEffect, useState } from "react";
+/*INNER COMPONENT*/
+import { useEffect, useState } from "react";
 import axios from "axios";
-/*CSS*/
-import classes from "./ProductList.module.scss";
-
 import InfiniteCarousel from "react-leaf-carousel";
-
+/*STYLE*/
+import classes from "./ProductList.module.scss";
+/*MUI*/
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-
+/*CHILD COMPONENT*/
 import { Product } from "./Product/Product";
 
 export const ProductList = (props) => {
-  /*STATES*/
+  /*STATE*/
   const [productsData, setProductsData] = useState([]);
-
   const [loaded, setLoaded] = useState(false);
-  /*VARIABLES*/
+  /*VARIABLE*/
   const url = "http://localhost:8080/products";
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   useEffect(() => {
     axios.get(url).then((res) => {
       setProductsData(res.data.pro);
@@ -28,7 +26,7 @@ export const ProductList = (props) => {
   setTimeout(() => {
     setLoaded(true);
   }, 500);
-
+  /*JSX*/
   if (loaded)
     return (
       <article className={classes.productList}>

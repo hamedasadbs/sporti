@@ -1,23 +1,23 @@
-/*INNER-COMPONENTS*/
-import React, { useState, useEffect } from "react";
+/*INNER COMPONENT*/
+import { useState, useEffect } from "react";
 import axios from "axios";
-/*CSS*/
+/*STYLE*/
 import classes from "./Categories.module.scss";
-/*CHILD-COMPONENTS*/
+/*CHILD COMPONENT*/
 import { Category } from "./category/Category";
 
 export const Categories = () => {
-  /*STATES*/
+  /*STATE*/
   const [productsData, setProductsData] = useState([]);
-  /*VARIABLES*/
+  /*VARIABLE*/
   const url = "http://localhost:8080/category";
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   useEffect(() => {
     axios.get(url).then((res) => {
       setProductsData(res.data.cat);
     });
   }, []);
-
+  /*JSX*/
   return (
     <article className={classes.categories}>
       {productsData.map((res, index) => (

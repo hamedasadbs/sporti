@@ -1,10 +1,10 @@
-/*INNER-COMPONENTS*/
-import React, { useEffect, useState } from "react";
+/*INNER COMPONENT*/
+import { useEffect, useState } from "react";
 import axios from "axios";
-/*CSS*/
+/*STYLE*/
 import detailsStyle from "../../layout/details/Details.module.scss";
 import classes from "./Dropdown.module.scss";
-/*ASSETS*/
+/*ICON*/
 import {
   Delete,
   DeleteOutline,
@@ -13,20 +13,20 @@ import {
   RemoveCircle,
   RemoveCircleOutline,
 } from "@material-ui/icons";
-
+/*LIBRARY*/
 import * as separateLib from "../../logic/Separate";
 
 export const Dropdown = (props) => {
-  /*STATES*/
+  /*STATE*/
   const [sportsData, setSportsData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
-  /*VARIABLES*/
+  /*VARIABLE*/
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
   const cartDeleteURL = "http://localhost/bsShop/cart.php";
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   useEffect(() => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
     axios.post(brandsURL).then((res) => setBrandsData(res.data));
@@ -47,7 +47,7 @@ export const Dropdown = (props) => {
         props.checkTheCart();
       });
   };
-
+  /*JSX*/
   return (
     <>
       {props.type === "basket" ? (

@@ -1,12 +1,11 @@
-/*INNER-COMPONENTS*/
-import React, { useState } from "react";
+/*INNER COMPONENT*/
+import { useState } from "react";
 import axios from "axios";
 /*CSS*/
 import classes from "./Sign.module.scss";
-/*CHILD-COMPONENTS*/
-
-/*ASSETS*/
+/*MUI*/
 import Checkbox from "@material-ui/core/Checkbox";
+/*ICON*/
 import {
   Lock,
   Mail,
@@ -16,7 +15,7 @@ import {
 } from "@material-ui/icons";
 
 export const Sign = (props) => {
-  /*STATES*/
+  /*STATE*/
   const [name, setName] = useState(null);
   const [sign, setSign] = useState("login");
   const [signupUsername, setSignupUsername] = useState(null);
@@ -24,7 +23,7 @@ export const Sign = (props) => {
   const [email, setEmail] = useState(null);
   const [signupPassword, setSignupPassword] = useState(null);
   let [loginPassword, setLoginPassword] = useState(null);
-  /*FUNCTIONS*/
+  /*FUNCTION*/
   const nameHandler = (e) => {
     setName(e.target.value);
   };
@@ -145,7 +144,7 @@ export const Sign = (props) => {
   const changeToLogin = () => {
     setSign("login");
   };
-
+  /*JSX*/
   return (
     <div className={classes.signContainer}>
       <article className={classes.sign}>
