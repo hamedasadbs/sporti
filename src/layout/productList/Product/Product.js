@@ -17,11 +17,10 @@ export const Product = (props) => {
   /*VARIABLES*/
   const login = useContext(Context).loginCon[0];
   const username = useContext(Context).usernameCon[0];
-  const likedURL = "http://localhost/bsShop/liked.php";
   /*FUNCTIONS*/
   useEffect(() => {
     checkTheLiked();
-  }, []);
+  }, [liked]);
 
   setTimeout(() => {
     setLoaded(true);
@@ -29,27 +28,20 @@ export const Product = (props) => {
 
   const checkTheLiked = () => {
     axios
-      .post(
-        likedURL,
-        JSON.stringify({
-          method: "checkTheLiked",
-          username: username,
-        })
-      )
-      .then((res) => setLiked(res.data));
+      .get(`http://localhost:8080/like?username=${username}`)
+      .then((res) => {
+        setLiked(res.data.dataset);
+      })
+      .catch((err) => alert(err));
   };
 
   const addToLiked = (id) => {
     if (login) {
       axios
-        .post(
-          likedURL,
-          JSON.stringify({
-            method: "addToLiked",
-            username: username,
-            productId: id,
-          })
-        )
+        .post("http://localhost:8080/like", {
+          productId: id,
+          username: username,
+        })
         .then(() => {
           checkTheLiked();
         });

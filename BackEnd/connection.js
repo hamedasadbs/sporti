@@ -16,7 +16,7 @@ var learningInfo = require("./learningInfo");
 
 var generalSkills = require("./generalSkills");
 
-var skills = require("./skills");
+var like = require("./like");
 
 var interests = require("./interests");
 
@@ -70,11 +70,9 @@ generalSkills.addData(app, con);
 //remove data from general skills page
 generalSkills.removeData(app, con);
 //send data to skills page
-skills.getData(app, con);
+like.getLikes(app, con);
 //add data to skills page
-skills.addData(app, con);
-//remove data from skills page
-skills.removeData(app, con);
+like.changeLikes(app, con);
 //send data to interests page
 interests.getData(app, con);
 //add data to interests page
