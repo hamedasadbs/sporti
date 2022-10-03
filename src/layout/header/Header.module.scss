@@ -78,10 +78,14 @@
       button {
         @include btn(transparent,
           $superDarkColor,
-          darken($pageBackColor, 10%),
+          darken($pageBackColor, 5%),
           $superDarkColor);
         width: 40px;
         border: none;
+        margin: auto;
+        padding: 8px;
+        display: flex;
+        border-radius: 100%;
       }
     }
 
@@ -163,7 +167,7 @@
         flex-direction: column;
 
         .carts {
-          background-color: $hoverColor;
+          background-color: rgb(252, 0, 11);
           width: auto;
           padding: 0px 10px;
           border-radius: 50px;

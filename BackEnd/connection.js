@@ -14,6 +14,8 @@ var user = require("./user");
 
 var like = require("./like");
 
+var cart = require("./cart");
+
 //use cors lib for disable cors error
 app.use(
   cors({
@@ -47,6 +49,11 @@ products.updateLike(app, con);
 
 like.getLikes(app, con);
 like.changeLikes(app, con);
+
+cart.getCart(app, con);
+cart.increaseCart(app, con);
+cart.decreaseCart(app, con);
+cart.deleteCart(app, con);
 
 //setting port
 app.listen(8080);

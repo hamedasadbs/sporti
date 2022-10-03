@@ -18,9 +18,6 @@ import * as cookieLib from "../../logic/Cookie";
 
 export const Header = (props) => {
   /*STATE*/
-  const [sportsData, setSportsData] = useState([]);
-  const [brandsData, setBrandsData] = useState([]);
-  const [productTypeData, setProductTypeData] = useState([]);
   const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [cart, setCart] = useState([]);
   /*VARIABLE*/
@@ -30,7 +27,6 @@ export const Header = (props) => {
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
-  const cartURL = "http://localhost/bsShop/cart.php";
 
   const showHiddenMenu = () => {
     setIsHiddenMenuShown(true);
@@ -78,26 +74,15 @@ export const Header = (props) => {
   };
 
   useEffect(() => {
-    axios.post(sportsURL).then((res) => setSportsData(res.data));
-    axios.post(brandsURL).then((res) => setBrandsData(res.data));
-    axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
     if (login) {
       checkTheCart();
     }
   }, []);
 
   const checkTheCart = () => {
-    axios
-      .post(
-        cartURL,
-        JSON.stringify({
-          method: "checkTheCart",
-          username: username,
-        })
-      )
-      .then((res) => {
-        setCart(res.data);
-      });
+    axios.get(`http://localhost:8080/cart?username=${username}`).then((res) => {
+      setCart(res.data.dataset);
+    });
   };
   /*JSX*/
   return (

@@ -54,7 +54,7 @@
         color: $superLightColor;
         transition: all 0.5s;
         opacity: 0.9;
-        background-image: linear-gradient(135deg, $primaryColor3, $primaryColor5);
+        background-image: linear-gradient(19deg, $primaryColor5, $primaryColor5, $secondaryColor1);
 
         &:hover {
           opacity: 1;
@@ -64,17 +64,14 @@
       div {
         margin: auto;
         display: flex;
-        padding-right: 10px;
 
         .i {
-          font-size: 40px;
+          font-size: 35px;
           z-index: 2;
-          right: 40px;
-          background-color: $pageBackColor;
-          border: 1px solid darken($linkColor, 10%);
           border-radius: 50px;
           padding: 5px;
           margin-left: -50px;
+          margin-top: 10px;
           color: $primaryColor1;
         }
 

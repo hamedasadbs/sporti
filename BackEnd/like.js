@@ -2,7 +2,7 @@ module.exports = {
   getLikes: (app, con) => {
     app.get("/like", (req, res) => {
       con.query(
-        `SELECT * FROM products inner join liked ON products.id=liked.product_id WHERE liked.username='${req.query.username}'`,
+        `SELECT * FROM products INNER JOIN liked ON products.id=liked.product_id WHERE liked.username='${req.query.username}'`,
         (err, result) => {
           if (err) throw err;
           if (result.length) {
@@ -28,14 +28,22 @@ module.exports = {
             con.query(
               `delete from liked where product_id=${req.body.productId} and username='${req.body.username}'`,
               (err) => {
-                if (err) throw err;
+                if (err) {
+                  res.sendStatus(405);
+                } else {
+                  res.sendStatus(200);
+                }
               }
             );
           } else {
             con.query(
               `insert into liked (username,product_id) VALUES ('${req.body.username}',${req.body.productId})`,
               (err) => {
-                if (err) throw err;
+                if (err) {
+                  res.sendStatus(405);
+                } else {
+                  res.sendStatus(200);
+                }
               }
             );
           }

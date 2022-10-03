@@ -62,7 +62,7 @@
       }
 
       li.hoveredOffset {
-        background-color: $mainColor;
+        background-color: $secondaryColor2;
       }
     }
   }
@@ -82,8 +82,8 @@
       padding: 10px;
       border-radius: 5px;
       background-color: transparent;
-      color: $btnColor2;
-      border: 1px solid $btnColor2;
+      color: $secondaryColor1;
+      border: 1px solid $secondaryColor1;
     }
 
     table {

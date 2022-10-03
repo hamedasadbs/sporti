@@ -21,7 +21,7 @@ export const Product = (props) => {
   /*FUNCTION*/
   useEffect(() => {
     checkTheLiked();
-  }, [liked]);
+  }, []);
 
   setTimeout(() => {
     setLoaded(true);

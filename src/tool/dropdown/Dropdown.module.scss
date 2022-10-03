@@ -6,25 +6,18 @@ button {
     border-radius: 5px;
 }
 
-.login,
-.logout,
 .conformShop {
-    background-color: #21D4FD;
-    background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+    background-image: linear-gradient(19deg, $primaryColor5, $primaryColor5, $secondaryColor1);
     color: $superLightColor;
     transition: all 0.5s;
     padding: 10px;
     width: 100%;
+    opacity: 0.9;
+    font-family: 'iran';
 
     &:hover {
-        background-color: darken($primaryColor1, 5%);
+        opacity: 1;
     }
-}
-
-.signup {
-    background-color: transparent;
-    color: #21D4FD;
-    border: 1px solid #21D4FD;
 }
 
 .cartDropdown {
@@ -79,12 +72,12 @@ button {
                         display: flex;
 
                         .fillAdd {
-                            color: lighten($hoverColor, 20%);
+                            color: lighten($primaryColor1, 20%);
                             display: none;
                         }
 
                         .outlineAdd {
-                            color: lighten($hoverColor, 20%);
+                            color: lighten($primaryColor1, 20%);
                         }
 
                         &:hover {
@@ -110,12 +103,12 @@ button {
                         display: flex;
 
                         .fillMinus {
-                            color: lighten($hoverColor, 20%);
+                            color: lighten($primaryColor1, 20%);
                             display: none;
                         }
 
                         .outlineMinus {
-                            color: lighten($hoverColor, 20%);
+                            color: lighten($primaryColor1, 20%);
                         }
 
                         &:hover {
@@ -166,10 +159,6 @@ button {
                 border-left: 1px solid whitesmoke;
             }
         }
-    }
-
-    button {
-        font-family: $font;
     }
 }
 

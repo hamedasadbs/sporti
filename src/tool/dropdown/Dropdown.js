@@ -25,7 +25,6 @@ export const Dropdown = (props) => {
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
-  const cartDeleteURL = "http://localhost/bsShop/cart.php";
   /*FUNCTION*/
   useEffect(() => {
     axios.post(sportsURL).then((res) => setSportsData(res.data));
@@ -33,15 +32,32 @@ export const Dropdown = (props) => {
     axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
   }, []);
 
+  const decreaseCartHandler = (username, productId) => {
+    axios
+      .post("http://localhost:8080/decreaseCart", {
+        productId: productId,
+        username: username,
+      })
+      .then(() => {
+        props.checkTheCart();
+      });
+  };
+
+  const increaseCartHandler = (username, productId) => {
+    axios
+      .post("http://localhost:8080/increaseCart", {
+        productId: productId,
+        username: username,
+      })
+      .then(() => {
+        props.checkTheCart();
+      });
+  };
+
   const deleteCartHandler = (username, productId) => {
     axios
-      .post(
-        cartDeleteURL,
-        JSON.stringify({
-          method: "deleteCart",
-          productId,
-          username,
-        })
+      .delete(
+        `http://localhost:8080/cart?username=${username}&productId=${productId}`
       )
       .then(() => {
         props.checkTheCart();
@@ -72,7 +88,7 @@ export const Dropdown = (props) => {
                     ) : (
                       <span
                         onClick={() =>
-                          deleteCartHandler(res.username, res.product_id)
+                          decreaseCartHandler(res.username, res.product_id)
                         }
                         className={classes.minus}
                       >
@@ -83,7 +99,7 @@ export const Dropdown = (props) => {
                     <h1 className={classes.productCount}>{res.number}</h1>
                     <span
                       onClick={() =>
-                        deleteCartHandler(res.username, res.product_id)
+                        increaseCartHandler(res.username, res.product_id)
                       }
                       className={classes.add}
                     >

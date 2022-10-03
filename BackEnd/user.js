@@ -7,7 +7,6 @@ module.exports = {
         (err, result, fields) => {
           if (err) throw err;
           if (result.length) {
-            console.log(result.length);
             res.send({
               user: result[0],
             });
