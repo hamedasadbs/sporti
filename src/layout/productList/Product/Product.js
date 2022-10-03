@@ -7,6 +7,7 @@ import { Context } from "../../../logic/Context";
 import classes from "./Product.module.scss";
 /*ICON*/
 import { Star, Favorite } from "@material-ui/icons";
+import LocalMallOutlinedIcon from "@mui/icons-material/LocalMallOutlined";
 /*LIBRARY*/
 import * as separateLib from "../../../logic/Separate";
 
@@ -83,9 +84,38 @@ export const Product = (props) => {
         />
         <div className={classes.caption}>
           <h3 className={classes.productName}>{props.card.fa_title}</h3>
-          <h4 className={classes.productPrice}>
-            {separateLib.separate(props.card.price)} تومان
-          </h4>
+          <h5 className={classes.center}>
+            <LocalMallOutlinedIcon className={classes.i} />
+            موجود در فروشگاه اسپورتی
+          </h5>
+          <span className={classes.productPrice}>
+            {props.card.off ? (
+              <div className={classes.priceContainer}>
+                <h4 className={classes.price}>
+                  {separateLib.separate(
+                    props.card.price - props.card.price * (props.card.off / 100)
+                  )}{" "}
+                  تومان
+                </h4>
+                <h4 className={classes.priceWithOff}>
+                  {separateLib.separate(props.card.price)} تومان
+                </h4>
+              </div>
+            ) : (
+              <div className={classes.priceContainer}>
+                <h4 className={classes.price}>
+                  {separateLib.separate(props.card.price)} تومان
+                </h4>
+              </div>
+            )}
+            {props.card.off ? (
+              <div className={classes.offContainer}>
+                <h4 className={classes.off}>
+                  {separateLib.separate(props.card.off)}%
+                </h4>
+              </div>
+            ) : null}
+          </span>
         </div>
         <Link
           className={classes.link}

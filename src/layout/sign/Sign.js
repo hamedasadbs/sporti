@@ -187,7 +187,7 @@ export const Sign = (props) => {
               </div>
               <br />
               <h5 className={classes.rememberMe}>
-                <Checkbox color="primary" />
+                <Checkbox className={classes.checkbox} />
                 مرا به خاطر بسپار
               </h5>
               <a href="/" className={classes.reUser}>
@@ -252,10 +252,14 @@ export const Sign = (props) => {
                 />
                 <Lock className={classes.i} />
               </div>
-              <h5 className={classes.notRobot}>
-                <input id="notRobot" type="checkbox" />
+              <span className={classes.notRobot}>
+                <Checkbox
+                  className={classes.checkbox}
+                  id="notRobot"
+                  color="primary"
+                />
                 من ربات نیستم
-              </h5>
+              </span>
               <button onClick={createAccount} className={classes.signup}>
                 ثبت
               </button>

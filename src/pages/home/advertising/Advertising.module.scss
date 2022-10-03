@@ -46,7 +46,7 @@
       text-align: right;
       color: $primaryColor3;
       padding-right: 10px;
-      border-right: 5px double $btnColor2;
+      border-right: 5px double $secondaryColor1;
     }
 
     h2 {
@@ -64,7 +64,7 @@
     }
 
     .link {
-      background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+      background-image: linear-gradient(135deg, $primaryColor4, $primaryColor5);
       color: $superLightColor;
       transition: all 0.5s;
       font-family: $font;
@@ -73,6 +73,11 @@
       width: 50%;
       margin-top: 70px;
       font-weight: 600;
+      opacity: 0.9;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }

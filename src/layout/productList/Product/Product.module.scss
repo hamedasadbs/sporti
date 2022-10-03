@@ -4,10 +4,10 @@
   display: flex;
   flex-direction: column;
   margin: 30px 10px;
-  width: 270px;
+  width: 260px;
   @include shadow();
   border-radius: 10px;
-  padding: 10px;
+  padding: 10px 15px;
 
   .icons {
     display: flex;
@@ -61,6 +61,7 @@
     height: 250px;
     object-fit: contain;
     margin: 10px auto;
+    border-bottom: 1px solid lightgray;
   }
 
   .caption {
@@ -73,26 +74,87 @@
       text-align: right;
       direction: rtl;
       font-family: $font;
-      margin: 10px auto;
+      margin: 5px auto;
       margin-right: 0;
       color: $footerBackColor;
       overflow-x: hidden;
       width: 100%;
     }
 
-    .productPrice {
-      font-size: 16px;
-      font-family: $numberFont;
-      text-align: left;
+    .center {
+      font-size: 12px;
+      text-align: right;
       direction: rtl;
+      color: $secondaryColor1;
+      font-family: "iran";
+      align-items: center;
+      display: flex;
+      margin: 5px auto;
+      margin-left: 0;
+
+      .i {
+        font-size: 17px;
+        margin-left: 5px;
+      }
+    }
+
+    .productPrice {
+      display: flex;
       margin-top: 0px;
       margin: 5px auto;
-      margin-right: 0;
-      color: $footerBackColor;
+      width: 100%;
+
+      .priceContainer {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        margin-left: 0;
+
+        .price {
+          text-align: left;
+          direction: rtl;
+          font-size: 16px;
+          font-family: "vazir";
+          color: $footerBackColor;
+          margin: auto;
+          width: 100%;
+        }
+
+        .priceWithOff {
+          text-align: left;
+          direction: rtl;
+          font-size: 12px;
+          font-family: "vazir";
+          color: gray;
+          text-decoration: line-through;
+          margin: auto;
+          width: 100%;
+        }
+      }
+
+      .offContainer {
+        background-color: $hoverColor;
+        margin: auto;
+        margin-right: 0;
+        padding: 5px 10px;
+        border-radius: 50%;
+
+        .off {
+          text-align: left;
+          direction: rtl;
+          font-size: 16px;
+          font-family: "vazir";
+          color: $superLightColor;
+          font-weight: 100;
+          margin: auto;
+        }
+      }
     }
   }
 
   .link {
+    margin-top: 10px;
+
     button {
       color: $primaryColor1;
       border: 1px solid $primaryColor1;
@@ -103,8 +165,7 @@
       width: 100%;
 
       &:hover {
-        border-radius: 0;
-        background-color: lighten($primaryColor1, 75%);
+        background-color: lighten($primaryColor5, 20%);
       }
     }
   }

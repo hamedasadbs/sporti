@@ -53,11 +53,11 @@
       .signup {
         color: $superLightColor;
         transition: all 0.5s;
-        background-color: #21D4FD;
-        background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+        opacity: 0.9;
+        background-image: linear-gradient(135deg, $primaryColor3, $primaryColor5);
 
         &:hover {
-          background-color: darken($btnColor2, 10%);
+          opacity: 1;
         }
       }
 
@@ -67,14 +67,15 @@
         padding-right: 10px;
 
         .i {
-          font-size: 50px;
+          font-size: 40px;
           z-index: 2;
           right: 40px;
           background-color: $pageBackColor;
           border: 1px solid darken($linkColor, 10%);
           border-radius: 50px;
-          padding: 10px;
-          margin-left: -50px
+          padding: 5px;
+          margin-left: -50px;
+          color: $primaryColor1;
         }
 
         input {
@@ -91,7 +92,7 @@
       }
 
       button {
-        width: 50%;
+        width: 100%;
         padding: 10px;
         border-radius: 50px;
         font-size: 15px;
@@ -99,11 +100,6 @@
         margin: auto;
         margin-bottom: 20px;
         font-family: $font;
-
-        &:hover {
-          width: 100%;
-          border-radius: 5px;
-        }
       }
 
       .rememberMe,
@@ -115,8 +111,9 @@
         margin: auto;
         margin-right: 10px;
 
-        input {
-          width: 20px;
+        .checkbox {
+          z-index: 99;
+          color: $primaryColor5;
         }
       }
 
