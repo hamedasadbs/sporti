@@ -22,7 +22,7 @@ export const App = () => {
   const [sportsData, setSportsData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
-  const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
+  const [isMenuShown, setIsMenuShown] = useState(false);
   const [isSignShown, setIsSignShown] = useState(false);
   const [cart, setCart] = useState([]);
   /*VARIABLE*/
@@ -34,6 +34,8 @@ export const App = () => {
     usernameCon: [username, setUsername],
     loginCon: [login, setLogin],
     pageCon: [page, setPage],
+    menuCon: [isMenuShown, setIsMenuShown],
+    signCon: [isSignShown, setIsSignShown],
   };
   /*FUNCTION*/
   const disableAll = (disable) => {
@@ -46,12 +48,6 @@ export const App = () => {
         else tagsDom[i].classList.remove("disable");
       }
     }
-  };
-
-  const closeForm = () => {
-    disableAll(false);
-    setIsSignShown(false);
-    window.onscroll = function () {};
   };
 
   const checkTheCart = () => {
@@ -75,13 +71,30 @@ export const App = () => {
     } else {
     }
   }, []);
+
+  const disableScroll = () => {
+    let x = window.scrollX;
+    let y = window.scrollY;
+    window.onscroll = function () {
+      window.scrollTo(x, y);
+    };
+  };
+
+  useEffect(() => {
+    if (isMenuShown || isSignShown) {
+      disableScroll();
+    } else {
+      window.onscroll = function () {};
+    }
+  }, [isMenuShown, isSignShown]);
+
   /*JSX*/
   return (
     <Context.Provider value={context}>
       <Router>
         <div className="main">
-          {isHiddenMenuShown && <Menu />}
-          {isSignShown && <Sign close={closeForm} />}
+          {isMenuShown && <Menu />}
+          {isSignShown && <Sign />}
           <Routes>
             {sportsData.map((res, index) => (
               <Route
@@ -145,10 +158,7 @@ export const App = () => {
 
             <Route path="/contact" element={<Notice title="contact" />} />
 
-            <Route
-              path="/"
-              element={<Home setIsSignShown={setIsSignShown} />}
-            />
+            <Route path="/" element={<Home />} />
           </Routes>
         </div>
       </Router>

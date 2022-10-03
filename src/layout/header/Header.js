@@ -6,41 +6,38 @@ import { Context } from "../../logic/Context";
 /*STYLE*/
 import classes from "./Header.module.scss";
 /*MUI*/
-import { Search, HorizontalSplit } from "@material-ui/icons";
+import { Search } from "@material-ui/icons";
 /*CHILD COMPONENT*/
 import { Dropdown } from "../../tool/dropdown/Dropdown";
 /*ICON*/
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import SegmentIcon from "@mui/icons-material/Segment";
 /*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 
-export const Header = (props) => {
+export const Header = () => {
   /*STATE*/
-  const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [cart, setCart] = useState([]);
   /*VARIABLE*/
   const [login, setLogin] = useContext(Context).loginCon;
   const [username, setUsername] = useContext(Context).usernameCon;
   const [page, setPage] = useContext(Context).pageCon;
-  const sportsURL = "http://localhost/bsShop/sports.php";
-  const brandsURL = "http://localhost/bsShop/brands.php";
-  const productTypeURL = "http://localhost/bsShop/productType.php";
+  const setIsMenuShown = useContext(Context).menuCon[1];
+  const setIsSignShown = useContext(Context).signCon[1];
 
   const showHiddenMenu = () => {
-    setIsHiddenMenuShown(true);
+    setIsMenuShown(true);
     window.scrollTo(0, 0);
   };
 
   const showSign = () => {
-    if (login == false) {
-      disableAll(true);
-      props.setIsSignShown(true);
-      window.scrollTo(0, 0);
-      disableScroll();
-    } else {
+    if (login) {
       logoutHandler();
+    } else {
+      setIsSignShown(true);
+      window.scrollTo(0, 0);
     }
   };
 
@@ -50,26 +47,6 @@ export const Header = (props) => {
       setLogin(false);
       cookieLib.setCookie("username", "", -100);
       setUsername("");
-    }
-  };
-
-  const disableScroll = () => {
-    let x = window.scrollX;
-    let y = window.scrollY;
-    window.onscroll = function () {
-      window.scrollTo(x, y);
-    };
-  };
-
-  const disableAll = (disable) => {
-    const tagsArray = ["li", "button", "input", "a"];
-
-    for (let t = 0; t < tagsArray.length; t++) {
-      const tagsDom = document.querySelectorAll(tagsArray[t]);
-      for (let i = 0; i < tagsDom.length; i++) {
-        if (disable) tagsDom[i].classList.add("disable");
-        else tagsDom[i].classList.remove("disable");
-      }
     }
   };
 
@@ -88,35 +65,6 @@ export const Header = (props) => {
   return (
     <header className={classes.header}>
       <nav className={classes.topHeader}>
-        <ul className={classes.rightSide}>
-          <li onClick={showHiddenMenu} className={classes.dropdown}>
-            <HorizontalSplit className={classes.i} />
-          </li>
-          <div
-            className={classes.mainLogo}
-            onClick={() => {
-              setPage("home");
-            }}
-          >
-            <Link to="/#">
-              <img
-                data-toggle="tooltip"
-                src="/sporti-label.png"
-                alt="sporti.com"
-              />
-            </Link>
-          </div>
-        </ul>
-        <ul className={classes.middleSide}>
-          <button className={classes.search}>
-            <Search />
-          </button>
-          <input
-            spellCheck="false"
-            type="search"
-            placeholder="جست و جوی محصول یا برند"
-          />
-        </ul>
         <ul className={classes.leftSide}>
           <li className={classes.account} onClick={showSign}>
             <PersonOutlinedIcon className={classes.i} />
@@ -141,8 +89,52 @@ export const Header = (props) => {
             ) : null}
           </li>
         </ul>
+        <ul className={classes.middleSide}>
+          <button className={classes.search}>
+            <Search />
+          </button>
+          <input
+            spellCheck="false"
+            type="search"
+            placeholder="جست و جوی محصول یا برند"
+          />
+        </ul>
+        <ul className={classes.rightSide}>
+          <div
+            className={classes.mainLogo}
+            onClick={() => {
+              setPage("home");
+            }}
+          >
+            <Link to="/#">
+              <img
+                data-toggle="tooltip"
+                src="/sporti-label.png"
+                alt="sporti.com"
+              />
+            </Link>
+          </div>
+        </ul>
+        <ul className={classes.miniLogo}>
+          <div
+            className={classes.mainLogo}
+            onClick={() => {
+              setPage("home");
+            }}
+          >
+            <Link to="/#">
+              <img
+                data-toggle="tooltip"
+                src="/sporti-logo.png"
+                alt="sporti.com"
+              />
+            </Link>
+          </div>
+        </ul>
+        <div onClick={showHiddenMenu} className={classes.dropdown}>
+          <SegmentIcon className={classes.i} />
+        </div>
       </nav>
-
       <ul className={classes.bottomHeader}>
         <li>
           <Link

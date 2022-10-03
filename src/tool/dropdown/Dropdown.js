@@ -27,9 +27,25 @@ export const Dropdown = (props) => {
   const productTypeURL = "http://localhost/bsShop/productType.php";
   /*FUNCTION*/
   useEffect(() => {
-    axios.post(sportsURL).then((res) => setSportsData(res.data));
-    axios.post(brandsURL).then((res) => setBrandsData(res.data));
-    axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
+    // axios.get(sportsURL).then((res) => setSportsData(res.data));
+    // axios.post(brandsURL).then((res) => setBrandsData(res.data));
+    // axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
+
+    axios
+      .post(`http://localhost:8080/type`, {
+        list: "category,fa_category",
+      })
+      .then((res) => setSportsData(res.data.dataset));
+    axios
+      .post(`http://localhost:8080/type`, {
+        list: "brand",
+      })
+      .then((res) => setBrandsData(res.data.dataset));
+    axios
+      .post(`http://localhost:8080/type`, {
+        list: "type,fa_type",
+      })
+      .then((res) => setProductTypeData(res.data.dataset));
   }, []);
 
   const decreaseCartHandler = (username, productId) => {

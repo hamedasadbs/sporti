@@ -10,7 +10,7 @@ import classes from "./Home.module.scss";
 export const Home = (props) => {
   return (
     <div className={classes.home}>
-      <Header setIsSignShown={props.setIsSignShown} />
+      <Header />
       <Advertising />
       <Categories />
       <ProductList title="جدیدترین محصولات" />

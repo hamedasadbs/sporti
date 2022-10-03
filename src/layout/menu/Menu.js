@@ -15,7 +15,6 @@ export const Menu = () => {
   const [sportsData, setSportsData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
-  const [isHiddenMenuShown, setIsHiddenMenuShown] = useState(false);
   const [isSignShown, setIsSignShown] = useState(false);
   const [isSportsOpen, setIsSportsOpen] = useState(false);
   const [isBrandsOpen, setIsBrandsOpen] = useState(false);
@@ -26,6 +25,7 @@ export const Menu = () => {
   const [login, setLogin] = useContext(Context).loginCon;
   const [username, setUsername] = useContext(Context).usernameCon;
   const setPage = useContext(Context).pageCon[1];
+  const setIsMenuShown = useContext(Context).menuCon[1];
   const sportsURL = "http://localhost/bsShop/sports.php";
   const brandsURL = "http://localhost/bsShop/brands.php";
   const productTypeURL = "http://localhost/bsShop/productType.php";
@@ -93,7 +93,7 @@ export const Menu = () => {
   };
 
   const closeHiddenMenu = () => {
-    setIsHiddenMenuShown(false);
+    setIsMenuShown(false);
   };
 
   const closeForm = () => {
@@ -123,142 +123,148 @@ export const Menu = () => {
   };
   /*JSX*/
   return (
-    <div className={classes.hiddenMenu}>
-      <Cancel onClick={closeHiddenMenu} className={classes.closeHiddenMenu} />
-      <ul className={classes.rightSide}>
-        <li className={classes.account}>
-          <label
+    <div className={classes.menuContainer}>
+      <div className={classes.hiddenMenu}>
+        <Cancel onClick={closeHiddenMenu} className={classes.closeHiddenMenu} />
+        <ul className={classes.rightSide}>
+          <li className={classes.account}>
+            <label
+              onClick={() => {
+                closeForm();
+                showSign();
+                closeHiddenMenu();
+              }}
+            >
+              حساب من{" "}
+            </label>
+          </li>
+          <li className={classes.basket} onClick={openBasket}>
+            {isBasketOpen ? <ArrowDropDown /> : <ArrowLeft />}
+            <label>سبد من </label>
+            {isBasketOpen && (
+              <ul>
+                {login == false ? (
+                  <li>لطفا وارد حساب کاربری خود شوید</li>
+                ) : cart.length === 0 ? (
+                  <li>سبد شما خالی است</li>
+                ) : (
+                  cart.map((res) => <li>{res.fa_title}</li>)
+                )}
+              </ul>
+            )}
+          </li>
+          <li
             onClick={() => {
-              closeForm();
-              showSign();
-              closeHiddenMenu();
+              setPage("home");
             }}
           >
-            حساب من{" "}
-          </label>
-        </li>
-        <li className={classes.basket} onClick={openBasket}>
-          {isBasketOpen ? <ArrowDropDown /> : <ArrowLeft />}
-          <label>سبد من </label>
-          {isBasketOpen && (
-            <ul>
-              {login == false ? (
-                <li>لطفا وارد حساب کاربری خود شوید</li>
-              ) : cart.length === 0 ? (
-                <li>سبد شما خالی است</li>
-              ) : (
-                cart.map((res) => <li>{res.fa_title}</li>)
-              )}
-            </ul>
-          )}
-        </li>
-        <li
-          onClick={() => {
-            setPage("home");
-          }}
-        >
-          <Link to="/#" onClick={closeHiddenMenu}>
-            خانه
-          </Link>
-        </li>
-        <li className={classes.sports} onClick={openSports}>
-          <Link>{isSportsOpen ? <ArrowDropDown /> : <ArrowLeft />}ورزش ها</Link>
-          {isSportsOpen && (
-            <ul>
-              {sportsData.map((res) => (
-                <li
-                  key={res.id}
-                  onClick={() => {
-                    window.location.href = "/category/" + res.category;
-                  }}
-                >
-                  <Link onClick={closeHiddenMenu} to={`/${res.category}`}>
-                    {res.fa_category} -
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-        <li className={classes.brands} onClick={openBrands}>
-          <Link>{isBrandsOpen ? <ArrowDropDown /> : <ArrowLeft />}برند ها</Link>
-          {isBrandsOpen && (
-            <ul>
-              {brandsData.map((res) => (
-                <li
-                  key={res.id}
-                  onClick={() => {
-                    window.location.href = "/category/" + res.brand;
-                  }}
-                >
-                  <Link onClick={closeHiddenMenu} to={`/${res.brand}`}>
-                    {res.brand} -
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-        <li className={classes.productType} onClick={openProductType}>
-          <Link>
-            {isProductTypeOpen ? <ArrowDropDown /> : <ArrowLeft />}
-            نوع محصول
-          </Link>
-          {isProductTypeOpen && (
-            <ul>
-              {productTypeData.map((res) => (
-                <li
-                  key={res.id}
-                  onClick={() => {
-                    window.location.href = "/category/" + res.type;
-                  }}
-                >
-                  <Link onClick={closeHiddenMenu} to={`/${res.type}`}>
-                    {res.fa_type} -
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          )}
-        </li>
-        <li
-          onClick={() => {
-            setPage("blog-news");
-          }}
-        >
-          <Link to="/blog-news" onClick={closeHiddenMenu}>
-            بلاگ و اخبار
-          </Link>
-        </li>
-        <li
-          onClick={() => {
-            setPage("about");
-          }}
-        >
-          <Link to="/about" onClick={closeHiddenMenu}>
-            درباره ما
-          </Link>
-        </li>
-        <li
-          onClick={() => {
-            setPage("contact");
-          }}
-        >
-          <Link to="/contact" onClick={closeHiddenMenu}>
-            ارتباط با ما
-          </Link>
-        </li>
-        <li className={classes.search}>
-          <button>
-            <Search />
-          </button>
-          <input
-            spellCheck="false"
-            type="search"
-            placeholder="جست و جوی محصول یا برند"
-          />
-        </li>
-      </ul>
+            <Link to="/#" onClick={closeHiddenMenu}>
+              خانه
+            </Link>
+          </li>
+          <li className={classes.sports} onClick={openSports}>
+            <Link>
+              {isSportsOpen ? <ArrowDropDown /> : <ArrowLeft />}ورزش ها
+            </Link>
+            {isSportsOpen && (
+              <ul>
+                {sportsData.map((res) => (
+                  <li
+                    key={res.id}
+                    onClick={() => {
+                      window.location.href = "/category/" + res.category;
+                    }}
+                  >
+                    <Link onClick={closeHiddenMenu} to={`/${res.category}`}>
+                      {res.fa_category} -
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+          <li className={classes.brands} onClick={openBrands}>
+            <Link>
+              {isBrandsOpen ? <ArrowDropDown /> : <ArrowLeft />}برند ها
+            </Link>
+            {isBrandsOpen && (
+              <ul>
+                {brandsData.map((res) => (
+                  <li
+                    key={res.id}
+                    onClick={() => {
+                      window.location.href = "/category/" + res.brand;
+                    }}
+                  >
+                    <Link onClick={closeHiddenMenu} to={`/${res.brand}`}>
+                      {res.brand} -
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+          <li className={classes.productType} onClick={openProductType}>
+            <Link>
+              {isProductTypeOpen ? <ArrowDropDown /> : <ArrowLeft />}
+              نوع محصول
+            </Link>
+            {isProductTypeOpen && (
+              <ul>
+                {productTypeData.map((res) => (
+                  <li
+                    key={res.id}
+                    onClick={() => {
+                      window.location.href = "/category/" + res.type;
+                    }}
+                  >
+                    <Link onClick={closeHiddenMenu} to={`/${res.type}`}>
+                      {res.fa_type} -
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+          <li
+            onClick={() => {
+              setPage("blog-news");
+            }}
+          >
+            <Link to="/blog-news" onClick={closeHiddenMenu}>
+              بلاگ و اخبار
+            </Link>
+          </li>
+          <li
+            onClick={() => {
+              setPage("about");
+            }}
+          >
+            <Link to="/about" onClick={closeHiddenMenu}>
+              درباره ما
+            </Link>
+          </li>
+          <li
+            onClick={() => {
+              setPage("contact");
+            }}
+          >
+            <Link to="/contact" onClick={closeHiddenMenu}>
+              ارتباط با ما
+            </Link>
+          </li>
+          <li className={classes.search}>
+            <button>
+              <Search />
+            </button>
+            <input
+              spellCheck="false"
+              type="search"
+              placeholder="جست و جوی محصول یا برند"
+            />
+          </li>
+        </ul>
+      </div>
     </div>
   );
 };

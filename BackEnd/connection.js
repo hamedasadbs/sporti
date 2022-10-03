@@ -16,6 +16,8 @@ var like = require("./like");
 
 var cart = require("./cart");
 
+var type = require("./type");
+
 //use cors lib for disable cors error
 app.use(
   cors({
@@ -54,6 +56,8 @@ cart.getCart(app, con);
 cart.increaseCart(app, con);
 cart.decreaseCart(app, con);
 cart.deleteCart(app, con);
+
+type.getType(app, con);
 
 //setting port
 app.listen(8080);

@@ -34,14 +34,21 @@ export const ProductList = (props) => {
         <InfiniteCarousel
           breakpoints={[
             {
-              breakpoint: 500,
+              breakpoint: 720,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 1000,
               settings: {
                 slidesToShow: 2,
                 slidesToScroll: 2,
               },
             },
             {
-              breakpoint: 768,
+              breakpoint: 1300,
               settings: {
                 slidesToShow: 3,
                 slidesToScroll: 3,

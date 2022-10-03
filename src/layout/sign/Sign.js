@@ -1,6 +1,7 @@
 /*INNER COMPONENT*/
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
+import { Context } from "../../logic/Context";
 /*CSS*/
 import classes from "./Sign.module.scss";
 /*MUI*/
@@ -13,8 +14,10 @@ import {
   AccountCircle,
   PersonAdd,
 } from "@material-ui/icons";
+/*LIBRARY*/
+import * as cookieLib from "../../logic/Cookie";
 
-export const Sign = (props) => {
+export const Sign = () => {
   /*STATE*/
   const [name, setName] = useState(null);
   const [sign, setSign] = useState("login");
@@ -23,6 +26,8 @@ export const Sign = (props) => {
   const [email, setEmail] = useState(null);
   const [signupPassword, setSignupPassword] = useState(null);
   let [loginPassword, setLoginPassword] = useState(null);
+  /*VARIABLE*/
+  const setIsSignShown = useContext(Context).signCon[1];
   /*FUNCTION*/
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -89,8 +94,8 @@ export const Sign = (props) => {
               password: signupPassword,
             })
             .then((res) => {
-              setCookie("login", true, 60);
-              setCookie("username", signupUsername, 60);
+              cookieLib.setCookie("login", true, 60);
+              cookieLib.setCookie("username", signupUsername, 60);
               if (res.status == 200) {
                 setLoginUsername(signupUsername);
                 loginUsername = signupUsername;
@@ -109,13 +114,6 @@ export const Sign = (props) => {
     }
   };
 
-  const setCookie = (cName, cValue, minutes) => {
-    let d = new Date();
-    d.setTime(d.getTime() + minutes * 60 * 1000);
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = cName + "=" + cValue + "; " + expires;
-  };
-
   const enterToAccount = () => {
     if (loginUsername != null && loginPassword != null) {
       axios
@@ -124,8 +122,8 @@ export const Sign = (props) => {
           password: loginPassword,
         })
         .then((res) => {
-          setCookie("login", true, 60);
-          setCookie("username", loginUsername, 60);
+          cookieLib.setCookie("login", true, 60);
+          cookieLib.setCookie("username", loginUsername, 60);
           alert(`شما با نام ${loginUsername} وارد حساب کاربری خود شدید`);
           window.location.href = "/";
         })
@@ -159,7 +157,10 @@ export const Sign = (props) => {
               >
                 ثبت حساب کاربری جدید
               </h1>
-              <Cancel onClick={props.close} className={classes.closeSign} />
+              <Cancel
+                onClick={() => setIsSignShown(false)}
+                className={classes.closeSign}
+              />
               <h1
                 {...(sign === "login" && {
                   className: classes.activeTab,
@@ -209,7 +210,10 @@ export const Sign = (props) => {
               >
                 ثبت حساب کاربری جدید
               </h1>
-              <Cancel onClick={props.close} className={classes.closeSign} />
+              <Cancel
+                onClick={() => setIsSignShown(false)}
+                className={classes.closeSign}
+              />
               <h1
                 {...(sign === "login" && {
                   className: classes.activeTab,

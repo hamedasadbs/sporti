@@ -27,6 +27,7 @@
   .bannerContainer {
     z-index: 1;
     margin-right: 10px;
+    display: flex;
     filter: drop-shadow(16px 16px 10px lightgray);
 
     .banner {
@@ -77,6 +78,44 @@
 
       &:hover {
         opacity: 1;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $medium) {
+  .advertising {
+    flex-direction: column-reverse;
+    margin-top: 20px;
+
+    .titleContainer,
+    .bannerContainer {
+      margin: auto;
+      margin-top: 10px;
+      width: 100%;
+
+      h1 {
+        font-size: 30px;
+      }
+
+      h2 {
+        font-size: 20px;
+      }
+
+      .banner {
+        margin: auto;
+        width: 400px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .advertising {
+    .bannerContainer {
+      .banner {
+        margin: auto;
+        width: 250px;
       }
     }
   }

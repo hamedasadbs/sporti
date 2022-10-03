@@ -28,31 +28,43 @@
 
   .topHeader {
     display: flex;
-    justify-content: space-between;
     z-index: 1;
+    padding: 20px 0;
+
+    .dropdown {
+      display: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .miniLogo {
+      display: none;
+
+      .mainLogo {
+        margin-top: 5px;
+
+        a {
+          display: flex;
+
+          img {
+            width: 60px;
+            object-fit: cover;
+            margin: auto;
+          }
+        }
+      }
+    }
 
     .rightSide {
       font-family: $font;
-      color: $superDarkColor;
       z-index: 1;
-
-      li {
-        margin: 0px 20px 0px 10px;
-        font-size: 14px;
-        display: inline-block;
-        padding: 0px 8px;
-        font-weight: 500;
-      }
-
-      li.dropdown {
-        display: none;
-      }
+      margin: auto;
+      padding: 0;
+      margin-right: 0;
 
       .mainLogo {
-        width: 80px;
-        float: right;
-        padding-left: 20px;
-        margin: auto;
         margin-top: 5px;
 
         a {
@@ -60,8 +72,8 @@
 
           img {
             width: 210px;
-            height: 80px;
-            margin: 10px 0 0 -50px;
+            object-fit: cover;
+            margin: auto;
           }
         }
       }
@@ -70,6 +82,8 @@
     .middleSide {
       width: 300px;
       display: flex;
+      margin: auto;
+      padding: 0;
 
       input {
         @include inp;
@@ -90,20 +104,21 @@
     }
 
     .leftSide {
-      position: relative;
       display: flex;
+      margin: auto;
+      padding: 0;
+      margin-left: 0;
 
       li {
         font-size: 18px;
-        display: inline;
-        margin: 10px;
-        padding: 20px;
+        display: flex;
+        padding: 10px 20px;
         position: relative;
+        margin: auto;
 
         label {
           font-family: $font;
           color: $superDarkColor;
-          border-bottom: none;
         }
 
         .i {
@@ -167,7 +182,6 @@
         flex-direction: column;
 
         .carts {
-          background-color: rgb(252, 0, 11);
           width: auto;
           padding: 0px 10px;
           border-radius: 50px;
@@ -263,7 +277,7 @@
               position: absolute;
               margin: auto;
               width: 200px;
-              top: 50px;
+              top: 45px;
               z-index: 100;
               text-align: center;
               transition: all 0.5s ease-in-out;
@@ -292,21 +306,8 @@
   }
 }
 
-@media only screen and (max-width: $big) {
-  header {
-    .topHeader {
-      margin-top: 10px;
-
-      .middleSide {
-        display: none !important;
-      }
-    }
-  }
-}
-
 @media only screen and (max-width: $medium) {
   .header {
-    margin: 0 20px;
 
     .topHeader {
       .rightSide {
@@ -323,58 +324,35 @@
             margin-left: -30px;
           }
         }
+      }
 
-        .mainLogo {
-          display: none !important;
+      .dropdown {
+        display: flex;
+        margin: auto;
+        margin-right: 10px;
+
+        .i {
+          color: $primaryColor1;
+          font-size: 60px;
         }
+      }
+
+      .middleSide {
+        display: none !important;
       }
     }
 
     .bottomHeader {
-      .rightSide {
-        display: none !important;
-      }
-
-      .leftSide {
-        li {
-          .signInButton {
-            display: none;
-          }
-        }
-      }
+      display: none !important;
     }
   }
 }
 
 @media only screen and (max-width: $small) {
   .header {
-    margin: 0 20px;
-
     .topHeader {
-      border: none;
-
-      .leftSide {
-        display: none;
-      }
-
       .rightSide {
-        li.dropdown {
-          .i {
-            margin-top: 0px;
-          }
-        }
-
-        .mainLogo {
-          display: initial !important;
-          margin: -15px 0 0 230px;
-
-          a {
-            img {
-              width: 150px;
-              height: 70px;
-            }
-          }
-        }
+        display: none !important;
       }
     }
   }
@@ -383,17 +361,14 @@
 @media only screen and (max-width: $verySmall) {
   .header {
     .topHeader {
-      .rightSide {
-        li.dropdown {
-          .i {
-            margin-left: -70px;
-            font-size: 50px;
-          }
-        }
+      .leftSide {
+        display: none !important;
+      }
 
-        .mainLogo {
-          margin: -45px 0 0 110px;
-        }
+      .miniLogo {
+        display: flex;
+        margin: auto;
+        margin-left: 0;
       }
     }
   }
