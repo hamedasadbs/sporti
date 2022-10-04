@@ -163,9 +163,10 @@ export const Menu = () => {
             </Link>
           </li>
           <li className={classes.sports} onClick={openSports}>
-            <Link>
-              {isSportsOpen ? <ArrowDropDown /> : <ArrowLeft />}ورزش ها
-            </Link>
+            <span>
+              {isSportsOpen ? <ArrowDropDown /> : <ArrowLeft />}
+              ورزش ها
+            </span>
             {isSportsOpen && (
               <ul>
                 {sportsData.map((res) => (
@@ -184,9 +185,9 @@ export const Menu = () => {
             )}
           </li>
           <li className={classes.brands} onClick={openBrands}>
-            <Link>
+            <span>
               {isBrandsOpen ? <ArrowDropDown /> : <ArrowLeft />}برند ها
-            </Link>
+            </span>
             {isBrandsOpen && (
               <ul>
                 {brandsData.map((res) => (
@@ -205,10 +206,10 @@ export const Menu = () => {
             )}
           </li>
           <li className={classes.productType} onClick={openProductType}>
-            <Link>
+            <span>
               {isProductTypeOpen ? <ArrowDropDown /> : <ArrowLeft />}
               نوع محصول
-            </Link>
+            </span>
             {isProductTypeOpen && (
               <ul>
                 {productTypeData.map((res) => (

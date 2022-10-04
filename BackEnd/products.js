@@ -4,7 +4,15 @@ module.exports = {
       var query =
         "SELECT * FROM products" +
         (req.body.category ? ` WHERE category='${req.body.category}'` : "") +
-        (req.body.type ? ` AND type='${req.body.type}'` : "") +
+        (req.body.type && req.body.type !== "none"
+          ? ` AND type='${req.body.type}'`
+          : "") +
+        (req.body.kind && req.body.kind !== "none"
+          ? ` AND kind='${req.body.kind}'`
+          : "") +
+        (req.body.brand && req.body.brand !== "none"
+          ? ` AND brand='${req.body.brand}'`
+          : "") +
         (req.body.orderBy
           ? ` ORDER BY ${req.body.orderBy} ${req.body.orderByType}`
           : "") +

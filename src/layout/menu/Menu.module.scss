@@ -44,7 +44,8 @@
           margin: 0px 20px 0px auto;
           width: fit-content;
           font-size: 20px;
-          display: block;
+          display: flex;
+          flex-direction: column;
           padding: 0px 8px;
           font-weight: 500;
           text-align: right;
@@ -54,11 +55,26 @@
             display: none;
           }
 
+          span {
+            display: flex;
+            width: fit-content;
+            margin: auto;
+            margin-right: 0;
+            justify-content: center;
+            align-items: center;
+          }
+
+          &:hover {
+            color: $secondaryColor1;
+            transition: all 0.2s;
+            cursor: pointer;
+          }
+
           a {
             color: $linkColor;
 
             &:hover {
-              color: $hoverColor;
+              color: $secondaryColor1;
               transition: all 0.2s;
             }
           }

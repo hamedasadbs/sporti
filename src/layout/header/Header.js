@@ -1,7 +1,6 @@
 /*INNER COMPONENT*/
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { Context } from "../../logic/Context";
 /*STYLE*/
 import classes from "./Header.module.scss";
@@ -17,16 +16,15 @@ import SegmentIcon from "@mui/icons-material/Segment";
 /*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 
-export const Header = () => {
-  /*STATE*/
-  const [cart, setCart] = useState([]);
+export const Header = (props) => {
   /*VARIABLE*/
   const [login, setLogin] = useContext(Context).loginCon;
   const [username, setUsername] = useContext(Context).usernameCon;
   const [page, setPage] = useContext(Context).pageCon;
   const setIsMenuShown = useContext(Context).menuCon[1];
   const setIsSignShown = useContext(Context).signCon[1];
-
+  const cart = useContext(Context).cartCon[0];
+  /*FUNCTION*/
   const showHiddenMenu = () => {
     setIsMenuShown(true);
     window.scrollTo(0, 0);
@@ -49,18 +47,6 @@ export const Header = () => {
       setUsername("");
     }
   };
-
-  useEffect(() => {
-    if (login) {
-      checkTheCart();
-    }
-  }, []);
-
-  const checkTheCart = () => {
-    axios.get(`http://localhost:8080/cart?username=${username}`).then((res) => {
-      setCart(res.data.dataset);
-    });
-  };
   /*JSX*/
   return (
     <header className={classes.header}>
@@ -82,7 +68,7 @@ export const Header = () => {
                 <Dropdown
                   login={login}
                   type="basket"
-                  checkTheCart={checkTheCart}
+                  checkTheCart={props.checkTheCart}
                   cart={cart}
                 />
               </div>
@@ -218,9 +204,7 @@ export const Header = () => {
             }}
             to="/#"
           >
-            <span
-              {...(page === "home" ? { className: classes.activeNav } : {})}
-            >
+            <span {...(page === "home" && { className: classes.activeNav })}>
               خانه
             </span>
           </Link>

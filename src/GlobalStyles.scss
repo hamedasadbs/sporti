@@ -63,10 +63,8 @@ button:hover {
 
 @mixin closeBtn($size) {
   font-size: $size;
-  flex-grow: 0;
   margin: 10px;
   width: auto;
-  height: 45px;
   font-weight: lighter;
 
   &:hover {

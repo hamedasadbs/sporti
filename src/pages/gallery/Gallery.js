@@ -7,7 +7,9 @@ import classes from "./Gallery.module.scss";
 /*CHILD COMPONENT*/
 import { Product } from "./product/Product";
 /*MUI*/
-import Checkbox from "@material-ui/core/Checkbox";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
 /*ICON*/
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
@@ -23,7 +25,9 @@ export const Gallery = (props) => {
   let [minPrice, setMinPrice] = useState(0);
   let [maxPrice, setMaxPrice] = useState(500000);
   let [page, setPage] = useState(1);
-  const [type, setType] = useState(null);
+  const [type, setType] = useState("none");
+  const [kind, setKind] = useState("none");
+  const [brand, setBrand] = useState("none");
   /*VARIABLE*/
   const numberOfItemsToShow = 10;
   const numberOfOffsets = totalGallery.length / numberOfItemsToShow;
@@ -48,6 +52,8 @@ export const Gallery = (props) => {
         limit: numberOfItemsToShow,
         offset: offset,
         type: type,
+        kind: kind,
+        brand: brand,
       })
       .then((res) => {
         setGallery(res.data.pro);
@@ -55,12 +61,12 @@ export const Gallery = (props) => {
   };
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    updateRequest();
+  }, [type, kind, brand]);
 
   useEffect(() => {
-    updateRequest();
-  }, [type]);
+    window.scrollTo(0, 0);
+  }, []);
 
   const offsetCrescent = () => {
     if (page < parseInt(numberOfOffsets)) {
@@ -117,6 +123,18 @@ export const Gallery = (props) => {
       </li>
     );
   }
+
+  const typeHandler = (e) => {
+    setType(e.target.value);
+  };
+
+  const kindHandler = (e) => {
+    setKind(e.target.value);
+  };
+
+  const brandHandler = (e) => {
+    setBrand(e.target.value);
+  };
   /*JSX*/
   return (
     <article className={classes.galleries}>
@@ -188,6 +206,9 @@ export const Gallery = (props) => {
             </tr>
           </tbody>
         </table>
+        <button onClick={() => (window.location.href = window.location.href)}>
+          حذف همه فیلترها
+        </button>
         <table className={classes.type}>
           <thead>
             <tr>
@@ -195,18 +216,23 @@ export const Gallery = (props) => {
             </tr>
           </thead>
           <tbody>
-            {productTypeData.map((res) => (
-              <tr key={res.fa_type}>
-                <td>
-                  {res.fa_type}
-                  <Checkbox
-                    onChange={() => setType(res.type)}
-                    value={res.fa_type}
-                    color="primary"
-                  />
-                </td>
-              </tr>
-            ))}
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              name="radio-buttons-group"
+              onChange={typeHandler}
+            >
+              {productTypeData.map((res) => (
+                <tr key={res.fa_type}>
+                  <td>
+                    <FormControlLabel
+                      value={res.type}
+                      control={<Radio />}
+                      label={<h1>{res.fa_type}</h1>}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </RadioGroup>
           </tbody>
         </table>
         <table className={classes.kind}>
@@ -216,14 +242,23 @@ export const Gallery = (props) => {
             </tr>
           </thead>
           <tbody>
-            {productKindData.map((res, index) => (
-              <tr key={index}>
-                <td>
-                  {res.kind}
-                  <Checkbox color="secondary" />
-                </td>
-              </tr>
-            ))}
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              name="radio-buttons-group"
+              onChange={kindHandler}
+            >
+              {productKindData.map((res, index) => (
+                <tr key={index}>
+                  <td>
+                    <FormControlLabel
+                      value={res.kind}
+                      control={<Radio />}
+                      label={<h1>{res.kind}</h1>}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </RadioGroup>
           </tbody>
         </table>
         <table className={classes.brand}>
@@ -233,17 +268,25 @@ export const Gallery = (props) => {
             </tr>
           </thead>
           <tbody>
-            {brandsData.map((res, index) => (
-              <tr key={index}>
-                <td>
-                  {res.brand}
-                  <Checkbox color="secondary" />
-                </td>
-              </tr>
-            ))}
+            <RadioGroup
+              aria-labelledby="demo-radio-buttons-group-label"
+              name="radio-buttons-group"
+              onChange={brandHandler}
+            >
+              {brandsData.map((res, index) => (
+                <tr key={index}>
+                  <td>
+                    <FormControlLabel
+                      value={res.brand}
+                      control={<Radio />}
+                      label={<h1>{res.brand}</h1>}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </RadioGroup>
           </tbody>
         </table>
-        <button onClick={updateRequest}>اعمال فیلتر</button>
       </div>
     </article>
   );

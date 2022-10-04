@@ -16,6 +16,7 @@ export const Product = (props) => {
   const [liked, setLiked] = useState([]);
   const [loaded, setLoaded] = useState(false);
   /*VARIABLE*/
+  const likeURL = "http://localhost:8080/like";
   const login = useContext(Context).loginCon[0];
   const username = useContext(Context).usernameCon[0];
   /*FUNCTION*/
@@ -29,7 +30,7 @@ export const Product = (props) => {
 
   const checkTheLiked = () => {
     axios
-      .get(`http://localhost:8080/like?username=${username}`)
+      .get(`${likeURL}?username=${username}`)
       .then((res) => {
         setLiked(res.data.dataset);
       })
@@ -39,7 +40,7 @@ export const Product = (props) => {
   const addToLiked = (id) => {
     if (login) {
       axios
-        .post("http://localhost:8080/like", {
+        .post(likeURL, {
           productId: id,
           username: username,
         })
@@ -117,10 +118,7 @@ export const Product = (props) => {
             ) : null}
           </span>
         </div>
-        <Link
-          className={classes.link}
-          to={`/category/${props.card.category}/${props.card.fa_title}`}
-        >
+        <Link className={classes.link} to={`/product/${props.card.id}`}>
           <button>مشاهده جزئیات</button>
         </Link>
       </div>

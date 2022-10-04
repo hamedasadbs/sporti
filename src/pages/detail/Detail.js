@@ -1,23 +1,23 @@
 /*INNER COMPONENT*/
-import { useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { Context } from "../../logic/Context";
 /*STYLE*/
-import classes from "./Details.module.scss";
+import classes from "./Detail.module.scss";
 /*CHILD COMPONENT*/
-import { Dropdown } from "../../tool/dropdown/Dropdown";
+import { Dropdown } from "../../components/dropdown/Dropdown";
 
-export const Details = (props) => {
+export const Detail = ({ product }) => {
   /*STATE*/
   const [isDescDisplay, setIsDescDisplay] = useState(false);
   const [isFeaturesDisplay, setIsFeaturesDisplay] = useState(true);
   const [isCommentsDisplay, setIsCommentsDisplay] = useState(false);
-  const [number, setNumber] = useState(props.exi);
+  const [number, setNumber] = useState(product.existence);
   /*VARIABLE*/
   const url = "http://localhost/bsShop/cart.php";
-  const isOnline = useSelector((state) => state.isOnline);
-  const accountName = useSelector((state) => state.accountName);
-  const cart = props.cart;
+  const login = useContext(Context).loginCon[0];
+  const username = useContext(Context).usernameCon[0];
+  const cart = useContext(Context).cartCon[0];
   /*FUNCTION*/
   const descriptionHandler = () => {
     setIsFeaturesDisplay(false);
@@ -36,18 +36,18 @@ export const Details = (props) => {
   };
 
   const addToCart = () => {
-    if (isOnline) {
+    if (login) {
       axios
         .post(
           url,
           JSON.stringify({
             method: "addToCart",
-            username: accountName,
-            productId: props.id,
+            username: username,
+            productId: product.id,
           })
         )
         .then(() => {
-          props.checkTheCart();
+          // product.checkTheCart();
           setNumber((state) => state - 1);
         });
     } else alert("ابتدا وارد حساب خود شوید");
@@ -56,16 +56,17 @@ export const Details = (props) => {
   const isInCart = () => {
     let isInCart = false;
     cart.map((res) => {
-      if (res.product_id === props.id) {
+      if (res.product_id === product.id) {
         isInCart = true;
       }
     });
     return isInCart;
   };
+
   /*JSX*/
   return (
-    <div className={classes.details}>
-      <h1 className={classes.title}>{props.faTitle}</h1>
+    <div className={classes.detail}>
+      <h1 className={classes.title}>{product.faTitle}</h1>
       <article>
         <div className={classes.extraInfos}>
           <div className={classes.tabs}>
@@ -94,16 +95,24 @@ export const Details = (props) => {
               مشخصات
             </button>
           </div>
-          <Dropdown dis={isDescDisplay} type="description" desc={props.desc} />
+          <Dropdown
+            dis={isDescDisplay}
+            type="description"
+            desc={product.desc}
+          />
           <Dropdown
             dis={isFeaturesDisplay}
-            price={props.price}
+            price={product.price}
             type="features"
-            ty={props.type}
-            kind={props.kind}
-            size={props.size}
+            ty={product.type}
+            kind={product.kind}
+            size={product.size}
           />
-          <Dropdown dis={isCommentsDisplay} type="comments" desc={props.desc} />
+          <Dropdown
+            dis={isCommentsDisplay}
+            type="comments"
+            desc={product.desc}
+          />
           {number > 0 ? (
             isInCart() ? (
               <button onClick={addToCart} className={classes.addToCart}>
@@ -122,13 +131,28 @@ export const Details = (props) => {
         </div>
         <div className={classes.images}>
           <div className={classes.primary}>
-            <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
+            <img
+              src={`/Images/Product/${product.image}`}
+              alt={product.faTitle}
+            />
           </div>
           <div className={classes.secondary}>
-            <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
-            <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
-            <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
-            <img src={`/Images/Product/${props.image}`} alt={props.faTitle} />
+            <img
+              src={`/Images/Product/${product.image}`}
+              alt={product.faTitle}
+            />
+            <img
+              src={`/Images/Product/${product.image}`}
+              alt={product.faTitle}
+            />
+            <img
+              src={`/Images/Product/${product.image}`}
+              alt={product.faTitle}
+            />
+            <img
+              src={`/Images/Product/${product.image}`}
+              alt={product.faTitle}
+            />
           </div>
         </div>
       </article>

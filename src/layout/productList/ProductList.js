@@ -1,6 +1,6 @@
 /*INNER COMPONENT*/
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState, useContext } from "react";
+import { Context } from "../../logic/Context";
 import InfiniteCarousel from "react-leaf-carousel";
 /*STYLE*/
 import classes from "./ProductList.module.scss";
@@ -12,17 +12,10 @@ import { Product } from "./product/Product";
 
 export const ProductList = (props) => {
   /*STATE*/
-  const [productsData, setProductsData] = useState([]);
   const [loaded, setLoaded] = useState(false);
   /*VARIABLE*/
-  const url = "http://localhost:8080/products";
+  const products = useContext(Context).productsCon[0];
   /*FUNCTION*/
-  useEffect(() => {
-    axios.post(url).then((res) => {
-      setProductsData(res.data.pro);
-    });
-  }, []);
-
   setTimeout(() => {
     setLoaded(true);
   }, 500);
@@ -90,7 +83,7 @@ export const ProductList = (props) => {
           slidesToShow={4}
           scrollOnDevice={true}
         >
-          {productsData.map((res, index) => (
+          {products.map((res, index) => (
             <Product card={res} key={index} />
           ))}
         </InfiniteCarousel>

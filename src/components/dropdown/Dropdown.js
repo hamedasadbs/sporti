@@ -3,7 +3,6 @@ import { useContext } from "react";
 import axios from "axios";
 import { Context } from "../../logic/Context";
 /*STYLE*/
-import detailsStyle from "../../layout/details/Details.module.scss";
 import classes from "./Dropdown.module.scss";
 /*ICON*/
 import {
@@ -159,16 +158,16 @@ export const Dropdown = (props) => {
       ) : props.type === "description" ? (
         <div
           {...(props.dis === false
-            ? { className: detailsStyle.displayNone }
-            : { className: detailsStyle.description })}
+            ? { className: classes.displayNone }
+            : { className: classes.description })}
         >
           {props.desc}
         </div>
       ) : props.type === "features" ? (
         <div
           {...(props.dis === false
-            ? { className: detailsStyle.displayNone }
-            : { className: detailsStyle.features })}
+            ? { className: classes.displayNone }
+            : { className: classes.features })}
         >
           <p>قیمت محصول(تومان): {props.price}</p>
           <p>نوع محصول: {props.ty}</p>
@@ -178,8 +177,8 @@ export const Dropdown = (props) => {
       ) : props.type === "comments" ? (
         <div
           {...(props.dis === false
-            ? { className: detailsStyle.displayNone }
-            : { className: detailsStyle.comments })}
+            ? { className: classes.displayNone }
+            : { className: classes.comments })}
         >
           نظری وجود ندارد
         </div>

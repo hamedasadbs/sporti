@@ -83,14 +83,13 @@
       padding: 10px;
       border-radius: 5px;
       background-color: transparent;
-      color: $secondaryColor1;
-      border: 1px solid $secondaryColor1;
+      color: $hoverColor;
+      border: 1px solid $hoverColor;
     }
 
     table {
       width: 100%;
       font-family: $font;
-      background-color: transparent;
 
       thead {
         @include title();
@@ -108,8 +107,17 @@
         text-align: right;
 
         tr {
+          display: flex;
+
           td {
             padding: 5px;
+            margin: auto;
+            margin-right: 0;
+
+            h1 {
+              font-family: "iran";
+              font-size: 15px;
+            }
           }
         }
       }

@@ -11,6 +11,7 @@ import { Home } from "../src/pages/home/Home";
 import { Menu } from "./layout/menu/Menu";
 import { Sign } from "../src/components/sign/Sign";
 import { Gallery } from "../src/pages/gallery/Gallery";
+import { Detail } from "../src/pages/detail/Detail";
 import { Notice } from "../src/layout/notice/Notice";
 import { Footer } from "./layout/footer/Footer";
 /*LIBRARY*/
@@ -21,39 +22,41 @@ export const App = () => {
   const [username, setUsername] = useState(cookieLib.getCookie("username"));
   const [login, setLogin] = useState(cookieLib.getCookie("login"));
   const [page, setPage] = useState("home");
-  const [sportsData, setSportsData] = useState([]);
-  const [brandsData, setBrandsData] = useState([]);
-  const [productTypeData, setProductTypeData] = useState([]);
-  const [productKindData, setProductKindData] = useState([]);
+  const [sports, setSports] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [productType, setProductType] = useState([]);
+  const [productKind, setProductKind] = useState([]);
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isSignShown, setIsSignShown] = useState(false);
   const [cart, setCart] = useState([]);
+  const [products, setProducts] = useState([]);
   /*VARIABLE*/
-  const cartURL = "http://localhost/bsShop/cart.php";
+  const typeURL = "http://localhost:8080/type";
+  const productsURL = "http://localhost:8080/products";
   const context = {
     usernameCon: [username, setUsername],
     loginCon: [login, setLogin],
     pageCon: [page, setPage],
     menuCon: [isMenuShown, setIsMenuShown],
     signCon: [isSignShown, setIsSignShown],
+    productsCon: [products, setProducts],
+    cartCon: [cart, setCart],
     typeCon: {
-      sports: [sportsData, setSportsData],
-      brands: [brandsData, setBrandsData],
-      productType: [productTypeData, setProductTypeData],
-      productKind: [productKindData, setProductKindData],
+      sports: [sports, setSports],
+      brands: [brands, setBrands],
+      productType: [productType, setProductType],
+      productKind: [productKind, setProductKind],
     },
   };
   /*FUNCTION*/
+  useEffect(() => {
+    axios.post(productsURL).then((res) => setProducts(res.data.pro));
+  }, []);
+
   const checkTheCart = () => {
-    axios
-      .post(
-        cartURL,
-        JSON.stringify({
-          method: "checkTheCart",
-          username: cookieLib.getCookie("username"),
-        })
-      )
-      .then((res) => setCart(res.data));
+    axios.get(`http://localhost:8080/cart?username=${username}`).then((res) => {
+      setCart(res.data.dataset);
+    });
   };
 
   useEffect(() => {
@@ -64,25 +67,25 @@ export const App = () => {
 
   useEffect(() => {
     axios
-      .post(`http://localhost:8080/type`, {
+      .post(typeURL, {
         list: "category,fa_category",
       })
-      .then((res) => setSportsData(res.data.dataset));
+      .then((res) => setSports(res.data.dataset));
     axios
-      .post(`http://localhost:8080/type`, {
+      .post(typeURL, {
         list: "brand",
       })
-      .then((res) => setBrandsData(res.data.dataset));
+      .then((res) => setBrands(res.data.dataset));
     axios
-      .post(`http://localhost:8080/type`, {
+      .post(typeURL, {
         list: "type,fa_type",
       })
-      .then((res) => setProductTypeData(res.data.dataset));
+      .then((res) => setProductType(res.data.dataset));
     axios
-      .post(`http://localhost:8080/type`, {
+      .post(typeURL, {
         list: "kind",
       })
-      .then((res) => setProductKindData(res.data.dataset));
+      .then((res) => setProductKind(res.data.dataset));
   }, []);
 
   const disableScroll = () => {
@@ -100,58 +103,46 @@ export const App = () => {
       window.onscroll = function () {};
     }
   }, [isMenuShown, isSignShown]);
-
   /*JSX*/
   return (
     <Context.Provider value={context}>
       <Router>
         <div className="main">
-          <Header />
+          <Header checkTheCart={checkTheCart} />
           {isMenuShown && <Menu />}
           {isSignShown && <Sign />}
           <Routes>
-            {sportsData.map((res, index) => (
+            {sports.map((res, index) => (
               <Route
                 path={`/category/${res.category}`}
                 key={index}
                 element={
-                  <Gallery
-                    category={res.category}
-                    faTitle={res.fa_category}
-                    checkTheCart={checkTheCart}
-                    cart={cart}
-                  />
+                  <Gallery category={res.category} faTitle={res.fa_category} />
                 }
               />
             ))}
 
-            {brandsData.map((res, index) => (
+            {brands.map((res, index) => (
               <Route
                 path={`/category/${res.brand}`}
                 key={index}
-                element={
-                  <Gallery
-                    category={res.brand}
-                    faTitle={res.brand}
-                    checkTheCart={checkTheCart}
-                    cart={cart}
-                  />
-                }
+                element={<Gallery category={res.brand} faTitle={res.brand} />}
               />
             ))}
 
-            {productTypeData.map((res, index) => (
+            {productType.map((res, index) => (
               <Route
                 path={`/category/${res.type}`}
                 key={index}
-                element={
-                  <Gallery
-                    category={res.type}
-                    faTitle={res.fa_type}
-                    checkTheCart={checkTheCart}
-                    cart={cart}
-                  />
-                }
+                element={<Gallery category={res.type} faTitle={res.fa_type} />}
+              />
+            ))}
+
+            {products.map((res, index) => (
+              <Route
+                path={`/product/${res.id}`}
+                key={index}
+                element={<Detail product={res} />}
               />
             ))}
 

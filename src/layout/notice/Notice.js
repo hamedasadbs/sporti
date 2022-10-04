@@ -59,6 +59,11 @@ export const Notice = (props) => {
     }
     alert(isCaptchaTrue);
   };
+
+  useEffect(() => {
+    alert("notice");
+  }, []);
+
   /*JSX*/
   return (
     <>

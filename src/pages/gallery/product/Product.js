@@ -117,10 +117,7 @@ export const Product = (props) => {
             ) : null}
           </span>
         </div>
-        <Link
-          className={classes.link}
-          to={`/category/${props.card.category}/${props.card.fa_title}`}
-        >
+        <Link className={classes.link} to={`/product/${props.card.id}`}>
           <button>مشاهده جزئیات</button>
         </Link>
       </div>
