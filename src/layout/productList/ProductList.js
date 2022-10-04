@@ -8,7 +8,7 @@ import classes from "./ProductList.module.scss";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 /*CHILD COMPONENT*/
-import { Product } from "./Product/Product";
+import { Product } from "./product/Product";
 
 export const ProductList = (props) => {
   /*STATE*/
@@ -18,7 +18,7 @@ export const ProductList = (props) => {
   const url = "http://localhost:8080/products";
   /*FUNCTION*/
   useEffect(() => {
-    axios.get(url).then((res) => {
+    axios.post(url).then((res) => {
       setProductsData(res.data.pro);
     });
   }, []);

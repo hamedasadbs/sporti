@@ -38,22 +38,22 @@
       flex-wrap: wrap;
       justify-content: center;
       list-style: none;
-      background-image: linear-gradient(to right,
-          rgb(75, 75, 75),
-          rgb(20, 20, 20),
-          rgb(75, 75, 75));
-      padding-right: 30px;
+      background: linear-gradient(to left, $primaryColor3, $primaryColor1, $primaryColor3);
+      padding: 0;
 
       li {
-        background-color: lighten($linkColor, 20%);
+        background-color: lighten($linkColor, 30%);
         width: 50px;
         margin: 10px;
-
+        display: flex;
         text-align: center;
+        justify-content: center;
+        align-items: center;
         line-height: 40px;
         font-size: 20px;
         font-family: $font;
         transition: all 0.5s;
+        border-radius: 20px;
 
         &:hover {
           cursor: pointer;
@@ -63,6 +63,7 @@
 
       li.hoveredOffset {
         background-color: $secondaryColor2;
+        color: $primaryColor4;
       }
     }
   }

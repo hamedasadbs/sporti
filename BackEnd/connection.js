@@ -47,7 +47,6 @@ user.addUser(app, con);
 category.getData(app, con);
 
 products.getProducts(app, con);
-products.updateLike(app, con);
 
 like.getLikes(app, con);
 like.changeLikes(app, con);

@@ -140,7 +140,7 @@ button:hover {
 
 @mixin title {
   width: 100%;
-  background-color: $primaryColor1;
+  background: linear-gradient(to left, $primaryColor3, $primaryColor1, $primaryColor3);
   color: $superLightColor;
   padding: 10px 0;
   text-align: center;

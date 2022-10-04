@@ -1,7 +1,16 @@
 module.exports = {
   getProducts: (app, con) => {
-    app.get("/products", (req, res) => {
-      con.query(`SELECT * FROM products`, (err, result) => {
+    app.post("/products", (req, res) => {
+      var query =
+        "SELECT * FROM products" +
+        (req.body.category ? ` WHERE category='${req.body.category}'` : "") +
+        (req.body.type ? ` AND type='${req.body.type}'` : "") +
+        (req.body.orderBy
+          ? ` ORDER BY ${req.body.orderBy} ${req.body.orderByType}`
+          : "") +
+        (req.body.limit ? ` LIMIT ${req.body.limit}` : "") +
+        (req.body.offset ? ` OFFSET ${req.body.offset}` : "");
+      con.query(query, (err, result) => {
         if (err) throw err;
         if (result) {
           res.send({
@@ -9,25 +18,6 @@ module.exports = {
           });
         }
       });
-    });
-  },
-  updateLike: (app, con) => {
-    app.post("/products", (req, res) => {
-      con.query(
-        `UPDATE education SET 
-        university='${req.body.university}',
-        last_grade='${req.body.lastGrade}',
-        thesis='${req.body.thesis}',
-        year='${req.body.year}' 
-        WHERE username='${req.body.username}'`,
-        (err) => {
-          if (err) {
-            res.sendStatus(405);
-          } else {
-            res.sendStatus(200);
-          }
-        }
-      );
     });
   },
 };

@@ -6,11 +6,13 @@ import { Context } from "./logic/Context";
 /*STYLE*/
 import "./App.scss";
 /*CHILD COMPONENT*/
+import { Header } from "./layout/header/Header";
 import { Home } from "../src/pages/home/Home";
 import { Menu } from "./layout/menu/Menu";
-import { Sign } from "../src/layout/sign/Sign";
-import { Gallery } from "../src/layout/gallery/Gallery";
+import { Sign } from "../src/components/sign/Sign";
+import { Gallery } from "../src/pages/gallery/Gallery";
 import { Notice } from "../src/layout/notice/Notice";
+import { Footer } from "./layout/footer/Footer";
 /*LIBRARY*/
 import * as cookieLib from "./logic/Cookie";
 
@@ -22,13 +24,11 @@ export const App = () => {
   const [sportsData, setSportsData] = useState([]);
   const [brandsData, setBrandsData] = useState([]);
   const [productTypeData, setProductTypeData] = useState([]);
+  const [productKindData, setProductKindData] = useState([]);
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isSignShown, setIsSignShown] = useState(false);
   const [cart, setCart] = useState([]);
   /*VARIABLE*/
-  const sportsURL = "http://localhost/bsShop/sports.php";
-  const brandsURL = "http://localhost/bsShop/brands.php";
-  const productTypeURL = "http://localhost/bsShop/productType.php";
   const cartURL = "http://localhost/bsShop/cart.php";
   const context = {
     usernameCon: [username, setUsername],
@@ -36,20 +36,14 @@ export const App = () => {
     pageCon: [page, setPage],
     menuCon: [isMenuShown, setIsMenuShown],
     signCon: [isSignShown, setIsSignShown],
+    typeCon: {
+      sports: [sportsData, setSportsData],
+      brands: [brandsData, setBrandsData],
+      productType: [productTypeData, setProductTypeData],
+      productKind: [productKindData, setProductKindData],
+    },
   };
   /*FUNCTION*/
-  const disableAll = (disable) => {
-    const tagsArray = ["li", "button", "input", "a"];
-
-    for (let t = 0; t < tagsArray.length; t++) {
-      const tagsDom = document.querySelectorAll(tagsArray[t]);
-      for (let i = 0; i < tagsDom.length; i++) {
-        if (disable) tagsDom[i].classList.add("disable");
-        else tagsDom[i].classList.remove("disable");
-      }
-    }
-  };
-
   const checkTheCart = () => {
     axios
       .post(
@@ -63,13 +57,32 @@ export const App = () => {
   };
 
   useEffect(() => {
-    axios.post(sportsURL).then((res) => setSportsData(res.data));
-    axios.post(brandsURL).then((res) => setBrandsData(res.data));
-    axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
     if (cookieLib.getCookie("login")) {
       checkTheCart();
-    } else {
     }
+  }, []);
+
+  useEffect(() => {
+    axios
+      .post(`http://localhost:8080/type`, {
+        list: "category,fa_category",
+      })
+      .then((res) => setSportsData(res.data.dataset));
+    axios
+      .post(`http://localhost:8080/type`, {
+        list: "brand",
+      })
+      .then((res) => setBrandsData(res.data.dataset));
+    axios
+      .post(`http://localhost:8080/type`, {
+        list: "type,fa_type",
+      })
+      .then((res) => setProductTypeData(res.data.dataset));
+    axios
+      .post(`http://localhost:8080/type`, {
+        list: "kind",
+      })
+      .then((res) => setProductKindData(res.data.dataset));
   }, []);
 
   const disableScroll = () => {
@@ -93,6 +106,7 @@ export const App = () => {
     <Context.Provider value={context}>
       <Router>
         <div className="main">
+          <Header />
           {isMenuShown && <Menu />}
           {isSignShown && <Sign />}
           <Routes>
@@ -102,7 +116,7 @@ export const App = () => {
                 key={index}
                 element={
                   <Gallery
-                    categoryName={res.category}
+                    category={res.category}
                     faTitle={res.fa_category}
                     checkTheCart={checkTheCart}
                     cart={cart}
@@ -117,7 +131,7 @@ export const App = () => {
                 key={index}
                 element={
                   <Gallery
-                    categoryName={res.brand}
+                    category={res.brand}
                     faTitle={res.brand}
                     checkTheCart={checkTheCart}
                     cart={cart}
@@ -132,7 +146,7 @@ export const App = () => {
                 key={index}
                 element={
                   <Gallery
-                    categoryName={res.type}
+                    category={res.type}
                     faTitle={res.fa_type}
                     checkTheCart={checkTheCart}
                     cart={cart}
@@ -160,6 +174,7 @@ export const App = () => {
 
             <Route path="/" element={<Home />} />
           </Routes>
+          <Footer />
         </div>
       </Router>
     </Context.Provider>

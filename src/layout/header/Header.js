@@ -8,7 +8,7 @@ import classes from "./Header.module.scss";
 /*MUI*/
 import { Search } from "@material-ui/icons";
 /*CHILD COMPONENT*/
-import { Dropdown } from "../../tool/dropdown/Dropdown";
+import { Dropdown } from "../../components/dropdown/Dropdown";
 /*ICON*/
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
@@ -144,9 +144,7 @@ export const Header = () => {
             }}
             to="/contact"
           >
-            <span
-              {...(page === "contact" ? { className: classes.activeNav } : {})}
-            >
+            <span {...(page === "contact" && { className: classes.activeNav })}>
               ارتباط با ما
             </span>
           </Link>
@@ -159,9 +157,7 @@ export const Header = () => {
             }}
             to="/about"
           >
-            <span
-              {...(page === "about" ? { className: classes.activeNav } : {})}
-            >
+            <span {...(page === "about" && { className: classes.activeNav })}>
               درباره ما
             </span>
           </Link>
@@ -175,9 +171,7 @@ export const Header = () => {
             to="/blog-news"
           >
             <span
-              {...(page === "blog-news"
-                ? { className: classes.activeNav }
-                : {})}
+              {...(page === "blog-news" && { className: classes.activeNav })}
             >
               بلاگ و اخبار
             </span>

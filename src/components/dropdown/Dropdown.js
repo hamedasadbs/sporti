@@ -1,6 +1,7 @@
 /*INNER COMPONENT*/
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import axios from "axios";
+import { Context } from "../../logic/Context";
 /*STYLE*/
 import detailsStyle from "../../layout/details/Details.module.scss";
 import classes from "./Dropdown.module.scss";
@@ -17,37 +18,11 @@ import {
 import * as separateLib from "../../logic/Separate";
 
 export const Dropdown = (props) => {
-  /*STATE*/
-  const [sportsData, setSportsData] = useState([]);
-  const [brandsData, setBrandsData] = useState([]);
-  const [productTypeData, setProductTypeData] = useState([]);
   /*VARIABLE*/
-  const sportsURL = "http://localhost/bsShop/sports.php";
-  const brandsURL = "http://localhost/bsShop/brands.php";
-  const productTypeURL = "http://localhost/bsShop/productType.php";
+  const sportsData = useContext(Context).typeCon.sports[0];
+  const brandsData = useContext(Context).typeCon.brands[0];
+  const productTypeData = useContext(Context).typeCon.productType[0];
   /*FUNCTION*/
-  useEffect(() => {
-    // axios.get(sportsURL).then((res) => setSportsData(res.data));
-    // axios.post(brandsURL).then((res) => setBrandsData(res.data));
-    // axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
-
-    axios
-      .post(`http://localhost:8080/type`, {
-        list: "category,fa_category",
-      })
-      .then((res) => setSportsData(res.data.dataset));
-    axios
-      .post(`http://localhost:8080/type`, {
-        list: "brand",
-      })
-      .then((res) => setBrandsData(res.data.dataset));
-    axios
-      .post(`http://localhost:8080/type`, {
-        list: "type,fa_type",
-      })
-      .then((res) => setProductTypeData(res.data.dataset));
-  }, []);
-
   const decreaseCartHandler = (username, productId) => {
     axios
       .post("http://localhost:8080/decreaseCart", {
