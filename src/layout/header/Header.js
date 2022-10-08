@@ -85,7 +85,7 @@ export const Header = (props) => {
             placeholder="جست و جوی محصول یا برند"
           />
         </ul>
-        <ul className={classes.rightSide}>
+        <ul className={classes.bigLogo}>
           <div
             className={classes.mainLogo}
             onClick={() => {
@@ -93,11 +93,7 @@ export const Header = (props) => {
             }}
           >
             <Link to="/#">
-              <img
-                data-toggle="tooltip"
-                src="/sporti-label.png"
-                alt="sporti.com"
-              />
+              <h1 className={classes.logo}>SPORTi</h1>
             </Link>
           </div>
         </ul>
@@ -109,11 +105,7 @@ export const Header = (props) => {
             }}
           >
             <Link to="/#">
-              <img
-                data-toggle="tooltip"
-                src="/sporti-logo.png"
-                alt="sporti.com"
-              />
+              <h1 className={classes.logo}>SPORTi</h1>
             </Link>
           </div>
         </ul>

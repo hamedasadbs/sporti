@@ -53,7 +53,7 @@ export const ProductList = (props) => {
               className={classes.arrow}
               style={{
                 position: "absolute",
-                right: -30,
+                right: -20,
                 top: 250,
               }}
             >
@@ -67,7 +67,7 @@ export const ProductList = (props) => {
               className={classes.arrow}
               style={{
                 position: "absolute",
-                left: -30,
+                left: -20,
                 top: 250,
               }}
             >

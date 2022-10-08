@@ -8,6 +8,7 @@ body {
   height: 100%;
   background-color: rgb(247, 247, 247);
   scroll-behavior: smooth;
+  position: relative;
 }
 
 code {
@@ -23,4 +24,9 @@ code {
 @font-face {
   font-family: "vazir";
   src: url(./assets/fonts/Vazir-Medium-FD.ttf);
+}
+
+@font-face {
+  font-family: "logo";
+  src: url(./assets/fonts/Akronim-Regular.ttf);
 }

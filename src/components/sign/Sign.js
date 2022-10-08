@@ -7,13 +7,7 @@ import classes from "./Sign.module.scss";
 /*MUI*/
 import Checkbox from "@material-ui/core/Checkbox";
 /*ICON*/
-import {
-  Lock,
-  Mail,
-  Cancel,
-  AccountCircle,
-  PersonAdd,
-} from "@material-ui/icons";
+import { Lock, Mail, AccountCircle, PersonAdd } from "@material-ui/icons";
 /*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 
@@ -142,10 +136,17 @@ export const Sign = () => {
   const changeToLogin = () => {
     setSign("login");
   };
+
+  const notCloseHandler = (e) => {
+    e.stopPropagation();
+  };
   /*JSX*/
   return (
-    <div className={classes.signContainer}>
-      <article className={classes.sign}>
+    <div
+      onClick={() => setIsSignShown(false)}
+      className={classes.signContainer}
+    >
+      <article onClick={notCloseHandler} className={classes.sign}>
         {sign === "login" ? (
           <>
             <span className={classes.title}>
@@ -157,10 +158,6 @@ export const Sign = () => {
               >
                 ثبت حساب کاربری جدید
               </h1>
-              <Cancel
-                onClick={() => setIsSignShown(false)}
-                className={classes.closeSign}
-              />
               <h1
                 {...(sign === "login" && {
                   className: classes.activeTab,
@@ -210,10 +207,6 @@ export const Sign = () => {
               >
                 ثبت حساب کاربری جدید
               </h1>
-              <Cancel
-                onClick={() => setIsSignShown(false)}
-                className={classes.closeSign}
-              />
               <h1
                 {...(sign === "login" && {
                   className: classes.activeTab,

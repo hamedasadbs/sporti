@@ -52,6 +52,12 @@
 
 @media only screen and (max-width: $small) {
   .productList {
+    width: 100%;
+
+    .title {
+      border-radius: 0;
+    }
+
     .imageList {
       .image {
         width: 150px;

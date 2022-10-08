@@ -97,12 +97,18 @@ export const App = () => {
   };
 
   useEffect(() => {
-    if (isMenuShown || isSignShown) {
+    if (isSignShown) {
       disableScroll();
     } else {
       window.onscroll = function () {};
     }
   }, [isMenuShown, isSignShown]);
+
+  if (typeof window !== "undefined") {
+    window.onresize = function () {
+      if (window.innerWidth > 1005 && isMenuShown) setIsMenuShown(false);
+    };
+  }
   /*JSX*/
   return (
     <Context.Provider value={context}>

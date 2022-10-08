@@ -1,44 +1,38 @@
 /*INNER COMPONENT*/
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { Context } from "../../logic/Context";
 /*STYLE*/
 import classes from "./Menu.module.scss";
 /*ICON*/
-import { Cancel, ArrowDropDown, ArrowLeft, Search } from "@material-ui/icons";
+import { ArrowDropDown, ArrowLeft, Search } from "@material-ui/icons";
 /*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 
 export const Menu = () => {
   /*STATE*/
-  const [sportsData, setSportsData] = useState([]);
-  const [brandsData, setBrandsData] = useState([]);
-  const [productTypeData, setProductTypeData] = useState([]);
-  const [isSignShown, setIsSignShown] = useState(false);
   const [isSportsOpen, setIsSportsOpen] = useState(false);
   const [isBrandsOpen, setIsBrandsOpen] = useState(false);
   const [isProductTypeOpen, setIsProductTypeOpen] = useState(false);
   const [isBasketOpen, setIsBasketOpen] = useState(false);
-  const [cart, setCart] = useState([]);
   /*VARIABLE*/
   const [login, setLogin] = useContext(Context).loginCon;
-  const [username, setUsername] = useContext(Context).usernameCon;
+  const setUsername = useContext(Context).usernameCon[1];
   const setPage = useContext(Context).pageCon[1];
   const setIsMenuShown = useContext(Context).menuCon[1];
-  const sportsURL = "http://localhost/bsShop/sports.php";
-  const brandsURL = "http://localhost/bsShop/brands.php";
-  const productTypeURL = "http://localhost/bsShop/productType.php";
-  const cartURL = "http://localhost/bsShop/cart.php";
+  const setIsSignShown = useContext(Context).signCon[1];
+
+  const sportsData = useContext(Context).typeCon.sports[0];
+  const brandsData = useContext(Context).typeCon.brands[0];
+  const productTypeData = useContext(Context).typeCon.productType[0];
+  const cart = useContext(Context).cartCon[0];
 
   const showSign = () => {
     if (login) {
       logoutHandler();
     } else {
-      disableAll(true);
       setIsSignShown(true);
       window.scrollTo(0, 0);
-      disableScroll();
     }
   };
 
@@ -49,14 +43,6 @@ export const Menu = () => {
       cookieLib.setCookie("username", "", -100);
       setUsername("");
     }
-  };
-
-  const disableScroll = () => {
-    let x = window.scrollX;
-    let y = window.scrollY;
-    window.onscroll = function () {
-      window.scrollTo(x, y);
-    };
   };
 
   const disableAll = (disable) => {
@@ -71,28 +57,7 @@ export const Menu = () => {
     }
   };
 
-  useEffect(() => {
-    axios.post(sportsURL).then((res) => setSportsData(res.data));
-    axios.post(brandsURL).then((res) => setBrandsData(res.data));
-    axios.post(productTypeURL).then((res) => setProductTypeData(res.data));
-    if (login) {
-      checkTheCart();
-    }
-  }, []);
-
-  const checkTheCart = () => {
-    axios
-      .post(
-        cartURL,
-        JSON.stringify({
-          method: "checkTheCart",
-          username: username,
-        })
-      )
-      .then((res) => setCart(res.data));
-  };
-
-  const closeHiddenMenu = () => {
+  const closeMenu = () => {
     setIsMenuShown(false);
   };
 
@@ -102,49 +67,42 @@ export const Menu = () => {
     window.onscroll = function () {};
   };
 
-  const openBasket = () => {
-    if (isBasketOpen) setIsBasketOpen(false);
-    else setIsBasketOpen(true);
-  };
-
-  const openSports = () => {
-    if (isSportsOpen) setIsSportsOpen(false);
-    else setIsSportsOpen(true);
-  };
-
-  const openBrands = () => {
-    if (isBrandsOpen) setIsBrandsOpen(false);
-    else setIsBrandsOpen(true);
-  };
-
-  const openProductType = () => {
-    if (isProductTypeOpen) setIsProductTypeOpen(false);
-    else setIsProductTypeOpen(true);
+  const notCloseHandler = (e) => {
+    e.stopPropagation();
   };
   /*JSX*/
   return (
-    <div className={classes.menuContainer}>
-      <div className={classes.hiddenMenu}>
-        <Cancel onClick={closeHiddenMenu} className={classes.closeHiddenMenu} />
+    <div
+      onClick={() => setIsMenuShown(false)}
+      id="container"
+      className={classes.menuContainer}
+    >
+      <div onClick={notCloseHandler} className={classes.menu}>
         <ul className={classes.rightSide}>
           <li className={classes.account}>
             <label
               onClick={() => {
                 closeForm();
                 showSign();
-                closeHiddenMenu();
+                closeMenu();
               }}
             >
               حساب من{" "}
             </label>
           </li>
-          <li className={classes.basket} onClick={openBasket}>
-            {isBasketOpen ? <ArrowDropDown /> : <ArrowLeft />}
-            <label>سبد من </label>
+          <li
+            className={classes.basket}
+            onClick={() => setIsBasketOpen((prevState) => !prevState)}
+          >
+            <span>
+              {isBasketOpen ? <ArrowDropDown /> : <ArrowLeft />}سبد من
+            </span>
             {isBasketOpen && (
               <ul>
                 {login == false ? (
-                  <li>لطفا وارد حساب کاربری خود شوید</li>
+                  <li className={classes.alert}>
+                    لطفا وارد حساب کاربری خود شوید
+                  </li>
                 ) : cart.length === 0 ? (
                   <li>سبد شما خالی است</li>
                 ) : (
@@ -158,11 +116,14 @@ export const Menu = () => {
               setPage("home");
             }}
           >
-            <Link to="/#" onClick={closeHiddenMenu}>
+            <Link to="/#" onClick={closeMenu}>
               خانه
             </Link>
           </li>
-          <li className={classes.sports} onClick={openSports}>
+          <li
+            className={classes.sports}
+            onClick={() => setIsSportsOpen((prevState) => !prevState)}
+          >
             <span>
               {isSportsOpen ? <ArrowDropDown /> : <ArrowLeft />}
               ورزش ها
@@ -176,15 +137,18 @@ export const Menu = () => {
                       window.location.href = "/category/" + res.category;
                     }}
                   >
-                    <Link onClick={closeHiddenMenu} to={`/${res.category}`}>
-                      {res.fa_category} -
+                    <Link onClick={closeMenu} to={`/${res.category}`}>
+                      {res.fa_category}
                     </Link>
                   </li>
                 ))}
               </ul>
             )}
           </li>
-          <li className={classes.brands} onClick={openBrands}>
+          <li
+            className={classes.brands}
+            onClick={() => setIsBrandsOpen((prevState) => !prevState)}
+          >
             <span>
               {isBrandsOpen ? <ArrowDropDown /> : <ArrowLeft />}برند ها
             </span>
@@ -197,15 +161,18 @@ export const Menu = () => {
                       window.location.href = "/category/" + res.brand;
                     }}
                   >
-                    <Link onClick={closeHiddenMenu} to={`/${res.brand}`}>
-                      {res.brand} -
+                    <Link onClick={closeMenu} to={`/${res.brand}`}>
+                      {res.brand}
                     </Link>
                   </li>
                 ))}
               </ul>
             )}
           </li>
-          <li className={classes.productType} onClick={openProductType}>
+          <li
+            className={classes.productType}
+            onClick={() => setIsProductTypeOpen((prevState) => !prevState)}
+          >
             <span>
               {isProductTypeOpen ? <ArrowDropDown /> : <ArrowLeft />}
               نوع محصول
@@ -219,8 +186,8 @@ export const Menu = () => {
                       window.location.href = "/category/" + res.type;
                     }}
                   >
-                    <Link onClick={closeHiddenMenu} to={`/${res.type}`}>
-                      {res.fa_type} -
+                    <Link onClick={closeMenu} to={`/${res.type}`}>
+                      {res.fa_type}
                     </Link>
                   </li>
                 ))}
@@ -232,7 +199,7 @@ export const Menu = () => {
               setPage("blog-news");
             }}
           >
-            <Link to="/blog-news" onClick={closeHiddenMenu}>
+            <Link to="/blog-news" onClick={closeMenu}>
               بلاگ و اخبار
             </Link>
           </li>
@@ -241,7 +208,7 @@ export const Menu = () => {
               setPage("about");
             }}
           >
-            <Link to="/about" onClick={closeHiddenMenu}>
+            <Link to="/about" onClick={closeMenu}>
               درباره ما
             </Link>
           </li>
@@ -250,7 +217,7 @@ export const Menu = () => {
               setPage("contact");
             }}
           >
-            <Link to="/contact" onClick={closeHiddenMenu}>
+            <Link to="/contact" onClick={closeMenu}>
               ارتباط با ما
             </Link>
           </li>

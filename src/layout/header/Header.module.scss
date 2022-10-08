@@ -41,23 +41,27 @@
 
     .miniLogo {
       display: none;
+      padding: 0;
 
       .mainLogo {
         margin-top: 5px;
+        margin: auto;
 
         a {
           display: flex;
 
-          img {
-            width: 60px;
-            object-fit: cover;
+          .logo {
+            color: $primaryColor1;
+            font-family: 'logo';
+            font-size: 50px;
+            font-weight: 500;
             margin: auto;
           }
         }
       }
     }
 
-    .rightSide {
+    .bigLogo {
       font-family: $font;
       z-index: 1;
       margin: auto;
@@ -70,9 +74,11 @@
         a {
           display: flex;
 
-          img {
-            width: 210px;
-            object-fit: cover;
+          .logo {
+            color: $primaryColor1;
+            font-family: 'logo';
+            font-size: 65px;
+            font-weight: 500;
             margin: auto;
           }
         }
@@ -118,12 +124,13 @@
 
         label {
           font-family: $font;
-          color: $superDarkColor;
+          color: $primaryColor1;
         }
 
         .i {
           font-size: 40px;
           margin-left: 10px;
+          color: red;
         }
 
         div:not(.carts) {
@@ -311,7 +318,7 @@
   .header {
 
     .topHeader {
-      .rightSide {
+      .bigLogo {
         li.dropdown {
           display: initial !important;
 
@@ -352,7 +359,7 @@
 @media only screen and (max-width: $small) {
   .header {
     .topHeader {
-      .rightSide {
+      .bigLogo {
         display: none !important;
       }
     }
@@ -369,7 +376,7 @@
       .miniLogo {
         display: flex;
         margin: auto;
-        margin-left: 0;
+        margin-left: 10px;
       }
     }
   }
