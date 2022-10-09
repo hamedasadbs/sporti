@@ -1,5 +1,5 @@
 /*INNER COMPONENT*/
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../logic/Context";
 /*STYLE*/
@@ -18,7 +18,7 @@ export const Menu = () => {
   /*VARIABLE*/
   const [login, setLogin] = useContext(Context).loginCon;
   const setUsername = useContext(Context).usernameCon[1];
-  const setPage = useContext(Context).pageCon[1];
+  const [page, setPage] = useContext(Context).pageCon;
   const setIsMenuShown = useContext(Context).menuCon[1];
   const setIsSignShown = useContext(Context).signCon[1];
 
@@ -70,6 +70,7 @@ export const Menu = () => {
   const notCloseHandler = (e) => {
     e.stopPropagation();
   };
+
   /*JSX*/
   return (
     <div
@@ -115,6 +116,7 @@ export const Menu = () => {
             onClick={() => {
               setPage("home");
             }}
+            className={page == "home" && classes.activeLink}
           >
             <Link to="/#" onClick={closeMenu}>
               خانه

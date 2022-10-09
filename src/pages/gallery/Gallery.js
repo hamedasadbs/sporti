@@ -144,7 +144,11 @@ export const Gallery = (props) => {
           {gallery.length > 0 ? (
             gallery.map((res, index) => {
               return res.price <= maxPrice && res.price >= minPrice ? (
-                <Product card={res} key={index} />
+                <Product
+                  checkTheCart={props.checkTheCart}
+                  card={res}
+                  key={index}
+                />
               ) : null;
             })
           ) : (

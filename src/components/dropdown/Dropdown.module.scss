@@ -77,7 +77,7 @@ button {
                         }
 
                         .outlineAdd {
-                            color: lighten($primaryColor1, 20%);
+                            color: gray;
                         }
 
                         &:hover {
@@ -94,7 +94,7 @@ button {
                     }
 
                     .productCount {
-                        color: $footerBackColor;
+                        color: gray;
                         width: fit-content;
                         margin: auto 5px;
                     }
@@ -103,12 +103,12 @@ button {
                         display: flex;
 
                         .fillMinus {
-                            color: lighten($primaryColor1, 20%);
+                            color: lighten($hoverColor, 20%);
                             display: none;
                         }
 
                         .outlineMinus {
-                            color: lighten($primaryColor1, 20%);
+                            color: gray;
                         }
 
                         &:hover {
@@ -133,7 +133,7 @@ button {
                         }
 
                         .outlineDelete {
-                            color: lighten($hoverColor, 20%);
+                            color: gray;
                         }
 
                         &:hover {
@@ -167,6 +167,19 @@ main.dropdownContainer {
     background-color: darken($superLightColor, 10%);
     width: 100%;
     z-index: 100;
+    animation: shacking 0.5s forwards;
+    transform-origin: top;
+    @include shadow();
+
+    @keyframes shacking {
+        0% {
+            transform: scaleY(0);
+        }
+
+        80% {
+            transform: scaleY(1);
+        }
+    }
 
     span.dropdown {
         border-radius: 5px;

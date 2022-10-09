@@ -39,17 +39,113 @@
       }
     }
 
-    .stars {
+    .addToCart {
       display: flex;
       margin: auto;
       margin-right: 0;
 
-      .star {
-        color: gray;
+      article {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .add {
+          display: flex;
+
+          .fillAdd {
+            color: lighten($primaryColor2, 20%);
+            display: none;
+          }
+
+          .outlineAdd {
+            color: gray;
+          }
+
+          &:hover {
+            cursor: pointer;
+
+            .fillAdd {
+              display: initial;
+            }
+
+            .outlineAdd {
+              display: none;
+            }
+          }
+        }
+
+        .productCount {
+          color: gray;
+          width: fit-content;
+          margin: auto 5px;
+        }
+
+        .minus {
+          display: flex;
+
+          .fillMinus {
+            color: lighten($hoverColor, 20%);
+            display: none;
+          }
+
+          .outlineMinus {
+            color: gray;
+          }
+
+          &:hover {
+            cursor: pointer;
+
+            .fillMinus {
+              display: initial;
+            }
+
+            .outlineMinus {
+              display: none;
+            }
+          }
+        }
+
+        .delete {
+          display: flex;
+
+          .fillDelete {
+            color: lighten($hoverColor, 20%);
+            display: none;
+          }
+
+          .outlineDelete {
+            color: gray;
+          }
+
+          &:hover {
+            cursor: pointer;
+
+            .fillDelete {
+              display: initial;
+            }
+
+            .outlineDelete {
+              display: none;
+            }
+          }
+        }
       }
 
-      .lightStar {
-        color: $secondaryColor2;
+      &:hover {
+        cursor: pointer;
+
+        .i {
+          color: $secondaryColor1;
+        }
+      }
+
+      .i {
+        color: gray;
+        transition: all 0.3s;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
   }
@@ -78,6 +174,20 @@
       color: $footerBackColor;
       overflow-x: hidden;
       width: 100%;
+    }
+
+    .stars {
+      display: flex;
+      margin: auto;
+      margin-right: 0;
+
+      .star {
+        color: lightgray;
+      }
+
+      .lightStar {
+        color: $secondaryColor2;
+      }
     }
 
     .center {

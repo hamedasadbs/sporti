@@ -52,6 +52,7 @@ like.getLikes(app, con);
 like.changeLikes(app, con);
 
 cart.getCart(app, con);
+cart.addCart(app, con);
 cart.increaseCart(app, con);
 cart.decreaseCart(app, con);
 cart.deleteCart(app, con);

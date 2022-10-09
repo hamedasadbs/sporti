@@ -1,5 +1,5 @@
 /*INNER COMPONENT*/
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../logic/Context";
 /*STYLE*/
@@ -16,7 +16,7 @@ import SegmentIcon from "@mui/icons-material/Segment";
 /*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 
-export const Header = (props) => {
+export const Header = () => {
   /*VARIABLE*/
   const [login, setLogin] = useContext(Context).loginCon;
   const [username, setUsername] = useContext(Context).usernameCon;
@@ -47,6 +47,7 @@ export const Header = (props) => {
       setUsername("");
     }
   };
+
   /*JSX*/
   return (
     <header className={classes.header}>
@@ -65,12 +66,7 @@ export const Header = (props) => {
             <label>سبد من</label>
             {login && cart.length ? (
               <div className={classes.basket}>
-                <Dropdown
-                  login={login}
-                  type="basket"
-                  checkTheCart={props.checkTheCart}
-                  cart={cart}
-                />
+                <Dropdown login={login} type="basket" />
               </div>
             ) : null}
           </li>

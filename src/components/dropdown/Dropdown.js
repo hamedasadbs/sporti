@@ -1,6 +1,5 @@
 /*INNER COMPONENT*/
 import { useContext } from "react";
-import axios from "axios";
 import { Context } from "../../logic/Context";
 /*STYLE*/
 import classes from "./Dropdown.module.scss";
@@ -15,51 +14,22 @@ import {
 } from "@material-ui/icons";
 /*LIBRARY*/
 import * as separateLib from "../../logic/Separate";
+import * as cartLib from "../../logic/Cart";
 
 export const Dropdown = (props) => {
   /*VARIABLE*/
   const sportsData = useContext(Context).typeCon.sports[0];
   const brandsData = useContext(Context).typeCon.brands[0];
   const productTypeData = useContext(Context).typeCon.productType[0];
-  /*FUNCTION*/
-  const decreaseCartHandler = (username, productId) => {
-    axios
-      .post("http://localhost:8080/decreaseCart", {
-        productId: productId,
-        username: username,
-      })
-      .then(() => {
-        props.checkTheCart();
-      });
-  };
-
-  const increaseCartHandler = (username, productId) => {
-    axios
-      .post("http://localhost:8080/increaseCart", {
-        productId: productId,
-        username: username,
-      })
-      .then(() => {
-        props.checkTheCart();
-      });
-  };
-
-  const deleteCartHandler = (username, productId) => {
-    axios
-      .delete(
-        `http://localhost:8080/cart?username=${username}&productId=${productId}`
-      )
-      .then(() => {
-        props.checkTheCart();
-      });
-  };
+  const setPage = useContext(Context).pageCon[1];
+  const cart = useContext(Context).cartCon[0];
   /*JSX*/
   return (
     <>
       {props.type === "basket" ? (
         <span className={classes.cartDropdown}>
           <table>
-            {props.cart.map((res, index) => (
+            {cart.map((res, index) => (
               <tr key={index}>
                 <img src={`/Images/Product/${res.image}`} alt={res.fa_title} />
                 <aside>
@@ -68,7 +38,10 @@ export const Dropdown = (props) => {
                     {res.number < 2 ? (
                       <span
                         onClick={() =>
-                          deleteCartHandler(res.username, res.product_id)
+                          cartLib.deleteCartHandler(
+                            res.username,
+                            res.product_id
+                          )
                         }
                         className={classes.delete}
                       >
@@ -78,7 +51,10 @@ export const Dropdown = (props) => {
                     ) : (
                       <span
                         onClick={() =>
-                          decreaseCartHandler(res.username, res.product_id)
+                          cartLib.decreaseCartHandler(
+                            res.username,
+                            res.product_id
+                          )
                         }
                         className={classes.minus}
                       >
@@ -89,7 +65,10 @@ export const Dropdown = (props) => {
                     <h1 className={classes.productCount}>{res.number}</h1>
                     <span
                       onClick={() =>
-                        increaseCartHandler(res.username, res.product_id)
+                        cartLib.increaseCartHandler(
+                          res.username,
+                          res.product_id
+                        )
                       }
                       className={classes.add}
                     >
@@ -116,6 +95,7 @@ export const Dropdown = (props) => {
               className={classes.dropdown}
               key={index}
               onClick={() => {
+                setPage("products");
                 window.location.href = "/category/" + res.category;
               }}
             >
@@ -130,6 +110,7 @@ export const Dropdown = (props) => {
               className={classes.dropdown}
               key={index}
               onClick={() => {
+                setPage("products");
                 window.location.href = "/category/" + res.brand;
               }}
             >
@@ -144,6 +125,7 @@ export const Dropdown = (props) => {
               className={classes.dropdown}
               key={index}
               onClick={() => {
+                setPage("products");
                 window.location.href = "/category/" + res.type;
               }}
             >

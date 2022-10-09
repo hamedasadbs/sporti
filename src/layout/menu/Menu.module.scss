@@ -42,7 +42,6 @@
         }
       }
 
-
       .rightSide {
         font-family: $font;
         color: $linkColor;
@@ -92,7 +91,7 @@
           ul {
             li {
               a {
-                color: $primaryColor5;
+                color: $linkColor;
 
                 &:hover {
                   color: $secondaryColor1;
@@ -100,6 +99,12 @@
                 }
               }
             }
+          }
+        }
+
+        .activeLink {
+          a {
+            color: $hoverColor;
           }
         }
 

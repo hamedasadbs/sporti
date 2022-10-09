@@ -16,6 +16,7 @@ import { Notice } from "../src/layout/notice/Notice";
 import { Footer } from "./layout/footer/Footer";
 /*LIBRARY*/
 import * as cookieLib from "./logic/Cookie";
+import * as cartLib from "./logic/Cart";
 
 export const App = () => {
   /*STATE*/
@@ -53,15 +54,10 @@ export const App = () => {
     axios.post(productsURL).then((res) => setProducts(res.data.pro));
   }, []);
 
-  const checkTheCart = () => {
-    axios.get(`http://localhost:8080/cart?username=${username}`).then((res) => {
-      setCart(res.data.dataset);
-    });
-  };
-
   useEffect(() => {
     if (cookieLib.getCookie("login")) {
-      checkTheCart();
+      console.log(cartLib.checkTheCart(username));
+      setCart(cartLib.checkTheCart(username));
     }
   }, []);
 
@@ -114,7 +110,7 @@ export const App = () => {
     <Context.Provider value={context}>
       <Router>
         <div className="main">
-          <Header checkTheCart={checkTheCart} />
+          <Header />
           {isMenuShown && <Menu />}
           {isSignShown && <Sign />}
           <Routes>

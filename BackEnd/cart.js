@@ -18,6 +18,20 @@ module.exports = {
       );
     });
   },
+  addCart: (app, con) => {
+    app.post("/addCart", (req, res) => {
+      con.query(
+        `INSERT INTO cart (username,product_id,number) VALUES ('${req.body.username}',${req.body.productId},1)`,
+        (err) => {
+          if (err) {
+            res.sendStatus(405);
+          } else {
+            res.sendStatus(200);
+          }
+        }
+      );
+    });
+  },
   increaseCart: (app, con) => {
     app.post("/increaseCart", (req, res) => {
       con.query(

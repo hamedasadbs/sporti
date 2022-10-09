@@ -192,13 +192,13 @@
           width: auto;
           padding: 0px 10px;
           border-radius: 50px;
-          z-index: 3;
           position: absolute;
           text-align: center;
           color: $superLightColor;
           margin-top: -15px;
           margin-left: 30px;
           font-family: 'vazir';
+          background-color: $hoverColor;
         }
 
         label,
@@ -209,7 +209,7 @@
 
         &:hover {
           div.basket {
-            @include dropdownDiv(300px, 110px, 0px);
+            @include dropdownDiv(300px, 90px, -50px);
           }
         }
       }
@@ -289,7 +289,6 @@
               z-index: 100;
               text-align: center;
               transition: all 0.5s ease-in-out;
-              @include shadow();
             }
           }
         }
