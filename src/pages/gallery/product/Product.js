@@ -36,8 +36,14 @@ export const Product = (props) => {
 
   useEffect(() => {
     checkTheLiked();
-    setCart(cartLib.checkTheCart());
+    checkTheCart();
   }, []);
+
+  const checkTheCart = () => {
+    axios
+      .get(`http://localhost:8080/cart?username=${username}`)
+      .then((res) => setCart(res.data));
+  };
 
   setTimeout(() => {
     setLoaded(true);

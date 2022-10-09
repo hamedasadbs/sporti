@@ -19,6 +19,11 @@ import * as cookieLib from "./logic/Cookie";
 import * as cartLib from "./logic/Cart";
 
 export const App = () => {
+  const checkTheCart = () => {
+    axios
+      .get(`http://localhost:8080/cart?username=${username}`)
+      .then((res) => setCart(res.data.dataset));
+  };
   /*STATE*/
   const [username, setUsername] = useState(cookieLib.getCookie("username"));
   const [login, setLogin] = useState(cookieLib.getCookie("login"));
@@ -42,6 +47,7 @@ export const App = () => {
     signCon: [isSignShown, setIsSignShown],
     productsCon: [products, setProducts],
     cartCon: [cart, setCart],
+    checkTheCartCon: [checkTheCart],
     typeCon: {
       sports: [sports, setSports],
       brands: [brands, setBrands],
@@ -56,8 +62,7 @@ export const App = () => {
 
   useEffect(() => {
     if (cookieLib.getCookie("login")) {
-      console.log(cartLib.checkTheCart(username));
-      setCart(cartLib.checkTheCart(username));
+      checkTheCart();
     }
   }, []);
 
