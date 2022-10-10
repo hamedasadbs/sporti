@@ -61,7 +61,9 @@ export const Header = () => {
             className={classes.basket}
             onClick={login ? null : () => alert("ابتدا وارد حساب خود شوید")}
           >
-            {login && <div className={classes.carts}>{cart.length}</div>}
+            {login && cart.length ? (
+              <div className={classes.carts}>{cart.length}</div>
+            ) : null}
             <ShoppingCartOutlinedIcon className={classes.i} />
             <label>سبد من</label>
             {login && cart.length ? (

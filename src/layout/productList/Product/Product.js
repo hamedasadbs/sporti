@@ -20,12 +20,14 @@ import {
 /*LIBRARY*/
 import * as separateLib from "../../../logic/Separate";
 import * as cartLib from "../../../logic/Cart";
+/*MUI*/
+import IconButton from "@mui/material/IconButton";
 
 export const Product = ({ card }) => {
   /*STATE*/
   const [liked, setLiked] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  let [isInCart, setIsInCart] = useState(false);
   const [cartIndex, setCartIndex] = useState(null);
   /*VARIABLE*/
   const likeURL = "http://localhost:8080/like";
@@ -37,7 +39,6 @@ export const Product = ({ card }) => {
   useEffect(() => {
     if (login) {
       checkTheLiked();
-      checkTheCart();
     }
   }, []);
 
@@ -73,8 +74,35 @@ export const Product = ({ card }) => {
       if (card.id === cart[i].product_id) {
         setCartIndex(i);
         setIsInCart(true);
+        isInCart = true;
+        console.log(isInCart);
       }
     }
+  };
+
+  const addHandler = () => {
+    if (login) {
+      cartLib.addToCart(username, card.id);
+      checkTheCart();
+    } else {
+      alert("ابتدا وارد حساب خود شوید");
+    }
+  };
+
+  const increaseHandler = () => {
+    cartLib.increaseCartHandler(username, cart[cartIndex].product_id);
+    checkTheCart();
+  };
+
+  const decreaseHandler = () => {
+    cartLib.decreaseCartHandler(username, cart[cartIndex].product_id);
+    checkTheCart();
+  };
+
+  const deleteHandler = () => {
+    cartLib.deleteCartHandler(username, cart[cartIndex].product_id);
+    checkTheCart();
+    setCartIndex(null);
   };
 
   /*JSX*/
@@ -99,66 +127,37 @@ export const Product = ({ card }) => {
           )}
 
           <div className={classes.addToCart}>
-            {isInCart ? (
+            {isInCart && cart[cartIndex] ? (
               <article>
                 {cart[cartIndex].number < 2 ? (
-                  <span
-                    onClick={() => {
-                      cartLib.deleteCartHandler(
-                        cart[cartIndex].username,
-                        cart[cartIndex].product_id
-                      );
-                      checkTheCart();
-                    }}
+                  <IconButton
+                    onClick={deleteHandler}
                     className={classes.delete}
                   >
                     <Delete className={classes.fillDelete} />
                     <DeleteOutline className={classes.outlineDelete} />
-                  </span>
+                  </IconButton>
                 ) : (
-                  <span
-                    onClick={() => {
-                      cartLib.decreaseCartHandler(
-                        cart[cartIndex].username,
-                        cart[cartIndex].product_id
-                      );
-                      checkTheCart();
-                    }}
+                  <IconButton
+                    onClick={decreaseHandler}
                     className={classes.minus}
                   >
                     <RemoveCircle className={classes.fillMinus} />
                     <RemoveCircleOutline className={classes.outlineMinus} />
-                  </span>
+                  </IconButton>
                 )}
                 <h1 className={classes.productCount}>
                   {cart[cartIndex].number}
                 </h1>
-                <span
-                  onClick={() => {
-                    cartLib.increaseCartHandler(
-                      cart[cartIndex].username,
-                      cart[cartIndex].product_id
-                    );
-                    checkTheCart();
-                  }}
-                  className={classes.add}
-                >
+                <IconButton onClick={increaseHandler} className={classes.add}>
                   <AddCircle className={classes.fillAdd} />
                   <AddCircleOutline className={classes.outlineAdd} />
-                </span>
+                </IconButton>
               </article>
             ) : (
-              <AddShoppingCartIcon
-                onClick={() => {
-                  if (login) {
-                    cartLib.addToCart(username, card.id);
-                    checkTheCart();
-                  } else {
-                    alert("ابتدا وارد حساب خود شوید");
-                  }
-                }}
-                className={classes.i}
-              />
+              <IconButton onClick={addHandler}>
+                <AddShoppingCartIcon className={classes.i} />
+              </IconButton>
             )}
           </div>
         </span>

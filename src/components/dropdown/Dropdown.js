@@ -23,6 +23,7 @@ export const Dropdown = (props) => {
   const productTypeData = useContext(Context).typeCon.productType[0];
   const setPage = useContext(Context).pageCon[1];
   const cart = useContext(Context).cartCon[0];
+  const checkTheCart = useContext(Context).checkTheCartCon[0];
   /*JSX*/
   return (
     <>
@@ -37,12 +38,13 @@ export const Dropdown = (props) => {
                   <article>
                     {res.number < 2 ? (
                       <span
-                        onClick={() =>
+                        onClick={() => {
                           cartLib.deleteCartHandler(
                             res.username,
                             res.product_id
-                          )
-                        }
+                          );
+                          checkTheCart();
+                        }}
                         className={classes.delete}
                       >
                         <Delete className={classes.fillDelete} />
@@ -50,12 +52,13 @@ export const Dropdown = (props) => {
                       </span>
                     ) : (
                       <span
-                        onClick={() =>
+                        onClick={() => {
                           cartLib.decreaseCartHandler(
                             res.username,
                             res.product_id
-                          )
-                        }
+                          );
+                          checkTheCart();
+                        }}
                         className={classes.minus}
                       >
                         <RemoveCircle className={classes.fillMinus} />
@@ -64,12 +67,13 @@ export const Dropdown = (props) => {
                     )}
                     <h1 className={classes.productCount}>{res.number}</h1>
                     <span
-                      onClick={() =>
+                      onClick={() => {
                         cartLib.increaseCartHandler(
                           res.username,
                           res.product_id
-                        )
-                      }
+                        );
+                        checkTheCart();
+                      }}
                       className={classes.add}
                     >
                       <AddCircle className={classes.fillAdd} />

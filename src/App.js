@@ -16,7 +16,6 @@ import { Notice } from "../src/layout/notice/Notice";
 import { Footer } from "./layout/footer/Footer";
 /*LIBRARY*/
 import * as cookieLib from "./logic/Cookie";
-import * as cartLib from "./logic/Cart";
 
 export const App = () => {
   const checkTheCart = () => {
