@@ -155,28 +155,6 @@ export const Header = () => {
         </li>
         <li>
           <Link className={classes.link}>
-            <span className={classes.productType}>
-              <div className={classes.productType}>
-                <Dropdown type="productType" />
-              </div>
-              <KeyboardArrowDownIcon />
-              نوع محصول
-            </span>
-          </Link>
-        </li>
-        <li>
-          <Link className={classes.link}>
-            <span className={classes.brands}>
-              <div className={classes.brands}>
-                <Dropdown type="brands" />
-              </div>
-              <KeyboardArrowDownIcon />
-              برند ها
-            </span>
-          </Link>
-        </li>
-        <li>
-          <Link className={classes.link}>
             <span className={classes.sports}>
               <div className={classes.sports}>
                 <Dropdown type="sports" />

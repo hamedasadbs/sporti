@@ -5,7 +5,6 @@
   width: 27%;
   flex-direction: column;
   margin: 30px 10px;
-  align-self: flex-start;
   @include shadow();
   border-radius: 10px;
   padding: 10px 15px;
@@ -79,7 +78,7 @@
         .productCount {
           color: gray;
           width: fit-content;
-          margin: auto;
+          margin: auto 5px;
         }
 
         .minus {
@@ -279,5 +278,17 @@
         background-color: lighten($primaryColor5, 20%);
       }
     }
+  }
+}
+
+@media only screen and (max-width: $small) {
+  .product {
+    width: 42%;
+  }
+}
+
+@media only screen and (max-width: $verySmall) {
+  .product {
+    width: 90%;
   }
 }

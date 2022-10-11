@@ -1,6 +1,7 @@
 /*INNER COMPONENT*/
 import { useContext } from "react";
 import { Context } from "../../logic/Context";
+import { Link } from "react-router-dom";
 /*STYLE*/
 import classes from "./Dropdown.module.scss";
 /*ICON*/
@@ -12,82 +13,88 @@ import {
   RemoveCircle,
   RemoveCircleOutline,
 } from "@material-ui/icons";
+import KeyboardDoubleArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowLeftOutlined";
 /*LIBRARY*/
 import * as separateLib from "../../logic/Separate";
 import * as cartLib from "../../logic/Cart";
+/*MUI*/
+import IconButton from "@mui/material/IconButton";
 
 export const Dropdown = (props) => {
   /*VARIABLE*/
   const sportsData = useContext(Context).typeCon.sports[0];
   const brandsData = useContext(Context).typeCon.brands[0];
   const productTypeData = useContext(Context).typeCon.productType[0];
+  const username = useContext(Context).usernameCon[1];
   const setPage = useContext(Context).pageCon[1];
   const cart = useContext(Context).cartCon[0];
   const checkTheCart = useContext(Context).checkTheCartCon[0];
+
+  const increaseHandler = (product_id) => {
+    cartLib.increaseCartHandler(username, product_id);
+    checkTheCart();
+  };
+
+  const decreaseHandler = (product_id) => {
+    alert(product_id);
+    cartLib.decreaseCartHandler(username, product_id);
+    checkTheCart();
+  };
+
+  const deleteHandler = (product_id) => {
+    cartLib.deleteCartHandler(username, product_id);
+    checkTheCart();
+  };
   /*JSX*/
   return (
     <>
       {props.type === "basket" ? (
         <span className={classes.cartDropdown}>
-          <table>
+          <Link to="/cart" className={classes.goToCart}>
+            <KeyboardDoubleArrowLeftOutlinedIcon className={classes.i} />
+            <h1>مشاهده سبد خرید</h1>
+          </Link>
+          <article className={classes.cartContainer}>
             {cart.map((res, index) => (
-              <tr key={index}>
+              <span key={index}>
                 <img src={`/Images/Product/${res.image}`} alt={res.fa_title} />
                 <aside>
                   <h1 className={classes.productName}>{res.fa_title}</h1>
                   <article>
                     {res.number < 2 ? (
-                      <span
-                        onClick={() => {
-                          cartLib.deleteCartHandler(
-                            res.username,
-                            res.product_id
-                          );
-                          checkTheCart();
-                        }}
+                      <IconButton
+                        onClick={() => deleteHandler(res.id)}
                         className={classes.delete}
                       >
                         <Delete className={classes.fillDelete} />
                         <DeleteOutline className={classes.outlineDelete} />
-                      </span>
+                      </IconButton>
                     ) : (
-                      <span
-                        onClick={() => {
-                          cartLib.decreaseCartHandler(
-                            res.username,
-                            res.product_id
-                          );
-                          checkTheCart();
-                        }}
+                      <IconButton
+                        onClick={() => decreaseHandler(res.id)}
                         className={classes.minus}
                       >
                         <RemoveCircle className={classes.fillMinus} />
                         <RemoveCircleOutline className={classes.outlineMinus} />
-                      </span>
+                      </IconButton>
                     )}
                     <h1 className={classes.productCount}>{res.number}</h1>
-                    <span
-                      onClick={() => {
-                        cartLib.increaseCartHandler(
-                          res.username,
-                          res.product_id
-                        );
-                        checkTheCart();
-                      }}
+                    <IconButton
+                      onClick={() => increaseHandler(res.id)}
                       className={classes.add}
                     >
                       <AddCircle className={classes.fillAdd} />
                       <AddCircleOutline className={classes.outlineAdd} />
-                    </span>
+                    </IconButton>
                   </article>
                   <h1 className={classes.productPrice}>
                     {separateLib.separate(res.price) + " "}
                     تومان
                   </h1>
                 </aside>
-              </tr>
+              </span>
             ))}
-          </table>
+          </article>
           <button onClick={props.signInClick} className={classes.conformShop}>
             تکمیل فرآیند خرید
           </button>

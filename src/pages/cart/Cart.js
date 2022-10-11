@@ -3,14 +3,13 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Context } from "../../logic/Context";
 /*STYLE*/
-import classes from "./Gallery.module.scss";
+import classes from "./Cart.module.scss";
 /*CHILD COMPONENT*/
 import { Product } from "./product/Product";
 /*MUI*/
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import CircularProgress from "@mui/material/CircularProgress";
 /*ICON*/
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
@@ -19,91 +18,20 @@ import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrow
 /*LIBRARY*/
 import * as separateLib from "../../logic/Separate";
 
-export const Gallery = (props) => {
+export const Cart = (props) => {
   /*STATE*/
-  const [totalGallery, setTotalGallery] = useState([]);
-  const [gallery, setGallery] = useState([]);
   let [minPrice, setMinPrice] = useState(0);
   let [maxPrice, setMaxPrice] = useState(500000);
-  let [page, setPage] = useState(1);
-  const [type, setType] = useState("none");
-  const [kind, setKind] = useState("none");
-  const [brand, setBrand] = useState("none");
   /*VARIABLE*/
-  const productsURL = "http://localhost:8080/products";
-  const numberOfItemsToShow = 10;
-  const numberOfOffsets = totalGallery.length / numberOfItemsToShow;
   const brandsData = useContext(Context).typeCon.brands[0];
   const productTypeData = useContext(Context).typeCon.productType[0];
   const productKindData = useContext(Context).typeCon.productKind[0];
+  const cart = useContext(Context).cartCon[0];
   /*FUNCTION*/
-  const updateRequest = () => {
-    let offset = (page - 1) * numberOfItemsToShow;
-    axios
-      .post(productsURL, {
-        category: props.category,
-      })
-      .then((res) => {
-        setTotalGallery(res.data.pro);
-      });
-    axios
-      .post(productsURL, {
-        category: props.category,
-        orderBy: "id",
-        orderByType: "DESC",
-        limit: numberOfItemsToShow,
-        offset: offset,
-        type: type,
-        kind: kind,
-        brand: brand,
-      })
-      .then((res) => {
-        setGallery(res.data.pro);
-      });
-  };
-
-  useEffect(() => {
-    updateRequest();
-  }, [type, kind, brand]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const offsetCrescent = () => {
-    if (page < parseInt(numberOfOffsets)) {
-      page += 1;
-      setPage(page);
-      updateRequest();
-    }
-  };
-
-  const offsetDecrescent = () => {
-    if (page > 1) {
-      page -= 1;
-      setPage(page);
-      updateRequest();
-    }
-  };
-
-  const offsetFirst = () => {
-    page = 1;
-    setPage(page);
-    updateRequest();
-  };
-
-  const offsetLast = () => {
-    if (numberOfOffsets < 1) page = 1;
-    else page = parseInt(numberOfOffsets);
-    setPage(page);
-    updateRequest();
-  };
-
-  const offsetNumber = (e) => {
-    page = parseInt(e.target.innerText);
-    setPage(page);
-    updateRequest();
-  };
 
   const showMinRange = (e) => {
     setMinPrice(parseInt(e.target.value));
@@ -112,74 +40,22 @@ export const Gallery = (props) => {
   const showMaxRange = (e) => {
     setMaxPrice(parseInt(e.target.value));
   };
-  /*FREE-CODE*/
-  const numbers = [];
-  for (let i = 0; i < numberOfOffsets; i++) {
-    numbers.push(
-      <li
-        key={i}
-        onClick={offsetNumber}
-        {...(page === i + 1 && { className: classes.hoveredOffset })}
-      >
-        {i + 1}
-      </li>
-    );
-  }
-
-  const typeHandler = (e) => {
-    setType(e.target.value);
-  };
-
-  const kindHandler = (e) => {
-    setKind(e.target.value);
-  };
-
-  const brandHandler = (e) => {
-    setBrand(e.target.value);
-  };
-
-  const resetFilter = () => {
-    setType("none");
-    setBrand("none");
-    setKind("none");
-  };
   /*JSX*/
   return (
-    <article className={classes.galleries}>
-      <div className={classes.gallery}>
-        <h1 className={classes.title}>{props.faTitle}</h1>
+    <article className={classes.carts}>
+      <div className={classes.cart}>
+        <h1 className={classes.title}>سبد خرید شما</h1>
         <main>
-          {gallery ? (
-            gallery.length > 0 ? (
-              gallery.map((res, index) => {
-                return res.price <= maxPrice && res.price >= minPrice ? (
-                  <Product card={res} key={index} />
-                ) : null;
-              })
-            ) : (
-              <span className={classes.nothingToShow}>!موردی یافت نشد</span>
-            )
+          {cart.length > 0 ? (
+            cart.map((res, index) => {
+              return res.price <= maxPrice && res.price >= minPrice ? (
+                <Product card={res} key={index} />
+              ) : null;
+            })
           ) : (
-            <CircularProgress color="secondary" />
+            <span className={classes.nothingToShow}>!موردی یافت نشد</span>
           )}
         </main>
-        {gallery.length > 0 && (
-          <ul className={classes.offset}>
-            <li onClick={offsetDecrescent}>
-              <KeyboardArrowLeftIcon />
-            </li>
-            <li onClick={offsetFirst}>
-              <KeyboardDoubleArrowLeftIcon />
-            </li>
-            {numbers}
-            <li onClick={offsetLast}>
-              <KeyboardDoubleArrowRightIcon />
-            </li>
-            <li onClick={offsetCrescent}>
-              <KeyboardArrowRightIcon />
-            </li>
-          </ul>
-        )}
       </div>
       <div className={classes.filter}>
         <table className={classes.price}>
@@ -218,7 +94,9 @@ export const Gallery = (props) => {
             </tr>
           </tbody>
         </table>
-        <button onClick={resetFilter}>حذف همه فیلترها</button>
+        <button onClick={() => (window.location.href = window.location.href)}>
+          حذف همه فیلترها
+        </button>
         <table className={classes.type}>
           <thead>
             <tr>
@@ -229,9 +107,6 @@ export const Gallery = (props) => {
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
-              id="typeRadio"
-              value={type}
-              onChange={typeHandler}
             >
               {productTypeData.map((res) => (
                 <tr key={res.fa_type}>
@@ -257,8 +132,6 @@ export const Gallery = (props) => {
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
-              value={kind}
-              onChange={kindHandler}
             >
               {productKindData.map((res, index) => (
                 <tr key={index}>
@@ -284,8 +157,6 @@ export const Gallery = (props) => {
             <RadioGroup
               aria-labelledby="demo-radio-buttons-group-label"
               name="radio-buttons-group"
-              value={brand}
-              onChange={brandHandler}
             >
               {brandsData.map((res, index) => (
                 <tr key={index}>

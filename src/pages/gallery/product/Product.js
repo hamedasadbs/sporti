@@ -20,42 +20,36 @@ import {
 /*LIBRARY*/
 import * as separateLib from "../../../logic/Separate";
 import * as cartLib from "../../../logic/Cart";
+/*MUI*/
+import IconButton from "@mui/material/IconButton";
 
-export const Product = (props) => {
+export const Product = ({ card }) => {
   /*STATE*/
   const [liked, setLiked] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
+  let [isInCart, setIsInCart] = useState(false);
   const [cartIndex, setCartIndex] = useState(null);
   /*VARIABLE*/
   const likeURL = "http://localhost:8080/like";
   const login = useContext(Context).loginCon[0];
   const username = useContext(Context).usernameCon[0];
-  const [cart, setCart] = useContext(Context).cartCon;
+  const cart = useContext(Context).cartCon[0];
+  const checkTheCart = useContext(Context).checkTheCartCon[0];
   /*FUNCTION*/
-
   useEffect(() => {
-    checkTheLiked();
-    checkTheCart();
+    if (login) {
+      checkTheLiked();
+    }
   }, []);
-
-  const checkTheCart = () => {
-    axios
-      .get(`http://localhost:8080/cart?username=${username}`)
-      .then((res) => setCart(res.data));
-  };
 
   setTimeout(() => {
     setLoaded(true);
   }, 500);
 
   const checkTheLiked = () => {
-    axios
-      .get(`${likeURL}?username=${username}`)
-      .then((ct) => {
-        setLiked(ct.data.dataset);
-      })
-      .catch((err) => alert(err));
+    axios.get(`${likeURL}?username=${username}`).then((ct) => {
+      setLiked(ct.data.dataset);
+    });
   };
 
   const addToLiked = (id) => {
@@ -72,107 +66,112 @@ export const Product = (props) => {
   };
 
   useEffect(() => {
-    if (login) {
-      for (let i = 0; i < cart.length; i++) {
-        if (props.card.id === cart[i].product_id) {
-          setCartIndex(i);
-          setIsInCart(true);
-        }
+    updateCart();
+  }, [cart]);
+
+  const updateCart = () => {
+    for (let i = 0; i < cart.length; i++) {
+      if (card.id === cart[i].product_id) {
+        setCartIndex(i);
+        setIsInCart(true);
+        isInCart = true;
       }
     }
-  }, [login, cart]);
+  };
+
+  const addHandler = () => {
+    if (login) {
+      cartLib.addToCart(username, card.id);
+      checkTheCart();
+    } else {
+      alert("ابتدا وارد حساب خود شوید");
+    }
+  };
+
+  const increaseHandler = () => {
+    cartLib.increaseCartHandler(username, cart[cartIndex].product_id);
+    checkTheCart();
+  };
+
+  const decreaseHandler = () => {
+    cartLib.decreaseCartHandler(username, cart[cartIndex].product_id);
+    checkTheCart();
+  };
+
+  const deleteHandler = () => {
+    cartLib.deleteCartHandler(username, cart[cartIndex].product_id);
+    checkTheCart();
+    setCartIndex(null);
+  };
+
   /*JSX*/
   if (loaded)
     return (
       <div className={classes.product}>
         <span className={classes.icons}>
-          {liked.some((e) => e.product_id === props.card.id) ? (
+          {liked.some((e) => e.product_id === card.id) ? (
             <Favorite
               onClick={() => {
-                addToLiked(props.card.id);
+                addToLiked(card.id);
               }}
               className={classes.liked}
             />
           ) : (
             <Favorite
               onClick={() => {
-                addToLiked(props.card.id);
+                addToLiked(card.id);
               }}
               className={classes.notLiked}
             />
           )}
 
           <div className={classes.addToCart}>
-            {isInCart ? (
+            {isInCart && cart[cartIndex] ? (
               <article>
                 {cart[cartIndex].number < 2 ? (
-                  <span
-                    onClick={() =>
-                      cartLib.deleteCartHandler(
-                        cart[cartIndex].username,
-                        cart[cartIndex].product_id
-                      )
-                    }
+                  <IconButton
+                    onClick={deleteHandler}
                     className={classes.delete}
                   >
                     <Delete className={classes.fillDelete} />
                     <DeleteOutline className={classes.outlineDelete} />
-                  </span>
+                  </IconButton>
                 ) : (
-                  <span
-                    onClick={() =>
-                      cartLib.decreaseCartHandler(
-                        cart[cartIndex].username,
-                        cart[cartIndex].product_id
-                      )
-                    }
+                  <IconButton
+                    onClick={decreaseHandler}
                     className={classes.minus}
                   >
                     <RemoveCircle className={classes.fillMinus} />
                     <RemoveCircleOutline className={classes.outlineMinus} />
-                  </span>
+                  </IconButton>
                 )}
                 <h1 className={classes.productCount}>
                   {cart[cartIndex].number}
                 </h1>
-                <span
-                  onClick={() =>
-                    cartLib.increaseCartHandler(
-                      cart[cartIndex].username,
-                      cart[cartIndex].product_id
-                    )
-                  }
-                  className={classes.add}
-                >
+                <IconButton onClick={increaseHandler} className={classes.add}>
                   <AddCircle className={classes.fillAdd} />
                   <AddCircleOutline className={classes.outlineAdd} />
-                </span>
+                </IconButton>
               </article>
             ) : (
-              <AddShoppingCartIcon
-                onClick={() => {
-                  cartLib.addToCart(props.card.id);
-                }}
-                className={classes.i}
-              />
+              <IconButton onClick={addHandler}>
+                <AddShoppingCartIcon className={classes.i} />
+              </IconButton>
             )}
           </div>
         </span>
-        <img
-          src={`/Images/Product/${props.card.image}`}
-          alt={props.card.fa_title}
-        />
+        <img src={`/Images/Product/${card.image}`} alt={card.fa_title} />
         <div className={classes.caption}>
-          <h3 className={classes.productName}>{props.card.fa_title}</h3>
+          <h3 className={classes.productName}>{card.fa_title}</h3>
           <div className={classes.stars}>
-            {[...Array(5 - parseInt(props.card.population))].map((x, index) => (
+            {[...Array(5 - parseInt(card.population))].map((x, index) => (
               <Star key={index} className={classes.star} />
             ))}
-            {[...Array(parseInt(props.card.population))].map((x, index) => (
+            {[...Array(parseInt(card.population))].map((x, index) => (
               <Star key={index} className={classes.lightStar} />
             ))}
           </div>
-          {props.card.existence ? (
+          {card.existence ? (
             <h5 className={classes.center}>
               <LocalMallOutlinedIcon className={classes.i} />
               موجود در فروشگاه اسپورتی
@@ -183,35 +182,35 @@ export const Product = (props) => {
             </h5>
           )}
           <span className={classes.productPrice}>
-            {props.card.off ? (
+            {card.off ? (
               <div className={classes.priceContainer}>
                 <h4 className={classes.price}>
                   {separateLib.separate(
-                    props.card.price - props.card.price * (props.card.off / 100)
+                    card.price - card.price * (card.off / 100)
                   )}{" "}
                   تومان
                 </h4>
                 <h4 className={classes.priceWithOff}>
-                  {separateLib.separate(props.card.price)} تومان
+                  {separateLib.separate(card.price)} تومان
                 </h4>
               </div>
             ) : (
               <div className={classes.priceContainer}>
                 <h4 className={classes.price}>
-                  {separateLib.separate(props.card.price)} تومان
+                  {separateLib.separate(card.price)} تومان
                 </h4>
               </div>
             )}
-            {props.card.off ? (
+            {card.off ? (
               <div className={classes.offContainer}>
                 <h4 className={classes.off}>
-                  {separateLib.separate(props.card.off)}%
+                  {separateLib.separate(card.off)}%
                 </h4>
               </div>
             ) : null}
           </span>
         </div>
-        <Link className={classes.link} to={`/product/${props.card.id}`}>
+        <Link className={classes.link} to={`/product/${card.id}`}>
           <button>مشاهده جزئیات</button>
         </Link>
       </div>

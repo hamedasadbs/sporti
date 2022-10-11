@@ -20,16 +20,43 @@ button {
     }
 }
 
+.goToCart {
+    transition: all 0.5s;
+    padding: 5px;
+    font-family: 'iran';
+    margin: auto;
+    margin-left: 0;
+    align-items: center;
+    display: flex;
+    width: fit-content;
+
+    h1,
+    .i {
+        color: $primaryColor1;
+        font-size: 12px;
+    }
+
+    &:hover {
+
+        h1,
+        .i {
+            color: $primaryColor5;
+        }
+    }
+}
+
 .cartDropdown {
     margin: 0;
     position: relative;
 
-    table {
+    .cartContainer {
         display: flex;
         flex-direction: column;
         width: 100%;
+        max-height: 350px;
+        overflow-y: scroll;
 
-        tr {
+        span {
             display: flex;
             flex-direction: row-reverse;
             background-color: $superLightColor;
@@ -65,14 +92,17 @@ button {
 
                 article {
                     display: flex;
+                    flex-direction: row;
                     justify-content: center;
-                    align-items: center;
 
                     .add {
                         display: flex;
+                        width: fit-content;
+                        margin: auto 0;
+                        background-color: red;
 
                         .fillAdd {
-                            color: lighten($primaryColor1, 20%);
+                            color: red;
                             display: none;
                         }
 
@@ -101,6 +131,9 @@ button {
 
                     .minus {
                         display: flex;
+                        width: fit-content;
+                        margin: auto 0;
+                        background-color: aqua;
 
                         .fillMinus {
                             color: lighten($hoverColor, 20%);
@@ -126,6 +159,8 @@ button {
 
                     .delete {
                         display: flex;
+                        width: fit-content;
+                        margin: auto 0;
 
                         .fillDelete {
                             color: lighten($hoverColor, 20%);

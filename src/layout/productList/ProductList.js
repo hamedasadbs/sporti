@@ -1,6 +1,5 @@
 /*INNER COMPONENT*/
-import { useState, useContext } from "react";
-import { Context } from "../../logic/Context";
+import { useState } from "react";
 import InfiniteCarousel from "react-leaf-carousel";
 /*STYLE*/
 import classes from "./ProductList.module.scss";
@@ -13,8 +12,6 @@ import { Product } from "./product/Product";
 export const ProductList = (props) => {
   /*STATE*/
   const [loaded, setLoaded] = useState(false);
-  /*VARIABLE*/
-  const products = useContext(Context).productsCon[0];
   /*FUNCTION*/
   setTimeout(() => {
     setLoaded(true);
@@ -83,7 +80,7 @@ export const ProductList = (props) => {
           slidesToShow={4}
           scrollOnDevice={true}
         >
-          {products.map((res, index) => (
+          {props.products.map((res, index) => (
             <Product card={res} key={index} />
           ))}
         </InfiniteCarousel>

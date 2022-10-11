@@ -8,6 +8,7 @@ import "./App.scss";
 /*CHILD COMPONENT*/
 import { Header } from "./layout/header/Header";
 import { Home } from "../src/pages/home/Home";
+import { Cart } from "../src/pages/cart/Cart";
 import { Menu } from "./layout/menu/Menu";
 import { Sign } from "../src/components/sign/Sign";
 import { Gallery } from "../src/pages/gallery/Gallery";
@@ -60,9 +61,7 @@ export const App = () => {
   }, []);
 
   useEffect(() => {
-    if (cookieLib.getCookie("login")) {
-      checkTheCart();
-    }
+    if (cookieLib.getCookie("login")) checkTheCart();
   }, []);
 
   useEffect(() => {
@@ -114,7 +113,7 @@ export const App = () => {
     <Context.Provider value={context}>
       <Router>
         <div className="main">
-          <Header />
+          <Header cart={cart} />
           {isMenuShown && <Menu />}
           {isSignShown && <Sign />}
           <Routes>
@@ -125,22 +124,6 @@ export const App = () => {
                 element={
                   <Gallery category={res.category} faTitle={res.fa_category} />
                 }
-              />
-            ))}
-
-            {brands.map((res, index) => (
-              <Route
-                path={`/category/${res.brand}`}
-                key={index}
-                element={<Gallery category={res.brand} faTitle={res.brand} />}
-              />
-            ))}
-
-            {productType.map((res, index) => (
-              <Route
-                path={`/category/${res.type}`}
-                key={index}
-                element={<Gallery category={res.type} faTitle={res.fa_type} />}
               />
             ))}
 
@@ -168,6 +151,8 @@ export const App = () => {
             <Route path="/about" element={<Notice title="about" />} />
 
             <Route path="/contact" element={<Notice title="contact" />} />
+
+            <Route path="/cart" element={<Cart />} />
 
             <Route path="/" element={<Home />} />
           </Routes>

@@ -20,14 +20,17 @@ export const Categories = () => {
   /*JSX*/
   return (
     <article className={classes.categories}>
-      {productsData.map((res, index) => (
-        <Category
-          faTitle={res.fa_title}
-          enTitle={res.en_title}
-          image={res.image}
-          key={index}
-        />
-      ))}
+      {productsData.map((res, index) => {
+        if (index < 7 || index > 12)
+          return (
+            <Category
+              faTitle={res.fa_title}
+              enTitle={res.en_title}
+              image={res.image}
+              key={index}
+            />
+          );
+      })}
     </article>
   );
 };

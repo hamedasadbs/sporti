@@ -1,12 +1,12 @@
 @import "../../GlobalStyles.scss";
 
-.galleries {
-  width: 95%;
+.carts {
+  width: 100%;
   display: flex;
-  margin: auto;
+  flex-direction: row;
   margin-bottom: 100px;
 
-  .gallery {
+  .cart {
     display: flex;
     flex-direction: column;
     margin: 22px auto;
@@ -20,6 +20,7 @@
     main {
       display: flex;
       flex-wrap: wrap;
+      margin-left: 0px;
 
       .nothingToShow {
         width: 100%;
@@ -75,6 +76,7 @@
 
     button {
       width: 100%;
+      flex-grow: 1;
       font-family: $font;
       margin: 15px auto;
       padding: 10px;
@@ -178,9 +180,9 @@
 }
 
 @media only screen and (max-width: $big) {
-  .galleries {
+  .carts {
 
-    .gallery,
+    .cart,
     .filter {
       font-size: 13px;
     }
@@ -188,10 +190,10 @@
 }
 
 @media only screen and (max-width: $medium) {
-  .galleries {
+  .carts {
     flex-direction: column;
 
-    .gallery {
+    .cart {
       margin: 30px 0px 0px 10px;
       width: 100%;
       margin: 30px auto;
@@ -222,11 +224,11 @@
 }
 
 @media only screen and (max-width: $small) {
-  .galleries {
+  .carts {
     margin-top: 80px;
     flex-direction: column;
 
-    .gallery {
+    .cart {
       margin-top: 0;
     }
 
@@ -243,8 +245,8 @@
 }
 
 @media only screen and (max-width: $verySmall) {
-  .galleries {
-    .gallery {
+  .carts {
+    .cart {
       main {
         margin-left: 10px;
       }
