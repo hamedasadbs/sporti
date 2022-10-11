@@ -61,7 +61,7 @@ export const Sign = () => {
   };
 
   const validateEmail = (mail) => {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
+    if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(mail)) {
       return true;
     } else {
       alert("ایمیل وارد شده معتبر نیست");
@@ -90,7 +90,7 @@ export const Sign = () => {
             .then((res) => {
               cookieLib.setCookie("login", true, 60);
               cookieLib.setCookie("username", signupUsername, 60);
-              if (res.status == 200) {
+              if (res.status === 200) {
                 setLoginUsername(signupUsername);
                 loginUsername = signupUsername;
                 setLoginPassword(signupPassword);

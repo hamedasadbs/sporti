@@ -19,6 +19,11 @@
     font-weight: 100;
     color: lighten($linkColor, 20%);
     border-bottom: 1px darken($linkColor, 20%) solid;
+
+    span {
+      font-family: 'logo';
+      margin-left: 5px;
+    }
   }
 
   main {

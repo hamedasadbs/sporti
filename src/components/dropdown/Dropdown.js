@@ -17,15 +17,13 @@ import KeyboardDoubleArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardDou
 /*LIBRARY*/
 import * as separateLib from "../../logic/Separate";
 import * as cartLib from "../../logic/Cart";
-/*MUI*/
-import IconButton from "@mui/material/IconButton";
 
 export const Dropdown = (props) => {
   /*VARIABLE*/
   const sportsData = useContext(Context).typeCon.sports[0];
   const brandsData = useContext(Context).typeCon.brands[0];
   const productTypeData = useContext(Context).typeCon.productType[0];
-  const username = useContext(Context).usernameCon[1];
+  const username = useContext(Context).usernameCon[0];
   const setPage = useContext(Context).pageCon[1];
   const cart = useContext(Context).cartCon[0];
   const checkTheCart = useContext(Context).checkTheCartCon[0];
@@ -36,7 +34,6 @@ export const Dropdown = (props) => {
   };
 
   const decreaseHandler = (product_id) => {
-    alert(product_id);
     cartLib.decreaseCartHandler(username, product_id);
     checkTheCart();
   };
@@ -54,38 +51,44 @@ export const Dropdown = (props) => {
             <KeyboardDoubleArrowLeftOutlinedIcon className={classes.i} />
             <h1>مشاهده سبد خرید</h1>
           </Link>
-          <article className={classes.cartContainer}>
+          <article
+            className={
+              cart.length > 2
+                ? classes.cartContainer
+                : classes.cartContainer + " " + classes.noScrollbar
+            }
+          >
             {cart.map((res, index) => (
               <span key={index}>
                 <img src={`/Images/Product/${res.image}`} alt={res.fa_title} />
                 <aside>
                   <h1 className={classes.productName}>{res.fa_title}</h1>
-                  <article>
+                  <article className={classes.changeCartContainer}>
                     {res.number < 2 ? (
-                      <IconButton
-                        onClick={() => deleteHandler(res.id)}
+                      <button
+                        onClick={() => deleteHandler(res.product_id)}
                         className={classes.delete}
                       >
                         <Delete className={classes.fillDelete} />
                         <DeleteOutline className={classes.outlineDelete} />
-                      </IconButton>
+                      </button>
                     ) : (
-                      <IconButton
-                        onClick={() => decreaseHandler(res.id)}
+                      <button
+                        onClick={() => decreaseHandler(res.product_id)}
                         className={classes.minus}
                       >
                         <RemoveCircle className={classes.fillMinus} />
                         <RemoveCircleOutline className={classes.outlineMinus} />
-                      </IconButton>
+                      </button>
                     )}
                     <h1 className={classes.productCount}>{res.number}</h1>
-                    <IconButton
-                      onClick={() => increaseHandler(res.id)}
+                    <button
+                      onClick={() => increaseHandler(res.product_id)}
                       className={classes.add}
                     >
                       <AddCircle className={classes.fillAdd} />
                       <AddCircleOutline className={classes.outlineAdd} />
-                    </IconButton>
+                    </button>
                   </article>
                   <h1 className={classes.productPrice}>
                     {separateLib.separate(res.price) + " "}
@@ -96,7 +99,7 @@ export const Dropdown = (props) => {
             ))}
           </article>
           <button onClick={props.signInClick} className={classes.conformShop}>
-            تکمیل فرآیند خرید
+            ادامه فرآیند خرید
           </button>
         </span>
       ) : props.type === "sports" ? (

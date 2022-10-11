@@ -1,25 +1,19 @@
 @import "./GlobalStyles.scss";
 
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px $thumbBackColor;
-  border-radius: 10px;
+  box-shadow: inset 0 0 5px $primaryColor1;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $thumbBackColor;
-  border-radius: 10px;
+  background: $primaryColor1;
 }
 
 ::-webkit-scrollbar-thumb:active {
-  background: $hoverColor;
-}
-
-.disable {
-  pointer-events: none;
+  background: $primaryColor3;
 }
 
 .main {
@@ -27,28 +21,4 @@
   margin: 10px auto;
   display: flex;
   flex-direction: column;
-}
-
-@media only screen and (max-width: $big) {
-  .main {
-    // width: 1000px;
-  }
-}
-
-@media only screen and (max-width: $medium) {
-  .main {
-    // width: 700px;
-  }
-}
-
-@media only screen and (max-width: $small) {
-  .main {
-    // width: 500px;
-  }
-}
-
-@media only screen and (max-width: $verySmall) {
-  .main {
-    // width: 280px;
-  }
 }

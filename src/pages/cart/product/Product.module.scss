@@ -2,24 +2,24 @@
 
 .product {
   display: flex;
-  width: 27%;
-  flex-direction: column;
-  margin: 30px 10px;
-  @include shadow();
-  border-radius: 10px;
-  padding: 10px 15px;
+  width: 100%;
+  flex-direction: row-reverse;
+  margin: auto;
+  padding: 50px 15px;
+  border-bottom: 1px solid lightgray;
 
   .icons {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
 
     .liked {
       font-size: 30px;
       margin: auto;
-      margin-left: 0;
       color: $hoverColor;
       transition: all 0.5s;
+      margin-top: 0;
 
       &:hover {
         cursor: pointer;
@@ -30,9 +30,9 @@
     .notLiked {
       font-size: 30px;
       margin: auto;
-      margin-left: 0;
       color: lightgray;
       transition: all 0.5s;
+      margin-top: 0;
 
       &:hover {
         cursor: pointer;
@@ -43,7 +43,7 @@
     .addToCart {
       display: flex;
       margin: auto;
-      margin-right: 0;
+      margin-bottom: 0;
 
       article {
         display: flex;
@@ -153,11 +153,9 @@
 
 
   img {
-    width: 70%;
-    height: 250px;
-    object-fit: contain;
-    margin: 10px auto;
-    border-bottom: 1px solid lightgray;
+    width: 20%;
+    object-fit: cover;
+    margin: 10px 50px;
   }
 
   .caption {
@@ -166,116 +164,77 @@
     width: 100%;
 
     .productName {
-      font-size: 17px;
+      font-size: 18px;
       text-align: right;
       direction: rtl;
       font-family: $font;
       margin: 5px auto;
-      margin-right: 0;
       color: $footerBackColor;
-      overflow-x: hidden;
       width: 100%;
     }
 
-    .stars {
-      display: flex;
-      margin: auto;
-      margin-right: 0;
+    .conditions {
+      padding: 0;
 
-      .star {
-        color: lightgray;
-      }
-
-      .lightStar {
-        color: $secondaryColor2;
-      }
-    }
-
-    .center {
-      font-size: 12px;
-      text-align: right;
-      direction: rtl;
-      color: $secondaryColor1;
-      font-family: "iran";
-      align-items: center;
-      display: flex;
-      margin: 5px auto;
-      margin-left: 0;
-
-      .i {
-        font-size: 17px;
-        margin-left: 5px;
-      }
-    }
-
-    .productPrice {
-      display: flex;
-      margin-top: 0px;
-      margin: 5px auto;
-      width: 100%;
-
-      .priceContainer {
+      li {
+        list-style: none;
+        direction: rtl;
+        font-family: 'iran';
+        color: $primaryColor3;
+        text-align: right;
         display: flex;
-        flex-direction: column;
-        margin: auto;
-        margin-left: 0;
+        font-size: 13px;
 
-        .price {
-          text-align: left;
-          direction: rtl;
-          font-size: 16px;
-          font-family: "vazir";
-          color: $footerBackColor;
+        .i {
+          font-size: 17px;
           margin: auto;
-          width: 100%;
-        }
-
-        .priceWithOff {
-          text-align: left;
-          direction: rtl;
-          font-size: 12px;
-          font-family: "vazir";
-          color: gray;
-          text-decoration: line-through;
-          margin: auto;
-          width: 100%;
-        }
-      }
-
-      .offContainer {
-        background-color: $hoverColor;
-        margin: auto;
-        margin-right: 0;
-        padding: 5px 10px;
-        border-radius: 50%;
-
-        .off {
-          text-align: left;
-          direction: rtl;
-          font-size: 16px;
-          font-family: "vazir";
-          color: $superLightColor;
-          font-weight: 100;
-          margin: auto;
+          margin-right: 0;
+          margin-left: 5px;
         }
       }
     }
   }
 
-  .link {
-    margin-top: 10px;
+  .productDetails {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 
-    button {
-      color: $primaryColor1;
-      border: 1px solid rgba($primaryColor1, 0.2);
-      transition: all 0.5s;
-      font-family: 'vazir';
-      padding: 5px;
-      border-radius: 5px;
-      width: 100%;
+    .option {
+      margin: auto;
+      margin-left: 0;
+      margin-top: 0;
 
-      &:hover {
-        background-color: lighten($primaryColor5, 20%);
+      .i {
+        color: $primaryColor2;
+      }
+    }
+
+    .priceContainer {
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      margin-left: 0;
+      margin-bottom: 0px;
+
+      .price {
+        text-align: left;
+        direction: rtl;
+        font-size: 16px;
+        font-family: "vazir";
+        color: $footerBackColor;
+        margin: auto;
+        width: 100%;
+      }
+
+      .offPrice {
+        text-align: left;
+        direction: rtl;
+        font-size: 12px;
+        font-family: "vazir";
+        color: $hoverColor;
+        margin: auto;
+        width: 100%;
       }
     }
   }

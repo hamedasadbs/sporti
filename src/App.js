@@ -113,7 +113,7 @@ export const App = () => {
     <Context.Provider value={context}>
       <Router>
         <div className="main">
-          <Header cart={cart} />
+          <Header />
           {isMenuShown && <Menu />}
           {isSignShown && <Sign />}
           <Routes>

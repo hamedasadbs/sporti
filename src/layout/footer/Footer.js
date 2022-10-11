@@ -8,7 +8,8 @@ import { Facebook, Instagram, Telegram, WhatsApp } from "@material-ui/icons";
 export const Footer = () => (
   <footer className={classes.footer}>
     <h1 className={classes.title}>
-      اسپورتی بزرگترین فروشگاه اینترنتی محصولات ورزشی در ایران
+      <span>SPORTi</span>
+      بزرگترین فروشگاه اینترنتی محصولات ورزشی در ایران
     </h1>
     <main>
       <div className={classes.leftSide}>

@@ -1,5 +1,5 @@
 /*INNER COMPONENT*/
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../logic/Context";
 /*STYLE*/
@@ -68,7 +68,7 @@ export const Header = () => {
             <label>سبد من</label>
             {login && cart.length ? (
               <div className={classes.basket}>
-                <Dropdown login={login} type="basket" />
+                <Dropdown type="basket" />
               </div>
             ) : null}
           </li>
