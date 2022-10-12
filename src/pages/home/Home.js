@@ -9,20 +9,12 @@ import { ProductList } from "../../layout/productList/ProductList";
 import classes from "./Home.module.scss";
 
 export const Home = () => {
-  /*STATE*/
-  const [products, setProducts] = useState([]);
-  /*FUNCTION*/
-  useEffect(() => {
-    axios
-      .post("http://localhost:8080/products")
-      .then((res) => setProducts(res.data.pro));
-  }, []);
   return (
     <div className={classes.home}>
       <Advertising />
       <Categories />
-      <ProductList products={products} title="جدیدترین محصولات" />
-      <ProductList products={products} title="محصولات منتخب" />
+      <ProductList title="جدیدترین محصولات" />
+      <ProductList title="محصولات منتخب" />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 /*INNER COMPONENT*/
 import { useEffect, useState, useContext } from "react";
-import axios from "axios";
 import { Context } from "../../../logic/Context";
 /*STYLE*/
 import classes from "./Product.module.scss";
@@ -22,20 +21,22 @@ import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
 /*LIBRARY*/
 import * as separateLib from "../../../logic/Separate";
 import * as cartLib from "../../../logic/Cart";
+import * as likedLib from "../../../logic/Liked";
 /*MUI*/
 import IconButton from "@mui/material/IconButton";
 
 export const Product = (props) => {
   /*STATE*/
-  const [liked, setLiked] = useState([]);
   const [loaded, setLoaded] = useState(false);
   /*VARIABLE*/
-  const likeURL = "http://localhost:8080/like";
   const login = useContext(Context).loginCon[0];
+  const liked = useContext(Context).likedCon[0];
   const username = useContext(Context).usernameCon[0];
+  const checkTheCart = useContext(Context).checkTheCartCon[0];
+  const checkTheLiked = useContext(Context).checkTheLikedCon[0];
   /*FUNCTION*/
-
   useEffect(() => {
+    checkTheLiked();
     checkTheLiked();
   }, []);
 
@@ -43,26 +44,30 @@ export const Product = (props) => {
     setLoaded(true);
   }, 500);
 
-  const checkTheLiked = () => {
-    axios
-      .get(`${likeURL}?username=${username}`)
-      .then((ct) => {
-        setLiked(ct.data.dataset);
-      })
-      .catch((err) => alert(err));
+  const addToLikedHandler = () => {
+    if (login) {
+      likedLib.addToLiked(username, props.card.product_id);
+      checkTheLiked();
+      checkTheLiked();
+    } else alert("ابتدا وارد حساب خود شوید");
   };
 
-  const addToLiked = (id) => {
-    if (login) {
-      axios
-        .post(likeURL, {
-          productId: id,
-          username: username,
-        })
-        .then(() => {
-          checkTheLiked();
-        });
-    } else alert("ابتدا وارد حساب خود شوید");
+  const increaseHandler = () => {
+    cartLib.increaseCartHandler(username, props.card.product_id);
+    checkTheCart();
+    checkTheCart();
+  };
+
+  const decreaseHandler = () => {
+    cartLib.decreaseCartHandler(username, props.card.product_id);
+    checkTheCart();
+    checkTheCart();
+  };
+
+  const deleteHandler = () => {
+    cartLib.deleteCartHandler(username, props.card.product_id);
+    checkTheCart();
+    checkTheCart();
   };
 
   /*JSX*/
@@ -73,61 +78,29 @@ export const Product = (props) => {
         style={{ borderBottomWidth: props.id === props.length - 1 && 0 }}
       >
         <span className={classes.icons}>
-          {liked.some((e) => e.product_id === props.card.id) ? (
-            <Favorite
-              onClick={() => {
-                addToLiked(props.card.id);
-              }}
-              className={classes.liked}
-            />
+          {liked.some((e) => e.product_id === props.card.product_id) ? (
+            <Favorite onClick={addToLikedHandler} className={classes.liked} />
           ) : (
             <Favorite
-              onClick={() => {
-                addToLiked(props.card.id);
-              }}
+              onClick={addToLikedHandler}
               className={classes.notLiked}
             />
           )}
-
           <div className={classes.addToCart}>
             <article>
               {props.card.number < 2 ? (
-                <span
-                  onClick={() =>
-                    cartLib.deleteCartHandler(
-                      props.card.username,
-                      props.card.product_id
-                    )
-                  }
-                  className={classes.delete}
-                >
+                <span onClick={deleteHandler} className={classes.delete}>
                   <Delete className={classes.fillDelete} />
                   <DeleteOutline className={classes.outlineDelete} />
                 </span>
               ) : (
-                <span
-                  onClick={() =>
-                    cartLib.decreaseCartHandler(
-                      props.card.username,
-                      props.card.product_id
-                    )
-                  }
-                  className={classes.minus}
-                >
+                <span onClick={decreaseHandler} className={classes.minus}>
                   <RemoveCircle className={classes.fillMinus} />
                   <RemoveCircleOutline className={classes.outlineMinus} />
                 </span>
               )}
               <h1 className={classes.productCount}>{props.card.number}</h1>
-              <span
-                onClick={() =>
-                  cartLib.increaseCartHandler(
-                    props.card.username,
-                    props.card.product_id
-                  )
-                }
-                className={classes.add}
-              >
+              <span onClick={increaseHandler} className={classes.add}>
                 <AddCircle className={classes.fillAdd} />
                 <AddCircleOutline className={classes.outlineAdd} />
               </span>
@@ -179,13 +152,15 @@ export const Product = (props) => {
             <div className={classes.priceContainer}>
               <h4 className={classes.price}>
                 {separateLib.separate(
-                  props.card.price - props.card.price * (props.card.off / 100)
+                  (props.card.price -
+                    props.card.price * (props.card.off / 100)) *
+                    props.card.number
                 )}{" "}
                 تومان
               </h4>
               <h4 className={classes.offPrice}>
                 {separateLib.separate(
-                  props.card.price * (props.card.off * 0.01)
+                  props.card.price * (props.card.off * 0.01) * props.card.number
                 )}{" "}
                 تومان تخفیف
               </h4>
@@ -193,7 +168,8 @@ export const Product = (props) => {
           ) : (
             <div className={classes.priceContainer}>
               <h4 className={classes.price}>
-                {separateLib.separate(props.card.price)} تومان
+                {separateLib.separate(props.card.price * props.card.number)}{" "}
+                تومان
               </h4>
             </div>
           )}

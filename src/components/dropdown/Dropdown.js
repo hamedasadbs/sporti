@@ -31,15 +31,18 @@ export const Dropdown = (props) => {
   const increaseHandler = (product_id) => {
     cartLib.increaseCartHandler(username, product_id);
     checkTheCart();
+    checkTheCart();
   };
 
   const decreaseHandler = (product_id) => {
     cartLib.decreaseCartHandler(username, product_id);
     checkTheCart();
+    checkTheCart();
   };
 
   const deleteHandler = (product_id) => {
     cartLib.deleteCartHandler(username, product_id);
+    checkTheCart();
     checkTheCart();
   };
   /*JSX*/

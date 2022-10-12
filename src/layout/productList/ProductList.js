@@ -1,5 +1,6 @@
 /*INNER COMPONENT*/
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { Context } from "../../logic/Context";
 import InfiniteCarousel from "react-leaf-carousel";
 /*STYLE*/
 import classes from "./ProductList.module.scss";
@@ -9,9 +10,11 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 /*CHILD COMPONENT*/
 import { Product } from "./product/Product";
 
-export const ProductList = (props) => {
+export const ProductList = ({ title }) => {
   /*STATE*/
   const [loaded, setLoaded] = useState(false);
+  /*VARIABLE*/
+  const products = useContext(Context).productsCon[0];
   /*FUNCTION*/
   setTimeout(() => {
     setLoaded(true);
@@ -20,7 +23,7 @@ export const ProductList = (props) => {
   if (loaded)
     return (
       <article className={classes.productList}>
-        <h1 className={classes.title}>{props.title}</h1>
+        <h1 className={classes.title}>{title}</h1>
         <InfiniteCarousel
           breakpoints={[
             {
@@ -80,7 +83,7 @@ export const ProductList = (props) => {
           slidesToShow={4}
           scrollOnDevice={true}
         >
-          {props.products.map((res, index) => (
+          {products.map((res, index) => (
             <Product card={res} key={index} />
           ))}
         </InfiniteCarousel>

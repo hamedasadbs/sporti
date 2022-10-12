@@ -1,6 +1,5 @@
 /*INNER COMPONENT*/
 import { useEffect, useState, useContext } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import { Context } from "../../../logic/Context";
 /*STYLE*/
@@ -20,48 +19,32 @@ import {
 /*LIBRARY*/
 import * as separateLib from "../../../logic/Separate";
 import * as cartLib from "../../../logic/Cart";
+import * as likedLib from "../../../logic/Liked";
 /*MUI*/
 import IconButton from "@mui/material/IconButton";
 
 export const Product = ({ card }) => {
   /*STATE*/
-  const [liked, setLiked] = useState([]);
   const [loaded, setLoaded] = useState(false);
-  let [isInCart, setIsInCart] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
   const [cartIndex, setCartIndex] = useState(null);
   /*VARIABLE*/
-  const likeURL = "http://localhost:8080/like";
   const login = useContext(Context).loginCon[0];
   const username = useContext(Context).usernameCon[0];
   const cart = useContext(Context).cartCon[0];
+  const liked = useContext(Context).likedCon[0];
   const checkTheCart = useContext(Context).checkTheCartCon[0];
+  const checkTheLiked = useContext(Context).checkTheLikedCon[0];
   /*FUNCTION*/
-  useEffect(() => {
-    if (login) {
-      checkTheLiked();
-    }
-  }, []);
-
   setTimeout(() => {
     setLoaded(true);
   }, 500);
 
-  const checkTheLiked = () => {
-    axios.get(`${likeURL}?username=${username}`).then((ct) => {
-      setLiked(ct.data.dataset);
-    });
-  };
-
-  const addToLiked = (id) => {
+  const addToLikedHandler = () => {
     if (login) {
-      axios
-        .post(likeURL, {
-          productId: id,
-          username: username,
-        })
-        .then(() => {
-          checkTheLiked();
-        });
+      likedLib.addToLiked(username, card.id);
+      checkTheLiked();
+      checkTheLiked();
     } else alert("ابتدا وارد حساب خود شوید");
   };
 
@@ -74,7 +57,6 @@ export const Product = ({ card }) => {
       if (card.id === cart[i].product_id) {
         setCartIndex(i);
         setIsInCart(true);
-        isInCart = true;
       }
     }
   };
@@ -82,6 +64,7 @@ export const Product = ({ card }) => {
   const addHandler = () => {
     if (login) {
       cartLib.addToCart(username, card.id);
+      checkTheCart();
       checkTheCart();
     } else {
       alert("ابتدا وارد حساب خود شوید");
@@ -91,15 +74,18 @@ export const Product = ({ card }) => {
   const increaseHandler = () => {
     cartLib.increaseCartHandler(username, cart[cartIndex].product_id);
     checkTheCart();
+    checkTheCart();
   };
 
   const decreaseHandler = () => {
     cartLib.decreaseCartHandler(username, cart[cartIndex].product_id);
     checkTheCart();
+    checkTheCart();
   };
 
   const deleteHandler = () => {
     cartLib.deleteCartHandler(username, cart[cartIndex].product_id);
+    checkTheCart();
     checkTheCart();
     setCartIndex(null);
   };
@@ -110,21 +96,13 @@ export const Product = ({ card }) => {
       <div className={classes.product}>
         <span className={classes.icons}>
           {liked.some((e) => e.product_id === card.id) ? (
-            <Favorite
-              onClick={() => {
-                addToLiked(card.id);
-              }}
-              className={classes.liked}
-            />
+            <Favorite onClick={addToLikedHandler} className={classes.liked} />
           ) : (
             <Favorite
-              onClick={() => {
-                addToLiked(card.id);
-              }}
+              onClick={addToLikedHandler}
               className={classes.notLiked}
             />
           )}
-
           <div className={classes.addToCart}>
             {isInCart && cart[cartIndex] ? (
               <article>

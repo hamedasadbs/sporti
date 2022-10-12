@@ -24,6 +24,13 @@ export const App = () => {
       .get(`http://localhost:8080/cart?username=${username}`)
       .then((res) => setCart(res.data.dataset));
   };
+
+  const checkTheLiked = () => {
+    console.log("liked checked");
+    axios.get(`http://localhost:8080/like?username=${username}`).then((ct) => {
+      setLiked(ct.data.dataset);
+    });
+  };
   /*STATE*/
   const [username, setUsername] = useState(cookieLib.getCookie("username"));
   const [login, setLogin] = useState(cookieLib.getCookie("login"));
@@ -35,10 +42,10 @@ export const App = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
   const [isSignShown, setIsSignShown] = useState(false);
   const [cart, setCart] = useState([]);
+  const [liked, setLiked] = useState([]);
   const [products, setProducts] = useState([]);
   /*VARIABLE*/
   const typeURL = "http://localhost:8080/type";
-  const productsURL = "http://localhost:8080/products";
   const context = {
     usernameCon: [username, setUsername],
     loginCon: [login, setLogin],
@@ -47,7 +54,9 @@ export const App = () => {
     signCon: [isSignShown, setIsSignShown],
     productsCon: [products, setProducts],
     cartCon: [cart, setCart],
+    likedCon: [liked, setLiked],
     checkTheCartCon: [checkTheCart],
+    checkTheLikedCon: [checkTheLiked],
     typeCon: {
       sports: [sports, setSports],
       brands: [brands, setBrands],
@@ -57,11 +66,16 @@ export const App = () => {
   };
   /*FUNCTION*/
   useEffect(() => {
-    axios.post(productsURL).then((res) => setProducts(res.data.pro));
+    axios
+      .post("http://localhost:8080/products")
+      .then((res) => setProducts(res.data.pro));
   }, []);
 
   useEffect(() => {
-    if (cookieLib.getCookie("login")) checkTheCart();
+    if (cookieLib.getCookie("login")) {
+      checkTheCart();
+      checkTheLiked();
+    }
   }, []);
 
   useEffect(() => {
