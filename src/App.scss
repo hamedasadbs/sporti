@@ -21,4 +21,38 @@
   margin: 10px auto;
   display: flex;
   flex-direction: column;
+
+  .alert {
+    font-size: 15px;
+    font-family: 'iran';
+    margin: 10px auto -68px auto;
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    right: 0;
+    animation: fadeOut 4s forwards;
+    z-index: 200;
+
+    @keyframes fadeOut {
+      0% {
+        opacity: 0;
+      }
+
+      25% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 1;
+      }
+
+      75% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+  }
 }

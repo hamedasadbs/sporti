@@ -14,16 +14,27 @@ import {
   RemoveCircleOutline,
 } from "@material-ui/icons";
 import KeyboardDoubleArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowLeftOutlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
+import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
+import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
+import SportsSoccerOutlinedIcon from "@mui/icons-material/SportsSoccerOutlined";
+import SportsKabaddiOutlinedIcon from "@mui/icons-material/SportsKabaddiOutlined";
+import SportsBasketballOutlinedIcon from "@mui/icons-material/SportsBasketballOutlined";
+import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined";
+import SportsGymnasticsOutlinedIcon from "@mui/icons-material/SportsGymnasticsOutlined";
+import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 /*LIBRARY*/
+import * as cookieLib from "../../logic/Cookie";
 import * as separateLib from "../../logic/Separate";
 import * as cartLib from "../../logic/Cart";
 
 export const Dropdown = (props) => {
   /*VARIABLE*/
   const sportsData = useContext(Context).typeCon.sports[0];
-  const brandsData = useContext(Context).typeCon.brands[0];
-  const productTypeData = useContext(Context).typeCon.productType[0];
-  const username = useContext(Context).usernameCon[0];
+  const [username, setUsername] = useContext(Context).usernameCon;
+  const setLogin = useContext(Context).loginCon[1];
+  const setAlert = useContext(Context).alertCon[1];
   const setPage = useContext(Context).pageCon[1];
   const cart = useContext(Context).cartCon[0];
   const checkTheCart = useContext(Context).checkTheCartCon[0];
@@ -41,9 +52,24 @@ export const Dropdown = (props) => {
   };
 
   const deleteHandler = (product_id) => {
+    setAlert({
+      bool: true,
+      text: "کالا از سبد حذف شد",
+      type: "info",
+    });
     cartLib.deleteCartHandler(username, product_id);
     checkTheCart();
     checkTheCart();
+  };
+
+  const logoutHandler = (e) => {
+    e.preventDefault();
+    if (window.confirm("آیا میخواهید از این حساب خارج شوید؟")) {
+      cookieLib.setCookie("login", "", -100);
+      setLogin(false);
+      cookieLib.setCookie("username", "", -100);
+      setUsername("");
+    }
   };
   /*JSX*/
   return (
@@ -105,6 +131,29 @@ export const Dropdown = (props) => {
             ادامه فرآیند خرید
           </button>
         </span>
+      ) : props.type === "account" ? (
+        <span className={classes.cartDropdown}>
+          <Link to="/cart" className={classes.link}>
+            <h1>حامد اسداللهی</h1>
+            <AccountCircleOutlinedIcon className={classes.i} />
+          </Link>
+          <Link to="/cart" className={classes.link}>
+            <h1>سفارشات</h1>
+            <ShoppingBasketOutlinedIcon className={classes.i} />
+          </Link>
+          <Link to="/cart" className={classes.link}>
+            <h1>علاقه مندی ها</h1>
+            <FavoriteBorderOutlinedIcon className={classes.i} />
+          </Link>
+          <Link to="/cart" className={classes.link}>
+            <h1>نظرات</h1>
+            <CommentOutlinedIcon className={classes.i} />
+          </Link>
+          <Link to="/" onClick={logoutHandler} className={classes.link}>
+            <h1>خروج از حساب</h1>
+            <PowerSettingsNewIcon className={classes.i} />
+          </Link>
+        </span>
       ) : props.type === "sports" ? (
         <main className={classes.dropdownContainer}>
           {sportsData.map((res, index) => (
@@ -116,37 +165,22 @@ export const Dropdown = (props) => {
                 window.location.href = "/category/" + res.category;
               }}
             >
-              {res.fa_category}
-            </span>
-          ))}
-        </main>
-      ) : props.type === "brands" ? (
-        <main className={classes.dropdownContainer}>
-          {brandsData.map((res, index) => (
-            <span
-              className={classes.dropdown}
-              key={index}
-              onClick={() => {
-                setPage("products");
-                window.location.href = "/category/" + res.brand;
-              }}
-            >
-              {res.brand}
-            </span>
-          ))}
-        </main>
-      ) : props.type === "productType" ? (
-        <main className={classes.dropdownContainer}>
-          {productTypeData.map((res, index) => (
-            <span
-              className={classes.dropdown}
-              key={index}
-              onClick={() => {
-                setPage("products");
-                window.location.href = "/category/" + res.type;
-              }}
-            >
-              {res.fa_type}
+              <h1>
+                {res.fa_category}
+                {res.category === "football" ? (
+                  <SportsSoccerOutlinedIcon className={classes.i} />
+                ) : res.category === "wrestling" ? (
+                  <SportsKabaddiOutlinedIcon className={classes.i} />
+                ) : res.category === "basketball" ? (
+                  <SportsBasketballOutlinedIcon className={classes.i} />
+                ) : res.category === "body-building" ? (
+                  <FitnessCenterOutlinedIcon className={classes.i} />
+                ) : res.category === "taekwondo" ? (
+                  <SportsGymnasticsOutlinedIcon className={classes.i} />
+                ) : (
+                  <SportsKabaddiOutlinedIcon className={classes.i} />
+                )}
+              </h1>
             </span>
           ))}
         </main>

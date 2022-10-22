@@ -10,20 +10,6 @@
   justify-content: center;
   position: relative;
 
-  .photoContainer {
-    width: 100%;
-    position: absolute;
-    z-index: 1;
-
-    .photo {
-      position: absolute;
-      width: 100px;
-      height: 100px;
-      margin: 5px;
-      opacity: 0.05;
-    }
-  }
-
   .bannerContainer {
     z-index: 1;
     margin-right: 10px;

@@ -1,6 +1,3 @@
-/*INNER COMPONENTS*/
-import { useEffect, useState } from "react";
-import axios from "axios";
 /*CHILD COMPONENTS*/
 import { Advertising } from "./advertising/Advertising";
 import { Categories } from "./categories/Categories";

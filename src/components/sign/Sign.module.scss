@@ -16,17 +16,6 @@
     display: flex;
     margin: auto;
     flex-direction: column;
-    animation: shacking 0.5s forwards;
-
-    @keyframes shacking {
-      0% {
-        transform: scaleX(0);
-      }
-
-      80% {
-        transform: scaleX(1);
-      }
-    }
 
     .title {
       @include title();

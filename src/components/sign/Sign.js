@@ -7,7 +7,9 @@ import classes from "./Sign.module.scss";
 /*MUI*/
 import Checkbox from "@material-ui/core/Checkbox";
 /*ICON*/
-import { Lock, Mail, AccountCircle, PersonAdd } from "@material-ui/icons";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
+import EmailOutlinedIcon from "@mui/icons-material/EmailOutlined";
 /*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 
@@ -22,6 +24,7 @@ export const Sign = () => {
   let [loginPassword, setLoginPassword] = useState(null);
   /*VARIABLE*/
   const setIsSignShown = useContext(Context).signCon[1];
+  const setAlert = useContext(Context).alertCon[1];
   /*FUNCTION*/
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -115,14 +118,21 @@ export const Sign = () => {
           username: loginUsername,
           password: loginPassword,
         })
-        .then((res) => {
+        .then(() => {
           cookieLib.setCookie("login", true, 60);
           cookieLib.setCookie("username", loginUsername, 60);
-          alert(`شما با نام ${loginUsername} وارد حساب کاربری خود شدید`);
-          window.location.href = "/";
+          setAlert({
+            bool: true,
+            text: `شما با نام ${loginUsername} وارد حساب کاربری خود شدید`,
+            type: "success",
+          });
+          setIsSignShown(false);
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 3000);
         })
-        .catch((err) => {
-          alert(err);
+        .catch(() => {
+          alert("نام کاربری یا رمز عبور اشتباه است");
         });
     } else {
       alert("لطفا تمام اطلاعات خود را تکمیل کرده سپس ثبت کنید");
@@ -173,7 +183,7 @@ export const Sign = () => {
                   onChange={loginUsernameHandler}
                   placeholder="نام کاربری یا ایمیل"
                 />
-                <AccountCircle className={classes.i} />
+                <PermIdentityOutlinedIcon className={classes.i} />
               </div>
               <div className={classes.loginPass}>
                 <input
@@ -181,7 +191,7 @@ export const Sign = () => {
                   type="password"
                   placeholder="رمز عبور"
                 />
-                <Lock className={classes.i} />
+                <LockOutlinedIcon className={classes.i} />
               </div>
               <br />
               <h5 className={classes.rememberMe}>
@@ -222,14 +232,14 @@ export const Sign = () => {
                   onChange={nameHandler}
                   placeholder="نام و نام خانوادگی"
                 />
-                <PersonAdd className={classes.i} />
+                <PermIdentityOutlinedIcon className={classes.i} />
               </div>
               <div className={classes.signupUser}>
                 <input
                   onChange={signupUsernameHandler}
                   placeholder="نام کاربری"
                 />
-                <AccountCircle className={classes.i} />
+                <PermIdentityOutlinedIcon className={classes.i} />
               </div>
               <div className={classes.email}>
                 <input
@@ -238,7 +248,7 @@ export const Sign = () => {
                   placeholder="ایمیل"
                   id="email"
                 />
-                <Mail className={classes.i} />
+                <EmailOutlinedIcon className={classes.i} />
               </div>
               <div className={classes.signupPass}>
                 <input
@@ -247,7 +257,7 @@ export const Sign = () => {
                   placeholder="رمز عبور"
                   id="password"
                 />
-                <Lock className={classes.i} />
+                <LockOutlinedIcon className={classes.i} />
               </div>
               <span className={classes.notRobot}>
                 <Checkbox

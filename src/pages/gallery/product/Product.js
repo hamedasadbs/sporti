@@ -31,6 +31,7 @@ export const Product = ({ card }) => {
   /*VARIABLE*/
   const login = useContext(Context).loginCon[0];
   const username = useContext(Context).usernameCon[0];
+  const setAlert = useContext(Context).alertCon[1];
   const cart = useContext(Context).cartCon[0];
   const liked = useContext(Context).likedCon[0];
   const checkTheCart = useContext(Context).checkTheCartCon[0];
@@ -45,7 +46,12 @@ export const Product = ({ card }) => {
       likedLib.addToLiked(username, card.id);
       checkTheLiked();
       checkTheLiked();
-    } else alert("ابتدا وارد حساب خود شوید");
+    } else
+      setAlert({
+        bool: true,
+        text: "ابتدا وارد حساب خود شوید",
+        type: "warning",
+      });
   };
 
   useEffect(() => {
@@ -63,6 +69,11 @@ export const Product = ({ card }) => {
 
   const addHandler = () => {
     if (login) {
+      setAlert({
+        bool: true,
+        text: "کالا به سبد اضافه شد",
+        type: "info",
+      });
       cartLib.addToCart(username, card.id);
       checkTheCart();
       checkTheCart();
@@ -84,6 +95,11 @@ export const Product = ({ card }) => {
   };
 
   const deleteHandler = () => {
+    setAlert({
+      bool: true,
+      text: "کالا از سبد حذف شد",
+      type: "info",
+    });
     cartLib.deleteCartHandler(username, cart[cartIndex].product_id);
     checkTheCart();
     checkTheCart();
@@ -95,7 +111,7 @@ export const Product = ({ card }) => {
     return (
       <div className={classes.product}>
         <span className={classes.icons}>
-          {liked.some((e) => e.product_id === card.id) ? (
+          {liked.some((e) => e.product_id === card.id) && login ? (
             <Favorite onClick={addToLikedHandler} className={classes.liked} />
           ) : (
             <Favorite
@@ -104,7 +120,7 @@ export const Product = ({ card }) => {
             />
           )}
           <div className={classes.addToCart}>
-            {isInCart && cart[cartIndex] ? (
+            {isInCart && cart[cartIndex] && login ? (
               <article>
                 {cart[cartIndex].number < 2 ? (
                   <IconButton

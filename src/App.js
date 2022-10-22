@@ -7,14 +7,15 @@ import { Context } from "./logic/Context";
 import "./App.scss";
 /*CHILD COMPONENT*/
 import { Header } from "./layout/header/Header";
-import { Home } from "../src/pages/home/Home";
-import { Cart } from "../src/pages/cart/Cart";
+import { Home } from "./pages/home/Home";
+import { Cart } from "./pages/cart/Cart";
 import { Menu } from "./layout/menu/Menu";
 import { Sign } from "../src/components/sign/Sign";
-import { Gallery } from "../src/pages/gallery/Gallery";
-import { Detail } from "../src/pages/detail/Detail";
-import { Notice } from "../src/layout/notice/Notice";
+import { Gallery } from "./pages/gallery/Gallery";
+import { Detail } from "./pages/detail/Detail";
+import { Notice } from "./layout/notice/Notice";
 import { Footer } from "./layout/footer/Footer";
+import { AlertCom } from "./components/alert/Alert";
 /*LIBRARY*/
 import * as cookieLib from "./logic/Cookie";
 
@@ -26,7 +27,6 @@ export const App = () => {
   };
 
   const checkTheLiked = () => {
-    console.log("liked checked");
     axios.get(`http://localhost:8080/like?username=${username}`).then((ct) => {
       setLiked(ct.data.dataset);
     });
@@ -44,6 +44,11 @@ export const App = () => {
   const [cart, setCart] = useState([]);
   const [liked, setLiked] = useState([]);
   const [products, setProducts] = useState([]);
+  const [alert, setAlert] = useState({
+    bool: false,
+    text: "",
+    type: "",
+  });
   /*VARIABLE*/
   const typeURL = "http://localhost:8080/type";
   const context = {
@@ -55,6 +60,7 @@ export const App = () => {
     productsCon: [products, setProducts],
     cartCon: [cart, setCart],
     likedCon: [liked, setLiked],
+    alertCon: [alert, setAlert],
     checkTheCartCon: [checkTheCart],
     checkTheLikedCon: [checkTheLiked],
     typeCon: {
@@ -128,6 +134,7 @@ export const App = () => {
       <Router>
         <div className="main">
           <Header />
+          {alert.bool && <AlertCom type={alert.type}>{alert.text}</AlertCom>}
           {isMenuShown && <Menu />}
           {isSignShown && <Sign />}
           <Routes>

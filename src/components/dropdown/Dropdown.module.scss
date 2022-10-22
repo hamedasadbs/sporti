@@ -20,6 +20,35 @@ button {
     }
 }
 
+.link {
+    transition: all 0.5s;
+    padding: 10px 5px;
+    font-family: 'iran';
+    margin: auto;
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin: 5px auto;
+    border-radius: 5px;
+
+    &:hover {
+        background-color: $superLightColor;
+    }
+
+    h1,
+    .i {
+        color: $primaryColor1;
+        font-size: 15px;
+        margin: auto 0;
+        font-weight: 200;
+    }
+
+    .i {
+        font-size: 25px;
+        margin-left: 10px;
+    }
+}
+
 .goToCart {
     transition: all 0.5s;
     padding: 5px;
@@ -220,6 +249,8 @@ main.dropdownContainer {
     animation: shacking 0.5s forwards;
     transform-origin: top;
     @include shadow();
+    display: flex;
+    flex-direction: column;
 
     @keyframes shacking {
         0% {
@@ -233,18 +264,27 @@ main.dropdownContainer {
 
     span.dropdown {
         border-radius: 5px;
-        font-size: 10px;
-        line-height: 15px;
-        text-align: center;
         margin: 5px auto;
-        padding: 10px;
-        color: $linkColor;
         width: 70%;
+
+        h1 {
+            font-size: 13px;
+            width: 100%;
+            text-align: center;
+            color: $linkColor;
+            display: flex;
+            align-self: center;
+            justify-content: center;
+            align-items: center;
+
+            .i {
+                margin-left: 5px;
+            }
+        }
 
         &:hover {
             cursor: pointer;
             background-color: $superLightColor;
-            color: lighten($hoverColor, 20%);
         }
     }
 }
