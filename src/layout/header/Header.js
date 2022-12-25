@@ -18,6 +18,8 @@ import LocalFireDepartmentOutlinedIcon from "@mui/icons-material/LocalFireDepart
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
 import FmdBadOutlinedIcon from "@mui/icons-material/FmdBadOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+/*IMAGE*/
+import logo from "../../assets/images/aramis-android.png";
 
 export const Header = () => {
   /*VARIABLE*/
@@ -102,7 +104,8 @@ export const Header = () => {
             }}
           >
             <Link to="/#">
-              <h1 className={classes.logo}>SPORTi</h1>
+              <img className={classes.logoImg} src={logo} alt="sporti" />
+              <h1 className={classes.logoTxt}>SPORTi</h1>
             </Link>
           </div>
         </ul>
@@ -114,7 +117,7 @@ export const Header = () => {
             }}
           >
             <Link to="/#">
-              <h1 className={classes.logo}>SPORTi</h1>
+              <img className={classes.logoImg} src={logo} alt="sporti" />
             </Link>
           </div>
         </ul>

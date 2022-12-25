@@ -84,7 +84,7 @@ export const Cart = () => {
               </span>
             </div>
           </main>
-          <button className={classes.conformShop}>تکمیل فرآیند خرید</button>
+          <button className={classes.conformShop}>ادامه فرآیند خرید</button>
         </div>
       </article>
     );

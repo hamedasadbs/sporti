@@ -6,14 +6,15 @@ import Alert from "@mui/material/Alert";
 
 export const AlertCom = (props) => {
   /*VARIABLE*/
-  const setAlert = useContext(Context).alertCon[1];
+  const [alert, setAlert] = useContext(Context).alertCon;
   /*FUNCTION*/
   setTimeout(() => {
-    setAlert({
-      bool: false,
-      text: "",
-      type: "",
-    });
+    if (alert.bool)
+      setAlert({
+        bool: false,
+        text: "",
+        type: "",
+      });
   }, 4000);
   /*JSX*/
   return (

@@ -175,6 +175,9 @@
 
     .conditions {
       padding: 0;
+      padding-right: 10px;
+      border-radius: 10px;
+      border-right: 1px solid lightgray;
 
       li {
         list-style: none;
@@ -183,7 +186,7 @@
         color: gray;
         text-align: right;
         display: flex;
-        font-size: 13px;
+        font-size: 12px;
 
         .i {
           font-size: 17px;
