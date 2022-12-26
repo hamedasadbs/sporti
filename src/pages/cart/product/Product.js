@@ -31,7 +31,7 @@ export const Product = (props) => {
   /*VARIABLE*/
   const login = useContext(Context).loginCon[0];
   const liked = useContext(Context).likedCon[0];
-  const username = useContext(Context).usernameCon[0];
+  const userInfo = useContext(Context).userInfoCon[0];
   const checkTheCart = useContext(Context).checkTheCartCon[0];
   const checkTheLiked = useContext(Context).checkTheLikedCon[0];
   /*FUNCTION*/
@@ -46,26 +46,26 @@ export const Product = (props) => {
 
   const addToLikedHandler = () => {
     if (login) {
-      likedLib.addToLiked(username, props.card.product_id);
+      likedLib.addToLiked(userInfo.username, props.card.product_id);
       checkTheLiked();
       checkTheLiked();
     } else alert("ابتدا وارد حساب خود شوید");
   };
 
   const increaseHandler = () => {
-    cartLib.increaseCartHandler(username, props.card.product_id);
+    cartLib.increaseCartHandler(userInfo.username, props.card.product_id);
     checkTheCart();
     checkTheCart();
   };
 
   const decreaseHandler = () => {
-    cartLib.decreaseCartHandler(username, props.card.product_id);
+    cartLib.decreaseCartHandler(userInfo.username, props.card.product_id);
     checkTheCart();
     checkTheCart();
   };
 
   const deleteHandler = () => {
-    cartLib.deleteCartHandler(username, props.card.product_id);
+    cartLib.deleteCartHandler(userInfo.username, props.card.product_id);
     checkTheCart();
     checkTheCart();
   };
@@ -107,10 +107,7 @@ export const Product = (props) => {
             </article>
           </div>
         </span>
-        <img
-          src={`/Images/Product/${props.card.image}`}
-          alt={props.card.fa_title}
-        />
+        <img src={props.card.image} alt={props.card.fa_title} />
         <div className={classes.caption}>
           <h3 className={classes.productName}>{props.card.fa_title}</h3>
           <ul className={classes.conditions}>
@@ -156,20 +153,20 @@ export const Product = (props) => {
                     props.card.price * (props.card.off / 100)) *
                     props.card.number
                 )}{" "}
-                تومان
+                <span>تومان</span>
               </h4>
               <h4 className={classes.offPrice}>
                 {separateLib.separate(
                   props.card.price * (props.card.off * 0.01) * props.card.number
                 )}{" "}
-                تومان تخفیف
+                <span>تومان</span> تخفیف
               </h4>
             </div>
           ) : (
             <div className={classes.priceContainer}>
               <h4 className={classes.price}>
                 {separateLib.separate(props.card.price * props.card.number)}{" "}
-                تومان
+                <span>تومان</span>
               </h4>
             </div>
           )}

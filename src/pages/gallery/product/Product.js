@@ -154,7 +154,7 @@ export const Product = ({ card }) => {
             )}
           </div>
         </span>
-        <img src={`/Images/Product/${card.image}`} alt={card.fa_title} />
+        <img src={card.image} alt={card.fa_title} />
         <div className={classes.caption}>
           <h3 className={classes.productName}>{card.fa_title}</h3>
           <div className={classes.stars}>

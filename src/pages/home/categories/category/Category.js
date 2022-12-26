@@ -5,7 +5,7 @@ import classes from "./Category.module.scss";
 
 export const Category = (props) => (
   <Link className={classes.category} to={`/category/${props.enTitle}`}>
-    <img src={`/Images/Category/${props.image}`} alt={props.enTitle} />
+    <img src={props.image} alt={props.enTitle} />
     <div className={classes.label}>
       <h1>{props.faTitle}</h1>
     </div>

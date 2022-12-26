@@ -31,7 +31,7 @@ export const Product = ({ card }) => {
   /*VARIABLE*/
   const login = useContext(Context).loginCon[0];
   const setAlert = useContext(Context).alertCon[1];
-  const username = useContext(Context).usernameCon[0];
+  const userInfo = useContext(Context).userInfoCon[0];
   const cart = useContext(Context).cartCon[0];
   const liked = useContext(Context).likedCon[0];
   const checkTheCart = useContext(Context).checkTheCartCon[0];
@@ -43,7 +43,7 @@ export const Product = ({ card }) => {
 
   const addToLikedHandler = () => {
     if (login) {
-      likedLib.addToLiked(username, card.id);
+      likedLib.addToLiked(userInfo.username, card.id);
       checkTheLiked();
       checkTheLiked();
     } else
@@ -75,7 +75,7 @@ export const Product = ({ card }) => {
         text: "کالا به سبد اضافه شد",
         type: "info",
       });
-      cartLib.addToCart(username, card.id);
+      cartLib.addToCart(userInfo.username, card.id);
       checkTheCart();
       checkTheCart();
     } else
@@ -87,13 +87,13 @@ export const Product = ({ card }) => {
   };
 
   const increaseHandler = () => {
-    cartLib.increaseCartHandler(username, cart[cartIndex].product_id);
+    cartLib.increaseCartHandler(userInfo.username, cart[cartIndex].product_id);
     checkTheCart();
     checkTheCart();
   };
 
   const decreaseHandler = () => {
-    cartLib.decreaseCartHandler(username, cart[cartIndex].product_id);
+    cartLib.decreaseCartHandler(userInfo.username, cart[cartIndex].product_id);
     checkTheCart();
     checkTheCart();
   };
@@ -104,7 +104,7 @@ export const Product = ({ card }) => {
       text: "کالا از سبد حذف شد",
       type: "info",
     });
-    cartLib.deleteCartHandler(username, cart[cartIndex].product_id);
+    cartLib.deleteCartHandler(userInfo.username, cart[cartIndex].product_id);
     checkTheCart();
     checkTheCart();
     setCartIndex(null);
@@ -158,7 +158,7 @@ export const Product = ({ card }) => {
             )}
           </div>
         </span>
-        <img src={`/Images/Product/${card.image}`} alt={card.fa_title} />
+        <img src={card.image} alt={card.fa_title} />
         <div className={classes.caption}>
           <h3 className={classes.productName}>{card.fa_title}</h3>
           <div className={classes.stars}>
@@ -186,16 +186,16 @@ export const Product = ({ card }) => {
                   {separateLib.separate(
                     card.price - card.price * (card.off / 100)
                   )}{" "}
-                  تومان
+                  <span>تومان</span>
                 </h4>
                 <h4 className={classes.priceWithOff}>
-                  {separateLib.separate(card.price)} تومان
+                  {separateLib.separate(card.price)} <span>تومان</span>
                 </h4>
               </div>
             ) : (
               <div className={classes.priceContainer}>
                 <h4 className={classes.price}>
-                  {separateLib.separate(card.price)} تومان
+                  {separateLib.separate(card.price)} <span>تومان</span>
                 </h4>
               </div>
             )}

@@ -31,9 +31,9 @@
       font-family: "iran";
       font-size: 35px;
       text-align: right;
-      color: $primaryColor3;
+      color: $primaryColor2;
       padding-right: 10px;
-      border-right: 5px double $secondaryColor1;
+      border-right: 5px double $secondaryColor3;
     }
 
     h2 {
@@ -51,7 +51,7 @@
     }
 
     .link {
-      background-image: linear-gradient(135deg, $primaryColor4, $primaryColor5);
+      background-image: linear-gradient(135deg, $primaryColor2, $primaryColor3);
       color: $superLightColor;
       transition: all 0.5s;
       font-family: $font;

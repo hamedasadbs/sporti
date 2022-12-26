@@ -8,15 +8,20 @@ $pageBackColor: whitesmoke;
 $footerBackColor: rgb(37, 37, 37);
 $linkColor: gray;
 
-$primaryColor1: rgb(24, 47, 65);
-$primaryColor2: rgb(34, 50, 88);
-$primaryColor3: rgb(49, 96, 133);
+$primaryColor1: #00171f;
+$primaryColor2: #003459;
+$primaryColor3: #00a8e8;
 
-$primaryColor4: rgb(0, 122, 205);
-$primaryColor5: rgb(0, 152, 255);
+$secondaryColor1: rgb(255, 229, 0);
+$secondaryColor2: rgb(225, 165, 0);
+$secondaryColor3: rgb(255, 101, 0);
 
-$secondaryColor1:rgb(182, 43, 0);
-$secondaryColor2:gold;
+$bronzePlanColor1: #cd7f32;
+$bronzePlanColor2: #a46628;
+$silverPlanColor1: #c0c0c0;
+$silverPlanColor2: #a7a7a7;
+$goldPlanColor1: rgb(236, 231, 33);
+$goldPlanColor2: rgb(239, 174, 38);
 
 $hoverColor: rgba(252, 0, 11, 0.7);
 
@@ -138,11 +143,10 @@ button:hover {
 
 @mixin title {
   width: 100%;
-  background: linear-gradient(to left, $primaryColor3, $primaryColor1, $primaryColor3);
+  background: linear-gradient(to left, $primaryColor3, $primaryColor2, $primaryColor3);
   color: $superLightColor;
   padding: 10px 0;
   text-align: center;
   font-family: $font;
-  border-radius: 5px 5px 0 0;
   font-size: 15px;
 }

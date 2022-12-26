@@ -1,5 +1,5 @@
 /*INNER COMPONENT*/
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../../logic/Context";
 /*STYLE*/
@@ -12,6 +12,7 @@ import { Dropdown } from "../../components/dropdown/Dropdown";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
 import SegmentIcon from "@mui/icons-material/Segment";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
 import LocalFireDepartmentOutlinedIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
@@ -24,7 +25,7 @@ import logo from "../../assets/images/aramis-android.png";
 export const Header = () => {
   /*VARIABLE*/
   const login = useContext(Context).loginCon[0];
-  const username = useContext(Context).usernameCon[0];
+  const userInfo = useContext(Context).userInfoCon[0];
   const [page, setPage] = useContext(Context).pageCon;
   const setAlert = useContext(Context).alertCon[1];
   const setIsMenuShown = useContext(Context).menuCon[1];
@@ -54,7 +55,11 @@ export const Header = () => {
         <ul className={classes.leftSide}>
           <li className={classes.account} onClick={showSign}>
             <PersonOutlinedIcon className={classes.i} />
-            {login ? <label>{username}</label> : <label>حساب من</label>}
+            {login ? (
+              <label>{userInfo && userInfo.username}</label>
+            ) : (
+              <label>حساب من</label>
+            )}
             {login ? (
               <div className={classes.account}>
                 <Dropdown type="account" />

@@ -37,7 +37,7 @@
       flex-wrap: wrap;
       justify-content: center;
       list-style: none;
-      background: linear-gradient(to left, $primaryColor3, $primaryColor1, $primaryColor3);
+      background: linear-gradient(to left, whitesmoke, $primaryColor2, $primaryColor2, $primaryColor2, whitesmoke);
       padding: 0;
 
       li {
@@ -62,7 +62,7 @@
 
       li.hoveredOffset {
         background-color: $secondaryColor2;
-        color: $primaryColor4;
+        color: $primaryColor2;
       }
     }
   }

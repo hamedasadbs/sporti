@@ -47,7 +47,7 @@ export const Cart = () => {
     return (
       <article className={classes.carts}>
         <div className={classes.cart}>
-          <h1 className={classes.title}>سبد خرید شما (2 کالا)</h1>
+          <h1 className={classes.title}>سبد خرید شما ({cart.length} کالا)</h1>
           <main>
             {cart.length > 0 ? (
               cart.map((res, index) => (
@@ -68,13 +68,13 @@ export const Cart = () => {
             <div>
               <span className={classes.label}>قیمت {cart.length} رقم کالا</span>
               <span className={classes.value}>
-                {separateLib.separate(totalPrice)}
+                {separateLib.separate(totalPrice)} <span>تومان</span>
               </span>
             </div>
             <div>
               <span className={classes.label}>مبلغ قابل پرداخت</span>
               <span className={classes.value}>
-                {separateLib.separate(price)}
+                {separateLib.separate(price)} <span>تومان</span>
               </span>
             </div>
             <div>

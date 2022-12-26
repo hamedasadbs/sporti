@@ -25,6 +25,7 @@ export const Sign = () => {
   /*VARIABLE*/
   const setIsSignShown = useContext(Context).signCon[1];
   const setAlert = useContext(Context).alertCon[1];
+  const setLogin = useContext(Context).loginCon[1];
   /*FUNCTION*/
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -92,7 +93,8 @@ export const Sign = () => {
             })
             .then((res) => {
               cookieLib.setCookie("login", true, 60);
-              cookieLib.setCookie("username", signupUsername, 60);
+              cookieLib.setCookie("user", signupUsername, 60);
+              cookieLib.setCookie("pass", signupPassword, 60);
               if (res.status === 200) {
                 setLoginUsername(signupUsername);
                 loginUsername = signupUsername;
@@ -120,7 +122,9 @@ export const Sign = () => {
         })
         .then(() => {
           cookieLib.setCookie("login", true, 60);
-          cookieLib.setCookie("username", loginUsername, 60);
+          setLogin(true);
+          cookieLib.setCookie("user", loginUsername, 60);
+          cookieLib.setCookie("pass", loginPassword, 60);
           setAlert({
             bool: true,
             text: `شما با نام ${loginUsername} وارد حساب کاربری خود شدید`,

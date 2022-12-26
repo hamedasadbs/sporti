@@ -135,7 +135,7 @@
         cursor: pointer;
 
         .i {
-          color: $secondaryColor1;
+          color: $secondaryColor3;
         }
       }
 
@@ -186,7 +186,7 @@
       }
 
       .lightStar {
-        color: $secondaryColor2;
+        color: $secondaryColor1;
       }
     }
 
@@ -194,7 +194,7 @@
       font-size: 12px;
       text-align: right;
       direction: rtl;
-      color: $secondaryColor1;
+      color: $secondaryColor3;
       font-family: "iran";
       align-items: center;
       display: flex;
@@ -227,6 +227,10 @@
           color: $footerBackColor;
           margin: auto;
           width: 100%;
+
+          span {
+            font-family: "price";
+          }
         }
 
         .priceWithOff {
@@ -238,6 +242,10 @@
           text-decoration: line-through;
           margin: auto;
           width: 100%;
+
+          span {
+            font-family: "price";
+          }
         }
       }
 
@@ -274,7 +282,7 @@
       width: 100%;
 
       &:hover {
-        background-color: lighten($primaryColor5, 20%);
+        background-color: lighten($primaryColor3, 20%);
       }
     }
   }

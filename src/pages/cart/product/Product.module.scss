@@ -228,6 +228,10 @@
         color: $footerBackColor;
         margin: auto;
         width: 100%;
+
+        span {
+          font-family: 'price';
+        }
       }
 
       .offPrice {
@@ -238,6 +242,10 @@
         color: $hoverColor;
         margin: auto;
         width: 100%;
+
+        span {
+          font-family: 'price';
+        }
       }
     }
   }

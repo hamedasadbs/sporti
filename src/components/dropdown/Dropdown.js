@@ -28,11 +28,12 @@ import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
 import * as cookieLib from "../../logic/Cookie";
 import * as separateLib from "../../logic/Separate";
 import * as cartLib from "../../logic/Cart";
+import { useEffect } from "react";
 
 export const Dropdown = (props) => {
   /*VARIABLE*/
   const sportsData = useContext(Context).typeCon.sports[0];
-  const [username, setUsername] = useContext(Context).usernameCon;
+  const userInfo = useContext(Context).userInfoCon;
   const setLogin = useContext(Context).loginCon[1];
   const setAlert = useContext(Context).alertCon[1];
   const setPage = useContext(Context).pageCon[1];
@@ -40,13 +41,13 @@ export const Dropdown = (props) => {
   const checkTheCart = useContext(Context).checkTheCartCon[0];
 
   const increaseHandler = (product_id) => {
-    cartLib.increaseCartHandler(username, product_id);
+    cartLib.increaseCartHandler(userInfo.username, product_id);
     checkTheCart();
     checkTheCart();
   };
 
   const decreaseHandler = (product_id) => {
-    cartLib.decreaseCartHandler(username, product_id);
+    cartLib.decreaseCartHandler(userInfo.username, product_id);
     checkTheCart();
     checkTheCart();
   };
@@ -57,7 +58,7 @@ export const Dropdown = (props) => {
       text: "کالا از سبد حذف شد",
       type: "info",
     });
-    cartLib.deleteCartHandler(username, product_id);
+    cartLib.deleteCartHandler(userInfo.username, product_id);
     checkTheCart();
     checkTheCart();
   };
@@ -67,8 +68,8 @@ export const Dropdown = (props) => {
     if (window.confirm("آیا میخواهید از این حساب خارج شوید؟")) {
       cookieLib.setCookie("login", "", -100);
       setLogin(false);
-      cookieLib.setCookie("username", "", -100);
-      setUsername("");
+      cookieLib.setCookie("user", "", -100);
+      cookieLib.setCookie("pass", "", -100);
     }
   };
   /*JSX*/
@@ -89,7 +90,7 @@ export const Dropdown = (props) => {
           >
             {cart.map((res, index) => (
               <span key={index}>
-                <img src={`/Images/Product/${res.image}`} alt={res.fa_title} />
+                <img src={res.image} alt={res.fa_title} />
                 <aside>
                   <h1 className={classes.productName}>{res.fa_title}</h1>
                   <article className={classes.changeCartContainer}>
@@ -134,7 +135,7 @@ export const Dropdown = (props) => {
       ) : props.type === "account" ? (
         <span className={classes.cartDropdown}>
           <Link to="/cart" className={classes.link}>
-            <h1>حامد اسداللهی</h1>
+            <h1>{userInfo && userInfo.username}</h1>
             <AccountCircleOutlinedIcon className={classes.i} />
           </Link>
           <Link to="/cart" className={classes.link}>

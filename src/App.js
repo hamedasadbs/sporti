@@ -22,17 +22,19 @@ import * as cookieLib from "./logic/Cookie";
 export const App = () => {
   const checkTheCart = () => {
     axios
-      .get(`http://localhost:8080/cart?username=${username}`)
+      .get(`http://localhost:8080/cart?username=${userInfo.username}`)
       .then((res) => setCart(res.data.dataset));
   };
 
   const checkTheLiked = () => {
-    axios.get(`http://localhost:8080/like?username=${username}`).then((ct) => {
-      setLiked(ct.data.dataset);
-    });
+    axios
+      .get(`http://localhost:8080/like?username=${userInfo.username}`)
+      .then((ct) => {
+        setLiked(ct.data.dataset);
+      });
   };
   /*STATE*/
-  const [username, setUsername] = useState(cookieLib.getCookie("username"));
+  const [userInfo, setUserInfo] = useState(null);
   const [login, setLogin] = useState(cookieLib.getCookie("login"));
   const [page, setPage] = useState("home");
   const [sports, setSports] = useState([]);
@@ -52,7 +54,7 @@ export const App = () => {
   /*VARIABLE*/
   const typeURL = "http://localhost:8080/type";
   const context = {
-    usernameCon: [username, setUsername],
+    userInfoCon: [userInfo, setUserInfo],
     loginCon: [login, setLogin],
     pageCon: [page, setPage],
     menuCon: [isMenuShown, setIsMenuShown],
@@ -75,14 +77,23 @@ export const App = () => {
     axios
       .post("http://localhost:8080/products")
       .then((res) => setProducts(res.data.pro));
-  }, []);
+
+    if (cookieLib.getCookie("login")) {
+      axios
+        .post("http://localhost:8080/login", {
+          username: cookieLib.getCookie("user"),
+          password: cookieLib.getCookie("pass"),
+        })
+        .then((res) => setUserInfo(res.data.user));
+    }
+  }, [cookieLib.getCookie("login")]);
 
   useEffect(() => {
-    if (cookieLib.getCookie("login")) {
+    if (cookieLib.getCookie("login") && userInfo) {
       checkTheCart();
       checkTheLiked();
     }
-  }, []);
+  }, [userInfo]);
 
   useEffect(() => {
     axios
