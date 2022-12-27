@@ -152,11 +152,11 @@
 
 
   img {
-    width: 70%;
+    width: 100%;
     height: 250px;
-    object-fit: contain;
+    object-fit: cover;
+    border-radius: 10px;
     margin: 10px auto;
-    border-bottom: 1px solid lightgray;
   }
 
   .caption {
@@ -282,7 +282,7 @@
       width: 100%;
 
       &:hover {
-        background-color: lighten($primaryColor3, 20%);
+        background-color: lighten($primaryColor3, 50%);
       }
     }
   }

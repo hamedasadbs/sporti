@@ -167,6 +167,14 @@
         display: flex;
         flex-direction: column;
 
+        .avatar {
+          width: 50px;
+          height: 50px;
+          margin: auto;
+          border-radius: 100%;
+          object-fit: cover;
+        }
+
         label,
         .i {
           margin: 0 auto;

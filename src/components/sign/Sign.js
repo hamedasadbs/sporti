@@ -131,9 +131,9 @@ export const Sign = () => {
             type: "success",
           });
           setIsSignShown(false);
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 3000);
+          // setTimeout(() => {
+          //   window.location.href = "/";
+          // }, 3000);
         })
         .catch(() => {
           alert("نام کاربری یا رمز عبور اشتباه است");

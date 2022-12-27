@@ -14,8 +14,7 @@ import {
   RemoveCircleOutline,
 } from "@material-ui/icons";
 import KeyboardDoubleArrowLeftOutlinedIcon from "@mui/icons-material/KeyboardDoubleArrowLeftOutlined";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import ShoppingBasketOutlinedIcon from "@mui/icons-material/ShoppingBasketOutlined";
+import ManageAccountsOutlinedIcon from "@mui/icons-material/ManageAccountsOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import SportsSoccerOutlinedIcon from "@mui/icons-material/SportsSoccerOutlined";
@@ -23,17 +22,21 @@ import SportsKabaddiOutlinedIcon from "@mui/icons-material/SportsKabaddiOutlined
 import SportsBasketballOutlinedIcon from "@mui/icons-material/SportsBasketballOutlined";
 import FitnessCenterOutlinedIcon from "@mui/icons-material/FitnessCenterOutlined";
 import SportsGymnasticsOutlinedIcon from "@mui/icons-material/SportsGymnasticsOutlined";
-import PowerSettingsNewIcon from "@mui/icons-material/PowerSettingsNew";
+import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import CreditCardOutlinedIcon from "@mui/icons-material/CreditCardOutlined";
+import InsertDriveFileOutlinedIcon from "@mui/icons-material/InsertDriveFileOutlined";
+import RestoreOutlinedIcon from "@mui/icons-material/RestoreOutlined";
+import SendOutlinedIcon from "@mui/icons-material/SendOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 /*LIBRARY*/
 import * as cookieLib from "../../logic/Cookie";
 import * as separateLib from "../../logic/Separate";
 import * as cartLib from "../../logic/Cart";
-import { useEffect } from "react";
 
 export const Dropdown = (props) => {
   /*VARIABLE*/
   const sportsData = useContext(Context).typeCon.sports[0];
-  const userInfo = useContext(Context).userInfoCon;
+  const userInfo = useContext(Context).userInfoCon[0];
   const setLogin = useContext(Context).loginCon[1];
   const setAlert = useContext(Context).alertCon[1];
   const setPage = useContext(Context).pageCon[1];
@@ -72,6 +75,7 @@ export const Dropdown = (props) => {
       cookieLib.setCookie("pass", "", -100);
     }
   };
+
   /*JSX*/
   return (
     <>
@@ -135,24 +139,44 @@ export const Dropdown = (props) => {
       ) : props.type === "account" ? (
         <span className={classes.cartDropdown}>
           <Link to="/cart" className={classes.link}>
-            <h1>{userInfo && userInfo.username}</h1>
-            <AccountCircleOutlinedIcon className={classes.i} />
+            <h1>{userInfo && userInfo.fullName.replace("_", " ")}</h1>
+            <ManageAccountsOutlinedIcon className={classes.i} />
           </Link>
           <Link to="/cart" className={classes.link}>
-            <h1>سفارشات</h1>
-            <ShoppingBasketOutlinedIcon className={classes.i} />
+            <h1>کیف پول</h1>
+            <AccountBalanceWalletOutlinedIcon className={classes.i} />
           </Link>
           <Link to="/cart" className={classes.link}>
             <h1>علاقه مندی ها</h1>
             <FavoriteBorderOutlinedIcon className={classes.i} />
           </Link>
           <Link to="/cart" className={classes.link}>
-            <h1>نظرات</h1>
+            <h1>تراکنش های مالی</h1>
+            <CreditCardOutlinedIcon className={classes.i} />
+          </Link>
+          <Link to="/cart" className={classes.link}>
+            <h1>مدیریت اقساط</h1>
+            <InsertDriveFileOutlinedIcon className={classes.i} />
+          </Link>
+          <Link to="/cart" className={classes.link}>
+            <h1>تاریخچه سفارشات</h1>
+            <RestoreOutlinedIcon className={classes.i} />
+          </Link>
+          <Link to="/cart" className={classes.link}>
+            <h1>دیدگاه های من</h1>
             <CommentOutlinedIcon className={classes.i} />
           </Link>
-          <Link to="/" onClick={logoutHandler} className={classes.link}>
+          <Link to="/cart" className={classes.link}>
+            <h1>پیام ها</h1>
+            <SendOutlinedIcon className={classes.i} />
+          </Link>
+          <Link
+            to="/"
+            onClick={logoutHandler}
+            className={classes.link + " " + classes.logoutLink}
+          >
             <h1>خروج از حساب</h1>
-            <PowerSettingsNewIcon className={classes.i} />
+            <LogoutOutlinedIcon className={classes.i} />
           </Link>
         </span>
       ) : props.type === "sports" ? (

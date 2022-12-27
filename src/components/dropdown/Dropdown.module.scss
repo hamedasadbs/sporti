@@ -49,6 +49,14 @@ button {
     }
 }
 
+.logoutLink {
+
+    h1,
+    .i {
+        color: $hoverColor;
+    }
+}
+
 .goToCart {
     transition: all 0.5s;
     padding: 5px;

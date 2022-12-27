@@ -11,14 +11,15 @@ import { Dropdown } from "../../components/dropdown/Dropdown";
 /*ICON*/
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
-import Person4OutlinedIcon from "@mui/icons-material/Person4Outlined";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SegmentIcon from "@mui/icons-material/Segment";
 import CategoryOutlinedIcon from "@mui/icons-material/CategoryOutlined";
-import LocalFireDepartmentOutlinedIcon from "@mui/icons-material/LocalFireDepartmentOutlined";
 import FeedOutlinedIcon from "@mui/icons-material/FeedOutlined";
-import FmdBadOutlinedIcon from "@mui/icons-material/FmdBadOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
+import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import BalanceIcon from "@mui/icons-material/Balance";
 /*IMAGE*/
 import logo from "../../assets/images/aramis-android.png";
 
@@ -54,9 +55,21 @@ export const Header = () => {
       <nav className={classes.topHeader}>
         <ul className={classes.leftSide}>
           <li className={classes.account} onClick={showSign}>
-            <PersonOutlinedIcon className={classes.i} />
             {login ? (
-              <label>{userInfo && userInfo.username}</label>
+              <img
+                className={classes.avatar}
+                src={userInfo && userInfo.image}
+                alt="avatar"
+              />
+            ) : (
+              <AccountCircleOutlinedIcon className={classes.i} />
+            )}
+            {login ? (
+              <label>
+                {userInfo && userInfo.username.length > 11
+                  ? userInfo.username.substring(0, 11 - 3) + "..."
+                  : userInfo.username}
+              </label>
             ) : (
               <label>حساب من</label>
             )}
@@ -141,7 +154,49 @@ export const Header = () => {
           >
             <span {...(page === "about" && { className: classes.activeNav })}>
               درباره ما
-              <FmdBadOutlinedIcon />
+              <ErrorOutlineIcon />
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={classes.link}
+            onClick={() => {
+              setPage("about");
+            }}
+            to="/about"
+          >
+            <span {...(page === "about" && { className: classes.activeNav })}>
+              قوانین و حریم خصوصی
+              <BalanceIcon />
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={classes.link}
+            onClick={() => {
+              setPage("about");
+            }}
+            to="/about"
+          >
+            <span {...(page === "about" && { className: classes.activeNav })}>
+              راهنما
+              <HelpOutlineIcon />
+            </span>
+          </Link>
+        </li>
+        <li>
+          <Link
+            className={classes.link}
+            onClick={() => {
+              setPage("about");
+            }}
+            to="/about"
+          >
+            <span {...(page === "about" && { className: classes.activeNav })}>
+              پشتیبانی
+              <SupportAgentIcon />
             </span>
           </Link>
         </li>
@@ -158,20 +213,6 @@ export const Header = () => {
             >
               بلاگ و اخبار
               <FeedOutlinedIcon />
-            </span>
-          </Link>
-        </li>
-        <li>
-          <Link
-            className={classes.link}
-            onClick={() => {
-              setPage("offers");
-            }}
-            to="/offers"
-          >
-            <span {...(page === "offers" && { className: classes.activeNav })}>
-              پیشنهادات ویژه
-              <LocalFireDepartmentOutlinedIcon />
             </span>
           </Link>
         </li>
